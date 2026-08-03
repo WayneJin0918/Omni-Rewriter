@@ -56,4 +56,4 @@ generated/
 # Model/runtime caches
 .cache/
 checkpoints/
-models/
+/models/
