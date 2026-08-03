@@ -1,0 +1,17 @@
+Omni-Writer
+Copyright 2026 Omni-Writer contributors
+
+This product is an independent, unofficial implementation and is not affiliated with,
+endorsed by, or sponsored by MiniMax or the Qwen project.
+
+The repository does not include MiniMax-H3 documentation, MiniMax-H3 model weights, or
+other MiniMax model assets. Those materials and the MiniMax service are governed by their
+respective licenses and terms.
+
+The repository does not include Qwen models or model weights. Qwen checkpoints and related
+materials are governed by their respective licenses and terms.
+
+MiniMax, MiniMax-H3, Qwen, and other third-party names may be trademarks of their respective
+owners. Their use here is solely descriptive and does not imply endorsement. The Apache
+License 2.0 applies to this repository's licensed work, not to third-party models,
+documentation, services, or assets.

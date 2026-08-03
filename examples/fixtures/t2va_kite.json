@@ -1,0 +1,17 @@
+{
+  "request": {
+    "prompt": "A handmade kite catches an evening breeze and turns once above a grassy hill.",
+    "duration_seconds": 6,
+    "metadata": {
+      "aspect_ratio": "16:9",
+      "seed": "7"
+    }
+  },
+  "output": {
+    "task": "t2va",
+    "duration_seconds": 6,
+    "integrated_multimodal_description": "[Shot 1] A red paper kite rises above a quiet green hill. [Shot 2] At 00:03.000, the kite banks left into warm sunset light.",
+    "overall_soundscape": "A soft breeze moves through dry grass.",
+    "non_diegetic_music": "Two gentle plucked-string notes repeat."
+  }
+}

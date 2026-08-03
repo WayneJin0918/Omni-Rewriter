@@ -1,0 +1,23 @@
+{
+  "request": {
+    "prompt": "Use the illustrated cup shape and create a short tabletop reveal.",
+    "duration_seconds": 4,
+    "media": [
+      {
+        "media_type": "image",
+        "role": "reference",
+        "uri": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJ",
+        "name": "synthetic-cup-reference.png"
+      }
+    ]
+  },
+  "output": {
+    "duration_seconds": 4,
+    "subject_definitions": "<Picture 1> A small cobalt teacup with a square handle.",
+    "summary": "[reference generation] A cobalt cup is revealed on a pale table.",
+    "retention_analysis": "<Picture 1>: fully_preserved - Keep the cobalt body and square handle.",
+    "detailed_description": "[Shot 1] Morning light crosses an empty pale table. [Shot 2] At 00:02.000, the camera slides right to reveal <Picture 1>.",
+    "overall_soundscape": "Quiet room tone with a soft ceramic tap.",
+    "non_diegetic_music": "A brief muted piano phrase."
+  }
+}

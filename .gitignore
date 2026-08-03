@@ -1,0 +1,59 @@
+# Secrets and local environments
+.env
+.env.*
+!.env.example
+.venv/
+venv/
+env/
+
+# Python caches and tooling
+__pycache__/
+*.py[cod]
+*.pyd
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+.coverage
+.coverage.*
+htmlcov/
+.tox/
+.nox/
+
+# Builds and packages
+build/
+dist/
+site/
+*.egg-info/
+*.whl
+
+# Editors and operating systems
+.idea/
+.vscode/
+*.swp
+.DS_Store
+
+# Runtime logs and traces
+*.log
+traces/
+trace/
+*.trace
+*.trace.json
+*.trace.jsonl
+
+# Generated or local media
+media/
+outputs/
+generated/
+*.mp4
+*.mov
+*.mkv
+*.webm
+*.avi
+*.wav
+*.mp3
+*.flac
+
+# Model/runtime caches
+.cache/
+checkpoints/
+models/
