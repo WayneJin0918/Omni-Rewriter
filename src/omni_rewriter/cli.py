@@ -27,6 +27,7 @@ app = typer.Typer(no_args_is_help=True, pretty_exceptions_show_locals=False)
 class OutputFormat(StrEnum):
     JSON = "json"
     H3 = "h3"
+    IMAGE = "image"
 
 
 def _read_json(source: str) -> dict[str, Any]:
@@ -57,20 +58,19 @@ def expand_command(
     except (ValueError, OmniRewriterError) as exc:
         typer.echo(_json(validation_error(exc)), err=True)
         raise typer.Exit(1) from exc
-    if output is OutputFormat.H3:
+    if output is OutputFormat.H3 or output is OutputFormat.IMAGE:
         typer.echo(result.output.render())
         return
-    typer.echo(
-        _json(
-            {
-                "output": result.output.model_dump(mode="json"),
-                "analysis": result.analysis.model_dump(mode="json"),
-                "repairs": result.repairs,
-                "run_id": result.run_id,
-                "h3_text": result.output.render(),
-            }
-        )
-    )
+    payload = {
+        "output": result.output.model_dump(mode="json"),
+        "analysis": result.analysis.model_dump(mode="json"),
+        "repairs": result.repairs,
+        "run_id": result.run_id,
+        "rendered_text": result.output.render(),
+        # Backward-compatible alias for video PE consumers.
+        "h3_text": result.output.render(),
+    }
+    typer.echo(_json(payload))
 
 
 @app.command("validate")
@@ -86,7 +86,7 @@ def validate_command(
     except (ValueError, TypeError) as exc:
         typer.echo(_json(validation_error(exc)), err=True)
         raise typer.Exit(1) from exc
-    if output is OutputFormat.H3:
+    if output is OutputFormat.H3 or output is OutputFormat.IMAGE:
         typer.echo(validated.render())
     else:
         typer.echo(
@@ -94,6 +94,7 @@ def validate_command(
                 {
                     "valid": True,
                     "output": validated.model_dump(mode="json"),
+                    "rendered_text": validated.render(),
                     "h3_text": validated.render(),
                 }
             )

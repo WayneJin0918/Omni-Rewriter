@@ -53,6 +53,9 @@ generated/
 *.mp3
 *.flac
 
+# Root-level raw skill dumps with non-ascii filenames (canonical copies live in docs/references/)
+/李浩冉*.txt
+
 # Model/runtime caches
 .cache/
 checkpoints/

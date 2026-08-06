@@ -1,0 +1,118 @@
+---
+name: write-h3-video-prompts
+description: Write model-ready MiniMax H3 Base/T2VA audiovisual prompts without image, video, or audio reference conditions. Use for text-only video generation, story and temporal planning, synchronized sound, action choreography, and exact three-field T2VA serialization. Do not use for Ref2VA or FL2VA.
+---
+
+# Write H3 Base/T2VA Video Prompts
+
+Transform text-only intent into an executable audiovisual specification. Use `write-h3-ref2va-prompts` for reusable image/video/audio references and `write-h3-fl2va-prompts` for exact first/last-frame alignment.
+
+## Base Principle
+
+Write the complete target video directly: story progression, timestamped shots, composition, environment, subject performance, camera, lighting, effects, dialogue, diegetic sound, and music. Do not add reference labels or alignment instructions to a T2VA prompt.
+
+## Core Model
+
+Represent the request as six layers:
+
+1. **Invariants**: facts that must remain true, including user intent, supplied content, identity, relationships, language, exact text, duration, endpoint conditions, and prohibited additions.
+2. **State**: all visible or audible elements at a moment, expressed through type-appropriate attributes and relationships.
+3. **Transitions**: requested changes between states, including their cause, onset, development, completion, and persistence.
+4. **Evidence**: what the generated video must make perceptible so each invariant and transition can be verified.
+5. **Observation plan**: composition, viewpoint, camera, edit, focus, and sound perspective selected only to expose the required evidence.
+6. **Serialization**: the exact H3 contract required by T2VA, FL2VA, or Ref2VA.
+
+Every added detail must strengthen one of these layers. Remove details that do not change interpretation, observability, continuity, or generation control.
+
+## Workflow
+
+1. Confirm that the request has no media conditions, then read `references/t2va.md`. For multi-shot stories or action choreography, also read `references/long-form-action.md`.
+2. Separate invariants from degrees of freedom. Never elaborate by changing an invariant.
+3. Construct the complete Base state sequence that expresses the intended result. Derive phases from causal transitions, not from a preset number of beats.
+4. Assign duration and complexity to transitions. Preserve completion and persistence; remove optional transitions when the schedule is overloaded.
+5. Attach visual and audible evidence to each state and transition. A requirement without observable evidence is underspecified.
+6. Choose an observation plan that exposes that evidence while respecting geometry, continuity, and eventual conditioning constraints. Camera motion is optional.
+7. Describe synchronized visual and audio timelines. Link events by cause and time; do not let unrelated elements trigger unstated changes.
+8. Serialize the exact three-field T2VA format, then run `python3 scripts/validate_h3_prompt.py PROMPT --mode t2va --duration SECONDS`.
+9. For an iterative generation workflow, treat the rendered video as the new source of truth. Inspect it before selecting references, writing the next shot, or declaring that a requested action or state change succeeded.
+
+## Shot Design
+
+Decide shot boundaries from the information and emotion the audience must receive, not from a fixed shot count.
+
+- For every state or transition, ask whether the current viewpoint can expose its cause, action, scale, and result. Cut when a materially different observation is needed.
+- A longer narrative clip often benefits from multiple timestamped shots. Establishing geography, revealing a participant, clarifying physical contact, showing a reaction, and presenting a consequence may require different framings.
+- Let edits land on motivated visual events such as impact, eyeline change, occlusion, movement across frame, or a sound cue. Preserve screen direction and causal continuity across the cut.
+- Give each shot one readable visual job and enough time to complete it. Use fewer shots for dialogue, subtle performance, or complex continuous motion; use more when distinct views materially improve action, scale, reaction, or story information.
+- Camera movement operates within a shot; timestamped `[Shot N]` segments define edits. Do not substitute one for the other.
+- In H3 serialization, begin with `[Shot 1]`; write each later edit as `[Shot N] At 00:SS.mmm, ...` using strictly increasing times within the requested duration.
+
+## Narrative Progress
+
+For a shot intended to advance a story, require a change in the dramatic situation, not merely a reveal, entrance, pose, or camera move.
+
+- Build a short causal chain: pressure or opportunity -> response -> visible consequence -> new persistent state.
+- Give the shot one dominant event. Supporting beats may set it up, complicate it, or reveal its consequence, but must not compete with it.
+- Reducing narrative complexity means removing competing transitions, not reducing descriptive density. Once the dominant event is chosen, retain detailed scene geometry, subject performance, material response, lighting, camera evidence, and synchronized sound needed to make that event vivid and controllable.
+- Prefer actions that leave screen evidence: something is moved, damaged, rescued, transferred, discovered, blocked, completed, or made newly possible or impossible.
+- Allocate more prompt space to temporal behavior and consequences than to static inventories. Keep only the appearance details needed for recognition and continuity.
+- Make the first meaningful change begin early enough to complete on screen. Do not bury the main event after long setup prose.
+- Camera movement does not count as story progress. Choose it only after the event chain is clear, so the camera exposes causes and results instead of replacing them.
+- A quiet shot may deliberately lack external action, but it still needs a perceptible change in knowledge, emotion, relationship, decision, or expectation.
+
+## Expressive Detail
+
+Add detail by making the world, performance, camera, light, and sound participate in the story. Do not pad the prompt with disconnected inventories.
+
+- Stage readable depth. Give foreground, action plane, and background distinct roles when the composition benefits, using occlusion, parallax, atmosphere, reflections, or moving elements to preserve spatial scale.
+- Let the environment reveal place, prior events, present stakes, and consequences. Background elements should react consistently to force, weather, light, movement, and sound rather than remain decorative scenery.
+- Describe performance as response: gaze precedes a turn, balance changes under force, grip adjusts under weight, breath follows exertion, and expressions evolve when knowledge or intent changes.
+- Motivate lighting and effects from sources in the scene. State how important changes propagate across subjects, surfaces, atmosphere, and depth.
+- Give each shot a camera sentence with its starting relationship, motivated movement, and ending composition. Select framing and motion to reveal information or intensify a transition, not to accumulate cinematic vocabulary.
+- Use sound perspective and material-specific effects to extend action beyond the frame and bridge edits. Keep synchronization explicit for decisive impacts, speech, reactions, and state changes.
+
+## Long-Form Planning
+
+- Maintain stable names, appearances, relationships, speaker IDs, locations, and unresolved story state across text-only segments.
+- Scene variety must remain narratively legible. Establish the destination, motivate the move, and show the crossing or provide an explicit causal bridge.
+- Treat an accepted rendered segment as the source of truth for the next story beat. Record deviations from the prompt instead of pretending the intended endpoint occurred.
+
+## Output-Driven Iteration
+
+Prompt compliance is an empirical result, not something established by the prompt text alone.
+
+- Generate and approve one story segment at a time when identity, action, or continuity risk is high. Do not write later direct-continuation prompts from an uninspected output.
+- Keep a shot ledger containing the accepted prompt version, mode, duration, seed, ordered media conditions, generated output, identity references, and endpoint state.
+- When comparing prompt variants, keep seed, references, duration, resolution, and inference settings fixed so the caption change is the principal variable.
+- Inspect the full video and a temporal contact sheet. Use a sampling interval shorter than the shortest important action beat; approximately 0.75-1.0 seconds is useful for dense 15-second action, while a coarser sheet is sufficient for dialogue or atmosphere.
+- Verify identity count, body coherence, scene continuity, camera continuity, action completion, persistent end state, dialogue and sound, and the actual audio stream. Do not infer any of these from request acceptance or successful decoding.
+- Extract continuation clips and new identity frames only from an accepted output. Preserve rejected variants for comparison, but do not silently feed them into later shots.
+
+## General Rules
+
+- Preserve exact dialogue, lyrics, and visible text in their requested language. Write other descriptive prose in English.
+- Use stable speaker IDs for recurring speakers; do not emit Ref2VA subject, picture, video, or audio labels.
+- Specify stable attributes at the level needed to preserve continuity; do not exhaustively inventory the scene.
+- Describe change as initial state, transition, and resulting state. State what persists after completion.
+- Treat motion, edits, viewpoint changes, and synchronized events as a shared complexity budget.
+- Use physical and causal relationships instead of generic quality adjectives.
+- Keep the observation plan subordinate to the intended state change. Do not add movement merely to make the prompt appear cinematic.
+- Keep audio events temporally and causally aligned with the visible events they support.
+- In action-heavy clips, reserve the complexity budget for motion. Dialogue, portrait inserts, decorative effects, and excessive camera changes compete with choreography.
+- A decisive ending needs persistent screen evidence. Show the defeated, transferred, repaired, disabled, restored, or otherwise completed state long enough to verify it; do not rely on a flash, fade, or line of dialogue to imply completion.
+- Output only the model-ready prompt unless the user requests analysis.
+
+## Validation
+
+Silently verify that:
+
+- every invariant is represented and no conflicting fact was introduced;
+- every required transition has enough duration, a cause when needed, and a completed state;
+- a narrative shot ends in a materially different visible or audible state from where it began;
+- the dominant event is stated early, receives enough screen time, and is not displaced by static description or decorative camera motion;
+- every timestamped shot has a distinct observational purpose, and adjacent shots preserve action, geography, identity, and sound continuity;
+- every important claim has visible or audible evidence;
+- the Base timeline remains complete, detailed, and executable without external media;
+- the observation plan can expose all required evidence;
+- visual and audio events agree on timing and causality;
+- the selected H3 field order, labels, alignment instruction, and timestamps are valid.

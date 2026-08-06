@@ -15,8 +15,16 @@ from pydantic import Field, ValidationError
 from .backends import ChatBackend
 from .errors import RepairExhaustedError, StructuredOutputError
 from .media_input import MediaPreparer
-from .models import BaseRewrite, Ref2VARewrite, RewriteOutput, RewriteRequest, TaskType
-from .models.common import StrictModel
+from .models import (
+    BaseRewrite,
+    ImageRewrite,
+    Ref2VARewrite,
+    RewriteOutput,
+    RewriteRequest,
+    TaskType,
+)
+from .models.common import IMAGE_TASKS, StrictModel
+from .models.image import IMAGE_REF_RE, ImagePEProfile
 from .prompts import (
     ANALYZE_SYSTEM_PROMPT,
     draft_system_prompt,
@@ -83,14 +91,21 @@ class RewriteAgent:
 
         run_id = uuid4().hex
         task = request.resolved_task
-        response_model: type[BaseRewrite] | type[Ref2VARewrite]
-        response_model = Ref2VARewrite if task is TaskType.REF2VA else BaseRewrite
+        profile = _resolve_image_profile(request) if task in IMAGE_TASKS else None
+        response_model: type[BaseRewrite] | type[Ref2VARewrite] | type[ImageRewrite]
+        if task in IMAGE_TASKS:
+            response_model = ImageRewrite
+        elif task is TaskType.REF2VA:
+            response_model = Ref2VARewrite
+        else:
+            response_model = BaseRewrite
         await self._event(
             run_id,
             AgentState.ANALYZE,
             task=task.value,
             prompt_characters=len(request.prompt),
             media_count=len(request.media),
+            image_pe_profile=profile.value if profile else None,
         )
 
         analysis_message = await self.media_preparer.prepare_message(
@@ -113,7 +128,10 @@ class RewriteAgent:
         await self._event(run_id, AgentState.DRAFT, analysis=analysis.model_dump())
         draft_raw = await self.backend.complete(
             [
-                {"role": "system", "content": draft_system_prompt(task, response_model)},
+                {
+                    "role": "system",
+                    "content": draft_system_prompt(task, response_model, profile=profile),
+                },
                 {
                     "role": "user",
                     "content": json.dumps(
@@ -147,25 +165,30 @@ class RewriteAgent:
                 if repairs >= self.config.max_repairs:
                     break
                 await self._event(run_id, AgentState.REPAIR, repair=repairs + 1)
+                repair_payload: dict[str, Any] = {
+                    "invalid_candidate": candidate_raw,
+                    "validation_errors": last_error,
+                    "required_task": task.value,
+                }
+                if request.duration_seconds is not None:
+                    repair_payload["required_duration_seconds"] = str(
+                        request.duration_seconds
+                    )
+                if profile is not None:
+                    repair_payload["required_profile"] = profile.value
                 candidate_raw = await self.backend.complete(
                     [
                         {
                             "role": "system",
-                            "content": repair_system_prompt(response_model),
+                            "content": repair_system_prompt(
+                                response_model,
+                                image=task in IMAGE_TASKS,
+                                profile=profile,
+                            ),
                         },
                         {
                             "role": "user",
-                            "content": json.dumps(
-                                {
-                                    "invalid_candidate": candidate_raw,
-                                    "validation_errors": last_error,
-                                    "required_task": task.value,
-                                    "required_duration_seconds": str(
-                                        request.duration_seconds
-                                    ),
-                                },
-                                ensure_ascii=False,
-                            ),
+                            "content": json.dumps(repair_payload, ensure_ascii=False),
                         },
                     ],
                     response_model=response_model,
@@ -211,9 +234,30 @@ class RewriteAgent:
         self,
         raw: str,
         request: RewriteRequest,
-        response_model: type[BaseRewrite] | type[Ref2VARewrite],
+        response_model: type[BaseRewrite] | type[Ref2VARewrite] | type[ImageRewrite],
     ) -> RewriteOutput:
         output = response_model.model_validate(self._parse_json(raw))
+        if isinstance(output, ImageRewrite):
+            if output.task is not request.resolved_task:
+                raise ValueError(
+                    f"task must exactly match the request ({request.resolved_task.value})"
+                )
+            expected_profile = _resolve_image_profile(request)
+            if output.profile is not expected_profile:
+                raise ValueError(
+                    f"profile must exactly match the request ({expected_profile.value})"
+                )
+            if output.ratio.startswith("[image"):
+                match = IMAGE_REF_RE.fullmatch(output.ratio)
+                if match is None:
+                    raise ValueError("ratio [image N] is malformed")
+                index = int(match.group(1))
+                if index < 1 or index > len(request.media):
+                    raise ValueError(
+                        f"ratio {output.ratio} references a missing image "
+                        f"(media count={len(request.media)})"
+                    )
+            return output
         if output.duration_seconds != request.duration_seconds:
             raise ValueError(
                 "duration_seconds must exactly match the request "
@@ -232,3 +276,13 @@ class RewriteAgent:
         if isinstance(exc, ValidationError):
             return exc.json(include_url=False)
         return str(exc)
+
+
+def _resolve_image_profile(request: RewriteRequest) -> ImagePEProfile:
+    raw = request.image_pe_profile
+    try:
+        return ImagePEProfile(raw)
+    except ValueError as exc:
+        raise ValueError(
+            "metadata.image_pe_profile must be 'seedream' or 'qwen_image_edit'"
+        ) from exc

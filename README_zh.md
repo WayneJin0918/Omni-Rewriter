@@ -1,22 +1,43 @@
 # Omni-Rewriter
 
-[English README](README.md) · [架构](docs/architecture.md) ·
-[H3 适配器](docs/h3-adapters.md) · [评测](docs/evaluation.md)
+[English README](README.md) · [贡献指南](CONTRIBUTING.md) · [架构](docs/architecture.md) ·
+[H3 PE 流程](docs/h3-pe-harness.md) · [图像 PE](docs/image-pe.md) ·
+[H3 适配器](docs/h3-adapters.md) · [评测](docs/evaluation.md) · [路线图](ROADMAP.md)
 
-Omni-Rewriter 是一个独立、非官方、可本地运行的 Context-IR 替代方案：它将自然语言视频意图和
-可选媒体引用转换为经过严格校验、面向 H3 的中间文本。项目包含类型化输入/输出、确定性校验、
-有界的分析—起草—修复流程，以及本地和托管视频生成服务适配器。
+<p align="center">
+  <img src="docs/assets/gallery/readme_hero_raw_vs_pe.jpg" alt="RAW vs PE 低清对比缩略图" width="640"/>
+</p>
 
-本项目**不声称**复刻、逆向还原或等同于 MiniMax 官方 Context-IR，也不代表任何未公开的内部
-实现。适配器只针对其代码明确实现的公开 API 形状。
+## 这个仓库为什么存在
+
+开源权重与公开 API，往往对不上闭源模型在 **demo / 宣传页 / 私有 Context-IR** 里那种「写好的提示词」。
+Omni-Rewriter 是一个开放的 **Prompt Expansion（PE）harness**：把口语化的视频/图像意图，收成
+**类型化、可校验、可直接喂生成器** 的中间文本——用来弥合这个差距，而不是声称复刻任何厂商内部系统。
+
+欢迎一起贡献：方言、校验器、适配器、实验、文档，以及后续的 SFT/RL 管线。详见
+[CONTRIBUTING.md](CONTRIBUTING.md) 与 [ROADMAP.md](ROADMAP.md)。
+
+本项目提供：
+
+- 类型化输入输出与确定性校验
+- 有界的 analyze → draft → repair agent
+- MiniMax-H3 视频 PE（T2VA / I2VA / FL2VA / L2VA / Ref2VA）
+- Seedream 风格与 Qwen-Image-Edit 风格的图像 PE 方言
+- 可选的本地/托管生成适配器（expand ≠ generate）
+
+本项目**不声称**复刻、逆向还原或等同于 MiniMax 官方 Context-IR、Seedream 内部实现，或任何
+未公开厂商行为。适配器与 PE 方言只覆盖其代码明确实现的公开约定。
 
 ## 能力
 
-- 自动路由 T2VA、I2VA、首尾帧 FL2VA、尾帧 L2VA 和任意参考 Ref2VA。
+- **视频 PE：** 自动路由 T2VA / I2VA / FL2VA / L2VA / Ref2VA，并做 H3 语法校验
+ （规则参考 `docs/references/` 中的公开 H3 skill 归档）。
+- **图像 PE：** `t2i` / `i2i` / `image_edit`，支持 Seedream 对齐与 Qwen-Image-Edit 对齐方言
+ （`prompt` + `ratio`，Seedream 标签化渲染）。
 - 对接 OpenAI-compatible 多模态 writer，附带本地 Qwen/vLLM 启动脚本。
 - Pydantic 严格结构、时间轴/引用语法校验，以及次数受限的自动修复。
-- CLI、可选 FastAPI 服务、本地 H3 与 MiniMax API 客户端。
-- 单样本及 JSONL 清单的确定性评测。
+- CLI、可选 FastAPI 服务、本地 H3 与 MiniMax API 客户端（图像生成适配器规划中）。
+- 单样本及 JSONL 清单的确定性评测；视频与图像 raw-vs-PE 对比实验（仓库内仅放低清静帧）。
 - 有大小/MIME/重定向限制且默认阻断非公网地址的媒体加载。
 
 ## 快速开始

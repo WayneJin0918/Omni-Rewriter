@@ -2,14 +2,32 @@
 
 ## Scope
 
-Omni-Rewriter is an independent, unofficial local Context-IR alternative. It converts a typed
-multimodal request into validated, H3-oriented intermediate text. It does not reproduce or claim
-knowledge of MiniMax's private Context-IR architecture.
+Omni-Rewriter is an independent, unofficial local Context-IR / PE harness. It converts a typed
+multimodal request into validated, generator-oriented intermediate text for **video (H3)** and
+**image (Seedream / Qwen-Image-Edit dialects)**. It does not reproduce or claim knowledge of any
+vendor's private Context-IR architecture.
 
-The package separates rewriting from generation: `expand` produces text, while the H3 adapters
-submit generation tasks only when an application explicitly calls them.
+The package separates rewriting from generation: `expand` produces text, while adapters submit
+generation tasks only when an application explicitly calls them.
+
+Flowcharts and skill notes live in [h3-pe-harness.md](h3-pe-harness.md).
 
 ## Components
+
+```mermaid
+flowchart TD
+  CLI[CLI / FastAPI] --> S[service.expand]
+  S --> R[RewriteRequest + task routing]
+  R --> M[MediaPreparer]
+  M --> A[Analyze]
+  A --> D[Draft]
+  D --> V[Validate]
+  V -->|fail + budget| P[Repair]
+  P --> V
+  V -->|ok| O[BaseRewrite / Ref2VARewrite / ImageRewrite]
+  O --> Out[JSON + dialect render]
+  Out --> Gen[optional H3 / MiniMax / future image adapters]
+```
 
 ```text
 CLI / FastAPI
@@ -21,9 +39,9 @@ RewriteRequest -> task routing -> MediaPreparer
                                   v
 OpenAI-compatible writer -> analyze -> draft -> validate <-> bounded repair
                                                    |
-                                    BaseRewrite / Ref2VARewrite
+                    BaseRewrite / Ref2VARewrite / ImageRewrite
                                                    |
-                                    JSON output / H3 text renderer
+                                    JSON output / dialect renderer
                                                    |
                             optional H3Client / MiniMaxClient
 ```

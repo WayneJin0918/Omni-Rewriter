@@ -34,6 +34,8 @@ from .evaluator import BasicEvaluator, Evaluator
 from .media_input import MediaInputConfig, MediaPreparer, PreparedMedia
 from .models import (
     BaseRewrite,
+    ImagePEProfile,
+    ImageRewrite,
     MediaReference,
     MediaRole,
     MediaType,
@@ -62,6 +64,8 @@ __all__ = [
     "H3Client",
     "H3ClientConfig",
     "H3Renderable",
+    "ImagePEProfile",
+    "ImageRewrite",
     "JSONLTrace",
     "MediaError",
     "MediaInputConfig",
