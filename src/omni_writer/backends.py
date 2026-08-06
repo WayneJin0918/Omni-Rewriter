@@ -19,6 +19,25 @@ from .models.common import StrictModel
 ChatMessage = Mapping[str, Any]
 
 
+def _guidance_safe_schema(value: Any) -> Any:
+    """Remove validation-only regexes unsupported by common grammar backends.
+
+    Pydantic emits a negative-lookahead pattern for ``Decimal`` fields. vLLM's
+    structured-output grammar rejects look-around before generation starts;
+    Omni-Writer still applies the complete Pydantic validation after decoding.
+    """
+
+    if isinstance(value, Mapping):
+        return {
+            key: _guidance_safe_schema(item)
+            for key, item in value.items()
+            if key != "pattern"
+        }
+    if isinstance(value, list):
+        return [_guidance_safe_schema(item) for item in value]
+    return value
+
+
 class ChatBackendConfig(StrictModel):
     """Configuration shared by OpenAI-compatible chat-completions servers."""
 
@@ -96,7 +115,7 @@ class OpenAICompatibleBackend:
                 "json_schema": {
                     "name": response_model.__name__,
                     "strict": True,
-                    "schema": response_model.model_json_schema(),
+                    "schema": _guidance_safe_schema(response_model.model_json_schema()),
                 },
             }
 

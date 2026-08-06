@@ -43,6 +43,8 @@ async def test_backend_payload_and_schema() -> None:
     assert captured["max_tokens"] == 200
     assert captured["chat_template_kwargs"] == {"enable_thinking": False}
     assert captured["response_format"]["json_schema"]["strict"] is True
+    schema_text = json.dumps(captured["response_format"]["json_schema"]["schema"])
+    assert '"pattern"' not in schema_text
     await client.aclose()
 
 
