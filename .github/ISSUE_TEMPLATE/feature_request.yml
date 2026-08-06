@@ -1,0 +1,37 @@
+name: Feature request
+description: Propose a dialect, validator, adapter, or experiment improvement
+title: "[feat] "
+labels: ["enhancement"]
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem / gap
+      description: Which demo/API gap does this close?
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Proposal
+      description: Suggested contract, dialect, or workflow
+    validations:
+      required: true
+  - type: dropdown
+    id: track
+    attributes:
+      label: Roadmap track
+      options:
+        - PE dialect / validator
+        - Generation adapter
+        - SFT / RL (future)
+        - Docs / DX
+        - Other
+    validations:
+      required: true
+  - type: checkboxes
+    id: willing
+    attributes:
+      label: Contribution
+      options:
+        - label: I am willing to open a PR for this

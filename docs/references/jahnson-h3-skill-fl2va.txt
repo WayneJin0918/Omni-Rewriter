@@ -1,0 +1,40 @@
+---
+name: write-h3-fl2va-prompts
+description: Write model-ready MiniMax H3 FL2VA prompts from an exact first-frame image and exact last-frame image. Use for endpoint-constrained interpolation, continuous physical transition planning, camera-path feasibility, audiovisual timing, and exact FL2VA alignment serialization. Do not use for reusable Ref2VA identity or history references.
+---
+
+# Write H3 FL2VA Prompts
+
+Create a complete audiovisual path from an exact opening image to an exact ending image. Read `references/fl2va-contract.md` before writing.
+
+## Preconditions
+
+FL2VA requires exactly the intended first and last frame conditions. One opening image alone is I2VA, not FL2VA. Historical identity images or reusable video/audio references belong to Ref2VA.
+
+## Workflow
+
+1. Inspect Picture 1 and Picture 2. Record opening invariants, ending invariants, shared elements, changed elements, geometry, viewpoint, lighting, and occlusion.
+2. Write the complete Base audiovisual timeline: story, subjects, environment, performance, camera, dialogue, effects, soundscape, music, and intermediate states.
+3. Build a physically and visually reachable path from Picture 1 to Picture 2. Every difference needs an onset, development, completion, and persistent result.
+4. Choose camera geometry compatible with both endpoints. Do not request a move that makes the last frame unreachable.
+5. Favor one continuous shot. Add cuts only when the supplied endpoint sequence or user intent genuinely requires them.
+6. Reduce transition complexity when the duration cannot contain all pose, prop, camera, dialogue, and scene changes.
+7. Serialize the exact header and three Base fields.
+8. Validate with `python3 scripts/validate_h3_prompt.py PROMPT --mode fl2va --duration SECONDS`.
+
+## Endpoint Control
+
+- Picture 1 is the exact target state at `0.00` seconds, not merely a style reference.
+- Picture 2 is the exact target state at the effective final time.
+- Begin from Picture 1 before action onset. Progressively reduce visible differences to Picture 2.
+- Allocate enough final time for motion to settle into Picture 2. Do not introduce a major transition in the last instant.
+- Preserve identities and scene geometry unless the endpoint itself requires a change.
+- Describe intermediate states rather than only listing both images.
+
+## Audiovisual Timing
+
+Dialogue and sound must follow the same path as visible action. Do not combine a major pose transition, complex prop operation, large camera move, and long spoken line inside one short interval. Use sound to bridge motion and confirm endpoint arrival without implying an unseen state change.
+
+## Output
+
+Output only the alignment header plus the three model-ready Base fields. Do not emit reference-analysis sections, reusable `<Subject N>` retention, JSON, markdown commentary, negative prompts, or generation parameters.

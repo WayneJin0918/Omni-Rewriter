@@ -1,0 +1,10 @@
+{
+  "scenario_id": "i07_edit_bg_swap",
+  "output": {
+    "task": "image_edit",
+    "profile": "qwen_image_edit",
+    "prompt": "保留 image 1 中人物的五官、发型与表情不变，仅将背景替换为雨夜东京街景，地面需有清晰霓虹倒影，人物边缘光照与新环境一致，不改变人物比例与构图。",
+    "ratio": "[image 1]"
+  },
+  "source": "gold"
+}

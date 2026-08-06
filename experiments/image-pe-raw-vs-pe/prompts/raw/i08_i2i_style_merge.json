@@ -1,0 +1,9 @@
+{
+  "id": "i08_i2i_style_merge",
+  "category": "seedream_i2i",
+  "profile": "seedream",
+  "task": "i2i",
+  "prompt": "Combine the subject from image 1 with the watercolor style of image 2, keep identity, soft paper texture",
+  "needs_media": true,
+  "media_count": 2
+}

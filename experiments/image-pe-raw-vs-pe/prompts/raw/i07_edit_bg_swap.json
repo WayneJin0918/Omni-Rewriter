@@ -1,0 +1,8 @@
+{
+  "id": "i07_edit_bg_swap",
+  "category": "qwen_image_edit",
+  "profile": "qwen_image_edit",
+  "task": "image_edit",
+  "prompt": "保留人物五官与发型，把背景换成雨夜东京街景，地面要有霓虹倒影",
+  "needs_media": true
+}

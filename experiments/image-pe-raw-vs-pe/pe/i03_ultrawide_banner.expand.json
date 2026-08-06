@@ -1,0 +1,10 @@
+{
+  "scenario_id": "i03_ultrawide_banner",
+  "output": {
+    "task": "t2i",
+    "profile": "seedream",
+    "prompt": "An ultra-wide dusk desert highway receding to the horizon, a single classic convertible parked on the shoulder, low sun backlighting airborne dust, long asphalt leading lines, empty of people, cinematic still suitable for a website hero.",
+    "ratio": "21:9"
+  },
+  "source": "gold"
+}

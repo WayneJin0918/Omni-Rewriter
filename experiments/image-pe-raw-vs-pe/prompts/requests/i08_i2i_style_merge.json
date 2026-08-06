@@ -1,0 +1,21 @@
+{
+  "prompt": "Combine the subject from image 1 with the watercolor style of image 2, keep identity, soft paper texture",
+  "task": "i2i",
+  "media": [
+    {
+      "media_type": "image",
+      "role": "reference",
+      "uri": "file:///tmp/omni_rewriter_placeholder_i08_i2i_style_merge_1.png",
+      "name": "image 1"
+    },
+    {
+      "media_type": "image",
+      "role": "reference",
+      "uri": "file:///tmp/omni_rewriter_placeholder_i08_i2i_style_merge_2.png",
+      "name": "image 2"
+    }
+  ],
+  "metadata": {
+    "image_pe_profile": "seedream"
+  }
+}

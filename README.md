@@ -1,27 +1,62 @@
 # Omni-Rewriter
 
-[中文说明](README_zh.md) · [Architecture](docs/architecture.md) ·
-[H3 adapters](docs/h3-adapters.md) · [Evaluation](docs/evaluation.md)
+[中文说明](README_zh.md) · [Contributing](CONTRIBUTING.md) · [Architecture](docs/architecture.md) ·
+[H3 PE harness](docs/h3-pe-harness.md) · [Image PE](docs/image-pe.md) ·
+[H3 adapters](docs/h3-adapters.md) · [Evaluation](docs/evaluation.md) · [Roadmap](ROADMAP.md)
 
-Omni-Rewriter is an independent, unofficial, local Context-IR alternative for turning a
-natural-language video intent plus optional media references into validated, H3-oriented
-intermediate text. It provides typed request/output models, deterministic validation, a bounded
-analyze–draft–repair agent, and adapters for local and hosted video-generation services.
+<p align="center">
+  <img src="docs/assets/gallery/readme_hero_raw_vs_pe.jpg" alt="Low-res RAW vs PE thumbnails (dialogue, sneaker, noir, phone call)" width="640"/>
+</p>
+
+<p align="center"><em>Low-resolution RAW (left) vs Omni-Rewriter PE (right) thumbnails from the H3 15s experiment. Full videos stay local; only compressed stills ship in-repo.</em></p>
+
+## Why this repo exists
+
+Open checkpoints and public APIs rarely match the polished prompts that show up in **closed-model
+demos, marketing pages, and private Context-IR stacks**. Omni-Rewriter is an open
+**prompt-expansion (PE) harness** that turns casual video/image intent into **typed, validated,
+generator-ready text**—so researchers and builders can close that gap without claiming to clone
+any vendor internals.
+
+We welcome contributions: dialects, validators, adapters, experiments, docs, and (later) SFT/RL
+pipelines. See [CONTRIBUTING.md](CONTRIBUTING.md) and [ROADMAP.md](ROADMAP.md).
+
+Omni-Rewriter provides:
+
+- Typed request/output models and deterministic validation
+- A bounded analyze → draft → repair agent
+- Video PE for MiniMax-H3 (T2VA / I2VA / FL2VA / L2VA / Ref2VA)
+- Image PE dialects aligned with Seedream-style and Qwen-Image-Edit-style packing
+- Optional adapters for local/hosted generation (expand ≠ generate)
 
 This project does **not** claim to reproduce, reverse engineer, or match MiniMax's official
-Context-IR implementation or any private internal behavior. Compatibility is limited to the
-publicly documented API shapes implemented by the adapters.
+Context-IR implementation, Seedream internals, or any private vendor behavior. Compatibility is
+limited to the publicly documented shapes implemented by the adapters and PE dialects.
 
 ## Features
 
-- T2VA, I2VA, first/last-frame (FL2VA), last-frame (L2VA), and arbitrary-reference (Ref2VA)
-  request routing.
+- **Video PE:** T2VA, I2VA, FL2VA, L2VA, and Ref2VA routing with H3 grammar validation
+  (tightened against public H3 skill contracts under `docs/references/`).
+- **Image PE:** `t2i` / `i2i` / `image_edit` with Seedream-aligned and Qwen-Image-Edit-aligned
+  dialects (`prompt` + `ratio`, tagged Seedream render).
 - OpenAI-compatible multimodal writer backend, tested with local Qwen served by vLLM.
 - Strict Pydantic output schemas, timeline/reference grammar checks, and bounded repair attempts.
 - CLI and optional FastAPI entry points.
-- Local H3 `/v1/videos` and MiniMax API adapters.
+- Local H3 `/v1/videos` and MiniMax API adapters (image generation adapters planned).
 - Deterministic single-case and JSONL-manifest evaluation.
 - Bounded media loading with MIME checks, redirect limits, and public-address-only HTTP fetching.
+- Experiments for raw-vs-PE comparison on video and image (plus low-res gallery stills above).
+
+## Gallery (RAW vs PE)
+
+| Scene | Thumbnail |
+|---|---|
+| `s01_dialogue` | ![s01](docs/assets/gallery/s01_dialogue_raw_vs_pe.jpg) |
+| `s06_sneaker` | ![s06](docs/assets/gallery/s06_sneaker_raw_vs_pe.jpg) |
+| `s09_noir` | ![s09](docs/assets/gallery/s09_noir_raw_vs_pe.jpg) |
+| `s10_phone_call` | ![s10](docs/assets/gallery/s10_phone_call_raw_vs_pe.jpg) |
+
+Regenerate with `scripts/make_gallery_thumbs.sh` after local experiment videos exist.
 
 ## Quickstart
 

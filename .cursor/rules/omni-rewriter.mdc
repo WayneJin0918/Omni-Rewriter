@@ -1,0 +1,14 @@
+---
+description: Omni-Rewriter PE harness conventions for agents working in this repo
+alwaysApply: true
+---
+
+# Omni-Rewriter conventions
+
+- This repo is an open PE / Context-IR **harness** bridging demos/API gaps for video + image models.
+- Prefer schema + deterministic validation + bounded repair over ad-hoc prompt strings.
+- Video tasks require `duration_seconds`; image tasks must omit it.
+- Tighten H3 rules using `docs/references/jahnson-h3-skill-*.txt` and `docs/h3-pe-harness.md`.
+- Do not claim to reproduce private MiniMax Context-IR or Seedream internals.
+- Keep PRs small, tested (`pytest`, `ruff`, `mypy`), and free of full `.mp4` blobs.
+- Welcome community contributions listed in `ROADMAP.md` (SFT/RL, adapters, dialects).

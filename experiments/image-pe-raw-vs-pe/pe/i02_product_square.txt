@@ -1,0 +1,6 @@
+<prompt>
+A square studio product photograph of a matte black wireless earbud charging case centered on a seamless light-gray sweep, soft boxed key light with gentle rim separation, the lid printed with the exact logo text "Hello", clean reflections, no extra props.
+</prompt>
+<ratio>
+1:1
+</ratio>

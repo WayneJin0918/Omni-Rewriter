@@ -1,0 +1,8 @@
+{
+  "id": "i06_edit_dress",
+  "category": "qwen_image_edit",
+  "profile": "qwen_image_edit",
+  "task": "image_edit",
+  "prompt": "Keep the woman and pose from the reference, change her dress to red velvet, keep the background",
+  "needs_media": true
+}

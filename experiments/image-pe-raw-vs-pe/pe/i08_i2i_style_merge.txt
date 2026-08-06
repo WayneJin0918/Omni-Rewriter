@@ -1,0 +1,6 @@
+<prompt>
+Preserve the subject identity and pose from image 1 while restyling the entire frame into the watercolor look of image 2, soft paper tooth, translucent pigment edges, and gentle bleeding of washes without changing facial structure.
+</prompt>
+<ratio>
+[image 1]
+</ratio>

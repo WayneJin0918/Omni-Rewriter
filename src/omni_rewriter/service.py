@@ -10,7 +10,8 @@ from .agent import RewriteAgent, RewriteAgentConfig, RewriteResult
 from .backends import OpenAICompatibleBackend
 from .config import Settings
 from .media_input import MediaPreparer
-from .models import BaseRewrite, Ref2VARewrite, RewriteOutput, RewriteRequest
+from .models import BaseRewrite, ImageRewrite, Ref2VARewrite, RewriteOutput, RewriteRequest
+from .models.common import IMAGE_TASKS
 
 
 async def expand(request: RewriteRequest, settings: Settings | None = None) -> RewriteResult:
@@ -44,20 +45,26 @@ def validate_output(payload: Mapping[str, Any]) -> tuple[RewriteOutput, RewriteR
     if not isinstance(output_data, Mapping):
         raise ValueError("output must be a JSON object")
 
-    is_ref = "subject_definitions" in output_data
-    output: RewriteOutput
+    if request is not None and request.resolved_task in IMAGE_TASKS:
+        output: RewriteOutput = ImageRewrite.model_validate(output_data)
+    elif "subject_definitions" in output_data or (
+        request is not None and request.resolved_task.value == "ref2va"
+    ):
+        output = Ref2VARewrite.model_validate(output_data)
+    elif "ratio" in output_data and "integrated_multimodal_description" not in output_data:
+        output = ImageRewrite.model_validate(output_data)
+    else:
+        output = BaseRewrite.model_validate(output_data)
+
     if request is not None:
-        is_ref = request.resolved_task.value == "ref2va"
-    output = (
-        Ref2VARewrite.model_validate(output_data)
-        if is_ref
-        else BaseRewrite.model_validate(output_data)
-    )
-    if request is not None:
-        if output.duration_seconds != request.duration_seconds:
-            raise ValueError("output duration_seconds does not match request")
-        if isinstance(output, BaseRewrite) and output.task is not request.resolved_task:
-            raise ValueError("output task does not match request")
+        if isinstance(output, ImageRewrite):
+            if output.task is not request.resolved_task:
+                raise ValueError("output task does not match request")
+        else:
+            if output.duration_seconds != request.duration_seconds:
+                raise ValueError("output duration_seconds does not match request")
+            if isinstance(output, BaseRewrite) and output.task is not request.resolved_task:
+                raise ValueError("output task does not match request")
     return output, request
 
 

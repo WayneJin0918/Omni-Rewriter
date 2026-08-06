@@ -1,0 +1,10 @@
+{
+  "scenario_id": "i08_i2i_style_merge",
+  "output": {
+    "task": "i2i",
+    "profile": "seedream",
+    "prompt": "Preserve the subject identity and pose from image 1 while restyling the entire frame into the watercolor look of image 2, soft paper tooth, translucent pigment edges, and gentle bleeding of washes without changing facial structure.",
+    "ratio": "[image 1]"
+  },
+  "source": "gold"
+}

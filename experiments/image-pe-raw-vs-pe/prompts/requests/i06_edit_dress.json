@@ -1,0 +1,15 @@
+{
+  "prompt": "Keep the woman and pose from the reference, change her dress to red velvet, keep the background",
+  "task": "image_edit",
+  "media": [
+    {
+      "media_type": "image",
+      "role": "reference",
+      "uri": "file:///tmp/omni_rewriter_placeholder_i06_edit_dress_1.png",
+      "name": "image 1"
+    }
+  ],
+  "metadata": {
+    "image_pe_profile": "qwen_image_edit"
+  }
+}

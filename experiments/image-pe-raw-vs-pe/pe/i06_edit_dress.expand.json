@@ -1,0 +1,10 @@
+{
+  "scenario_id": "i06_edit_dress",
+  "output": {
+    "task": "image_edit",
+    "profile": "qwen_image_edit",
+    "prompt": "Keep the woman, face, hair, and pose from image 1 unchanged; replace only her dress with a red velvet dress of similar silhouette; preserve the original background, lighting direction, and camera framing.",
+    "ratio": "[image 1]"
+  },
+  "source": "gold"
+}

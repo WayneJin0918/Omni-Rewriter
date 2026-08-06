@@ -1,0 +1,6 @@
+<prompt>
+A classroom blackboard filling most of the frame with chalk writing that clearly shows "E=mc^2", empty wooden desks in soft focus in the foreground, cool daylight from a side window, dust motes in the air, documentary still.
+</prompt>
+<ratio>
+4:3
+</ratio>

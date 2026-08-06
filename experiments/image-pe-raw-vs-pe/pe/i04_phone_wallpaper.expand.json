@@ -1,0 +1,10 @@
+{
+  "scenario_id": "i04_phone_wallpaper",
+  "output": {
+    "task": "t2i",
+    "profile": "seedream",
+    "prompt": "A tall misty bamboo forest with layered trunks fading into fog, a white crane standing on a dark wet stone in the lower third, soft diffused daylight, and small on-image calligraphy text “清心” near the bottom edge.",
+    "ratio": "9:16"
+  },
+  "source": "gold"
+}

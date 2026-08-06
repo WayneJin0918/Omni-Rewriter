@@ -1,0 +1,15 @@
+{
+  "prompt": "保留人物五官与发型，把背景换成雨夜东京街景，地面要有霓虹倒影",
+  "task": "image_edit",
+  "media": [
+    {
+      "media_type": "image",
+      "role": "reference",
+      "uri": "file:///tmp/omni_rewriter_placeholder_i07_edit_bg_swap_1.png",
+      "name": "image 1"
+    }
+  ],
+  "metadata": {
+    "image_pe_profile": "qwen_image_edit"
+  }
+}

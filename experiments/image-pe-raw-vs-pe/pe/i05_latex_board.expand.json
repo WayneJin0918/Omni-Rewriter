@@ -1,0 +1,10 @@
+{
+  "scenario_id": "i05_latex_board",
+  "output": {
+    "task": "t2i",
+    "profile": "seedream",
+    "prompt": "A classroom blackboard filling most of the frame with chalk writing that clearly shows \"E=mc^2\", empty wooden desks in soft focus in the foreground, cool daylight from a side window, dust motes in the air, documentary still.",
+    "ratio": "4:3"
+  },
+  "source": "gold"
+}

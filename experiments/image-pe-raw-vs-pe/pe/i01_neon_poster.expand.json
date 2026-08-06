@@ -1,0 +1,10 @@
+{
+  "scenario_id": "i01_neon_poster",
+  "output": {
+    "task": "t2i",
+    "profile": "seedream",
+    "prompt": "A cinematic rainy night storefront of a neon sushi shop, wet asphalt reflecting pink and cyan neon, a horizontal poster composition with the on-sign title “夏日限定” in clear glowing characters above the entrance, shallow puddles, steam from a sidewalk vent, no people in the foreground.",
+    "ratio": "16:9"
+  },
+  "source": "gold"
+}

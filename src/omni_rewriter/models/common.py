@@ -17,6 +17,16 @@ class TaskType(StrEnum):
     FL2VA = "fl2va"
     L2VA = "l2va"
     REF2VA = "ref2va"
+    # Image PE (Seedream / Qwen-Image-Edit dialects)
+    T2I = "t2i"
+    I2I = "i2i"
+    IMAGE_EDIT = "image_edit"
+
+
+IMAGE_TASKS = frozenset({TaskType.T2I, TaskType.I2I, TaskType.IMAGE_EDIT})
+VIDEO_TASKS = frozenset(
+    {TaskType.T2VA, TaskType.I2VA, TaskType.FL2VA, TaskType.L2VA, TaskType.REF2VA}
+)
 
 
 class MediaType(StrEnum):

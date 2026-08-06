@@ -1,0 +1,209 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Omni-Rewriter Image PE · RAW vs Expanded</title>
+<style>
+:root { --bg:#10141a; --panel:#1a222c; --text:#e8eef5; --muted:#9aa7b5; --accent:#6bcf8e; --line:#2a3542; }
+* { box-sizing:border-box; }
+body { margin:0; font-family:"IBM Plex Sans","Noto Sans SC",system-ui,sans-serif; background:var(--bg); color:var(--text); }
+header.top { position:sticky; top:0; background:rgba(16,20,26,.92); border-bottom:1px solid var(--line); padding:14px 24px; }
+header.top h1 { margin:0; font-size:1.1rem; }
+header.top p { margin:4px 0 0; color:var(--muted); font-size:.9rem; }
+nav { display:flex; flex-wrap:wrap; gap:8px; padding:12px 24px 0; }
+nav a { color:var(--muted); text-decoration:none; border:1px solid var(--line); border-radius:999px; padding:4px 10px; font-size:.8rem; }
+main { max-width:1400px; margin:0 auto; padding:8px 24px 48px; }
+.card { margin:20px 0; padding:16px; background:var(--panel); border:1px solid var(--line); border-radius:12px; }
+.cat { color:var(--accent); font-size:.85rem; margin-left:8px; }
+.meta { color:var(--muted); font-size:.85rem; }
+.raw-prompt { background:#12181f; border-left:3px solid var(--accent); padding:10px 12px; border-radius:8px; }
+.pair { display:grid; grid-template-columns:1fr 1fr; gap:12px; }
+@media (max-width:900px) { .pair { grid-template-columns:1fr; } }
+figcaption { color:var(--muted); margin-bottom:6px; font-size:.85rem; }
+pre { white-space:pre-wrap; word-break:break-word; background:#0c1116; padding:12px; border-radius:8px; min-height:120px; font-size:.86rem; }
+</style>
+</head>
+<body>
+<header class="top">
+  <h1>Omni-Rewriter · Image PE</h1>
+  <p>Seedream + Qwen-Image-Edit dialects · RAW intent vs expanded blueprint · 8 cases</p>
+</header>
+<nav><a href="#i01_neon_poster">i01_neon_poster</a><a href="#i02_product_square">i02_product_square</a><a href="#i03_ultrawide_banner">i03_ultrawide_banner</a><a href="#i04_phone_wallpaper">i04_phone_wallpaper</a><a href="#i05_latex_board">i05_latex_board</a><a href="#i06_edit_dress">i06_edit_dress</a><a href="#i07_edit_bg_swap">i07_edit_bg_swap</a><a href="#i08_i2i_style_merge">i08_i2i_style_merge</a></nav>
+<main>
+<section class="card" id="i01_neon_poster">
+  <header>
+    <h2>i01_neon_poster <span class="cat">seedream_t2i</span></h2>
+    <p class="meta">task=<code>t2i</code> · profile=<code>seedream</code> · ratio=<code>16:9</code></p>
+    <p class="raw-prompt"><strong>RAW</strong> 做一张横版海报，主标题写“夏日限定”，霓虹寿司店门口，雨夜反光地面，要有电影感</p>
+  </header>
+  <div class="pair">
+    <figure>
+      <figcaption>RAW intent</figcaption>
+      <pre>做一张横版海报，主标题写“夏日限定”，霓虹寿司店门口，雨夜反光地面，要有电影感</pre>
+    </figure>
+    <figure>
+      <figcaption>PE Omni-Rewriter</figcaption>
+      <pre>&lt;prompt&gt;
+A cinematic rainy night storefront of a neon sushi shop, wet asphalt reflecting pink and cyan neon, a horizontal poster composition with the on-sign title “夏日限定” in clear glowing characters above the entrance, shallow puddles, steam from a sidewalk vent, no people in the foreground.
+&lt;/prompt&gt;
+&lt;ratio&gt;
+16:9
+&lt;/ratio&gt;
+</pre>
+    </figure>
+  </div>
+</section>
+<section class="card" id="i02_product_square">
+  <header>
+    <h2>i02_product_square <span class="cat">seedream_t2i</span></h2>
+    <p class="meta">task=<code>t2i</code> · profile=<code>seedream</code> · ratio=<code>1:1</code></p>
+    <p class="raw-prompt"><strong>RAW</strong> Square product shot of a matte black wireless earbud case with the logo text Hello printed cleanly on the lid, soft studio light</p>
+  </header>
+  <div class="pair">
+    <figure>
+      <figcaption>RAW intent</figcaption>
+      <pre>Square product shot of a matte black wireless earbud case with the logo text Hello printed cleanly on the lid, soft studio light</pre>
+    </figure>
+    <figure>
+      <figcaption>PE Omni-Rewriter</figcaption>
+      <pre>&lt;prompt&gt;
+A square studio product photograph of a matte black wireless earbud charging case centered on a seamless light-gray sweep, soft boxed key light with gentle rim separation, the lid printed with the exact logo text &quot;Hello&quot;, clean reflections, no extra props.
+&lt;/prompt&gt;
+&lt;ratio&gt;
+1:1
+&lt;/ratio&gt;
+</pre>
+    </figure>
+  </div>
+</section>
+<section class="card" id="i03_ultrawide_banner">
+  <header>
+    <h2>i03_ultrawide_banner <span class="cat">seedream_t2i</span></h2>
+    <p class="meta">task=<code>t2i</code> · profile=<code>seedream</code> · ratio=<code>21:9</code></p>
+    <p class="raw-prompt"><strong>RAW</strong> Ultra-wide website hero of a desert highway at dusk with a single classic convertible, no people, cinematic dust</p>
+  </header>
+  <div class="pair">
+    <figure>
+      <figcaption>RAW intent</figcaption>
+      <pre>Ultra-wide website hero of a desert highway at dusk with a single classic convertible, no people, cinematic dust</pre>
+    </figure>
+    <figure>
+      <figcaption>PE Omni-Rewriter</figcaption>
+      <pre>&lt;prompt&gt;
+An ultra-wide dusk desert highway receding to the horizon, a single classic convertible parked on the shoulder, low sun backlighting airborne dust, long asphalt leading lines, empty of people, cinematic still suitable for a website hero.
+&lt;/prompt&gt;
+&lt;ratio&gt;
+21:9
+&lt;/ratio&gt;
+</pre>
+    </figure>
+  </div>
+</section>
+<section class="card" id="i04_phone_wallpaper">
+  <header>
+    <h2>i04_phone_wallpaper <span class="cat">seedream_t2i</span></h2>
+    <p class="meta">task=<code>t2i</code> · profile=<code>seedream</code> · ratio=<code>9:16</code></p>
+    <p class="raw-prompt"><strong>RAW</strong> 竖版手机壁纸：竹林雾气，一只白鹤站在石头上，底部小字“清心”</p>
+  </header>
+  <div class="pair">
+    <figure>
+      <figcaption>RAW intent</figcaption>
+      <pre>竖版手机壁纸：竹林雾气，一只白鹤站在石头上，底部小字“清心”</pre>
+    </figure>
+    <figure>
+      <figcaption>PE Omni-Rewriter</figcaption>
+      <pre>&lt;prompt&gt;
+A tall misty bamboo forest with layered trunks fading into fog, a white crane standing on a dark wet stone in the lower third, soft diffused daylight, and small on-image calligraphy text “清心” near the bottom edge.
+&lt;/prompt&gt;
+&lt;ratio&gt;
+9:16
+&lt;/ratio&gt;
+</pre>
+    </figure>
+  </div>
+</section>
+<section class="card" id="i05_latex_board">
+  <header>
+    <h2>i05_latex_board <span class="cat">seedream_t2i</span></h2>
+    <p class="meta">task=<code>t2i</code> · profile=<code>seedream</code> · ratio=<code>4:3</code></p>
+    <p class="raw-prompt"><strong>RAW</strong> A classroom blackboard clearly showing the formula E=mc^2 written in chalk, empty desks in front, soft daylight</p>
+  </header>
+  <div class="pair">
+    <figure>
+      <figcaption>RAW intent</figcaption>
+      <pre>A classroom blackboard clearly showing the formula E=mc^2 written in chalk, empty desks in front, soft daylight</pre>
+    </figure>
+    <figure>
+      <figcaption>PE Omni-Rewriter</figcaption>
+      <pre>&lt;prompt&gt;
+A classroom blackboard filling most of the frame with chalk writing that clearly shows &quot;E=mc^2&quot;, empty wooden desks in soft focus in the foreground, cool daylight from a side window, dust motes in the air, documentary still.
+&lt;/prompt&gt;
+&lt;ratio&gt;
+4:3
+&lt;/ratio&gt;
+</pre>
+    </figure>
+  </div>
+</section>
+<section class="card" id="i06_edit_dress">
+  <header>
+    <h2>i06_edit_dress <span class="cat">qwen_image_edit</span></h2>
+    <p class="meta">task=<code>image_edit</code> · profile=<code>qwen_image_edit</code> · ratio=<code>[image 1]</code></p>
+    <p class="raw-prompt"><strong>RAW</strong> Keep the woman and pose from the reference, change her dress to red velvet, keep the background</p>
+  </header>
+  <div class="pair">
+    <figure>
+      <figcaption>RAW intent</figcaption>
+      <pre>Keep the woman and pose from the reference, change her dress to red velvet, keep the background</pre>
+    </figure>
+    <figure>
+      <figcaption>PE Omni-Rewriter</figcaption>
+      <pre>Keep the woman, face, hair, and pose from image 1 unchanged; replace only her dress with a red velvet dress of similar silhouette; preserve the original background, lighting direction, and camera framing.
+</pre>
+    </figure>
+  </div>
+</section>
+<section class="card" id="i07_edit_bg_swap">
+  <header>
+    <h2>i07_edit_bg_swap <span class="cat">qwen_image_edit</span></h2>
+    <p class="meta">task=<code>image_edit</code> · profile=<code>qwen_image_edit</code> · ratio=<code>[image 1]</code></p>
+    <p class="raw-prompt"><strong>RAW</strong> 保留人物五官与发型，把背景换成雨夜东京街景，地面要有霓虹倒影</p>
+  </header>
+  <div class="pair">
+    <figure>
+      <figcaption>RAW intent</figcaption>
+      <pre>保留人物五官与发型，把背景换成雨夜东京街景，地面要有霓虹倒影</pre>
+    </figure>
+    <figure>
+      <figcaption>PE Omni-Rewriter</figcaption>
+      <pre>保留 image 1 中人物的五官、发型与表情不变，仅将背景替换为雨夜东京街景，地面需有清晰霓虹倒影，人物边缘光照与新环境一致，不改变人物比例与构图。
+</pre>
+    </figure>
+  </div>
+</section>
+<section class="card" id="i08_i2i_style_merge">
+  <header>
+    <h2>i08_i2i_style_merge <span class="cat">seedream_i2i</span></h2>
+    <p class="meta">task=<code>i2i</code> · profile=<code>seedream</code> · ratio=<code>[image 1]</code></p>
+    <p class="raw-prompt"><strong>RAW</strong> Combine the subject from image 1 with the watercolor style of image 2, keep identity, soft paper texture</p>
+  </header>
+  <div class="pair">
+    <figure>
+      <figcaption>RAW intent</figcaption>
+      <pre>Combine the subject from image 1 with the watercolor style of image 2, keep identity, soft paper texture</pre>
+    </figure>
+    <figure>
+      <figcaption>PE Omni-Rewriter</figcaption>
+      <pre>&lt;prompt&gt;
+Preserve the subject identity and pose from image 1 while restyling the entire frame into the watercolor look of image 2, soft paper tooth, translucent pigment edges, and gentle bleeding of washes without changing facial structure.
+&lt;/prompt&gt;
+&lt;ratio&gt;
+[image 1]
+&lt;/ratio&gt;
+</pre>
+    </figure>
+  </div>
+</section></main>
+</body>
+</html>

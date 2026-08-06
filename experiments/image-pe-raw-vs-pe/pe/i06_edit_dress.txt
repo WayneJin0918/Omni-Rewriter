@@ -1,0 +1,1 @@
+Keep the woman, face, hair, and pose from image 1 unchanged; replace only her dress with a red velvet dress of similar silhouette; preserve the original background, lighting direction, and camera framing.

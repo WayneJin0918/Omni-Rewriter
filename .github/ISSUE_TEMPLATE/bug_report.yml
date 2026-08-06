@@ -1,0 +1,40 @@
+name: Bug report
+description: Something in the PE harness or adapters is wrong
+title: "[bug] "
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for helping harden Omni-Rewriter. Please include a minimal fixture when possible.
+  - type: textarea
+    id: what
+    attributes:
+      label: What happened?
+      description: Expected vs actual behavior
+    validations:
+      required: true
+  - type: dropdown
+    id: area
+    attributes:
+      label: Area
+      options:
+        - Video H3 PE
+        - Image PE (Seedream / Qwen-Image-Edit)
+        - CLI / API
+        - Adapters
+        - Docs / CI
+        - Other
+    validations:
+      required: true
+  - type: textarea
+    id: repro
+    attributes:
+      label: Reproduction
+      description: Request JSON, command, and versions
+      render: json
+  - type: textarea
+    id: env
+    attributes:
+      label: Environment
+      placeholder: OS, Python, writer model, H3/SGLang versions
