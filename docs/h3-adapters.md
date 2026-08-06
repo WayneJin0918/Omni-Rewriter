@@ -1,6 +1,6 @@
 # H3 adapters
 
-Omni-Writer has two asynchronous adapters. They are compatibility-oriented clients based on the
+Omni-Rewriter has two asynchronous adapters. They are compatibility-oriented clients based on the
 implemented endpoint contracts; they are not official SDKs. Consult the current service
 documentation before production use because endpoint fields, models, quotas, and availability
 can change.
@@ -17,9 +17,9 @@ can change.
 ```python
 import asyncio
 
-from omni_writer.adapters import H3Client
-from omni_writer.config import Settings
-from omni_writer.models import RewriteRequest
+from omni_rewriter.adapters import H3Client
+from omni_rewriter.config import Settings
+from omni_rewriter.models import RewriteRequest
 
 
 async def main() -> None:
@@ -66,9 +66,9 @@ to your account and current MiniMax documentation, the mainland China origin can
 ```python
 import asyncio
 
-from omni_writer.adapters import MiniMaxClient
-from omni_writer.config import Settings
-from omni_writer.models import RewriteRequest
+from omni_rewriter.adapters import MiniMaxClient
+from omni_rewriter.config import Settings
+from omni_rewriter.models import RewriteRequest
 
 
 async def main() -> None:
@@ -97,7 +97,7 @@ Raw mappings can be supplied when a caller needs an API field not represented by
 
 Both adapters normalize common queued/running, success, and failure status strings. Unknown
 statuses fail closed instead of polling forever. Transport failures and malformed/error responses
-raise typed Omni-Writer exceptions. A timeout covers each HTTP call, while `poll_timeout` bounds
+raise typed Omni-Rewriter exceptions. A timeout covers each HTTP call, while `poll_timeout` bounds
 the overall polling loop.
 
 Retries are not performed for generation submissions because blind retries may duplicate paid or

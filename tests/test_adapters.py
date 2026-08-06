@@ -6,14 +6,14 @@ from typing import Any
 import httpx
 import pytest
 
-from omni_writer.adapters.h3 import H3Client, H3ClientConfig
-from omni_writer.adapters.minimax import MiniMaxClient, MiniMaxClientConfig
-from omni_writer.errors import (
+from omni_rewriter.adapters.h3 import H3Client, H3ClientConfig
+from omni_rewriter.adapters.minimax import MiniMaxClient, MiniMaxClientConfig
+from omni_rewriter.errors import (
     BackendConfigurationError,
     BackendResponseError,
     BackendTransportError,
 )
-from omni_writer.models import MediaReference, MediaRole, MediaType, RewriteRequest
+from omni_rewriter.models import MediaReference, MediaRole, MediaType, RewriteRequest
 
 
 def request(
@@ -133,7 +133,7 @@ async def test_h3_wait_statuses(monkeypatch: pytest.MonkeyPatch) -> None:
         return None
 
     monkeypatch.setattr(adapter, "query", query)
-    monkeypatch.setattr("omni_writer.adapters.h3.asyncio.sleep", no_sleep)
+    monkeypatch.setattr("omni_rewriter.adapters.h3.asyncio.sleep", no_sleep)
     assert (await adapter.wait("job"))["status"] == "completed"
 
     async def failed(_: str) -> dict[str, Any]:

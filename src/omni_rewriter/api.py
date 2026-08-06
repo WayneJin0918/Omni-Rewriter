@@ -25,12 +25,12 @@ def create_app(
         from fastapi import FastAPI, HTTPException
     except ImportError as exc:  # pragma: no cover - depends on installation extras
         raise RuntimeError(
-            "HTTP server dependencies are not installed; install omni-writer[server]"
+            "HTTP server dependencies are not installed; install omni-rewriter[server]"
         ) from exc
 
     runtime_settings = settings or Settings.from_env()
     run_expand = expander or default_expand
-    app = FastAPI(title="Omni-Writer", version="0.1.0")
+    app = FastAPI(title="Omni-Rewriter", version="0.1.0")
 
     @app.get("/health")
     async def health() -> dict[str, str]:
@@ -41,9 +41,9 @@ def create_app(
         try:
             result = await run_expand(request, runtime_settings)
         except Exception as exc:
-            from .errors import OmniWriterError
+            from .errors import OmniRewriterError
 
-            if isinstance(exc, OmniWriterError):
+            if isinstance(exc, OmniRewriterError):
                 raise HTTPException(status_code=502, detail=str(exc)) from exc
             raise
         return {

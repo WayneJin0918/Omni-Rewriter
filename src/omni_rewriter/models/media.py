@@ -1,4 +1,4 @@
-"""Media references accepted by every Omni-Writer entry point."""
+"""Media references accepted by every Omni-Rewriter entry point."""
 
 from pydantic import Field, field_validator, model_validator
 

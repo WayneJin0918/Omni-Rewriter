@@ -5,10 +5,10 @@ from pathlib import Path
 
 import pytest
 
-from omni_writer.config import Settings
-from omni_writer.errors import BackendConfigurationError
-from omni_writer.service import validate_output, validation_error
-from omni_writer.trace import JSONLTrace, redact
+from omni_rewriter.config import Settings
+from omni_rewriter.errors import BackendConfigurationError
+from omni_rewriter.service import validate_output, validation_error
+from omni_rewriter.trace import JSONLTrace, redact
 
 
 def test_settings_from_env(monkeypatch: pytest.MonkeyPatch) -> None:

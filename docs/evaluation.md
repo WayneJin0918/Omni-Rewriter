@@ -1,6 +1,6 @@
 # Evaluation
 
-Omni-Writer's built-in evaluator measures deterministic structural conformance. It does not
+Omni-Rewriter's built-in evaluator measures deterministic structural conformance. It does not
 generate a video and is not a substitute for perceptual, semantic, safety, or human evaluation.
 
 ## Single case
@@ -8,7 +8,7 @@ generate a video and is not a substitute for perceptual, semantic, safety, or hu
 Pass a direct rewrite object or a request/output envelope:
 
 ```bash
-omni-writer eval output.json
+omni-rewriter eval output.json
 ```
 
 The envelope form is preferable because it also checks that task and duration match the request:
@@ -45,7 +45,7 @@ An invalid case reports structured validation errors plus conservative failure m
 Each non-empty line must be a JSON object accepted by the single-case evaluator:
 
 ```bash
-omni-writer eval examples/fixtures/manifest.jsonl --manifest
+omni-rewriter eval examples/fixtures/manifest.jsonl --manifest
 ```
 
 The result contains every case with its source line number and an aggregate total/passed/failed
@@ -55,7 +55,7 @@ prevents a case from validating. This makes it suitable for CI format-regression
 ## Python interface
 
 ```python
-from omni_writer.evaluator import BasicEvaluator
+from omni_rewriter.evaluator import BasicEvaluator
 
 result = BasicEvaluator().evaluate(payload)
 manifest_result = BasicEvaluator().evaluate_manifest("cases.jsonl")
@@ -85,7 +85,7 @@ as if they were deterministic.
 ## Reproducible evaluation practice
 
 1. Version the request set and expected acceptance criteria.
-2. Keep model checkpoint, serving flags, prompts, Omni-Writer version, and sampling settings fixed.
+2. Keep model checkpoint, serving flags, prompts, Omni-Rewriter version, and sampling settings fixed.
 3. Preserve raw writer responses separately from validated outputs, subject to privacy policy.
 4. Run deterministic validation before expensive video generation.
 5. For generated video, add blinded human review and/or separately validated perceptual metrics

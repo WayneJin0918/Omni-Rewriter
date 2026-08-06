@@ -6,13 +6,13 @@ from typing import Any
 import httpx
 import pytest
 
-from omni_writer.backends import ChatBackendConfig, OpenAICompatibleBackend
-from omni_writer.errors import (
+from omni_rewriter.backends import ChatBackendConfig, OpenAICompatibleBackend
+from omni_rewriter.errors import (
     BackendConfigurationError,
     BackendResponseError,
     BackendTransportError,
 )
-from omni_writer.models import BaseRewrite
+from omni_rewriter.models import BaseRewrite
 
 
 @pytest.mark.asyncio
@@ -62,7 +62,7 @@ async def test_backend_retries_status(monkeypatch: pytest.MonkeyPatch) -> None:
     async def no_sleep(_: float) -> None:
         return None
 
-    monkeypatch.setattr("omni_writer.backends.asyncio.sleep", no_sleep)
+    monkeypatch.setattr("omni_rewriter.backends.asyncio.sleep", no_sleep)
     client = httpx.AsyncClient(transport=httpx.MockTransport(handler))
     backend = OpenAICompatibleBackend(
         ChatBackendConfig(base_url="http://writer.test/v1", model="qwen", retries=1),
@@ -81,7 +81,7 @@ async def test_backend_transport_exhaustion(monkeypatch: pytest.MonkeyPatch) -> 
     async def no_sleep(_: float) -> None:
         return None
 
-    monkeypatch.setattr("omni_writer.backends.asyncio.sleep", no_sleep)
+    monkeypatch.setattr("omni_rewriter.backends.asyncio.sleep", no_sleep)
     client = httpx.AsyncClient(transport=httpx.MockTransport(handler))
     backend = OpenAICompatibleBackend(
         ChatBackendConfig(base_url="http://writer.test/v1", model="qwen", retries=1),

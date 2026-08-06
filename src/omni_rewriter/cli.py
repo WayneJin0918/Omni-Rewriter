@@ -12,10 +12,10 @@ from typing import Any
 try:
     import typer
 except ImportError as exc:  # pragma: no cover - exercised in minimal installs
-    raise RuntimeError("CLI dependencies are not installed; install omni-writer[cli]") from exc
+    raise RuntimeError("CLI dependencies are not installed; install omni-rewriter[cli]") from exc
 
 from .config import Settings
-from .errors import OmniWriterError
+from .errors import OmniRewriterError
 from .evaluator import BasicEvaluator
 from .models import RewriteRequest
 from .service import expand as expand_service
@@ -54,7 +54,7 @@ def expand_command(
     try:
         request = RewriteRequest.model_validate(_read_json(source))
         result = asyncio.run(expand_service(request, Settings.from_env()))
-    except (ValueError, OmniWriterError) as exc:
+    except (ValueError, OmniRewriterError) as exc:
         typer.echo(_json(validation_error(exc)), err=True)
         raise typer.Exit(1) from exc
     if output is OutputFormat.H3:

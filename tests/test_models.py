@@ -5,7 +5,7 @@ from decimal import Decimal
 import pytest
 from pydantic import ValidationError
 
-from omni_writer.models import (
+from omni_rewriter.models import (
     BaseRewrite,
     MediaReference,
     MediaRole,
@@ -15,13 +15,13 @@ from omni_writer.models import (
     TaskType,
     infer_task,
 )
-from omni_writer.models.validation import (
+from omni_rewriter.models.validation import (
     labels_in,
     validate_markup,
     validate_reference_numbering,
     validate_timeline,
 )
-from omni_writer.render import H3Renderable, render_h3_prompt
+from omni_rewriter.render import H3Renderable, render_h3_prompt
 
 
 def media(role: MediaRole, uri: str = "frame.png") -> MediaReference:

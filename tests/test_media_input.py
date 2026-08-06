@@ -6,9 +6,9 @@ from pathlib import Path
 import httpx
 import pytest
 
-from omni_writer.errors import MediaMIMEError, MediaTooLargeError, MediaURIError
-from omni_writer.media_input import MediaInputConfig, MediaPreparer
-from omni_writer.models import MediaReference, MediaType
+from omni_rewriter.errors import MediaMIMEError, MediaTooLargeError, MediaURIError
+from omni_rewriter.media_input import MediaInputConfig, MediaPreparer
+from omni_rewriter.models import MediaReference, MediaType
 
 
 def image(uri: str, mime_type: str | None = None) -> MediaReference:

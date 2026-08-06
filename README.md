@@ -1,9 +1,9 @@
-# Omni-Writer
+# Omni-Rewriter
 
 [中文说明](README_zh.md) · [Architecture](docs/architecture.md) ·
 [H3 adapters](docs/h3-adapters.md) · [Evaluation](docs/evaluation.md)
 
-Omni-Writer is an independent, unofficial, local Context-IR alternative for turning a
+Omni-Rewriter is an independent, unofficial, local Context-IR alternative for turning a
 natural-language video intent plus optional media references into validated, H3-oriented
 intermediate text. It provides typed request/output models, deterministic validation, a bounded
 analyze–draft–repair agent, and adapters for local and hosted video-generation services.
@@ -27,7 +27,7 @@ publicly documented API shapes implemented by the adapters.
 
 Requirements: Python 3.11+, a compatible local checkpoint, and enough GPU memory for that
 checkpoint. vLLM is a runtime prerequisite for the included model-serving scripts, not a Python
-package dependency of Omni-Writer.
+package dependency of Omni-Rewriter.
 
 ```bash
 python -m venv .venv
@@ -61,7 +61,7 @@ OMNI_WRITER_GPU_MEMORY_UTILIZATION=0.88 \
 scripts/serve_qwen35_dev.sh --disable-log-requests
 ```
 
-Configure Omni-Writer. It reads the process environment directly and intentionally does not load
+Configure Omni-Rewriter. It reads the process environment directly and intentionally does not load
 `.env` files:
 
 ```bash
@@ -85,15 +85,15 @@ Create `request.json`:
 Run the CLI:
 
 ```bash
-omni-writer expand request.json
-omni-writer expand request.json --output h3
-omni-writer validate output.json
+omni-rewriter expand request.json
+omni-rewriter expand request.json --output h3
+omni-rewriter validate output.json
 ```
 
 Run the API:
 
 ```bash
-uvicorn 'omni_writer.api:create_app' --factory --host 127.0.0.1 --port 8080
+uvicorn 'omni_rewriter.api:create_app' --factory --host 127.0.0.1 --port 8080
 curl -sS http://127.0.0.1:8080/health
 curl -sS -X POST http://127.0.0.1:8080/v1/expand \
   -H 'content-type: application/json' \
@@ -174,8 +174,8 @@ Evaluation is deterministic and does not call a model unless an application supp
 judge:
 
 ```bash
-omni-writer eval output.json
-omni-writer eval examples/fixtures/manifest.jsonl --manifest
+omni-rewriter eval output.json
+omni-rewriter eval examples/fixtures/manifest.jsonl --manifest
 ```
 
 Metrics include schema pass, timeline pass, field completeness, shot/timestamp counts, and

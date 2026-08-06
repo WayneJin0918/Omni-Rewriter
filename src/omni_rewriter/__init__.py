@@ -1,4 +1,4 @@
-"""Omni-Writer public API."""
+"""Omni-Rewriter public API."""
 
 from .adapters import H3Client, H3ClientConfig, MiniMaxClient, MiniMaxClientConfig
 from .agent import (
@@ -26,7 +26,7 @@ from .errors import (
     MediaMIMEError,
     MediaTooLargeError,
     MediaURIError,
-    OmniWriterError,
+    OmniRewriterError,
     RepairExhaustedError,
     StructuredOutputError,
 )
@@ -74,7 +74,7 @@ __all__ = [
     "MediaURIError",
     "MiniMaxClient",
     "MiniMaxClientConfig",
-    "OmniWriterError",
+    "OmniRewriterError",
     "OpenAICompatibleBackend",
     "PreparedMedia",
     "Ref2VARewrite",
