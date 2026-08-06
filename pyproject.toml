@@ -3,13 +3,13 @@ requires = ["hatchling"]
 build-backend = "hatchling.build"
 
 [project]
-name = "omni-writer"
+name = "omni-rewriter"
 version = "0.1.0"
 description = "Independent local Context-IR alternative for validated H3-oriented video rewrites"
 readme = { file = "README.md", content-type = "text/markdown" }
 license = { file = "LICENSE" }
 authors = [
-  { name = "Omni-Writer contributors" },
+  { name = "Omni-Rewriter contributors" },
 ]
 requires-python = ">=3.11"
 dependencies = ["httpx>=0.27,<1", "pydantic>=2.8,<3"]
@@ -41,13 +41,13 @@ dev = [
 ]
 
 [project.scripts]
-omni-writer = "omni_writer.cli:main"
+omni-rewriter = "omni_rewriter.cli:main"
 
 [tool.hatch.build.targets.wheel]
-packages = ["src/omni_writer"]
+packages = ["src/omni_rewriter"]
 include = [
-  "src/omni_writer/**/*.py",
-  "src/omni_writer/py.typed",
+  "src/omni_rewriter/**/*.py",
+  "src/omni_rewriter/py.typed",
 ]
 
 [tool.pytest.ini_options]
@@ -64,11 +64,11 @@ line-length = 100
 select = ["E4", "E7", "E9", "F", "I"]
 
 [tool.ruff.lint.isort]
-known-first-party = ["omni_writer"]
+known-first-party = ["omni_rewriter"]
 
 [tool.coverage.run]
 branch = true
-source = ["omni_writer"]
+source = ["omni_rewriter"]
 
 [tool.coverage.report]
 show_missing = true

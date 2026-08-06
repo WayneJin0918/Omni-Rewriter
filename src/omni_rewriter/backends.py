@@ -24,7 +24,7 @@ def _guidance_safe_schema(value: Any) -> Any:
 
     Pydantic emits a negative-lookahead pattern for ``Decimal`` fields. vLLM's
     structured-output grammar rejects look-around before generation starts;
-    Omni-Writer still applies the complete Pydantic validation after decoding.
+    Omni-Rewriter still applies the complete Pydantic validation after decoding.
     """
 
     if isinstance(value, Mapping):

@@ -14,10 +14,10 @@ from typing import Any
 
 import httpx
 
-from omni_writer.agent import RewriteAgent, RewriteAgentConfig
-from omni_writer.backends import ChatBackendConfig, OpenAICompatibleBackend
-from omni_writer.media_input import MediaPreparer
-from omni_writer.models import RewriteRequest
+from omni_rewriter.agent import RewriteAgent, RewriteAgentConfig
+from omni_rewriter.backends import ChatBackendConfig, OpenAICompatibleBackend
+from omni_rewriter.media_input import MediaPreparer
+from omni_rewriter.models import RewriteRequest
 
 ROOT = Path(__file__).resolve().parent
 DURATION = 15
@@ -213,7 +213,7 @@ def prepare() -> None:
         {
             "experiment_id": ROOT.name,
             "created_unix": int(time.time()),
-            "omni_writer_revision": revision,
+            "omni_rewriter_revision": revision,
             "task": "t2va",
             "duration_seconds": DURATION,
             "target": TARGET,
@@ -261,7 +261,7 @@ def build_compare_site() -> None:
           <video controls preload="metadata" src="/videos/raw/{sid}.mp4"></video>
         </figure>
         <figure>
-          <figcaption>PE Omni-Writer <small>seed={seed}</small></figcaption>
+          <figcaption>PE Omni-Rewriter <small>seed={seed}</small></figcaption>
           <video controls preload="metadata" src="/videos/pe/{sid}.mp4"></video>
         </figure>
       </div>
@@ -276,7 +276,7 @@ def build_compare_site() -> None:
 <head>
 <meta charset="utf-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Omni-Writer PE vs RAW · MiniMax-H3 15s</title>
+<title>Omni-Rewriter PE vs RAW · MiniMax-H3 15s</title>
 <style>
 :root {{
   --bg:#0f1419; --panel:#1a222c; --text:#e8eef5; --muted:#9aa7b5; --accent:#5eb1ff; --line:#2a3542;
@@ -333,7 +333,7 @@ button:hover {{ border-color:var(--accent); }}
 </head>
 <body>
 <header class="top">
-  <h1>Omni-Writer · RAW vs PE</h1>
+  <h1>Omni-Rewriter · RAW vs PE</h1>
   <p>MiniMax-H3 Base T2VA · 15s · 768p · {len(SCENARIOS)} scenes · same seed per scene · audio enabled</p>
 </header>
 <div class="toolbar">
@@ -557,14 +557,14 @@ def verify() -> None:
 <p>{scene['prompt']}</p><div class="pair">
 <figure><figcaption>Raw prompt</figcaption><video controls preload="metadata"
 src="videos/raw/{scene['id']}.mp4"></video></figure>
-<figure><figcaption>Omni-Writer PE</figcaption><video controls preload="metadata"
+<figure><figcaption>Omni-Rewriter PE</figcaption><video controls preload="metadata"
 src="videos/pe/{scene['id']}.mp4"></video></figure></div></section>"""
         )
     dump(ROOT / "eval" / "media_probe.json", results)
     html = """<!doctype html><meta charset="utf-8"><title>Raw vs PE</title>
 <style>body{font-family:sans-serif;max-width:1500px;margin:auto}.pair{display:flex;gap:16px}
 figure{flex:1;margin:0}video{width:100%}section{border-bottom:1px solid #ccc;padding:16px}</style>
-<h1>MiniMax-H3 Base 15s: Raw prompt vs Omni-Writer PE</h1>""" + "\n".join(rows)
+<h1>MiniMax-H3 Base 15s: Raw prompt vs Omni-Rewriter PE</h1>""" + "\n".join(rows)
     (ROOT / "comparison.html").write_text(html, encoding="utf-8")
     valid = sum(
         bool(entry["arms"].get(arm, {}).get("probe", {}).get("valid_audio_video"))

@@ -1,4 +1,4 @@
-"""Public Pydantic models for Omni-Writer."""
+"""Public Pydantic models for Omni-Rewriter."""
 
 from .base import BaseRewrite
 from .common import MediaRole, MediaType, TaskType

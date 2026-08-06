@@ -4,10 +4,10 @@ import json
 
 import pytest
 
-from omni_writer.agent import RewriteAgent, RewriteAgentConfig
-from omni_writer.backends import ScriptedBackend
-from omni_writer.errors import RepairExhaustedError, StructuredOutputError
-from omni_writer.models import RewriteRequest
+from omni_rewriter.agent import RewriteAgent, RewriteAgentConfig
+from omni_rewriter.backends import ScriptedBackend
+from omni_rewriter.errors import RepairExhaustedError, StructuredOutputError
+from omni_rewriter.models import RewriteRequest
 
 
 def request() -> RewriteRequest:

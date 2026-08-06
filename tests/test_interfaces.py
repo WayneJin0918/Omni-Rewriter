@@ -7,13 +7,13 @@ from typing import Any, Mapping
 from fastapi.testclient import TestClient
 from typer.testing import CliRunner
 
-from omni_writer.agent import AnalysisPlan, RewriteResult
-from omni_writer.api import create_app
-from omni_writer.cli import app
-from omni_writer.config import Settings
-from omni_writer.errors import BackendResponseError
-from omni_writer.evaluator import BasicEvaluator
-from omni_writer.models import BaseRewrite
+from omni_rewriter.agent import AnalysisPlan, RewriteResult
+from omni_rewriter.api import create_app
+from omni_rewriter.cli import app
+from omni_rewriter.config import Settings
+from omni_rewriter.errors import BackendResponseError
+from omni_rewriter.evaluator import BasicEvaluator
+from omni_rewriter.models import BaseRewrite
 
 
 def result(
@@ -78,7 +78,7 @@ def test_cli_expand(
     async def fake_expand(*_: Any) -> RewriteResult:
         return result(base_output, analysis_output)
 
-    monkeypatch.setattr("omni_writer.cli.expand_service", fake_expand)
+    monkeypatch.setattr("omni_rewriter.cli.expand_service", fake_expand)
     source = tmp_path / "request.json"
     write_json(source, {"prompt": "A kite rises.", "duration_seconds": 6})
     response = CliRunner().invoke(app, ["expand", str(source)])

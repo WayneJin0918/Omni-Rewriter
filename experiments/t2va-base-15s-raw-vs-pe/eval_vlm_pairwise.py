@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Pairwise VLM scoring for Omni-Writer H3 raw vs PE videos (internal track)."""
+"""Pairwise VLM scoring for Omni-Rewriter H3 raw vs PE videos (internal track)."""
 
 from __future__ import annotations
 
@@ -12,7 +12,7 @@ from pathlib import Path
 
 import requests
 
-ROOT = Path("/pfs/weiyang/Omni-Writer/experiments/t2va-base-15s-raw-vs-pe")
+ROOT = Path("/pfs/weiyang/Omni-Rewriter/experiments/t2va-base-15s-raw-vs-pe")
 SCENARIOS = [
     "s01_dialogue",
     "s02_multilingual",
@@ -86,7 +86,7 @@ def judge_pair(
             "type": "text",
             "text": (
                 "You compare two MiniMax-H3 T2VA outputs for the SAME user prompt.\n"
-                "Arm A = RAW prompt. Arm B = Omni-Writer PE prompt.\n"
+                "Arm A = RAW prompt. Arm B = Omni-Rewriter PE prompt.\n"
                 "Score each criterion 0-10 for BOTH arms, then pick winner.\n"
                 f"Scenario: {scenario_id}\nPrompt: {prompt}\n"
                 "Criteria: " + ", ".join(CRITERIA) + "\n"

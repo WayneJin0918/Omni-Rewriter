@@ -2,7 +2,7 @@
 
 ## Scope
 
-Omni-Writer is an independent, unofficial local Context-IR alternative. It converts a typed
+Omni-Rewriter is an independent, unofficial local Context-IR alternative. It converts a typed
 multimodal request into validated, H3-oriented intermediate text. It does not reproduce or claim
 knowledge of MiniMax's private Context-IR architecture.
 
@@ -121,7 +121,7 @@ moderation, or TLS.
 
 ## Packaging
 
-Hatchling builds the `src/omni_writer` package. Runtime prompts are Python modules, so no external
+Hatchling builds the `src/omni_rewriter` package. Runtime prompts are Python modules, so no external
 prompt template files are required. The wheel explicitly includes `py.typed` to advertise typed
 package APIs. Documentation, tests, scripts, checkpoints, media, and traces are not runtime
 package data.

@@ -1,9 +1,9 @@
-# Omni-Writer
+# Omni-Rewriter
 
 [English README](README.md) · [架构](docs/architecture.md) ·
 [H3 适配器](docs/h3-adapters.md) · [评测](docs/evaluation.md)
 
-Omni-Writer 是一个独立、非官方、可本地运行的 Context-IR 替代方案：它将自然语言视频意图和
+Omni-Rewriter 是一个独立、非官方、可本地运行的 Context-IR 替代方案：它将自然语言视频意图和
 可选媒体引用转换为经过严格校验、面向 H3 的中间文本。项目包含类型化输入/输出、确定性校验、
 有界的分析—起草—修复流程，以及本地和托管视频生成服务适配器。
 
@@ -22,7 +22,7 @@ Omni-Writer 是一个独立、非官方、可本地运行的 Context-IR 替代�
 ## 快速开始
 
 需要 Python 3.11+、可用的本地 checkpoint，以及与模型规模匹配的 GPU 资源。vLLM 是启动脚本
-的运行时依赖，不属于 Omni-Writer 的 Python 安装依赖。
+的运行时依赖，不属于 Omni-Rewriter 的 Python 安装依赖。
 
 ```bash
 python -m venv .venv
@@ -75,17 +75,17 @@ set -a; source .env; set +a
 使用 CLI：
 
 ```bash
-omni-writer expand request.json
-omni-writer expand request.json --output h3
-omni-writer validate output.json
-omni-writer eval output.json
-omni-writer eval examples/fixtures/manifest.jsonl --manifest
+omni-rewriter expand request.json
+omni-rewriter expand request.json --output h3
+omni-rewriter validate output.json
+omni-rewriter eval output.json
+omni-rewriter eval examples/fixtures/manifest.jsonl --manifest
 ```
 
 启动 API：
 
 ```bash
-uvicorn 'omni_writer.api:create_app' --factory --host 127.0.0.1 --port 8080
+uvicorn 'omni_rewriter.api:create_app' --factory --host 127.0.0.1 --port 8080
 curl -sS -X POST http://127.0.0.1:8080/v1/expand \
   -H 'content-type: application/json' --data @request.json
 ```

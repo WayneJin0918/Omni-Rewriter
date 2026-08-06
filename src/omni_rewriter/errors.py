@@ -1,11 +1,11 @@
 """Explicit exception hierarchy for backend, media, and agent failures."""
 
 
-class OmniWriterError(Exception):
-    """Base class for all operational Omni-Writer errors."""
+class OmniRewriterError(Exception):
+    """Base class for all operational Omni-Rewriter errors."""
 
 
-class BackendError(OmniWriterError):
+class BackendError(OmniRewriterError):
     """The language-model backend failed."""
 
 
@@ -21,7 +21,7 @@ class BackendResponseError(BackendError):
     """The backend returned an invalid or unsuccessful response."""
 
 
-class MediaError(OmniWriterError):
+class MediaError(OmniRewriterError):
     """A media input could not be accepted."""
 
 
@@ -37,7 +37,7 @@ class MediaMIMEError(MediaError):
     """A media asset has an absent, unsupported, or mismatched MIME type."""
 
 
-class AgentError(OmniWriterError):
+class AgentError(OmniRewriterError):
     """The rewrite agent failed."""
 
 

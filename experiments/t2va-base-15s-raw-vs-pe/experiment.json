@@ -1,7 +1,7 @@
 {
   "experiment_id": "t2va-base-15s-raw-vs-pe",
   "created_unix": 1786003884,
-  "omni_writer_revision": "5db1c9b342dbb7786300ad4998d3d2eda83e00f4",
+  "omni_rewriter_revision": "5db1c9b342dbb7786300ad4998d3d2eda83e00f4",
   "task": "t2va",
   "duration_seconds": 15,
   "target": {

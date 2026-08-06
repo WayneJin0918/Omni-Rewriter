@@ -1,4 +1,4 @@
-# MiniMax-H3 Base 15s: Raw vs Omni-Writer PE
+# MiniMax-H3 Base 15s: Raw vs Omni-Rewriter PE
 
 ## Experiment
 
@@ -8,7 +8,7 @@
 - PE backend: Qwen3.5-122B-A10B on 8 GPUs.
 - Video backend: MiniMax-H3 FL2VA partition through SGLang, Ulysses degree 8
   on 8 H200 GPUs.
-- Omni-Writer revision: recorded in `experiment.json`.
+- Omni-Rewriter revision: recorded in `experiment.json`.
 - SGLang source revision: `03f44c978acb00ae1ca45deb94e71d000c31b183`.
 
 ## Media validation
@@ -23,7 +23,7 @@ Machine-readable probe results are in `eval/media_probe.json`.
 
 ## Prompt validation
 
-- 10/10 PE prompts passed deterministic Omni-Writer validation.
+- 10/10 PE prompts passed deterministic Omni-Rewriter validation.
 - Five prompts passed on the first draft.
 - Five prompts required one deterministic repair cycle.
 - PE prompt text and complete envelopes are preserved under `pe/`.
