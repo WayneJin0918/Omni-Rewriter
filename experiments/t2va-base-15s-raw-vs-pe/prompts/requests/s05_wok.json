@@ -1,0 +1,9 @@
+{
+  "prompt": "A chef flips a sizzling wok, tosses noodles high, and catches them; synchronize every motion with roaring flame, sizzling oil, metal clangs, and spatula hits.",
+  "duration_seconds": 15,
+  "task": "t2va",
+  "metadata": {
+    "aspect_ratio": "16:9",
+    "seed": "505"
+  }
+}

@@ -1,0 +1,5 @@
+integrated_multimodal_description: Live-action, cinematic, high-energy sneaker advertisement. [Shot 1] A wide shot of a runner sprinting through a bustling modern city street at dawn, wearing sleek athletic sneakers, camera pulling back to reveal the urban scale. [Shot 2] At 00:05.000, a smooth side-tracking shot follows the runner's legs in motion, emphasizing speed and the dynamic flex of the shoe material against the blurred city background. [Shot 3] At 00:10.000, an extreme macro close-up of the sneaker sole striking the pavement, capturing the texture of the rubber and the compression of the cushioning with every step.
+
+overall_soundscape: Rhythmic, heavy footfalls synchronized with the runner's pace, punctuated by sharp whoosh sounds during the camera transitions between shots. Ambient city noise is present but muffled to prioritize the impact of the steps.
+
+non_diegetic_music: Driving, upbeat electronic beat with a strong bassline that matches the tempo of the running, building intensity throughout the 15-second duration.

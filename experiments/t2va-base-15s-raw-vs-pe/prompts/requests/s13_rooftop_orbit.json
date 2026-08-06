@@ -1,0 +1,9 @@
+{
+  "prompt": "On a windy rooftop at golden hour, the camera arcs 180 degrees around a couple; the man proposes in clear English with lip-sync, then cut to her close-up reaction as she answers; wind, city hum, and a quiet piano underscore remain audible.",
+  "duration_seconds": 15,
+  "task": "t2va",
+  "metadata": {
+    "aspect_ratio": "16:9",
+    "seed": "1313"
+  }
+}

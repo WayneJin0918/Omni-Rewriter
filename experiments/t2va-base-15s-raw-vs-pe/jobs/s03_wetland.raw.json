@@ -1,0 +1,36 @@
+{
+  "id": "6829d3be-5d80-4e92-b8fb-29821b2525db",
+  "payload": {
+    "task": "t2va",
+    "prompt": "A pre-dawn wetland wakes beneath distant lightning; layer birds, insects, thunder, water, and wind through reeds with no dialogue and rich natural audio throughout.",
+    "conditions": [],
+    "target": {
+      "short_edge": 768,
+      "aspect_ratio": "16:9",
+      "duration_seconds": 15
+    },
+    "seed": 303
+  },
+  "submitted": {
+    "id": "6829d3be-5d80-4e92-b8fb-29821b2525db",
+    "object": "video",
+    "model": "sora-2",
+    "status": "queued",
+    "progress": 0,
+    "created_at": 1785816360,
+    "size": "1344x768",
+    "seconds": "15.083333",
+    "quality": "standard",
+    "url": null,
+    "remixed_from_video_id": null,
+    "completed_at": null,
+    "expires_at": null,
+    "error": null,
+    "file_path": "/pfs/weiyang/sglang/outputs/6829d3be-5d80-4e92-b8fb-29821b2525db.mp4",
+    "file_paths": null,
+    "num_outputs": null,
+    "peak_memory_mb": null,
+    "inference_time_s": null,
+    "action": null
+  }
+}

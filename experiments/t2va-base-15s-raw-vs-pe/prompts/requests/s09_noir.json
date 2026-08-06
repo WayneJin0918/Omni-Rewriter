@@ -1,0 +1,9 @@
+{
+  "prompt": "A film-noir detective walks through neon rain while a calm male off-screen voiceover narrates the case; her lips remain closed beneath rain and distant sirens.",
+  "duration_seconds": 15,
+  "task": "t2va",
+  "metadata": {
+    "aspect_ratio": "16:9",
+    "seed": "909"
+  }
+}

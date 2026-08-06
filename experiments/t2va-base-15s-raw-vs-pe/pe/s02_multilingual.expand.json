@@ -1,0 +1,29 @@
+{
+  "scenario_id": "s02_multilingual",
+  "output": {
+    "task": "t2va",
+    "duration_seconds": "15",
+    "integrated_multimodal_description": "Live-action, cinematic, 16:9 aspect ratio. [Shot 1] Inside a bustling Tokyo ramen shop with steam rising from large pots and wooden counters. A focused Japanese chef in a white apron stands behind the counter, looking directly at a young tourist. The chef calls out orders with animated gestures. The tourist, holding a menu, looks up and responds. The chef (S1) says: <d>[Japanese] Shio ramen, gochisou sama!</d> The tourist (S2) replies: <d>[English] Yes, please! One miso ramen with extra chashu.</d> The chef nods and turns to the kitchen, while the tourist smiles and waits. The camera slowly pushes in on the steam and the chef's hands working the noodles. [Shot 2] At 00:05.000, the chef vigorously tosses noodles in a wok over a high flame, sending sparks flying as the tourist watches in awe. [Shot 3] At 00:10.000, the finished bowl is placed on the counter with a steaming broth, garnished with green onions and a slice of chashu, as the tourist reaches for chopsticks.",
+    "overall_soundscape": "Loud kitchen ambience including boiling water, clattering bowls, chopping sounds, and the hiss of a gas stove. The chef's Japanese dialogue and the tourist's English dialogue are clear, distinct, and perfectly lip-synced, cutting through the background noise without distortion.",
+    "non_diegetic_music": "None"
+  },
+  "analysis": {
+    "intent": "Generate a 15-second video clip depicting a bilingual interaction between a Japanese ramen chef and an English-speaking tourist in a Tokyo ramen shop, with specific requirements for audible dialogue, lip-sync accuracy, and background kitchen ambience.",
+    "observable_media_facts": [],
+    "timing_and_motion": [],
+    "audio_and_dialogue": [],
+    "continuity_risks": [],
+    "constraints": [
+      "Duration must be exactly 15 seconds.",
+      "Aspect ratio must be 16:9.",
+      "Two distinct characters required: Chef (Japanese speaker) and Tourist (English speaker).",
+      "Dialogue must be explicitly formatted with <d>[Japanese] ...</d> and <d>[English] ...</d> tags in the final output.",
+      "Audio must feature clear, audible speech in both languages over kitchen background noise.",
+      "Visuals must support lip-syncing for the spoken lines.",
+      "No media files provided; scene must be generated from scratch based on the prompt description."
+    ]
+  },
+  "repairs": 1,
+  "run_id": "ea62de61a4fe4019a7ca913e13483c6f",
+  "h3_text": "integrated_multimodal_description: Live-action, cinematic, 16:9 aspect ratio. [Shot 1] Inside a bustling Tokyo ramen shop with steam rising from large pots and wooden counters. A focused Japanese chef in a white apron stands behind the counter, looking directly at a young tourist. The chef calls out orders with animated gestures. The tourist, holding a menu, looks up and responds. The chef (S1) says: <d>[Japanese] Shio ramen, gochisou sama!</d> The tourist (S2) replies: <d>[English] Yes, please! One miso ramen with extra chashu.</d> The chef nods and turns to the kitchen, while the tourist smiles and waits. The camera slowly pushes in on the steam and the chef's hands working the noodles. [Shot 2] At 00:05.000, the chef vigorously tosses noodles in a wok over a high flame, sending sparks flying as the tourist watches in awe. [Shot 3] At 00:10.000, the finished bowl is placed on the counter with a steaming broth, garnished with green onions and a slice of chashu, as the tourist reaches for chopsticks.\n\noverall_soundscape: Loud kitchen ambience including boiling water, clattering bowls, chopping sounds, and the hiss of a gas stove. The chef's Japanese dialogue and the tourist's English dialogue are clear, distinct, and perfectly lip-synced, cutting through the background noise without distortion.\n\nnon_diegetic_music: None"
+}

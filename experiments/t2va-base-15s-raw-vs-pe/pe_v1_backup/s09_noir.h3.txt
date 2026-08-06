@@ -1,0 +1,5 @@
+integrated_multimodal_description: [Shot 1] A female detective in a trench coat walks steadily through a rain-slicked urban street at night, illuminated by vibrant neon signs reflecting on the wet pavement. Rain falls heavily, creating ripples in puddles as she moves forward with a determined gait. Her lips remain firmly closed throughout the entire sequence, showing no sign of speech. The camera tracks her movement from a low angle, emphasizing the towering neon-lit buildings and the moody, atmospheric lighting typical of film noir. The scene maintains a consistent 16:9 aspect ratio with high contrast between the dark shadows and bright neon colors.
+
+overall_soundscape: Heavy rain falling on pavement and umbrellas, distant wailing sirens echoing through the city streets, the rhythmic sound of footsteps on wet concrete, and the low hum of neon signs buzzing overhead.
+
+non_diegetic_music: A slow, melancholic jazz saxophone melody with a steady bass line, evoking a classic film-noir atmosphere without overpowering the ambient sounds.

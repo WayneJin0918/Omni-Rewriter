@@ -1,0 +1,30 @@
+{
+  "prompt_adherence": {
+    "raw": 7.7,
+    "pe": 8.1
+  },
+  "dialogue_lip_sync": {
+    "raw": 4.3,
+    "pe": 4.3
+  },
+  "ambient_music_fidelity": {
+    "raw": 5.0,
+    "pe": 6.4
+  },
+  "action_audio_sync": {
+    "raw": 5.8,
+    "pe": 7.1
+  },
+  "shot_timing_continuity": {
+    "raw": 8.0,
+    "pe": 8.1
+  },
+  "physical_plausibility": {
+    "raw": 8.8,
+    "pe": 8.3
+  },
+  "artifact_freedom": {
+    "raw": 8.8,
+    "pe": 8.6
+  }
+}

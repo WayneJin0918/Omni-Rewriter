@@ -1,0 +1,272 @@
+[
+  {
+    "scenario_id": "s01_dialogue",
+    "result": {
+      "raw": {
+        "prompt_adherence": 7,
+        "dialogue_lip_sync": 6,
+        "ambient_music_fidelity": 5,
+        "action_audio_sync": 4,
+        "shot_timing_continuity": 8,
+        "physical_plausibility": 9,
+        "artifact_freedom": 9
+      },
+      "pe": {
+        "prompt_adherence": 9,
+        "dialogue_lip_sync": 9,
+        "ambient_music_fidelity": 8,
+        "action_audio_sync": 9,
+        "shot_timing_continuity": 9,
+        "physical_plausibility": 8,
+        "artifact_freedom": 9
+      },
+      "winner": "pe",
+      "overall_raw": 6.43,
+      "overall_pe": 8.57,
+      "rationale": "PE output excels in dialogue lip-sync, action audio sync, and shot continuity, directly fulfilling the prompt's core requirements with more dynamic and immersive execution."
+    }
+  },
+  {
+    "scenario_id": "s02_multilingual",
+    "result": {
+      "raw": {
+        "prompt_adherence": 5,
+        "dialogue_lip_sync": 3,
+        "ambient_music_fidelity": 2,
+        "action_audio_sync": 4,
+        "shot_timing_continuity": 6,
+        "physical_plausibility": 7,
+        "artifact_freedom": 8
+      },
+      "pe": {
+        "prompt_adherence": 9,
+        "dialogue_lip_sync": 9,
+        "ambient_music_fidelity": 8,
+        "action_audio_sync": 9,
+        "shot_timing_continuity": 9,
+        "physical_plausibility": 9,
+        "artifact_freedom": 9
+      },
+      "winner": "pe",
+      "overall_raw": 5.14,
+      "overall_pe": 8.86,
+      "rationale": "PE output excels in all criteria, especially dialogue lip-sync and ambient fidelity, while RAW lacks audible dialogue and kitchen sounds."
+    }
+  },
+  {
+    "scenario_id": "s03_wetland",
+    "result": {
+      "raw": {
+        "prompt_adherence": 6,
+        "dialogue_lip_sync": 10,
+        "ambient_music_fidelity": 7,
+        "action_audio_sync": 8,
+        "shot_timing_continuity": 8,
+        "physical_plausibility": 9,
+        "artifact_freedom": 9
+      },
+      "pe": {
+        "prompt_adherence": 9,
+        "dialogue_lip_sync": 10,
+        "ambient_music_fidelity": 9,
+        "action_audio_sync": 9,
+        "shot_timing_continuity": 9,
+        "physical_plausibility": 9,
+        "artifact_freedom": 9
+      },
+      "winner": "pe",
+      "overall_raw": 7.71,
+      "overall_pe": 9.14,
+      "rationale": "PE output better fulfills prompt by adding birds, wind through reeds, and distant lightning, enhancing natural audio fidelity and visual dynamism without artifacts."
+    }
+  },
+  {
+    "scenario_id": "s04_cyclist",
+    "result": {
+      "raw": {
+        "prompt_adherence": 8,
+        "dialogue_lip_sync": 0,
+        "ambient_music_fidelity": 7,
+        "action_audio_sync": 7,
+        "shot_timing_continuity": 9,
+        "physical_plausibility": 9,
+        "artifact_freedom": 9
+      },
+      "pe": {
+        "prompt_adherence": 9,
+        "dialogue_lip_sync": 0,
+        "ambient_music_fidelity": 8,
+        "action_audio_sync": 8,
+        "shot_timing_continuity": 8,
+        "physical_plausibility": 8,
+        "artifact_freedom": 8
+      },
+      "winner": "pe",
+      "overall_raw": 6.71,
+      "overall_pe": 7.71,
+      "rationale": "PE wins on prompt_adherence (9 vs 8) and ambient_music_fidelity (8 vs 7), with a higher overall score (7.71 vs 6.71). The PE output better captures the 'neon highway' and 'cinematic orchestral score' vibe with more vibrant, stylized lighting and a more immersive atmosphere."
+    }
+  },
+  {
+    "scenario_id": "s05_wok",
+    "result": {
+      "raw": {
+        "prompt_adherence": 7,
+        "dialogue_lip_sync": 0,
+        "ambient_music_fidelity": 0,
+        "action_audio_sync": 6,
+        "shot_timing_continuity": 8,
+        "physical_plausibility": 9,
+        "artifact_freedom": 9
+      },
+      "pe": {
+        "prompt_adherence": 9,
+        "dialogue_lip_sync": 0,
+        "ambient_music_fidelity": 0,
+        "action_audio_sync": 9,
+        "shot_timing_continuity": 9,
+        "physical_plausibility": 9,
+        "artifact_freedom": 9
+      },
+      "winner": "pe",
+      "overall_raw": 6.14,
+      "overall_pe": 8.57,
+      "rationale": "PE output excels in prompt adherence, action audio sync, and shot timing continuity, delivering a more dynamic and immersive cooking scene with enhanced visual and auditory elements."
+    }
+  },
+  {
+    "scenario_id": "s06_sneaker",
+    "result": {
+      "raw": {
+        "prompt_adherence": 9,
+        "dialogue_lip_sync": 0,
+        "ambient_music_fidelity": 7,
+        "action_audio_sync": 8,
+        "shot_timing_continuity": 9,
+        "physical_plausibility": 9,
+        "artifact_freedom": 8
+      },
+      "pe": {
+        "prompt_adherence": 8,
+        "dialogue_lip_sync": 0,
+        "ambient_music_fidelity": 8,
+        "action_audio_sync": 8,
+        "shot_timing_continuity": 8,
+        "physical_plausibility": 9,
+        "artifact_freedom": 9
+      },
+      "winner": "raw",
+      "overall_raw": 7.14,
+      "overall_pe": 7.43,
+      "rationale": "PE has slightly better ambient music fidelity and artifact freedom, but RAW scores higher in prompt adherence, shot timing continuity, and physical plausibility, making it the winner."
+    }
+  },
+  {
+    "scenario_id": "s07_bowling",
+    "result": {
+      "raw": {
+        "prompt_adherence": 8,
+        "dialogue_lip_sync": 0,
+        "ambient_music_fidelity": 0,
+        "action_audio_sync": 0,
+        "shot_timing_continuity": 7,
+        "physical_plausibility": 9,
+        "artifact_freedom": 9
+      },
+      "pe": {
+        "prompt_adherence": 6,
+        "dialogue_lip_sync": 0,
+        "ambient_music_fidelity": 0,
+        "action_audio_sync": 0,
+        "shot_timing_continuity": 6,
+        "physical_plausibility": 7,
+        "artifact_freedom": 8
+      },
+      "winner": "raw",
+      "overall_raw": 5.71,
+      "overall_pe": 4.71,
+      "rationale": "Raw output better adheres to prompt (realistic momentum, pin scatter) and has higher physical plausibility and artifact freedom. PE output lacks audio elements and has less coherent shot timing."
+    }
+  },
+  {
+    "scenario_id": "s08_jazz",
+    "result": {
+      "raw": {
+        "prompt_adherence": 9,
+        "dialogue_lip_sync": 8,
+        "ambient_music_fidelity": 8,
+        "action_audio_sync": 7,
+        "shot_timing_continuity": 8,
+        "physical_plausibility": 9,
+        "artifact_freedom": 9
+      },
+      "pe": {
+        "prompt_adherence": 8,
+        "dialogue_lip_sync": 7,
+        "ambient_music_fidelity": 7,
+        "action_audio_sync": 6,
+        "shot_timing_continuity": 7,
+        "physical_plausibility": 8,
+        "artifact_freedom": 8
+      },
+      "winner": "raw",
+      "overall_raw": 7.71,
+      "overall_pe": 7.14,
+      "rationale": "The RAW output better fulfills the prompt's requirements, especially with more natural crowd reactions and better audio fidelity. The PE version has slightly less realistic crowd engagement and weaker audio sync."
+    }
+  },
+  {
+    "scenario_id": "s09_noir",
+    "result": {
+      "raw": {
+        "prompt_adherence": 9,
+        "dialogue_lip_sync": 8,
+        "ambient_music_fidelity": 7,
+        "action_audio_sync": 6,
+        "shot_timing_continuity": 8,
+        "physical_plausibility": 9,
+        "artifact_freedom": 9
+      },
+      "pe": {
+        "prompt_adherence": 7,
+        "dialogue_lip_sync": 0,
+        "ambient_music_fidelity": 8,
+        "action_audio_sync": 5,
+        "shot_timing_continuity": 8,
+        "physical_plausibility": 8,
+        "artifact_freedom": 8
+      },
+      "winner": "raw",
+      "overall_raw": 7.14,
+      "overall_pe": 5.14,
+      "rationale": "Raw output better adheres to prompt (detective, male voiceover, lips closed) and has superior lip sync and audio sync. PE output misinterprets gender and lacks voiceover, leading to lower scores."
+    }
+  },
+  {
+    "scenario_id": "s10_phone_call",
+    "result": {
+      "raw": {
+        "prompt_adherence": 9,
+        "dialogue_lip_sync": 8,
+        "ambient_music_fidelity": 7,
+        "action_audio_sync": 8,
+        "shot_timing_continuity": 9,
+        "physical_plausibility": 9,
+        "artifact_freedom": 9
+      },
+      "pe": {
+        "prompt_adherence": 7,
+        "dialogue_lip_sync": 8,
+        "ambient_music_fidelity": 8,
+        "action_audio_sync": 8,
+        "shot_timing_continuity": 8,
+        "physical_plausibility": 8,
+        "artifact_freedom": 9
+      },
+      "winner": "raw",
+      "overall_raw": 8.14,
+      "overall_pe": 7.86,
+      "rationale": "Raw output better matches the prompt's specific setting (quiet office with framed certificates, busy café with specific lighting) and maintains seamless audio continuity across cuts, while PE output uses a generic office and café with less distinct environmental details."
+    }
+  }
+]

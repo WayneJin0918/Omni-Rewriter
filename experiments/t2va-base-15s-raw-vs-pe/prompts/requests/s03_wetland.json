@@ -1,0 +1,9 @@
+{
+  "prompt": "A pre-dawn wetland wakes beneath distant lightning; layer birds, insects, thunder, water, and wind through reeds with no dialogue and rich natural audio throughout.",
+  "duration_seconds": 15,
+  "task": "t2va",
+  "metadata": {
+    "aspect_ratio": "16:9",
+    "seed": "303"
+  }
+}

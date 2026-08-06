@@ -1,0 +1,31 @@
+{
+  "scenario_id": "s08_jazz",
+  "output": {
+    "task": "t2va",
+    "duration_seconds": "15",
+    "integrated_multimodal_description": "Live-action, cinematic, 16:9 aspect ratio. [Shot 1] A sun-drenched urban plaza with stone paving and blurred historic architecture in the background. A street jazz trio performs energetically: a saxophonist in a sharp suit sways while playing a tenor sax, a bassist in a turtleneck plucks an upright bass with rhythmic precision, and a drummer in a flat cap uses brushes on a snare drum. Passersby in casual attire slow down, smile, and clap along to the beat. The camera starts with a medium-wide shot of the trio, then slowly pushes in to a close-up of the saxophonist's fingers, then cuts to a low-angle shot of the bassist's hands, and finally pulls back to a wide shot showing the clapping crowd surrounding them. The lighting is warm afternoon sunlight casting long shadows. No dialogue is spoken.",
+    "overall_soundscape": "Diegetic live jazz music featuring a swinging saxophone melody, a walking upright bass line, and the soft, rhythmic swish of brush drums. The sound of the crowd clapping in time with the music is prominent and layered over the instruments, creating an immersive street performance atmosphere. Ambient city noise like distant traffic and wind is faintly audible underneath.",
+    "non_diegetic_music": "None. The audio consists entirely of the live in-scene performance and crowd reactions."
+  },
+  "analysis": {
+    "intent": "Generate a 15-second video clip depicting a live street jazz performance by a trio (saxophone, upright bass, brush drums) in a public plaza, emphasizing the interaction between the musicians and the audience, with a specific requirement for audible diegetic sound.",
+    "observable_media_facts": [],
+    "timing_and_motion": [],
+    "audio_and_dialogue": [],
+    "continuity_risks": [
+      "No source media provided; all visual elements (lighting, weather, crowd density, musician appearance) must be generated from scratch, risking inconsistency if the prompt implies a specific real-world location not defined.",
+      "Synchronization between the generated audio (music and clapping) and the visual performance (finger movements, bowing, drumming) is critical and difficult to achieve perfectly in a single generation pass.",
+      "Crowd reaction timing must align with musical cues (e.g., clapping on the beat or after a solo) to appear natural rather than random."
+    ],
+    "constraints": [
+      "Duration: Exactly 15 seconds.",
+      "Aspect Ratio: 16:9.",
+      "Audio Requirement: Must include live in-scene music and crowd reactions (clapping) as audible elements.",
+      "Subject: Three specific instruments (saxophone, upright bass, brush drums) must be visible and being played.",
+      "Setting: Public plaza with passersby."
+    ]
+  },
+  "repairs": 0,
+  "run_id": "2f5a270610a94045aeab9bcadb09d8c0",
+  "h3_text": "integrated_multimodal_description: Live-action, cinematic, 16:9 aspect ratio. [Shot 1] A sun-drenched urban plaza with stone paving and blurred historic architecture in the background. A street jazz trio performs energetically: a saxophonist in a sharp suit sways while playing a tenor sax, a bassist in a turtleneck plucks an upright bass with rhythmic precision, and a drummer in a flat cap uses brushes on a snare drum. Passersby in casual attire slow down, smile, and clap along to the beat. The camera starts with a medium-wide shot of the trio, then slowly pushes in to a close-up of the saxophonist's fingers, then cuts to a low-angle shot of the bassist's hands, and finally pulls back to a wide shot showing the clapping crowd surrounding them. The lighting is warm afternoon sunlight casting long shadows. No dialogue is spoken.\n\noverall_soundscape: Diegetic live jazz music featuring a swinging saxophone melody, a walking upright bass line, and the soft, rhythmic swish of brush drums. The sound of the crowd clapping in time with the music is prominent and layered over the instruments, creating an immersive street performance atmosphere. Ambient city noise like distant traffic and wind is faintly audible underneath.\n\nnon_diegetic_music: None. The audio consists entirely of the live in-scene performance and crowd reactions."
+}

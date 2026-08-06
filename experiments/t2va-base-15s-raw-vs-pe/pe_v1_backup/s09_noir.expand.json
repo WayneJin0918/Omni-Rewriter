@@ -1,0 +1,31 @@
+{
+  "scenario_id": "s09_noir",
+  "output": {
+    "task": "t2va",
+    "duration_seconds": "15",
+    "integrated_multimodal_description": "[Shot 1] A female detective in a trench coat walks steadily through a rain-slicked urban street at night, illuminated by vibrant neon signs reflecting on the wet pavement. Rain falls heavily, creating ripples in puddles as she moves forward with a determined gait. Her lips remain firmly closed throughout the entire sequence, showing no sign of speech. The camera tracks her movement from a low angle, emphasizing the towering neon-lit buildings and the moody, atmospheric lighting typical of film noir. The scene maintains a consistent 16:9 aspect ratio with high contrast between the dark shadows and bright neon colors.",
+    "overall_soundscape": "Heavy rain falling on pavement and umbrellas, distant wailing sirens echoing through the city streets, the rhythmic sound of footsteps on wet concrete, and the low hum of neon signs buzzing overhead.",
+    "non_diegetic_music": "A slow, melancholic jazz saxophone melody with a steady bass line, evoking a classic film-noir atmosphere without overpowering the ambient sounds."
+  },
+  "analysis": {
+    "intent": "Generate a 15-second film-noir style video clip featuring a female detective in a rainy, neon-lit urban setting with specific audio and character constraints.",
+    "observable_media_facts": [],
+    "timing_and_motion": [],
+    "audio_and_dialogue": [],
+    "continuity_risks": [],
+    "constraints": [
+      "Duration: 15 seconds",
+      "Aspect Ratio: 16:9",
+      "Character: Female detective (implied by 'her lips')",
+      "Setting: Neon-lit street with rain",
+      "Character Action: Walking",
+      "Character Constraint: Lips must remain closed throughout the clip",
+      "Audio Constraint: Calm male off-screen voiceover narrating a case",
+      "Audio Constraint: Distant sirens in background",
+      "Audio Constraint: No dialogue from the character on screen"
+    ]
+  },
+  "repairs": 0,
+  "run_id": "9f4b0902d7cf411bb7b93868f8649523",
+  "h3_text": "integrated_multimodal_description: [Shot 1] A female detective in a trench coat walks steadily through a rain-slicked urban street at night, illuminated by vibrant neon signs reflecting on the wet pavement. Rain falls heavily, creating ripples in puddles as she moves forward with a determined gait. Her lips remain firmly closed throughout the entire sequence, showing no sign of speech. The camera tracks her movement from a low angle, emphasizing the towering neon-lit buildings and the moody, atmospheric lighting typical of film noir. The scene maintains a consistent 16:9 aspect ratio with high contrast between the dark shadows and bright neon colors.\n\noverall_soundscape: Heavy rain falling on pavement and umbrellas, distant wailing sirens echoing through the city streets, the rhythmic sound of footsteps on wet concrete, and the low hum of neon signs buzzing overhead.\n\nnon_diegetic_music: A slow, melancholic jazz saxophone melody with a steady bass line, evoking a classic film-noir atmosphere without overpowering the ambient sounds."
+}

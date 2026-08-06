@@ -1,0 +1,612 @@
+[
+  {
+    "scenario_id": "s01_dialogue",
+    "arms": {
+      "raw": {
+        "exists": true,
+        "probe": {
+          "programs": [],
+          "stream_groups": [],
+          "streams": [
+            {
+              "index": 0,
+              "codec_name": "h264",
+              "codec_type": "video",
+              "width": 1344,
+              "height": 768
+            },
+            {
+              "index": 1,
+              "codec_name": "aac",
+              "codec_type": "audio",
+              "sample_rate": "32000",
+              "channels": 2
+            }
+          ],
+          "format": {
+            "duration": "15.083333",
+            "size": "2785204"
+          },
+          "valid_audio_video": true
+        }
+      },
+      "pe": {
+        "exists": true,
+        "probe": {
+          "programs": [],
+          "stream_groups": [],
+          "streams": [
+            {
+              "index": 0,
+              "codec_name": "h264",
+              "codec_type": "video",
+              "width": 1344,
+              "height": 768
+            },
+            {
+              "index": 1,
+              "codec_name": "aac",
+              "codec_type": "audio",
+              "sample_rate": "32000",
+              "channels": 2
+            }
+          ],
+          "format": {
+            "duration": "15.083333",
+            "size": "2561500"
+          },
+          "valid_audio_video": true
+        }
+      }
+    }
+  },
+  {
+    "scenario_id": "s02_multilingual",
+    "arms": {
+      "raw": {
+        "exists": true,
+        "probe": {
+          "programs": [],
+          "stream_groups": [],
+          "streams": [
+            {
+              "index": 0,
+              "codec_name": "h264",
+              "codec_type": "video",
+              "width": 1344,
+              "height": 768
+            },
+            {
+              "index": 1,
+              "codec_name": "aac",
+              "codec_type": "audio",
+              "sample_rate": "32000",
+              "channels": 2
+            }
+          ],
+          "format": {
+            "duration": "15.083333",
+            "size": "1576647"
+          },
+          "valid_audio_video": true
+        }
+      },
+      "pe": {
+        "exists": true,
+        "probe": {
+          "programs": [],
+          "stream_groups": [],
+          "streams": [
+            {
+              "index": 0,
+              "codec_name": "h264",
+              "codec_type": "video",
+              "width": 1344,
+              "height": 768
+            },
+            {
+              "index": 1,
+              "codec_name": "aac",
+              "codec_type": "audio",
+              "sample_rate": "32000",
+              "channels": 2
+            }
+          ],
+          "format": {
+            "duration": "15.083333",
+            "size": "3783816"
+          },
+          "valid_audio_video": true
+        }
+      }
+    }
+  },
+  {
+    "scenario_id": "s03_wetland",
+    "arms": {
+      "raw": {
+        "exists": true,
+        "probe": {
+          "programs": [],
+          "stream_groups": [],
+          "streams": [
+            {
+              "index": 0,
+              "codec_name": "h264",
+              "codec_type": "video",
+              "width": 1344,
+              "height": 768
+            },
+            {
+              "index": 1,
+              "codec_name": "aac",
+              "codec_type": "audio",
+              "sample_rate": "32000",
+              "channels": 2
+            }
+          ],
+          "format": {
+            "duration": "15.083333",
+            "size": "1633081"
+          },
+          "valid_audio_video": true
+        }
+      },
+      "pe": {
+        "exists": true,
+        "probe": {
+          "programs": [],
+          "stream_groups": [],
+          "streams": [
+            {
+              "index": 0,
+              "codec_name": "h264",
+              "codec_type": "video",
+              "width": 1344,
+              "height": 768
+            },
+            {
+              "index": 1,
+              "codec_name": "aac",
+              "codec_type": "audio",
+              "sample_rate": "32000",
+              "channels": 2
+            }
+          ],
+          "format": {
+            "duration": "15.083333",
+            "size": "3457197"
+          },
+          "valid_audio_video": true
+        }
+      }
+    }
+  },
+  {
+    "scenario_id": "s04_cyclist",
+    "arms": {
+      "raw": {
+        "exists": true,
+        "probe": {
+          "programs": [],
+          "stream_groups": [],
+          "streams": [
+            {
+              "index": 0,
+              "codec_name": "h264",
+              "codec_type": "video",
+              "width": 1344,
+              "height": 768
+            },
+            {
+              "index": 1,
+              "codec_name": "aac",
+              "codec_type": "audio",
+              "sample_rate": "32000",
+              "channels": 2
+            }
+          ],
+          "format": {
+            "duration": "15.083333",
+            "size": "3401853"
+          },
+          "valid_audio_video": true
+        }
+      },
+      "pe": {
+        "exists": true,
+        "probe": {
+          "programs": [],
+          "stream_groups": [],
+          "streams": [
+            {
+              "index": 0,
+              "codec_name": "h264",
+              "codec_type": "video",
+              "width": 1344,
+              "height": 768
+            },
+            {
+              "index": 1,
+              "codec_name": "aac",
+              "codec_type": "audio",
+              "sample_rate": "32000",
+              "channels": 2
+            }
+          ],
+          "format": {
+            "duration": "15.083333",
+            "size": "3053346"
+          },
+          "valid_audio_video": true
+        }
+      }
+    }
+  },
+  {
+    "scenario_id": "s05_wok",
+    "arms": {
+      "raw": {
+        "exists": true,
+        "probe": {
+          "programs": [],
+          "stream_groups": [],
+          "streams": [
+            {
+              "index": 0,
+              "codec_name": "h264",
+              "codec_type": "video",
+              "width": 1344,
+              "height": 768
+            },
+            {
+              "index": 1,
+              "codec_name": "aac",
+              "codec_type": "audio",
+              "sample_rate": "32000",
+              "channels": 2
+            }
+          ],
+          "format": {
+            "duration": "15.083333",
+            "size": "2999511"
+          },
+          "valid_audio_video": true
+        }
+      },
+      "pe": {
+        "exists": true,
+        "probe": {
+          "programs": [],
+          "stream_groups": [],
+          "streams": [
+            {
+              "index": 0,
+              "codec_name": "h264",
+              "codec_type": "video",
+              "width": 1344,
+              "height": 768
+            },
+            {
+              "index": 1,
+              "codec_name": "aac",
+              "codec_type": "audio",
+              "sample_rate": "32000",
+              "channels": 2
+            }
+          ],
+          "format": {
+            "duration": "15.083333",
+            "size": "2861434"
+          },
+          "valid_audio_video": true
+        }
+      }
+    }
+  },
+  {
+    "scenario_id": "s06_sneaker",
+    "arms": {
+      "raw": {
+        "exists": true,
+        "probe": {
+          "programs": [],
+          "stream_groups": [],
+          "streams": [
+            {
+              "index": 0,
+              "codec_name": "h264",
+              "codec_type": "video",
+              "width": 1344,
+              "height": 768
+            },
+            {
+              "index": 1,
+              "codec_name": "aac",
+              "codec_type": "audio",
+              "sample_rate": "32000",
+              "channels": 2
+            }
+          ],
+          "format": {
+            "duration": "15.083333",
+            "size": "5715724"
+          },
+          "valid_audio_video": true
+        }
+      },
+      "pe": {
+        "exists": true,
+        "probe": {
+          "programs": [],
+          "stream_groups": [],
+          "streams": [
+            {
+              "index": 0,
+              "codec_name": "h264",
+              "codec_type": "video",
+              "width": 1344,
+              "height": 768
+            },
+            {
+              "index": 1,
+              "codec_name": "aac",
+              "codec_type": "audio",
+              "sample_rate": "32000",
+              "channels": 2
+            }
+          ],
+          "format": {
+            "duration": "15.083333",
+            "size": "4259885"
+          },
+          "valid_audio_video": true
+        }
+      }
+    }
+  },
+  {
+    "scenario_id": "s07_bowling",
+    "arms": {
+      "raw": {
+        "exists": true,
+        "probe": {
+          "programs": [],
+          "stream_groups": [],
+          "streams": [
+            {
+              "index": 0,
+              "codec_name": "h264",
+              "codec_type": "video",
+              "width": 1344,
+              "height": 768
+            },
+            {
+              "index": 1,
+              "codec_name": "aac",
+              "codec_type": "audio",
+              "sample_rate": "32000",
+              "channels": 2
+            }
+          ],
+          "format": {
+            "duration": "15.083333",
+            "size": "2465589"
+          },
+          "valid_audio_video": true
+        }
+      },
+      "pe": {
+        "exists": true,
+        "probe": {
+          "programs": [],
+          "stream_groups": [],
+          "streams": [
+            {
+              "index": 0,
+              "codec_name": "h264",
+              "codec_type": "video",
+              "width": 1344,
+              "height": 768
+            },
+            {
+              "index": 1,
+              "codec_name": "aac",
+              "codec_type": "audio",
+              "sample_rate": "32000",
+              "channels": 2
+            }
+          ],
+          "format": {
+            "duration": "15.083333",
+            "size": "2344811"
+          },
+          "valid_audio_video": true
+        }
+      }
+    }
+  },
+  {
+    "scenario_id": "s08_jazz",
+    "arms": {
+      "raw": {
+        "exists": true,
+        "probe": {
+          "programs": [],
+          "stream_groups": [],
+          "streams": [
+            {
+              "index": 0,
+              "codec_name": "h264",
+              "codec_type": "video",
+              "width": 1344,
+              "height": 768
+            },
+            {
+              "index": 1,
+              "codec_name": "aac",
+              "codec_type": "audio",
+              "sample_rate": "32000",
+              "channels": 2
+            }
+          ],
+          "format": {
+            "duration": "15.083333",
+            "size": "4229687"
+          },
+          "valid_audio_video": true
+        }
+      },
+      "pe": {
+        "exists": true,
+        "probe": {
+          "programs": [],
+          "stream_groups": [],
+          "streams": [
+            {
+              "index": 0,
+              "codec_name": "h264",
+              "codec_type": "video",
+              "width": 1344,
+              "height": 768
+            },
+            {
+              "index": 1,
+              "codec_name": "aac",
+              "codec_type": "audio",
+              "sample_rate": "32000",
+              "channels": 2
+            }
+          ],
+          "format": {
+            "duration": "15.083333",
+            "size": "4084740"
+          },
+          "valid_audio_video": true
+        }
+      }
+    }
+  },
+  {
+    "scenario_id": "s09_noir",
+    "arms": {
+      "raw": {
+        "exists": true,
+        "probe": {
+          "programs": [],
+          "stream_groups": [],
+          "streams": [
+            {
+              "index": 0,
+              "codec_name": "h264",
+              "codec_type": "video",
+              "width": 1344,
+              "height": 768
+            },
+            {
+              "index": 1,
+              "codec_name": "aac",
+              "codec_type": "audio",
+              "sample_rate": "32000",
+              "channels": 2
+            }
+          ],
+          "format": {
+            "duration": "15.083333",
+            "size": "2574150"
+          },
+          "valid_audio_video": true
+        }
+      },
+      "pe": {
+        "exists": true,
+        "probe": {
+          "programs": [],
+          "stream_groups": [],
+          "streams": [
+            {
+              "index": 0,
+              "codec_name": "h264",
+              "codec_type": "video",
+              "width": 1344,
+              "height": 768
+            },
+            {
+              "index": 1,
+              "codec_name": "aac",
+              "codec_type": "audio",
+              "sample_rate": "32000",
+              "channels": 2
+            }
+          ],
+          "format": {
+            "duration": "15.083333",
+            "size": "2846831"
+          },
+          "valid_audio_video": true
+        }
+      }
+    }
+  },
+  {
+    "scenario_id": "s10_phone_call",
+    "arms": {
+      "raw": {
+        "exists": true,
+        "probe": {
+          "programs": [],
+          "stream_groups": [],
+          "streams": [
+            {
+              "index": 0,
+              "codec_name": "h264",
+              "codec_type": "video",
+              "width": 1344,
+              "height": 768
+            },
+            {
+              "index": 1,
+              "codec_name": "aac",
+              "codec_type": "audio",
+              "sample_rate": "32000",
+              "channels": 2
+            }
+          ],
+          "format": {
+            "duration": "15.083333",
+            "size": "1877237"
+          },
+          "valid_audio_video": true
+        }
+      },
+      "pe": {
+        "exists": true,
+        "probe": {
+          "programs": [],
+          "stream_groups": [],
+          "streams": [
+            {
+              "index": 0,
+              "codec_name": "h264",
+              "codec_type": "video",
+              "width": 1344,
+              "height": 768
+            },
+            {
+              "index": 1,
+              "codec_name": "aac",
+              "codec_type": "audio",
+              "sample_rate": "32000",
+              "channels": 2
+            }
+          ],
+          "format": {
+            "duration": "15.083333",
+            "size": "2240313"
+          },
+          "valid_audio_video": true
+        }
+      }
+    }
+  }
+]

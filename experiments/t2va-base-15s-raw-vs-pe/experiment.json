@@ -1,0 +1,19 @@
+{
+  "experiment_id": "t2va-base-15s-raw-vs-pe",
+  "created_unix": 1786003884,
+  "omni_writer_revision": "5db1c9b342dbb7786300ad4998d3d2eda83e00f4",
+  "task": "t2va",
+  "duration_seconds": 15,
+  "target": {
+    "short_edge": 768,
+    "aspect_ratio": "16:9",
+    "duration_seconds": 15
+  },
+  "writer_model": "Qwen3.5-122B-A10B",
+  "h3_model": "/pfs/weiyang/MiniMax-H3",
+  "scenario_count": 16,
+  "arms": [
+    "raw",
+    "pe"
+  ]
+}

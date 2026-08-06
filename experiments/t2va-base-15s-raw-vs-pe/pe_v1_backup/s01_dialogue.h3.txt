@@ -1,0 +1,5 @@
+integrated_multimodal_description: [Shot 1] A medium shot captures two coworkers standing under a shelter at a rainy bus stop, water dripping from the roof and heavy rain falling in the background with blurred city traffic passing by. (S1) A man in a wet suit gestures aggressively while speaking, his lips moving in perfect sync with the audio. (S2) A woman in a trench coat stands opposite him, shaking her head and responding with visible frustration, her mouth articulating words clearly against the backdrop of wet pavement and streetlights reflecting on the ground. The camera slowly pushes in as the argument intensifies, rain streaks visible in the foreground, maintaining a 16:9 aspect ratio throughout the 15-second duration.
+
+overall_soundscape: Heavy rain falling continuously, splashing against the pavement and the bus shelter roof, distant city traffic noise with tires hissing on wet asphalt, occasional car horns, and the muffled hum of a distant bus engine.
+
+non_diegetic_music: None

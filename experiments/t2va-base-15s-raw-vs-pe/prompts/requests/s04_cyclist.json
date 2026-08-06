@@ -1,0 +1,9 @@
+{
+  "prompt": "A lone cyclist rides an empty neon highway at night; use a cinematic orchestral score together with audible tire hum, chain clicks, breathing, and wind.",
+  "duration_seconds": 15,
+  "task": "t2va",
+  "metadata": {
+    "aspect_ratio": "16:9",
+    "seed": "404"
+  }
+}

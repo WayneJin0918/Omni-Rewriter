@@ -1,0 +1,33 @@
+{
+  "scenario_id": "s09_noir",
+  "output": {
+    "task": "t2va",
+    "duration_seconds": "15",
+    "integrated_multimodal_description": "Live-action, cinematic film-noir style, high contrast lighting with deep shadows and vibrant neon reflections on wet pavement. [Shot 1] A female detective in a trench coat walks steadily through heavy rain in a dark urban alleyway. Neon signs in pink and blue cast dramatic, shifting reflections on the wet ground and her rain-soaked coat. Her expression is stoic and focused, her lips remain firmly closed throughout the entire shot as she navigates the slick street. The camera tracks her movement smoothly from a low angle, emphasizing the towering buildings and the falling rain. The atmosphere is thick with mist and the glow of distant city lights. A calm, deep male voiceover says in an off-screen voiceover: <d>[English] The city doesn't sleep, it just waits. And tonight, the rain washes away the sins of yesterday, leaving only the truth in the gutter.</d> The on-screen character's lips remain closed.",
+    "overall_soundscape": "Heavy rain falling continuously, splashing against pavement and puddles. Distant, wailing police sirens echo through the urban canyon, fading in and out. The rhythmic sound of the detective's footsteps on wet asphalt.",
+    "non_diegetic_music": "A slow, melancholic saxophone melody with a minor key, underscored by a steady, heartbeat-like bass drum, evoking a classic noir tension."
+  },
+  "analysis": {
+    "intent": "Generate a 15-second film-noir style video clip featuring a female detective in a rainy, neon-lit urban setting with specific audio and character constraints.",
+    "observable_media_facts": [],
+    "timing_and_motion": [],
+    "audio_and_dialogue": [],
+    "continuity_risks": [
+      "The prompt specifies a 'female' detective ('her lips') but the initial clause uses 'A film-noir detective' which is gender-neutral; the generation must ensure the character is visually female to match the pronoun constraint.",
+      "The prompt requires 'lips remain closed' while a 'voiceover narrates'; the model must ensure the character's mouth does not move in sync with the audio, as the voice is explicitly 'off-screen'."
+    ],
+    "constraints": [
+      "Duration: 15 seconds",
+      "Aspect Ratio: 16:9",
+      "Character: Female detective",
+      "Action: Walking through rain",
+      "Environment: Neon-lit, rainy, urban (implied by 'neon rain' and 'sirens')",
+      "Character State: Lips closed throughout, wet from rain",
+      "Audio: Calm male off-screen voiceover, distant sirens, rain sounds",
+      "Lighting: High contrast, neon reflections on wet surfaces"
+    ]
+  },
+  "repairs": 1,
+  "run_id": "0fbf3c54d3c642058a68011c75101c4b",
+  "h3_text": "integrated_multimodal_description: Live-action, cinematic film-noir style, high contrast lighting with deep shadows and vibrant neon reflections on wet pavement. [Shot 1] A female detective in a trench coat walks steadily through heavy rain in a dark urban alleyway. Neon signs in pink and blue cast dramatic, shifting reflections on the wet ground and her rain-soaked coat. Her expression is stoic and focused, her lips remain firmly closed throughout the entire shot as she navigates the slick street. The camera tracks her movement smoothly from a low angle, emphasizing the towering buildings and the falling rain. The atmosphere is thick with mist and the glow of distant city lights. A calm, deep male voiceover says in an off-screen voiceover: <d>[English] The city doesn't sleep, it just waits. And tonight, the rain washes away the sins of yesterday, leaving only the truth in the gutter.</d> The on-screen character's lips remain closed.\n\noverall_soundscape: Heavy rain falling continuously, splashing against pavement and puddles. Distant, wailing police sirens echo through the urban canyon, fading in and out. The rhythmic sound of the detective's footsteps on wet asphalt.\n\nnon_diegetic_music: A slow, melancholic saxophone melody with a minor key, underscored by a steady, heartbeat-like bass drum, evoking a classic noir tension."
+}

@@ -1,0 +1,30 @@
+{
+  "scenario_id": "s06_sneaker",
+  "output": {
+    "task": "t2va",
+    "duration_seconds": "15",
+    "integrated_multimodal_description": "[Shot 1] A wide-angle, high-energy shot of a runner sprinting through a modern city street at dawn, with motion blur emphasizing speed and dynamic lighting reflecting off wet pavement. [Shot 2] At 00:05.000, a smooth side-tracking shot follows the runner's legs and torso, maintaining the same velocity as the previous wide shot, with the urban background blurring past to convey momentum. [Shot 3] At 00:10.000, an extreme macro close-up of the sneaker's sole making contact with the ground, highlighting texture, grip patterns, and the compression of the material, with the background completely out of focus.",
+    "overall_soundscape": "Rhythmic, heavy footfalls synchronized with the runner's pace, punctuated by sharp whoosh sounds during the transitions between the wide city sprint, the side tracking shot, and the sole macro. Ambient city noise is minimal and distant, keeping the focus on the movement and impact sounds.",
+    "non_diegetic_music": "A driving, high-tempo electronic beat with a strong bassline that builds in intensity throughout the 15 seconds, perfectly matching the energy of the sprint and the rhythmic editing of the shots."
+  },
+  "analysis": {
+    "intent": "Generate a 15-second high-energy sneaker advertisement video showcasing dynamic movement and product detail.",
+    "observable_media_facts": [],
+    "timing_and_motion": [],
+    "audio_and_dialogue": [],
+    "continuity_risks": [
+      "Ensuring seamless visual transition between the wide city sprint, the side tracking shot, and the extreme macro sole shot without jarring cuts.",
+      "Maintaining consistent lighting and color grading across three distinct camera scales (wide, medium, macro).",
+      "Matching the speed of the runner in the wide shot with the implied speed in the side tracking shot."
+    ],
+    "constraints": [
+      "Total duration must be exactly 15 seconds.",
+      "Aspect ratio must be 16:9.",
+      "Sequence order is fixed: Wide city sprint -> Side tracking shot -> Sole macro.",
+      "Seed 606 must be used for generation consistency."
+    ]
+  },
+  "repairs": 0,
+  "run_id": "ff5c380bbdb24820a095a47a64850699",
+  "h3_text": "integrated_multimodal_description: [Shot 1] A wide-angle, high-energy shot of a runner sprinting through a modern city street at dawn, with motion blur emphasizing speed and dynamic lighting reflecting off wet pavement. [Shot 2] At 00:05.000, a smooth side-tracking shot follows the runner's legs and torso, maintaining the same velocity as the previous wide shot, with the urban background blurring past to convey momentum. [Shot 3] At 00:10.000, an extreme macro close-up of the sneaker's sole making contact with the ground, highlighting texture, grip patterns, and the compression of the material, with the background completely out of focus.\n\noverall_soundscape: Rhythmic, heavy footfalls synchronized with the runner's pace, punctuated by sharp whoosh sounds during the transitions between the wide city sprint, the side tracking shot, and the sole macro. Ambient city noise is minimal and distant, keeping the focus on the movement and impact sounds.\n\nnon_diegetic_music: A driving, high-tempo electronic beat with a strong bassline that builds in intensity throughout the 15 seconds, perfectly matching the energy of the sprint and the rhythmic editing of the shots."
+}

@@ -1,0 +1,36 @@
+{
+  "id": "f0218128-e048-4fb9-84e1-016f19bba1b3",
+  "payload": {
+    "task": "t2va",
+    "prompt": "Two coworkers at a rainy bus stop argue about being late; include clear spoken English dialogue with visible lip-sync, rain, traffic, and street ambience.",
+    "conditions": [],
+    "target": {
+      "short_edge": 768,
+      "aspect_ratio": "16:9",
+      "duration_seconds": 15
+    },
+    "seed": 101
+  },
+  "submitted": {
+    "id": "f0218128-e048-4fb9-84e1-016f19bba1b3",
+    "object": "video",
+    "model": "sora-2",
+    "status": "queued",
+    "progress": 0,
+    "created_at": 1785815479,
+    "size": "1344x768",
+    "seconds": "15.083333",
+    "quality": "standard",
+    "url": null,
+    "remixed_from_video_id": null,
+    "completed_at": null,
+    "expires_at": null,
+    "error": null,
+    "file_path": "/pfs/weiyang/sglang/outputs/f0218128-e048-4fb9-84e1-016f19bba1b3.mp4",
+    "file_paths": null,
+    "num_outputs": null,
+    "peak_memory_mb": null,
+    "inference_time_s": null,
+    "action": null
+  }
+}

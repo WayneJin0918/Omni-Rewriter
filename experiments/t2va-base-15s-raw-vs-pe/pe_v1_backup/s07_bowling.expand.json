@@ -1,0 +1,27 @@
+{
+  "scenario_id": "s07_bowling",
+  "output": {
+    "task": "t2va",
+    "duration_seconds": "15",
+    "integrated_multimodal_description": "[Shot 1] A polished wooden bowling lane stretches into the distance under bright overhead lights, with a heavy bowling ball spinning rapidly as it rolls down the center. The ball maintains realistic momentum, its rotation creating a slight blur. At the end of the lane, ten white pins stand in a perfect triangle. As the ball impacts the head pin, the pins scatter violently in a chaotic yet physically accurate pattern, with some flying high and others skittering across the floor. The impact creates a synchronized, loud crash as wood meets wood, followed by the rolling rumble of pins settling.",
+    "overall_soundscape": "The scene opens with the rhythmic, low-frequency rolling rumble of a heavy ball on polished wood, building in intensity as it approaches the pins. Upon impact, a sharp, loud, synchronized crash of wood shattering and colliding erupts, followed by the chaotic clattering and rolling of pins settling on the lane and gutters. Background ambient noise includes the distant hum of the bowling alley and faint chatter.",
+    "non_diegetic_music": "None"
+  },
+  "analysis": {
+    "intent": "Generate a realistic 15-second video clip of a bowling ball striking pins in a bowling alley, emphasizing physics accuracy (momentum, scatter) and synchronized audio (rolling rumble, crash).",
+    "observable_media_facts": [],
+    "timing_and_motion": [],
+    "audio_and_dialogue": [],
+    "continuity_risks": [],
+    "constraints": [
+      "Duration: 15 seconds",
+      "Aspect Ratio: 16:9",
+      "Seed: 707 (for reproducibility)",
+      "Task Type: Text-to-Video (t2va)",
+      "No source media provided; generation must rely entirely on prompt description."
+    ]
+  },
+  "repairs": 0,
+  "run_id": "323068815ac144eba569367ddd3ed87b",
+  "h3_text": "integrated_multimodal_description: [Shot 1] A polished wooden bowling lane stretches into the distance under bright overhead lights, with a heavy bowling ball spinning rapidly as it rolls down the center. The ball maintains realistic momentum, its rotation creating a slight blur. At the end of the lane, ten white pins stand in a perfect triangle. As the ball impacts the head pin, the pins scatter violently in a chaotic yet physically accurate pattern, with some flying high and others skittering across the floor. The impact creates a synchronized, loud crash as wood meets wood, followed by the rolling rumble of pins settling.\n\noverall_soundscape: The scene opens with the rhythmic, low-frequency rolling rumble of a heavy ball on polished wood, building in intensity as it approaches the pins. Upon impact, a sharp, loud, synchronized crash of wood shattering and colliding erupts, followed by the chaotic clattering and rolling of pins settling on the lane and gutters. Background ambient noise includes the distant hum of the bowling alley and faint chatter.\n\nnon_diegetic_music: None"
+}

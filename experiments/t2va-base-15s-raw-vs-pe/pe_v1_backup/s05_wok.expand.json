@@ -1,0 +1,26 @@
+{
+  "scenario_id": "s05_wok",
+  "output": {
+    "task": "t2va",
+    "duration_seconds": "15",
+    "integrated_multimodal_description": "[Shot 1] A close-up shot of a professional chef in a bustling kitchen, wearing a white uniform and black apron, gripping a large metal wok over a high-intensity gas burner. The chef aggressively flips the wok, sending a cascade of steaming noodles and vegetables soaring into the air in a perfect arc. As the food reaches its peak, a massive burst of roaring orange flame erupts from the burner, engulfing the bottom of the wok and illuminating the chef's focused expression. The noodles begin their descent, and the chef expertly catches them back in the wok with a sharp, rhythmic motion. The camera tracks the food's trajectory smoothly, maintaining a tight 16:9 frame that highlights the texture of the sizzling oil and the dynamic movement of the ingredients. The scene is bathed in the warm, dramatic glow of the fire and kitchen lights, emphasizing the heat and energy of the cooking process.",
+    "overall_soundscape": "Intense, rhythmic sounds of roaring gas flames, loud sizzling oil, sharp metal clangs of the wok against the burner, and the rhythmic thud of the spatula hitting the metal surface, all synchronized precisely with the visual motion of the food toss and catch.",
+    "non_diegetic_music": "High-energy, fast-paced percussion track with deep bass drums and sharp snare hits that mirror the tempo of the chef's movements and the explosive nature of the wok cooking."
+  },
+  "analysis": {
+    "intent": "Generate a 15-second, high-energy video clip of a chef performing a wok toss technique, emphasizing the synchronization between the physical motion of the food and the accompanying sensory effects (fire, sound).",
+    "observable_media_facts": [],
+    "timing_and_motion": [],
+    "audio_and_dialogue": [],
+    "continuity_risks": [],
+    "constraints": [
+      "Duration: 15 seconds.",
+      "Aspect Ratio: 16:9.",
+      "Seed: 505 (for reproducibility).",
+      "No source media provided; generation must be entirely synthetic based on the text prompt."
+    ]
+  },
+  "repairs": 1,
+  "run_id": "57787ae8e01f496e80820b06c014ecf9",
+  "h3_text": "integrated_multimodal_description: [Shot 1] A close-up shot of a professional chef in a bustling kitchen, wearing a white uniform and black apron, gripping a large metal wok over a high-intensity gas burner. The chef aggressively flips the wok, sending a cascade of steaming noodles and vegetables soaring into the air in a perfect arc. As the food reaches its peak, a massive burst of roaring orange flame erupts from the burner, engulfing the bottom of the wok and illuminating the chef's focused expression. The noodles begin their descent, and the chef expertly catches them back in the wok with a sharp, rhythmic motion. The camera tracks the food's trajectory smoothly, maintaining a tight 16:9 frame that highlights the texture of the sizzling oil and the dynamic movement of the ingredients. The scene is bathed in the warm, dramatic glow of the fire and kitchen lights, emphasizing the heat and energy of the cooking process.\n\noverall_soundscape: Intense, rhythmic sounds of roaring gas flames, loud sizzling oil, sharp metal clangs of the wok against the burner, and the rhythmic thud of the spatula hitting the metal surface, all synchronized precisely with the visual motion of the food toss and catch.\n\nnon_diegetic_music: High-energy, fast-paced percussion track with deep bass drums and sharp snare hits that mirror the tempo of the chef's movements and the explosive nature of the wok cooking."
+}

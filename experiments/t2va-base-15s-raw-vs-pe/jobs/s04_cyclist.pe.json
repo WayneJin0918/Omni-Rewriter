@@ -1,0 +1,36 @@
+{
+  "id": "ff5b8a4a-1fa0-4cfd-9104-88b911d76a16",
+  "payload": {
+    "task": "t2va",
+    "prompt": "integrated_multimodal_description: Live-action, cinematic, 16:9 aspect ratio. [Shot 1] A lone cyclist pedals steadily on a deserted highway at night, flanked by glowing neon signs in vibrant blues and magentas that reflect off the wet asphalt. The camera tracks alongside the rider at a low angle, capturing the rhythmic motion of the legs and the blur of the neon lights against the dark sky. The cyclist wears a sleek, dark outfit with a reflective helmet, and the bike's chain and tires are clearly visible in motion. The scene maintains a consistent empty road with no other vehicles or pedestrians, ensuring the solitude of the rider is preserved throughout the 15-second duration.\n\noverall_soundscape: Foreground: rhythmic tire hum on asphalt, distinct metallic chain clicks with every pedal stroke, and the rider's steady, audible breathing. Midground: a constant, low-frequency wind rush that swells slightly as the camera moves. Background: a distant, cinematic orchestral score with swelling strings and deep brass that underscores the isolation and grandeur of the night ride.\n\nnon_diegetic_music: A sweeping, cinematic orchestral score featuring deep cellos and soaring violins that build a sense of epic solitude and forward momentum, perfectly synchronized with the cyclist's pace and the neon-lit environment.",
+    "conditions": [],
+    "target": {
+      "short_edge": 768,
+      "aspect_ratio": "16:9",
+      "duration_seconds": 15
+    },
+    "seed": 404
+  },
+  "submitted": {
+    "id": "ff5b8a4a-1fa0-4cfd-9104-88b911d76a16",
+    "object": "video",
+    "model": "sora-2",
+    "status": "queued",
+    "progress": 0,
+    "created_at": 1785994836,
+    "size": "1344x768",
+    "seconds": "15.083333",
+    "quality": "standard",
+    "url": null,
+    "remixed_from_video_id": null,
+    "completed_at": null,
+    "expires_at": null,
+    "error": null,
+    "file_path": "/pfs/weiyang/sglang/outputs/ff5b8a4a-1fa0-4cfd-9104-88b911d76a16.mp4",
+    "file_paths": null,
+    "num_outputs": null,
+    "peak_memory_mb": null,
+    "inference_time_s": null,
+    "action": null
+  }
+}

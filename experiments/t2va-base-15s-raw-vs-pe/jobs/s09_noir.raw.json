@@ -1,0 +1,36 @@
+{
+  "id": "276f7571-477e-40fd-9c93-a4a2fd563d19",
+  "payload": {
+    "task": "t2va",
+    "prompt": "A film-noir detective walks through neon rain while a calm male off-screen voiceover narrates the case; her lips remain closed beneath rain and distant sirens.",
+    "conditions": [],
+    "target": {
+      "short_edge": 768,
+      "aspect_ratio": "16:9",
+      "duration_seconds": 15
+    },
+    "seed": 909
+  },
+  "submitted": {
+    "id": "276f7571-477e-40fd-9c93-a4a2fd563d19",
+    "object": "video",
+    "model": "sora-2",
+    "status": "queued",
+    "progress": 0,
+    "created_at": 1785818993,
+    "size": "1344x768",
+    "seconds": "15.083333",
+    "quality": "standard",
+    "url": null,
+    "remixed_from_video_id": null,
+    "completed_at": null,
+    "expires_at": null,
+    "error": null,
+    "file_path": "/pfs/weiyang/sglang/outputs/276f7571-477e-40fd-9c93-a4a2fd563d19.mp4",
+    "file_paths": null,
+    "num_outputs": null,
+    "peak_memory_mb": null,
+    "inference_time_s": null,
+    "action": null
+  }
+}

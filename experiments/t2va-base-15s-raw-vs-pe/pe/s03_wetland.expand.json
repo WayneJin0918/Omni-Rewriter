@@ -1,0 +1,31 @@
+{
+  "scenario_id": "s03_wetland",
+  "output": {
+    "task": "t2va",
+    "duration_seconds": "15",
+    "integrated_multimodal_description": "Live-action, cinematic, 16:9 aspect ratio. [Shot 1] A dark, misty wetland at pre-dawn is revealed by the faint glow of distant lightning flashing intermittently behind a dense wall of tall, wet reeds. The camera slowly pushes forward through the reeds, capturing the texture of water droplets on leaves and the subtle sway caused by a gentle wind. As the shot progresses, small insects begin to flutter near the water's surface, and a few birds take flight in the background, silhouetted against the occasional lightning flash. The lighting shifts subtly with each thunderclap, illuminating the water's ripples and the steam rising from the marsh. The scene maintains a consistent, moody atmosphere with no abrupt changes in lighting or texture, ensuring a seamless transition from darkness to the brief, dramatic illumination of the storm.",
+    "overall_soundscape": "Rich, layered natural audio without dialogue. The soundscape begins with the low hum of wind moving through reeds and the gentle lapping of water against the marshy shore. As the scene progresses, the chirping of insects becomes more prominent, blending with the distant calls of waking birds. Occasional deep, rolling thunder rumbles in the background, synchronized with the visual lightning flashes, adding a sense of depth and immersion. The audio maintains a continuous, organic flow, with no sudden silences or artificial elements, creating a fully immersive natural environment.",
+    "non_diegetic_music": "None. The scene relies entirely on diegetic natural sounds to establish atmosphere and mood."
+  },
+  "analysis": {
+    "intent": "Generate a 15-second, 16:9 atmospheric video of a wetland ecosystem at pre-dawn, emphasizing natural immersion through layered visuals and rich sound design without dialogue.",
+    "observable_media_facts": [],
+    "timing_and_motion": [],
+    "audio_and_dialogue": [],
+    "continuity_risks": [
+      "Ensuring the transition from pre-dawn darkness to the illumination of distant lightning remains consistent without abrupt lighting shifts.",
+      "Maintaining the density of reeds and water surface texture across the 15-second duration to avoid flickering or morphing artifacts.",
+      "Synchronizing the visual impact of lightning flashes with the implied thunder timing in the audio layer."
+    ],
+    "constraints": [
+      "Duration: Exactly 15 seconds.",
+      "Aspect Ratio: 16:9.",
+      "Audio: No dialogue; must feature rich, layered natural sounds (birds, insects, thunder, water, wind).",
+      "Visuals: Must include birds, insects, reeds, water, and wind effects.",
+      "Lighting: Pre-dawn setting with distant lightning as the primary dynamic light source."
+    ]
+  },
+  "repairs": 1,
+  "run_id": "5e6a79be464e4c6d9e6f1633ee4cf8d8",
+  "h3_text": "integrated_multimodal_description: Live-action, cinematic, 16:9 aspect ratio. [Shot 1] A dark, misty wetland at pre-dawn is revealed by the faint glow of distant lightning flashing intermittently behind a dense wall of tall, wet reeds. The camera slowly pushes forward through the reeds, capturing the texture of water droplets on leaves and the subtle sway caused by a gentle wind. As the shot progresses, small insects begin to flutter near the water's surface, and a few birds take flight in the background, silhouetted against the occasional lightning flash. The lighting shifts subtly with each thunderclap, illuminating the water's ripples and the steam rising from the marsh. The scene maintains a consistent, moody atmosphere with no abrupt changes in lighting or texture, ensuring a seamless transition from darkness to the brief, dramatic illumination of the storm.\n\noverall_soundscape: Rich, layered natural audio without dialogue. The soundscape begins with the low hum of wind moving through reeds and the gentle lapping of water against the marshy shore. As the scene progresses, the chirping of insects becomes more prominent, blending with the distant calls of waking birds. Occasional deep, rolling thunder rumbles in the background, synchronized with the visual lightning flashes, adding a sense of depth and immersion. The audio maintains a continuous, organic flow, with no sudden silences or artificial elements, creating a fully immersive natural environment.\n\nnon_diegetic_music: None. The scene relies entirely on diegetic natural sounds to establish atmosphere and mood."
+}

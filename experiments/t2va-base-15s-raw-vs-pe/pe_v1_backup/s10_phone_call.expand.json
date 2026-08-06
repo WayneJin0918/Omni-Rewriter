@@ -1,0 +1,36 @@
+{
+  "scenario_id": "s10_phone_call",
+  "output": {
+    "task": "t2va",
+    "duration_seconds": "15",
+    "integrated_multimodal_description": "[Shot 1] A woman in a grey blazer sits in a sunlit, quiet modern office, speaking calmly into a smartphone held to her ear; her expression is focused and professional. [Shot 2] At 00:05.000, the scene cuts instantly to the same woman in a grey blazer sitting at a wooden table in a bustling, crowded café; she continues the exact same conversation with identical lip movements and facial expressions, while the background is filled with blurred patrons, steam from coffee machines, and clinking cups. [Shot 3] At 00:10.000, the scene cuts back to the quiet office setting where she finishes her sentence, maintaining perfect continuity in her gestures and speech rhythm from the previous shot.",
+    "overall_soundscape": "A single, uninterrupted English conversation flows seamlessly across all visual cuts without any audio dropouts or fades. The dialogue remains clear and centered. In the office segments, the background is nearly silent with only a faint, low-frequency hum of air conditioning. In the café segment, a rich layer of ambient noise overlays the dialogue, including the murmur of a crowd, the clinking of ceramic cups, the hiss of an espresso machine, and the soft clatter of cutlery, all spatially positioned to sound like a busy environment without drowning out the speaker.",
+    "non_diegetic_music": "None."
+  },
+  "analysis": {
+    "intent": "Generate a 15-second video clip depicting a phone call where the visual setting switches between a quiet office and a busy café, while maintaining a single, continuous, and synchronized English audio track across the visual cuts.",
+    "observable_media_facts": [],
+    "timing_and_motion": [],
+    "audio_and_dialogue": [
+      "Requirement for a single, uninterrupted English conversation spanning the full 15 seconds.",
+      "Audio must remain synchronized with the speaker's lip movements regardless of the background environment change.",
+      "Background audio layers must shift distinctly: 'quiet office' (minimal ambient noise) vs. 'busy café' (crowd murmur, clinking dishes, coffee machines) without interrupting the primary dialogue track.",
+      "No audio cuts or fades should occur; the transition must be seamless to match the visual cut."
+    ],
+    "continuity_risks": [
+      "Lip-sync mismatch: The speaker's mouth movements must align perfectly with the audio across both distinct visual environments.",
+      "Lighting and color grading consistency: The subject's appearance (skin tone, clothing) must remain consistent despite the different lighting conditions of an office vs. a café.",
+      "Audio spatialization: Ensuring the background noise of the café does not overpower the dialogue, while the office scene remains distinctively quiet.",
+      "Temporal alignment: The cut between locations must happen at a natural pause or flow point in the conversation to avoid jarring visual discontinuity."
+    ],
+    "constraints": [
+      "Duration: Exactly 15 seconds.",
+      "Aspect Ratio: 16:9.",
+      "Visual Structure: Alternating shots (Office -> Café -> Office or similar pattern) within the timeframe.",
+      "Audio Constraint: Uninterrupted, seamless audio track."
+    ]
+  },
+  "repairs": 0,
+  "run_id": "12c13709d3d94de1a55b25ee5dee9126",
+  "h3_text": "integrated_multimodal_description: [Shot 1] A woman in a grey blazer sits in a sunlit, quiet modern office, speaking calmly into a smartphone held to her ear; her expression is focused and professional. [Shot 2] At 00:05.000, the scene cuts instantly to the same woman in a grey blazer sitting at a wooden table in a bustling, crowded café; she continues the exact same conversation with identical lip movements and facial expressions, while the background is filled with blurred patrons, steam from coffee machines, and clinking cups. [Shot 3] At 00:10.000, the scene cuts back to the quiet office setting where she finishes her sentence, maintaining perfect continuity in her gestures and speech rhythm from the previous shot.\n\noverall_soundscape: A single, uninterrupted English conversation flows seamlessly across all visual cuts without any audio dropouts or fades. The dialogue remains clear and centered. In the office segments, the background is nearly silent with only a faint, low-frequency hum of air conditioning. In the café segment, a rich layer of ambient noise overlays the dialogue, including the murmur of a crowd, the clinking of ceramic cups, the hiss of an espresso machine, and the soft clatter of cutlery, all spatially positioned to sound like a busy environment without drowning out the speaker.\n\nnon_diegetic_music: None."
+}

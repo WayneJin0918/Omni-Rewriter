@@ -21,8 +21,20 @@ H3 grammar requirements:
 - Shot labels are exactly [Shot 1], [Shot 2], ... in sequence.
 - [Shot 1] has no timecode. Every later shot starts "[Shot N] At MM:SS.mmm," and begins before
   the requested duration; times increase strictly.
-- Dialogue is exactly <d>[Language] spoken words</d>. Speaker markers, when used, are (S1) or
-  (S1,S2), contiguous from S1. Put <scenetrans> and <cutoff> only inside dialogue tags.
+- Begin [Shot 1] with an explicit style/composition cue such as "Live-action, cinematic,".
+- Whenever the user asks for spoken dialogue, singing, calling out orders, arguing, narration,
+  or voiceover, you MUST write concrete lines with exact markup
+  <d>[Language] verbatim spoken words</d>. Do not only say "speaking", "lip-sync", or
+  "conversation continues". Invent brief plausible lines that match the user's intent when the
+  user did not provide exact wording.
+- Speaker markers, when used, are (S1) or (S1,S2), contiguous from S1, and stay outside <d>.
+  Example: The man with a tense mid voice (S1) says: <d>[English] We're already late!</d>
+- Off-screen narration uses "says in an off-screen voiceover" plus <d>..., and must state that
+  the on-screen character's lips remain closed immediately after the dialogue tag.
+- Cross-cut conversations that continue across cuts must keep one continuous spoken line with
+  <scenetrans> inside the dialogue tags and must not collapse both locations into the same person
+  unless the user asked for that.
+- Put <scenetrans> and <cutoff> only inside dialogue tags.
 - Reference labels are exactly <Subject N>, <Picture N>, <Video N>, or <Audio N>, numbered
   contiguously per kind and never placed inside dialogue.
 - Keep dialogue out of overall_soundscape and non_diegetic_music.

@@ -1,0 +1,37 @@
+{
+  "scenario_id": "s03_wetland",
+  "output": {
+    "task": "t2va",
+    "duration_seconds": "15",
+    "integrated_multimodal_description": "[Shot 1] A wide, static shot of a dark pre-dawn wetland under a heavy, clouded sky; tall reeds dominate the foreground, swaying gently in a soft breeze. At 00:03.500, a faint, distant lightning flash illuminates the horizon, casting a brief, cool blue glow on the water's surface and the tips of the reeds. At 00:06.000, the wind picks up slightly, causing the reeds to rustle more vigorously, while small, indistinct shapes of birds begin to flutter low over the water in the mid-ground. At 00:09.000, a second, brighter lightning strike flashes, revealing a flock of birds taking flight in the distance and insects becoming visible as tiny specks dancing in the air near the reeds. At 00:12.000, the scene settles into a rhythmic motion of wind and water, with birds circling and insects buzzing, as the final lightning flash fades into the deepening twilight before the clip ends.",
+    "overall_soundscape": "A rich, layered natural soundscape evolving from quiet pre-dawn stillness to an active awakening. It begins with the soft, rhythmic lapping of water against mud and a gentle wind whispering through reeds. As the scene progresses, distant thunder rumbles in sync with lightning flashes, growing slightly louder. Bird calls emerge from the distance, gradually increasing in frequency and variety, joined by the high-pitched chirping and buzzing of insects near the reeds. The wind sound intensifies slightly to match the visual movement of the vegetation, creating a cohesive, immersive auditory environment with no human speech or artificial sounds.",
+    "non_diegetic_music": "None."
+  },
+  "analysis": {
+    "intent": "Generate a 15-second, 16:9 atmospheric video clip depicting a pre-dawn wetland ecosystem awakening, emphasizing layered natural audio and visual depth without human presence or dialogue.",
+    "observable_media_facts": [],
+    "timing_and_motion": [],
+    "audio_and_dialogue": [
+      "Requirement for rich, layered natural soundscape including thunder, wind, water movement, bird calls, and insect chirps.",
+      "Strict constraint: No dialogue or human speech.",
+      "Audio must be synchronized with visual cues (e.g., thunder rumble matching lightning flashes, wind rustling reeds).",
+      "Sound design should evolve from quiet pre-dawn stillness to a more active awakening as the scene progresses."
+    ],
+    "continuity_risks": [
+      "Ensuring the transition from 'pre-dawn' darkness to the 'waking' phase remains visually coherent within 15 seconds.",
+      "Maintaining consistent lighting conditions where distant lightning illuminates the scene without breaking the pre-dawn mood.",
+      "Avoiding visual clutter where layering birds, insects, and reeds might obscure the primary atmospheric focus.",
+      "Synchronizing the frequency of lightning strikes with the thunder audio to prevent dissonance."
+    ],
+    "constraints": [
+      "Duration: Exactly 15 seconds.",
+      "Aspect Ratio: 16:9.",
+      "Seed: 303 (for reproducibility if supported by the generation model).",
+      "No human characters or dialogue.",
+      "Visual focus: Wetland, reeds, distant lightning, birds, insects."
+    ]
+  },
+  "repairs": 1,
+  "run_id": "0f32545757aa4e6a97fa2f4b55845dc7",
+  "h3_text": "integrated_multimodal_description: [Shot 1] A wide, static shot of a dark pre-dawn wetland under a heavy, clouded sky; tall reeds dominate the foreground, swaying gently in a soft breeze. At 00:03.500, a faint, distant lightning flash illuminates the horizon, casting a brief, cool blue glow on the water's surface and the tips of the reeds. At 00:06.000, the wind picks up slightly, causing the reeds to rustle more vigorously, while small, indistinct shapes of birds begin to flutter low over the water in the mid-ground. At 00:09.000, a second, brighter lightning strike flashes, revealing a flock of birds taking flight in the distance and insects becoming visible as tiny specks dancing in the air near the reeds. At 00:12.000, the scene settles into a rhythmic motion of wind and water, with birds circling and insects buzzing, as the final lightning flash fades into the deepening twilight before the clip ends.\n\noverall_soundscape: A rich, layered natural soundscape evolving from quiet pre-dawn stillness to an active awakening. It begins with the soft, rhythmic lapping of water against mud and a gentle wind whispering through reeds. As the scene progresses, distant thunder rumbles in sync with lightning flashes, growing slightly louder. Bird calls emerge from the distance, gradually increasing in frequency and variety, joined by the high-pitched chirping and buzzing of insects near the reeds. The wind sound intensifies slightly to match the visual movement of the vegetation, creating a cohesive, immersive auditory environment with no human speech or artificial sounds.\n\nnon_diegetic_music: None."
+}

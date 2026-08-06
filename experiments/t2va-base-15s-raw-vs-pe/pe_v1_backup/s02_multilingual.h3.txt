@@ -1,0 +1,5 @@
+integrated_multimodal_description: [Shot 1] interior of a bustling Tokyo ramen shop with steam rising from large pots; a chef in a white uniform and black apron stands behind the counter, looking directly at a tourist. [Shot 2] At 00:04.500, close-up on the chef's face as he shouts an order in Japanese, his mouth moving clearly in sync with the audio, while the background shows noodles being tossed in a wok. [Shot 3] At 00:08.000, reverse angle showing the tourist, a young woman with a backpack, nodding and replying in English, her lips perfectly synchronized to her speech. [Shot 4] At 00:12.000, medium shot of both characters interacting across the counter, the chef smiling and the tourist laughing, with steam and kitchen activity continuing in the background until the scene fades out at 00:15.000.
+
+overall_soundscape: Loud, rhythmic kitchen noises including the clatter of metal bowls, the hiss of boiling water, and the sizzle of frying oil; distinct Japanese speech from the chef and clear English speech from the tourist, both audible and intelligible over the ambient noise.
+
+non_diegetic_music: None

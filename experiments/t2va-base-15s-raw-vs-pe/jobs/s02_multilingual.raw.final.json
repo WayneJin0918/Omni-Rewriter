@@ -1,0 +1,24 @@
+{
+  "id": "bfc5202c-87a1-4fdf-99a8-ea02fb326755",
+  "object": "video",
+  "model": "sora-2",
+  "status": "completed",
+  "progress": 100,
+  "created_at": 1785815919,
+  "size": "1344x768",
+  "seconds": "15.083333",
+  "quality": "standard",
+  "url": null,
+  "remixed_from_video_id": null,
+  "completed_at": 1785816132,
+  "expires_at": null,
+  "error": null,
+  "file_path": "outputs/bfc5202c-87a1-4fdf-99a8-ea02fb326755.mp4",
+  "file_paths": [
+    "/pfs/weiyang/sglang/outputs/bfc5202c-87a1-4fdf-99a8-ea02fb326755.mp4"
+  ],
+  "num_outputs": 1,
+  "peak_memory_mb": 89930.0,
+  "inference_time_s": 208.60508217290044,
+  "action": null
+}

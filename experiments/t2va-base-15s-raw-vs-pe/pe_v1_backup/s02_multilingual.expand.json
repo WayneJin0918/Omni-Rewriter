@@ -1,0 +1,29 @@
+{
+  "scenario_id": "s02_multilingual",
+  "output": {
+    "task": "t2va",
+    "duration_seconds": "15",
+    "integrated_multimodal_description": "[Shot 1] interior of a bustling Tokyo ramen shop with steam rising from large pots; a chef in a white uniform and black apron stands behind the counter, looking directly at a tourist. [Shot 2] At 00:04.500, close-up on the chef's face as he shouts an order in Japanese, his mouth moving clearly in sync with the audio, while the background shows noodles being tossed in a wok. [Shot 3] At 00:08.000, reverse angle showing the tourist, a young woman with a backpack, nodding and replying in English, her lips perfectly synchronized to her speech. [Shot 4] At 00:12.000, medium shot of both characters interacting across the counter, the chef smiling and the tourist laughing, with steam and kitchen activity continuing in the background until the scene fades out at 00:15.000.",
+    "overall_soundscape": "Loud, rhythmic kitchen noises including the clatter of metal bowls, the hiss of boiling water, and the sizzle of frying oil; distinct Japanese speech from the chef and clear English speech from the tourist, both audible and intelligible over the ambient noise.",
+    "non_diegetic_music": "None"
+  },
+  "analysis": {
+    "intent": "Generate a 15-second video clip depicting a bilingual interaction between a Tokyo ramen chef and a tourist, emphasizing authentic audio-visual synchronization.",
+    "observable_media_facts": [],
+    "timing_and_motion": [],
+    "audio_and_dialogue": [],
+    "continuity_risks": [],
+    "constraints": [
+      "Duration must be exactly 15 seconds.",
+      "Aspect ratio must be 16:9.",
+      "Setting must be a Tokyo ramen shop interior.",
+      "Two distinct characters: a chef and a tourist.",
+      "Audio must feature Japanese speech from the chef and English speech from the tourist.",
+      "Both languages must be clearly audible over background kitchen noise.",
+      "Lip movements must synchronize precisely with the spoken dialogue in both languages."
+    ]
+  },
+  "repairs": 1,
+  "run_id": "31965e6a7e1d4ff087843632c4a48cc3",
+  "h3_text": "integrated_multimodal_description: [Shot 1] interior of a bustling Tokyo ramen shop with steam rising from large pots; a chef in a white uniform and black apron stands behind the counter, looking directly at a tourist. [Shot 2] At 00:04.500, close-up on the chef's face as he shouts an order in Japanese, his mouth moving clearly in sync with the audio, while the background shows noodles being tossed in a wok. [Shot 3] At 00:08.000, reverse angle showing the tourist, a young woman with a backpack, nodding and replying in English, her lips perfectly synchronized to her speech. [Shot 4] At 00:12.000, medium shot of both characters interacting across the counter, the chef smiling and the tourist laughing, with steam and kitchen activity continuing in the background until the scene fades out at 00:15.000.\n\noverall_soundscape: Loud, rhythmic kitchen noises including the clatter of metal bowls, the hiss of boiling water, and the sizzle of frying oil; distinct Japanese speech from the chef and clear English speech from the tourist, both audible and intelligible over the ambient noise.\n\nnon_diegetic_music: None"
+}

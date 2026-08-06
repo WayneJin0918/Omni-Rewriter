@@ -1,0 +1,9 @@
+{
+  "prompt": "A fifteen-second sneaker advertisement moves from a wide city sprint to a side tracking shot and then a sole macro, with rhythmic footfalls and transition whooshes.",
+  "duration_seconds": 15,
+  "task": "t2va",
+  "metadata": {
+    "aspect_ratio": "16:9",
+    "seed": "606"
+  }
+}

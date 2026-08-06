@@ -1,0 +1,413 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Omni-Writer PE vs RAW · MiniMax-H3 15s</title>
+<style>
+:root {
+  --bg:#0f1419; --panel:#1a222c; --text:#e8eef5; --muted:#9aa7b5; --accent:#5eb1ff; --line:#2a3542;
+}
+* { box-sizing:border-box; }
+body {
+  margin:0; font-family:"IBM Plex Sans","Noto Sans SC",system-ui,sans-serif;
+  background:radial-gradient(1200px 600px at 10% -10%, #1c2a3a, transparent),
+             radial-gradient(900px 500px at 100% 0%, #1a2430, transparent), var(--bg);
+  color:var(--text); line-height:1.45;
+}
+header.top {
+  position:sticky; top:0; z-index:10; backdrop-filter:blur(10px);
+  background:rgba(15,20,25,.88); border-bottom:1px solid var(--line);
+  padding:14px 24px; display:flex; gap:16px; align-items:baseline; flex-wrap:wrap;
+}
+header.top h1 { margin:0; font-size:1.15rem; letter-spacing:.02em; }
+header.top p { margin:0; color:var(--muted); font-size:.92rem; }
+nav { display:flex; flex-wrap:wrap; gap:8px; padding:12px 24px 0; }
+nav a {
+  color:var(--muted); text-decoration:none; border:1px solid var(--line);
+  border-radius:999px; padding:4px 10px; font-size:.8rem;
+}
+nav a:hover { color:var(--text); border-color:var(--accent); }
+main { max-width:1500px; margin:0 auto; padding:8px 24px 48px; }
+.card {
+  margin:22px 0; padding:18px; background:var(--panel); border:1px solid var(--line);
+  border-radius:14px;
+}
+.card h2 { margin:0 0 8px; font-size:1.05rem; }
+.cat { color:var(--accent); font-weight:500; font-size:.85rem; margin-left:8px; }
+.raw-prompt {
+  margin:0 0 14px; padding:12px 14px; background:#12181f; border-left:3px solid var(--accent);
+  border-radius:8px; color:#d7e2ec;
+}
+.pair { display:grid; grid-template-columns:1fr 1fr; gap:14px; }
+@media (max-width:900px) { .pair { grid-template-columns:1fr; } }
+figure { margin:0; }
+figcaption { font-size:.85rem; color:var(--muted); margin-bottom:6px; }
+video { width:100%; background:#000; border-radius:10px; aspect-ratio:16/9; }
+details { margin-top:12px; }
+summary { cursor:pointer; color:var(--accent); }
+pre.pe-text {
+  white-space:pre-wrap; word-break:break-word; background:#0c1116; padding:12px;
+  border-radius:8px; font-size:.82rem; color:#c9d4df; max-height:320px; overflow:auto;
+}
+.toolbar { display:flex; gap:10px; flex-wrap:wrap; margin:8px 24px; }
+button {
+  background:#243040; color:var(--text); border:1px solid var(--line); border-radius:8px;
+  padding:8px 12px; cursor:pointer;
+}
+button:hover { border-color:var(--accent); }
+</style>
+</head>
+<body>
+<header class="top">
+  <h1>Omni-Writer · RAW vs PE</h1>
+  <p>MiniMax-H3 Base T2VA · 15s · 768p · 16 scenes · same seed per scene · audio enabled</p>
+</header>
+<div class="toolbar">
+  <button type="button" id="syncPlay">同步播放当前页视频</button>
+  <button type="button" id="pauseAll">全部暂停</button>
+</div>
+<nav>
+<a href="#s01_dialogue">s01_dialogue</a><a href="#s02_multilingual">s02_multilingual</a><a href="#s03_wetland">s03_wetland</a><a href="#s04_cyclist">s04_cyclist</a><a href="#s05_wok">s05_wok</a><a href="#s06_sneaker">s06_sneaker</a><a href="#s07_bowling">s07_bowling</a><a href="#s08_jazz">s08_jazz</a><a href="#s09_noir">s09_noir</a><a href="#s10_phone_call">s10_phone_call</a><a href="#s11_museum_reveal">s11_museum_reveal</a><a href="#s12_alley_chase">s12_alley_chase</a><a href="#s13_rooftop_orbit">s13_rooftop_orbit</a><a href="#s14_kitchen_stations">s14_kitchen_stations</a><a href="#s15_concert_crashzoom">s15_concert_crashzoom</a><a href="#s16_train_matchcut">s16_train_matchcut</a>
+</nav>
+<main>
+
+    <section class="card" id="s01_dialogue">
+      <header>
+        <h2>s01_dialogue <span class="cat">english_dialogue</span></h2>
+        <p class="raw-prompt"><strong>RAW prompt</strong> Two coworkers at a rainy bus stop argue about being late; include clear spoken English dialogue with visible lip-sync, rain, traffic, and street ambience.</p>
+      </header>
+      <div class="pair">
+        <figure>
+          <figcaption>RAW <small>seed=101</small></figcaption>
+          <video controls preload="metadata" src="/videos/raw/s01_dialogue.mp4"></video>
+        </figure>
+        <figure>
+          <figcaption>PE Omni-Writer <small>seed=101</small></figcaption>
+          <video controls preload="metadata" src="/videos/pe/s01_dialogue.mp4"></video>
+        </figure>
+      </div>
+      <details>
+        <summary>Show PE H3 prompt</summary>
+        <pre class="pe-text" data-src="/pe/s01_dialogue.h3.txt">loading…</pre>
+      </details>
+    </section>
+    <section class="card" id="s02_multilingual">
+      <header>
+        <h2>s02_multilingual <span class="cat">multilingual_dialogue</span></h2>
+        <p class="raw-prompt"><strong>RAW prompt</strong> In a Tokyo ramen shop, the chef calls orders in Japanese and a tourist replies in English; both languages must be audible and lip-synced over kitchen sounds.</p>
+      </header>
+      <div class="pair">
+        <figure>
+          <figcaption>RAW <small>seed=202</small></figcaption>
+          <video controls preload="metadata" src="/videos/raw/s02_multilingual.mp4"></video>
+        </figure>
+        <figure>
+          <figcaption>PE Omni-Writer <small>seed=202</small></figcaption>
+          <video controls preload="metadata" src="/videos/pe/s02_multilingual.mp4"></video>
+        </figure>
+      </div>
+      <details>
+        <summary>Show PE H3 prompt</summary>
+        <pre class="pe-text" data-src="/pe/s02_multilingual.h3.txt">loading…</pre>
+      </details>
+    </section>
+    <section class="card" id="s03_wetland">
+      <header>
+        <h2>s03_wetland <span class="cat">natural_ambience</span></h2>
+        <p class="raw-prompt"><strong>RAW prompt</strong> A pre-dawn wetland wakes beneath distant lightning; layer birds, insects, thunder, water, and wind through reeds with no dialogue and rich natural audio throughout.</p>
+      </header>
+      <div class="pair">
+        <figure>
+          <figcaption>RAW <small>seed=303</small></figcaption>
+          <video controls preload="metadata" src="/videos/raw/s03_wetland.mp4"></video>
+        </figure>
+        <figure>
+          <figcaption>PE Omni-Writer <small>seed=303</small></figcaption>
+          <video controls preload="metadata" src="/videos/pe/s03_wetland.mp4"></video>
+        </figure>
+      </div>
+      <details>
+        <summary>Show PE H3 prompt</summary>
+        <pre class="pe-text" data-src="/pe/s03_wetland.h3.txt">loading…</pre>
+      </details>
+    </section>
+    <section class="card" id="s04_cyclist">
+      <header>
+        <h2>s04_cyclist <span class="cat">score_and_ambience</span></h2>
+        <p class="raw-prompt"><strong>RAW prompt</strong> A lone cyclist rides an empty neon highway at night; use a cinematic orchestral score together with audible tire hum, chain clicks, breathing, and wind.</p>
+      </header>
+      <div class="pair">
+        <figure>
+          <figcaption>RAW <small>seed=404</small></figcaption>
+          <video controls preload="metadata" src="/videos/raw/s04_cyclist.mp4"></video>
+        </figure>
+        <figure>
+          <figcaption>PE Omni-Writer <small>seed=404</small></figcaption>
+          <video controls preload="metadata" src="/videos/pe/s04_cyclist.mp4"></video>
+        </figure>
+      </div>
+      <details>
+        <summary>Show PE H3 prompt</summary>
+        <pre class="pe-text" data-src="/pe/s04_cyclist.h3.txt">loading…</pre>
+      </details>
+    </section>
+    <section class="card" id="s05_wok">
+      <header>
+        <h2>s05_wok <span class="cat">action_sync</span></h2>
+        <p class="raw-prompt"><strong>RAW prompt</strong> A chef flips a sizzling wok, tosses noodles high, and catches them; synchronize every motion with roaring flame, sizzling oil, metal clangs, and spatula hits.</p>
+      </header>
+      <div class="pair">
+        <figure>
+          <figcaption>RAW <small>seed=505</small></figcaption>
+          <video controls preload="metadata" src="/videos/raw/s05_wok.mp4"></video>
+        </figure>
+        <figure>
+          <figcaption>PE Omni-Writer <small>seed=505</small></figcaption>
+          <video controls preload="metadata" src="/videos/pe/s05_wok.mp4"></video>
+        </figure>
+      </div>
+      <details>
+        <summary>Show PE H3 prompt</summary>
+        <pre class="pe-text" data-src="/pe/s05_wok.h3.txt">loading…</pre>
+      </details>
+    </section>
+    <section class="card" id="s06_sneaker">
+      <header>
+        <h2>s06_sneaker <span class="cat">timed_cuts</span></h2>
+        <p class="raw-prompt"><strong>RAW prompt</strong> A fifteen-second sneaker advertisement moves from a wide city sprint to a side tracking shot and then a sole macro, with rhythmic footfalls and transition whooshes.</p>
+      </header>
+      <div class="pair">
+        <figure>
+          <figcaption>RAW <small>seed=606</small></figcaption>
+          <video controls preload="metadata" src="/videos/raw/s06_sneaker.mp4"></video>
+        </figure>
+        <figure>
+          <figcaption>PE Omni-Writer <small>seed=606</small></figcaption>
+          <video controls preload="metadata" src="/videos/pe/s06_sneaker.mp4"></video>
+        </figure>
+      </div>
+      <details>
+        <summary>Show PE H3 prompt</summary>
+        <pre class="pe-text" data-src="/pe/s06_sneaker.h3.txt">loading…</pre>
+      </details>
+    </section>
+    <section class="card" id="s07_bowling">
+      <header>
+        <h2>s07_bowling <span class="cat">physics_and_impact</span></h2>
+        <p class="raw-prompt"><strong>RAW prompt</strong> In a bowling alley a spinning ball rolls down the lane and strikes the pins; show realistic momentum and pin scatter with rolling rumble and a loud synchronized crash.</p>
+      </header>
+      <div class="pair">
+        <figure>
+          <figcaption>RAW <small>seed=707</small></figcaption>
+          <video controls preload="metadata" src="/videos/raw/s07_bowling.mp4"></video>
+        </figure>
+        <figure>
+          <figcaption>PE Omni-Writer <small>seed=707</small></figcaption>
+          <video controls preload="metadata" src="/videos/pe/s07_bowling.mp4"></video>
+        </figure>
+      </div>
+      <details>
+        <summary>Show PE H3 prompt</summary>
+        <pre class="pe-text" data-src="/pe/s07_bowling.h3.txt">loading…</pre>
+      </details>
+    </section>
+    <section class="card" id="s08_jazz">
+      <header>
+        <h2>s08_jazz <span class="cat">diegetic_music</span></h2>
+        <p class="raw-prompt"><strong>RAW prompt</strong> A street jazz trio of saxophone, upright bass, and brush drums performs in a plaza while passersby clap; the live in-scene music and crowd reactions must be audible.</p>
+      </header>
+      <div class="pair">
+        <figure>
+          <figcaption>RAW <small>seed=808</small></figcaption>
+          <video controls preload="metadata" src="/videos/raw/s08_jazz.mp4"></video>
+        </figure>
+        <figure>
+          <figcaption>PE Omni-Writer <small>seed=808</small></figcaption>
+          <video controls preload="metadata" src="/videos/pe/s08_jazz.mp4"></video>
+        </figure>
+      </div>
+      <details>
+        <summary>Show PE H3 prompt</summary>
+        <pre class="pe-text" data-src="/pe/s08_jazz.h3.txt">loading…</pre>
+      </details>
+    </section>
+    <section class="card" id="s09_noir">
+      <header>
+        <h2>s09_noir <span class="cat">voiceover</span></h2>
+        <p class="raw-prompt"><strong>RAW prompt</strong> A film-noir detective walks through neon rain while a calm male off-screen voiceover narrates the case; her lips remain closed beneath rain and distant sirens.</p>
+      </header>
+      <div class="pair">
+        <figure>
+          <figcaption>RAW <small>seed=909</small></figcaption>
+          <video controls preload="metadata" src="/videos/raw/s09_noir.mp4"></video>
+        </figure>
+        <figure>
+          <figcaption>PE Omni-Writer <small>seed=909</small></figcaption>
+          <video controls preload="metadata" src="/videos/pe/s09_noir.mp4"></video>
+        </figure>
+      </div>
+      <details>
+        <summary>Show PE H3 prompt</summary>
+        <pre class="pe-text" data-src="/pe/s09_noir.h3.txt">loading…</pre>
+      </details>
+    </section>
+    <section class="card" id="s10_phone_call">
+      <header>
+        <h2>s10_phone_call <span class="cat">cross_cut_audio</span></h2>
+        <p class="raw-prompt"><strong>RAW prompt</strong> A phone call alternates between a quiet office and a busy café; the same English conversation continues seamlessly across two cuts with uninterrupted synchronized audio.</p>
+      </header>
+      <div class="pair">
+        <figure>
+          <figcaption>RAW <small>seed=1010</small></figcaption>
+          <video controls preload="metadata" src="/videos/raw/s10_phone_call.mp4"></video>
+        </figure>
+        <figure>
+          <figcaption>PE Omni-Writer <small>seed=1010</small></figcaption>
+          <video controls preload="metadata" src="/videos/pe/s10_phone_call.mp4"></video>
+        </figure>
+      </div>
+      <details>
+        <summary>Show PE H3 prompt</summary>
+        <pre class="pe-text" data-src="/pe/s10_phone_call.h3.txt">loading…</pre>
+      </details>
+    </section>
+    <section class="card" id="s11_museum_reveal">
+      <header>
+        <h2>s11_museum_reveal <span class="cat">pedestal_push_cut</span></h2>
+        <p class="raw-prompt"><strong>RAW prompt</strong> In a dark museum hall, start low on a marble floor, pedestal up to reveal a glowing statue, then slowly push in; around mid-clip hard-cut to a tight detail of the statue&#x27;s cracked face as footsteps echo and a soft string score swells. No dialogue.</p>
+      </header>
+      <div class="pair">
+        <figure>
+          <figcaption>RAW <small>seed=1111</small></figcaption>
+          <video controls preload="metadata" src="/videos/raw/s11_museum_reveal.mp4"></video>
+        </figure>
+        <figure>
+          <figcaption>PE Omni-Writer <small>seed=1111</small></figcaption>
+          <video controls preload="metadata" src="/videos/pe/s11_museum_reveal.mp4"></video>
+        </figure>
+      </div>
+      <details>
+        <summary>Show PE H3 prompt</summary>
+        <pre class="pe-text" data-src="/pe/s11_museum_reveal.h3.txt">loading…</pre>
+      </details>
+    </section>
+    <section class="card" id="s12_alley_chase">
+      <header>
+        <h2>s12_alley_chase <span class="cat">tracking_shake_cuts</span></h2>
+        <p class="raw-prompt"><strong>RAW prompt</strong> A nighttime alley chase: a handheld tracking shot follows a runner from behind with strong camera shake, then whip-cut to a side trucking shot, then cut to a frontal close-up as they gasp English dialogue while sprinting; keep footfalls, panting, clattering trash cans, and distant sirens continuous across cuts.</p>
+      </header>
+      <div class="pair">
+        <figure>
+          <figcaption>RAW <small>seed=1212</small></figcaption>
+          <video controls preload="metadata" src="/videos/raw/s12_alley_chase.mp4"></video>
+        </figure>
+        <figure>
+          <figcaption>PE Omni-Writer <small>seed=1212</small></figcaption>
+          <video controls preload="metadata" src="/videos/pe/s12_alley_chase.mp4"></video>
+        </figure>
+      </div>
+      <details>
+        <summary>Show PE H3 prompt</summary>
+        <pre class="pe-text" data-src="/pe/s12_alley_chase.h3.txt">loading…</pre>
+      </details>
+    </section>
+    <section class="card" id="s13_rooftop_orbit">
+      <header>
+        <h2>s13_rooftop_orbit <span class="cat">arc_shot_dialogue</span></h2>
+        <p class="raw-prompt"><strong>RAW prompt</strong> On a windy rooftop at golden hour, the camera arcs 180 degrees around a couple; the man proposes in clear English with lip-sync, then cut to her close-up reaction as she answers; wind, city hum, and a quiet piano underscore remain audible.</p>
+      </header>
+      <div class="pair">
+        <figure>
+          <figcaption>RAW <small>seed=1313</small></figcaption>
+          <video controls preload="metadata" src="/videos/raw/s13_rooftop_orbit.mp4"></video>
+        </figure>
+        <figure>
+          <figcaption>PE Omni-Writer <small>seed=1313</small></figcaption>
+          <video controls preload="metadata" src="/videos/pe/s13_rooftop_orbit.mp4"></video>
+        </figure>
+      </div>
+      <details>
+        <summary>Show PE H3 prompt</summary>
+        <pre class="pe-text" data-src="/pe/s13_rooftop_orbit.h3.txt">loading…</pre>
+      </details>
+    </section>
+    <section class="card" id="s14_kitchen_stations">
+      <header>
+        <h2>s14_kitchen_stations <span class="cat">whip_pan_montage</span></h2>
+        <p class="raw-prompt"><strong>RAW prompt</strong> A busy restaurant kitchen montage: open on a wide shot, fast whip-pan to the grill, hard-cut to a plating close-up, then pull out to the pass window as the chef shouts a short English order; sync sizzles, knife chops, ticket printer, and plate clinks to each cut.</p>
+      </header>
+      <div class="pair">
+        <figure>
+          <figcaption>RAW <small>seed=1414</small></figcaption>
+          <video controls preload="metadata" src="/videos/raw/s14_kitchen_stations.mp4"></video>
+        </figure>
+        <figure>
+          <figcaption>PE Omni-Writer <small>seed=1414</small></figcaption>
+          <video controls preload="metadata" src="/videos/pe/s14_kitchen_stations.mp4"></video>
+        </figure>
+      </div>
+      <details>
+        <summary>Show PE H3 prompt</summary>
+        <pre class="pe-text" data-src="/pe/s14_kitchen_stations.h3.txt">loading…</pre>
+      </details>
+    </section>
+    <section class="card" id="s15_concert_crashzoom">
+      <header>
+        <h2>s15_concert_crashzoom <span class="cat">crash_zoom_multicut</span></h2>
+        <p class="raw-prompt"><strong>RAW prompt</strong> A live arena concert with four timed cuts in 15 seconds: wide crowd, crash zoom onto the lead singer mid-lyric in English, cut to drummer close-up, then pull out to a stage-wide finale; diegetic band performance, crowd roar, and stage whooshes must stay continuous.</p>
+      </header>
+      <div class="pair">
+        <figure>
+          <figcaption>RAW <small>seed=1515</small></figcaption>
+          <video controls preload="metadata" src="/videos/raw/s15_concert_crashzoom.mp4"></video>
+        </figure>
+        <figure>
+          <figcaption>PE Omni-Writer <small>seed=1515</small></figcaption>
+          <video controls preload="metadata" src="/videos/pe/s15_concert_crashzoom.mp4"></video>
+        </figure>
+      </div>
+      <details>
+        <summary>Show PE H3 prompt</summary>
+        <pre class="pe-text" data-src="/pe/s15_concert_crashzoom.h3.txt">loading…</pre>
+      </details>
+    </section>
+    <section class="card" id="s16_train_matchcut">
+      <header>
+        <h2>s16_train_matchcut <span class="cat">pov_matchcut_carryover</span></h2>
+        <p class="raw-prompt"><strong>RAW prompt</strong> Start as a train-window POV rushing into a dark tunnel, then match-cut to the same passenger in a medium shot as daylight returns; one continuous English line of dialogue must carry seamlessly across the cut while rail clatter morphs with the lighting change.</p>
+      </header>
+      <div class="pair">
+        <figure>
+          <figcaption>RAW <small>seed=1616</small></figcaption>
+          <video controls preload="metadata" src="/videos/raw/s16_train_matchcut.mp4"></video>
+        </figure>
+        <figure>
+          <figcaption>PE Omni-Writer <small>seed=1616</small></figcaption>
+          <video controls preload="metadata" src="/videos/pe/s16_train_matchcut.mp4"></video>
+        </figure>
+      </div>
+      <details>
+        <summary>Show PE H3 prompt</summary>
+        <pre class="pe-text" data-src="/pe/s16_train_matchcut.h3.txt">loading…</pre>
+      </details>
+    </section>
+</main>
+<script>
+document.querySelectorAll('pre.pe-text[data-src]').forEach(async (el) => {
+  try {
+    const r = await fetch(el.dataset.src);
+    el.textContent = r.ok ? await r.text() : '(PE prompt not generated yet)';
+  } catch (e) {
+    el.textContent = '(failed to load PE prompt)';
+  }
+});
+document.getElementById('syncPlay').onclick = () => {
+  document.querySelectorAll('video').forEach(v => { v.currentTime = 0; v.play(); });
+};
+document.getElementById('pauseAll').onclick = () => {
+  document.querySelectorAll('video').forEach(v => v.pause());
+};
+</script>
+</body>
+</html>

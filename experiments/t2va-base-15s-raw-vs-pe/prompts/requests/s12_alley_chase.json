@@ -1,0 +1,9 @@
+{
+  "prompt": "A nighttime alley chase: a handheld tracking shot follows a runner from behind with strong camera shake, then whip-cut to a side trucking shot, then cut to a frontal close-up as they gasp English dialogue while sprinting; keep footfalls, panting, clattering trash cans, and distant sirens continuous across cuts.",
+  "duration_seconds": 15,
+  "task": "t2va",
+  "metadata": {
+    "aspect_ratio": "16:9",
+    "seed": "1212"
+  }
+}

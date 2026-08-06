@@ -1,0 +1,5 @@
+integrated_multimodal_description: Live-action, cinematic, 16:9 aspect ratio. [Shot 1] A polished wooden bowling lane stretches into the distance under warm overhead lights. A heavy, multi-colored bowling ball spins rapidly as it rolls down the center of the lane, creating a low rolling rumble. At 00:08.500, the ball strikes the head pin with significant force, causing a realistic chain reaction where pins scatter violently in all directions with accurate momentum transfer and wood-on-wood impact physics. The camera remains static, capturing the full sequence from release to the final settling of the pins.
+
+overall_soundscape: A continuous low-frequency rolling rumble as the ball travels down the lane, building in intensity until a sudden, loud, synchronized crash of wood pins shattering and scattering, followed by the clatter of pins hitting the floor and the return mechanism.
+
+non_diegetic_music: None

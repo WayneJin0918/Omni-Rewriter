@@ -1,0 +1,28 @@
+{
+  "scenario_id": "s01_dialogue",
+  "output": {
+    "task": "t2va",
+    "duration_seconds": "15",
+    "integrated_multimodal_description": "[Shot 1] A medium shot captures two coworkers standing under a shelter at a rainy bus stop, water dripping from the roof and heavy rain falling in the background with blurred city traffic passing by. (S1) A man in a wet suit gestures aggressively while speaking, his lips moving in perfect sync with the audio. (S2) A woman in a trench coat stands opposite him, shaking her head and responding with visible frustration, her mouth articulating words clearly against the backdrop of wet pavement and streetlights reflecting on the ground. The camera slowly pushes in as the argument intensifies, rain streaks visible in the foreground, maintaining a 16:9 aspect ratio throughout the 15-second duration.",
+    "overall_soundscape": "Heavy rain falling continuously, splashing against the pavement and the bus shelter roof, distant city traffic noise with tires hissing on wet asphalt, occasional car horns, and the muffled hum of a distant bus engine.",
+    "non_diegetic_music": "None"
+  },
+  "analysis": {
+    "intent": "Generate a 15-second video clip depicting a realistic argument between two coworkers at a rainy bus stop, emphasizing clear spoken English dialogue with accurate lip-sync and a rich ambient soundscape.",
+    "observable_media_facts": [],
+    "timing_and_motion": [],
+    "audio_and_dialogue": [],
+    "continuity_risks": [],
+    "constraints": [
+      "Duration must be exactly 15 seconds.",
+      "Aspect ratio must be 16:9.",
+      "Seed 101 must be used for generation consistency.",
+      "Dialogue must be in clear English.",
+      "Lip movements must synchronize precisely with the spoken audio.",
+      "Visuals must include rain effects, passing traffic, and a street environment."
+    ]
+  },
+  "repairs": 1,
+  "run_id": "b90f647627c146b4a5a4b7fc8d85d98e",
+  "h3_text": "integrated_multimodal_description: [Shot 1] A medium shot captures two coworkers standing under a shelter at a rainy bus stop, water dripping from the roof and heavy rain falling in the background with blurred city traffic passing by. (S1) A man in a wet suit gestures aggressively while speaking, his lips moving in perfect sync with the audio. (S2) A woman in a trench coat stands opposite him, shaking her head and responding with visible frustration, her mouth articulating words clearly against the backdrop of wet pavement and streetlights reflecting on the ground. The camera slowly pushes in as the argument intensifies, rain streaks visible in the foreground, maintaining a 16:9 aspect ratio throughout the 15-second duration.\n\noverall_soundscape: Heavy rain falling continuously, splashing against the pavement and the bus shelter roof, distant city traffic noise with tires hissing on wet asphalt, occasional car horns, and the muffled hum of a distant bus engine.\n\nnon_diegetic_music: None"
+}

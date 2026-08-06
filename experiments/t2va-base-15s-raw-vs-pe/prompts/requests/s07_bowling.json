@@ -1,0 +1,9 @@
+{
+  "prompt": "In a bowling alley a spinning ball rolls down the lane and strikes the pins; show realistic momentum and pin scatter with rolling rumble and a loud synchronized crash.",
+  "duration_seconds": 15,
+  "task": "t2va",
+  "metadata": {
+    "aspect_ratio": "16:9",
+    "seed": "707"
+  }
+}

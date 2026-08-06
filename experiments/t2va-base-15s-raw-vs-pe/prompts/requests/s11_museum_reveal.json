@@ -1,0 +1,9 @@
+{
+  "prompt": "In a dark museum hall, start low on a marble floor, pedestal up to reveal a glowing statue, then slowly push in; around mid-clip hard-cut to a tight detail of the statue's cracked face as footsteps echo and a soft string score swells. No dialogue.",
+  "duration_seconds": 15,
+  "task": "t2va",
+  "metadata": {
+    "aspect_ratio": "16:9",
+    "seed": "1111"
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "prompt": "A live arena concert with four timed cuts in 15 seconds: wide crowd, crash zoom onto the lead singer mid-lyric in English, cut to drummer close-up, then pull out to a stage-wide finale; diegetic band performance, crowd roar, and stage whooshes must stay continuous.",
+  "duration_seconds": 15,
+  "task": "t2va",
+  "metadata": {
+    "aspect_ratio": "16:9",
+    "seed": "1515"
+  }
+}

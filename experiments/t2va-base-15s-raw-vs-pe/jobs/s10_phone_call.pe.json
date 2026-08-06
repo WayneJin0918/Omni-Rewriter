@@ -1,0 +1,36 @@
+{
+  "id": "49234711-28e0-4e5d-9fd8-800aaf602f07",
+  "payload": {
+    "task": "t2va",
+    "prompt": "integrated_multimodal_description: Live-action, cinematic, 16:9 aspect ratio. [Shot 1] A woman in a crisp white shirt sits at a sleek, minimalist desk in a quiet, sunlit office, holding a smartphone to her ear. She speaks with a focused, urgent expression, her lips moving in perfect sync with the audio. (S1) says: <d>[English] We're already late!</d> [Shot 2] At 00:07.500, The scene cuts abruptly to the same woman, now wearing a casual denim jacket, standing in a bustling, steam-filled café with blurred patrons and baristas in the background. The lighting shifts to warmer, ambient tones. She continues the exact same conversation, her mouth movements and head gestures matching the audio from the previous shot seamlessly, creating the illusion of a single continuous call despite the drastic change in environment. The camera remains static in a medium close-up for both shots.\n\noverall_soundscape: The audio track is a single, continuous English conversation without pauses or glitches. It begins with the dry, quiet acoustics of an office, featuring only a faint HVAC hum. At the 00:07.500 mark, the background ambience shifts instantly and sharply to the loud, chaotic sounds of a busy café, including clattering ceramic, espresso machines, and overlapping chatter, while the foreground dialogue volume and clarity remain perfectly consistent and uninterrupted throughout the entire 15 seconds.\n\nnon_diegetic_music: None",
+    "conditions": [],
+    "target": {
+      "short_edge": 768,
+      "aspect_ratio": "16:9",
+      "duration_seconds": 15
+    },
+    "seed": 1010
+  },
+  "submitted": {
+    "id": "49234711-28e0-4e5d-9fd8-800aaf602f07",
+    "object": "video",
+    "model": "sora-2",
+    "status": "queued",
+    "progress": 0,
+    "created_at": 1785996164,
+    "size": "1344x768",
+    "seconds": "15.083333",
+    "quality": "standard",
+    "url": null,
+    "remixed_from_video_id": null,
+    "completed_at": null,
+    "expires_at": null,
+    "error": null,
+    "file_path": "/pfs/weiyang/sglang/outputs/49234711-28e0-4e5d-9fd8-800aaf602f07.mp4",
+    "file_paths": null,
+    "num_outputs": null,
+    "peak_memory_mb": null,
+    "inference_time_s": null,
+    "action": null
+  }
+}

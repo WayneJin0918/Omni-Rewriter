@@ -1,0 +1,36 @@
+{
+  "id": "bfc5202c-87a1-4fdf-99a8-ea02fb326755",
+  "payload": {
+    "task": "t2va",
+    "prompt": "In a Tokyo ramen shop, the chef calls orders in Japanese and a tourist replies in English; both languages must be audible and lip-synced over kitchen sounds.",
+    "conditions": [],
+    "target": {
+      "short_edge": 768,
+      "aspect_ratio": "16:9",
+      "duration_seconds": 15
+    },
+    "seed": 202
+  },
+  "submitted": {
+    "id": "bfc5202c-87a1-4fdf-99a8-ea02fb326755",
+    "object": "video",
+    "model": "sora-2",
+    "status": "queued",
+    "progress": 0,
+    "created_at": 1785815919,
+    "size": "1344x768",
+    "seconds": "15.083333",
+    "quality": "standard",
+    "url": null,
+    "remixed_from_video_id": null,
+    "completed_at": null,
+    "expires_at": null,
+    "error": null,
+    "file_path": "/pfs/weiyang/sglang/outputs/bfc5202c-87a1-4fdf-99a8-ea02fb326755.mp4",
+    "file_paths": null,
+    "num_outputs": null,
+    "peak_memory_mb": null,
+    "inference_time_s": null,
+    "action": null
+  }
+}

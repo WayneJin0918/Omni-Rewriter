@@ -1,0 +1,31 @@
+{
+  "scenario_id": "s08_jazz",
+  "output": {
+    "task": "t2va",
+    "duration_seconds": "15",
+    "integrated_multimodal_description": "[Shot 1] A wide shot of a sunlit public plaza with cobblestone ground and blurred historic architecture in the background. A street jazz trio is centered in the frame: a saxophonist in a navy blazer swaying gently while playing, an upright bassist in a grey sweater plucking the strings with focus, and a drummer in a white shirt using brushes on a snare drum with rhythmic wrist motion. At 00:04.500, the camera slowly pushes in to a medium shot, revealing a small crowd of diverse passersby stopping to watch. At 00:08.000, a woman in a red coat and a man in a beige jacket begin clapping in time with the music, smiling. At 00:12.000, the saxophonist takes a visible breath and leans into a solo, while the bassist nods along. At 00:14.500, the clapping intensifies slightly as the trio hits a final chord, the camera holding steady on the joyful interaction between the musicians and the audience.",
+    "overall_soundscape": "Live diegetic street jazz performance featuring a saxophone melody, the deep thump of an upright bass, and the soft swish of brush drums on a snare. The ambient soundscape includes distant city traffic hum, footsteps on cobblestones, and distinct, rhythmic hand-clapping from the crowd that syncs with the musical beat. Occasional murmurs of appreciation from the audience are audible.",
+    "non_diegetic_music": "None. The audio consists entirely of the live performance and environmental sounds."
+  },
+  "analysis": {
+    "intent": "Generate a 15-second video clip depicting a live street jazz performance by a trio (saxophone, upright bass, brush drums) in a public plaza, emphasizing the interaction between the musicians and the audience, with specific requirements for audible diegetic sound.",
+    "observable_media_facts": [],
+    "timing_and_motion": [],
+    "audio_and_dialogue": [],
+    "continuity_risks": [
+      "No source media provided; all visual elements (lighting, weather, crowd density, musician appearance) must be generated from scratch, requiring strict internal consistency over the 15-second duration.",
+      "Synchronization between the generated visual motion of the musicians (breathing, bowing, brushing) and the required audible music is a high-risk generation constraint.",
+      "Crowd reaction timing must align naturally with the musical phrasing to avoid uncanny valley effects in the 'clapping' action."
+    ],
+    "constraints": [
+      "Duration: Exactly 15 seconds.",
+      "Aspect Ratio: 16:9.",
+      "Audio: Must include live in-scene music (sax, bass, drums) and distinct crowd clapping/reactions; no background score or voiceover.",
+      "Setting: Public plaza environment.",
+      "Subjects: Three specific musicians (saxophone, upright bass, brush drums) and a crowd of passersby."
+    ]
+  },
+  "repairs": 1,
+  "run_id": "41df344ea48b4ca39cb823d325b14a5e",
+  "h3_text": "integrated_multimodal_description: [Shot 1] A wide shot of a sunlit public plaza with cobblestone ground and blurred historic architecture in the background. A street jazz trio is centered in the frame: a saxophonist in a navy blazer swaying gently while playing, an upright bassist in a grey sweater plucking the strings with focus, and a drummer in a white shirt using brushes on a snare drum with rhythmic wrist motion. At 00:04.500, the camera slowly pushes in to a medium shot, revealing a small crowd of diverse passersby stopping to watch. At 00:08.000, a woman in a red coat and a man in a beige jacket begin clapping in time with the music, smiling. At 00:12.000, the saxophonist takes a visible breath and leans into a solo, while the bassist nods along. At 00:14.500, the clapping intensifies slightly as the trio hits a final chord, the camera holding steady on the joyful interaction between the musicians and the audience.\n\noverall_soundscape: Live diegetic street jazz performance featuring a saxophone melody, the deep thump of an upright bass, and the soft swish of brush drums on a snare. The ambient soundscape includes distant city traffic hum, footsteps on cobblestones, and distinct, rhythmic hand-clapping from the crowd that syncs with the musical beat. Occasional murmurs of appreciation from the audience are audible.\n\nnon_diegetic_music: None. The audio consists entirely of the live performance and environmental sounds."
+}

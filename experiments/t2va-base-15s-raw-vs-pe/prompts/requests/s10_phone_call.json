@@ -1,0 +1,9 @@
+{
+  "prompt": "A phone call alternates between a quiet office and a busy café; the same English conversation continues seamlessly across two cuts with uninterrupted synchronized audio.",
+  "duration_seconds": 15,
+  "task": "t2va",
+  "metadata": {
+    "aspect_ratio": "16:9",
+    "seed": "1010"
+  }
+}

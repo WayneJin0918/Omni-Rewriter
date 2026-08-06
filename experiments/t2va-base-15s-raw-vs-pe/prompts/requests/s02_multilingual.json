@@ -1,0 +1,9 @@
+{
+  "prompt": "In a Tokyo ramen shop, the chef calls orders in Japanese and a tourist replies in English; both languages must be audible and lip-synced over kitchen sounds.",
+  "duration_seconds": 15,
+  "task": "t2va",
+  "metadata": {
+    "aspect_ratio": "16:9",
+    "seed": "202"
+  }
+}

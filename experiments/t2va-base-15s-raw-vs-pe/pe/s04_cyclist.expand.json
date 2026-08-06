@@ -1,0 +1,32 @@
+{
+  "scenario_id": "s04_cyclist",
+  "output": {
+    "task": "t2va",
+    "duration_seconds": "15",
+    "integrated_multimodal_description": "Live-action, cinematic, 16:9 aspect ratio. [Shot 1] A lone cyclist pedals steadily on a deserted highway at night, flanked by glowing neon signs in vibrant blues and magentas that reflect off the wet asphalt. The camera tracks alongside the rider at a low angle, capturing the rhythmic motion of the legs and the blur of the neon lights against the dark sky. The cyclist wears a sleek, dark outfit with a reflective helmet, and the bike's chain and tires are clearly visible in motion. The scene maintains a consistent empty road with no other vehicles or pedestrians, ensuring the solitude of the rider is preserved throughout the 15-second duration.",
+    "overall_soundscape": "Foreground: rhythmic tire hum on asphalt, distinct metallic chain clicks with every pedal stroke, and the rider's steady, audible breathing. Midground: a constant, low-frequency wind rush that swells slightly as the camera moves. Background: a distant, cinematic orchestral score with swelling strings and deep brass that underscores the isolation and grandeur of the night ride.",
+    "non_diegetic_music": "A sweeping, cinematic orchestral score featuring deep cellos and soaring violins that build a sense of epic solitude and forward momentum, perfectly synchronized with the cyclist's pace and the neon-lit environment."
+  },
+  "analysis": {
+    "intent": "Generate a 15-second cinematic video clip depicting a solitary cyclist riding on an empty, neon-lit highway at night, accompanied by a specific multi-layered audio track.",
+    "observable_media_facts": [],
+    "timing_and_motion": [],
+    "audio_and_dialogue": [],
+    "continuity_risks": [
+      "No source media provided; the model must generate all visual elements (cyclist, bike, neon highway, night sky) from scratch, risking inconsistency in lighting or style if not strictly controlled.",
+      "The 'empty' highway constraint must be maintained throughout the 15 seconds to avoid accidental generation of other vehicles or pedestrians.",
+      "Neon lighting reflections on the cyclist and road must remain consistent with the camera movement to avoid flickering or physics errors."
+    ],
+    "constraints": [
+      "Duration: Exactly 15 seconds.",
+      "Aspect Ratio: 16:9.",
+      "Seed: 404 (must be used for reproducibility).",
+      "Visual Style: Cinematic, night setting, neon aesthetic.",
+      "Subject: Single cyclist, no other traffic.",
+      "Audio Requirements: Cinematic orchestral score (background), audible tire hum, chain clicks, breathing, and wind sounds (foreground/midground)."
+    ]
+  },
+  "repairs": 0,
+  "run_id": "6d2c3973bf6d475785fd1c9fef28fe82",
+  "h3_text": "integrated_multimodal_description: Live-action, cinematic, 16:9 aspect ratio. [Shot 1] A lone cyclist pedals steadily on a deserted highway at night, flanked by glowing neon signs in vibrant blues and magentas that reflect off the wet asphalt. The camera tracks alongside the rider at a low angle, capturing the rhythmic motion of the legs and the blur of the neon lights against the dark sky. The cyclist wears a sleek, dark outfit with a reflective helmet, and the bike's chain and tires are clearly visible in motion. The scene maintains a consistent empty road with no other vehicles or pedestrians, ensuring the solitude of the rider is preserved throughout the 15-second duration.\n\noverall_soundscape: Foreground: rhythmic tire hum on asphalt, distinct metallic chain clicks with every pedal stroke, and the rider's steady, audible breathing. Midground: a constant, low-frequency wind rush that swells slightly as the camera moves. Background: a distant, cinematic orchestral score with swelling strings and deep brass that underscores the isolation and grandeur of the night ride.\n\nnon_diegetic_music: A sweeping, cinematic orchestral score featuring deep cellos and soaring violins that build a sense of epic solitude and forward momentum, perfectly synchronized with the cyclist's pace and the neon-lit environment."
+}

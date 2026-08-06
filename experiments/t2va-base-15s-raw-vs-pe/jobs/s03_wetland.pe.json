@@ -1,0 +1,36 @@
+{
+  "id": "eec1bb3c-f753-41c2-959d-cdf2d0d86a24",
+  "payload": {
+    "task": "t2va",
+    "prompt": "integrated_multimodal_description: Live-action, cinematic, 16:9 aspect ratio. [Shot 1] A dark, misty wetland at pre-dawn is revealed by the faint glow of distant lightning flashing intermittently behind a dense wall of tall, wet reeds. The camera slowly pushes forward through the reeds, capturing the texture of water droplets on leaves and the subtle sway caused by a gentle wind. As the shot progresses, small insects begin to flutter near the water's surface, and a few birds take flight in the background, silhouetted against the occasional lightning flash. The lighting shifts subtly with each thunderclap, illuminating the water's ripples and the steam rising from the marsh. The scene maintains a consistent, moody atmosphere with no abrupt changes in lighting or texture, ensuring a seamless transition from darkness to the brief, dramatic illumination of the storm.\n\noverall_soundscape: Rich, layered natural audio without dialogue. The soundscape begins with the low hum of wind moving through reeds and the gentle lapping of water against the marshy shore. As the scene progresses, the chirping of insects becomes more prominent, blending with the distant calls of waking birds. Occasional deep, rolling thunder rumbles in the background, synchronized with the visual lightning flashes, adding a sense of depth and immersion. The audio maintains a continuous, organic flow, with no sudden silences or artificial elements, creating a fully immersive natural environment.\n\nnon_diegetic_music: None. The scene relies entirely on diegetic natural sounds to establish atmosphere and mood.",
+    "conditions": [],
+    "target": {
+      "short_edge": 768,
+      "aspect_ratio": "16:9",
+      "duration_seconds": 15
+    },
+    "seed": 303
+  },
+  "submitted": {
+    "id": "eec1bb3c-f753-41c2-959d-cdf2d0d86a24",
+    "object": "video",
+    "model": "sora-2",
+    "status": "queued",
+    "progress": 0,
+    "created_at": 1785994616,
+    "size": "1344x768",
+    "seconds": "15.083333",
+    "quality": "standard",
+    "url": null,
+    "remixed_from_video_id": null,
+    "completed_at": null,
+    "expires_at": null,
+    "error": null,
+    "file_path": "/pfs/weiyang/sglang/outputs/eec1bb3c-f753-41c2-959d-cdf2d0d86a24.mp4",
+    "file_paths": null,
+    "num_outputs": null,
+    "peak_memory_mb": null,
+    "inference_time_s": null,
+    "action": null
+  }
+}

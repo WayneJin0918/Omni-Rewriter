@@ -1,0 +1,5 @@
+integrated_multimodal_description: [Shot 1] A wide-angle, high-energy shot of a runner sprinting through a modern city street at dawn, with motion blur emphasizing speed and dynamic lighting reflecting off wet pavement. [Shot 2] At 00:05.000, a smooth side-tracking shot follows the runner's legs and torso, maintaining the same velocity as the previous wide shot, with the urban background blurring past to convey momentum. [Shot 3] At 00:10.000, an extreme macro close-up of the sneaker's sole making contact with the ground, highlighting texture, grip patterns, and the compression of the material, with the background completely out of focus.
+
+overall_soundscape: Rhythmic, heavy footfalls synchronized with the runner's pace, punctuated by sharp whoosh sounds during the transitions between the wide city sprint, the side tracking shot, and the sole macro. Ambient city noise is minimal and distant, keeping the focus on the movement and impact sounds.
+
+non_diegetic_music: A driving, high-tempo electronic beat with a strong bassline that builds in intensity throughout the 15 seconds, perfectly matching the energy of the sprint and the rhythmic editing of the shots.

@@ -1,0 +1,36 @@
+{
+  "id": "f5dd39d8-a5f0-421c-96ea-2989b487193f",
+  "payload": {
+    "task": "t2va",
+    "prompt": "integrated_multimodal_description: Live-action, cinematic, 16:9 aspect ratio. [Shot 1] A medium shot captures two coworkers standing under a small awning at a rainy bus stop; heavy rain falls in the background with blurred city traffic lights reflecting on wet pavement. The woman (S1) looks anxious and checks her watch while the man (S2) gestures impatiently. The woman (S1) says: <d>[English] We're already late, and the bus is nowhere in sight!</d> The man (S2) replies with a tense mid voice: <d>[English] Stop panicking! If we run now, we'll just slip on the wet sidewalk.</d> The woman (S1) turns sharply, her lips moving in perfect sync: <d>[English] Running is better than missing this meeting entirely!</d> The camera slowly pushes in as the rain intensifies, highlighting the tension between them. [Shot 2] At 00:10.500, a close-up on the man's face shows raindrops sliding down his cheek as he sighs, looking defeated but still arguing: <d>[English] Fine, but if we get soaked, don't say I didn't warn you.</d> The scene fades slightly as a bus horn blares in the distance, signaling their arrival.\n\noverall_soundscape: Heavy rain falling continuously, splashing against the pavement and awning; distant city traffic noise with occasional car horns and engine hums; footsteps shifting on wet ground; a distant bus horn blaring at the end.\n\nnon_diegetic_music: Low, tense ambient drone with subtle rhythmic pulses to underscore the argument, fading out as the bus horn sounds.",
+    "conditions": [],
+    "target": {
+      "short_edge": 768,
+      "aspect_ratio": "16:9",
+      "duration_seconds": 15
+    },
+    "seed": 101
+  },
+  "submitted": {
+    "id": "f5dd39d8-a5f0-421c-96ea-2989b487193f",
+    "object": "video",
+    "model": "sora-2",
+    "status": "queued",
+    "progress": 0,
+    "created_at": 1785994175,
+    "size": "1344x768",
+    "seconds": "15.083333",
+    "quality": "standard",
+    "url": null,
+    "remixed_from_video_id": null,
+    "completed_at": null,
+    "expires_at": null,
+    "error": null,
+    "file_path": "/pfs/weiyang/sglang/outputs/f5dd39d8-a5f0-421c-96ea-2989b487193f.mp4",
+    "file_paths": null,
+    "num_outputs": null,
+    "peak_memory_mb": null,
+    "inference_time_s": null,
+    "action": null
+  }
+}

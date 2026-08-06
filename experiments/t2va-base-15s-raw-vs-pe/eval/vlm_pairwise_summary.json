@@ -1,0 +1,12 @@
+{
+  "n": 10,
+  "wins": {
+    "raw": 5,
+    "pe": 5,
+    "tie": 0
+  },
+  "mean_overall_raw": 6.797,
+  "mean_overall_pe": 7.513,
+  "track": "internal_vlm_pairwise",
+  "note": "Not an official MiniMax/H3 leaderboard metric."
+}

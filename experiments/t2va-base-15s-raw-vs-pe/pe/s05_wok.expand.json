@@ -1,0 +1,26 @@
+{
+  "scenario_id": "s05_wok",
+  "output": {
+    "task": "t2va",
+    "duration_seconds": "15",
+    "integrated_multimodal_description": "Live-action, cinematic, high-energy close-up of a professional chef in a bustling kitchen. [Shot 1] The chef, wearing a white uniform and black apron, grips a large metal wok with intense focus. He executes a powerful upward flick of the wrist, launching a cascade of steaming noodles high into the air. As the noodles arc, a massive burst of roaring orange flame erupts from the wok, illuminating the chef's determined face. The noodles tumble back down, and the chef expertly catches them with a sharp, rhythmic clang of the metal spatula against the wok's rim. The camera tracks the motion dynamically, emphasizing the synchronization between the toss, the flame, and the catch. The scene is bathed in warm, dramatic lighting with steam swirling around the action.",
+    "overall_soundscape": "Intense, rhythmic kitchen soundscape featuring a continuous roar of high-heat flames, sharp sizzling of oil hitting hot metal, loud metallic clangs of the spatula striking the wok, and the soft whoosh of noodles being tossed through the air. The sounds are perfectly synchronized with the visual motions of the chef's movements.",
+    "non_diegetic_music": "Fast-paced, percussive electronic beat with heavy bass and metallic percussion hits that mirror the rhythm of the wok tossing and spatula strikes, building tension and energy throughout the 15-second clip."
+  },
+  "analysis": {
+    "intent": "Generate a high-energy, 15-second video clip of a chef performing a wok toss technique, emphasizing the synchronization between physical motion and auditory/visual effects (flames, sounds).",
+    "observable_media_facts": [],
+    "timing_and_motion": [],
+    "audio_and_dialogue": [],
+    "continuity_risks": [],
+    "constraints": [
+      "Duration: 15 seconds",
+      "Aspect Ratio: 16:9",
+      "Seed: 505",
+      "No source media provided; generation must be entirely synthetic based on text description."
+    ]
+  },
+  "repairs": 0,
+  "run_id": "a0babc67a7b849e7a45c460e106c0d74",
+  "h3_text": "integrated_multimodal_description: Live-action, cinematic, high-energy close-up of a professional chef in a bustling kitchen. [Shot 1] The chef, wearing a white uniform and black apron, grips a large metal wok with intense focus. He executes a powerful upward flick of the wrist, launching a cascade of steaming noodles high into the air. As the noodles arc, a massive burst of roaring orange flame erupts from the wok, illuminating the chef's determined face. The noodles tumble back down, and the chef expertly catches them with a sharp, rhythmic clang of the metal spatula against the wok's rim. The camera tracks the motion dynamically, emphasizing the synchronization between the toss, the flame, and the catch. The scene is bathed in warm, dramatic lighting with steam swirling around the action.\n\noverall_soundscape: Intense, rhythmic kitchen soundscape featuring a continuous roar of high-heat flames, sharp sizzling of oil hitting hot metal, loud metallic clangs of the spatula striking the wok, and the soft whoosh of noodles being tossed through the air. The sounds are perfectly synchronized with the visual motions of the chef's movements.\n\nnon_diegetic_music: Fast-paced, percussive electronic beat with heavy bass and metallic percussion hits that mirror the rhythm of the wok tossing and spatula strikes, building tension and energy throughout the 15-second clip."
+}

@@ -1,0 +1,9 @@
+{
+  "prompt": "Start as a train-window POV rushing into a dark tunnel, then match-cut to the same passenger in a medium shot as daylight returns; one continuous English line of dialogue must carry seamlessly across the cut while rail clatter morphs with the lighting change.",
+  "duration_seconds": 15,
+  "task": "t2va",
+  "metadata": {
+    "aspect_ratio": "16:9",
+    "seed": "1616"
+  }
+}
