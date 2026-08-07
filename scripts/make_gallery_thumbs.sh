@@ -11,12 +11,12 @@ WIDTH=360
 DURATION=4
 MAX_TOTAL_BYTES=$((16 * 1024 * 1024))
 
-# Each entry is scenario:start_seconds. Starts favor representative motion or cuts.
+# Each entry is scenario:start_seconds. Prefer PE-win, high-complexity clips.
 SCENES=(
+  "s02_multilingual:2"
+  "s05_wok:6"
+  "s04_cyclist:5"
   "s01_dialogue:4"
-  "s06_sneaker:8"
-  "s09_noir:5"
-  "s10_phone_call:6"
 )
 
 command -v ffmpeg >/dev/null || {
@@ -55,6 +55,12 @@ rm -f \
   "$OUT/s06_sneaker_raw_vs_pe.jpg" \
   "$OUT/s09_noir_raw_vs_pe.jpg" \
   "$OUT/s10_phone_call_raw_vs_pe.jpg" \
+  "$OUT/s06_sneaker_raw.gif" \
+  "$OUT/s06_sneaker_pe.gif" \
+  "$OUT/s09_noir_raw.gif" \
+  "$OUT/s09_noir_pe.gif" \
+  "$OUT/s10_phone_call_raw.gif" \
+  "$OUT/s10_phone_call_pe.gif" \
   "$OUT/readme_hero_raw_vs_pe.jpg"
 
 if (( total_bytes > MAX_TOTAL_BYTES )); then

@@ -146,20 +146,20 @@ Compact shields: **left** = model name · **right** = `available` (green) / `wan
 
 <table cellspacing="0" cellpadding="0">
   <tr>
-    <td width="50%" align="center"><img src="docs/assets/gallery/s01_dialogue_raw.gif" alt="RAW dialogue generation" width="100%"><br><sub>Dialogue · RAW</sub></td>
-    <td width="50%" align="center"><img src="docs/assets/gallery/s01_dialogue_pe.gif" alt="PE dialogue generation" width="100%"><br><sub>Dialogue · PE</sub></td>
+    <td width="50%" align="center"><img src="docs/assets/gallery/s02_multilingual_raw.gif" alt="RAW bilingual ramen dialogue" width="100%"><br><sub>Bilingual kitchen · RAW</sub></td>
+    <td width="50%" align="center"><img src="docs/assets/gallery/s02_multilingual_pe.gif" alt="PE bilingual ramen dialogue" width="100%"><br><sub>Bilingual kitchen · PE</sub></td>
   </tr>
   <tr>
-    <td align="center"><img src="docs/assets/gallery/s06_sneaker_raw.gif" alt="RAW product generation" width="100%"><br><sub>Product motion · RAW</sub></td>
-    <td align="center"><img src="docs/assets/gallery/s06_sneaker_pe.gif" alt="PE product generation" width="100%"><br><sub>Product motion · PE</sub></td>
+    <td align="center"><img src="docs/assets/gallery/s05_wok_raw.gif" alt="RAW wok toss generation" width="100%"><br><sub>Wok action sync · RAW</sub></td>
+    <td align="center"><img src="docs/assets/gallery/s05_wok_pe.gif" alt="PE wok toss generation" width="100%"><br><sub>Wok action sync · PE</sub></td>
   </tr>
   <tr>
-    <td align="center"><img src="docs/assets/gallery/s09_noir_raw.gif" alt="RAW cinematic generation" width="100%"><br><sub>Cinematic scene · RAW</sub></td>
-    <td align="center"><img src="docs/assets/gallery/s09_noir_pe.gif" alt="PE cinematic generation" width="100%"><br><sub>Cinematic scene · PE</sub></td>
+    <td align="center"><img src="docs/assets/gallery/s04_cyclist_raw.gif" alt="RAW neon cyclist generation" width="100%"><br><sub>Neon cyclist · RAW</sub></td>
+    <td align="center"><img src="docs/assets/gallery/s04_cyclist_pe.gif" alt="PE neon cyclist generation" width="100%"><br><sub>Neon cyclist · PE</sub></td>
   </tr>
 </table>
 
-<p align="center"><sub>Current video profile: MiniMax-H3.</sub><br><a href="docs/assets/gallery/index.html"><b>Open the complete video gallery →</b></a></p>
+<p align="center"><sub>Current video profile: MiniMax-H3. Homepage picks are the strongest PE-win cases from the 15s base set.</sub><br><a href="docs/assets/gallery/index.html"><b>Open the complete video gallery →</b></a></p>
 
 ## Quick start
 
