@@ -62,7 +62,7 @@ Use a vLLM-style title prefix and fill Purpose / Test Plan / Test Result:
 - model/family and public evidence URL;
 - contribution scope;
 - PE, adapter, and live-runtime status separately;
-- update the matching README model-ecosystem row when status changes.
+- update the matching README model-ecosystem card when status changes.
 
 Run:
 
