@@ -12,9 +12,9 @@ Harness**。它把意图扩写为目标 PE 方言；媒体生成是显式且独�
 - [生成适配器](generation-adapters_zh.md)：expand/generate 边界与 runtime 兼容性证据。
 - [评测](evaluation_zh.md)：确定性一致性检查及其局限。
 
-## PE profiles
+## 视频与图像配置
 
-- [H3 PE harness](h3-pe-harness_zh.md)：视频路由、时间轴语法与有界修复。
+- [Video PE](h3-pe-harness_zh.md)：当前 H3 视频路由、时间轴语法与有界修复。
 - [图像 PE](image-pe_zh.md)：Seedream 风格与 Qwen-Image-Edit 风格打包。
 - [H3 adapters（英文）](h3-adapters.md)：已实现的本地 H3 与 MiniMax 客户端。
 - [公开 H3 参考资料](references/README.md)：用于收紧 H3 规则的脱敏资料。

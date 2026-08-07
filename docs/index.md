@@ -14,9 +14,9 @@ remains an explicit, separate step.
   compatibility evidence.
 - [Evaluation](evaluation.md) — deterministic conformance checks and their limits.
 
-## PE profiles
+## Video and image profiles
 
-- [H3 PE harness](h3-pe-harness.md) — video routing, timeline grammar, and bounded repair.
+- [Video PE](h3-pe-harness.md) — current H3 routing, timeline grammar, and bounded repair.
 - [Image PE](image-pe.md) — Seedream-style and Qwen-Image-Edit-style image packing.
 - [H3 adapters](h3-adapters.md) — implemented local H3 and MiniMax clients.
 - [Public H3 references](references/README.md) — sanitized sources used to tighten H3 rules.

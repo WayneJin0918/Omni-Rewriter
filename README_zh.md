@@ -91,26 +91,7 @@ flowchart LR
 CLI 与 HTTP API 共用相同 service 层。公共 schema 与完整生命周期见
 [架构文档](docs/architecture_zh.md)。
 
-<details>
-<summary><b>已支持的配置档与集成</b> — 点击展开按证据标注的兼容矩阵</summary>
-
-<br>
-
-| 模态 | 模型族 | 提示词扩写 | 可选生成路径 | 状态 |
-| --- | --- | --- | --- | --- |
-| 视频 | **MiniMax-H3** | T2VA、I2VA、FL2VA、L2VA、Ref2VA | MiniMax API 或 H3 专用本地契约 | 提示词扩写 + 适配器 |
-| 视频 | **LingBot Video** | 强类型结构化描述 | 独立本地运行器与可选两阶段扩写器 | 数据结构 + 本地运行器 |
-| 视频 | **WAN** | 通过公开请求字段映射视频扩写结果 | SGLang 或 vLLM-Omni 风格视频接口 | 适配器；在线兼容性取决于版本 |
-| 图像 | **Seedream 风格前沿图像配置** | 文生图、图生图、图像编辑；提示词 + 比例封装 | 由服务商提供运行时 | 提示词扩写 |
-| 图像 | **Qwen-Image / Edit** | 图像生成与编辑方言 | 兼容 SGLang 的图像接口 / 本地 Diffusers | PE + 适配器 + 文生图 A/B |
-| 图像 | **HunyuanImage-3.0** | 通过通用图像配置生成视觉蓝图 | 已记录的定制 vLLM 分支 / 本地运行器 | 适配器 + A/B |
-
-运行时支持只按公开证据和实际测试结果声明。具备某种提示词配置，并不表示已经证明端到端生成
-兼容。精确契约与限制见[兼容性矩阵](docs/generation-adapters_zh.md)。
-
-</details>
-
-## 社区模型方向
+## 模型生态
 
 <p align="center"><sub>绿色代表已在文档声明的证据范围内可用；灰色是有明确范围的社区贡献机会。</sub></p>
 <table>
@@ -126,9 +107,9 @@ CLI 与 HTTP API 共用相同 service 层。公共 schema 与完整生命周期�
   </tr>
 </table>
 
-<p align="center"><sub>请先使用<a href=".cursor/skills/omni-rewriter-model-contribution/SKILL.md">模型贡献 Skill</a>；完整契约与验收标准见<a href="docs/community-models_zh.md">社区模型待办</a>。</sub></p>
+<p align="center"><sub>请先使用<a href=".cursor/skills/omni-rewriter-model-contribution/SKILL.md">模型贡献 Skill</a>。运行时支持按证据声明；详见<a href="docs/generation-adapters_zh.md">兼容性矩阵</a>与<a href="docs/community-models_zh.md">社区模型待办</a>。</sub></p>
 
-## H3 RAW vs PE
+## Video RAW vs PE
 
 <table cellspacing="0" cellpadding="0">
   <tr>
@@ -149,7 +130,7 @@ CLI 与 HTTP API 共用相同 service 层。公共 schema 与完整生命周期�
   </tr>
 </table>
 
-<p align="center"><a href="docs/assets/gallery/index.html"><b>打开完整 H3 视频 Gallery →</b></a></p>
+<p align="center"><sub>当前视频配置：MiniMax-H3。</sub><br><a href="docs/assets/gallery/index.html"><b>打开完整视频 Gallery →</b></a></p>
 
 ## 快速开始
 
@@ -215,7 +196,7 @@ RewriteRequest
 | 文档索引 | [打开](docs/index_zh.md) | [Open](docs/index.md) |
 | 快速开始 | [打开](docs/getting-started_zh.md) | [Open](docs/getting-started.md) |
 | 架构 | [打开](docs/architecture_zh.md) | [Open](docs/architecture.md) |
-| H3 Prompt Expansion | [打开](docs/h3-pe-harness_zh.md) | [Open](docs/h3-pe-harness.md) |
+| Video Prompt Expansion | [打开](docs/h3-pe-harness_zh.md) | [Open](docs/h3-pe-harness.md) |
 | 图像 Prompt Expansion | [打开](docs/image-pe_zh.md) | [Open](docs/image-pe.md) |
 | 生成适配器 | [打开](docs/generation-adapters_zh.md) | [Open](docs/generation-adapters.md) |
 | 评测 | [打开](docs/evaluation_zh.md) | [Open](docs/evaluation.md) |

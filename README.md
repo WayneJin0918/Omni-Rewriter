@@ -93,26 +93,7 @@ flowchart LR
 The same service layer powers the CLI and HTTP API. See
 [architecture](docs/architecture.md) for public schemas and lifecycle details.
 
-<details>
-<summary><b>Supported profiles and integrations</b> — click to expand the evidence-scoped matrix</summary>
-
-<br>
-
-| Modality | Family | Prompt expansion | Optional generation path | Status |
-| --- | --- | --- | --- | --- |
-| Video | **MiniMax-H3** | T2VA, I2VA, FL2VA, L2VA, Ref2VA | MiniMax API or H3-specific local contract | PE + adapters |
-| Video | **LingBot Video** | Typed structured caption | Independent local runner and optional two-stage rewriter | Schema + runner |
-| Video | **WAN** | Video PE mapped through public request fields | SGLang or vLLM-Omni-style video route | Adapter; live support version-dependent |
-| Image | **Seedream-style frontier image profile** | T2I, I2I, image edit; prompt + ratio packing | Provider-specific runtime | PE |
-| Image | **Qwen-Image / Edit** | Image and edit dialects | SGLang-compatible images API / local Diffusers | PE + adapter + T2I A/B |
-| Image | **HunyuanImage-3.0** | Image blueprint through the image profile | Documented custom vLLM fork / local runner | Adapter + A/B |
-
-Runtime support is evidence-scoped. A PE profile does not prove end-to-end runtime compatibility.
-See the [compatibility matrix](docs/generation-adapters.md) for exact contracts and limitations.
-
-</details>
-
-## Community model tracks
+## Model ecosystem
 
 <p align="center"><sub>Green is available at the documented evidence level. Gray is a scoped community opportunity.</sub></p>
 <table>
@@ -128,9 +109,9 @@ See the [compatibility matrix](docs/generation-adapters.md) for exact contracts 
   </tr>
 </table>
 
-<p align="center"><sub>Start with the <a href=".cursor/skills/omni-rewriter-model-contribution/SKILL.md">model contribution skill</a>; contracts and acceptance criteria are in the <a href="docs/community-models.md">full backlog</a>.</sub></p>
+<p align="center"><sub>Start with the <a href=".cursor/skills/omni-rewriter-model-contribution/SKILL.md">model contribution skill</a>. Runtime support is evidence-scoped; see the <a href="docs/generation-adapters.md">compatibility matrix</a> and <a href="docs/community-models.md">full backlog</a>.</sub></p>
 
-## H3 RAW vs PE
+## Video RAW vs PE
 
 <table cellspacing="0" cellpadding="0">
   <tr>
@@ -151,7 +132,7 @@ See the [compatibility matrix](docs/generation-adapters.md) for exact contracts 
   </tr>
 </table>
 
-<p align="center"><a href="docs/assets/gallery/index.html"><b>Open the complete H3 video gallery →</b></a></p>
+<p align="center"><sub>Current video profile: MiniMax-H3.</sub><br><a href="docs/assets/gallery/index.html"><b>Open the complete video gallery →</b></a></p>
 
 ## Quick start
 
@@ -218,7 +199,7 @@ RewriteRequest
 | Documentation index | [Open](docs/index.md) | [打开](docs/index_zh.md) |
 | Getting started | [Open](docs/getting-started.md) | [打开](docs/getting-started_zh.md) |
 | Architecture | [Open](docs/architecture.md) | [打开](docs/architecture_zh.md) |
-| H3 prompt expansion | [Open](docs/h3-pe-harness.md) | [打开](docs/h3-pe-harness_zh.md) |
+| Video prompt expansion | [Open](docs/h3-pe-harness.md) | [打开](docs/h3-pe-harness_zh.md) |
 | Image prompt expansion | [Open](docs/image-pe.md) | [打开](docs/image-pe_zh.md) |
 | Generation adapters | [Open](docs/generation-adapters.md) | [打开](docs/generation-adapters_zh.md) |
 | Evaluation | [Open](docs/evaluation.md) | [打开](docs/evaluation_zh.md) |

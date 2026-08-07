@@ -154,10 +154,14 @@ def validate_repository(root: Path) -> list[str]:
             if model not in text:
                 errors.append(f"{relative} is missing backlog model {model}")
 
-    for relative in ("README.md", "README_zh.md"):
+    readme_sections = {
+        "README.md": "## Model ecosystem",
+        "README_zh.md": "## 模型生态",
+    }
+    for relative, section in readme_sections.items():
         text = (root / relative).read_text(encoding="utf-8")
-        if "<details>" not in text or "</details>" not in text:
-            errors.append(f"{relative} must keep the supported integration matrix collapsed")
+        if section not in text:
+            errors.append(f"{relative} is missing the unified model ecosystem section")
         for model in BACKLOG_MODELS:
             if model not in text:
                 errors.append(f"{relative} is missing community backlog model {model}")
