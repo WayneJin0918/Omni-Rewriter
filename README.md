@@ -159,7 +159,10 @@ Compact shields: **left** = model name · **right** = `available` (green) / `wan
   </tr>
 </table>
 
-<p align="center"><sub>Current video profile: MiniMax-H3. Homepage picks are the strongest PE-win cases from the 15s base set.</sub><br><a href="docs/assets/gallery/index.html"><b>Open the complete video gallery →</b></a></p>
+<p align="center"><sub>Current video profile: MiniMax-H3. Homepage picks are the strongest PE-win cases from the 15s base set.</sub><br>
+<a href="docs/h3-pe-showcase/index.html"><b>H3 PE showcase →</b></a>
+·
+<a href="docs/assets/gallery/index.html">Compact gallery</a></p>
 
 ## Quick start
 

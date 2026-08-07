@@ -17,6 +17,7 @@ remains an explicit, separate step.
 ## Video and image profiles
 
 - [Video PE](h3-pe-harness.md) — current H3 routing, timeline grammar, and bounded repair.
+- [H3 PE showcase](h3-pe-showcase/index.html) — public RAW vs PE landing page for MiniMax-H3.
 - [Image PE](image-pe.md) — Seedream-style and Qwen-Image-Edit-style image packing.
 - [H3 adapters](h3-adapters.md) — implemented local H3 and MiniMax clients.
 - [Public H3 references](references/README.md) — sanitized sources used to tighten H3 rules.

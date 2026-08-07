@@ -20,6 +20,8 @@ Exact asset paths:
 - `docs/assets/gallery/s01_dialogue_pe.gif`
 
 The standalone comparison page is `docs/assets/gallery/index.html`.
+For the fuller public landing page (pipeline + all published pairs), see
+`docs/h3-pe-showcase/index.html`.
 
 Regenerate the GIFs from the gitignored experiment videos with:
 

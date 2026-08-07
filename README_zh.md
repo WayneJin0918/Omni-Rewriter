@@ -156,7 +156,10 @@ CLI 与 HTTP API 共用相同 service 层。公共 schema 与完整生命周期�
   </tr>
 </table>
 
-<p align="center"><sub>当前视频配置：MiniMax-H3。首页优先展示 15s base 实验中 PE 优势最明显的片段。</sub><br><a href="docs/assets/gallery/index.html"><b>打开完整视频 Gallery →</b></a></p>
+<p align="center"><sub>当前视频配置：MiniMax-H3。首页优先展示 15s base 实验中 PE 优势最明显的片段。</sub><br>
+<a href="docs/h3-pe-showcase/index.html"><b>H3 PE showcase →</b></a>
+·
+<a href="docs/assets/gallery/index.html">精简 Gallery</a></p>
 
 ## 快速开始
 
