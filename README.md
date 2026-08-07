@@ -159,7 +159,11 @@ Prefer small PRs with a title prefix — see [CONTRIBUTING.md](CONTRIBUTING.md).
 </table>
 
 <p align="center"><sub>Current video profile: MiniMax-H3. Homepage picks are complex camera/cut/dialogue PE-wins from the 15s stress set (s11–s16).</sub><br>
-<a href="docs/h3-pe-showcase/index.html"><b>H3 PE showcase →</b></a>
+<a href="https://waynejin0918.github.io/Omni-Rewriter/"><b>Day Two H3 PE site →</b></a>
+·
+<a href="docs/day2-h3-pe/index.html">Local Day Two page</a>
+·
+<a href="docs/h3-pe-showcase/index.html">Full 16-pair showcase</a>
 ·
 <a href="docs/assets/gallery/index.html">Compact gallery</a></p>
 

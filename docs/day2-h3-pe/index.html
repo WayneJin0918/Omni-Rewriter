@@ -1,0 +1,672 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Day Two · H3 PE — Omni-Rewriter</title>
+  <meta name="description" content="Omni-Rewriter Day Two validated prompt expansion for MiniMax-H3. Same-seed RAW vs PE demos, open source on GitHub.">
+  <meta property="og:title" content="Day Two · H3 PE — Omni-Rewriter">
+  <meta property="og:description" content="Community PE harness for MiniMax-H3: analyze, draft, validate, repair, render.">
+  <meta property="og:type" content="website">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,700&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #14060c;
+      --bg-2: #1c0a12;
+      --ink: #fff5f7;
+      --muted: #f0c0cc;
+      --rose: #e11d48;
+      --rose-deep: #9f1239;
+      --blush: #fb7185;
+      --card: rgba(255, 245, 247, 0.04);
+      --line: rgba(251, 113, 133, 0.28);
+      --ok: #4ade80;
+      --max: 1080px;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      color: var(--ink);
+      font-family: Manrope, system-ui, sans-serif;
+      background:
+        radial-gradient(1200px 600px at 12% -10%, rgba(225, 29, 72, 0.35), transparent 55%),
+        radial-gradient(900px 500px at 90% 8%, rgba(251, 113, 133, 0.18), transparent 50%),
+        linear-gradient(180deg, #1a0710 0%, var(--bg) 40%, #0d0408 100%);
+      min-height: 100vh;
+      line-height: 1.55;
+    }
+    a { color: var(--blush); text-decoration-thickness: 1px; text-underline-offset: 0.18em; }
+    a:hover { color: #fff; }
+    .wrap { width: min(var(--max), calc(100% - 2rem)); margin: 0 auto; }
+    .topnav {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 1.1rem 0; gap: 1rem; flex-wrap: wrap;
+    }
+    .brand {
+      font-family: Fraunces, Georgia, serif;
+      font-weight: 700; letter-spacing: -0.02em; font-size: 1.15rem;
+      color: var(--ink); text-decoration: none;
+    }
+    .brand span { color: var(--blush); }
+    .nav-links { display: flex; gap: 0.9rem; flex-wrap: wrap; font-size: 0.92rem; }
+    .nav-links a { color: var(--muted); text-decoration: none; }
+    .nav-links a:hover { color: var(--ink); }
+
+    .hero {
+      padding: 3.2rem 0 3.8rem;
+      display: grid;
+      gap: 1.5rem;
+      max-width: 46rem;
+    }
+    .eyebrow {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      font-size: 0.78rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase;
+      color: var(--blush);
+    }
+    .eyebrow::before {
+      content: ""; width: 1.6rem; height: 2px; background: var(--rose); display: inline-block;
+    }
+    h1 {
+      font-family: Fraunces, Georgia, serif;
+      font-weight: 700;
+      font-size: clamp(2.2rem, 5vw, 3.55rem);
+      line-height: 1.05;
+      letter-spacing: -0.03em;
+      margin: 0;
+    }
+    .lede {
+      margin: 0;
+      color: var(--muted);
+      font-size: 1.08rem;
+      max-width: 38rem;
+    }
+    .cta-row { display: flex; flex-wrap: wrap; gap: 0.75rem; margin-top: 0.4rem; }
+    .btn {
+      display: inline-flex; align-items: center; justify-content: center;
+      padding: 0.78rem 1.15rem; border-radius: 999px; font-weight: 700;
+      text-decoration: none; border: 1px solid transparent; transition: transform .15s ease, background .15s ease, border-color .15s ease;
+    }
+    .btn:hover { transform: translateY(-1px); }
+    .btn-primary {
+      background: linear-gradient(135deg, var(--rose), var(--rose-deep));
+      color: white; box-shadow: 0 10px 30px rgba(225, 29, 72, 0.35);
+    }
+    .btn-primary:hover { color: white; }
+    .btn-ghost {
+      border-color: var(--line); color: var(--ink); background: rgba(255,255,255,0.03);
+    }
+    .btn-ghost:hover { border-color: var(--blush); color: white; }
+
+    section.block {
+      padding: 3rem 0;
+      border-top: 1px solid var(--line);
+    }
+    .section-kicker {
+      font-size: 0.78rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase;
+      color: var(--blush); margin-bottom: 0.55rem;
+    }
+    .block h2 {
+      font-family: Fraunces, Georgia, serif;
+      font-size: clamp(1.6rem, 3vw, 2.2rem);
+      margin: 0 0 0.85rem;
+      letter-spacing: -0.02em;
+    }
+    .block p { color: var(--muted); max-width: 44rem; }
+
+    .pipeline {
+      display: grid;
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+      gap: 0.65rem;
+      margin-top: 1.5rem;
+    }
+    .step {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 1rem;
+      padding: 1rem 0.9rem;
+      min-height: 7.5rem;
+    }
+    .step strong {
+      display: block;
+      font-family: Fraunces, Georgia, serif;
+      font-size: 1.02rem;
+      margin-bottom: 0.35rem;
+    }
+    .step span { color: var(--muted); font-size: 0.88rem; }
+    .step em {
+      display: block; margin-top: 0.55rem; font-style: normal;
+      color: var(--blush); font-size: 0.75rem; letter-spacing: 0.08em; text-transform: uppercase;
+    }
+
+    .case {
+      margin: 2.2rem 0;
+      padding: 1.35rem;
+      border-radius: 1.25rem;
+      background: var(--card);
+      border: 1px solid var(--line);
+    }
+    .case-head { display: flex; gap: 0.6rem; flex-wrap: wrap; margin-bottom: 0.35rem; }
+    .case-num, .case-cat {
+      font-size: 0.72rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase;
+      padding: 0.28rem 0.55rem; border-radius: 999px;
+    }
+    .case-num { background: rgba(225, 29, 72, 0.25); color: #fecdd3; }
+    .case-cat { background: rgba(255,255,255,0.06); color: var(--muted); }
+    .case h3 {
+      font-family: Fraunces, Georgia, serif;
+      margin: 0.2rem 0 1rem;
+      font-size: 1.35rem;
+    }
+    .pair {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 0.85rem;
+    }
+    figure { margin: 0; }
+    figcaption {
+      font-size: 0.72rem; font-weight: 700; letter-spacing: 0.12em;
+      margin-bottom: 0.4rem; color: var(--muted);
+    }
+    figure img {
+      display: block; width: 100%; height: auto; border-radius: 0.75rem;
+      background: #080204; border: 1px solid rgba(255,255,255,0.06);
+    }
+    .prompts { margin-top: 1rem; display: grid; gap: 0.75rem; }
+    .prompt-block h4, .prompt-block summary {
+      margin: 0 0 0.45rem;
+      font-size: 0.8rem; letter-spacing: 0.08em; text-transform: uppercase;
+      color: var(--blush); font-weight: 700;
+    }
+    .prompt-block summary { cursor: pointer; list-style: none; }
+    .prompt-block summary::-webkit-details-marker { display: none; }
+    .prompt-block summary .hint {
+      margin-left: 0.55rem; color: var(--muted); font-weight: 500; text-transform: none; letter-spacing: 0;
+      font-size: 0.78rem;
+    }
+    pre.prompt {
+      margin: 0;
+      white-space: pre-wrap;
+      word-break: break-word;
+      background: rgba(0,0,0,0.35);
+      border: 1px solid rgba(255,255,255,0.06);
+      border-radius: 0.75rem;
+      padding: 0.9rem 1rem;
+      font-size: 0.86rem;
+      line-height: 1.45;
+      color: #ffe4e9;
+      max-height: 22rem;
+      overflow: auto;
+    }
+    details.pe-details[open] summary { margin-bottom: 0.45rem; }
+
+    .pillars {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 0.85rem;
+      margin-top: 1.4rem;
+    }
+    .pillar {
+      padding: 1.15rem;
+      border-radius: 1rem;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,0.03);
+    }
+    .pillar h3 {
+      font-family: Fraunces, Georgia, serif;
+      margin: 0 0 0.45rem;
+      font-size: 1.15rem;
+    }
+    .pillar p { margin: 0; font-size: 0.95rem; }
+
+    footer {
+      padding: 2.5rem 0 3rem;
+      border-top: 1px solid var(--line);
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+    footer .foot-row {
+      display: flex; flex-wrap: wrap; gap: 1rem; justify-content: space-between; align-items: flex-start;
+    }
+    .note { opacity: 0.8; max-width: 36rem; }
+
+    @media (max-width: 900px) {
+      .pipeline { grid-template-columns: 1fr 1fr; }
+      .pillars { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 620px) {
+      .pair, .pipeline { grid-template-columns: 1fr; }
+      .hero { padding-top: 2rem; }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header class="topnav">
+      <a class="brand" href="https://github.com/WayneJin0918/Omni-Rewriter">Omni-<span>Rewriter</span></a>
+      <nav class="nav-links">
+        <a href="https://github.com/WayneJin0918/Omni-Rewriter">GitHub</a>
+        <a href="#pipeline">Pipeline</a>
+        <a href="#cases">Cases</a>
+        <a href="#ship">In the repo</a>
+      </nav>
+    </header>
+
+    <section class="hero">
+      <div class="eyebrow">Day Two · H3 PE</div>
+      <h1>Validated prompt expansion for MiniMax-H3</h1>
+      <p class="lede">
+        The day after on-device acceleration narratives, Omni-Rewriter focuses on what the model
+        actually consumes: structured H3 timelines, dialogue tags, camera grammar, and continuity —
+        with deterministic validation and bounded repair. Expand is not generate.
+      </p>
+      <div class="cta-row">
+        <a class="btn btn-primary" href="https://github.com/WayneJin0918/Omni-Rewriter">Open source on GitHub</a>
+        <a class="btn btn-ghost" href="https://github.com/WayneJin0918/Omni-Rewriter/blob/main/docs/h3-pe-harness.md">Read the PE harness</a>
+        <a class="btn btn-ghost" href="https://github.com/WayneJin0918/Omni-Rewriter/tree/main/docs/h3-pe-showcase">All 16 in-repo pairs</a>
+      </div>
+    </section>
+
+    <section class="block" id="why">
+      <div class="section-kicker">01 — Why PE for H3</div>
+      <h2>H3 rewards prompts that already know the cut</h2>
+      <p>
+        MiniMax-H3 is an omni-modal video generator with native audio. Short user intents rarely
+        specify shot timing, speaker markup, camera motion, or ambient layers. Omni-Rewriter turns
+        transport-neutral intent into a typed H3 dialect, checks it, repairs failures in a bounded
+        loop, then renders text the runtime can consume. Same seed comparisons below keep generation
+        settings fixed so differences come from the prompt path.
+      </p>
+    </section>
+
+    <section class="block" id="pipeline">
+      <div class="section-kicker">02 — Pipeline</div>
+      <h2>Analyze · draft · validate · repair · render</h2>
+      <p>
+        A PE profile does not prove generation-runtime compatibility. Adapters and live runners are
+        optional, version-scoped, and evidence-backed. Untested paths stay labeled unverified.
+      </p>
+      <div class="pipeline">
+        <div class="step"><em>01</em><strong>RewriteRequest</strong><span>Prompt, duration, task, metadata.</span></div>
+        <div class="step"><em>02</em><strong>Analyze &amp; draft</strong><span>Plan invariants, state, transitions, evidence.</span></div>
+        <div class="step"><em>03</em><strong>Validate</strong><span>Deterministic H3 grammar and timeline checks.</span></div>
+        <div class="step"><em>04</em><strong>Bounded repair</strong><span>Retry only with errors and required invariants.</span></div>
+        <div class="step"><em>05</em><strong>Dialect render</strong><span>H3 text out; optional generate adapter next.</span></div>
+      </div>
+    </section>
+
+    <section class="block" id="cases">
+      <div class="section-kicker">03 — Case studies</div>
+      <h2>Ten RAW vs PE pairs with prompt detail</h2>
+      <p>
+        Curated from the Omni-Rewriter MiniMax-H3 15s experiment. Each pair shares seed, aspect, and
+        duration. Open the PE panel to read the validated H3 dialect after expansion.
+      </p>
+
+    <article class="case" id="s02_multilingual">
+      <div class="case-head">
+        <span class="case-num">Case 01</span>
+        <span class="case-cat">multilingual_dialogue</span>
+      </div>
+      <h3>Tokyo ramen bilingual dialogue</h3>
+      <div class="pair">
+        <figure>
+          <figcaption>RAW</figcaption>
+          <img src="assets/demos/s02_multilingual_raw.gif" alt="Tokyo ramen bilingual dialogue RAW" loading="lazy">
+        </figure>
+        <figure>
+          <figcaption>PE</figcaption>
+          <img src="assets/demos/s02_multilingual_pe.gif" alt="Tokyo ramen bilingual dialogue PE" loading="lazy">
+        </figure>
+      </div>
+      <div class="prompts">
+        <div class="prompt-block">
+          <h4>RAW prompt</h4>
+          <pre class="prompt raw">In a Tokyo ramen shop, the chef calls orders in Japanese and a tourist replies in English; both languages must be audible and lip-synced over kitchen sounds.</pre>
+        </div>
+        <details class="prompt-block pe-details">
+          <summary>Expanded H3 PE <span class="hint">same seed · validated dialect</span></summary>
+          <pre class="prompt pe">integrated_multimodal_description: Live-action, cinematic, 16:9 aspect ratio. [Shot 1] Inside a bustling Tokyo ramen shop with steam rising from large pots and wooden counters. A focused Japanese chef in a white apron stands behind the counter, looking directly at a young tourist. The chef calls out orders with animated gestures. The tourist, holding a menu, looks up and responds. The chef (S1) says: &lt;d&gt;[Japanese] Shio ramen, gochisou sama!&lt;/d&gt; The tourist (S2) replies: &lt;d&gt;[English] Yes, please! One miso ramen with extra chashu.&lt;/d&gt; The chef nods and turns to the kitchen, while the tourist smiles and waits. The camera slowly pushes in on the steam and the chef&#x27;s hands working the noodles. [Shot 2] At 00:05.000, the chef vigorously tosses noodles in a wok over a high flame, sending sparks flying as the tourist watches in awe. [Shot 3] At 00:10.000, the finished bowl is placed on the counter with a steaming broth, garnished with green onions and a slice of chashu, as the tourist reaches for chopsticks.
+
+overall_soundscape: Loud kitchen ambience including boiling water, clattering bowls, chopping sounds, and the hiss of a gas stove. The chef&#x27;s Japanese dialogue and the tourist&#x27;s English dialogue are clear, distinct, and perfectly lip-synced, cutting through the background noise without distortion.
+
+non_diegetic_music: None</pre>
+        </details>
+      </div>
+    </article>
+
+    <article class="case" id="s05_wok">
+      <div class="case-head">
+        <span class="case-num">Case 02</span>
+        <span class="case-cat">action_sync</span>
+      </div>
+      <h3>Wok toss action sync</h3>
+      <div class="pair">
+        <figure>
+          <figcaption>RAW</figcaption>
+          <img src="assets/demos/s05_wok_raw.gif" alt="Wok toss action sync RAW" loading="lazy">
+        </figure>
+        <figure>
+          <figcaption>PE</figcaption>
+          <img src="assets/demos/s05_wok_pe.gif" alt="Wok toss action sync PE" loading="lazy">
+        </figure>
+      </div>
+      <div class="prompts">
+        <div class="prompt-block">
+          <h4>RAW prompt</h4>
+          <pre class="prompt raw">A chef flips a sizzling wok, tosses noodles high, and catches them; synchronize every motion with roaring flame, sizzling oil, metal clangs, and spatula hits.</pre>
+        </div>
+        <details class="prompt-block pe-details">
+          <summary>Expanded H3 PE <span class="hint">same seed · validated dialect</span></summary>
+          <pre class="prompt pe">integrated_multimodal_description: Live-action, cinematic, high-energy close-up of a professional chef in a bustling kitchen. [Shot 1] The chef, wearing a white uniform and black apron, grips a large metal wok with intense focus. He executes a powerful upward flick of the wrist, launching a cascade of steaming noodles high into the air. As the noodles arc, a massive burst of roaring orange flame erupts from the wok, illuminating the chef&#x27;s determined face. The noodles tumble back down, and the chef expertly catches them with a sharp, rhythmic clang of the metal spatula against the wok&#x27;s rim. The camera tracks the motion dynamically, emphasizing the synchronization between the toss, the flame, and the catch. The scene is bathed in warm, dramatic lighting with steam swirling around the action.
+
+overall_soundscape: Intense, rhythmic kitchen soundscape featuring a continuous roar of high-heat flames, sharp sizzling of oil hitting hot metal, loud metallic clangs of the spatula striking the wok, and the soft whoosh of noodles being tossed through the air. The sounds are perfectly synchronized with the visual motions of the chef&#x27;s movements.
+
+non_diegetic_music: Fast-paced, percussive electronic beat with heavy bass and metallic percussion hits that mirror the rhythm of the wok tossing and spatula strikes, building tension and energy throughout the 15-second clip.</pre>
+        </details>
+      </div>
+    </article>
+
+    <article class="case" id="s04_cyclist">
+      <div class="case-head">
+        <span class="case-num">Case 03</span>
+        <span class="case-cat">score_and_ambience</span>
+      </div>
+      <h3>Neon-highway cyclist</h3>
+      <div class="pair">
+        <figure>
+          <figcaption>RAW</figcaption>
+          <img src="assets/demos/s04_cyclist_raw.gif" alt="Neon-highway cyclist RAW" loading="lazy">
+        </figure>
+        <figure>
+          <figcaption>PE</figcaption>
+          <img src="assets/demos/s04_cyclist_pe.gif" alt="Neon-highway cyclist PE" loading="lazy">
+        </figure>
+      </div>
+      <div class="prompts">
+        <div class="prompt-block">
+          <h4>RAW prompt</h4>
+          <pre class="prompt raw">A lone cyclist rides an empty neon highway at night; use a cinematic orchestral score together with audible tire hum, chain clicks, breathing, and wind.</pre>
+        </div>
+        <details class="prompt-block pe-details">
+          <summary>Expanded H3 PE <span class="hint">same seed · validated dialect</span></summary>
+          <pre class="prompt pe">integrated_multimodal_description: Live-action, cinematic, 16:9 aspect ratio. [Shot 1] A lone cyclist pedals steadily on a deserted highway at night, flanked by glowing neon signs in vibrant blues and magentas that reflect off the wet asphalt. The camera tracks alongside the rider at a low angle, capturing the rhythmic motion of the legs and the blur of the neon lights against the dark sky. The cyclist wears a sleek, dark outfit with a reflective helmet, and the bike&#x27;s chain and tires are clearly visible in motion. The scene maintains a consistent empty road with no other vehicles or pedestrians, ensuring the solitude of the rider is preserved throughout the 15-second duration.
+
+overall_soundscape: Foreground: rhythmic tire hum on asphalt, distinct metallic chain clicks with every pedal stroke, and the rider&#x27;s steady, audible breathing. Midground: a constant, low-frequency wind rush that swells slightly as the camera moves. Background: a distant, cinematic orchestral score with swelling strings and deep brass that underscores the isolation and grandeur of the night ride.
+
+non_diegetic_music: A sweeping, cinematic orchestral score featuring deep cellos and soaring violins that build a sense of epic solitude and forward momentum, perfectly synchronized with the cyclist&#x27;s pace and the neon-lit environment.</pre>
+        </details>
+      </div>
+    </article>
+
+    <article class="case" id="s01_dialogue">
+      <div class="case-head">
+        <span class="case-num">Case 04</span>
+        <span class="case-cat">english_dialogue</span>
+      </div>
+      <h3>Rainy bus-stop dialogue</h3>
+      <div class="pair">
+        <figure>
+          <figcaption>RAW</figcaption>
+          <img src="assets/demos/s01_dialogue_raw.gif" alt="Rainy bus-stop dialogue RAW" loading="lazy">
+        </figure>
+        <figure>
+          <figcaption>PE</figcaption>
+          <img src="assets/demos/s01_dialogue_pe.gif" alt="Rainy bus-stop dialogue PE" loading="lazy">
+        </figure>
+      </div>
+      <div class="prompts">
+        <div class="prompt-block">
+          <h4>RAW prompt</h4>
+          <pre class="prompt raw">Two coworkers at a rainy bus stop argue about being late; include clear spoken English dialogue with visible lip-sync, rain, traffic, and street ambience.</pre>
+        </div>
+        <details class="prompt-block pe-details">
+          <summary>Expanded H3 PE <span class="hint">same seed · validated dialect</span></summary>
+          <pre class="prompt pe">integrated_multimodal_description: Live-action, cinematic, 16:9 aspect ratio. [Shot 1] A medium shot captures two coworkers standing under a small awning at a rainy bus stop; heavy rain falls in the background with blurred city traffic lights reflecting on wet pavement. The woman (S1) looks anxious and checks her watch while the man (S2) gestures impatiently. The woman (S1) says: &lt;d&gt;[English] We&#x27;re already late, and the bus is nowhere in sight!&lt;/d&gt; The man (S2) replies with a tense mid voice: &lt;d&gt;[English] Stop panicking! If we run now, we&#x27;ll just slip on the wet sidewalk.&lt;/d&gt; The woman (S1) turns sharply, her lips moving in perfect sync: &lt;d&gt;[English] Running is better than missing this meeting entirely!&lt;/d&gt; The camera slowly pushes in as the rain intensifies, highlighting the tension between them. [Shot 2] At 00:10.500, a close-up on the man&#x27;s face shows raindrops sliding down his cheek as he sighs, looking defeated but still arguing: &lt;d&gt;[English] Fine, but if we get soaked, don&#x27;t say I didn&#x27;t warn you.&lt;/d&gt; The scene fades slightly as a bus horn blares in the distance, signaling their arrival.
+
+overall_soundscape: Heavy rain falling continuously, splashing against the pavement and awning; distant city traffic noise with occasional car horns and engine hums; footsteps shifting on wet ground; a distant bus horn blaring at the end.
+
+non_diegetic_music: Low, tense ambient drone with subtle rhythmic pulses to underscore the argument, fading out as the bus horn sounds.</pre>
+        </details>
+      </div>
+    </article>
+
+    <article class="case" id="s15_concert_crashzoom">
+      <div class="case-head">
+        <span class="case-num">Case 05</span>
+        <span class="case-cat">crash_zoom_multicut</span>
+      </div>
+      <h3>Arena concert crash-zoom</h3>
+      <div class="pair">
+        <figure>
+          <figcaption>RAW</figcaption>
+          <img src="assets/demos/s15_concert_crashzoom_raw.gif" alt="Arena concert crash-zoom RAW" loading="lazy">
+        </figure>
+        <figure>
+          <figcaption>PE</figcaption>
+          <img src="assets/demos/s15_concert_crashzoom_pe.gif" alt="Arena concert crash-zoom PE" loading="lazy">
+        </figure>
+      </div>
+      <div class="prompts">
+        <div class="prompt-block">
+          <h4>RAW prompt</h4>
+          <pre class="prompt raw">A live arena concert with four timed cuts in 15 seconds: wide crowd, crash zoom onto the lead singer mid-lyric in English, cut to drummer close-up, then pull out to a stage-wide finale; diegetic band performance, crowd roar, and stage whooshes must stay continuous.</pre>
+        </div>
+        <details class="prompt-block pe-details">
+          <summary>Expanded H3 PE <span class="hint">same seed · validated dialect</span></summary>
+          <pre class="prompt pe">integrated_multimodal_description: Live-action, cinematic concert footage. [Shot 1] A wide static shot captures a massive arena crowd waving glow sticks under flashing stage lights, establishing the scale of the event. [Shot 2] At 00:03.500, a rapid crash zoom thrusts forward to a tight close-up of the lead singer, eyes closed, passionately delivering a line as the camera locks focus on their face. The singer (S1) says: &lt;d&gt;[English] We own this night!&lt;/d&gt; [Shot 3] At 00:07.000, a hard cut shifts to an extreme close-up of the drummer&#x27;s hands striking the snare and cymbals with high velocity, sweat flying from the motion. [Shot 4] At 00:10.500, a smooth pull out reveals the entire stage setup with the full band silhouetted against a wall of pyrotechnics, holding the final pose as the lights flare. The visual state remains stable on the finale pose until the end.
+
+overall_soundscape: Continuous, high-energy diegetic audio track featuring the band&#x27;s live performance, a roaring crowd that swells and sustains across all cuts, and sharp stage whooshes synchronized with the crash zoom and pyrotechnic finale.
+
+non_diegetic_music: None; the audio consists entirely of the diegetic concert performance and crowd noise.</pre>
+        </details>
+      </div>
+    </article>
+
+    <article class="case" id="s14_kitchen_stations">
+      <div class="case-head">
+        <span class="case-num">Case 06</span>
+        <span class="case-cat">whip_pan_montage</span>
+      </div>
+      <h3>Kitchen whip-pan montage</h3>
+      <div class="pair">
+        <figure>
+          <figcaption>RAW</figcaption>
+          <img src="assets/demos/s14_kitchen_stations_raw.gif" alt="Kitchen whip-pan montage RAW" loading="lazy">
+        </figure>
+        <figure>
+          <figcaption>PE</figcaption>
+          <img src="assets/demos/s14_kitchen_stations_pe.gif" alt="Kitchen whip-pan montage PE" loading="lazy">
+        </figure>
+      </div>
+      <div class="prompts">
+        <div class="prompt-block">
+          <h4>RAW prompt</h4>
+          <pre class="prompt raw">A busy restaurant kitchen montage: open on a wide shot, fast whip-pan to the grill, hard-cut to a plating close-up, then pull out to the pass window as the chef shouts a short English order; sync sizzles, knife chops, ticket printer, and plate clinks to each cut.</pre>
+        </div>
+        <details class="prompt-block pe-details">
+          <summary>Expanded H3 PE <span class="hint">same seed · validated dialect</span></summary>
+          <pre class="prompt pe">integrated_multimodal_description: Live-action, cinematic, high-energy montage of a busy restaurant kitchen. [Shot 1] A wide static shot establishes the chaotic kitchen with steam rising and staff moving rapidly; the camera executes a fast whip-pan to the right, blurring the background to transition to the grill station. [Shot 2] At 00:03.500, a hard-cut to a tight close-up of a steak sizzling on a hot grill, followed immediately by a chef&#x27;s hand rapidly chopping herbs with a knife; the camera holds steady to capture the texture and steam. [Shot 3] At 00:07.000, a hard-cut to an extreme close-up of a plate being garnished, then a smooth pull-out (dolly back) to reveal the chef standing at the pass window, looking stressed and urgent. The chef shouts a short order: (S1) says: &lt;d&gt;[English] Two ribeyes, medium-rare, fire now!&lt;/d&gt; The camera continues to pull back slightly as the ticket printer whirs and a plate clinks against the counter, ending on a medium shot of the pass window with the kitchen still active in the background.
+
+overall_soundscape: A rhythmic, high-tempo soundscape synchronized to the visual cuts: a loud, continuous sizzle during the grill shot, sharp and rapid knife chops on the cutting board, the mechanical whir and tear of a ticket printer, and distinct metallic plate clinks. The chef&#x27;s shouted order cuts through the ambient noise with clear, urgent projection.
+
+non_diegetic_music: Fast-paced, percussive jazz-fusion track with a driving snare beat and staccato brass hits that accentuate the camera whip-pan and hard-cuts, building tension until the final pull-out.</pre>
+        </details>
+      </div>
+    </article>
+
+    <article class="case" id="s13_rooftop_orbit">
+      <div class="case-head">
+        <span class="case-num">Case 07</span>
+        <span class="case-cat">arc_shot_dialogue</span>
+      </div>
+      <h3>Rooftop orbit proposal</h3>
+      <div class="pair">
+        <figure>
+          <figcaption>RAW</figcaption>
+          <img src="assets/demos/s13_rooftop_orbit_raw.gif" alt="Rooftop orbit proposal RAW" loading="lazy">
+        </figure>
+        <figure>
+          <figcaption>PE</figcaption>
+          <img src="assets/demos/s13_rooftop_orbit_pe.gif" alt="Rooftop orbit proposal PE" loading="lazy">
+        </figure>
+      </div>
+      <div class="prompts">
+        <div class="prompt-block">
+          <h4>RAW prompt</h4>
+          <pre class="prompt raw">On a windy rooftop at golden hour, the camera arcs 180 degrees around a couple; the man proposes in clear English with lip-sync, then cut to her close-up reaction as she answers; wind, city hum, and a quiet piano underscore remain audible.</pre>
+        </div>
+        <details class="prompt-block pe-details">
+          <summary>Expanded H3 PE <span class="hint">same seed · validated dialect</span></summary>
+          <pre class="prompt pe">integrated_multimodal_description: Live-action, cinematic, golden hour lighting with warm directional sunlight and long shadows on a windy rooftop overlooking a city skyline. [Shot 1] The camera executes a smooth 180-degree Arc Shot around a couple standing close together; the man (S1) drops to one knee, holding a ring box, while the woman (S2) looks down with a surprised expression. The man (S1) says: &lt;d&gt;[English] Will you marry me?&lt;/d&gt; The wind visibly ruffles their hair and clothes. [Shot 2] At 00:08.500, cut to a tight close-up of the woman&#x27;s face; tears well in her eyes as she nods and smiles broadly. The woman (S2) says: &lt;d&gt;[English] Yes, absolutely yes!&lt;/d&gt; The background city lights begin to twinkle as the sun dips lower. The shot holds on her joyful expression until the end.
+
+overall_soundscape: Persistent strong wind noise buffeting the microphone, distant low-frequency city traffic hum, and the clear, synchronized English dialogue of the proposal and acceptance.
+
+non_diegetic_music: A quiet, emotional piano underscore that swells gently during the proposal and peaks softly during the acceptance, remaining audible beneath the wind and dialogue.</pre>
+        </details>
+      </div>
+    </article>
+
+    <article class="case" id="s03_wetland">
+      <div class="case-head">
+        <span class="case-num">Case 08</span>
+        <span class="case-cat">natural_ambience</span>
+      </div>
+      <h3>Pre-dawn wetland ambience</h3>
+      <div class="pair">
+        <figure>
+          <figcaption>RAW</figcaption>
+          <img src="assets/demos/s03_wetland_raw.gif" alt="Pre-dawn wetland ambience RAW" loading="lazy">
+        </figure>
+        <figure>
+          <figcaption>PE</figcaption>
+          <img src="assets/demos/s03_wetland_pe.gif" alt="Pre-dawn wetland ambience PE" loading="lazy">
+        </figure>
+      </div>
+      <div class="prompts">
+        <div class="prompt-block">
+          <h4>RAW prompt</h4>
+          <pre class="prompt raw">A pre-dawn wetland wakes beneath distant lightning; layer birds, insects, thunder, water, and wind through reeds with no dialogue and rich natural audio throughout.</pre>
+        </div>
+        <details class="prompt-block pe-details">
+          <summary>Expanded H3 PE <span class="hint">same seed · validated dialect</span></summary>
+          <pre class="prompt pe">integrated_multimodal_description: Live-action, cinematic, 16:9 aspect ratio. [Shot 1] A dark, misty wetland at pre-dawn is revealed by the faint glow of distant lightning flashing intermittently behind a dense wall of tall, wet reeds. The camera slowly pushes forward through the reeds, capturing the texture of water droplets on leaves and the subtle sway caused by a gentle wind. As the shot progresses, small insects begin to flutter near the water&#x27;s surface, and a few birds take flight in the background, silhouetted against the occasional lightning flash. The lighting shifts subtly with each thunderclap, illuminating the water&#x27;s ripples and the steam rising from the marsh. The scene maintains a consistent, moody atmosphere with no abrupt changes in lighting or texture, ensuring a seamless transition from darkness to the brief, dramatic illumination of the storm.
+
+overall_soundscape: Rich, layered natural audio without dialogue. The soundscape begins with the low hum of wind moving through reeds and the gentle lapping of water against the marshy shore. As the scene progresses, the chirping of insects becomes more prominent, blending with the distant calls of waking birds. Occasional deep, rolling thunder rumbles in the background, synchronized with the visual lightning flashes, adding a sense of depth and immersion. The audio maintains a continuous, organic flow, with no sudden silences or artificial elements, creating a fully immersive natural environment.
+
+non_diegetic_music: None. The scene relies entirely on diegetic natural sounds to establish atmosphere and mood.</pre>
+        </details>
+      </div>
+    </article>
+
+    <article class="case" id="s11_museum_reveal">
+      <div class="case-head">
+        <span class="case-num">Case 09</span>
+        <span class="case-cat">pedestal_push_cut</span>
+      </div>
+      <h3>Museum pedestal reveal</h3>
+      <div class="pair">
+        <figure>
+          <figcaption>RAW</figcaption>
+          <img src="assets/demos/s11_museum_reveal_raw.gif" alt="Museum pedestal reveal RAW" loading="lazy">
+        </figure>
+        <figure>
+          <figcaption>PE</figcaption>
+          <img src="assets/demos/s11_museum_reveal_pe.gif" alt="Museum pedestal reveal PE" loading="lazy">
+        </figure>
+      </div>
+      <div class="prompts">
+        <div class="prompt-block">
+          <h4>RAW prompt</h4>
+          <pre class="prompt raw">In a dark museum hall, start low on a marble floor, pedestal up to reveal a glowing statue, then slowly push in; around mid-clip hard-cut to a tight detail of the statue&#x27;s cracked face as footsteps echo and a soft string score swells. No dialogue.</pre>
+        </div>
+        <details class="prompt-block pe-details">
+          <summary>Expanded H3 PE <span class="hint">same seed · validated dialect</span></summary>
+          <pre class="prompt pe">integrated_multimodal_description: Live-action, cinematic, 16:9 aspect ratio. [Shot 1] Start with a low-angle view of a polished dark marble floor in a dimly lit museum hall; the camera performs a smooth Pedestal Up motion to reveal a full-body ancient statue emitting a soft, ethereal blue glow from within its stone, followed immediately by a slow, deliberate Push In towards the figure&#x27;s torso, establishing the eerie atmosphere and the statue&#x27;s luminous quality. [Shot 2] At 00:07.500, execute a hard-cut to an extreme close-up of the statue&#x27;s face, revealing deep, jagged cracks running across the stone surface where the internal light flickers intensely; the camera remains static but the lighting pulses slightly to emphasize the damage, holding this tense detail for the remainder of the clip to allow the visual consequence of the cracks to be fully observed.
+
+overall_soundscape: Deep, resonant reverb of a large empty hall; distinct, rhythmic footsteps echoing on marble floorboards that begin softly and grow slightly louder, syncing with the reveal in Shot 1 and continuing through the cut into Shot 2; a subtle, low-frequency hum emanating from the glowing statue itself.
+
+non_diegetic_music: A soft, melancholic string score that begins quietly during the pedestal up, gradually swelling in volume and intensity as the camera pushes in, reaching a crescendo peak exactly at the hard-cut to the close-up, then sustaining a tense, high-pitched harmonic drone for the duration of the close-up shot.</pre>
+        </details>
+      </div>
+    </article>
+
+    <article class="case" id="s10_phone_call">
+      <div class="case-head">
+        <span class="case-num">Case 10</span>
+        <span class="case-cat">cross_cut_audio</span>
+      </div>
+      <h3>Office-to-café phone call</h3>
+      <div class="pair">
+        <figure>
+          <figcaption>RAW</figcaption>
+          <img src="assets/demos/s10_phone_call_raw.gif" alt="Office-to-café phone call RAW" loading="lazy">
+        </figure>
+        <figure>
+          <figcaption>PE</figcaption>
+          <img src="assets/demos/s10_phone_call_pe.gif" alt="Office-to-café phone call PE" loading="lazy">
+        </figure>
+      </div>
+      <div class="prompts">
+        <div class="prompt-block">
+          <h4>RAW prompt</h4>
+          <pre class="prompt raw">A phone call alternates between a quiet office and a busy café; the same English conversation continues seamlessly across two cuts with uninterrupted synchronized audio.</pre>
+        </div>
+        <details class="prompt-block pe-details">
+          <summary>Expanded H3 PE <span class="hint">same seed · validated dialect</span></summary>
+          <pre class="prompt pe">integrated_multimodal_description: Live-action, cinematic, 16:9 aspect ratio. [Shot 1] A woman in a crisp white shirt sits at a sleek, minimalist desk in a quiet, sunlit office, holding a smartphone to her ear. She speaks with a focused, urgent expression, her lips moving in perfect sync with the audio. (S1) says: &lt;d&gt;[English] We&#x27;re already late!&lt;/d&gt; [Shot 2] At 00:07.500, The scene cuts abruptly to the same woman, now wearing a casual denim jacket, standing in a bustling, steam-filled café with blurred patrons and baristas in the background. The lighting shifts to warmer, ambient tones. She continues the exact same conversation, her mouth movements and head gestures matching the audio from the previous shot seamlessly, creating the illusion of a single continuous call despite the drastic change in environment. The camera remains static in a medium close-up for both shots.
+
+overall_soundscape: The audio track is a single, continuous English conversation without pauses or glitches. It begins with the dry, quiet acoustics of an office, featuring only a faint HVAC hum. At the 00:07.500 mark, the background ambience shifts instantly and sharply to the loud, chaotic sounds of a busy café, including clattering ceramic, espresso machines, and overlapping chatter, while the foreground dialogue volume and clarity remain perfectly consistent and uninterrupted throughout the entire 15 seconds.
+
+non_diegetic_music: None</pre>
+        </details>
+      </div>
+    </article>
+      <p style="margin-top:1.5rem">
+        <a href="https://github.com/WayneJin0918/Omni-Rewriter/tree/main/docs/h3-pe-showcase">Browse the full 16-pair in-repo showcase →</a>
+      </p>
+    </section>
+
+    <section class="block" id="ship">
+      <div class="section-kicker">04 — What ships</div>
+      <h2>Open harness, not a closed IR dump</h2>
+      <div class="pillars">
+        <div class="pillar">
+          <h3>H3 PE profile</h3>
+          <p>Typed output, validators, repair rules, and dialect renderer for video timelines.</p>
+        </div>
+        <div class="pillar">
+          <h3>Fixtures &amp; eval</h3>
+          <p>RAW vs expanded fixtures, gallery thumbs, and experiment manifests for reproducible demos.</p>
+        </div>
+        <div class="pillar">
+          <h3>Optional adapters</h3>
+          <p>Generation stays opt-in. Cite public runtime evidence; never equate PE support with a private Context-IR.</p>
+        </div>
+      </div>
+      <div class="cta-row" style="margin-top:1.4rem">
+        <a class="btn btn-primary" href="https://github.com/WayneJin0918/Omni-Rewriter">Star / fork the repo</a>
+        <a class="btn btn-ghost" href="https://github.com/WayneJin0918/Omni-Rewriter/blob/main/CONTRIBUTING.md">Contribute a model PR</a>
+      </div>
+    </section>
+
+    <footer>
+      <div class="foot-row">
+        <div>
+          <div class="brand" style="margin-bottom:0.4rem">Omni-<span>Rewriter</span></div>
+          <p class="note">
+            Community Day Two PE support for MiniMax-H3. Not affiliated with NVIDIA Sol Engine or MiniMax.
+            This page does not claim to reproduce private vendor Context-IR internals.
+          </p>
+        </div>
+        <div>
+          <a href="https://github.com/WayneJin0918/Omni-Rewriter">github.com/WayneJin0918/Omni-Rewriter</a><br>
+          <a href="https://github.com/WayneJin0918/Omni-Rewriter/blob/main/LICENSE">License</a>
+        </div>
+      </div>
+    </footer>
+  </div>
+</body>
+</html>

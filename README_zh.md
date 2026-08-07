@@ -157,7 +157,11 @@ CLI 与 HTTP API 共用相同 service 层。公共 schema 与完整生命周期�
 </table>
 
 <p align="center"><sub>当前视频配置：MiniMax-H3。首页优先展示 15s 压力集（s11–s16）中运镜/剪辑/对白更复杂、PE 优势更明显的片段。</sub><br>
-<a href="docs/h3-pe-showcase/index.html"><b>H3 PE showcase →</b></a>
+<a href="https://waynejin0918.github.io/Omni-Rewriter/"><b>Day Two H3 PE 站点 →</b></a>
+·
+<a href="docs/day2-h3-pe/index.html">本地 Day Two 页面</a>
+·
+<a href="docs/h3-pe-showcase/index.html">完整 16 组 showcase</a>
 ·
 <a href="docs/assets/gallery/index.html">精简 Gallery</a></p>
 
