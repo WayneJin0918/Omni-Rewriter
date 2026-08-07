@@ -72,23 +72,53 @@ For fork safety, the workflow runs trusted base-branch code under `pull_request_
 the proposed diff only as inert text, exposes no tools to the model, and treats the result as
 advisory. Endpoint failure does not bypass or fail the deterministic contribution contract.
 
-## Pull request checklist
+## Pull request format
 
-1. Branch from `main`; keep the PR focused.
-2. Add or update tests for behavior changes.
-3. Run `ruff`, `mypy`, and `pytest` locally.
-4. Update docs when contracts or CLI flags change.
-5. Do **not** commit secrets, `.env`, full-resolution videos, or huge binaries.
+PR reception follows a vLLM-style title and description contract so reviews stay fast and
+consistent.
+
+### Title prefixes
+
+Only these prefixes are reviewed by default. Put the model name in `[Model]` titles:
+
+- `[BugFix]` bug fixes
+- `[CI/Build]` CI, packaging, or build tooling
+- `[Doc]` documentation, README, skills, or examples
+- `[Model][Video]` / `[Model][Image]` / `[Model][Unified]` new or improved model support
+- `[Profile]` PE dialect / validator / renderer / repair-rule changes
+- `[Adapter]` generation adapter or runner wiring
+- `[Core]` shared request/output contracts or agent harness behavior
+- `[Misc]` everything else; use sparingly
+
+Examples:
+
+- `[Model][Video] Add Wan2.2 PE profile and fixtures`
+- `[Profile] Tighten Seedream-style quote validation`
+- `[Doc] Clarify expand vs generate boundary`
+
+### Description
+
+Use the repository PR template and fill **Purpose**, **Test Plan**, and **Test Result** before
+requesting review. Model-family PRs must also complete the model contribution contract fields.
+
+### Before review
+
+1. Branch from `main`; keep the PR focused on one category when possible.
+2. Run `ruff check .`, `mypy src`, `pytest`, and `python scripts/check_model_contribution.py`.
+3. Update docs or the matching README model-ecosystem card when support status changes.
+4. Do **not** commit secrets, `.env`, full-resolution videos, or huge binaries.
    Bounded low-resolution gallery media under `docs/assets/gallery/` are fine.
-6. Fill out the PR template and link related issues.
+5. Link related issues. Prefer `Fixes #NN` when the PR fully resolves an issue.
 
 ## Commit style
 
-Prefer short imperative subjects:
+Prefer short imperative subjects. Model PRs may use the same prefix in the commit subject when
+helpful:
 
 - `fix: require <d> tags for dialogue scenes`
 - `feat: add seedream image PE schema`
 - `docs: add harness flowchart`
+- `[Model][Image] add FLUX.1 Kontext profile scaffolding`
 
 ## Code review expectations
 

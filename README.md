@@ -95,21 +95,82 @@ The same service layer powers the CLI and HTTP API. See
 
 ## Model ecosystem
 
-<p align="center"><sub>Green is available at the documented evidence level. Gray is a scoped community opportunity.</sub></p>
+One card = one model family. Name on the left, status on the right. Green = available at the
+stated evidence level; gray = open for community contribution. Prefer small PRs with a clear
+title prefix — see [CONTRIBUTING.md](CONTRIBUTING.md) (vLLM-style reception).
+
+### Video
+
 <table>
   <tr>
-    <th width="33%" align="left">VIDEO</th>
-    <th width="33%" align="left">IMAGE</th>
-    <th width="33%" align="left">UNIFIED</th>
+    <td width="50%"><table width="100%"><tr><td align="left"><b>MiniMax-H3</b></td><td align="right"><img alt="PE + adapter" src="https://img.shields.io/badge/available-PE%20%2B%20adapter-brightgreen"></td></tr></table></td>
+    <td width="50%"><table width="100%"><tr><td align="left"><b>LingBot Video</b></td><td align="right"><img alt="schema + runner" src="https://img.shields.io/badge/available-schema%20%2B%20runner-brightgreen"></td></tr></table></td>
   </tr>
   <tr>
-    <td valign="top"><img src="https://img.shields.io/badge/AVAILABLE-brightgreen" alt="Available"><br><b>MiniMax-H3</b> · LingBot Video · WAN<br><br><sub>Timeline PE, structured captions, and version-scoped adapters.</sub><br><br><img src="https://img.shields.io/badge/CONTRIBUTE-lightgrey" alt="Contribute"><br><sub>Wan2.2 · HunyuanVideo · CogVideoX · LTX-Video · Mochi 1 · Step-Video</sub><br><br><a href="https://github.com/WayneJin0918/Omni-Rewriter/compare?quick_pull=1"><b>Open a Video PR →</b></a></td>
-    <td valign="top"><img src="https://img.shields.io/badge/AVAILABLE-brightgreen" alt="Available"><br><b>Seedream-style</b> · Qwen-Image · HunyuanImage<br><br><sub>Typed prompt profiles, adapters, and reproducible fixtures where available.</sub><br><br><img src="https://img.shields.io/badge/CONTRIBUTE-lightgrey" alt="Contribute"><br><sub>FLUX.1 / Kontext · Stable Diffusion 3.5 · Kolors · PixArt-Sigma · Sana</sub><br><br><a href="https://github.com/WayneJin0918/Omni-Rewriter/compare?quick_pull=1"><b>Open an Image PR →</b></a></td>
-    <td valign="top"><img src="https://img.shields.io/badge/CONTRIBUTE-lightgrey" alt="Contribute"><br><b>Show-o2 · Emu3 · Janus-Pro</b><br>BAGEL · OmniGen2<br><br><sub>Map understanding and generation explicitly; shared checkpoints do not imply every modality.</sub><br><br><a href="https://github.com/WayneJin0918/Omni-Rewriter/compare?quick_pull=1"><b>Open a Unified PR →</b></a></td>
+    <td><table width="100%"><tr><td align="left"><b>WAN</b></td><td align="right"><img alt="adapter" src="https://img.shields.io/badge/available-adapter-brightgreen"></td></tr></table></td>
+    <td><table width="100%"><tr><td align="left"><b>Wan2.2</b></td><td align="right"><img alt="wanted" src="https://img.shields.io/badge/wanted-community%20PR-lightgrey"></td></tr></table></td>
+  </tr>
+  <tr>
+    <td><table width="100%"><tr><td align="left"><b>HunyuanVideo</b></td><td align="right"><img alt="wanted" src="https://img.shields.io/badge/wanted-community%20PR-lightgrey"></td></tr></table></td>
+    <td><table width="100%"><tr><td align="left"><b>CogVideoX</b></td><td align="right"><img alt="wanted" src="https://img.shields.io/badge/wanted-community%20PR-lightgrey"></td></tr></table></td>
+  </tr>
+  <tr>
+    <td><table width="100%"><tr><td align="left"><b>LTX-Video</b></td><td align="right"><img alt="wanted" src="https://img.shields.io/badge/wanted-community%20PR-lightgrey"></td></tr></table></td>
+    <td><table width="100%"><tr><td align="left"><b>Mochi 1</b></td><td align="right"><img alt="wanted" src="https://img.shields.io/badge/wanted-community%20PR-lightgrey"></td></tr></table></td>
+  </tr>
+  <tr>
+    <td><table width="100%"><tr><td align="left"><b>Step-Video</b></td><td align="right"><img alt="wanted" src="https://img.shields.io/badge/wanted-community%20PR-lightgrey"></td></tr></table></td>
+    <td></td>
   </tr>
 </table>
 
-<p align="center"><sub>Start with the <a href=".cursor/skills/omni-rewriter-model-contribution/SKILL.md">model contribution skill</a>. Runtime support is evidence-scoped; see the <a href="docs/generation-adapters.md">compatibility matrix</a> and <a href="docs/community-models.md">full backlog</a>.</sub></p>
+### Image
+
+<table>
+  <tr>
+    <td width="50%"><table width="100%"><tr><td align="left"><b>Seedream-style</b></td><td align="right"><img alt="PE profile" src="https://img.shields.io/badge/available-PE%20profile-brightgreen"></td></tr></table></td>
+    <td width="50%"><table width="100%"><tr><td align="left"><b>Qwen-Image / Edit</b></td><td align="right"><img alt="PE + adapter" src="https://img.shields.io/badge/available-PE%20%2B%20adapter-brightgreen"></td></tr></table></td>
+  </tr>
+  <tr>
+    <td><table width="100%"><tr><td align="left"><b>HunyuanImage-3.0</b></td><td align="right"><img alt="adapter + A/B" src="https://img.shields.io/badge/available-adapter%20%2B%20A%2FB-brightgreen"></td></tr></table></td>
+    <td><table width="100%"><tr><td align="left"><b>FLUX.1 / Kontext</b></td><td align="right"><img alt="wanted" src="https://img.shields.io/badge/wanted-community%20PR-lightgrey"></td></tr></table></td>
+  </tr>
+  <tr>
+    <td><table width="100%"><tr><td align="left"><b>Stable Diffusion 3.5</b></td><td align="right"><img alt="wanted" src="https://img.shields.io/badge/wanted-community%20PR-lightgrey"></td></tr></table></td>
+    <td><table width="100%"><tr><td align="left"><b>Kolors</b></td><td align="right"><img alt="wanted" src="https://img.shields.io/badge/wanted-community%20PR-lightgrey"></td></tr></table></td>
+  </tr>
+  <tr>
+    <td><table width="100%"><tr><td align="left"><b>PixArt-Sigma</b></td><td align="right"><img alt="wanted" src="https://img.shields.io/badge/wanted-community%20PR-lightgrey"></td></tr></table></td>
+    <td><table width="100%"><tr><td align="left"><b>Sana</b></td><td align="right"><img alt="wanted" src="https://img.shields.io/badge/wanted-community%20PR-lightgrey"></td></tr></table></td>
+  </tr>
+</table>
+
+### Unified
+
+<table>
+  <tr>
+    <td width="50%"><table width="100%"><tr><td align="left"><b>Show-o2</b></td><td align="right"><img alt="wanted" src="https://img.shields.io/badge/wanted-community%20PR-lightgrey"></td></tr></table></td>
+    <td width="50%"><table width="100%"><tr><td align="left"><b>Emu3</b></td><td align="right"><img alt="wanted" src="https://img.shields.io/badge/wanted-community%20PR-lightgrey"></td></tr></table></td>
+  </tr>
+  <tr>
+    <td><table width="100%"><tr><td align="left"><b>Janus-Pro</b></td><td align="right"><img alt="wanted" src="https://img.shields.io/badge/wanted-community%20PR-lightgrey"></td></tr></table></td>
+    <td><table width="100%"><tr><td align="left"><b>BAGEL</b></td><td align="right"><img alt="wanted" src="https://img.shields.io/badge/wanted-community%20PR-lightgrey"></td></tr></table></td>
+  </tr>
+  <tr>
+    <td><table width="100%"><tr><td align="left"><b>OmniGen2</b></td><td align="right"><img alt="wanted" src="https://img.shields.io/badge/wanted-community%20PR-lightgrey"></td></tr></table></td>
+    <td></td>
+  </tr>
+</table>
+
+<p align="center">
+  <a href="https://github.com/WayneJin0918/Omni-Rewriter/compare?quick_pull=1&title=%5BModel%5D%5BVideo%5D%20"><img src="https://img.shields.io/badge/Open%20PR-Video-111827?style=for-the-badge&labelColor=0f172a" alt="Open Video PR"></a>
+  &nbsp;
+  <a href="https://github.com/WayneJin0918/Omni-Rewriter/compare?quick_pull=1&title=%5BModel%5D%5BImage%5D%20"><img src="https://img.shields.io/badge/Open%20PR-Image-111827?style=for-the-badge&labelColor=0f172a" alt="Open Image PR"></a>
+  &nbsp;
+  <a href="https://github.com/WayneJin0918/Omni-Rewriter/compare?quick_pull=1&title=%5BModel%5D%5BUnified%5D%20"><img src="https://img.shields.io/badge/Open%20PR-Unified-111827?style=for-the-badge&labelColor=0f172a" alt="Open Unified PR"></a>
+</p>
+
+<p align="center"><sub>Use the <a href=".cursor/skills/omni-rewriter-model-contribution/SKILL.md">model contribution skill</a>. Evidence-scoped details: <a href="docs/generation-adapters.md">compatibility matrix</a> · <a href="docs/community-models.md">full backlog</a>.</sub></p>
 
 ## Video RAW vs PE
 

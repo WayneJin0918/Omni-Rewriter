@@ -55,13 +55,14 @@ description: >-
 
 ## Pull request contract
 
-Fill every `Model contribution` field in `.github/PULL_REQUEST_TEMPLATE.md`:
+Use a vLLM-style title prefix and fill Purpose / Test Plan / Test Result:
 
-- exactly one category;
+- `[Model][Video] ...`, `[Model][Image] ...`, or `[Model][Unified] ...`
+- exactly one category checkbox;
 - model/family and public evidence URL;
 - contribution scope;
 - PE, adapter, and live-runtime status separately;
-- validation commands and fixtures.
+- update the matching README model-ecosystem row when status changes.
 
 Run:
 

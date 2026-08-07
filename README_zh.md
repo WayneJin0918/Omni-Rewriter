@@ -93,21 +93,80 @@ CLI 与 HTTP API 共用相同 service 层。公共 schema 与完整生命周期�
 
 ## 模型生态
 
-<p align="center"><sub>绿色代表已在文档声明的证据范围内可用；灰色是有明确范围的社区贡献机会。</sub></p>
+一张卡片对应一个模型系列：左边名字、右边状态。绿色表示在声明证据范围内可用；灰色表示欢迎社区贡献。请优先提交范围清晰、标题带前缀的小 PR，详见 [CONTRIBUTING.md](CONTRIBUTING.md)（参考 vLLM 的接收与格式约定）。
+
+### Video｜视频
+
 <table>
   <tr>
-    <th width="33%" align="left">VIDEO｜视频</th>
-    <th width="33%" align="left">IMAGE｜图像</th>
-    <th width="33%" align="left">UNIFIED｜统一多模态</th>
+    <td width="50%"><table width="100%"><tr><td align="left"><b>MiniMax-H3</b></td><td align="right"><img alt="PE + 适配器" src="https://img.shields.io/badge/已支持-PE%20%2B%20适配器-brightgreen"></td></tr></table></td>
+    <td width="50%"><table width="100%"><tr><td align="left"><b>LingBot Video</b></td><td align="right"><img alt="数据结构 + 运行器" src="https://img.shields.io/badge/已支持-数据结构%20%2B%20运行器-brightgreen"></td></tr></table></td>
   </tr>
   <tr>
-    <td valign="top"><img src="https://img.shields.io/badge/AVAILABLE-brightgreen" alt="已可用"><br><b>MiniMax-H3</b> · LingBot Video · WAN<br><br><sub>时间轴 PE、结构化描述和按版本验证的适配器。</sub><br><br><img src="https://img.shields.io/badge/CONTRIBUTE-lightgrey" alt="待贡献"><br><sub>Wan2.2 · HunyuanVideo · CogVideoX · LTX-Video · Mochi 1 · Step-Video</sub><br><br><a href="https://github.com/WayneJin0918/Omni-Rewriter/compare?quick_pull=1"><b>发起视频 PR →</b></a></td>
-    <td valign="top"><img src="https://img.shields.io/badge/AVAILABLE-brightgreen" alt="已可用"><br><b>Seedream 风格</b> · Qwen-Image · HunyuanImage<br><br><sub>强类型提示词配置、适配器，以及可复现的样例。</sub><br><br><img src="https://img.shields.io/badge/CONTRIBUTE-lightgrey" alt="待贡献"><br><sub>FLUX.1 / Kontext · Stable Diffusion 3.5 · Kolors · PixArt-Sigma · Sana</sub><br><br><a href="https://github.com/WayneJin0918/Omni-Rewriter/compare?quick_pull=1"><b>发起图像 PR →</b></a></td>
-    <td valign="top"><img src="https://img.shields.io/badge/CONTRIBUTE-lightgrey" alt="待贡献"><br><b>Show-o2 · Emu3 · Janus-Pro</b><br>BAGEL · OmniGen2<br><br><sub>明确映射理解与生成任务；共享 checkpoint 不代表支持所有模态。</sub><br><br><a href="https://github.com/WayneJin0918/Omni-Rewriter/compare?quick_pull=1"><b>发起统一多模态 PR →</b></a></td>
+    <td><table width="100%"><tr><td align="left"><b>WAN</b></td><td align="right"><img alt="适配器" src="https://img.shields.io/badge/已支持-适配器-brightgreen"></td></tr></table></td>
+    <td><table width="100%"><tr><td align="left"><b>Wan2.2</b></td><td align="right"><img alt="待贡献" src="https://img.shields.io/badge/待贡献-社区%20PR-lightgrey"></td></tr></table></td>
+  </tr>
+  <tr>
+    <td><table width="100%"><tr><td align="left"><b>HunyuanVideo</b></td><td align="right"><img alt="待贡献" src="https://img.shields.io/badge/待贡献-社区%20PR-lightgrey"></td></tr></table></td>
+    <td><table width="100%"><tr><td align="left"><b>CogVideoX</b></td><td align="right"><img alt="待贡献" src="https://img.shields.io/badge/待贡献-社区%20PR-lightgrey"></td></tr></table></td>
+  </tr>
+  <tr>
+    <td><table width="100%"><tr><td align="left"><b>LTX-Video</b></td><td align="right"><img alt="待贡献" src="https://img.shields.io/badge/待贡献-社区%20PR-lightgrey"></td></tr></table></td>
+    <td><table width="100%"><tr><td align="left"><b>Mochi 1</b></td><td align="right"><img alt="待贡献" src="https://img.shields.io/badge/待贡献-社区%20PR-lightgrey"></td></tr></table></td>
+  </tr>
+  <tr>
+    <td><table width="100%"><tr><td align="left"><b>Step-Video</b></td><td align="right"><img alt="待贡献" src="https://img.shields.io/badge/待贡献-社区%20PR-lightgrey"></td></tr></table></td>
+    <td></td>
   </tr>
 </table>
 
-<p align="center"><sub>请先使用<a href=".cursor/skills/omni-rewriter-model-contribution/SKILL.md">模型贡献 Skill</a>。运行时支持按证据声明；详见<a href="docs/generation-adapters_zh.md">兼容性矩阵</a>与<a href="docs/community-models_zh.md">社区模型待办</a>。</sub></p>
+### Image｜图像
+
+<table>
+  <tr>
+    <td width="50%"><table width="100%"><tr><td align="left"><b>Seedream-style</b></td><td align="right"><img alt="PE 配置" src="https://img.shields.io/badge/已支持-PE%20配置-brightgreen"></td></tr></table></td>
+    <td width="50%"><table width="100%"><tr><td align="left"><b>Qwen-Image / Edit</b></td><td align="right"><img alt="PE + 适配器" src="https://img.shields.io/badge/已支持-PE%20%2B%20适配器-brightgreen"></td></tr></table></td>
+  </tr>
+  <tr>
+    <td><table width="100%"><tr><td align="left"><b>HunyuanImage-3.0</b></td><td align="right"><img alt="适配器 + A/B" src="https://img.shields.io/badge/已支持-适配器%20%2B%20A%2FB-brightgreen"></td></tr></table></td>
+    <td><table width="100%"><tr><td align="left"><b>FLUX.1 / Kontext</b></td><td align="right"><img alt="待贡献" src="https://img.shields.io/badge/待贡献-社区%20PR-lightgrey"></td></tr></table></td>
+  </tr>
+  <tr>
+    <td><table width="100%"><tr><td align="left"><b>Stable Diffusion 3.5</b></td><td align="right"><img alt="待贡献" src="https://img.shields.io/badge/待贡献-社区%20PR-lightgrey"></td></tr></table></td>
+    <td><table width="100%"><tr><td align="left"><b>Kolors</b></td><td align="right"><img alt="待贡献" src="https://img.shields.io/badge/待贡献-社区%20PR-lightgrey"></td></tr></table></td>
+  </tr>
+  <tr>
+    <td><table width="100%"><tr><td align="left"><b>PixArt-Sigma</b></td><td align="right"><img alt="待贡献" src="https://img.shields.io/badge/待贡献-社区%20PR-lightgrey"></td></tr></table></td>
+    <td><table width="100%"><tr><td align="left"><b>Sana</b></td><td align="right"><img alt="待贡献" src="https://img.shields.io/badge/待贡献-社区%20PR-lightgrey"></td></tr></table></td>
+  </tr>
+</table>
+
+### Unified｜统一多模态
+
+<table>
+  <tr>
+    <td width="50%"><table width="100%"><tr><td align="left"><b>Show-o2</b></td><td align="right"><img alt="待贡献" src="https://img.shields.io/badge/待贡献-社区%20PR-lightgrey"></td></tr></table></td>
+    <td width="50%"><table width="100%"><tr><td align="left"><b>Emu3</b></td><td align="right"><img alt="待贡献" src="https://img.shields.io/badge/待贡献-社区%20PR-lightgrey"></td></tr></table></td>
+  </tr>
+  <tr>
+    <td><table width="100%"><tr><td align="left"><b>Janus-Pro</b></td><td align="right"><img alt="待贡献" src="https://img.shields.io/badge/待贡献-社区%20PR-lightgrey"></td></tr></table></td>
+    <td><table width="100%"><tr><td align="left"><b>BAGEL</b></td><td align="right"><img alt="待贡献" src="https://img.shields.io/badge/待贡献-社区%20PR-lightgrey"></td></tr></table></td>
+  </tr>
+  <tr>
+    <td><table width="100%"><tr><td align="left"><b>OmniGen2</b></td><td align="right"><img alt="待贡献" src="https://img.shields.io/badge/待贡献-社区%20PR-lightgrey"></td></tr></table></td>
+    <td></td>
+  </tr>
+</table>
+
+<p align="center">
+  <a href="https://github.com/WayneJin0918/Omni-Rewriter/compare?quick_pull=1&title=%5BModel%5D%5BVideo%5D%20"><img src="https://img.shields.io/badge/发起%20PR-视频-111827?style=for-the-badge&labelColor=0f172a" alt="发起视频 PR"></a>
+  &nbsp;
+  <a href="https://github.com/WayneJin0918/Omni-Rewriter/compare?quick_pull=1&title=%5BModel%5D%5BImage%5D%20"><img src="https://img.shields.io/badge/发起%20PR-图像-111827?style=for-the-badge&labelColor=0f172a" alt="发起图像 PR"></a>
+  &nbsp;
+  <a href="https://github.com/WayneJin0918/Omni-Rewriter/compare?quick_pull=1&title=%5BModel%5D%5BUnified%5D%20"><img src="https://img.shields.io/badge/发起%20PR-统一多模态-111827?style=for-the-badge&labelColor=0f172a" alt="发起统一多模态 PR"></a>
+</p>
+
+<p align="center"><sub>请先使用<a href=".cursor/skills/omni-rewriter-model-contribution/SKILL.md">模型贡献 Skill</a>。证据范围详见<a href="docs/generation-adapters_zh.md">兼容性矩阵</a> · <a href="docs/community-models_zh.md">社区模型待办</a>。</sub></p>
 
 ## Video RAW vs PE
 
