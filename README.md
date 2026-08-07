@@ -95,32 +95,31 @@ The same service layer powers the CLI and HTTP API. See
 
 ## Model ecosystem
 
-Compact shields: left = model name · right = `available` (green) / `wanted` (gray) ·
-far-right color = category. Prefer small PRs with a title prefix — see
-[CONTRIBUTING.md](CONTRIBUTING.md).
+Left color = category (Video / Image / Unified); right = `available` / `wanted`.
+Prefer small PRs with a title prefix — see [CONTRIBUTING.md](CONTRIBUTING.md).
 
 <p align="center">
-  <img alt="MiniMax-H3 available" src="https://img.shields.io/badge/MiniMax--H3-available-brightgreen?style=flat-square&labelColor=111827" /><img alt="Video" src="https://img.shields.io/badge/-%20-4f46e5?style=flat-square" />
-  <img alt="LingBot Video available" src="https://img.shields.io/badge/LingBot%20Video-available-brightgreen?style=flat-square&labelColor=111827" /><img alt="Video" src="https://img.shields.io/badge/-%20-4f46e5?style=flat-square" />
-  <img alt="WAN available" src="https://img.shields.io/badge/WAN-available-brightgreen?style=flat-square&labelColor=111827" /><img alt="Video" src="https://img.shields.io/badge/-%20-4f46e5?style=flat-square" />
-  <img alt="HunyuanVideo wanted" src="https://img.shields.io/badge/HunyuanVideo-wanted-lightgrey?style=flat-square&labelColor=111827" /><img alt="Video" src="https://img.shields.io/badge/-%20-4f46e5?style=flat-square" />
-  <img alt="CogVideoX wanted" src="https://img.shields.io/badge/CogVideoX-wanted-lightgrey?style=flat-square&labelColor=111827" /><img alt="Video" src="https://img.shields.io/badge/-%20-4f46e5?style=flat-square" />
-  <img alt="LTX-Video wanted" src="https://img.shields.io/badge/LTX--Video-wanted-lightgrey?style=flat-square&labelColor=111827" /><img alt="Video" src="https://img.shields.io/badge/-%20-4f46e5?style=flat-square" />
-  <img alt="Mochi 1 wanted" src="https://img.shields.io/badge/Mochi%201-wanted-lightgrey?style=flat-square&labelColor=111827" /><img alt="Video" src="https://img.shields.io/badge/-%20-4f46e5?style=flat-square" />
-  <img alt="Step-Video wanted" src="https://img.shields.io/badge/Step--Video-wanted-lightgrey?style=flat-square&labelColor=111827" /><img alt="Video" src="https://img.shields.io/badge/-%20-4f46e5?style=flat-square" />
-  <img alt="Seedream-style available" src="https://img.shields.io/badge/Seedream--style-available-brightgreen?style=flat-square&labelColor=111827" /><img alt="Image" src="https://img.shields.io/badge/-%20-0d9488?style=flat-square" />
-  <img alt="Qwen-Image / Edit available" src="https://img.shields.io/badge/Qwen--Image%20%2F%20Edit-available-brightgreen?style=flat-square&labelColor=111827" /><img alt="Image" src="https://img.shields.io/badge/-%20-0d9488?style=flat-square" />
-  <img alt="HunyuanImage-3.0 available" src="https://img.shields.io/badge/HunyuanImage--3.0-available-brightgreen?style=flat-square&labelColor=111827" /><img alt="Image" src="https://img.shields.io/badge/-%20-0d9488?style=flat-square" />
-  <img alt="FLUX.1 / Kontext wanted" src="https://img.shields.io/badge/FLUX.1%20%2F%20Kontext-wanted-lightgrey?style=flat-square&labelColor=111827" /><img alt="Image" src="https://img.shields.io/badge/-%20-0d9488?style=flat-square" />
-  <img alt="Stable Diffusion 3.5 wanted" src="https://img.shields.io/badge/Stable%20Diffusion%203.5-wanted-lightgrey?style=flat-square&labelColor=111827" /><img alt="Image" src="https://img.shields.io/badge/-%20-0d9488?style=flat-square" />
-  <img alt="Kolors wanted" src="https://img.shields.io/badge/Kolors-wanted-lightgrey?style=flat-square&labelColor=111827" /><img alt="Image" src="https://img.shields.io/badge/-%20-0d9488?style=flat-square" />
-  <img alt="PixArt-Sigma wanted" src="https://img.shields.io/badge/PixArt--Sigma-wanted-lightgrey?style=flat-square&labelColor=111827" /><img alt="Image" src="https://img.shields.io/badge/-%20-0d9488?style=flat-square" />
-  <img alt="Sana wanted" src="https://img.shields.io/badge/Sana-wanted-lightgrey?style=flat-square&labelColor=111827" /><img alt="Image" src="https://img.shields.io/badge/-%20-0d9488?style=flat-square" />
-  <img alt="Show-o2 wanted" src="https://img.shields.io/badge/Show--o2-wanted-lightgrey?style=flat-square&labelColor=111827" /><img alt="Unified" src="https://img.shields.io/badge/-%20-d97706?style=flat-square" />
-  <img alt="Emu3 wanted" src="https://img.shields.io/badge/Emu3-wanted-lightgrey?style=flat-square&labelColor=111827" /><img alt="Unified" src="https://img.shields.io/badge/-%20-d97706?style=flat-square" />
-  <img alt="Janus-Pro wanted" src="https://img.shields.io/badge/Janus--Pro-wanted-lightgrey?style=flat-square&labelColor=111827" /><img alt="Unified" src="https://img.shields.io/badge/-%20-d97706?style=flat-square" />
-  <img alt="BAGEL wanted" src="https://img.shields.io/badge/BAGEL-wanted-lightgrey?style=flat-square&labelColor=111827" /><img alt="Unified" src="https://img.shields.io/badge/-%20-d97706?style=flat-square" />
-  <img alt="OmniGen2 wanted" src="https://img.shields.io/badge/OmniGen2-wanted-lightgrey?style=flat-square&labelColor=111827" /><img alt="Unified" src="https://img.shields.io/badge/-%20-d97706?style=flat-square" />
+  <img alt="MiniMax-H3 available" src="https://img.shields.io/badge/MiniMax--H3-available-brightgreen?style=flat-square&labelColor=4f46e5" />
+  <img alt="LingBot Video available" src="https://img.shields.io/badge/LingBot%20Video-available-brightgreen?style=flat-square&labelColor=4f46e5" />
+  <img alt="WAN available" src="https://img.shields.io/badge/WAN-available-brightgreen?style=flat-square&labelColor=4f46e5" />
+  <img alt="HunyuanVideo wanted" src="https://img.shields.io/badge/HunyuanVideo-wanted-lightgrey?style=flat-square&labelColor=4f46e5" />
+  <img alt="CogVideoX wanted" src="https://img.shields.io/badge/CogVideoX-wanted-lightgrey?style=flat-square&labelColor=4f46e5" />
+  <img alt="LTX-Video wanted" src="https://img.shields.io/badge/LTX--Video-wanted-lightgrey?style=flat-square&labelColor=4f46e5" />
+  <img alt="Mochi 1 wanted" src="https://img.shields.io/badge/Mochi%201-wanted-lightgrey?style=flat-square&labelColor=4f46e5" />
+  <img alt="Step-Video wanted" src="https://img.shields.io/badge/Step--Video-wanted-lightgrey?style=flat-square&labelColor=4f46e5" />
+  <img alt="Seedream-style available" src="https://img.shields.io/badge/Seedream--style-available-brightgreen?style=flat-square&labelColor=0d9488" />
+  <img alt="Qwen-Image / Edit available" src="https://img.shields.io/badge/Qwen--Image%20%2F%20Edit-available-brightgreen?style=flat-square&labelColor=0d9488" />
+  <img alt="HunyuanImage-3.0 available" src="https://img.shields.io/badge/HunyuanImage--3.0-available-brightgreen?style=flat-square&labelColor=0d9488" />
+  <img alt="FLUX.1 / Kontext wanted" src="https://img.shields.io/badge/FLUX.1%20%2F%20Kontext-wanted-lightgrey?style=flat-square&labelColor=0d9488" />
+  <img alt="Stable Diffusion 3.5 wanted" src="https://img.shields.io/badge/Stable%20Diffusion%203.5-wanted-lightgrey?style=flat-square&labelColor=0d9488" />
+  <img alt="Kolors wanted" src="https://img.shields.io/badge/Kolors-wanted-lightgrey?style=flat-square&labelColor=0d9488" />
+  <img alt="PixArt-Sigma wanted" src="https://img.shields.io/badge/PixArt--Sigma-wanted-lightgrey?style=flat-square&labelColor=0d9488" />
+  <img alt="Sana wanted" src="https://img.shields.io/badge/Sana-wanted-lightgrey?style=flat-square&labelColor=0d9488" />
+  <img alt="Show-o2 wanted" src="https://img.shields.io/badge/Show--o2-wanted-lightgrey?style=flat-square&labelColor=d97706" />
+  <img alt="Emu3 wanted" src="https://img.shields.io/badge/Emu3-wanted-lightgrey?style=flat-square&labelColor=d97706" />
+  <img alt="Janus-Pro wanted" src="https://img.shields.io/badge/Janus--Pro-wanted-lightgrey?style=flat-square&labelColor=d97706" />
+  <img alt="BAGEL wanted" src="https://img.shields.io/badge/BAGEL-wanted-lightgrey?style=flat-square&labelColor=d97706" />
+  <img alt="OmniGen2 wanted" src="https://img.shields.io/badge/OmniGen2-wanted-lightgrey?style=flat-square&labelColor=d97706" />
 </p>
 
 <p align="center">
