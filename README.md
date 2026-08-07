@@ -95,79 +95,50 @@ The same service layer powers the CLI and HTTP API. See
 
 ## Model ecosystem
 
-One card = one model family. Name on the left, status on the right. Green = available at the
-stated evidence level; gray = open for community contribution. Prefer small PRs with a clear
-title prefix — see [CONTRIBUTING.md](CONTRIBUTING.md) (vLLM-style reception).
-
-### Video
-
-<table>
-  <tr>
-    <td width="50%"><table width="100%"><tr><td align="left"><b>MiniMax-H3</b></td><td align="right"><img alt="PE + adapter" src="https://img.shields.io/badge/available-PE%20%2B%20adapter-brightgreen"></td></tr></table></td>
-    <td width="50%"><table width="100%"><tr><td align="left"><b>LingBot Video</b></td><td align="right"><img alt="schema + runner" src="https://img.shields.io/badge/available-schema%20%2B%20runner-brightgreen"></td></tr></table></td>
-  </tr>
-  <tr>
-    <td><table width="100%"><tr><td align="left"><b>WAN</b></td><td align="right"><img alt="adapter" src="https://img.shields.io/badge/available-adapter-brightgreen"></td></tr></table></td>
-    <td><table width="100%"><tr><td align="left"><b>Wan2.2</b></td><td align="right"><img alt="wanted" src="https://img.shields.io/badge/wanted-community%20PR-lightgrey"></td></tr></table></td>
-  </tr>
-  <tr>
-    <td><table width="100%"><tr><td align="left"><b>HunyuanVideo</b></td><td align="right"><img alt="wanted" src="https://img.shields.io/badge/wanted-community%20PR-lightgrey"></td></tr></table></td>
-    <td><table width="100%"><tr><td align="left"><b>CogVideoX</b></td><td align="right"><img alt="wanted" src="https://img.shields.io/badge/wanted-community%20PR-lightgrey"></td></tr></table></td>
-  </tr>
-  <tr>
-    <td><table width="100%"><tr><td align="left"><b>LTX-Video</b></td><td align="right"><img alt="wanted" src="https://img.shields.io/badge/wanted-community%20PR-lightgrey"></td></tr></table></td>
-    <td><table width="100%"><tr><td align="left"><b>Mochi 1</b></td><td align="right"><img alt="wanted" src="https://img.shields.io/badge/wanted-community%20PR-lightgrey"></td></tr></table></td>
-  </tr>
-  <tr>
-    <td><table width="100%"><tr><td align="left"><b>Step-Video</b></td><td align="right"><img alt="wanted" src="https://img.shields.io/badge/wanted-community%20PR-lightgrey"></td></tr></table></td>
-    <td></td>
-  </tr>
-</table>
-
-### Image
-
-<table>
-  <tr>
-    <td width="50%"><table width="100%"><tr><td align="left"><b>Seedream-style</b></td><td align="right"><img alt="PE profile" src="https://img.shields.io/badge/available-PE%20profile-brightgreen"></td></tr></table></td>
-    <td width="50%"><table width="100%"><tr><td align="left"><b>Qwen-Image / Edit</b></td><td align="right"><img alt="PE + adapter" src="https://img.shields.io/badge/available-PE%20%2B%20adapter-brightgreen"></td></tr></table></td>
-  </tr>
-  <tr>
-    <td><table width="100%"><tr><td align="left"><b>HunyuanImage-3.0</b></td><td align="right"><img alt="adapter + A/B" src="https://img.shields.io/badge/available-adapter%20%2B%20A%2FB-brightgreen"></td></tr></table></td>
-    <td><table width="100%"><tr><td align="left"><b>FLUX.1 / Kontext</b></td><td align="right"><img alt="wanted" src="https://img.shields.io/badge/wanted-community%20PR-lightgrey"></td></tr></table></td>
-  </tr>
-  <tr>
-    <td><table width="100%"><tr><td align="left"><b>Stable Diffusion 3.5</b></td><td align="right"><img alt="wanted" src="https://img.shields.io/badge/wanted-community%20PR-lightgrey"></td></tr></table></td>
-    <td><table width="100%"><tr><td align="left"><b>Kolors</b></td><td align="right"><img alt="wanted" src="https://img.shields.io/badge/wanted-community%20PR-lightgrey"></td></tr></table></td>
-  </tr>
-  <tr>
-    <td><table width="100%"><tr><td align="left"><b>PixArt-Sigma</b></td><td align="right"><img alt="wanted" src="https://img.shields.io/badge/wanted-community%20PR-lightgrey"></td></tr></table></td>
-    <td><table width="100%"><tr><td align="left"><b>Sana</b></td><td align="right"><img alt="wanted" src="https://img.shields.io/badge/wanted-community%20PR-lightgrey"></td></tr></table></td>
-  </tr>
-</table>
-
-### Unified
-
-<table>
-  <tr>
-    <td width="50%"><table width="100%"><tr><td align="left"><b>Show-o2</b></td><td align="right"><img alt="wanted" src="https://img.shields.io/badge/wanted-community%20PR-lightgrey"></td></tr></table></td>
-    <td width="50%"><table width="100%"><tr><td align="left"><b>Emu3</b></td><td align="right"><img alt="wanted" src="https://img.shields.io/badge/wanted-community%20PR-lightgrey"></td></tr></table></td>
-  </tr>
-  <tr>
-    <td><table width="100%"><tr><td align="left"><b>Janus-Pro</b></td><td align="right"><img alt="wanted" src="https://img.shields.io/badge/wanted-community%20PR-lightgrey"></td></tr></table></td>
-    <td><table width="100%"><tr><td align="left"><b>BAGEL</b></td><td align="right"><img alt="wanted" src="https://img.shields.io/badge/wanted-community%20PR-lightgrey"></td></tr></table></td>
-  </tr>
-  <tr>
-    <td><table width="100%"><tr><td align="left"><b>OmniGen2</b></td><td align="right"><img alt="wanted" src="https://img.shields.io/badge/wanted-community%20PR-lightgrey"></td></tr></table></td>
-    <td></td>
-  </tr>
-</table>
+Compact shields: **left** = model name · **right** = `available` (green) / `wanted` (gray) ·
+**far-right color** = category. Prefer small PRs with a title prefix — see
+[CONTRIBUTING.md](CONTRIBUTING.md).
 
 <p align="center">
-  <a href="https://github.com/WayneJin0918/Omni-Rewriter/compare?quick_pull=1&title=%5BModel%5D%5BVideo%5D%20"><img src="https://img.shields.io/badge/Open%20PR-Video-111827?style=for-the-badge&labelColor=0f172a" alt="Open Video PR"></a>
+  <img alt="MiniMax-H3 available" src="https://img.shields.io/badge/MiniMax--H3-available-brightgreen?style=flat-square&labelColor=4f46e5" /><img alt="Video" src="https://img.shields.io/badge/-%20-4f46e5?style=flat-square" />
+  <img alt="LingBot Video available" src="https://img.shields.io/badge/LingBot%20Video-available-brightgreen?style=flat-square&labelColor=4f46e5" /><img alt="Video" src="https://img.shields.io/badge/-%20-4f46e5?style=flat-square" />
+  <img alt="WAN available" src="https://img.shields.io/badge/WAN-available-brightgreen?style=flat-square&labelColor=4f46e5" /><img alt="Video" src="https://img.shields.io/badge/-%20-4f46e5?style=flat-square" />
+  <img alt="Wan2.2 wanted" src="https://img.shields.io/badge/Wan2.2-wanted-lightgrey?style=flat-square&labelColor=4f46e5" /><img alt="Video" src="https://img.shields.io/badge/-%20-4f46e5?style=flat-square" />
+  <img alt="HunyuanVideo wanted" src="https://img.shields.io/badge/HunyuanVideo-wanted-lightgrey?style=flat-square&labelColor=4f46e5" /><img alt="Video" src="https://img.shields.io/badge/-%20-4f46e5?style=flat-square" />
+  <img alt="CogVideoX wanted" src="https://img.shields.io/badge/CogVideoX-wanted-lightgrey?style=flat-square&labelColor=4f46e5" /><img alt="Video" src="https://img.shields.io/badge/-%20-4f46e5?style=flat-square" />
+  <img alt="LTX-Video wanted" src="https://img.shields.io/badge/LTX--Video-wanted-lightgrey?style=flat-square&labelColor=4f46e5" /><img alt="Video" src="https://img.shields.io/badge/-%20-4f46e5?style=flat-square" />
+  <img alt="Mochi 1 wanted" src="https://img.shields.io/badge/Mochi%201-wanted-lightgrey?style=flat-square&labelColor=4f46e5" /><img alt="Video" src="https://img.shields.io/badge/-%20-4f46e5?style=flat-square" />
+  <img alt="Step-Video wanted" src="https://img.shields.io/badge/Step--Video-wanted-lightgrey?style=flat-square&labelColor=4f46e5" /><img alt="Video" src="https://img.shields.io/badge/-%20-4f46e5?style=flat-square" />
+  <img alt="Seedream-style available" src="https://img.shields.io/badge/Seedream--style-available-brightgreen?style=flat-square&labelColor=0d9488" /><img alt="Image" src="https://img.shields.io/badge/-%20-0d9488?style=flat-square" />
+  <img alt="Qwen-Image / Edit available" src="https://img.shields.io/badge/Qwen--Image%20%2F%20Edit-available-brightgreen?style=flat-square&labelColor=0d9488" /><img alt="Image" src="https://img.shields.io/badge/-%20-0d9488?style=flat-square" />
+  <img alt="HunyuanImage-3.0 available" src="https://img.shields.io/badge/HunyuanImage--3.0-available-brightgreen?style=flat-square&labelColor=0d9488" /><img alt="Image" src="https://img.shields.io/badge/-%20-0d9488?style=flat-square" />
+  <img alt="FLUX.1 / Kontext wanted" src="https://img.shields.io/badge/FLUX.1%20%2F%20Kontext-wanted-lightgrey?style=flat-square&labelColor=0d9488" /><img alt="Image" src="https://img.shields.io/badge/-%20-0d9488?style=flat-square" />
+  <img alt="Stable Diffusion 3.5 wanted" src="https://img.shields.io/badge/Stable%20Diffusion%203.5-wanted-lightgrey?style=flat-square&labelColor=0d9488" /><img alt="Image" src="https://img.shields.io/badge/-%20-0d9488?style=flat-square" />
+  <img alt="Kolors wanted" src="https://img.shields.io/badge/Kolors-wanted-lightgrey?style=flat-square&labelColor=0d9488" /><img alt="Image" src="https://img.shields.io/badge/-%20-0d9488?style=flat-square" />
+  <img alt="PixArt-Sigma wanted" src="https://img.shields.io/badge/PixArt--Sigma-wanted-lightgrey?style=flat-square&labelColor=0d9488" /><img alt="Image" src="https://img.shields.io/badge/-%20-0d9488?style=flat-square" />
+  <img alt="Sana wanted" src="https://img.shields.io/badge/Sana-wanted-lightgrey?style=flat-square&labelColor=0d9488" /><img alt="Image" src="https://img.shields.io/badge/-%20-0d9488?style=flat-square" />
+  <img alt="Show-o2 wanted" src="https://img.shields.io/badge/Show--o2-wanted-lightgrey?style=flat-square&labelColor=d97706" /><img alt="Unified" src="https://img.shields.io/badge/-%20-d97706?style=flat-square" />
+  <img alt="Emu3 wanted" src="https://img.shields.io/badge/Emu3-wanted-lightgrey?style=flat-square&labelColor=d97706" /><img alt="Unified" src="https://img.shields.io/badge/-%20-d97706?style=flat-square" />
+  <img alt="Janus-Pro wanted" src="https://img.shields.io/badge/Janus--Pro-wanted-lightgrey?style=flat-square&labelColor=d97706" /><img alt="Unified" src="https://img.shields.io/badge/-%20-d97706?style=flat-square" />
+  <img alt="BAGEL wanted" src="https://img.shields.io/badge/BAGEL-wanted-lightgrey?style=flat-square&labelColor=d97706" /><img alt="Unified" src="https://img.shields.io/badge/-%20-d97706?style=flat-square" />
+  <img alt="OmniGen2 wanted" src="https://img.shields.io/badge/OmniGen2-wanted-lightgrey?style=flat-square&labelColor=d97706" /><img alt="Unified" src="https://img.shields.io/badge/-%20-d97706?style=flat-square" />
+</p>
+
+<p align="center">
+  <img alt="available" src="https://img.shields.io/badge/status-available-brightgreen?style=flat-square" />
+  <img alt="wanted" src="https://img.shields.io/badge/status-wanted-lightgrey?style=flat-square" />
   &nbsp;
-  <a href="https://github.com/WayneJin0918/Omni-Rewriter/compare?quick_pull=1&title=%5BModel%5D%5BImage%5D%20"><img src="https://img.shields.io/badge/Open%20PR-Image-111827?style=for-the-badge&labelColor=0f172a" alt="Open Image PR"></a>
+  <img alt="Video category" src="https://img.shields.io/badge/category-Video-4f46e5?style=flat-square&labelColor=312e81" />
+  <img alt="Image category" src="https://img.shields.io/badge/category-Image-0d9488?style=flat-square&labelColor=115e59" />
+  <img alt="Unified category" src="https://img.shields.io/badge/category-Unified-d97706?style=flat-square&labelColor=92400e" />
+</p>
+
+<p align="center">
+  <a href="https://github.com/WayneJin0918/Omni-Rewriter/compare?quick_pull=1&title=%5BModel%5D%5BVideo%5D%20"><img src="https://img.shields.io/badge/Open%20PR-Video-4f46e5?style=for-the-badge&logo=github&logoColor=white&labelColor=111827" alt="Open Video PR"></a>
   &nbsp;
-  <a href="https://github.com/WayneJin0918/Omni-Rewriter/compare?quick_pull=1&title=%5BModel%5D%5BUnified%5D%20"><img src="https://img.shields.io/badge/Open%20PR-Unified-111827?style=for-the-badge&labelColor=0f172a" alt="Open Unified PR"></a>
+  <a href="https://github.com/WayneJin0918/Omni-Rewriter/compare?quick_pull=1&title=%5BModel%5D%5BImage%5D%20"><img src="https://img.shields.io/badge/Open%20PR-Image-0d9488?style=for-the-badge&logo=github&logoColor=white&labelColor=111827" alt="Open Image PR"></a>
+  &nbsp;
+  <a href="https://github.com/WayneJin0918/Omni-Rewriter/compare?quick_pull=1&title=%5BModel%5D%5BUnified%5D%20"><img src="https://img.shields.io/badge/Open%20PR-Unified-d97706?style=for-the-badge&logo=github&logoColor=white&labelColor=111827" alt="Open Unified PR"></a>
 </p>
 
 <p align="center"><sub>Use the <a href=".cursor/skills/omni-rewriter-model-contribution/SKILL.md">model contribution skill</a>. Evidence-scoped details: <a href="docs/generation-adapters.md">compatibility matrix</a> · <a href="docs/community-models.md">full backlog</a>.</sub></p>
