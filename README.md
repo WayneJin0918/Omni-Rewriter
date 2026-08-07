@@ -115,20 +115,16 @@ The same service layer powers the CLI and HTTP API. See
 
 <table cellspacing="0" cellpadding="0">
   <tr>
-    <th>Dialogue<br><sub>RAW</sub></th>
-    <th>Dialogue<br><sub>PE</sub></th>
-    <th>Product motion<br><sub>RAW</sub></th>
-    <th>Product motion<br><sub>PE</sub></th>
-    <th>Cinematic scene<br><sub>RAW</sub></th>
-    <th>Cinematic scene<br><sub>PE</sub></th>
+    <td width="50%" align="center"><img src="docs/assets/gallery/s01_dialogue_raw.gif" alt="RAW dialogue generation" width="100%"><br><sub>Dialogue · RAW</sub></td>
+    <td width="50%" align="center"><img src="docs/assets/gallery/s01_dialogue_pe.gif" alt="PE dialogue generation" width="100%"><br><sub>Dialogue · PE</sub></td>
   </tr>
   <tr>
-    <td><img src="docs/assets/gallery/s01_dialogue_raw.gif" alt="RAW dialogue generation" width="100%"></td>
-    <td><img src="docs/assets/gallery/s01_dialogue_pe.gif" alt="PE dialogue generation" width="100%"></td>
-    <td><img src="docs/assets/gallery/s06_sneaker_raw.gif" alt="RAW product generation" width="100%"></td>
-    <td><img src="docs/assets/gallery/s06_sneaker_pe.gif" alt="PE product generation" width="100%"></td>
-    <td><img src="docs/assets/gallery/s09_noir_raw.gif" alt="RAW cinematic generation" width="100%"></td>
-    <td><img src="docs/assets/gallery/s09_noir_pe.gif" alt="PE cinematic generation" width="100%"></td>
+    <td align="center"><img src="docs/assets/gallery/s06_sneaker_raw.gif" alt="RAW product generation" width="100%"><br><sub>Product motion · RAW</sub></td>
+    <td align="center"><img src="docs/assets/gallery/s06_sneaker_pe.gif" alt="PE product generation" width="100%"><br><sub>Product motion · PE</sub></td>
+  </tr>
+  <tr>
+    <td align="center"><img src="docs/assets/gallery/s09_noir_raw.gif" alt="RAW cinematic generation" width="100%"><br><sub>Cinematic scene · RAW</sub></td>
+    <td align="center"><img src="docs/assets/gallery/s09_noir_pe.gif" alt="PE cinematic generation" width="100%"><br><sub>Cinematic scene · PE</sub></td>
   </tr>
 </table>
 

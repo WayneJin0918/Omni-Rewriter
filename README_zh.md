@@ -113,20 +113,16 @@ CLI 与 HTTP API 共用相同 service 层。公共 schema 与完整生命周期�
 
 <table cellspacing="0" cellpadding="0">
   <tr>
-    <th>人物对话<br><sub>RAW</sub></th>
-    <th>人物对话<br><sub>PE</sub></th>
-    <th>产品运动<br><sub>RAW</sub></th>
-    <th>产品运动<br><sub>PE</sub></th>
-    <th>电影化场景<br><sub>RAW</sub></th>
-    <th>电影化场景<br><sub>PE</sub></th>
+    <td width="50%" align="center"><img src="docs/assets/gallery/s01_dialogue_raw.gif" alt="RAW 人物对话" width="100%"><br><sub>人物对话 · RAW</sub></td>
+    <td width="50%" align="center"><img src="docs/assets/gallery/s01_dialogue_pe.gif" alt="PE 人物对话" width="100%"><br><sub>人物对话 · PE</sub></td>
   </tr>
   <tr>
-    <td><img src="docs/assets/gallery/s01_dialogue_raw.gif" alt="RAW 人物对话" width="100%"></td>
-    <td><img src="docs/assets/gallery/s01_dialogue_pe.gif" alt="PE 人物对话" width="100%"></td>
-    <td><img src="docs/assets/gallery/s06_sneaker_raw.gif" alt="RAW 产品运动" width="100%"></td>
-    <td><img src="docs/assets/gallery/s06_sneaker_pe.gif" alt="PE 产品运动" width="100%"></td>
-    <td><img src="docs/assets/gallery/s09_noir_raw.gif" alt="RAW 电影化场景" width="100%"></td>
-    <td><img src="docs/assets/gallery/s09_noir_pe.gif" alt="PE 电影化场景" width="100%"></td>
+    <td align="center"><img src="docs/assets/gallery/s06_sneaker_raw.gif" alt="RAW 产品运动" width="100%"><br><sub>产品运动 · RAW</sub></td>
+    <td align="center"><img src="docs/assets/gallery/s06_sneaker_pe.gif" alt="PE 产品运动" width="100%"><br><sub>产品运动 · PE</sub></td>
+  </tr>
+  <tr>
+    <td align="center"><img src="docs/assets/gallery/s09_noir_raw.gif" alt="RAW 电影化场景" width="100%"><br><sub>电影化场景 · RAW</sub></td>
+    <td align="center"><img src="docs/assets/gallery/s09_noir_pe.gif" alt="PE 电影化场景" width="100%"><br><sub>电影化场景 · PE</sub></td>
   </tr>
 </table>
 
