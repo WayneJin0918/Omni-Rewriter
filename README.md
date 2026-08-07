@@ -25,12 +25,12 @@
 
 ## About
 
-Omni-Rewriter is an open, model-extensible **prompt expansion (PE)** framework. It transforms
-natural multimodal intent into typed, validated, generator-oriented text through a bounded
-`analyze → draft → validate → repair` loop.
+Omni-Rewriter is an open, model-extensible **prompt expansion (PE)** framework for image and video
+generation. It transforms natural multimodal intent into typed, validated, generator-oriented text
+through a bounded `analyze → draft → validate → repair` loop.
 
-H3 video, Seedream-style image generation, Qwen-Image-Edit, HunyuanImage, WAN, and LingBot are
-profiles or optional generation backends—not the framework boundary.
+The framework is deliberately model-agnostic: task schemas, validation, rendering, runtime
+adapters, and evaluation are separate extension layers.
 
 > [!IMPORTANT]
 > **Expand is not generate.** The core harness produces validated text/JSON. Model loading and
@@ -40,7 +40,7 @@ profiles or optional generation backends—not the framework boundary.
   <tr>
     <td width="33%" valign="top"><b>Typed & deterministic</b><br>Strict Pydantic contracts, task routing, structural validation, and bounded repair.</td>
     <td width="33%" valign="top"><b>Model-extensible</b><br>Profiles and renderers encode public prompt dialects without making them the architecture.</td>
-    <td width="33%" valign="top"><b>Runtime-optional</b><br>Expansion stays independent from SGLang, vLLM-Omni, vendor APIs, and heavyweight local inference.</td>
+    <td width="33%" valign="top"><b>Runtime-optional</b><br>Expansion remains independent from vendor APIs, online services, and heavyweight local inference.</td>
   </tr>
 </table>
 
@@ -63,13 +63,16 @@ flowchart LR
 The same service layer powers the CLI and HTTP API. See
 [architecture](docs/architecture.md) for public schemas and lifecycle details.
 
-## Supported profiles and integrations
+## Profiles and runtime integrations
+
+Like a serving framework's supported-model table, this section records concrete integrations
+without making them the project introduction or architecture boundary.
 
 | Family | Prompt expansion | Optional generation path | Status |
 | --- | --- | --- | --- |
 | **MiniMax H3** | T2VA, I2VA, FL2VA, L2VA, Ref2VA | MiniMax API or H3-specific local contract | PE + adapters |
 | **Seedream-style image** | T2I, I2I, image edit; prompt + ratio packing | Provider-specific runtime | PE |
-| **Qwen-Image / Edit** | Image and edit dialects | SGLang-compatible images API / local Diffusers | PE + adapter + A/B |
+| **Qwen-Image / Edit** | Image and edit dialects | SGLang-compatible images API / local Diffusers | PE + adapter + T2I A/B |
 | **HunyuanImage-3.0** | Image blueprint through the image profile | Documented custom vLLM fork / local runner | Adapter + A/B |
 | **WAN** | Video PE mapped through public request fields | SGLang or vLLM-Omni-style video route | Adapter; live support version-dependent |
 | **LingBot Video** | Typed structured caption | Independent local runner and optional two-stage rewriter | Schema + runner |
@@ -79,27 +82,44 @@ See the [compatibility matrix](docs/generation-adapters.md) for exact contracts 
 
 ## RAW vs PE gallery
 
-<p align="center"><b>Video · dialogue and action continuity</b></p>
+<p align="center"><b>Video prompt expansion</b></p>
 <table>
   <tr>
-    <th width="50%">RAW</th>
-    <th width="50%">Omni-Rewriter PE</th>
+    <th></th>
+    <th>Dialogue</th>
+    <th>Product motion</th>
+    <th>Cinematic scene</th>
   </tr>
   <tr>
-    <td><img src="docs/assets/gallery/s01_dialogue_raw.gif" alt="RAW dialogue generation" width="100%"></td>
-    <td><img src="docs/assets/gallery/s01_dialogue_pe.gif" alt="PE dialogue generation" width="100%"></td>
+    <th>RAW</th>
+    <td><img src="docs/assets/gallery/s01_dialogue_raw.gif" alt="RAW dialogue generation" width="240"></td>
+    <td><img src="docs/assets/gallery/s06_sneaker_raw.gif" alt="RAW product generation" width="240"></td>
+    <td><img src="docs/assets/gallery/s09_noir_raw.gif" alt="RAW cinematic generation" width="240"></td>
+  </tr>
+  <tr>
+    <th>PE</th>
+    <td><img src="docs/assets/gallery/s01_dialogue_pe.gif" alt="PE dialogue generation" width="240"></td>
+    <td><img src="docs/assets/gallery/s06_sneaker_pe.gif" alt="PE product generation" width="240"></td>
+    <td><img src="docs/assets/gallery/s09_noir_pe.gif" alt="PE cinematic generation" width="240"></td>
   </tr>
 </table>
 
-<p align="center"><b>Image · Qwen-Image-2512 text-to-image</b></p>
+<p align="center"><b>Image prompt expansion</b></p>
 <table>
   <tr>
-    <th width="50%">RAW</th>
-    <th width="50%">Omni-Rewriter PE</th>
+    <th></th>
+    <th>Poster composition</th>
+    <th>Architectural concept</th>
   </tr>
   <tr>
-    <td><img src="docs/assets/gallery/image/qwen_t2i_raw.webp" alt="RAW Qwen image" width="100%"></td>
-    <td><img src="docs/assets/gallery/image/qwen_t2i_pe.webp" alt="PE Qwen image" width="100%"></td>
+    <th>RAW</th>
+    <td><img src="docs/assets/gallery/image/qwen_t2i_raw.webp" alt="RAW poster generation" width="260"></td>
+    <td><img src="docs/assets/gallery/image/hunyuan_t2i_raw.webp" alt="RAW architecture generation" width="260"></td>
+  </tr>
+  <tr>
+    <th>PE</th>
+    <td><img src="docs/assets/gallery/image/qwen_t2i_pe.webp" alt="PE poster generation" width="260"></td>
+    <td><img src="docs/assets/gallery/image/hunyuan_t2i_pe.webp" alt="PE architecture generation" width="260"></td>
   </tr>
 </table>
 
@@ -108,20 +128,19 @@ See the [compatibility matrix](docs/generation-adapters.md) for exact contracts 
   <a href="docs/assets/gallery/image/index.html"><b>Open the image gallery with prompts</b></a>
 </p>
 
-<details>
-<summary><b>More representative comparisons</b></summary>
+### Seedream-style image PE contract
 
-<br>
+<table>
+  <tr>
+    <td align="center" width="25%"><b>3</b><br><sub>T2I · I2I · Edit routes</sub></td>
+    <td align="center" width="25%"><b>8 + reference</b><br><sub>validated ratio modes</sub></td>
+    <td align="center" width="25%"><b>1 envelope</b><br><sub>prompt + ratio output</sub></td>
+    <td align="center" width="25%"><b>bounded</b><br><sub>deterministic repair loop</sub></td>
+  </tr>
+</table>
 
-| Scenario | RAW | Omni-Rewriter PE |
-| --- | --- | --- |
-| Sneaker advertisement | ![RAW sneaker](docs/assets/gallery/s06_sneaker_raw.gif) | ![PE sneaker](docs/assets/gallery/s06_sneaker_pe.gif) |
-| Neon-rain film noir | ![RAW noir](docs/assets/gallery/s09_noir_raw.gif) | ![PE noir](docs/assets/gallery/s09_noir_pe.gif) |
-| Office-to-café phone call | ![RAW phone call](docs/assets/gallery/s10_phone_call_raw.gif) | ![PE phone call](docs/assets/gallery/s10_phone_call_pe.gif) |
-| Qwen-Image-Edit-2511 | ![RAW edit](docs/assets/gallery/image/qwen_edit_raw.webp) | ![PE edit](docs/assets/gallery/image/qwen_edit_pe.webp) |
-| HunyuanImage-3.0 | ![RAW Hunyuan](docs/assets/gallery/image/hunyuan_t2i_raw.webp) | ![PE Hunyuan](docs/assets/gallery/image/hunyuan_t2i_pe.webp) |
-
-</details>
+These are schema-level guarantees of the open PE profile, not claims about a private provider's
+internal implementation or downstream image quality.
 
 ## Quick start
 
@@ -170,7 +189,7 @@ For the shortest video, T2I, and image-edit paths, see
 ```text
 RewriteRequest
   └─ PE harness          analyze · draft · validate · repair
-      └─ dialect         H3 · Seedream-style · Qwen edit · LingBot caption
+      └─ dialect         task-specific prompt schema and renderer
           └─ adapter     optional HTTP client or local runner
               └─ eval    structural checks · RAW/PE experiments · galleries
 ```
