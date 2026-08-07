@@ -112,29 +112,35 @@ CLI 与 HTTP API 共用相同 service 层。公共 schema 与完整生命周期�
 
 ## 社区模型待办
 
-以下条目表示**欢迎贡献**，不表示已经支持。请先使用
-[模型贡献 Skill](.cursor/skills/omni-rewriter-model-contribution/SKILL.md) 生成代码与文档
-骨架；完整范围、公开上游链接和验收标准见[社区模型待办](docs/community-models_zh.md)。
+绿色条目代表已在对应证据范围内支持；灰色条目是开放的社区贡献目标。点击“发起贡献”进入
+PR 流程，然后使用[模型贡献 Skill](.cursor/skills/omni-rewriter-model-contribution/SKILL.md)
+生成代码与文档骨架。公开上游链接和验收标准见[社区模型待办](docs/community-models_zh.md)。
 
 ### Video｜视频
 
-`Wan2.2` · `HunyuanVideo` · `CogVideoX` · `LTX-Video` · `Mochi 1` · `Step-Video`
-
-可贡献任务路由、时间轴与运动语法、确定性校验、渲染器和样例；只有具备公开运行时证据时，
-才增加可选生成适配器。
+| 模型族 | 状态 | 下一步 |
+| --- | --- | --- |
+| MiniMax-H3 | ![已支持](https://img.shields.io/badge/已支持-PE%20%2B%20适配器-brightgreen) | 经过校验的视频 PE 和可选适配器 |
+| LingBot Video | ![已支持](https://img.shields.io/badge/已支持-数据结构%20%2B%20运行器-brightgreen) | 结构化描述和独立运行器 |
+| WAN | ![已支持](https://img.shields.io/badge/已支持-适配器-lightgreen) | 按版本记录的运行时兼容性 |
+| Wan2.2 · HunyuanVideo · CogVideoX · LTX-Video · Mochi 1 · Step-Video | ![待贡献](https://img.shields.io/badge/待贡献-社区%20PR-lightgrey) | [发起贡献](https://github.com/WayneJin0918/Omni-Rewriter/compare?quick_pull=1) |
 
 ### Image｜图像
 
-`FLUX.1 / Kontext` · `Stable Diffusion 3.5` · `Kolors` · `PixArt-Sigma` · `Sana`
-
-可贡献文生图/图生图/编辑规则、参考图保留语义、比例与分辨率约束、多语言样例和模型专用渲染。
+| 模型族 | 状态 | 下一步 |
+| --- | --- | --- |
+| Seedream 风格配置 | ![已支持](https://img.shields.io/badge/已支持-PE%20配置-brightgreen) | 文生图/图生图/编辑蓝图与比例契约 |
+| Qwen-Image / Edit | ![已支持](https://img.shields.io/badge/已支持-PE%20%2B%20适配器-brightgreen) | 适配器和可复现文生图 A/B |
+| HunyuanImage-3.0 | ![已支持](https://img.shields.io/badge/已支持-适配器%20%2B%20A%2FB-lightgreen) | 已记录的本地运行器 |
+| FLUX.1 / Kontext · Stable Diffusion 3.5 · Kolors · PixArt-Sigma · Sana | ![待贡献](https://img.shields.io/badge/待贡献-社区%20PR-lightgrey) | [发起贡献](https://github.com/WayneJin0918/Omni-Rewriter/compare?quick_pull=1) |
 
 ### Unified｜统一多模态
 
-`Show-o2` · `Emu3` · `Janus-Pro` · `BAGEL` · `OmniGen2`
+| 模型族 | 状态 | 下一步 |
+| --- | --- | --- |
+| Show-o2 · Emu3 · Janus-Pro · BAGEL · OmniGen2 | ![待贡献](https://img.shields.io/badge/待贡献-社区%20PR-lightgrey) | [发起贡献](https://github.com/WayneJin0918/Omni-Rewriter/compare?quick_pull=1) |
 
-需要明确区分理解与生成任务的路由。“统一多模态”不代表模型必然支持视频；每项已实现任务都
-必须由公开模型契约证明。
+统一多模态贡献必须明确区分理解与生成任务。共享 checkpoint 不代表已经支持所有模态。
 
 > [!TIP]
 > 一个聚焦的 PR 可以只提交配置档、校验器和样例。运行时适配器与端到端兼容性可以拆成后续

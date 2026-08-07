@@ -114,30 +114,38 @@ See the [compatibility matrix](docs/generation-adapters.md) for exact contracts 
 
 ## Community model backlog
 
-Each item below is an explicit **contribution wanted**, not a support claim. Start with the
-[model contribution skill](.cursor/skills/omni-rewriter-model-contribution/SKILL.md) and use the
-[full scoped backlog](docs/community-models.md) for acceptance criteria and public upstream links.
+Green entries are supported at the stated evidence level. Gray entries are open contribution
+targets: click **Start contribution** to open the PR flow, then use the
+[model contribution skill](.cursor/skills/omni-rewriter-model-contribution/SKILL.md). The
+[full scoped backlog](docs/community-models.md) defines the public upstream links and acceptance
+criteria.
 
 ### Video
 
-`Wan2.2` · `HunyuanVideo` · `CogVideoX` · `LTX-Video` · `Mochi 1` · `Step-Video`
-
-Contribute task routing, timeline/motion grammar, deterministic validation, renderers, fixtures,
-and—only with public runtime evidence—an optional generation adapter.
+| Model family | Status | Next step |
+| --- | --- | --- |
+| MiniMax-H3 | ![Supported](https://img.shields.io/badge/supported-PE%20%2B%20adapter-brightgreen) | Validated video PE and optional adapters |
+| LingBot Video | ![Supported](https://img.shields.io/badge/supported-schema%20%2B%20runner-brightgreen) | Structured caption and independent runner |
+| WAN | ![Supported](https://img.shields.io/badge/supported-adapter-lightgreen) | Version-scoped runtime compatibility |
+| Wan2.2 · HunyuanVideo · CogVideoX · LTX-Video · Mochi 1 · Step-Video | ![Wanted](https://img.shields.io/badge/wanted-community%20PR-lightgrey) | [Start contribution](https://github.com/WayneJin0918/Omni-Rewriter/compare?quick_pull=1) |
 
 ### Image
 
-`FLUX.1 / Kontext` · `Stable Diffusion 3.5` · `Kolors` · `PixArt-Sigma` · `Sana`
-
-Contribute T2I/I2I/edit rules, reference-preservation semantics, ratio/resolution constraints,
-multilingual fixtures, and model-specific rendering.
+| Model family | Status | Next step |
+| --- | --- | --- |
+| Seedream-style profile | ![Supported](https://img.shields.io/badge/supported-PE%20profile-brightgreen) | T2I/I2I/edit blueprint and ratio contract |
+| Qwen-Image / Edit | ![Supported](https://img.shields.io/badge/supported-PE%20%2B%20adapter-brightgreen) | Adapter and reproducible T2I A/B |
+| HunyuanImage-3.0 | ![Supported](https://img.shields.io/badge/supported-adapter%20%2B%20A%2FB-lightgreen) | Documented local runner |
+| FLUX.1 / Kontext · Stable Diffusion 3.5 · Kolors · PixArt-Sigma · Sana | ![Wanted](https://img.shields.io/badge/wanted-community%20PR-lightgrey) | [Start contribution](https://github.com/WayneJin0918/Omni-Rewriter/compare?quick_pull=1) |
 
 ### Unified
 
-`Show-o2` · `Emu3` · `Janus-Pro` · `BAGEL` · `OmniGen2`
+| Model family | Status | Next step |
+| --- | --- | --- |
+| Show-o2 · Emu3 · Janus-Pro · BAGEL · OmniGen2 | ![Wanted](https://img.shields.io/badge/wanted-community%20PR-lightgrey) | [Start contribution](https://github.com/WayneJin0918/Omni-Rewriter/compare?quick_pull=1) |
 
-Contribute explicit routing between understanding and generation modes. “Unified” does not imply
-video support; every implemented task must be proven from the public model contract.
+Unified contributions must explicitly route understanding and generation. A shared checkpoint does
+not prove support for every modality.
 
 > [!TIP]
 > A focused PR may add only the profile + validator + fixtures. Runtime adapters and live
