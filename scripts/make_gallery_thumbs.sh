@@ -13,10 +13,9 @@ MAX_TOTAL_BYTES=$((16 * 1024 * 1024))
 
 # Each entry is scenario:start_seconds. Prefer PE-win, high-complexity clips.
 SCENES=(
-  "s02_multilingual:2"
-  "s05_wok:6"
-  "s04_cyclist:5"
-  "s01_dialogue:4"
+  "s15_concert_crashzoom:3"
+  "s14_kitchen_stations:3"
+  "s13_rooftop_orbit:5"
 )
 
 command -v ffmpeg >/dev/null || {
@@ -61,6 +60,14 @@ rm -f \
   "$OUT/s09_noir_pe.gif" \
   "$OUT/s10_phone_call_raw.gif" \
   "$OUT/s10_phone_call_pe.gif" \
+  "$OUT/s01_dialogue_raw.gif" \
+  "$OUT/s01_dialogue_pe.gif" \
+  "$OUT/s02_multilingual_raw.gif" \
+  "$OUT/s02_multilingual_pe.gif" \
+  "$OUT/s04_cyclist_raw.gif" \
+  "$OUT/s04_cyclist_pe.gif" \
+  "$OUT/s05_wok_raw.gif" \
+  "$OUT/s05_wok_pe.gif" \
   "$OUT/readme_hero_raw_vs_pe.jpg"
 
 if (( total_bytes > MAX_TOTAL_BYTES )); then

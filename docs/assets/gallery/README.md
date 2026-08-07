@@ -4,20 +4,18 @@ Four-second, low-resolution GIF clips for RAW and prompt-expanded (PE) video
 comparisons. The files contain no burned-in labels or side-by-side composites;
 use HTML or Markdown labels around the separate assets.
 
-Current homepage set favors the strongest PE-win scenarios from the 15s H3 base
-experiment (VLM pairwise + visual review): bilingual kitchen dialogue, wok action
-sync, neon cyclist, and rainy bus-stop dialogue.
+Current homepage set favors the strongest complex camera / cut / dialogue PE-wins
+from the MiniMax-H3 15s stress scenarios (`s11–s16`): concert crash-zoom multicuts,
+kitchen whip-pan montage, and rooftop arc proposal.
 
 Exact asset paths:
 
-- `docs/assets/gallery/s02_multilingual_raw.gif`
-- `docs/assets/gallery/s02_multilingual_pe.gif`
-- `docs/assets/gallery/s05_wok_raw.gif`
-- `docs/assets/gallery/s05_wok_pe.gif`
-- `docs/assets/gallery/s04_cyclist_raw.gif`
-- `docs/assets/gallery/s04_cyclist_pe.gif`
-- `docs/assets/gallery/s01_dialogue_raw.gif`
-- `docs/assets/gallery/s01_dialogue_pe.gif`
+- `docs/assets/gallery/s15_concert_crashzoom_raw.gif`
+- `docs/assets/gallery/s15_concert_crashzoom_pe.gif`
+- `docs/assets/gallery/s14_kitchen_stations_raw.gif`
+- `docs/assets/gallery/s14_kitchen_stations_pe.gif`
+- `docs/assets/gallery/s13_rooftop_orbit_raw.gif`
+- `docs/assets/gallery/s13_rooftop_orbit_pe.gif`
 
 The standalone comparison page is `docs/assets/gallery/index.html`.
 For the fuller public landing page (pipeline + all published pairs), see

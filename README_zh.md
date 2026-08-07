@@ -143,20 +143,20 @@ CLI 与 HTTP API 共用相同 service 层。公共 schema 与完整生命周期�
 
 <table cellspacing="0" cellpadding="0">
   <tr>
-    <td width="50%" align="center"><img src="docs/assets/gallery/s02_multilingual_raw.gif" alt="RAW 双语拉面店对话" width="100%"><br><sub>双语厨房 · RAW</sub></td>
-    <td width="50%" align="center"><img src="docs/assets/gallery/s02_multilingual_pe.gif" alt="PE 双语拉面店对话" width="100%"><br><sub>双语厨房 · PE</sub></td>
+    <td width="50%" align="center"><img src="docs/assets/gallery/s15_concert_crashzoom_raw.gif" alt="RAW 演唱会急推多切" width="100%"><br><sub>演唱会急推多切 · RAW</sub></td>
+    <td width="50%" align="center"><img src="docs/assets/gallery/s15_concert_crashzoom_pe.gif" alt="PE 演唱会急推多切" width="100%"><br><sub>演唱会急推多切 · PE</sub></td>
   </tr>
   <tr>
-    <td align="center"><img src="docs/assets/gallery/s05_wok_raw.gif" alt="RAW 抛锅动作" width="100%"><br><sub>抛锅音画同步 · RAW</sub></td>
-    <td align="center"><img src="docs/assets/gallery/s05_wok_pe.gif" alt="PE 抛锅动作" width="100%"><br><sub>抛锅音画同步 · PE</sub></td>
+    <td align="center"><img src="docs/assets/gallery/s14_kitchen_stations_raw.gif" alt="RAW 厨房甩镜蒙太奇" width="100%"><br><sub>厨房甩镜蒙太奇 · RAW</sub></td>
+    <td align="center"><img src="docs/assets/gallery/s14_kitchen_stations_pe.gif" alt="PE 厨房甩镜蒙太奇" width="100%"><br><sub>厨房甩镜蒙太奇 · PE</sub></td>
   </tr>
   <tr>
-    <td align="center"><img src="docs/assets/gallery/s04_cyclist_raw.gif" alt="RAW 霓虹公路骑行" width="100%"><br><sub>霓虹骑行 · RAW</sub></td>
-    <td align="center"><img src="docs/assets/gallery/s04_cyclist_pe.gif" alt="PE 霓虹公路骑行" width="100%"><br><sub>霓虹骑行 · PE</sub></td>
+    <td align="center"><img src="docs/assets/gallery/s13_rooftop_orbit_raw.gif" alt="RAW 天台环绕求婚" width="100%"><br><sub>天台环绕求婚 · RAW</sub></td>
+    <td align="center"><img src="docs/assets/gallery/s13_rooftop_orbit_pe.gif" alt="PE 天台环绕求婚" width="100%"><br><sub>天台环绕求婚 · PE</sub></td>
   </tr>
 </table>
 
-<p align="center"><sub>当前视频配置：MiniMax-H3。首页优先展示 15s base 实验中 PE 优势最明显的片段。</sub><br>
+<p align="center"><sub>当前视频配置：MiniMax-H3。首页优先展示 15s 压力集（s11–s16）中运镜/剪辑/对白更复杂、PE 优势更明显的片段。</sub><br>
 <a href="docs/h3-pe-showcase/index.html"><b>H3 PE showcase →</b></a>
 ·
 <a href="docs/assets/gallery/index.html">精简 Gallery</a></p>

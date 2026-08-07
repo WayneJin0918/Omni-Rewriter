@@ -146,20 +146,20 @@ Compact shields: **left** = model name · **right** = `available` (green) / `wan
 
 <table cellspacing="0" cellpadding="0">
   <tr>
-    <td width="50%" align="center"><img src="docs/assets/gallery/s02_multilingual_raw.gif" alt="RAW bilingual ramen dialogue" width="100%"><br><sub>Bilingual kitchen · RAW</sub></td>
-    <td width="50%" align="center"><img src="docs/assets/gallery/s02_multilingual_pe.gif" alt="PE bilingual ramen dialogue" width="100%"><br><sub>Bilingual kitchen · PE</sub></td>
+    <td width="50%" align="center"><img src="docs/assets/gallery/s15_concert_crashzoom_raw.gif" alt="RAW arena concert crash-zoom" width="100%"><br><sub>Concert crash-zoom · RAW</sub></td>
+    <td width="50%" align="center"><img src="docs/assets/gallery/s15_concert_crashzoom_pe.gif" alt="PE arena concert crash-zoom" width="100%"><br><sub>Concert crash-zoom · PE</sub></td>
   </tr>
   <tr>
-    <td align="center"><img src="docs/assets/gallery/s05_wok_raw.gif" alt="RAW wok toss generation" width="100%"><br><sub>Wok action sync · RAW</sub></td>
-    <td align="center"><img src="docs/assets/gallery/s05_wok_pe.gif" alt="PE wok toss generation" width="100%"><br><sub>Wok action sync · PE</sub></td>
+    <td align="center"><img src="docs/assets/gallery/s14_kitchen_stations_raw.gif" alt="RAW kitchen whip-pan montage" width="100%"><br><sub>Kitchen whip-pan · RAW</sub></td>
+    <td align="center"><img src="docs/assets/gallery/s14_kitchen_stations_pe.gif" alt="PE kitchen whip-pan montage" width="100%"><br><sub>Kitchen whip-pan · PE</sub></td>
   </tr>
   <tr>
-    <td align="center"><img src="docs/assets/gallery/s04_cyclist_raw.gif" alt="RAW neon cyclist generation" width="100%"><br><sub>Neon cyclist · RAW</sub></td>
-    <td align="center"><img src="docs/assets/gallery/s04_cyclist_pe.gif" alt="PE neon cyclist generation" width="100%"><br><sub>Neon cyclist · PE</sub></td>
+    <td align="center"><img src="docs/assets/gallery/s13_rooftop_orbit_raw.gif" alt="RAW rooftop arc proposal" width="100%"><br><sub>Rooftop arc proposal · RAW</sub></td>
+    <td align="center"><img src="docs/assets/gallery/s13_rooftop_orbit_pe.gif" alt="PE rooftop arc proposal" width="100%"><br><sub>Rooftop arc proposal · PE</sub></td>
   </tr>
 </table>
 
-<p align="center"><sub>Current video profile: MiniMax-H3. Homepage picks are the strongest PE-win cases from the 15s base set.</sub><br>
+<p align="center"><sub>Current video profile: MiniMax-H3. Homepage picks are complex camera/cut/dialogue PE-wins from the 15s stress set (s11–s16).</sub><br>
 <a href="docs/h3-pe-showcase/index.html"><b>H3 PE showcase →</b></a>
 ·
 <a href="docs/assets/gallery/index.html">Compact gallery</a></p>
