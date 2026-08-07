@@ -1,5 +1,7 @@
 # Evaluation
 
+[中文](evaluation_zh.md) · [Documentation index](index.md)
+
 Omni-Rewriter's built-in evaluator measures deterministic structural conformance. It does not
 generate a video and is not a substitute for perceptual, semantic, safety, or human evaluation.
 

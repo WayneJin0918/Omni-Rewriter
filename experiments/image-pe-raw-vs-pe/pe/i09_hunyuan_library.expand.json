@@ -1,0 +1,10 @@
+{
+  "scenario_id": "i09_hunyuan_library",
+  "output": {
+    "task": "t2i",
+    "profile": "seedream",
+    "prompt": "A wide architectural concept image of a near-future public library at blue hour, a glass and pale-stone facade centered behind a broad pedestrian plaza, warm interior reading rooms visible through the glazing, restrained cyan wayfinding lights, small groups of visitors providing scale, and the exact illuminated entrance text “知识之光”, balanced 16:9 composition.",
+    "ratio": "16:9"
+  },
+  "source": "gold"
+}

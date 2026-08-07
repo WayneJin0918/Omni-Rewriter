@@ -6,7 +6,7 @@ No dotenv file is loaded and secret values are represented as ``SecretStr``.
 from __future__ import annotations
 
 import os
-from typing import Any, Callable, TypeVar
+from typing import Any, Callable, Literal, TypeVar, cast
 
 from pydantic import Field, SecretStr
 
@@ -57,6 +57,30 @@ class Settings(StrictModel):
     h3_poll_timeout: float = Field(default=900.0, gt=0)
     h3_max_download_bytes: int = Field(default=2 * 1024**3, gt=0)
 
+    image_base_url: str = "http://127.0.0.1:30010/v1"
+    image_api_key: SecretStr | None = None
+    image_model: str = "Qwen/Qwen-Image-2512"
+    image_timeout: float = Field(default=300.0, gt=0)
+    image_max_download_bytes: int = Field(default=64 * 1024**2, gt=0)
+    image_response_format: Literal["b64_json", "url"] = "b64_json"
+
+    video_base_url: str = "http://127.0.0.1:8091/v1"
+    video_api_key: SecretStr | None = None
+    video_timeout: float = Field(default=60.0, gt=0)
+    video_poll_interval: float = Field(default=2.0, gt=0)
+    video_poll_timeout: float = Field(default=900.0, gt=0)
+    video_max_download_bytes: int = Field(default=2 * 1024**3, gt=0)
+    video_max_reference_bytes: int = Field(default=32 * 1024**2, gt=0)
+    video_transport: Literal["json", "multipart"] = "multipart"
+    wan_model: str = "Wan-AI/Wan2.2-T2V-A14B"
+    wan_default_size: str = "832x480"
+
+    hunyuan_image_base_url: str = "http://127.0.0.1:8000/v1"
+    hunyuan_image_api_key: SecretStr | None = None
+    hunyuan_image_model: str = "vllm_hunyuan_image3"
+    hunyuan_image_timeout: float = Field(default=600.0, gt=0)
+    hunyuan_image_max_bytes: int = Field(default=64 * 1024**2, gt=0)
+
     minimax_api_key: SecretStr | None = None
     minimax_base_url: str = "https://api.minimax.io"
     minimax_timeout: float = Field(default=60.0, gt=0)
@@ -71,6 +95,9 @@ class Settings(StrictModel):
             "OMNI_WRITER_API_KEY"
         )
         h3_key = _optional("OMNI_WRITER_H3_API_KEY")
+        image_key = _optional("OMNI_WRITER_IMAGE_API_KEY")
+        video_key = _optional("OMNI_WRITER_VIDEO_API_KEY")
+        hunyuan_key = _optional("OMNI_WRITER_HUNYUAN_IMAGE_API_KEY")
         minimax_key = _optional("MINIMAX_API_KEY")
         max_tokens = _optional("OMNI_WRITER_MAX_TOKENS")
         temperature = _optional("OMNI_WRITER_TEMPERATURE")
@@ -100,6 +127,55 @@ class Settings(StrictModel):
             h3_poll_timeout=_env("OMNI_WRITER_H3_POLL_TIMEOUT", 900.0, float),
             h3_max_download_bytes=_env(
                 "OMNI_WRITER_H3_MAX_DOWNLOAD_BYTES", 2 * 1024**3, int
+            ),
+            image_base_url=os.environ.get(
+                "OMNI_WRITER_IMAGE_BASE_URL", "http://127.0.0.1:30010/v1"
+            ),
+            image_api_key=SecretStr(image_key) if image_key else None,
+            image_model=os.environ.get(
+                "OMNI_WRITER_IMAGE_MODEL", "Qwen/Qwen-Image-2512"
+            ),
+            image_timeout=_env("OMNI_WRITER_IMAGE_TIMEOUT", 300.0, float),
+            image_max_download_bytes=_env(
+                "OMNI_WRITER_IMAGE_MAX_DOWNLOAD_BYTES", 64 * 1024**2, int
+            ),
+            image_response_format=cast(
+                Literal["b64_json", "url"],
+                os.environ.get("OMNI_WRITER_IMAGE_RESPONSE_FORMAT", "b64_json"),
+            ),
+            video_base_url=os.environ.get(
+                "OMNI_WRITER_VIDEO_BASE_URL", "http://127.0.0.1:8091/v1"
+            ),
+            video_api_key=SecretStr(video_key) if video_key else None,
+            video_timeout=_env("OMNI_WRITER_VIDEO_TIMEOUT", 60.0, float),
+            video_poll_interval=_env("OMNI_WRITER_VIDEO_POLL_INTERVAL", 2.0, float),
+            video_poll_timeout=_env("OMNI_WRITER_VIDEO_POLL_TIMEOUT", 900.0, float),
+            video_max_download_bytes=_env(
+                "OMNI_WRITER_VIDEO_MAX_DOWNLOAD_BYTES", 2 * 1024**3, int
+            ),
+            video_max_reference_bytes=_env(
+                "OMNI_WRITER_VIDEO_MAX_REFERENCE_BYTES", 32 * 1024**2, int
+            ),
+            video_transport=cast(
+                Literal["json", "multipart"],
+                os.environ.get("OMNI_WRITER_VIDEO_TRANSPORT", "multipart"),
+            ),
+            wan_model=os.environ.get(
+                "OMNI_WRITER_WAN_MODEL", "Wan-AI/Wan2.2-T2V-A14B"
+            ),
+            wan_default_size=os.environ.get("OMNI_WRITER_WAN_DEFAULT_SIZE", "832x480"),
+            hunyuan_image_base_url=os.environ.get(
+                "OMNI_WRITER_HUNYUAN_IMAGE_BASE_URL", "http://127.0.0.1:8000/v1"
+            ),
+            hunyuan_image_api_key=SecretStr(hunyuan_key) if hunyuan_key else None,
+            hunyuan_image_model=os.environ.get(
+                "OMNI_WRITER_HUNYUAN_IMAGE_MODEL", "vllm_hunyuan_image3"
+            ),
+            hunyuan_image_timeout=_env(
+                "OMNI_WRITER_HUNYUAN_IMAGE_TIMEOUT", 600.0, float
+            ),
+            hunyuan_image_max_bytes=_env(
+                "OMNI_WRITER_HUNYUAN_IMAGE_MAX_BYTES", 64 * 1024**2, int
             ),
             minimax_api_key=SecretStr(minimax_key) if minimax_key else None,
             minimax_base_url=os.environ.get(
@@ -133,6 +209,48 @@ class Settings(StrictModel):
             poll_interval=self.h3_poll_interval,
             poll_timeout=self.h3_poll_timeout,
             max_download_bytes=self.h3_max_download_bytes,
+        )
+
+    def openai_images_client_config(self) -> Any:
+        from .adapters.openai_images import OpenAIImagesClientConfig
+
+        return OpenAIImagesClientConfig(
+            base_url=self.image_base_url,
+            api_key=self.image_api_key,
+            model=self.image_model,
+            timeout=self.image_timeout,
+            max_download_bytes=self.image_max_download_bytes,
+            response_format=self.image_response_format,
+        )
+
+    def omni_videos_client_config(self) -> Any:
+        from .adapters.omni_videos import OmniVideosClientConfig
+
+        return OmniVideosClientConfig(
+            base_url=self.video_base_url,
+            api_key=self.video_api_key,
+            timeout=self.video_timeout,
+            poll_interval=self.video_poll_interval,
+            poll_timeout=self.video_poll_timeout,
+            max_download_bytes=self.video_max_download_bytes,
+            max_reference_bytes=self.video_max_reference_bytes,
+            transport=self.video_transport,
+        )
+
+    def wan_omni_adapter(self) -> Any:
+        from .adapters.omni_videos import WanOmniAdapter
+
+        return WanOmniAdapter(model=self.wan_model, default_size=self.wan_default_size)
+
+    def hunyuan_image_client_config(self) -> Any:
+        from .adapters.hunyuan_image import HunyuanImageVLLMClientConfig
+
+        return HunyuanImageVLLMClientConfig(
+            base_url=self.hunyuan_image_base_url,
+            api_key=self.hunyuan_image_api_key,
+            model=self.hunyuan_image_model,
+            timeout=self.hunyuan_image_timeout,
+            max_image_bytes=self.hunyuan_image_max_bytes,
         )
 
     def minimax_client_config(self) -> Any:

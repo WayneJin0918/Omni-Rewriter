@@ -1,12 +1,12 @@
 {
   "experiment_id": "image-pe-raw-vs-pe",
-  "created_unix": 1786024853,
+  "created_unix": 1786028837,
   "modality": "image",
   "profiles": [
     "seedream",
     "qwen_image_edit"
   ],
-  "scenario_count": 8,
+  "scenario_count": 9,
   "arms": [
     "raw",
     "pe"

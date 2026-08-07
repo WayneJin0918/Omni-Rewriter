@@ -81,8 +81,11 @@ class MiniMaxClient:
     def build_context_payload(cls, request: RewriteRequest) -> dict[str, Any]:
         """Map all rewrite media to MiniMax condition objects."""
 
-        duration = int(request.duration_seconds)
-        if request.duration_seconds != duration or not 4 <= duration <= 15:
+        requested_duration = request.duration_seconds
+        if requested_duration is None:
+            raise BackendConfigurationError("MiniMax H3 requires a video RewriteRequest")
+        duration = int(requested_duration)
+        if requested_duration != duration or not 4 <= duration <= 15:
             raise BackendConfigurationError(
                 "MiniMax H3 duration must be an integer from 4 through 15"
             )

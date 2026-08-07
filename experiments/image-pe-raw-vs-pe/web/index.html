@@ -19,17 +19,19 @@ main { max-width:1400px; margin:0 auto; padding:8px 24px 48px; }
 .meta { color:var(--muted); font-size:.85rem; }
 .raw-prompt { background:#12181f; border-left:3px solid var(--accent); padding:10px 12px; border-radius:8px; }
 .pair { display:grid; grid-template-columns:1fr 1fr; gap:12px; }
+.visual-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); gap:12px; margin-top:12px; }
 @media (max-width:900px) { .pair { grid-template-columns:1fr; } }
 figcaption { color:var(--muted); margin-bottom:6px; font-size:.85rem; }
+img { display:block; width:100%; border-radius:8px; background:#0c1116; }
 pre { white-space:pre-wrap; word-break:break-word; background:#0c1116; padding:12px; border-radius:8px; min-height:120px; font-size:.86rem; }
 </style>
 </head>
 <body>
 <header class="top">
   <h1>Omni-Rewriter · Image PE</h1>
-  <p>Seedream + Qwen-Image-Edit dialects · RAW intent vs expanded blueprint · 8 cases</p>
+  <p>Seedream + Qwen-Image-Edit dialects · RAW intent vs expanded blueprint · 9 cases</p>
 </header>
-<nav><a href="#i01_neon_poster">i01_neon_poster</a><a href="#i02_product_square">i02_product_square</a><a href="#i03_ultrawide_banner">i03_ultrawide_banner</a><a href="#i04_phone_wallpaper">i04_phone_wallpaper</a><a href="#i05_latex_board">i05_latex_board</a><a href="#i06_edit_dress">i06_edit_dress</a><a href="#i07_edit_bg_swap">i07_edit_bg_swap</a><a href="#i08_i2i_style_merge">i08_i2i_style_merge</a></nav>
+<nav><a href="#i01_neon_poster">i01_neon_poster</a><a href="#i02_product_square">i02_product_square</a><a href="#i03_ultrawide_banner">i03_ultrawide_banner</a><a href="#i04_phone_wallpaper">i04_phone_wallpaper</a><a href="#i05_latex_board">i05_latex_board</a><a href="#i06_edit_dress">i06_edit_dress</a><a href="#i07_edit_bg_swap">i07_edit_bg_swap</a><a href="#i08_i2i_style_merge">i08_i2i_style_merge</a><a href="#i09_hunyuan_library">i09_hunyuan_library</a></nav>
 <main>
 <section class="card" id="i01_neon_poster">
   <header>
@@ -53,6 +55,16 @@ A cinematic rainy night storefront of a neon sushi shop, wet asphalt reflecting 
 </pre>
     </figure>
   </div>
+  <div class="visual-grid">
+    <figure>
+      <figcaption>RAW · Qwen-Image-2512</figcaption>
+      <img loading="lazy" src="/outputs/qwen_image_2512/raw.png" alt="RAW · Qwen-Image-2512"/>
+    </figure>
+    <figure>
+      <figcaption>PE · Qwen-Image-2512</figcaption>
+      <img loading="lazy" src="/outputs/qwen_image_2512/pe.png" alt="PE · Qwen-Image-2512"/>
+    </figure></div>
+
 </section>
 <section class="card" id="i02_product_square">
   <header>
@@ -76,6 +88,7 @@ A square studio product photograph of a matte black wireless earbud charging cas
 </pre>
     </figure>
   </div>
+
 </section>
 <section class="card" id="i03_ultrawide_banner">
   <header>
@@ -99,6 +112,7 @@ An ultra-wide dusk desert highway receding to the horizon, a single classic conv
 </pre>
     </figure>
   </div>
+
 </section>
 <section class="card" id="i04_phone_wallpaper">
   <header>
@@ -122,6 +136,7 @@ A tall misty bamboo forest with layered trunks fading into fog, a white crane st
 </pre>
     </figure>
   </div>
+
 </section>
 <section class="card" id="i05_latex_board">
   <header>
@@ -145,6 +160,7 @@ A classroom blackboard filling most of the frame with chalk writing that clearly
 </pre>
     </figure>
   </div>
+
 </section>
 <section class="card" id="i06_edit_dress">
   <header>
@@ -163,6 +179,20 @@ A classroom blackboard filling most of the frame with chalk writing that clearly
 </pre>
     </figure>
   </div>
+  <div class="visual-grid">
+    <figure>
+      <figcaption>Reference</figcaption>
+      <img loading="lazy" src="/outputs/qwen_image_edit_2511/reference.png" alt="Reference"/>
+    </figure>
+    <figure>
+      <figcaption>RAW edit · Qwen-Image-Edit-2511</figcaption>
+      <img loading="lazy" src="/outputs/qwen_image_edit_2511/raw.png" alt="RAW edit · Qwen-Image-Edit-2511"/>
+    </figure>
+    <figure>
+      <figcaption>PE edit · Qwen-Image-Edit-2511</figcaption>
+      <img loading="lazy" src="/outputs/qwen_image_edit_2511/pe.png" alt="PE edit · Qwen-Image-Edit-2511"/>
+    </figure></div>
+
 </section>
 <section class="card" id="i07_edit_bg_swap">
   <header>
@@ -181,6 +211,7 @@ A classroom blackboard filling most of the frame with chalk writing that clearly
 </pre>
     </figure>
   </div>
+
 </section>
 <section class="card" id="i08_i2i_style_merge">
   <header>
@@ -204,6 +235,40 @@ Preserve the subject identity and pose from image 1 while restyling the entire f
 </pre>
     </figure>
   </div>
+
+</section>
+<section class="card" id="i09_hunyuan_library">
+  <header>
+    <h2>i09_hunyuan_library <span class="cat">hunyuan_t2i</span></h2>
+    <p class="meta">task=<code>t2i</code> · profile=<code>seedream</code> · ratio=<code>16:9</code></p>
+    <p class="raw-prompt"><strong>RAW</strong> 一张未来感城市图书馆的横版概念图，中央写“知识之光”</p>
+  </header>
+  <div class="pair">
+    <figure>
+      <figcaption>RAW intent</figcaption>
+      <pre>一张未来感城市图书馆的横版概念图，中央写“知识之光”</pre>
+    </figure>
+    <figure>
+      <figcaption>PE Omni-Rewriter</figcaption>
+      <pre>&lt;prompt&gt;
+A wide architectural concept image of a near-future public library at blue hour, a glass and pale-stone facade centered behind a broad pedestrian plaza, warm interior reading rooms visible through the glazing, restrained cyan wayfinding lights, small groups of visitors providing scale, and the exact illuminated entrance text “知识之光”, balanced 16:9 composition.
+&lt;/prompt&gt;
+&lt;ratio&gt;
+16:9
+&lt;/ratio&gt;
+</pre>
+    </figure>
+  </div>
+  <div class="visual-grid">
+    <figure>
+      <figcaption>RAW · HunyuanImage-3.0</figcaption>
+      <img loading="lazy" src="/outputs/hunyuan_image_3/raw.png" alt="RAW · HunyuanImage-3.0"/>
+    </figure>
+    <figure>
+      <figcaption>PE · HunyuanImage-3.0</figcaption>
+      <img loading="lazy" src="/outputs/hunyuan_image_3/pe.png" alt="PE · HunyuanImage-3.0"/>
+    </figure></div>
+
 </section></main>
 </body>
 </html>

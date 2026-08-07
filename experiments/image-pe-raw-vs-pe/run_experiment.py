@@ -7,6 +7,8 @@ import argparse
 import asyncio
 import html
 import json
+import subprocess
+import sys
 import time
 from pathlib import Path
 from typing import Any
@@ -79,6 +81,13 @@ SCENARIOS: list[dict[str, Any]] = [
         "prompt": "Combine the subject from image 1 with the watercolor style of image 2, keep identity, soft paper texture",
         "needs_media": True,
         "media_count": 2,
+    },
+    {
+        "id": "i09_hunyuan_library",
+        "category": "hunyuan_t2i",
+        "profile": "seedream",
+        "task": "t2i",
+        "prompt": "一张未来感城市图书馆的横版概念图，中央写“知识之光”",
     },
 ]
 
@@ -164,6 +173,18 @@ GOLD_PE: dict[str, dict[str, Any]] = {
             "and gentle bleeding of washes without changing facial structure."
         ),
         "ratio": "[image 1]",
+    },
+    "i09_hunyuan_library": {
+        "task": "t2i",
+        "profile": "seedream",
+        "prompt": (
+            "A wide architectural concept image of a near-future public library at blue hour, "
+            "a glass and pale-stone facade centered behind a broad pedestrian plaza, warm interior "
+            "reading rooms visible through the glazing, restrained cyan wayfinding lights, small "
+            "groups of visitors providing scale, and the exact illuminated entrance text “知识之光”, "
+            "balanced 16:9 composition."
+        ),
+        "ratio": "16:9",
     },
 }
 
@@ -286,6 +307,19 @@ def build_compare_site() -> None:
             data = json.loads(pe_json.read_text(encoding="utf-8"))
             ratio = data.get("output", {}).get("ratio", "")
             profile = data.get("output", {}).get("profile", profile)
+        visuals = _visuals_for(sid)
+        visual_html = ""
+        if visuals:
+            figures = "".join(
+                f"""
+    <figure>
+      <figcaption>{html.escape(label)}</figcaption>
+      <img loading="lazy" src="{html.escape(src)}" alt="{html.escape(label)}"/>
+    </figure>"""
+                for label, src in visuals
+            )
+            visual_html = f'<div class="visual-grid">{figures}</div>'
+        visual_section = f"  {visual_html}\n" if visual_html else ""
         cards.append(
             f"""
 <section class="card" id="{html.escape(sid)}">
@@ -304,6 +338,7 @@ def build_compare_site() -> None:
       <pre>{html.escape(pe_text)}</pre>
     </figure>
   </div>
+{visual_section}
 </section>"""
         )
     page = f"""<!doctype html>
@@ -327,8 +362,10 @@ main {{ max-width:1400px; margin:0 auto; padding:8px 24px 48px; }}
 .meta {{ color:var(--muted); font-size:.85rem; }}
 .raw-prompt {{ background:#12181f; border-left:3px solid var(--accent); padding:10px 12px; border-radius:8px; }}
 .pair {{ display:grid; grid-template-columns:1fr 1fr; gap:12px; }}
+.visual-grid {{ display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); gap:12px; margin-top:12px; }}
 @media (max-width:900px) {{ .pair {{ grid-template-columns:1fr; }} }}
 figcaption {{ color:var(--muted); margin-bottom:6px; font-size:.85rem; }}
+img {{ display:block; width:100%; border-radius:8px; background:#0c1116; }}
 pre {{ white-space:pre-wrap; word-break:break-word; background:#0c1116; padding:12px; border-radius:8px; min-height:120px; font-size:.86rem; }}
 </style>
 </head>
@@ -351,6 +388,31 @@ pre {{ white-space:pre-wrap; word-break:break-word; background:#0c1116; padding:
     print(f"Wrote {ROOT / 'web' / 'index.html'}")
 
 
+def _visuals_for(sid: str) -> list[tuple[str, str]]:
+    """Return experiment-relative visual artifacts when real generation exists."""
+
+    candidates: dict[str, list[tuple[str, str]]] = {
+        "i01_neon_poster": [
+            ("RAW · Qwen-Image-2512", "/outputs/qwen_image_2512/raw.png"),
+            ("PE · Qwen-Image-2512", "/outputs/qwen_image_2512/pe.png"),
+        ],
+        "i06_edit_dress": [
+            ("Reference", "/outputs/qwen_image_edit_2511/reference.png"),
+            ("RAW edit · Qwen-Image-Edit-2511", "/outputs/qwen_image_edit_2511/raw.png"),
+            ("PE edit · Qwen-Image-Edit-2511", "/outputs/qwen_image_edit_2511/pe.png"),
+        ],
+        "i09_hunyuan_library": [
+            ("RAW · HunyuanImage-3.0", "/outputs/hunyuan_image_3/raw.png"),
+            ("PE · HunyuanImage-3.0", "/outputs/hunyuan_image_3/pe.png"),
+        ],
+    }
+    return [
+        (label, src)
+        for label, src in candidates.get(sid, [])
+        if (ROOT / src.removeprefix("/")).exists()
+    ]
+
+
 def validate_gold() -> None:
     for scene in SCENARIOS:
         path = ROOT / "pe" / f"{scene['id']}.expand.json"
@@ -368,12 +430,24 @@ def main() -> None:
     expand_p.add_argument("--model", default="Qwen3.5-122B-A10B")
     sub.add_parser("build-web")
     sub.add_parser("validate")
+    generate_p = sub.add_parser("generate")
+    generate_p.add_argument(
+        "--backend",
+        choices=("qwen-t2i", "qwen-edit", "hunyuan", "all"),
+        required=True,
+    )
     args = parser.parse_args()
     if args.command == "prepare":
         prepare()
     elif args.command == "expand":
         asyncio.run(expand_all(args.base_url, args.model))
     elif args.command == "build-web":
+        build_compare_site()
+    elif args.command == "generate":
+        subprocess.run(
+            [sys.executable, str(ROOT / "generate_local_ab.py"), args.backend],
+            check=True,
+        )
         build_compare_site()
     else:
         validate_gold()

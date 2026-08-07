@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Omni-Rewriter image RAW vs PE</title>
+  <style>
+    :root { color-scheme: dark; font-family: system-ui, sans-serif; }
+    body { max-width: 1280px; margin: 0 auto; padding: 24px; background: #10141a; color: #e8eef5; }
+    section { margin: 24px 0; padding: 18px; border: 1px solid #2a3542; border-radius: 12px; background: #1a222c; }
+    .grid { display: grid; grid-template-columns: repeat(auto-fit,minmax(260px,1fr)); gap: 14px; }
+    figure { margin: 0; }
+    figcaption { margin: 0 0 7px; color: #9aa7b5; }
+    img { width: 100%; display: block; border-radius: 8px; }
+    code { color: #72d69a; }
+    .prompt { color: #bac5d0; line-height: 1.45; }
+  </style>
+</head>
+<body>
+  <h1>Image RAW vs PE</h1>
+  <p>Real local runs. Captions are HTML; no labels are burned into image pixels.</p>
+  <section>
+    <h2>Qwen-Image-2512 · T2I</h2>
+    <p class="prompt"><code>RAW</code> 做一张横版海报，主标题写“夏日限定”，霓虹寿司店门口，雨夜反光地面，要有电影感</p>
+    <div class="grid">
+      <figure><figcaption>RAW prompt</figcaption><img src="qwen_t2i_raw.webp" alt="Qwen T2I RAW"></figure>
+      <figure><figcaption>Omni-Rewriter PE prompt</figcaption><img src="qwen_t2i_pe.webp" alt="Qwen T2I PE"></figure>
+    </div>
+  </section>
+  <section>
+    <h2>Qwen-Image-Edit-2511 · Edit</h2>
+    <p class="prompt"><code>RAW</code> 把她的白色裙子换成红色丝绒裙，其他都不变</p>
+    <div class="grid">
+      <figure><figcaption>Reference</figcaption><img src="qwen_edit_reference.webp" alt="Edit reference"></figure>
+      <figure><figcaption>RAW instruction</figcaption><img src="qwen_edit_raw.webp" alt="Qwen Edit RAW"></figure>
+      <figure><figcaption>Omni-Rewriter PE instruction</figcaption><img src="qwen_edit_pe.webp" alt="Qwen Edit PE"></figure>
+    </div>
+  </section>
+  <section>
+    <h2>HunyuanImage-3.0 · T2I</h2>
+    <p class="prompt"><code>RAW</code> 一张未来感城市图书馆的横版概念图，中央写“知识之光”</p>
+    <div class="grid">
+      <figure><figcaption>RAW prompt</figcaption><img src="hunyuan_t2i_raw.webp" alt="Hunyuan T2I RAW"></figure>
+      <figure><figcaption>Omni-Rewriter PE prompt</figcaption><img src="hunyuan_t2i_pe.webp" alt="Hunyuan T2I PE"></figure>
+    </div>
+  </section>
+</body>
+</html>

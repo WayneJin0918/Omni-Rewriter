@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Omni-Rewriter RAW vs PE video gallery</title>
+  <style>
+    :root {
+      color-scheme: light dark;
+      font-family: ui-sans-serif, system-ui, sans-serif;
+    }
+    body {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 2rem 1rem;
+    }
+    h1 {
+      margin-bottom: 0.4rem;
+    }
+    .scene {
+      margin: 2rem 0;
+    }
+    .pair {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 1rem;
+    }
+    figure {
+      margin: 0;
+    }
+    figcaption {
+      margin-bottom: 0.45rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+    }
+    img {
+      display: block;
+      width: 100%;
+      height: auto;
+      border-radius: 0.4rem;
+      background: #111;
+    }
+    @media (max-width: 620px) {
+      .pair {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <h1>RAW vs prompt-expanded video</h1>
+    <p>Each pair uses the same scenario and seed. Labels are HTML, outside the media.</p>
+
+    <section class="scene">
+      <h2>Rainy bus-stop dialogue</h2>
+      <div class="pair">
+        <figure><figcaption>RAW</figcaption><img src="s01_dialogue_raw.gif" alt="Raw generation of coworkers at a rainy bus stop"></figure>
+        <figure><figcaption>PE</figcaption><img src="s01_dialogue_pe.gif" alt="Prompt-expanded generation of coworkers at a rainy bus stop"></figure>
+      </div>
+    </section>
+
+    <section class="scene">
+      <h2>Sneaker advertisement</h2>
+      <div class="pair">
+        <figure><figcaption>RAW</figcaption><img src="s06_sneaker_raw.gif" alt="Raw sneaker advertisement generation"></figure>
+        <figure><figcaption>PE</figcaption><img src="s06_sneaker_pe.gif" alt="Prompt-expanded sneaker advertisement generation"></figure>
+      </div>
+    </section>
+
+    <section class="scene">
+      <h2>Neon-rain film noir</h2>
+      <div class="pair">
+        <figure><figcaption>RAW</figcaption><img src="s09_noir_raw.gif" alt="Raw film-noir detective generation"></figure>
+        <figure><figcaption>PE</figcaption><img src="s09_noir_pe.gif" alt="Prompt-expanded film-noir detective generation"></figure>
+      </div>
+    </section>
+
+    <section class="scene">
+      <h2>Office-to-café phone call</h2>
+      <div class="pair">
+        <figure><figcaption>RAW</figcaption><img src="s10_phone_call_raw.gif" alt="Raw phone-call scene generation"></figure>
+        <figure><figcaption>PE</figcaption><img src="s10_phone_call_pe.gif" alt="Prompt-expanded phone-call scene generation"></figure>
+      </div>
+    </section>
+  </main>
+</body>
+</html>
