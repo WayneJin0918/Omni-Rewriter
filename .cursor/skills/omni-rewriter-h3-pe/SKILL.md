@@ -1,19 +1,30 @@
 ---
 name: omni-rewriter-h3-pe
 description: >-
-  Expand user video/image intents into Omni-Rewriter validated PE for MiniMax-H3
-  (t2va/i2va/fl2va/l2va/ref2va) and Seedream / Qwen-Image-Edit image dialects.
-  Use when writing prompts.py rules, RewriteRequest fixtures, PE repairs, or
-  comparing raw vs expanded outputs.
+  Extend Omni-Rewriter's validated prompt-expansion framework and its H3 video
+  and Seedream / Qwen-Image-Edit image profiles. Use when writing profile rules,
+  RewriteRequest fixtures, PE repairs, renderers, adapters, or raw-vs-expanded
+  comparisons.
 ---
 
 # Omni-Rewriter PE skill
 
 ## Mission
 
-Omni-Rewriter bridges the gap between **model demos / marketing / private Context-IR** and what
-open or public APIs actually need: typed, validated, generator-ready prompts. Prefer harness
-improvements (schema, validators, repairs, dialects) over claiming to reverse-engineer vendors.
+Omni-Rewriter is a model-extensible PE framework: transport-neutral intent → typed profile →
+deterministic validation/bounded repair → dialect render → optional explicit generation adapter.
+H3 and the initial image dialects are profiles, not framework limits. Prefer schema, validators,
+repairs, renderers, and public contracts over claims about private vendor internals.
+
+## Framework rules
+
+1. **Expand is not generate.** Expansion returns validated text/JSON; adapters and independent
+   runners are opt-in consumers.
+2. A PE profile does not prove generation-runtime compatibility.
+3. Cite public runtime/API evidence, pin tested versions, and label untested paths unverified.
+4. Do not treat stock vLLM, model-specific vLLM forks, and vLLM-Omni as interchangeable.
+5. Preserve transport-neutral public contracts and keep model-specific mapping at profile/adapter
+   boundaries.
 
 ## When expanding video (H3)
 
@@ -38,6 +49,16 @@ Source skill archives: `docs/references/jahnson-h3-skill-{t2va,fl2va,ref2va}.txt
 4. Preserve on-canvas quoted text exactly; match quote style to instruction language.
 
 See `docs/image-pe.md`.
+
+## Runtime evidence
+
+- Qwen-Image-2512: native SGLang-Diffusion registration.
+- HunyuanImage-3.0: upstream model-specific vLLM fork.
+- Wan: provider Omni-style video APIs.
+- LingBot-World: independent upstream runner.
+- vLLM-Omni model-family claims: unverified here until an end-to-end repository test exists.
+
+Use `docs/generation-adapters.md` for evidence links and wording.
 
 ## Repo contribution norms
 

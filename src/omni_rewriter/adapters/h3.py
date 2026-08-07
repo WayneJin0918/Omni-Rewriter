@@ -77,8 +77,11 @@ class H3Client:
         model: str | None = None,
         extra: Mapping[str, Any] | None = None,
     ) -> dict[str, Any]:
-        duration = int(request.duration_seconds)
-        if request.duration_seconds != duration or not 4 <= duration <= 15:
+        requested_duration = request.duration_seconds
+        if requested_duration is None:
+            raise BackendConfigurationError("H3 requires a video RewriteRequest")
+        duration = int(requested_duration)
+        if requested_duration != duration or not 4 <= duration <= 15:
             raise BackendConfigurationError(
                 "H3 duration must be an integer from 4 through 15 seconds"
             )

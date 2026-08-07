@@ -1,21 +1,28 @@
 # Roadmap
 
-Current Omni-Rewriter ships as an **agent harness**: typed schemas, deterministic validation,
-and bounded LLM repairs. This already covers **video (H3)** and **image (Seedream /
-Qwen-Image-Edit dialects)** prompt expansion.
+Current Omni-Rewriter ships as a general **prompt-expansion framework**: transport-neutral
+requests, typed profile outputs, deterministic validation, dialect rendering, and bounded LLM
+repairs. H3 video and Seedream/Qwen-Image-Edit-style image PE are its first profiles.
 
-The project exists to **bridge demos / marketing / private Context-IR** and what open or public
-generators actually need. Community contributions are welcome — see [CONTRIBUTING.md](CONTRIBUTING.md).
+The project helps bridge polished demos and the explicit prompt contracts required by public/open
+generators without claiming private Context-IR parity. Expansion and generation remain separate.
+Community contributions are welcome — see [CONTRIBUTING.md](CONTRIBUTING.md).
 
 ## Near-term (maintainers)
 
 - [x] Ingest public H3 skill contracts (`docs/references/jahnson-h3-skill-*.txt`) into PE rules,
       harness docs, and Cursor skills.
-- [x] Ship low-res RAW vs PE gallery stills on the GitHub homepage.
+- [x] Ship low-res RAW vs PE gallery media on the GitHub homepage.
 - [x] Add CONTRIBUTING / PR / issue templates / CODE_OF_CONDUCT / SECURITY.
-- [ ] Wire optional generation adapters for Seedream / Qwen-Image / Qwen-Image-Edit APIs
-      (expand ≠ generate, same pattern as H3 / MiniMax adapters).
-- [ ] Expand `experiments/image-pe-raw-vs-pe` with real image A/B once a generator is available.
+- [ ] Define a stable profile/renderer extension interface for model families beyond H3 and the
+      initial image dialects.
+- [x] Add opt-in OpenAI-compatible Qwen image generation, Hunyuan custom-vLLM, Omni video/WAN,
+      and independent LingBot adapters without coupling them to `expand`.
+- [x] Add mock contract tests for image/video submit, polling, base64/URL decoding, download
+      limits, WAN mapping, Hunyuan extension fields, and LingBot subprocess/rewriter behavior.
+- [x] Expand `experiments/image-pe-raw-vs-pe` with reproducible Qwen T2I/Edit and Hunyuan A/B.
+- [ ] Add a provider-specific Seedream generation adapter after a public stable contract is chosen.
+- [ ] Run live SGLang/vLLM-Omni WAN compatibility matrices across pinned runtime releases.
 - [ ] Finish camera/cut stress video set (`s11`–`s16`) expand + generate against H3.
 - [ ] Strengthen image validators for quote-language consistency (Chinese `“”` vs English `""`).
 
@@ -27,7 +34,8 @@ generators actually need. Community contributions are welcome — see [CONTRIBUT
       H3 structural conformance, lip-sync / cut adherence judges, image aesthetic + instruction
       following judges.
 - [ ] Add more image dialects: Flux, SD3, Ideogram, Kling image, Midjourney-style packing.
-- [ ] Add more video dialects beyond MiniMax-H3 Base / Ref.
+- [ ] Add more video/world-model dialects beyond MiniMax-H3 Base / Ref, including Wan and LingBot
+      profiles driven by public contracts.
 - [ ] Multilingual eval suites and public leaderboard hooks.
 - [ ] Streaming expand API and batch JSONL expand CLI.
 - [ ] Safer media sandboxing for untrusted reference images in shared deployments.

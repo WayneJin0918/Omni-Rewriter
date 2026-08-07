@@ -1,7 +1,13 @@
 # Image PE (Seedream / Qwen-Image-Edit)
 
-Omni-Rewriter expands image intents with the same agent harness used for H3 video:
+[中文](image-pe_zh.md) · [Framework architecture](architecture.md)
+
+Image PE is a profile family in the general Omni-Rewriter framework. It uses the same lifecycle as
+H3 video:
 analyze → draft → deterministic validate → bounded repair.
+
+The profile outputs prompt text and metadata; it does not run Seedream, Qwen-Image, SGLang, or any
+other image generator. Public prompt shapes do not establish parity with private model internals.
 
 ## Tasks
 
