@@ -2,8 +2,9 @@
 
 [中文索引](index_zh.md) · [Project README](../README.md)
 
-Omni-Rewriter is a typed, validated prompt-expansion framework for multimodal generation. It
-expands intent into a target PE dialect; media generation remains an explicit, separate step.
+Omni-Rewriter's current open-source release is a typed, validated **agentic prompt-expansion
+harness** for multimodal generation. It expands intent into a target PE dialect; media generation
+remains an explicit, separate step.
 
 ## Start here
 
@@ -32,4 +33,5 @@ expands intent into a target PE dialect; media generation remains an explicit, s
 
 The framework provides schemas, analysis/draft/repair orchestration, deterministic validation, and
 dialect rendering. A PE profile does not imply a bundled checkpoint or compatible generation
-runtime. Omni-Rewriter does not claim access to or parity with private vendor Context-IR systems.
+runtime. Omni-Rewriter uses public contracts to help the community bridge polished demos, public
+APIs, and reproducible deployment workflows.

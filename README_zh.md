@@ -1,9 +1,10 @@
 <div align="center">
   <img src="Logo.png" alt="Omni-Rewriter" width="560">
 
-  <p><strong>面向图像与视频生成的强类型、可校验提示词扩写框架。</strong></p>
-  <p>将自然语言意图与多模态参考转换成生成器可用的提示词，同时保持扩写与推理解耦。</p>
+  <p><strong>面向图像与视频生成的开源 Agentic Prompt Expansion Harness。</strong></p>
+  <p>通过有界 AI Agent 工作流，将自然语言意图转换为经过校验、可直接交给生成器的提示词。</p>
 
+  [![Agent Harness](https://img.shields.io/badge/Agentic-PE%20Harness-7C3AED)](docs/architecture_zh.md)
   [![CI](https://github.com/WayneJin0918/Omni-Rewriter/actions/workflows/ci.yml/badge.svg)](https://github.com/WayneJin0918/Omni-Rewriter/actions/workflows/ci.yml)
   [![Python](https://img.shields.io/badge/python-3.11%2B-3776AB?logo=python&logoColor=white)](pyproject.toml)
   [![License](https://img.shields.io/github/license/WayneJin0918/Omni-Rewriter)](LICENSE)
@@ -25,17 +26,21 @@
 
 ## 最新动态
 
-- **2026-08 — MiniMax-H3：**新增经过校验的 H3 视频提示词扩写配置和可选适配器。上游项目见
-  [MiniMax-H3 官方仓库](https://github.com/MiniMax-AI/MiniMax-H3/tree/main)。
+- **2026-08 — H3 工作流更新：**更新 H3 视频 PE 工作流中的时间轴、运镜、对白和有界修复
+  规则，参考 [MiniMax-H3 公开项目](https://github.com/MiniMax-AI/MiniMax-H3/tree/main)。
 
 ## 项目简介
 
-Omni-Rewriter 是一个开放、面向多模型扩展的**图像与视频提示词扩写（PE）框架**。它通过
-有限次数的 `analyze → draft → validate → repair`，把自然语言意图与多模态参考转换为
-强类型、经过校验、面向生成器的中间文本。
+Omni-Rewriter 是一个开放、面向多模型扩展的**图像与视频 Agentic Prompt Expansion（PE）
+Harness**。它通过有界 `analyze → draft → validate → repair` Agent 循环，把自然语言意图
+与多模态参考转换为强类型、经过校验、面向生成器的中间文本。
 
 框架本身不绑定具体模型：任务结构、校验规则、方言渲染、运行时适配器与评测都是彼此独立的
 扩展层。
+
+> [!NOTE]
+> **当前开源版本：Agent Harness。** 现阶段提供 Agent 编排、强类型契约、确定性校验与有界
+> 修复；专用 SFT/RL 扩写模型仍属于社区路线图。
 
 > [!IMPORTANT]
 > **扩写不等于生成。** 核心流程只输出经过校验的文本或 JSON。只有应用显式调用适配器或
@@ -43,7 +48,7 @@ Omni-Rewriter 是一个开放、面向多模型扩展的**图像与视频提示�
 
 <table>
   <tr>
-    <td width="33%" valign="top"><b>强类型、可校验</b><br>严格的数据契约、任务路由、结构校验与有限次修复。</td>
+    <td width="33%" valign="top"><b>Agent 驱动、有界执行</b><br>在严格契约和确定性护栏下完成分析、起草、校验与修复。</td>
     <td width="33%" valign="top"><b>面向多模型扩展</b><br>配置档与渲染器描述公开提示词方言，但不将其固化为架构边界。</td>
     <td width="33%" valign="top"><b>与运行时解耦</b><br>提示词扩写不依赖厂商 API、在线服务或重型本地推理环境。</td>
   </tr>
@@ -91,14 +96,14 @@ CLI 与 HTTP API 共用相同 service 层。公共 schema 与完整生命周期�
 
 <br>
 
-| 模型族 | 提示词扩写 | 可选生成路径 | 状态 |
-| --- | --- | --- | --- |
-| **MiniMax H3** | T2VA、I2VA、FL2VA、L2VA、Ref2VA | MiniMax API 或 H3 专用本地契约 | 提示词扩写 + 适配器 |
-| **前沿闭源图像模型** | 文生图、图生图、图像编辑；提示词 + 比例封装 | 由服务商提供运行时 | 提示词扩写 |
-| **Qwen-Image / Edit** | 图像生成与编辑方言 | 兼容 SGLang 的图像接口 / 本地 Diffusers | PE + 适配器 + 文生图 A/B |
-| **HunyuanImage-3.0** | 通过通用图像配置生成视觉蓝图 | 已记录的定制 vLLM 分支 / 本地运行器 | 适配器 + A/B |
-| **WAN** | 通过公开请求字段映射视频扩写结果 | SGLang 或 vLLM-Omni 风格视频接口 | 适配器；在线兼容性取决于版本 |
-| **LingBot Video** | 强类型结构化描述 | 独立本地运行器与可选两阶段扩写器 | 数据结构 + 本地运行器 |
+| 模态 | 模型族 | 提示词扩写 | 可选生成路径 | 状态 |
+| --- | --- | --- | --- | --- |
+| 视频 | **MiniMax-H3** | T2VA、I2VA、FL2VA、L2VA、Ref2VA | MiniMax API 或 H3 专用本地契约 | 提示词扩写 + 适配器 |
+| 视频 | **LingBot Video** | 强类型结构化描述 | 独立本地运行器与可选两阶段扩写器 | 数据结构 + 本地运行器 |
+| 视频 | **WAN** | 通过公开请求字段映射视频扩写结果 | SGLang 或 vLLM-Omni 风格视频接口 | 适配器；在线兼容性取决于版本 |
+| 图像 | **Seedream 风格前沿图像配置** | 文生图、图生图、图像编辑；提示词 + 比例封装 | 由服务商提供运行时 | 提示词扩写 |
+| 图像 | **Qwen-Image / Edit** | 图像生成与编辑方言 | 兼容 SGLang 的图像接口 / 本地 Diffusers | PE + 适配器 + 文生图 A/B |
+| 图像 | **HunyuanImage-3.0** | 通过通用图像配置生成视觉蓝图 | 已记录的定制 vLLM 分支 / 本地运行器 | 适配器 + A/B |
 
 运行时支持只按公开证据和实际测试结果声明。具备某种提示词配置，并不表示已经证明端到端生成
 兼容。精确契约与限制见[兼容性矩阵](docs/generation-adapters_zh.md)。
@@ -159,22 +164,19 @@ CLI 与 HTTP API 共用相同 service 层。公共 schema 与完整生命周期�
   </tr>
 </table>
 
-<p align="center"><b>图像提示词扩写</b></p>
+<p align="center"><b>图像提示词扩写 · 与视频相同宽度的 RAW / PE 对比</b></p>
 <table>
   <tr>
     <th></th>
-    <th>海报构图</th>
-    <th>建筑概念图</th>
+    <th>Qwen-Image 文生图 · 海报构图</th>
   </tr>
   <tr>
     <th>RAW</th>
-    <td><img src="docs/assets/gallery/image/qwen_t2i_raw.webp" alt="RAW 海报" width="260"></td>
-    <td><img src="docs/assets/gallery/image/hunyuan_t2i_raw.webp" alt="RAW 建筑概念图" width="260"></td>
+    <td><img src="docs/assets/gallery/image/qwen_t2i_raw.webp" alt="RAW Qwen-Image 海报" width="240"></td>
   </tr>
   <tr>
     <th>PE</th>
-    <td><img src="docs/assets/gallery/image/qwen_t2i_pe.webp" alt="PE 海报" width="260"></td>
-    <td><img src="docs/assets/gallery/image/hunyuan_t2i_pe.webp" alt="PE 建筑概念图" width="260"></td>
+    <td><img src="docs/assets/gallery/image/qwen_t2i_pe.webp" alt="PE Qwen-Image 海报" width="240"></td>
   </tr>
 </table>
 
@@ -183,7 +185,14 @@ CLI 与 HTTP API 共用相同 service 层。公共 schema 与完整生命周期�
   <a href="docs/assets/gallery/image/index.html"><b>打开含提示词的图像 Gallery</b></a>
 </p>
 
-### 前沿闭源图像模型 PE 契约
+### Seedream 风格图像 PE KPI
+
+<table>
+  <tr>
+    <td width="240"><img src="docs/assets/gallery/image/seedream_profile_kpi.svg" alt="Seedream 风格提示词扩写 KPI" width="240"></td>
+    <td valign="middle"><b>开源配置档的结构保证</b><br><sub>单段视觉蓝图、经过校验的比例选择、画面文字原样保留、明确的参考图操作，以及有界修复。</sub><br><br><sub>这是提示词配置的 KPI，不是闭源服务生成的图片。待存在稳定、可公开复现的推理契约后，再在完整 Gallery 中补充服务商 A/B。</sub></td>
+  </tr>
+</table>
 
 <table>
   <tr>
@@ -281,9 +290,9 @@ python -m build
 
 ## 范围与许可
 
-Omni-Rewriter 是独立的兼容性项目，不声称复刻私有 Context-IR 或其他未公开厂商行为。
-已实现的提示词配置只依据公开契约与示例，其中 Seedream 仅作为前沿闭源图像模型的一个例子；
-未经测试的运行时兼容性会明确标记为“未验证”。
+Omni-Rewriter 并非为了复现闭源系统的未公开行为，而是依据公开契约和可复现实验，帮助社区
+弥合产品演示、公开 API 与实际部署流程之间的差距。未经测试的运行时兼容性会明确标记为
+“未验证”。
 
 源码使用 [Apache License 2.0](LICENSE)。第三方模型、服务、文档与名称遵循各自条款。
 安全说明见 [SECURITY.md](SECURITY.md)。

@@ -4,9 +4,10 @@ Current Omni-Rewriter ships as a general **prompt-expansion framework**: transpo
 requests, typed profile outputs, deterministic validation, dialect rendering, and bounded LLM
 repairs. H3 video and Seedream/Qwen-Image-Edit-style image PE are its first profiles.
 
-The project helps bridge polished demos and the explicit prompt contracts required by public/open
-generators without claiming private Context-IR parity. Expansion and generation remain separate.
-Community contributions are welcome — see [CONTRIBUTING.md](CONTRIBUTING.md).
+The project helps the community bridge polished demos and the explicit prompt contracts required
+by public/open generators. It relies on public evidence rather than attempting to reproduce
+undisclosed closed-source behavior. Expansion and generation remain separate. Community
+contributions are welcome — see [CONTRIBUTING.md](CONTRIBUTING.md).
 
 ## Near-term (maintainers)
 

@@ -3,8 +3,8 @@
 [English](h3-pe-harness.md) · [框架架构](architecture_zh.md)
 
 H3 是 Omni-Rewriter 通用 Prompt Expansion 框架中的一个视频 profile。它把口语化视频意图
-转换成类型化 H3-oriented 文本，并执行确定性语法检查与有界修复。支持该 profile 不表示自动
-生成视频、官方 MiniMax 身份，或与私有 Context-IR 等价。
+转换成类型化 H3-oriented 文本，并执行确定性语法检查与有界修复。支持该 profile 不表示
+自动生成视频或官方厂商身份；它为社区提供从公开示例和 API 到可复现提示词的桥梁。
 
 ```mermaid
 flowchart TD

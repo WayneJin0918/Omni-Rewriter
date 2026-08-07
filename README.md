@@ -1,9 +1,10 @@
 <div align="center">
   <img src="Logo.png" alt="Omni-Rewriter" width="560">
 
-  <p><strong>A typed, validated prompt-expansion framework for multimodal generation.</strong></p>
-  <p>Turn everyday generation intent into model-ready video and image prompts—without coupling expansion to inference.</p>
+  <p><strong>An open agentic prompt-expansion harness for image and video generation.</strong></p>
+  <p>Turn everyday intent into validated, model-ready prompts through a bounded AI-agent workflow.</p>
 
+  [![Agent Harness](https://img.shields.io/badge/Agentic-PE%20Harness-7C3AED)](docs/architecture.md)
   [![CI](https://github.com/WayneJin0918/Omni-Rewriter/actions/workflows/ci.yml/badge.svg)](https://github.com/WayneJin0918/Omni-Rewriter/actions/workflows/ci.yml)
   [![Python](https://img.shields.io/badge/python-3.11%2B-3776AB?logo=python&logoColor=white)](pyproject.toml)
   [![License](https://img.shields.io/github/license/WayneJin0918/Omni-Rewriter)](LICENSE)
@@ -25,17 +26,23 @@
 
 ## News
 
-- **2026-08 — MiniMax-H3:** added a validated H3 video PE profile and optional adapters. See the
-  [official MiniMax-H3 repository](https://github.com/MiniMax-AI/MiniMax-H3/tree/main).
+- **2026-08 — H3 workflow refresh:** updated the H3 video PE workflow with validated timeline,
+  camera, dialogue, and bounded-repair rules, informed by the
+  [public MiniMax-H3 project](https://github.com/MiniMax-AI/MiniMax-H3/tree/main).
 
 ## About
 
-Omni-Rewriter is an open, model-extensible **prompt expansion (PE)** framework for image and video
-generation. It transforms natural multimodal intent into typed, validated, generator-oriented text
-through a bounded `analyze → draft → validate → repair` loop.
+Omni-Rewriter is an open, model-extensible **agentic prompt expansion (PE) harness** for image and
+video generation. Its AI-agent loop transforms natural multimodal intent into typed, validated,
+generator-oriented text through bounded `analyze → draft → validate → repair`.
 
 The framework is deliberately model-agnostic: task schemas, validation, rendering, runtime
 adapters, and evaluation are separate extension layers.
+
+> [!NOTE]
+> **Current open-source release: Agent Harness.** It delivers agent orchestration, schemas,
+> deterministic checks, and bounded repair today; dedicated SFT/RL writer checkpoints remain
+> community roadmap items.
 
 > [!IMPORTANT]
 > **Expand is not generate.** The core harness produces validated text/JSON. Model loading and
@@ -43,7 +50,7 @@ adapters, and evaluation are separate extension layers.
 
 <table>
   <tr>
-    <td width="33%" valign="top"><b>Typed & deterministic</b><br>Strict Pydantic contracts, task routing, structural validation, and bounded repair.</td>
+    <td width="33%" valign="top"><b>Agentic & bounded</b><br>Analyze, draft, validate, and repair with strict schemas and deterministic guardrails.</td>
     <td width="33%" valign="top"><b>Model-extensible</b><br>Profiles and renderers encode public prompt dialects without making them the architecture.</td>
     <td width="33%" valign="top"><b>Runtime-optional</b><br>Expansion remains independent from vendor APIs, online services, and heavyweight local inference.</td>
   </tr>
@@ -91,14 +98,14 @@ The same service layer powers the CLI and HTTP API. See
 
 <br>
 
-| Family | Prompt expansion | Optional generation path | Status |
-| --- | --- | --- | --- |
-| **MiniMax H3** | T2VA, I2VA, FL2VA, L2VA, Ref2VA | MiniMax API or H3-specific local contract | PE + adapters |
-| **Frontier closed-source image models** | T2I, I2I, image edit; prompt + ratio packing | Provider-specific runtime | PE |
-| **Qwen-Image / Edit** | Image and edit dialects | SGLang-compatible images API / local Diffusers | PE + adapter + T2I A/B |
-| **HunyuanImage-3.0** | Image blueprint through the image profile | Documented custom vLLM fork / local runner | Adapter + A/B |
-| **WAN** | Video PE mapped through public request fields | SGLang or vLLM-Omni-style video route | Adapter; live support version-dependent |
-| **LingBot Video** | Typed structured caption | Independent local runner and optional two-stage rewriter | Schema + runner |
+| Modality | Family | Prompt expansion | Optional generation path | Status |
+| --- | --- | --- | --- | --- |
+| Video | **MiniMax-H3** | T2VA, I2VA, FL2VA, L2VA, Ref2VA | MiniMax API or H3-specific local contract | PE + adapters |
+| Video | **LingBot Video** | Typed structured caption | Independent local runner and optional two-stage rewriter | Schema + runner |
+| Video | **WAN** | Video PE mapped through public request fields | SGLang or vLLM-Omni-style video route | Adapter; live support version-dependent |
+| Image | **Seedream-style frontier image profile** | T2I, I2I, image edit; prompt + ratio packing | Provider-specific runtime | PE |
+| Image | **Qwen-Image / Edit** | Image and edit dialects | SGLang-compatible images API / local Diffusers | PE + adapter + T2I A/B |
+| Image | **HunyuanImage-3.0** | Image blueprint through the image profile | Documented custom vLLM fork / local runner | Adapter + A/B |
 
 Runtime support is evidence-scoped. A PE profile does not prove end-to-end runtime compatibility.
 See the [compatibility matrix](docs/generation-adapters.md) for exact contracts and limitations.
@@ -160,22 +167,19 @@ video support; every implemented task must be proven from the public model contr
   </tr>
 </table>
 
-<p align="center"><b>Image prompt expansion</b></p>
+<p align="center"><b>Image prompt expansion · same-width RAW / PE comparison</b></p>
 <table>
   <tr>
     <th></th>
-    <th>Poster composition</th>
-    <th>Architectural concept</th>
+    <th>Qwen-Image text-to-image · poster composition</th>
   </tr>
   <tr>
     <th>RAW</th>
-    <td><img src="docs/assets/gallery/image/qwen_t2i_raw.webp" alt="RAW poster generation" width="260"></td>
-    <td><img src="docs/assets/gallery/image/hunyuan_t2i_raw.webp" alt="RAW architecture generation" width="260"></td>
+    <td><img src="docs/assets/gallery/image/qwen_t2i_raw.webp" alt="RAW Qwen-Image poster generation" width="240"></td>
   </tr>
   <tr>
     <th>PE</th>
-    <td><img src="docs/assets/gallery/image/qwen_t2i_pe.webp" alt="PE poster generation" width="260"></td>
-    <td><img src="docs/assets/gallery/image/hunyuan_t2i_pe.webp" alt="PE architecture generation" width="260"></td>
+    <td><img src="docs/assets/gallery/image/qwen_t2i_pe.webp" alt="PE Qwen-Image poster generation" width="240"></td>
   </tr>
 </table>
 
@@ -184,7 +188,14 @@ video support; every implemented task must be proven from the public model contr
   <a href="docs/assets/gallery/image/index.html"><b>Open the image gallery with prompts</b></a>
 </p>
 
-### Frontier closed-source image PE contract
+### Seedream-style image PE KPI
+
+<table>
+  <tr>
+    <td width="240"><img src="docs/assets/gallery/image/seedream_profile_kpi.svg" alt="Seedream-style prompt expansion KPI" width="240"></td>
+    <td valign="middle"><b>What the open profile guarantees</b><br><sub>A single visual blueprint, validated ratio selection, exact visible-text preservation, explicit reference-image operations, and bounded repair.</sub><br><br><sub>This is a schema KPI—not an image generated by a closed provider. A reproducible provider-backed A/B belongs in the complete gallery when a public, stable inference contract is available.</sub></td>
+  </tr>
+</table>
 
 <table>
   <tr>
@@ -285,10 +296,9 @@ future SFT/RL work. Start with [CONTRIBUTING.md](CONTRIBUTING.md) and
 
 ## Scope and license
 
-Omni-Rewriter is an independent compatibility-oriented project. It does **not** claim to reproduce
-private Context-IR or other undisclosed vendor behavior. Public contracts and examples—including
-Seedream as one frontier closed-source image example—define the implemented profiles; untested
-runtime compatibility is labeled unverified.
+Omni-Rewriter does not attempt to reproduce undisclosed closed-source behavior. It uses public
+contracts and reproducible examples to help the community close the gap between polished demos,
+public APIs, and deployable workflows. Untested runtime compatibility is labeled unverified.
 
 Source code is licensed under [Apache License 2.0](LICENSE). Third-party models, services,
 documentation, and names remain subject to their own terms. Security guidance is in

@@ -14,4 +14,5 @@ profiles, runtimes, or models:
    compatibility as unverified.
 
 Do not commit secrets, full videos, or private vendor dumps beyond the sanitized skill archives
-already under `docs/references/`. Do not claim to reproduce private Context-IR internals.
+already under `docs/references/`. Use public evidence to bridge demos and deployable workflows;
+do not claim to reproduce undisclosed closed-source behavior.

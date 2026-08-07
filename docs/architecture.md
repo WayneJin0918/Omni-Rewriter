@@ -8,8 +8,9 @@ image packing are initial profiles built on shared contracts; future profiles sh
 same routing, validation, repair, and rendering boundaries.
 
 The package separates rewriting from generation: `expand` produces text, while adapters submit
-generation tasks only when an application explicitly calls them. It does not reproduce or claim
-knowledge of any vendor's private Context-IR architecture.
+generation tasks only when an application explicitly calls them. The framework relies on public
+contracts and reproducible evidence to bridge demos, APIs, and deployable workflows rather than
+attempting to reproduce undisclosed closed-source behavior.
 
 Flowcharts and skill notes live in [h3-pe-harness.md](h3-pe-harness.md).
 

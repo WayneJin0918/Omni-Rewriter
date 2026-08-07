@@ -25,8 +25,8 @@ flowchart TD
 
 H3 is one video profile in the broader Omni-Rewriter prompt-expansion framework. It turns casual
 video intent into typed H3-oriented text with deterministic grammar checks and bounded repair.
-Profile support does not imply generation, official MiniMax status, or parity with private
-Context-IR.
+Profile support does not imply bundled generation or official vendor status; it gives the
+community a reproducible bridge from public examples and APIs to validated prompts.
 
 ## Video PE layers (H3)
 

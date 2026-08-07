@@ -2,8 +2,8 @@
 
 [English index](index.md) · [项目中文 README](../README_zh.md)
 
-Omni-Rewriter 是面向多模态生成的类型化、可校验 Prompt Expansion 框架。它把意图扩写为目标
-PE 方言；媒体生成是显式且独立的后续步骤。
+Omni-Rewriter 当前开源的是面向多模态生成的强类型、可校验 **Agentic Prompt Expansion
+Harness**。它把意图扩写为目标 PE 方言；媒体生成是显式且独立的后续步骤。
 
 ## 从这里开始
 
@@ -30,5 +30,5 @@ PE 方言；媒体生成是显式且独立的后续步骤。
 ## 范围
 
 框架提供 schema、分析/起草/修复编排、确定性校验和方言渲染。支持某个 PE profile 不代表
-仓库捆绑对应 checkpoint 或生成 runtime。Omni-Rewriter 不声称了解或等同于任何厂商私有
-Context-IR 系统。
+仓库捆绑对应 checkpoint 或生成 runtime。Omni-Rewriter 依据公开契约，帮助社区弥合产品
+演示、公开 API 与可复现部署流程之间的差距。
