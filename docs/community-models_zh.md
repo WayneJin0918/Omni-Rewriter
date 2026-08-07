@@ -9,7 +9,7 @@
 
 | 模型族 | 公开上游 | 首期贡献目标 |
 | --- | --- | --- |
-| Wan2.2 | [Wan-Video/Wan2.2](https://github.com/Wan-Video/Wan2.2) | 原生配置、任务路由、校验器、渲染器、样例 |
+| WAN | [Wan-Video/Wan2.2](https://github.com/Wan-Video/Wan2.2) | Wan2.2 原生 PE 配置（同属 WAN 族）、任务路由、校验器、渲染器、样例 |
 | HunyuanVideo | [Tencent-Hunyuan/HunyuanVideo](https://github.com/Tencent-Hunyuan/HunyuanVideo) | 文生视频/图生视频配置、校验器、可选适配器 |
 | CogVideoX | [THUDM/CogVideo](https://github.com/THUDM/CogVideo) | 文生视频/图生视频方言、样例、可选适配器 |
 | LTX-Video | [Lightricks/LTX-Video](https://github.com/Lightricks/LTX-Video) | 视频/音频约束、渲染器、运行时样例 |

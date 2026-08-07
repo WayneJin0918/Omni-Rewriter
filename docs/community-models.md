@@ -10,7 +10,7 @@ upstream contract.
 
 | Model family | Public upstream | Initial contribution target |
 | --- | --- | --- |
-| Wan2.2 | [Wan-Video/Wan2.2](https://github.com/Wan-Video/Wan2.2) | Native profile, task routing, validator, renderer, fixtures |
+| WAN | [Wan-Video/Wan2.2](https://github.com/Wan-Video/Wan2.2) | Wan2.2 native PE profile (same WAN family), task routing, validator, renderer, fixtures |
 | HunyuanVideo | [Tencent-Hunyuan/HunyuanVideo](https://github.com/Tencent-Hunyuan/HunyuanVideo) | T2V/I2V profile, validator, optional adapter |
 | CogVideoX | [THUDM/CogVideo](https://github.com/THUDM/CogVideo) | T2V/I2V dialect, fixtures, optional adapter |
 | LTX-Video | [Lightricks/LTX-Video](https://github.com/Lightricks/LTX-Video) | Video/audio constraints, renderer, runtime fixture |

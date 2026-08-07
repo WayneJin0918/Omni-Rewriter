@@ -14,7 +14,7 @@ from typing import Any
 
 CATEGORIES = ("Video", "Image", "Unified", "Not applicable")
 BACKLOG_MODELS = (
-    "Wan2.2",
+    "WAN",
     "HunyuanVideo",
     "CogVideoX",
     "LTX-Video",
