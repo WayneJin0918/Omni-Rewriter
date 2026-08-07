@@ -37,6 +37,13 @@ flowchart TD
 - `adapters/`：把请求映射到生成服务，不与 writer 生命周期耦合。
 - `evaluator.py`：确定性格式一致性指标。
 
+## 扩写 Agent 模型边界
+
+编排层要求后端提供兼容 OpenAI Chat Completions 的接口和结构化 JSON 输出。GPT-5.6、
+Claude Opus 5 等前沿闭源模型可通过兼容的服务商接口或网关接入，实际可用性与行为取决于部署
+环境。开源 Qwen 系列可以通过仓库提供的 vLLM 配方运行，并支持 Qwen 的
+`enable_thinking` 开关。协议兼容不代表不同模型具有相同的 PE 质量、上下文长度或在线可用性。
+
 ## 生命周期
 
 1. `RewriteRequest` 拒绝未知字段、空 prompt、非法媒体 role、重复 URI 和冲突的显式任务。

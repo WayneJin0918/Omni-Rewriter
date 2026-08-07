@@ -21,6 +21,7 @@ PE 方言；媒体生成是显式且独立的后续步骤。
 
 ## 项目治理
 
+- [社区模型待办](community-models_zh.md)：Video、Image 与 Unified 三类贡献清单。
 - [路线图](../ROADMAP.md)
 - [贡献指南](../CONTRIBUTING.md)
 - [安全策略](../SECURITY.md)

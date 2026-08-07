@@ -20,6 +20,7 @@ python -m pip install -e ".[dev]"
 ruff check .
 mypy src
 pytest
+python scripts/check_model_contribution.py
 ```
 
 ## What to work on
@@ -32,6 +33,44 @@ See [ROADMAP.md](ROADMAP.md). High-value areas:
 - Experiments and low-res gallery assets
 - Docs, translations, examples
 - Future SFT / RL data pipelines (design first)
+
+The model backlog is deliberately split into
+[Video, Image, and Unified boards](docs/community-models.md). Before starting a model-family PR,
+use the project skill
+[`omni-rewriter-model-contribution`](.cursor/skills/omni-rewriter-model-contribution/SKILL.md).
+It provides the implementation order, category-specific checks, and a copyable contribution
+template.
+
+## Model contribution contract
+
+Every PR must select exactly one model category in the PR template. Select `Not applicable` for
+changes unrelated to a model family.
+
+Model contributions must:
+
+1. Name the model/family and link its public upstream contract.
+2. State the exact scope: routing, schema, profile, validator, renderer, fixtures, or adapter.
+3. Report PE, adapter, and live-runtime status separately.
+4. Add focused tests and RAW/expanded fixtures for behavior changes.
+5. Keep runtime claims versioned and evidence-backed; mark untested compatibility `unverified`.
+
+The `Model Contribution Check` workflow validates this contract deterministically. An optional
+AI review may add advisory feedback when maintainers configure a review endpoint, but it is not a
+substitute for tests, evidence, or human review.
+
+### Optional advisory AI review
+
+The `Advisory AI Model Review` workflow accepts any OpenAI-compatible chat-completions endpoint.
+Enable it with repository configuration:
+
+- variable `OMNI_AI_REVIEW_ENABLED=true`
+- variable `OMNI_AI_REVIEW_BASE_URL` (including `/v1` when required)
+- variable `OMNI_AI_REVIEW_MODEL`
+- secret `OMNI_AI_REVIEW_API_KEY`
+
+For fork safety, the workflow runs trusted base-branch code under `pull_request_target`, fetches
+the proposed diff only as inert text, exposes no tools to the model, and treats the result as
+advisory. Endpoint failure does not bypass or fail the deterministic contribution contract.
 
 ## Pull request checklist
 

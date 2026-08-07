@@ -59,6 +59,15 @@ OpenAI-compatible writer -> analyze -> draft -> validate <-> bounded repair
   writer.
 - `evaluator.py` provides deterministic conformance metrics.
 
+## Writer / agent model boundary
+
+The orchestration requires an OpenAI-compatible chat-completions endpoint with structured JSON
+output. Closed frontier models such as GPT-5.6 and Claude Opus 5 can be connected through a
+compatible provider endpoint or gateway; direct provider behavior remains deployment-specific.
+Open Qwen-family models can be served through the included vLLM recipes, including the Qwen
+`enable_thinking` switch. Protocol compatibility is not evidence of equal PE quality, context
+limits, or live provider availability.
+
 ## Lifecycle
 
 1. `RewriteRequest` rejects unknown fields, empty prompts, invalid media-role combinations,

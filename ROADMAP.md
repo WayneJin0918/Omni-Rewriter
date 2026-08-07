@@ -14,6 +14,8 @@ Community contributions are welcome — see [CONTRIBUTING.md](CONTRIBUTING.md).
       harness docs, and Cursor skills.
 - [x] Ship low-res RAW vs PE gallery media on the GitHub homepage.
 - [x] Add CONTRIBUTING / PR / issue templates / CODE_OF_CONDUCT / SECURITY.
+- [x] Publish Video / Image / Unified contribution boards, a model-contribution AI skill, and
+      deterministic PR contract checks.
 - [ ] Define a stable profile/renderer extension interface for model families beyond H3 and the
       initial image dialects.
 - [x] Add opt-in OpenAI-compatible Qwen image generation, Hunyuan custom-vLLM, Omni video/WAN,
@@ -33,9 +35,8 @@ Community contributions are welcome — see [CONTRIBUTING.md](CONTRIBUTING.md).
 - [ ] **RL / preference optimization** (DPO / GRPO / RLOO) against downstream scores:
       H3 structural conformance, lip-sync / cut adherence judges, image aesthetic + instruction
       following judges.
-- [ ] Add more image dialects: Flux, SD3, Ideogram, Kling image, Midjourney-style packing.
-- [ ] Add more video/world-model dialects beyond MiniMax-H3 Base / Ref, including Wan and LingBot
-      profiles driven by public contracts.
+- [ ] Implement the explicit Video, Image, and Unified profile targets in
+      [`docs/community-models.md`](docs/community-models.md), one evidence-scoped PR at a time.
 - [ ] Multilingual eval suites and public leaderboard hooks.
 - [ ] Streaming expand API and batch JSONL expand CLI.
 - [ ] Safer media sandboxing for untrusted reference images in shared deployments.

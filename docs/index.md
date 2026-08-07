@@ -22,6 +22,7 @@ expands intent into a target PE dialect; media generation remains an explicit, s
 
 ## Project governance
 
+- [Community model backlog](community-models.md) — Video, Image, and Unified contribution boards.
 - [Roadmap](../ROADMAP.md)
 - [Contributing](../CONTRIBUTING.md)
 - [Security policy](../SECURITY.md)

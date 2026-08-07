@@ -23,6 +23,11 @@
   <a href="CONTRIBUTING.md"><b>Contributing</b></a>
 </p>
 
+## News
+
+- **2026-08 — MiniMax-H3:** added a validated H3 video PE profile and optional adapters. See the
+  [official MiniMax-H3 repository](https://github.com/MiniMax-AI/MiniMax-H3/tree/main).
+
 ## About
 
 Omni-Rewriter is an open, model-extensible **prompt expansion (PE)** framework for image and video
@@ -44,6 +49,24 @@ adapters, and evaluation are separate extension layers.
   </tr>
 </table>
 
+<details>
+<summary><b>Writer / agent model compatibility</b> — frontier closed and open-weight backends</summary>
+
+<br>
+
+The PE orchestration is writer-model agnostic when the backend can return the required structured
+JSON. It can use closed frontier agents such as **GPT-5.6** and **Claude Opus 5** through a
+compatible endpoint, as well as open **Qwen / Qwen3 / Qwen3.5** models served locally.
+
+| Writer family | Connection path | Repository evidence |
+| --- | --- | --- |
+| **GPT-5.6** | OpenAI-compatible chat-completions endpoint | Contract-compatible; provider access and live behavior are environment-specific |
+| **Claude Opus 5** | OpenAI-compatible gateway | Gateway path supported; a native Anthropic client is not bundled |
+| **Qwen series** | vLLM OpenAI-compatible server | Local launch scripts, structured output, and `enable_thinking` control |
+| **Other writers** | Any compatible structured-output endpoint | Supported at the protocol boundary; live compatibility must be verified |
+
+</details>
+
 ## How it works
 
 ```mermaid
@@ -63,15 +86,15 @@ flowchart LR
 The same service layer powers the CLI and HTTP API. See
 [architecture](docs/architecture.md) for public schemas and lifecycle details.
 
-## Profiles and runtime integrations
+<details>
+<summary><b>Supported profiles and integrations</b> — click to expand the evidence-scoped matrix</summary>
 
-Like a serving framework's supported-model table, this section records concrete integrations
-without making them the project introduction or architecture boundary.
+<br>
 
 | Family | Prompt expansion | Optional generation path | Status |
 | --- | --- | --- | --- |
 | **MiniMax H3** | T2VA, I2VA, FL2VA, L2VA, Ref2VA | MiniMax API or H3-specific local contract | PE + adapters |
-| **Seedream-style image** | T2I, I2I, image edit; prompt + ratio packing | Provider-specific runtime | PE |
+| **Frontier closed-source image models** | T2I, I2I, image edit; prompt + ratio packing | Provider-specific runtime | PE |
 | **Qwen-Image / Edit** | Image and edit dialects | SGLang-compatible images API / local Diffusers | PE + adapter + T2I A/B |
 | **HunyuanImage-3.0** | Image blueprint through the image profile | Documented custom vLLM fork / local runner | Adapter + A/B |
 | **WAN** | Video PE mapped through public request fields | SGLang or vLLM-Omni-style video route | Adapter; live support version-dependent |
@@ -79,6 +102,39 @@ without making them the project introduction or architecture boundary.
 
 Runtime support is evidence-scoped. A PE profile does not prove end-to-end runtime compatibility.
 See the [compatibility matrix](docs/generation-adapters.md) for exact contracts and limitations.
+
+</details>
+
+## Community model backlog
+
+Each item below is an explicit **contribution wanted**, not a support claim. Start with the
+[model contribution skill](.cursor/skills/omni-rewriter-model-contribution/SKILL.md) and use the
+[full scoped backlog](docs/community-models.md) for acceptance criteria and public upstream links.
+
+### Video
+
+`Wan2.2` · `HunyuanVideo` · `CogVideoX` · `LTX-Video` · `Mochi 1` · `Step-Video`
+
+Contribute task routing, timeline/motion grammar, deterministic validation, renderers, fixtures,
+and—only with public runtime evidence—an optional generation adapter.
+
+### Image
+
+`FLUX.1 / Kontext` · `Stable Diffusion 3.5` · `Kolors` · `PixArt-Sigma` · `Sana`
+
+Contribute T2I/I2I/edit rules, reference-preservation semantics, ratio/resolution constraints,
+multilingual fixtures, and model-specific rendering.
+
+### Unified
+
+`Show-o2` · `Emu3` · `Janus-Pro` · `BAGEL` · `OmniGen2`
+
+Contribute explicit routing between understanding and generation modes. “Unified” does not imply
+video support; every implemented task must be proven from the public model contract.
+
+> [!TIP]
+> A focused PR may add only the profile + validator + fixtures. Runtime adapters and live
+> compatibility are separate follow-up contributions.
 
 ## RAW vs PE gallery
 
@@ -128,7 +184,7 @@ See the [compatibility matrix](docs/generation-adapters.md) for exact contracts 
   <a href="docs/assets/gallery/image/index.html"><b>Open the image gallery with prompts</b></a>
 </p>
 
-### Seedream-style image PE contract
+### Frontier closed-source image PE contract
 
 <table>
   <tr>
@@ -139,8 +195,9 @@ See the [compatibility matrix](docs/generation-adapters.md) for exact contracts 
   </tr>
 </table>
 
-These are schema-level guarantees of the open PE profile, not claims about a private provider's
-internal implementation or downstream image quality.
+Seedream is one public-facing example represented by this generic profile. These are schema-level
+guarantees of the open PE contract, not claims about a private provider's internal implementation
+or downstream image quality.
 
 ## Quick start
 
@@ -229,9 +286,9 @@ future SFT/RL work. Start with [CONTRIBUTING.md](CONTRIBUTING.md) and
 ## Scope and license
 
 Omni-Rewriter is an independent compatibility-oriented project. It does **not** claim to reproduce
-private MiniMax Context-IR, Seedream internals, or other undisclosed vendor behavior. Public
-contracts and examples define the implemented profiles; untested runtime compatibility is labeled
-unverified.
+private Context-IR or other undisclosed vendor behavior. Public contracts and examples—including
+Seedream as one frontier closed-source image example—define the implemented profiles; untested
+runtime compatibility is labeled unverified.
 
 Source code is licensed under [Apache License 2.0](LICENSE). Third-party models, services,
 documentation, and names remain subject to their own terms. Security guidance is in

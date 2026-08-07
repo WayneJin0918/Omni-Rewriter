@@ -23,6 +23,11 @@
   <a href="CONTRIBUTING.md"><b>参与贡献</b></a>
 </p>
 
+## 最新动态
+
+- **2026-08 — MiniMax-H3：**新增经过校验的 H3 视频提示词扩写配置和可选适配器。上游项目见
+  [MiniMax-H3 官方仓库](https://github.com/MiniMax-AI/MiniMax-H3/tree/main)。
+
 ## 项目简介
 
 Omni-Rewriter 是一个开放、面向多模型扩展的**图像与视频提示词扩写（PE）框架**。它通过
@@ -44,6 +49,24 @@ Omni-Rewriter 是一个开放、面向多模型扩展的**图像与视频提示�
   </tr>
 </table>
 
+<details>
+<summary><b>扩写 Agent 模型兼容性</b> — 前沿闭源模型与开源权重模型</summary>
+
+<br>
+
+只要后端能够返回所需的结构化 JSON，PE 编排就不绑定具体扩写模型。它既可以通过兼容接口
+使用 **GPT-5.6**、**Claude Opus 5** 等前沿闭源 Agent，也可以在本地运行开源的
+**Qwen / Qwen3 / Qwen3.5** 系列。
+
+| 扩写模型族 | 接入方式 | 仓库内依据 |
+| --- | --- | --- |
+| **GPT-5.6** | 兼容 OpenAI Chat Completions 的接口 | 协议契约兼容；访问权限与实际表现取决于部署环境 |
+| **Claude Opus 5** | 兼容 OpenAI 协议的网关 | 支持网关路径；仓库暂未内置 Anthropic 原生客户端 |
+| **Qwen 系列** | vLLM 提供的 OpenAI 兼容服务 | 本地启动脚本、结构化输出及 `enable_thinking` 控制 |
+| **其他扩写模型** | 任意兼容结构化输出的接口 | 在协议边界上可接入；端到端兼容性需要实际验证 |
+
+</details>
+
 ## 工作流程
 
 ```mermaid
@@ -63,15 +86,15 @@ flowchart LR
 CLI 与 HTTP API 共用相同 service 层。公共 schema 与完整生命周期见
 [架构文档](docs/architecture_zh.md)。
 
-## 配置档与运行时集成
+<details>
+<summary><b>已支持的配置档与集成</b> — 点击展开按证据标注的兼容矩阵</summary>
 
-参考推理框架的“支持模型”列表，本节单独记录已经实现的具体集成，不把它们写进项目简介，
-也不把它们当作架构边界。
+<br>
 
 | 模型族 | 提示词扩写 | 可选生成路径 | 状态 |
 | --- | --- | --- | --- |
 | **MiniMax H3** | T2VA、I2VA、FL2VA、L2VA、Ref2VA | MiniMax API 或 H3 专用本地契约 | 提示词扩写 + 适配器 |
-| **Seedream 风格图像** | 文生图、图生图、图像编辑；提示词 + 比例封装 | 由服务商提供运行时 | 提示词扩写 |
+| **前沿闭源图像模型** | 文生图、图生图、图像编辑；提示词 + 比例封装 | 由服务商提供运行时 | 提示词扩写 |
 | **Qwen-Image / Edit** | 图像生成与编辑方言 | 兼容 SGLang 的图像接口 / 本地 Diffusers | PE + 适配器 + 文生图 A/B |
 | **HunyuanImage-3.0** | 通过通用图像配置生成视觉蓝图 | 已记录的定制 vLLM 分支 / 本地运行器 | 适配器 + A/B |
 | **WAN** | 通过公开请求字段映射视频扩写结果 | SGLang 或 vLLM-Omni 风格视频接口 | 适配器；在线兼容性取决于版本 |
@@ -79,6 +102,38 @@ CLI 与 HTTP API 共用相同 service 层。公共 schema 与完整生命周期�
 
 运行时支持只按公开证据和实际测试结果声明。具备某种提示词配置，并不表示已经证明端到端生成
 兼容。精确契约与限制见[兼容性矩阵](docs/generation-adapters_zh.md)。
+
+</details>
+
+## 社区模型待办
+
+以下条目表示**欢迎贡献**，不表示已经支持。请先使用
+[模型贡献 Skill](.cursor/skills/omni-rewriter-model-contribution/SKILL.md) 生成代码与文档
+骨架；完整范围、公开上游链接和验收标准见[社区模型待办](docs/community-models_zh.md)。
+
+### Video｜视频
+
+`Wan2.2` · `HunyuanVideo` · `CogVideoX` · `LTX-Video` · `Mochi 1` · `Step-Video`
+
+可贡献任务路由、时间轴与运动语法、确定性校验、渲染器和样例；只有具备公开运行时证据时，
+才增加可选生成适配器。
+
+### Image｜图像
+
+`FLUX.1 / Kontext` · `Stable Diffusion 3.5` · `Kolors` · `PixArt-Sigma` · `Sana`
+
+可贡献文生图/图生图/编辑规则、参考图保留语义、比例与分辨率约束、多语言样例和模型专用渲染。
+
+### Unified｜统一多模态
+
+`Show-o2` · `Emu3` · `Janus-Pro` · `BAGEL` · `OmniGen2`
+
+需要明确区分理解与生成任务的路由。“统一多模态”不代表模型必然支持视频；每项已实现任务都
+必须由公开模型契约证明。
+
+> [!TIP]
+> 一个聚焦的 PR 可以只提交配置档、校验器和样例。运行时适配器与端到端兼容性可以拆成后续
+> PR。
 
 ## RAW 与 PE 效果对比
 
@@ -128,7 +183,7 @@ CLI 与 HTTP API 共用相同 service 层。公共 schema 与完整生命周期�
   <a href="docs/assets/gallery/image/index.html"><b>打开含提示词的图像 Gallery</b></a>
 </p>
 
-### Seedream 风格图像 PE 契约
+### 前沿闭源图像模型 PE 契约
 
 <table>
   <tr>
@@ -139,8 +194,8 @@ CLI 与 HTTP API 共用相同 service 层。公共 schema 与完整生命周期�
   </tr>
 </table>
 
-这些是开源 PE 配置档提供的结构保证，不代表掌握闭源服务的内部实现，也不是对下游生成质量
-的承诺。
+Seedream 是这个通用配置档所参考的一项公开示例。这些是开源 PE 契约提供的结构保证，
+不代表掌握闭源服务的内部实现，也不是对下游生成质量的承诺。
 
 ## 快速开始
 
@@ -226,9 +281,9 @@ python -m build
 
 ## 范围与许可
 
-Omni-Rewriter 是独立的兼容性项目，不声称复刻 MiniMax 私有 Context-IR、Seedream 内部实现
-或其他未公开厂商行为。已实现的提示词配置只依据公开契约与示例；未经测试的运行时兼容性会
-明确标记为“未验证”。
+Omni-Rewriter 是独立的兼容性项目，不声称复刻私有 Context-IR 或其他未公开厂商行为。
+已实现的提示词配置只依据公开契约与示例，其中 Seedream 仅作为前沿闭源图像模型的一个例子；
+未经测试的运行时兼容性会明确标记为“未验证”。
 
 源码使用 [Apache License 2.0](LICENSE)。第三方模型、服务、文档与名称遵循各自条款。
 安全说明见 [SECURITY.md](SECURITY.md)。
