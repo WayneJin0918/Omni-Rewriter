@@ -2,13 +2,14 @@
 
 ## Scope
 
-Omni-Rewriter is an independent, unofficial local Context-IR / PE harness. It converts a typed
-multimodal request into validated, generator-oriented intermediate text for **video (H3)** and
-**image (Seedream / Qwen-Image-Edit dialects)**. It does not reproduce or claim knowledge of any
-vendor's private Context-IR architecture.
+Omni-Rewriter is an independent prompt-expansion framework. It converts a typed multimodal request
+into validated, generator-oriented intermediate text. H3 video and Seedream/Qwen-Image-Edit-style
+image packing are initial profiles built on shared contracts; future profiles should reuse the
+same routing, validation, repair, and rendering boundaries.
 
 The package separates rewriting from generation: `expand` produces text, while adapters submit
-generation tasks only when an application explicitly calls them.
+generation tasks only when an application explicitly calls them. It does not reproduce or claim
+knowledge of any vendor's private Context-IR architecture.
 
 Flowcharts and skill notes live in [h3-pe-harness.md](h3-pe-harness.md).
 
@@ -26,7 +27,7 @@ flowchart TD
   P --> V
   V -->|ok| O[BaseRewrite / Ref2VARewrite / ImageRewrite]
   O --> Out[JSON + dialect render]
-  Out --> Gen[optional H3 / MiniMax / future image adapters]
+  Out --> Gen[explicit adapter or independent runner]
 ```
 
 ```text
@@ -74,7 +75,7 @@ OpenAI-compatible writer -> analyze -> draft -> validate <-> bounded repair
 7. Invalid drafts enter a repair call containing only the invalid candidate, validation errors,
    and required task/duration. `OMNI_WRITER_MAX_REPAIRS` bounds this loop.
 8. A successful result includes the typed output, analysis, repair count, random run ID, and
-   rendered text.
+   rendered text. No generation request is submitted by this lifecycle.
 
 The agent can write JSONL traces when instantiated with `RewriteAgentConfig(trace_path=...)`.
 The default CLI/API service does not configure a trace path.

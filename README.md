@@ -1,22 +1,31 @@
 # Omni-Rewriter
 
-[中文说明](README_zh.md) · [Contributing](CONTRIBUTING.md) · [Architecture](docs/architecture.md) ·
+[中文说明](README_zh.md) · [Documentation](docs/index.md) · [Getting started](docs/getting-started.md) ·
+[Contributing](CONTRIBUTING.md) · [Architecture](docs/architecture.md) ·
 [H3 PE harness](docs/h3-pe-harness.md) · [Image PE](docs/image-pe.md) ·
-[H3 adapters](docs/h3-adapters.md) · [Evaluation](docs/evaluation.md) · [Roadmap](ROADMAP.md)
+[Generation adapters](docs/generation-adapters.md) · [Evaluation](docs/evaluation.md) ·
+[Roadmap](ROADMAP.md)
 
-<p align="center">
-  <img src="docs/assets/gallery/readme_hero_raw_vs_pe.jpg" alt="Low-res RAW vs PE thumbnails (dialogue, sneaker, noir, phone call)" width="640"/>
-</p>
+<p align="center"><a href="docs/assets/gallery/index.html">Open the low-resolution RAW vs PE video gallery</a></p>
 
-<p align="center"><em>Low-resolution RAW (left) vs Omni-Rewriter PE (right) thumbnails from the H3 15s experiment. Full videos stay local; only compressed stills ship in-repo.</em></p>
+## A framework for prompt expansion
 
-## Why this repo exists
+Omni-Rewriter is an open, model-extensible **prompt-expansion (PE) framework**. It turns casual
+multimodal intent into **typed, validated, generator-oriented intermediate text**. H3 video,
+Seedream-style image, and Qwen-Image-Edit-style image packing are the first dialects—not the
+boundary of the framework.
 
-Open checkpoints and public APIs rarely match the polished prompts that show up in **closed-model
-demos, marketing pages, and private Context-IR stacks**. Omni-Rewriter is an open
-**prompt-expansion (PE) harness** that turns casual video/image intent into **typed, validated,
-generator-ready text**—so researchers and builders can close that gap without claiming to clone
-any vendor internals.
+The framework separates concerns:
+
+1. a transport-neutral request captures intent, media, task, and metadata;
+2. a PE profile analyzes and drafts a typed intermediate representation;
+3. deterministic validators reject or repair malformed output within a fixed budget;
+4. a renderer serializes the result for a target prompt dialect;
+5. an optional adapter may submit that rendered prompt to a compatible generator.
+
+**Expand is not generate.** `omni-rewriter expand` produces validated text/JSON; it does not load
+generation weights, allocate a diffusion/video runtime, or create media. Generation occurs only
+when an application explicitly invokes an adapter or independent runner.
 
 We welcome contributions: dialects, validators, adapters, experiments, docs, and (later) SFT/RL
 pipelines. See [CONTRIBUTING.md](CONTRIBUTING.md) and [ROADMAP.md](ROADMAP.md).
@@ -30,8 +39,28 @@ Omni-Rewriter provides:
 - Optional adapters for local/hosted generation (expand ≠ generate)
 
 This project does **not** claim to reproduce, reverse engineer, or match MiniMax's official
-Context-IR implementation, Seedream internals, or any private vendor behavior. Compatibility is
-limited to the publicly documented shapes implemented by the adapters and PE dialects.
+Context-IR implementation, Seedream internals, or any private vendor behavior. Public examples and
+documented request shapes inform compatibility profiles; they are not evidence of private
+implementation parity.
+
+## Model and runtime compatibility
+
+“PE profile” means Omni-Rewriter can shape or validate text for that family. “Generation path”
+describes an upstream runtime, not a bundled dependency or an end-to-end guarantee.
+
+| Model family | PE status | Evidence-backed generation path | Omni-Rewriter integration |
+| --- | --- | --- | --- |
+| MiniMax H3 | Implemented video profile | Public MiniMax API or a compatible `/v1/videos` service | `MiniMaxClient` and `H3Client` implemented |
+| Seedream-style image | Implemented image profile | Provider-specific API/runtime | PE implemented; provider adapter remains contribution scope |
+| Qwen-Image / Qwen-Image-Edit | Implemented image/edit packing | Qwen-Image-2512 has native SGLang-Diffusion support ([SGLang v0.5.7](https://github.com/sgl-project/sglang/releases/tag/v0.5.7), [registry](https://github.com/sgl-project/sglang/blob/main/python/sglang/multimodal_gen/registry.py)) | `OpenAIImagesClient` implemented; local Qwen T2I/Edit recipes and real A/B included |
+| HunyuanImage-3.0 | Seedream-style T2I PE can be rendered | Upstream documents a [model-specific vLLM fork](https://github.com/Tencent-Hunyuan/HunyuanImage-3.0/blob/main/vllm_infer/README.md) | `HunyuanImageVLLMClient` and local recipe implemented |
+| Wan | H3-style video PE can be mapped | SGLang/vLLM-Omni implementations vary by release | `OmniVideosClient` + `WanOmniAdapter` implemented; live compatibility runtime-specific |
+| LingBot Video | Typed structured caption | Upstream independent inference runner | `LingBotCaption`, bounded local runner, and optional two-stage rewriter implemented |
+| vLLM-Omni routes | None assumed | Upstream lists several image/video families in its [support matrix](https://docs.vllm.ai/projects/vllm-omni/en/latest/models/supported_models/) | **Unverified here**; no end-to-end Omni-Rewriter compatibility claim |
+
+Runtime support changes quickly. Pin upstream versions and validate payloads, hardware support, and
+output quality in your own environment. See
+[generation adapters](docs/generation-adapters.md) for evidence scope and integration boundaries.
 
 ## Features
 
@@ -42,21 +71,33 @@ limited to the publicly documented shapes implemented by the adapters and PE dia
 - OpenAI-compatible multimodal writer backend, tested with local Qwen served by vLLM.
 - Strict Pydantic output schemas, timeline/reference grammar checks, and bounded repair attempts.
 - CLI and optional FastAPI entry points.
-- Local H3 `/v1/videos` and MiniMax API adapters (image generation adapters planned).
+- H3/MiniMax, OpenAI-compatible image, Omni video/WAN, Hunyuan vLLM, and LingBot adapters.
 - Deterministic single-case and JSONL-manifest evaluation.
 - Bounded media loading with MIME checks, redirect limits, and public-address-only HTTP fetching.
-- Experiments for raw-vs-PE comparison on video and image (plus low-res gallery stills above).
+- Experiments for raw-vs-PE comparison on video and image (plus low-res gallery clips above).
 
 ## Gallery (RAW vs PE)
 
-| Scene | Thumbnail |
-|---|---|
-| `s01_dialogue` | ![s01](docs/assets/gallery/s01_dialogue_raw_vs_pe.jpg) |
-| `s06_sneaker` | ![s06](docs/assets/gallery/s06_sneaker_raw_vs_pe.jpg) |
-| `s09_noir` | ![s09](docs/assets/gallery/s09_noir_raw_vs_pe.jpg) |
-| `s10_phone_call` | ![s10](docs/assets/gallery/s10_phone_call_raw_vs_pe.jpg) |
+<table>
+  <tr><th>Scene</th><th>RAW</th><th>Omni-Rewriter PE</th></tr>
+  <tr><td><code>s01_dialogue</code></td><td><img src="docs/assets/gallery/s01_dialogue_raw.gif" width="360" alt="s01 RAW"></td><td><img src="docs/assets/gallery/s01_dialogue_pe.gif" width="360" alt="s01 PE"></td></tr>
+  <tr><td><code>s06_sneaker</code></td><td><img src="docs/assets/gallery/s06_sneaker_raw.gif" width="360" alt="s06 RAW"></td><td><img src="docs/assets/gallery/s06_sneaker_pe.gif" width="360" alt="s06 PE"></td></tr>
+  <tr><td><code>s09_noir</code></td><td><img src="docs/assets/gallery/s09_noir_raw.gif" width="360" alt="s09 RAW"></td><td><img src="docs/assets/gallery/s09_noir_pe.gif" width="360" alt="s09 PE"></td></tr>
+  <tr><td><code>s10_phone_call</code></td><td><img src="docs/assets/gallery/s10_phone_call_raw.gif" width="360" alt="s10 RAW"></td><td><img src="docs/assets/gallery/s10_phone_call_pe.gif" width="360" alt="s10 PE"></td></tr>
+</table>
 
 Regenerate with `scripts/make_gallery_thumbs.sh` after local experiment videos exist.
+
+### Real image generation
+
+<table>
+  <tr><th>Model/task</th><th>RAW</th><th>Omni-Rewriter PE</th></tr>
+  <tr><td>Qwen-Image-2512 T2I</td><td><img src="docs/assets/gallery/image/qwen_t2i_raw.webp" width="360" alt="Qwen T2I RAW"></td><td><img src="docs/assets/gallery/image/qwen_t2i_pe.webp" width="360" alt="Qwen T2I PE"></td></tr>
+  <tr><td>Qwen-Image-Edit-2511</td><td><img src="docs/assets/gallery/image/qwen_edit_raw.webp" width="360" alt="Qwen Edit RAW"></td><td><img src="docs/assets/gallery/image/qwen_edit_pe.webp" width="360" alt="Qwen Edit PE"></td></tr>
+  <tr><td>HunyuanImage-3.0 T2I</td><td><img src="docs/assets/gallery/image/hunyuan_t2i_raw.webp" width="360" alt="Hunyuan RAW"></td><td><img src="docs/assets/gallery/image/hunyuan_t2i_pe.webp" width="360" alt="Hunyuan PE"></td></tr>
+</table>
+
+[Open image gallery with prompts and reference image](docs/assets/gallery/image/index.html).
 
 ## Quickstart
 
@@ -191,7 +232,7 @@ CLI and HTTP call the same service layer. Network clients are asynchronous and s
 Pydantic `SecretStr`. Details and component boundaries are in
 [docs/architecture.md](docs/architecture.md).
 
-## H3 adapters
+## Generation adapters
 
 The adapters are explicit clients, not part of the default `expand` pipeline:
 
@@ -199,9 +240,10 @@ The adapters are explicit clients, not part of the default `expand` pipeline:
 - `MiniMaxClient` targets the public MiniMax H3 Context-IR, video-generation, and regeneration
   endpoints. It requires `MINIMAX_API_KEY`.
 
-Endpoint mappings, payload differences, polling behavior, and examples are documented in
-[docs/h3-adapters.md](docs/h3-adapters.md). Public APIs can change; confirm current MiniMax
-documentation, model availability, quotas, and terms before production use.
+Endpoint mappings, payload differences, runtime evidence, and planned boundaries are documented in
+[docs/generation-adapters.md](docs/generation-adapters.md). H3-specific examples remain in
+[docs/h3-adapters.md](docs/h3-adapters.md). Public APIs can change; confirm current model
+availability, versions, quotas, hardware support, and terms before production use.
 
 ## Evaluation
 

@@ -1,4 +1,6 @@
-# Omni-Rewriter agent harness
+# H3 PE profile
+
+[中文](h3-pe-harness_zh.md) · [Framework architecture](architecture.md)
 
 ```mermaid
 flowchart TD
@@ -21,10 +23,10 @@ flowchart TD
 
 ## Why this exists
 
-Closed and open models often look strong in demos and marketing, while public APIs and open
-checkpoints need much more structured prompts. Omni-Rewriter is an open **prompt-expansion
-harness** that turns casual intent into validated, model-ready text for video (MiniMax-H3) and
-image (Seedream / Qwen-Image-Edit dialects). It does not claim to clone any private Context-IR.
+H3 is one video profile in the broader Omni-Rewriter prompt-expansion framework. It turns casual
+video intent into typed H3-oriented text with deterministic grammar checks and bounded repair.
+Profile support does not imply generation, official MiniMax status, or parity with private
+Context-IR.
 
 ## Video PE layers (H3)
 
@@ -61,6 +63,7 @@ flowchart LR
 
 ## Related docs and skills
 
+- `docs/index.md` — framework documentation
 - `docs/architecture.md` — package layout
 - `docs/image-pe.md` — image dialects
 - `docs/h3-pe-harness.md` — this page

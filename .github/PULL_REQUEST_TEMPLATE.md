@@ -7,7 +7,7 @@
 ## Type of change
 
 - [ ] Bug fix
-- [ ] New PE dialect / validator / repair rule
+- [ ] New PE profile / dialect / validator / repair rule
 - [ ] Adapter or CLI/API surface
 - [ ] Docs / skills / examples
 - [ ] Experiments / low-res gallery assets
@@ -24,11 +24,18 @@
 
 ## Notes for reviewers
 
-<!-- Link issues, dialects affected (H3 / Seedream / Qwen-Image-Edit), screenshots if UI -->
+<!-- Link issues, profiles/runtimes affected, public contract evidence, screenshots if UI -->
+
+## Compatibility claims
+
+- [ ] Expansion and generation support are described separately
+- [ ] Runtime/API versions and evidence links are documented
+- [ ] Untested or inferred compatibility is labeled unverified
+- [ ] No claim depends on private vendor internals
 
 ## Checklist
 
 - [ ] No secrets or `.env` files
-- [ ] No full-resolution videos (`.mp4`); gallery JPEGs only if needed
+- [ ] No full-resolution videos (`.mp4`); only bounded low-resolution gallery media if needed
 - [ ] Public models remain compatible or breaking change is called out
 - [ ] I read `CONTRIBUTING.md`

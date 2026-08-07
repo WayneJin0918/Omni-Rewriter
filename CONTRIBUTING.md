@@ -1,13 +1,14 @@
 # Contributing to Omni-Rewriter
 
-Thanks for helping close the gap between **model demos / marketing / private Context-IR** and
-what public APIs and open checkpoints actually consume. Contributions of all sizes are welcome.
+Thanks for improving a general, open prompt-expansion framework for multimodal generators.
+Contributions of all sizes are welcome.
 
 ## Mission reminder
 
-Omni-Rewriter is an open prompt-expansion harness for **video (MiniMax-H3)** and **image
-(Seedream / Qwen-Image-Edit dialects)**. It is intentionally not a claim to reverse-engineer any
-vendor. Prefer durable contracts, validators, tests, and docs.
+Omni-Rewriter separates transport-neutral intent, typed PE profiles, deterministic validation,
+dialect rendering, and optional generation adapters. H3 and the initial image profiles are
+examples, not the framework boundary. It is intentionally not a claim to reverse-engineer any
+vendor. Prefer durable public contracts, validators, tests, and docs.
 
 ## Quick start for contributors
 
@@ -27,6 +28,7 @@ See [ROADMAP.md](ROADMAP.md). High-value areas:
 
 - New PE dialects / stricter validators
 - Generation adapters (expand ≠ generate)
+- Runtime compatibility fixtures with pinned public evidence
 - Experiments and low-res gallery assets
 - Docs, translations, examples
 - Future SFT / RL data pipelines (design first)
@@ -38,7 +40,7 @@ See [ROADMAP.md](ROADMAP.md). High-value areas:
 3. Run `ruff`, `mypy`, and `pytest` locally.
 4. Update docs when contracts or CLI flags change.
 5. Do **not** commit secrets, `.env`, full-resolution videos, or huge binaries.
-   Low-res JPEGs under `docs/assets/gallery/` are fine.
+   Bounded low-resolution gallery media under `docs/assets/gallery/` are fine.
 6. Fill out the PR template and link related issues.
 
 ## Commit style
@@ -52,7 +54,11 @@ Prefer short imperative subjects:
 ## Code review expectations
 
 - Public models stay backward compatible unless the PR clearly documents a breaking change.
-- Prompt-rule edits should cite the dialect (`H3` / `seedream` / `qwen_image_edit`) and add a test.
+- Prompt-rule edits should cite the profile/dialect and public evidence, then add a test.
+- Adapter PRs must distinguish PE support from generation support, pin the tested runtime/API,
+  and label untested routes as unverified.
+- Do not infer stock vLLM compatibility from a custom fork, or vLLM-Omni compatibility from an
+  upstream support table without an end-to-end repository test.
 - Agent / Cursor skills under `.cursor/skills/` should stay actionable and short.
 
 ## Community
