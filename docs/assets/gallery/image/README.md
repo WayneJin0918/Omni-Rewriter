@@ -3,9 +3,6 @@
 These low-resolution WebP files are derived from reproducible local runs. Labels
 and prompts live in HTML/Markdown, not inside image pixels.
 
-`seedream_profile_kpi.svg` is a visual summary of the open Seedream-style profile contract. It is
-not a provider-generated image or a provider-backed A/B result.
-
 | Prefix | Model | Comparison |
 |---|---|---|
 | `qwen_t2i_*` | Qwen-Image-2512 | identical seed/size/steps, RAW vs PE prompt |

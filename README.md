@@ -112,111 +112,46 @@ See the [compatibility matrix](docs/generation-adapters.md) for exact contracts 
 
 </details>
 
-## Community model backlog
+## Community model tracks
 
-Green entries are supported at the stated evidence level. Gray entries are open contribution
-targets: click **Start contribution** to open the PR flow, then use the
-[model contribution skill](.cursor/skills/omni-rewriter-model-contribution/SKILL.md). The
-[full scoped backlog](docs/community-models.md) defines the public upstream links and acceptance
-criteria.
-
-### Video
-
-| Model family | Status | Next step |
-| --- | --- | --- |
-| MiniMax-H3 | ![Supported](https://img.shields.io/badge/supported-PE%20%2B%20adapter-brightgreen) | Validated video PE and optional adapters |
-| LingBot Video | ![Supported](https://img.shields.io/badge/supported-schema%20%2B%20runner-brightgreen) | Structured caption and independent runner |
-| WAN | ![Supported](https://img.shields.io/badge/supported-adapter-lightgreen) | Version-scoped runtime compatibility |
-| Wan2.2 · HunyuanVideo · CogVideoX · LTX-Video · Mochi 1 · Step-Video | ![Wanted](https://img.shields.io/badge/wanted-community%20PR-lightgrey) | [Start contribution](https://github.com/WayneJin0918/Omni-Rewriter/compare?quick_pull=1) |
-
-### Image
-
-| Model family | Status | Next step |
-| --- | --- | --- |
-| Seedream-style profile | ![Supported](https://img.shields.io/badge/supported-PE%20profile-brightgreen) | T2I/I2I/edit blueprint and ratio contract |
-| Qwen-Image / Edit | ![Supported](https://img.shields.io/badge/supported-PE%20%2B%20adapter-brightgreen) | Adapter and reproducible T2I A/B |
-| HunyuanImage-3.0 | ![Supported](https://img.shields.io/badge/supported-adapter%20%2B%20A%2FB-lightgreen) | Documented local runner |
-| FLUX.1 / Kontext · Stable Diffusion 3.5 · Kolors · PixArt-Sigma · Sana | ![Wanted](https://img.shields.io/badge/wanted-community%20PR-lightgrey) | [Start contribution](https://github.com/WayneJin0918/Omni-Rewriter/compare?quick_pull=1) |
-
-### Unified
-
-| Model family | Status | Next step |
-| --- | --- | --- |
-| Show-o2 · Emu3 · Janus-Pro · BAGEL · OmniGen2 | ![Wanted](https://img.shields.io/badge/wanted-community%20PR-lightgrey) | [Start contribution](https://github.com/WayneJin0918/Omni-Rewriter/compare?quick_pull=1) |
-
-Unified contributions must explicitly route understanding and generation. A shared checkpoint does
-not prove support for every modality.
-
-> [!TIP]
-> A focused PR may add only the profile + validator + fixtures. Runtime adapters and live
-> compatibility are separate follow-up contributions.
-
-## RAW vs PE gallery
-
-<p align="center"><b>Video prompt expansion</b></p>
+<p align="center"><sub>Green is available at the documented evidence level. Gray is a scoped community opportunity.</sub></p>
 <table>
   <tr>
-    <th></th>
-    <th>Dialogue</th>
-    <th>Product motion</th>
-    <th>Cinematic scene</th>
+    <th width="33%" align="left">VIDEO</th>
+    <th width="33%" align="left">IMAGE</th>
+    <th width="33%" align="left">UNIFIED</th>
   </tr>
   <tr>
-    <th>RAW</th>
-    <td><img src="docs/assets/gallery/s01_dialogue_raw.gif" alt="RAW dialogue generation" width="240"></td>
-    <td><img src="docs/assets/gallery/s06_sneaker_raw.gif" alt="RAW product generation" width="240"></td>
-    <td><img src="docs/assets/gallery/s09_noir_raw.gif" alt="RAW cinematic generation" width="240"></td>
-  </tr>
-  <tr>
-    <th>PE</th>
-    <td><img src="docs/assets/gallery/s01_dialogue_pe.gif" alt="PE dialogue generation" width="240"></td>
-    <td><img src="docs/assets/gallery/s06_sneaker_pe.gif" alt="PE product generation" width="240"></td>
-    <td><img src="docs/assets/gallery/s09_noir_pe.gif" alt="PE cinematic generation" width="240"></td>
+    <td valign="top"><img src="https://img.shields.io/badge/AVAILABLE-brightgreen" alt="Available"><br><b>MiniMax-H3</b> · LingBot Video · WAN<br><br><sub>Timeline PE, structured captions, and version-scoped adapters.</sub><br><br><img src="https://img.shields.io/badge/CONTRIBUTE-lightgrey" alt="Contribute"><br><sub>Wan2.2 · HunyuanVideo · CogVideoX · LTX-Video · Mochi 1 · Step-Video</sub><br><br><a href="https://github.com/WayneJin0918/Omni-Rewriter/compare?quick_pull=1"><b>Open a Video PR →</b></a></td>
+    <td valign="top"><img src="https://img.shields.io/badge/AVAILABLE-brightgreen" alt="Available"><br><b>Seedream-style</b> · Qwen-Image · HunyuanImage<br><br><sub>Typed prompt profiles, adapters, and reproducible fixtures where available.</sub><br><br><img src="https://img.shields.io/badge/CONTRIBUTE-lightgrey" alt="Contribute"><br><sub>FLUX.1 / Kontext · Stable Diffusion 3.5 · Kolors · PixArt-Sigma · Sana</sub><br><br><a href="https://github.com/WayneJin0918/Omni-Rewriter/compare?quick_pull=1"><b>Open an Image PR →</b></a></td>
+    <td valign="top"><img src="https://img.shields.io/badge/CONTRIBUTE-lightgrey" alt="Contribute"><br><b>Show-o2 · Emu3 · Janus-Pro</b><br>BAGEL · OmniGen2<br><br><sub>Map understanding and generation explicitly; shared checkpoints do not imply every modality.</sub><br><br><a href="https://github.com/WayneJin0918/Omni-Rewriter/compare?quick_pull=1"><b>Open a Unified PR →</b></a></td>
   </tr>
 </table>
 
-<p align="center"><b>Image prompt expansion · same-width RAW / PE comparison</b></p>
-<table>
+<p align="center"><sub>Start with the <a href=".cursor/skills/omni-rewriter-model-contribution/SKILL.md">model contribution skill</a>; contracts and acceptance criteria are in the <a href="docs/community-models.md">full backlog</a>.</sub></p>
+
+## H3 RAW vs PE
+
+<table cellspacing="0" cellpadding="0">
   <tr>
-    <th></th>
-    <th>Qwen-Image text-to-image · poster composition</th>
+    <th>Dialogue<br><sub>RAW</sub></th>
+    <th>Dialogue<br><sub>PE</sub></th>
+    <th>Product motion<br><sub>RAW</sub></th>
+    <th>Product motion<br><sub>PE</sub></th>
+    <th>Cinematic scene<br><sub>RAW</sub></th>
+    <th>Cinematic scene<br><sub>PE</sub></th>
   </tr>
   <tr>
-    <th>RAW</th>
-    <td><img src="docs/assets/gallery/image/qwen_t2i_raw.webp" alt="RAW Qwen-Image poster generation" width="240"></td>
-  </tr>
-  <tr>
-    <th>PE</th>
-    <td><img src="docs/assets/gallery/image/qwen_t2i_pe.webp" alt="PE Qwen-Image poster generation" width="240"></td>
-  </tr>
-</table>
-
-<p align="center">
-  <a href="docs/assets/gallery/index.html"><b>Open the complete video gallery</b></a> ·
-  <a href="docs/assets/gallery/image/index.html"><b>Open the image gallery with prompts</b></a>
-</p>
-
-### Seedream-style image PE KPI
-
-<table>
-  <tr>
-    <td width="240"><img src="docs/assets/gallery/image/seedream_profile_kpi.svg" alt="Seedream-style prompt expansion KPI" width="240"></td>
-    <td valign="middle"><b>What the open profile guarantees</b><br><sub>A single visual blueprint, validated ratio selection, exact visible-text preservation, explicit reference-image operations, and bounded repair.</sub><br><br><sub>This is a schema KPI—not an image generated by a closed provider. A reproducible provider-backed A/B belongs in the complete gallery when a public, stable inference contract is available.</sub></td>
+    <td><img src="docs/assets/gallery/s01_dialogue_raw.gif" alt="RAW dialogue generation" width="100%"></td>
+    <td><img src="docs/assets/gallery/s01_dialogue_pe.gif" alt="PE dialogue generation" width="100%"></td>
+    <td><img src="docs/assets/gallery/s06_sneaker_raw.gif" alt="RAW product generation" width="100%"></td>
+    <td><img src="docs/assets/gallery/s06_sneaker_pe.gif" alt="PE product generation" width="100%"></td>
+    <td><img src="docs/assets/gallery/s09_noir_raw.gif" alt="RAW cinematic generation" width="100%"></td>
+    <td><img src="docs/assets/gallery/s09_noir_pe.gif" alt="PE cinematic generation" width="100%"></td>
   </tr>
 </table>
 
-<table>
-  <tr>
-    <td align="center" width="25%"><b>3</b><br><sub>T2I · I2I · Edit routes</sub></td>
-    <td align="center" width="25%"><b>8 + reference</b><br><sub>validated ratio modes</sub></td>
-    <td align="center" width="25%"><b>1 envelope</b><br><sub>prompt + ratio output</sub></td>
-    <td align="center" width="25%"><b>bounded</b><br><sub>deterministic repair loop</sub></td>
-  </tr>
-</table>
-
-Seedream is one public-facing example represented by this generic profile. These are schema-level
-guarantees of the open PE contract, not claims about a private provider's internal implementation
-or downstream image quality.
+<p align="center"><a href="docs/assets/gallery/index.html"><b>Open the complete H3 video gallery →</b></a></p>
 
 ## Quick start
 

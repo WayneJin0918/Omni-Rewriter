@@ -110,107 +110,46 @@ CLI 与 HTTP API 共用相同 service 层。公共 schema 与完整生命周期�
 
 </details>
 
-## 社区模型待办
+## 社区模型方向
 
-绿色条目代表已在对应证据范围内支持；灰色条目是开放的社区贡献目标。点击“发起贡献”进入
-PR 流程，然后使用[模型贡献 Skill](.cursor/skills/omni-rewriter-model-contribution/SKILL.md)
-生成代码与文档骨架。公开上游链接和验收标准见[社区模型待办](docs/community-models_zh.md)。
-
-### Video｜视频
-
-| 模型族 | 状态 | 下一步 |
-| --- | --- | --- |
-| MiniMax-H3 | ![已支持](https://img.shields.io/badge/已支持-PE%20%2B%20适配器-brightgreen) | 经过校验的视频 PE 和可选适配器 |
-| LingBot Video | ![已支持](https://img.shields.io/badge/已支持-数据结构%20%2B%20运行器-brightgreen) | 结构化描述和独立运行器 |
-| WAN | ![已支持](https://img.shields.io/badge/已支持-适配器-lightgreen) | 按版本记录的运行时兼容性 |
-| Wan2.2 · HunyuanVideo · CogVideoX · LTX-Video · Mochi 1 · Step-Video | ![待贡献](https://img.shields.io/badge/待贡献-社区%20PR-lightgrey) | [发起贡献](https://github.com/WayneJin0918/Omni-Rewriter/compare?quick_pull=1) |
-
-### Image｜图像
-
-| 模型族 | 状态 | 下一步 |
-| --- | --- | --- |
-| Seedream 风格配置 | ![已支持](https://img.shields.io/badge/已支持-PE%20配置-brightgreen) | 文生图/图生图/编辑蓝图与比例契约 |
-| Qwen-Image / Edit | ![已支持](https://img.shields.io/badge/已支持-PE%20%2B%20适配器-brightgreen) | 适配器和可复现文生图 A/B |
-| HunyuanImage-3.0 | ![已支持](https://img.shields.io/badge/已支持-适配器%20%2B%20A%2FB-lightgreen) | 已记录的本地运行器 |
-| FLUX.1 / Kontext · Stable Diffusion 3.5 · Kolors · PixArt-Sigma · Sana | ![待贡献](https://img.shields.io/badge/待贡献-社区%20PR-lightgrey) | [发起贡献](https://github.com/WayneJin0918/Omni-Rewriter/compare?quick_pull=1) |
-
-### Unified｜统一多模态
-
-| 模型族 | 状态 | 下一步 |
-| --- | --- | --- |
-| Show-o2 · Emu3 · Janus-Pro · BAGEL · OmniGen2 | ![待贡献](https://img.shields.io/badge/待贡献-社区%20PR-lightgrey) | [发起贡献](https://github.com/WayneJin0918/Omni-Rewriter/compare?quick_pull=1) |
-
-统一多模态贡献必须明确区分理解与生成任务。共享 checkpoint 不代表已经支持所有模态。
-
-> [!TIP]
-> 一个聚焦的 PR 可以只提交配置档、校验器和样例。运行时适配器与端到端兼容性可以拆成后续
-> PR。
-
-## RAW 与 PE 效果对比
-
-<p align="center"><b>视频提示词扩写</b></p>
+<p align="center"><sub>绿色代表已在文档声明的证据范围内可用；灰色是有明确范围的社区贡献机会。</sub></p>
 <table>
   <tr>
-    <th></th>
-    <th>人物对话</th>
-    <th>产品运动</th>
-    <th>电影化场景</th>
+    <th width="33%" align="left">VIDEO｜视频</th>
+    <th width="33%" align="left">IMAGE｜图像</th>
+    <th width="33%" align="left">UNIFIED｜统一多模态</th>
   </tr>
   <tr>
-    <th>RAW</th>
-    <td><img src="docs/assets/gallery/s01_dialogue_raw.gif" alt="RAW 人物对话" width="240"></td>
-    <td><img src="docs/assets/gallery/s06_sneaker_raw.gif" alt="RAW 产品运动" width="240"></td>
-    <td><img src="docs/assets/gallery/s09_noir_raw.gif" alt="RAW 电影化场景" width="240"></td>
-  </tr>
-  <tr>
-    <th>PE</th>
-    <td><img src="docs/assets/gallery/s01_dialogue_pe.gif" alt="PE 人物对话" width="240"></td>
-    <td><img src="docs/assets/gallery/s06_sneaker_pe.gif" alt="PE 产品运动" width="240"></td>
-    <td><img src="docs/assets/gallery/s09_noir_pe.gif" alt="PE 电影化场景" width="240"></td>
+    <td valign="top"><img src="https://img.shields.io/badge/AVAILABLE-brightgreen" alt="已可用"><br><b>MiniMax-H3</b> · LingBot Video · WAN<br><br><sub>时间轴 PE、结构化描述和按版本验证的适配器。</sub><br><br><img src="https://img.shields.io/badge/CONTRIBUTE-lightgrey" alt="待贡献"><br><sub>Wan2.2 · HunyuanVideo · CogVideoX · LTX-Video · Mochi 1 · Step-Video</sub><br><br><a href="https://github.com/WayneJin0918/Omni-Rewriter/compare?quick_pull=1"><b>发起视频 PR →</b></a></td>
+    <td valign="top"><img src="https://img.shields.io/badge/AVAILABLE-brightgreen" alt="已可用"><br><b>Seedream 风格</b> · Qwen-Image · HunyuanImage<br><br><sub>强类型提示词配置、适配器，以及可复现的样例。</sub><br><br><img src="https://img.shields.io/badge/CONTRIBUTE-lightgrey" alt="待贡献"><br><sub>FLUX.1 / Kontext · Stable Diffusion 3.5 · Kolors · PixArt-Sigma · Sana</sub><br><br><a href="https://github.com/WayneJin0918/Omni-Rewriter/compare?quick_pull=1"><b>发起图像 PR →</b></a></td>
+    <td valign="top"><img src="https://img.shields.io/badge/CONTRIBUTE-lightgrey" alt="待贡献"><br><b>Show-o2 · Emu3 · Janus-Pro</b><br>BAGEL · OmniGen2<br><br><sub>明确映射理解与生成任务；共享 checkpoint 不代表支持所有模态。</sub><br><br><a href="https://github.com/WayneJin0918/Omni-Rewriter/compare?quick_pull=1"><b>发起统一多模态 PR →</b></a></td>
   </tr>
 </table>
 
-<p align="center"><b>图像提示词扩写 · 与视频相同宽度的 RAW / PE 对比</b></p>
-<table>
+<p align="center"><sub>请先使用<a href=".cursor/skills/omni-rewriter-model-contribution/SKILL.md">模型贡献 Skill</a>；完整契约与验收标准见<a href="docs/community-models_zh.md">社区模型待办</a>。</sub></p>
+
+## H3 RAW vs PE
+
+<table cellspacing="0" cellpadding="0">
   <tr>
-    <th></th>
-    <th>Qwen-Image 文生图 · 海报构图</th>
+    <th>人物对话<br><sub>RAW</sub></th>
+    <th>人物对话<br><sub>PE</sub></th>
+    <th>产品运动<br><sub>RAW</sub></th>
+    <th>产品运动<br><sub>PE</sub></th>
+    <th>电影化场景<br><sub>RAW</sub></th>
+    <th>电影化场景<br><sub>PE</sub></th>
   </tr>
   <tr>
-    <th>RAW</th>
-    <td><img src="docs/assets/gallery/image/qwen_t2i_raw.webp" alt="RAW Qwen-Image 海报" width="240"></td>
-  </tr>
-  <tr>
-    <th>PE</th>
-    <td><img src="docs/assets/gallery/image/qwen_t2i_pe.webp" alt="PE Qwen-Image 海报" width="240"></td>
-  </tr>
-</table>
-
-<p align="center">
-  <a href="docs/assets/gallery/index.html"><b>打开完整视频 Gallery</b></a> ·
-  <a href="docs/assets/gallery/image/index.html"><b>打开含提示词的图像 Gallery</b></a>
-</p>
-
-### Seedream 风格图像 PE KPI
-
-<table>
-  <tr>
-    <td width="240"><img src="docs/assets/gallery/image/seedream_profile_kpi.svg" alt="Seedream 风格提示词扩写 KPI" width="240"></td>
-    <td valign="middle"><b>开源配置档的结构保证</b><br><sub>单段视觉蓝图、经过校验的比例选择、画面文字原样保留、明确的参考图操作，以及有界修复。</sub><br><br><sub>这是提示词配置的 KPI，不是闭源服务生成的图片。待存在稳定、可公开复现的推理契约后，再在完整 Gallery 中补充服务商 A/B。</sub></td>
+    <td><img src="docs/assets/gallery/s01_dialogue_raw.gif" alt="RAW 人物对话" width="100%"></td>
+    <td><img src="docs/assets/gallery/s01_dialogue_pe.gif" alt="PE 人物对话" width="100%"></td>
+    <td><img src="docs/assets/gallery/s06_sneaker_raw.gif" alt="RAW 产品运动" width="100%"></td>
+    <td><img src="docs/assets/gallery/s06_sneaker_pe.gif" alt="PE 产品运动" width="100%"></td>
+    <td><img src="docs/assets/gallery/s09_noir_raw.gif" alt="RAW 电影化场景" width="100%"></td>
+    <td><img src="docs/assets/gallery/s09_noir_pe.gif" alt="PE 电影化场景" width="100%"></td>
   </tr>
 </table>
 
-<table>
-  <tr>
-    <td align="center" width="25%"><b>3 类任务</b><br><sub>文生图 · 图生图 · 图像编辑</sub></td>
-    <td align="center" width="25%"><b>8 + 参考图</b><br><sub>经过校验的比例模式</sub></td>
-    <td align="center" width="25%"><b>统一输出</b><br><sub>prompt + ratio</sub></td>
-    <td align="center" width="25%"><b>有限次数</b><br><sub>确定性校验与修复</sub></td>
-  </tr>
-</table>
-
-Seedream 是这个通用配置档所参考的一项公开示例。这些是开源 PE 契约提供的结构保证，
-不代表掌握闭源服务的内部实现，也不是对下游生成质量的承诺。
+<p align="center"><a href="docs/assets/gallery/index.html"><b>打开完整 H3 视频 Gallery →</b></a></p>
 
 ## 快速开始
 
