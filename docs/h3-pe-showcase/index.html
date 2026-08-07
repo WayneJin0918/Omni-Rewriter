@@ -3,828 +3,106 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Omni-Rewriter H3 PE showcase — open prompt-expansion harness for MiniMax-H3 with RAW vs PE demos.">
-  <title>Omni-Rewriter · H3 PE Showcase</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@450;550;650;750&family=Source+Serif+4:opsz,wght@8..60,500;8..60,650&display=swap" rel="stylesheet">
+  <title>H3 PE showcase · Omni-Rewriter</title>
   <style>
-    :root {
-      --bg: #0a0e12;
-      --surface: #121820;
-      --surface-2: #182028;
-      --line: #263040;
-      --line-soft: #1c2630;
-      --text: #edf2f7;
-      --text-2: #b7c2ce;
-      --muted: #7e8b99;
-      --teal: #2ec4b6;
-      --teal-soft: rgba(46, 196, 182, 0.12);
-      --teal-line: rgba(46, 196, 182, 0.32);
-      --indigo: #5b8def;
-      --amber: #e0a24a;
-      --rose: #e07a7a;
-      --prose: 1080px;
-      --wide: 1180px;
-    }
-    * { box-sizing: border-box; }
-    html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
-    body {
-      margin: 0;
-      background:
-        radial-gradient(1100px 520px at 8% -8%, rgba(46, 196, 182, 0.09), transparent 55%),
-        radial-gradient(900px 480px at 100% 0%, rgba(91, 141, 239, 0.07), transparent 50%),
-        var(--bg);
-      color: var(--text);
-      font-family: "Outfit", ui-sans-serif, system-ui, sans-serif;
-      font-size: 17px;
-      line-height: 1.65;
-      letter-spacing: -0.01em;
-      -webkit-font-smoothing: antialiased;
-    }
-    a {
-      color: var(--teal);
-      text-decoration: none;
-      border-bottom: 1px solid var(--teal-line);
-      transition: border-color 0.15s, color 0.15s;
-    }
-    a:hover { border-bottom-color: var(--teal); }
-    code, .mono {
-      font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
-      font-size: 0.92em;
-    }
-
-    .bar {
-      position: sticky; top: 0; z-index: 40;
-      background: rgba(10, 14, 18, 0.86);
-      backdrop-filter: blur(14px);
-      border-bottom: 1px solid var(--line-soft);
-    }
-    .bar-in {
-      max-width: var(--wide);
-      margin: 0 auto;
-      padding: 12px 28px;
-      display: flex;
-      align-items: center;
-      gap: 14px;
-      flex-wrap: wrap;
-    }
-    .brand {
-      display: flex; align-items: center; gap: 10px;
-      font-weight: 650; font-size: 15px; letter-spacing: 0.01em;
-      color: var(--text); border: 0;
-    }
-    .brand:hover { color: var(--teal); }
-    .brand-mark {
-      width: 26px; height: 26px; border-radius: 6px;
-      background: linear-gradient(145deg, var(--teal), var(--indigo));
-      display: grid; place-items: center;
-      color: #061018; font-weight: 750; font-size: 13px;
-    }
-    .bar .div { width: 1px; height: 16px; background: var(--line); }
-    .bar .eyebrow {
-      color: var(--muted); font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase;
-    }
-    .bar-links { margin-left: auto; display: flex; gap: 8px; flex-wrap: wrap; }
-    .btn {
-      display: inline-flex; align-items: center; gap: 8px;
-      padding: 8px 14px; border-radius: 8px;
-      font-weight: 600; font-size: 14px; letter-spacing: 0.01em;
-      border: 1px solid var(--line); color: var(--text); background: var(--surface);
-      text-decoration: none;
-      transition: border-color 0.15s, background 0.15s, transform 0.15s;
-    }
-    .btn:hover { border-color: var(--teal); background: var(--surface-2); }
-    .btn-primary {
-      background: var(--teal); color: #061018; border-color: transparent;
-      box-shadow: 0 0 0 1px rgba(46, 196, 182, 0.25);
-    }
-    .btn-primary:hover { background: #3ad4c5; color: #061018; border-color: transparent; }
-    .btn-ghost { background: transparent; }
-
-    .prose, .wide { max-width: var(--prose); margin: 0 auto; padding: 0 28px; }
-    .wide { max-width: var(--wide); }
-
-    .hero {
-      padding: 72px 0 56px;
-      position: relative;
-      overflow: hidden;
-    }
-    .hero::after {
-      content: "";
-      position: absolute; inset: auto 0 0 0; height: 1px;
-      background: linear-gradient(90deg, transparent, var(--teal-line) 18%, var(--teal-line) 82%, transparent);
-    }
-    .pill {
-      display: inline-flex; align-items: center; gap: 8px;
-      font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase;
-      color: var(--teal); background: var(--teal-soft);
-      border: 1px solid var(--teal-line);
-      padding: 6px 12px; border-radius: 999px; margin-bottom: 22px; font-weight: 650;
-    }
-    .pill::before {
-      content: ""; width: 6px; height: 6px; border-radius: 50%; background: var(--teal);
-      box-shadow: 0 0 0 3px rgba(46, 196, 182, 0.2);
-    }
-    h1 {
-      margin: 0 0 22px; font-weight: 750; letter-spacing: -0.03em; line-height: 1.05;
-    }
-    h1 .h1a {
-      display: block;
-      font-size: clamp(34px, 5.4vw, 52px);
-      color: #fff;
-    }
-    h1 .h1b {
-      display: block; margin-top: 10px;
-      font-size: clamp(22px, 3.2vw, 30px);
-      line-height: 1.2; letter-spacing: -0.02em;
-      color: var(--text-2); font-weight: 550;
-      font-family: "Source Serif 4", Georgia, serif;
-    }
-    h1 em { font-style: normal; color: var(--teal); }
-    .dek {
-      font-size: 19px; line-height: 1.55; color: var(--text-2);
-      margin: 0 0 28px; max-width: 46rem;
-    }
-    .dek b { color: #fff; font-weight: 650; }
-    .cta-row { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 28px; }
-    .meta-strip {
-      display: flex; flex-wrap: wrap; gap: 10px 18px;
-      padding-top: 22px; border-top: 1px solid var(--line-soft);
-      color: var(--muted); font-size: 14px;
-    }
-    .meta-strip strong { color: var(--text-2); font-weight: 600; }
-
-    section { padding: 68px 0 0; }
-    .shead {
-      margin-bottom: 28px;
-      display: flex; flex-wrap: wrap; align-items: baseline; gap: 0 14px;
-    }
-    .shead .num {
-      font-size: clamp(24px, 3vw, 30px); line-height: 1.2;
-      letter-spacing: -0.02em; color: var(--teal); font-weight: 700;
-    }
-    h2 {
-      font-size: clamp(24px, 3vw, 30px); line-height: 1.2; margin: 0;
-      font-weight: 700; letter-spacing: -0.022em;
-    }
-    .shead p {
-      flex: 0 0 100%; margin: 10px 0 0;
-      color: var(--muted); font-size: 16px; line-height: 1.5;
-    }
-    .lede { font-size: 18px; line-height: 1.6; color: var(--text-2); max-width: 48rem; }
-
-    .tiles {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 1px; background: var(--line);
-      border: 1px solid var(--line); border-radius: 12px; overflow: hidden;
-      margin: 28px 0;
-    }
-    .tile { background: var(--surface); padding: 22px 20px; }
-    .tile .k {
-      font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase;
-      color: var(--muted); font-weight: 650; margin-bottom: 12px;
-    }
-    .tile .v {
-      font-size: 28px; font-weight: 700; line-height: 1.1;
-      letter-spacing: -0.03em; color: #fff;
-    }
-    .tile .v span { font-size: 16px; color: var(--teal); margin-left: 2px; }
-    .tile .n { font-size: 14px; color: var(--muted); margin-top: 10px; line-height: 1.45; }
-
-    .points {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-      gap: 14px; margin: 28px 0;
-    }
-    .point {
-      background: linear-gradient(180deg, var(--surface), var(--surface-2));
-      border: 1px solid var(--line); border-radius: 12px; padding: 20px 20px 18px;
-      position: relative;
-    }
-    .point::before {
-      content: ""; position: absolute; left: 0; top: 16px; bottom: 16px; width: 2px;
-      background: var(--teal); border-radius: 2px;
-    }
-    .point h3 {
-      margin: 0 0 8px; font-size: 16px; font-weight: 650; letter-spacing: -0.01em;
-    }
-    .point p { margin: 0; color: var(--text-2); font-size: 15px; line-height: 1.5; }
-
-    .box {
-      background: linear-gradient(180deg, var(--surface), var(--surface-2));
-      border: 1px solid var(--line); border-radius: 12px;
-      padding: 20px 22px; margin: 24px 0; position: relative;
-    }
-    .box::before {
-      content: ""; position: absolute; left: 0; top: 14px; bottom: 14px; width: 2px;
-      background: var(--amber); border-radius: 2px;
-    }
-    .box .lbl {
-      font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase;
-      color: var(--amber); font-weight: 650; margin-bottom: 8px;
-    }
-    .box p { margin: 0; color: var(--text-2); font-size: 15px; }
-
-    .flow {
-      display: grid;
-      grid-template-columns: repeat(5, minmax(0, 1fr));
-      gap: 10px; margin: 28px 0 8px;
-    }
-    @media (max-width: 900px) {
-      .flow { grid-template-columns: 1fr; }
-    }
-    .flow-step {
-      background: var(--surface);
-      border: 1px solid var(--line);
-      border-radius: 12px;
-      padding: 16px 14px;
-      position: relative;
-      min-height: 118px;
-    }
-    .flow-step .i {
-      font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase;
-      color: var(--teal); font-weight: 650; margin-bottom: 8px;
-    }
-    .flow-step .t { font-weight: 650; font-size: 15px; margin-bottom: 6px; }
-    .flow-step .d { color: var(--muted); font-size: 13px; line-height: 1.4; }
-    .flow-arrow {
-      display: none;
-    }
-    @media (min-width: 901px) {
-      .flow { gap: 0; align-items: stretch; }
-      .flow-step { margin-right: 28px; }
-      .flow-step:last-child { margin-right: 0; }
-      .flow-step::after {
-        content: "→";
-        position: absolute; right: -22px; top: 50%; transform: translateY(-50%);
-        color: var(--muted); font-size: 18px;
-      }
-      .flow-step:last-child::after { content: none; }
-    }
-    .flow-note {
-      color: var(--muted); font-size: 14px; margin-top: 8px;
-    }
-
-    .filters {
-      display: flex; flex-wrap: wrap; gap: 8px;
-      margin: 8px 0 22px;
-    }
-    .chip {
-      appearance: none; cursor: pointer;
-      border: 1px solid var(--line); background: var(--surface);
-      color: var(--text-2); border-radius: 999px;
-      padding: 6px 12px; font: inherit; font-size: 13px; font-weight: 550;
-      transition: border-color 0.15s, background 0.15s, color 0.15s;
-    }
-    .chip:hover, .chip[aria-pressed="true"] {
-      border-color: var(--teal-line); color: var(--teal); background: var(--teal-soft);
-    }
-
-    .demo-grid { display: grid; gap: 22px; }
-    .demo {
-      background: var(--surface);
-      border: 1px solid var(--line);
-      border-radius: 14px;
-      padding: 18px;
-      animation: rise 0.45s ease both;
-    }
-    @keyframes rise {
-      from { opacity: 0; transform: translateY(8px); }
-      to { opacity: 1; transform: none; }
-    }
-    .demo[hidden] { display: none; }
-    .demo-head {
-      display: flex; flex-wrap: wrap; align-items: baseline; gap: 8px 12px;
-      margin-bottom: 10px;
-    }
-    .demo-head h3 {
-      margin: 0; font-size: 18px; font-weight: 650; letter-spacing: -0.015em;
-    }
-    .tag {
-      display: inline-flex; align-items: center;
-      font-size: 11px; letter-spacing: 0.06em; text-transform: uppercase;
-      font-weight: 650; padding: 3px 8px; border-radius: 999px;
-      border: 1px solid var(--line); color: var(--muted);
-    }
-    .tag.pe { color: var(--teal); border-color: var(--teal-line); background: var(--teal-soft); }
-    .tag.raw { color: var(--rose); border-color: rgba(224, 122, 122, 0.35); background: rgba(224, 122, 122, 0.1); }
-    .tag.mix { color: var(--amber); border-color: rgba(224, 162, 74, 0.35); background: rgba(224, 162, 74, 0.1); }
-    .tag.cat { color: var(--indigo); border-color: rgba(91, 141, 239, 0.35); }
-    .prompt {
-      margin: 0 0 14px; color: var(--text-2); font-size: 14.5px; line-height: 1.5;
-    }
-    .pair {
-      display: grid; grid-template-columns: 1fr 1fr; gap: 12px;
-    }
-    @media (max-width: 720px) {
-      .pair { grid-template-columns: 1fr; }
-      .bar-links { margin-left: 0; width: 100%; }
-    }
-    figure { margin: 0; }
-    figcaption {
-      font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase;
-      font-weight: 650; color: var(--muted); margin-bottom: 7px;
-    }
-    figure img {
-      display: block; width: 100%; height: auto;
-      border-radius: 10px; background: #000; aspect-ratio: 16 / 9; object-fit: cover;
-    }
-
-    .upcoming {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 12px; margin-top: 18px;
-    }
-    .upcoming article {
-      border: 1px dashed var(--line);
-      border-radius: 12px;
-      padding: 16px;
-      background: rgba(18, 24, 32, 0.55);
-    }
-    .upcoming h4 { margin: 0 0 6px; font-size: 15px; }
-    .upcoming p { margin: 0; color: var(--muted); font-size: 13.5px; line-height: 1.45; }
-    .upcoming .soon {
-      display: inline-block; margin-top: 10px;
-      font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase;
-      color: var(--amber); font-weight: 650;
-    }
-
-    footer {
-      margin-top: 72px;
-      padding: 36px 0 48px;
-      border-top: 1px solid var(--line-soft);
-      color: var(--muted); font-size: 14px;
-    }
-    footer .row {
-      display: flex; flex-wrap: wrap; gap: 12px 24px;
-      justify-content: space-between; align-items: flex-start;
-    }
-    footer a { color: var(--text-2); }
+    :root { color-scheme: light dark; font-family: ui-sans-serif, system-ui, sans-serif; }
+    body { max-width: 960px; margin: 0 auto; padding: 2rem 1rem; }
+    h1 { margin-bottom: .35rem; }
+    .lede { opacity: .85; margin-bottom: 1.5rem; }
+    .scene { margin: 2rem 0; padding-top: 1rem; border-top: 1px solid color-mix(in srgb, currentColor 18%, transparent); }
+    .desc { margin: .35rem 0 0.8rem; opacity: .8; }
+    .pair { display:grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 1rem; }
+    figure { margin:0; }
+    figcaption { margin-bottom:.4rem; font-weight:700; letter-spacing:.08em; }
+    img { display:block; width:100%; height:auto; border-radius:.4rem; background:#111; }
+    @media (max-width:620px) { .pair { grid-template-columns:1fr; } }
   </style>
 </head>
 <body>
-  <header class="bar">
-    <div class="bar-in">
-      <a class="brand" href="https://github.com/WayneJin0918/Omni-Rewriter" rel="noopener">
-        <span class="brand-mark" aria-hidden="true">OR</span>
-        Omni-Rewriter
-      </a>
-      <span class="div" aria-hidden="true"></span>
-      <span class="eyebrow">H3 PE Showcase</span>
-      <div class="bar-links">
-        <a class="btn btn-primary" href="https://github.com/WayneJin0918/Omni-Rewriter" rel="noopener">Source / Code</a>
-        <a class="btn" href="../h3-pe-harness.md">Docs</a>
-        <a class="btn btn-ghost" href="../../README.md">README</a>
-      </div>
-    </div>
-  </header>
-
   <main>
-    <section class="hero">
-      <div class="prose">
-        <div class="pill">Open PE harness · MiniMax-H3</div>
-        <h1>
-          <span class="h1a">Better PE for <em>MiniMax-H3</em></span>
-          <span class="h1b">Validated timeline, dialogue, camera, and continuity — not a private Context-IR clone.</span>
-        </h1>
-        <p class="dek">
-          Omni-Rewriter is an open <b>agentic prompt-expansion harness</b> tuned for H3’s public
-          dialect. It turns everyday video intent into schema-checked, repair-bounded prompts —
-          then stops. <b>Expand ≠ generate.</b>
-        </p>
-        <div class="cta-row">
-          <a class="btn btn-primary" href="https://github.com/WayneJin0918/Omni-Rewriter" rel="noopener">GitHub · WayneJin0918/Omni-Rewriter</a>
-          <a class="btn" href="../h3-pe-harness.md">H3 PE profile guide</a>
-          <a class="btn btn-ghost" href="#demos">Jump to demos</a>
-        </div>
-        <div class="meta-strip">
-          <span><strong>10</strong> published RAW / PE pairs</span>
-          <span><strong>s11–s16</strong> camera-stress set expanding</span>
-          <span>Same seed · 15s · 768p · audio on</span>
-        </div>
+    <h1>MiniMax-H3 · RAW vs PE showcase</h1>
+    <p class="lede">Same seed per scenario. Homepage highlights the strongest PE-win cases first; the rest of the 15s base set follows for comparison. Camera-stress set s11–s16 is prepared but not yet generated.</p>
+    
+    <section class="scene">
+      <h2>Tokyo ramen bilingual dialogue</h2>
+      <p class="desc">In a Tokyo ramen shop, bilingual JP/EN dialogue with kitchen ambience.</p>
+      <div class="pair">
+        <figure><figcaption>RAW</figcaption><img src="thumbs/s02_multilingual_raw.gif" alt="s02_multilingual RAW"></figure>
+        <figure><figcaption>PE</figcaption><img src="thumbs/s02_multilingual_pe.gif" alt="s02_multilingual PE"></figure>
       </div>
     </section>
-
-    <section id="source">
-      <div class="prose">
-        <div class="shead">
-          <span class="num">01 —</span>
-          <h2>Source first</h2>
-          <p>The product is the repo: schemas, validators, bounded repair, and H3 renderers.</p>
-        </div>
-        <p class="lede">
-          Start with the code, not a closed demo. Clone the harness, expand a
-          <span class="mono">RewriteRequest</span>, inspect the H3 dialect text, then optionally
-          wire an adapter or local MiniMax-H3 runner.
-        </p>
-        <div class="tiles">
-          <div class="tile">
-            <div class="k">Repository</div>
-            <div class="v"><span style="font-size:18px;color:#fff;letter-spacing:-0.02em">Omni-Rewriter</span></div>
-            <div class="n"><a href="https://github.com/WayneJin0918/Omni-Rewriter" rel="noopener">github.com/WayneJin0918/Omni-Rewriter</a></div>
-          </div>
-          <div class="tile">
-            <div class="k">Contract</div>
-            <div class="v">PE<span> only</span></div>
-            <div class="n">Validated text / JSON. Generation is an explicit consumer step.</div>
-          </div>
-          <div class="tile">
-            <div class="k">Profile</div>
-            <div class="v">H3</div>
-            <div class="n">Timeline grammar, <span class="mono">&lt;d&gt;</span> dialogue tags, camera, continuity.</div>
-          </div>
-          <div class="tile">
-            <div class="k">Evidence</div>
-            <div class="v">Scoped</div>
-            <div class="n">Public dialect rules — not a claim to reverse-engineer private Context-IR.</div>
-          </div>
-        </div>
+    <section class="scene">
+      <h2>Wok toss action sync</h2>
+      <p class="desc">Chef flips a sizzling wok; sync flame, oil, and spatula hits.</p>
+      <div class="pair">
+        <figure><figcaption>RAW</figcaption><img src="thumbs/s05_wok_raw.gif" alt="s05_wok RAW"></figure>
+        <figure><figcaption>PE</figcaption><img src="thumbs/s05_wok_pe.gif" alt="s05_wok PE"></figure>
       </div>
     </section>
-
-    <section id="positioning">
-      <div class="prose">
-        <div class="shead">
-          <span class="num">02 —</span>
-          <h2>Why this PE matters for H3</h2>
-          <p>H3 rewards structured timing, audible dialogue, and camera intent — casual prompts often underspecify them.</p>
-        </div>
-        <div class="points">
-          <article class="point">
-            <h3>Expand ≠ generate</h3>
-            <p>The harness returns validated prompts. Loading MiniMax-H3 or calling an API is optional and separate.</p>
-          </article>
-          <article class="point">
-            <h3>Validated H3 dialect</h3>
-            <p>Shot timelines, language-tagged dialogue, natural-English camera, and continuity checks against public skill grammar.</p>
-          </article>
-          <article class="point">
-            <h3>Deterministic repair</h3>
-            <p>Schema validation plus bounded repair cycles — not ad-hoc prompt string surgery.</p>
-          </article>
-          <article class="point">
-            <h3>Honest evaluation</h3>
-            <p>RAW vs PE demos use the same seed. Where PE is weaker, this page says so.</p>
-          </article>
-        </div>
-        <div class="box">
-          <div class="lbl">Scope note</div>
-          <p>
-            Omni-Rewriter does not claim to reproduce private MiniMax Context-IR internals.
-            The H3 profile encodes publicly documented prompt conventions and repository tests.
-          </p>
-        </div>
+    <section class="scene">
+      <h2>Neon-highway cyclist</h2>
+      <p class="desc">Lone cyclist on neon highway with score + tire/chain ambience.</p>
+      <div class="pair">
+        <figure><figcaption>RAW</figcaption><img src="thumbs/s04_cyclist_raw.gif" alt="s04_cyclist RAW"></figure>
+        <figure><figcaption>PE</figcaption><img src="thumbs/s04_cyclist_pe.gif" alt="s04_cyclist PE"></figure>
       </div>
     </section>
-
-    <section id="pipeline">
-      <div class="prose">
-        <div class="shead">
-          <span class="num">03 —</span>
-          <h2>Pipeline</h2>
-          <p>Transport-neutral intent → typed rewrite → validate / repair → H3 render → optional runtime.</p>
-        </div>
-        <div class="flow" aria-label="Omni-Rewriter H3 PE pipeline">
-          <div class="flow-step">
-            <div class="i">01</div>
-            <div class="t">RewriteRequest</div>
-            <div class="d">Prompt, task, duration, media refs</div>
-          </div>
-          <div class="flow-step">
-            <div class="i">02</div>
-            <div class="t">Analyze · draft</div>
-            <div class="d">Agent plan + schema-guided draft</div>
-          </div>
-          <div class="flow-step">
-            <div class="i">03</div>
-            <div class="t">Validate · repair</div>
-            <div class="d">Deterministic checks, bounded loops</div>
-          </div>
-          <div class="flow-step">
-            <div class="i">04</div>
-            <div class="t">H3 dialect render</div>
-            <div class="d">Shots, dialogue tags, soundscape</div>
-          </div>
-          <div class="flow-step">
-            <div class="i">05</div>
-            <div class="t">Optional adapter</div>
-            <div class="d">MiniMax-H3 / local runner</div>
-          </div>
-        </div>
-        <p class="flow-note">
-          A PE profile does not prove generation-runtime compatibility. Adapters stay evidence-scoped.
-        </p>
+    <section class="scene">
+      <h2>Rainy bus-stop dialogue</h2>
+      <p class="desc">Coworkers argue in English at a rainy bus stop.</p>
+      <div class="pair">
+        <figure><figcaption>RAW</figcaption><img src="thumbs/s01_dialogue_raw.gif" alt="s01_dialogue RAW"></figure>
+        <figure><figcaption>PE</figcaption><img src="thumbs/s01_dialogue_pe.gif" alt="s01_dialogue PE"></figure>
       </div>
     </section>
-
-    <section id="demos">
-      <div class="wide">
-        <div class="shead">
-          <span class="num">04 —</span>
-          <h2>RAW vs PE demos</h2>
-          <p>
-            Ten published pairs from the MiniMax-H3 15s base set. GIFs are silent low-res previews;
-            full audio lives in the experiment videos (gitignored). Internal VLM pairwise labels are shown honestly.
-          </p>
-        </div>
-
-        <div class="filters" role="toolbar" aria-label="Filter demos">
-          <button type="button" class="chip" data-filter="all" aria-pressed="true">All published</button>
-          <button type="button" class="chip" data-filter="pe" aria-pressed="false">PE favored</button>
-          <button type="button" class="chip" data-filter="dialogue" aria-pressed="false">Dialogue</button>
-          <button type="button" class="chip" data-filter="action" aria-pressed="false">Action / sync</button>
-          <button type="button" class="chip" data-filter="cinematic" aria-pressed="false">Cinematic</button>
-          <button type="button" class="chip" data-filter="cuts" aria-pressed="false">Cuts / continuity</button>
-        </div>
-
-        <div class="demo-grid" id="demo-grid">
-          <article class="demo" data-id="s02_multilingual" data-winner="pe" data-tags="dialogue pe">
-            <div class="demo-head">
-              <h3>Tokyo ramen · bilingual</h3>
-              <span class="tag cat">multilingual_dialogue</span>
-              <span class="tag pe">PE favored</span>
-              <span class="tag">s02</span>
-            </div>
-            <p class="prompt">Chef calls orders in Japanese; tourist replies in English — both audible and lip-synced over kitchen sound.</p>
-            <div class="pair">
-              <figure>
-                <figcaption>RAW</figcaption>
-                <img src="thumbs/s02_multilingual_raw.gif" alt="RAW bilingual ramen-shop dialogue" loading="lazy">
-              </figure>
-              <figure>
-                <figcaption>PE</figcaption>
-                <img src="thumbs/s02_multilingual_pe.gif" alt="PE bilingual ramen-shop dialogue" loading="lazy">
-              </figure>
-            </div>
-          </article>
-
-          <article class="demo" data-id="s05_wok" data-winner="pe" data-tags="action pe">
-            <div class="demo-head">
-              <h3>Wok toss · action sync</h3>
-              <span class="tag cat">action_sync</span>
-              <span class="tag pe">PE favored</span>
-              <span class="tag">s05</span>
-            </div>
-            <p class="prompt">Chef flips a sizzling wok, tosses noodles high, and catches them — motion locked to flame, oil, and metal hits.</p>
-            <div class="pair">
-              <figure>
-                <figcaption>RAW</figcaption>
-                <img src="thumbs/s05_wok_raw.gif" alt="RAW wok toss" loading="lazy">
-              </figure>
-              <figure>
-                <figcaption>PE</figcaption>
-                <img src="thumbs/s05_wok_pe.gif" alt="PE wok toss" loading="lazy">
-              </figure>
-            </div>
-          </article>
-
-          <article class="demo" data-id="s01_dialogue" data-winner="pe" data-tags="dialogue pe">
-            <div class="demo-head">
-              <h3>Rainy bus stop · English dialogue</h3>
-              <span class="tag cat">english_dialogue</span>
-              <span class="tag pe">PE favored</span>
-              <span class="tag">s01</span>
-            </div>
-            <p class="prompt">Two coworkers argue about being late — clear spoken English, lip-sync, rain, traffic, and street ambience.</p>
-            <div class="pair">
-              <figure>
-                <figcaption>RAW</figcaption>
-                <img src="thumbs/s01_dialogue_raw.gif" alt="RAW rainy bus-stop dialogue" loading="lazy">
-              </figure>
-              <figure>
-                <figcaption>PE</figcaption>
-                <img src="thumbs/s01_dialogue_pe.gif" alt="PE rainy bus-stop dialogue" loading="lazy">
-              </figure>
-            </div>
-          </article>
-
-          <article class="demo" data-id="s03_wetland" data-winner="pe" data-tags="cinematic pe">
-            <div class="demo-head">
-              <h3>Pre-dawn wetland · ambience</h3>
-              <span class="tag cat">natural_ambience</span>
-              <span class="tag pe">PE favored</span>
-              <span class="tag">s03</span>
-            </div>
-            <p class="prompt">Lightning over reeds — birds, insects, thunder, water, and wind layered with no dialogue.</p>
-            <div class="pair">
-              <figure>
-                <figcaption>RAW</figcaption>
-                <img src="thumbs/s03_wetland_raw.gif" alt="RAW wetland ambience" loading="lazy">
-              </figure>
-              <figure>
-                <figcaption>PE</figcaption>
-                <img src="thumbs/s03_wetland_pe.gif" alt="PE wetland ambience" loading="lazy">
-              </figure>
-            </div>
-          </article>
-
-          <article class="demo" data-id="s04_cyclist" data-winner="pe" data-tags="cinematic pe">
-            <div class="demo-head">
-              <h3>Neon highway · cyclist</h3>
-              <span class="tag cat">score_and_ambience</span>
-              <span class="tag pe">PE favored</span>
-              <span class="tag">s04</span>
-            </div>
-            <p class="prompt">Lone night ride with orchestral score plus tire hum, chain clicks, breathing, and wind.</p>
-            <div class="pair">
-              <figure>
-                <figcaption>RAW</figcaption>
-                <img src="thumbs/s04_cyclist_raw.gif" alt="RAW neon cyclist" loading="lazy">
-              </figure>
-              <figure>
-                <figcaption>PE</figcaption>
-                <img src="thumbs/s04_cyclist_pe.gif" alt="PE neon cyclist" loading="lazy">
-              </figure>
-            </div>
-          </article>
-
-          <article class="demo" data-id="s06_sneaker" data-winner="raw" data-tags="cuts action">
-            <div class="demo-head">
-              <h3>Sneaker ad · timed cuts</h3>
-              <span class="tag cat">timed_cuts</span>
-              <span class="tag mix">Close / mixed</span>
-              <span class="tag">s06</span>
-            </div>
-            <p class="prompt">Wide city sprint → side track → sole macro with rhythmic footfalls and transition whooshes. VLM pairwise edged RAW; scores nearly tied.</p>
-            <div class="pair">
-              <figure>
-                <figcaption>RAW</figcaption>
-                <img src="thumbs/s06_sneaker_raw.gif" alt="RAW sneaker ad" loading="lazy">
-              </figure>
-              <figure>
-                <figcaption>PE</figcaption>
-                <img src="thumbs/s06_sneaker_pe.gif" alt="PE sneaker ad" loading="lazy">
-              </figure>
-            </div>
-          </article>
-
-          <article class="demo" data-id="s10_phone_call" data-winner="raw" data-tags="cuts dialogue">
-            <div class="demo-head">
-              <h3>Phone call · cross-cut audio</h3>
-              <span class="tag cat">cross_cut_audio</span>
-              <span class="tag mix">Close / mixed</span>
-              <span class="tag">s10</span>
-            </div>
-            <p class="prompt">Quiet office ↔ busy café; one English conversation must continue seamlessly across cuts.</p>
-            <div class="pair">
-              <figure>
-                <figcaption>RAW</figcaption>
-                <img src="thumbs/s10_phone_call_raw.gif" alt="RAW phone call cross-cut" loading="lazy">
-              </figure>
-              <figure>
-                <figcaption>PE</figcaption>
-                <img src="thumbs/s10_phone_call_pe.gif" alt="PE phone call cross-cut" loading="lazy">
-              </figure>
-            </div>
-          </article>
-
-          <article class="demo" data-id="s08_jazz" data-winner="raw" data-tags="cinematic">
-            <div class="demo-head">
-              <h3>Street jazz trio</h3>
-              <span class="tag cat">diegetic_music</span>
-              <span class="tag raw">RAW favored</span>
-              <span class="tag">s08</span>
-            </div>
-            <p class="prompt">Sax, upright bass, and brush drums in a plaza — live in-scene music and crowd reactions audible.</p>
-            <div class="pair">
-              <figure>
-                <figcaption>RAW</figcaption>
-                <img src="thumbs/s08_jazz_raw.gif" alt="RAW street jazz" loading="lazy">
-              </figure>
-              <figure>
-                <figcaption>PE</figcaption>
-                <img src="thumbs/s08_jazz_pe.gif" alt="PE street jazz" loading="lazy">
-              </figure>
-            </div>
-          </article>
-
-          <article class="demo" data-id="s07_bowling" data-winner="raw" data-tags="action">
-            <div class="demo-head">
-              <h3>Bowling strike · physics</h3>
-              <span class="tag cat">physics_and_impact</span>
-              <span class="tag raw">RAW favored</span>
-              <span class="tag">s07</span>
-            </div>
-            <p class="prompt">Spinning ball, pin scatter, rolling rumble, and a loud synchronized crash.</p>
-            <div class="pair">
-              <figure>
-                <figcaption>RAW</figcaption>
-                <img src="thumbs/s07_bowling_raw.gif" alt="RAW bowling strike" loading="lazy">
-              </figure>
-              <figure>
-                <figcaption>PE</figcaption>
-                <img src="thumbs/s07_bowling_pe.gif" alt="PE bowling strike" loading="lazy">
-              </figure>
-            </div>
-          </article>
-
-          <article class="demo" data-id="s09_noir" data-winner="raw" data-tags="cinematic dialogue">
-            <div class="demo-head">
-              <h3>Noir detective · voiceover</h3>
-              <span class="tag cat">voiceover</span>
-              <span class="tag raw">RAW favored</span>
-              <span class="tag">s09</span>
-            </div>
-            <p class="prompt">Neon rain walk with calm off-screen narration; lips closed beneath rain and distant sirens.</p>
-            <div class="pair">
-              <figure>
-                <figcaption>RAW</figcaption>
-                <img src="thumbs/s09_noir_raw.gif" alt="RAW noir voiceover" loading="lazy">
-              </figure>
-              <figure>
-                <figcaption>PE</figcaption>
-                <img src="thumbs/s09_noir_pe.gif" alt="PE noir voiceover" loading="lazy">
-              </figure>
-            </div>
-          </article>
-        </div>
-
-        <div class="shead" style="margin-top:48px">
-          <span class="num">05 —</span>
-          <h2>Camera-stress set expanding</h2>
-          <p>
-            Scenarios s11–s16 are prepared in
-            <span class="mono">experiments/t2va-base-15s-raw-vs-pe/</span>
-            (prompts ready). Writer and H3 serve paths were unavailable when this page shipped —
-            no placeholder videos invented. UI slots reserved below.
-          </p>
-        </div>
-        <div class="upcoming" aria-label="Upcoming camera-stress demos">
-          <article>
-            <h4>s11 · museum reveal</h4>
-            <p>Pedestal up → push-in → hard cut to statue detail. Category: pedestal_push_cut.</p>
-            <span class="soon">Videos deferred</span>
-          </article>
-          <article>
-            <h4>s12 · alley chase</h4>
-            <p>Handheld tracking, whip cuts, sprinting dialogue. Category: tracking_shake_cuts.</p>
-            <span class="soon">Videos deferred</span>
-          </article>
-          <article>
-            <h4>s13 · rooftop orbit</h4>
-            <p>180° arc proposal with lip-sync and reaction cut. Category: arc_shot_dialogue.</p>
-            <span class="soon">Videos deferred</span>
-          </article>
-          <article>
-            <h4>s14 · kitchen stations</h4>
-            <p>Whip-pan montage across grill, plating, and the pass. Category: whip_pan_montage.</p>
-            <span class="soon">Videos deferred</span>
-          </article>
-          <article>
-            <h4>s15 · concert crash-zoom</h4>
-            <p>Four timed cuts with continuous diegetic band and crowd. Category: crash_zoom_multicut.</p>
-            <span class="soon">Videos deferred</span>
-          </article>
-          <article>
-            <h4>s16 · train match-cut</h4>
-            <p>Tunnel POV → daylight medium with dialogue carryover. Category: pov_matchcut_carryover.</p>
-            <span class="soon">Videos deferred</span>
-          </article>
-        </div>
+    <section class="scene">
+      <h2>Pre-dawn wetland ambience</h2>
+      <p class="desc">Layered birds, insects, thunder, water, and wind; no dialogue.</p>
+      <div class="pair">
+        <figure><figcaption>RAW</figcaption><img src="thumbs/s03_wetland_raw.gif" alt="s03_wetland RAW"></figure>
+        <figure><figcaption>PE</figcaption><img src="thumbs/s03_wetland_pe.gif" alt="s03_wetland PE"></figure>
+      </div>
+    </section>
+    <section class="scene">
+      <h2>Street jazz trio</h2>
+      <p class="desc">Sax, bass, brushes with live diegetic music and crowd.</p>
+      <div class="pair">
+        <figure><figcaption>RAW</figcaption><img src="thumbs/s08_jazz_raw.gif" alt="s08_jazz RAW"></figure>
+        <figure><figcaption>PE</figcaption><img src="thumbs/s08_jazz_pe.gif" alt="s08_jazz PE"></figure>
+      </div>
+    </section>
+    <section class="scene">
+      <h2>Timed sneaker ad cuts</h2>
+      <p class="desc">Wide sprint → tracking → sole macro with footfall rhythm.</p>
+      <div class="pair">
+        <figure><figcaption>RAW</figcaption><img src="thumbs/s06_sneaker_raw.gif" alt="s06_sneaker RAW"></figure>
+        <figure><figcaption>PE</figcaption><img src="thumbs/s06_sneaker_pe.gif" alt="s06_sneaker PE"></figure>
+      </div>
+    </section>
+    <section class="scene">
+      <h2>Bowling physics impact</h2>
+      <p class="desc">Spinning ball to pin crash with synced rumble.</p>
+      <div class="pair">
+        <figure><figcaption>RAW</figcaption><img src="thumbs/s07_bowling_raw.gif" alt="s07_bowling RAW"></figure>
+        <figure><figcaption>PE</figcaption><img src="thumbs/s07_bowling_pe.gif" alt="s07_bowling PE"></figure>
+      </div>
+    </section>
+    <section class="scene">
+      <h2>Cross-cut phone call</h2>
+      <p class="desc">Office ↔ café cuts with continuous conversation audio.</p>
+      <div class="pair">
+        <figure><figcaption>RAW</figcaption><img src="thumbs/s10_phone_call_raw.gif" alt="s10_phone_call RAW"></figure>
+        <figure><figcaption>PE</figcaption><img src="thumbs/s10_phone_call_pe.gif" alt="s10_phone_call PE"></figure>
+      </div>
+    </section>
+    <section class="scene">
+      <h2>Noir voiceover walk</h2>
+      <p class="desc">Detective in neon rain with closed lips + off-screen VO.</p>
+      <div class="pair">
+        <figure><figcaption>RAW</figcaption><img src="thumbs/s09_noir_raw.gif" alt="s09_noir RAW"></figure>
+        <figure><figcaption>PE</figcaption><img src="thumbs/s09_noir_pe.gif" alt="s09_noir PE"></figure>
       </div>
     </section>
   </main>
-
-  <footer>
-    <div class="prose row">
-      <div>
-        <strong style="color:var(--text)">Omni-Rewriter</strong>
-        · open PE / agent harness for MiniMax-H3 and extensible image profiles.<br>
-        Not affiliated with NVIDIA, Sana, or MiniMax.
-      </div>
-      <div>
-        <a href="https://github.com/WayneJin0918/Omni-Rewriter" rel="noopener">Source</a>
-        ·
-        <a href="../h3-pe-harness.md">H3 docs</a>
-        ·
-        <a href="../assets/gallery/index.html">Compact gallery</a>
-        ·
-        <a href="../../README.md">README</a>
-      </div>
-    </div>
-  </footer>
-
-  <script>
-    (function () {
-      const chips = Array.from(document.querySelectorAll(".chip"));
-      const demos = Array.from(document.querySelectorAll(".demo"));
-      chips.forEach((chip) => {
-        chip.addEventListener("click", () => {
-          const filter = chip.dataset.filter;
-          chips.forEach((c) => c.setAttribute("aria-pressed", String(c === chip)));
-          demos.forEach((demo) => {
-            const tags = (demo.dataset.tags || "").split(/\s+/);
-            const show =
-              filter === "all" ||
-              (filter === "pe" && demo.dataset.winner === "pe") ||
-              tags.includes(filter);
-            demo.hidden = !show;
-          });
-        });
-      });
-    })();
-  </script>
 </body>
 </html>
