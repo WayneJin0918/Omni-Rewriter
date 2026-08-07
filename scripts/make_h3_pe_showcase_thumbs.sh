@@ -6,10 +6,10 @@ ROOT="$(cd "$(dirname "$0")/.." && pwd)"
 EXP="$ROOT/experiments/t2va-base-15s-raw-vs-pe"
 OUT="$ROOT/docs/h3-pe-showcase/thumbs"
 
-FPS=7
-WIDTH=300
-DURATION=3.2
-MAX_TOTAL_BYTES=$((18 * 1024 * 1024))
+FPS=6
+WIDTH=280
+DURATION=3.0
+MAX_TOTAL_BYTES=$((16 * 1024 * 1024))
 
 # scenario:start_seconds — pick a beat that shows the scenario's stress point.
 SCENES=(
@@ -23,6 +23,13 @@ SCENES=(
   "s08_jazz:4"
   "s09_noir:5"
   "s10_phone_call:6"
+  # camera / cut stress set
+  "s11_museum_reveal:6"
+  "s12_alley_chase:4"
+  "s13_rooftop_orbit:5"
+  "s14_kitchen_stations:3"
+  "s15_concert_crashzoom:2"
+  "s16_train_matchcut:7"
 )
 
 command -v ffmpeg >/dev/null || {
@@ -48,7 +55,7 @@ for entry in "${SCENES[@]}"; do
     ffmpeg -y -hide_banner -loglevel error \
       -ss "$start" -t "$DURATION" -i "$source" \
       -filter_complex \
-      "[0:v]fps=$FPS,scale=$WIDTH:-2:flags=lanczos,split[frames][palette_input];[palette_input]palettegen=max_colors=96:stats_mode=diff[palette];[frames][palette]paletteuse=dither=sierra2_4a:diff_mode=rectangle" \
+      "[0:v]fps=$FPS,scale=$WIDTH:-2:flags=lanczos,split[frames][palette_input];[palette_input]palettegen=max_colors=80:stats_mode=diff[palette];[frames][palette]paletteuse=dither=sierra2_4a:diff_mode=rectangle" \
       -an -loop 0 "$target"
     total_bytes=$((total_bytes + $(stat -c '%s' "$target")))
   done
