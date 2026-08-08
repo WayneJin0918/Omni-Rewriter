@@ -168,7 +168,7 @@ Prefer small PRs with a title prefix — see [CONTRIBUTING.md](CONTRIBUTING.md).
 ·
 <a href="docs/day2-h3-pe/index.html">Local H3 PE page</a>
 ·
-<a href="docs/h3-pe-showcase/index.html">Full 16-pair showcase</a>
+<a href="docs/h3-pe-showcase/index.html">Full 14-pair showcase</a>
 ·
 <a href="docs/assets/gallery/index.html">Compact gallery</a></p>
 

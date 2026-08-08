@@ -14,8 +14,9 @@ In-repo demo grid for Omni-Rewriter's MiniMax-H3 prompt-expansion profile
 scripts/make_h3_pe_showcase_thumbs.sh
 ```
 
-Published pairs: **16** (`s01–s16`) from `experiments/t2va-base-15s-raw-vs-pe/`,
-including the camera/cut stress set (`s11–s16`).
+Published pairs: **14** from `experiments/t2va-base-15s-raw-vs-pe/`
+(`s01–s09`, `s11–s15`; dropped weak `s10` phone-call and `s16` train match-cut),
+including the camera/cut stress set (`s11–s15`).
 
 Homepage highlights the best three stress demos (concert crash-zoom, kitchen
 whip-pan, rooftop arc) in `docs/assets/gallery/`.

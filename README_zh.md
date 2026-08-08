@@ -166,7 +166,7 @@ CLI 与 HTTP API 共用相同 service 层。公共 schema 与完整生命周期�
 ·
 <a href="docs/day2-h3-pe/index.html">本地 H3 PE 页面</a>
 ·
-<a href="docs/h3-pe-showcase/index.html">完整 16 组 showcase</a>
+<a href="docs/h3-pe-showcase/index.html">完整 14 组 showcase</a>
 ·
 <a href="docs/assets/gallery/index.html">精简 Gallery</a></p>
 
