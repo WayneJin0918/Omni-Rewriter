@@ -1,8 +1,39 @@
 from __future__ import annotations
 
+import ipaddress
+import socket
 from typing import Any
 
 import pytest
+
+
+@pytest.fixture(autouse=True)
+def resolve_test_hosts_as_public(monkeypatch: pytest.MonkeyPatch) -> None:
+    """Map unresolvable *.test mock hosts to a public IP for adapter SSRF checks."""
+
+    real_getaddrinfo = socket.getaddrinfo
+
+    def fake_getaddrinfo(
+        host: str | bytes | None,
+        port: str | int | None,
+        family: int = 0,
+        type: int = 0,
+        proto: int = 0,
+        flags: int = 0,
+    ) -> list[tuple[Any, ...]]:
+        hostname = host.decode() if isinstance(host, bytes) else (host or "")
+        try:
+            address = ipaddress.ip_address(hostname)
+        except ValueError:
+            address = None
+        if address is not None or hostname in {"localhost"} or hostname.endswith(".local"):
+            return real_getaddrinfo(host, port, family, type, proto, flags)
+        port_num = (
+            int(port) if isinstance(port, int) or (isinstance(port, str) and port.isdigit()) else 0
+        )
+        return [(socket.AF_INET, socket.SOCK_STREAM, 6, "", ("93.184.216.34", port_num))]
+
+    monkeypatch.setattr(socket, "getaddrinfo", fake_getaddrinfo)
 
 
 @pytest.fixture
@@ -46,6 +77,33 @@ def ref_output() -> dict[str, Any]:
         ),
         "overall_soundscape": "Light wind passes over the hill.",
         "non_diegetic_music": "Sparse plucked strings.",
+    }
+
+
+@pytest.fixture
+def seedream_output() -> dict[str, Any]:
+    return {
+        "task": "t2i",
+        "profile": "seedream",
+        "prompt": (
+            "Rain-soaked neon sushi storefront at night, wet asphalt reflections, "
+            "horizontal poster composition, title text exactly “Summer Special”, "
+            "cool cyan and magenta lights, no people."
+        ),
+        "ratio": "16:9",
+    }
+
+
+@pytest.fixture
+def qwen_edit_output() -> dict[str, Any]:
+    return {
+        "task": "image_edit",
+        "profile": "qwen_image_edit",
+        "prompt": (
+            "Keep the woman from image 1, change the dress to deep emerald silk, "
+            "preserve face and pose."
+        ),
+        "ratio": "[image 1]",
     }
 
 

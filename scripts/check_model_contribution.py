@@ -94,8 +94,7 @@ def validate_pr_body(body: str) -> list[str]:
     scope_tokens = set(re.findall(r"[a-z_]+", values["Contribution scope"].lower()))
     if values["Contribution scope"] and not scope_tokens.intersection(allowed_scope):
         errors.append(
-            "Contribution scope must name at least one of: "
-            + ", ".join(sorted(allowed_scope))
+            "Contribution scope must name at least one of: " + ", ".join(sorted(allowed_scope))
         )
     return errors
 
@@ -122,10 +121,7 @@ def validate_changed_files(body: str, files: list[str]) -> list[str]:
     errors: list[str] = []
     if not any(path.startswith("tests/") and path.endswith(".py") for path in files):
         errors.append("Model contributions must add or update a Python test under tests/")
-    if not any(
-        path.startswith("docs/") or path == "README.md"
-        for path in files
-    ):
+    if not any(path.startswith("docs/") or path == "README.md" for path in files):
         errors.append("Model contributions must update documentation or the support/backlog matrix")
     return errors
 
@@ -201,9 +197,7 @@ def main() -> int:
                 if isinstance(base, dict) and isinstance(base.get("sha"), str):
                     base_sha = base["sha"]
             if base_sha:
-                errors.extend(
-                    validate_changed_files(body_text, changed_files(root, base_sha))
-                )
+                errors.extend(validate_changed_files(body_text, changed_files(root, base_sha)))
 
     if errors:
         for error in errors:

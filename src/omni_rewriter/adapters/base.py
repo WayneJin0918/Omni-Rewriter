@@ -5,7 +5,9 @@ from __future__ import annotations
 import asyncio
 import base64
 import binascii
+import ipaddress
 import os
+import socket
 import time
 from collections.abc import Awaitable, Callable, Mapping
 from pathlib import Path
@@ -21,9 +23,7 @@ PENDING_STATUSES = frozenset(
     {"pending", "queued", "submitted", "processing", "running", "in_progress"}
 )
 SUCCEEDED_STATUSES = frozenset({"completed", "succeeded", "success", "done"})
-FAILED_STATUSES = frozenset(
-    {"failed", "error", "cancelled", "canceled", "rejected", "expired"}
-)
+FAILED_STATUSES = frozenset({"failed", "error", "cancelled", "canceled", "rejected", "expired"})
 
 
 class GenerationAdapterError(OmniRewriterError):
@@ -116,9 +116,7 @@ async def request_json(
     try:
         response = await client.request(method, url, headers=headers, **kwargs)
     except (httpx.TimeoutException, httpx.TransportError) as exc:
-        raise GenerationTransportError(
-            f"{service} request failed: {type(exc).__name__}"
-        ) from exc
+        raise GenerationTransportError(f"{service} request failed: {type(exc).__name__}") from exc
     if response.is_error:
         raise GenerationResponseError(
             f"{service} returned HTTP {response.status_code}: {_error_detail(response)}"
@@ -178,6 +176,28 @@ def decode_base64_media(value: str, *, max_bytes: int, service: str) -> bytes:
     return content
 
 
+async def _reject_private_download_host(url: str, *, service: str) -> None:
+    """Block downloads that resolve to non-public addresses (SSRF guard)."""
+
+    parsed = urlsplit(url)
+    if parsed.scheme not in {"http", "https"} or not parsed.hostname:
+        raise GenerationResponseError(f"{service} returned an unsupported download URL")
+    try:
+        records = await asyncio.get_running_loop().getaddrinfo(
+            parsed.hostname,
+            parsed.port or (443 if parsed.scheme == "https" else 80),
+            type=socket.SOCK_STREAM,
+        )
+    except socket.gaierror as exc:
+        raise GenerationResponseError(f"{service} download hostname could not be resolved") from exc
+    for record in records:
+        address = ipaddress.ip_address(record[4][0])
+        if not address.is_global:
+            raise GenerationResponseError(
+                f"{service} download hostname resolves to a non-public address"
+            )
+
+
 async def bounded_download(
     client: httpx.AsyncClient,
     url: str,
@@ -186,12 +206,15 @@ async def bounded_download(
     service: str,
     headers: Mapping[str, str] | None = None,
     authenticated_origin: str | None = None,
+    allow_private_hosts: bool = False,
 ) -> bytes:
     """Download HTTP(S) bytes with a hard cap and no cross-origin credential forwarding."""
 
     parsed = urlsplit(url)
     if parsed.scheme not in {"http", "https"} or not parsed.netloc:
         raise GenerationResponseError(f"{service} returned an unsupported download URL")
+    if not allow_private_hosts:
+        await _reject_private_download_host(url, service=service)
     safe_headers: Mapping[str, str] | None = None
     if authenticated_origin is not None and _origin(url) == _origin(authenticated_origin):
         safe_headers = headers
@@ -203,9 +226,7 @@ async def bounded_download(
                 )
             length = response.headers.get("content-length")
             if length and length.isdigit() and int(length) > max_bytes:
-                raise GenerationTooLargeError(
-                    f"{service} media exceeds the configured byte limit"
-                )
+                raise GenerationTooLargeError(f"{service} media exceeds the configured byte limit")
             chunks: list[bytes] = []
             total = 0
             async for chunk in response.aiter_bytes():
@@ -216,9 +237,7 @@ async def bounded_download(
                     )
                 chunks.append(chunk)
     except (httpx.TimeoutException, httpx.TransportError) as exc:
-        raise GenerationTransportError(
-            f"{service} download failed: {type(exc).__name__}"
-        ) from exc
+        raise GenerationTransportError(f"{service} download failed: {type(exc).__name__}") from exc
     return b"".join(chunks)
 
 

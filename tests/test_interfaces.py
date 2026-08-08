@@ -153,4 +153,4 @@ def test_original_example_manifest() -> None:
     manifest = Path(__file__).parents[1] / "tests" / "fixtures" / "manifest.jsonl"
     result_value = BasicEvaluator().evaluate_manifest(manifest)
     assert result_value["valid"] is True
-    assert result_value["summary"] == {"total": 3, "passed": 3, "failed": 0}
+    assert result_value["summary"] == {"total": 5, "passed": 5, "failed": 0}

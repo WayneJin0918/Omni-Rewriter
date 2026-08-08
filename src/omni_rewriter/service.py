@@ -9,7 +9,7 @@ from pydantic import ValidationError
 from .agent import RewriteAgent, RewriteAgentConfig, RewriteResult
 from .backends import OpenAICompatibleBackend
 from .config import Settings
-from .media_input import MediaPreparer
+from .media_input import MediaInputConfig, MediaPreparer
 from .models import BaseRewrite, ImageRewrite, Ref2VARewrite, RewriteOutput, RewriteRequest
 from .models.common import IMAGE_TASKS
 
@@ -17,7 +17,7 @@ from .models.common import IMAGE_TASKS
 async def expand(request: RewriteRequest, settings: Settings | None = None) -> RewriteResult:
     settings = settings or Settings.from_env()
     backend = OpenAICompatibleBackend(settings.chat_backend_config())
-    media = MediaPreparer()
+    media = MediaPreparer(MediaInputConfig(allow_local_files=settings.allow_local_media))
     agent = RewriteAgent(
         backend,
         media_preparer=media,

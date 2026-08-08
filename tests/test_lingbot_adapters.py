@@ -42,9 +42,7 @@ def caption_content(*, video: bool) -> dict[str, Any]:
             "scene_content_description": "A red cup slides across a wooden table.",
             "camera_movement_description": "",
         }
-        element["actions"] = [
-            {"timestamp": "[0.0s - 5.0s]", "action": "slowly slides right"}
-        ]
+        element["actions"] = [{"timestamp": "[0.0s - 5.0s]", "action": "slowly slides right"}]
     return {
         "comprehensive_description": description,
         "camera_info": {

@@ -74,7 +74,10 @@ class WanOmniAdapter(StrictModel):
         if not prompt.strip():
             raise GenerationConfigurationError("WAN generation prompt must not be empty")
         duration = int(request.duration_seconds or 0)
-        if request.duration_seconds != duration or not self.min_seconds <= duration <= self.max_seconds:
+        if (
+            request.duration_seconds != duration
+            or not self.min_seconds <= duration <= self.max_seconds
+        ):
             raise GenerationConfigurationError(
                 f"WAN duration must be an integer from {self.min_seconds} through {self.max_seconds}"
             )
@@ -212,9 +215,7 @@ class OmniVideosClient:
         result: Mapping[str, Any] | None = None,
     ) -> bytes:
         data = dict(result) if result is not None else await self.wait(task_id)
-        url = _download_url(data) or v1_url(
-            self.config.base_url, f"/videos/{task_id}/content"
-        )
+        url = _download_url(data) or v1_url(self.config.base_url, f"/videos/{task_id}/content")
         return await bounded_download(
             self._get_client(),
             url,
@@ -232,9 +233,7 @@ class OmniVideosClient:
         result: Mapping[str, Any] | None = None,
     ) -> Path:
         data = dict(result) if result is not None else await self.wait(task_id)
-        url = _download_url(data) or v1_url(
-            self.config.base_url, f"/videos/{task_id}/content"
-        )
+        url = _download_url(data) or v1_url(self.config.base_url, f"/videos/{task_id}/content")
         return await bounded_download_to_path(
             self._get_client(),
             url,
@@ -262,9 +261,7 @@ class OmniVideosClient:
             return (None, uri)
         header, separator, encoded = uri.partition(",")
         if not separator or ";base64" not in header:
-            raise GenerationConfigurationError(
-                "multipart data references must be base64 data URIs"
-            )
+            raise GenerationConfigurationError("multipart data references must be base64 data URIs")
         mime_type = header[5:].split(";", 1)[0] or "application/octet-stream"
         content = decode_base64_media(
             encoded,
@@ -275,9 +272,7 @@ class OmniVideosClient:
         return (f"{field}.{extension}", content, mime_type)
 
     def _headers(self) -> dict[str, str]:
-        secret = (
-            self.config.api_key.get_secret_value() if self.config.api_key is not None else None
-        )
+        secret = self.config.api_key.get_secret_value() if self.config.api_key is not None else None
         return bearer_headers(secret)
 
     def _get_client(self) -> httpx.AsyncClient:

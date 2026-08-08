@@ -50,6 +50,7 @@ class MediaInputConfig(StrictModel):
     timeout: float = Field(default=30.0, gt=0)
     allowed_mime_types: frozenset[str] = _ALLOWED_MIMES
     allow_private_hosts: bool = False
+    allow_local_files: bool = True
     max_redirects: int = Field(default=3, ge=0, le=10)
 
 
@@ -108,6 +109,8 @@ class MediaPreparer:
             elif parsed.scheme:
                 raise MediaURIError(f"unsupported media URI scheme: {parsed.scheme!r}")
             else:
+                if not self.config.allow_local_files:
+                    raise MediaURIError("local media paths are disabled for this MediaPreparer")
                 data, source_mime = await self._read_local(Path(uri))
 
         mime = self._validate_mime(

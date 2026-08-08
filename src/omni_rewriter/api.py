@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import os
 from collections.abc import Awaitable, Callable
 from typing import Any
 
@@ -12,6 +13,15 @@ from .service import expand as default_expand
 from .service import validate_output, validation_error
 
 Expander = Callable[[RewriteRequest, Settings], Awaitable[RewriteResult]]
+
+
+def _api_allow_local_media() -> bool:
+    """HTTP expand denies local paths unless OMNI_WRITER_ALLOW_LOCAL_MEDIA is set true."""
+
+    raw = os.environ.get("OMNI_WRITER_ALLOW_LOCAL_MEDIA")
+    if raw is None:
+        return False
+    return raw.strip().lower() in {"1", "true", "yes", "on"}
 
 
 def create_app(
@@ -29,6 +39,9 @@ def create_app(
         ) from exc
 
     runtime_settings = settings or Settings.from_env()
+    api_settings = runtime_settings.model_copy(
+        update={"allow_local_media": _api_allow_local_media()}
+    )
     run_expand = expander or default_expand
     app = FastAPI(title="Omni-Rewriter", version="0.1.0")
 
@@ -39,7 +52,7 @@ def create_app(
     @app.post("/v1/expand")
     async def expand_endpoint(request: RewriteRequest) -> dict[str, Any]:
         try:
-            result = await run_expand(request, runtime_settings)
+            result = await run_expand(request, api_settings)
         except Exception as exc:
             from .errors import OmniRewriterError
 

@@ -147,14 +147,26 @@ Caller input, local files, remote media, writer responses, H3 responses, and Min
 cross separate trust boundaries.
 
 `MediaPreparer` blocks non-global resolved addresses by default and rechecks every redirect.
-However, allowing local file paths means the stock API is not safe for arbitrary untrusted users
-without an application authorization layer. DNS validation also cannot replace network egress
-controls. Run with least filesystem privilege and an egress allowlist in hostile environments.
+`create_app` denies local filesystem media unless `OMNI_WRITER_ALLOW_LOCAL_MEDIA` is explicitly
+true; CLI/library callers still default to allowing local paths for trusted developer workflows.
+DNS validation cannot replace network egress controls. Bind the HTTP API to loopback unless you
+intentionally expose it, and keep an application authorization layer in front of public hosts.
 
-The H3 download helper follows a URL supplied by the configured H3 service and enforces a byte
-limit, but does not apply media-host SSRF filtering. Connect only to a trusted H3 service and
-isolate its egress. The FastAPI app has no built-in authentication, authorization, rate limiting,
-moderation, or TLS.
+Adapter downloads (`bounded_download`) and cross-origin H3 content URLs reject non-public resolved
+addresses; same-origin H3 downloads may still use loopback for a trusted local service. The FastAPI
+app has no built-in authentication, authorization, rate limiting, moderation, or TLS.
+
+## Public API surface
+
+Treat these as the thin stable surface for SemVer `0.x` compatibility notes:
+
+- Models: `RewriteRequest`, rewrite outputs (`BaseRewrite`, `Ref2VARewrite`, `ImageRewrite`), and
+  `validate_output` / evaluator envelopes
+- Orchestration: `omni_rewriter.service.expand`, `RewriteAgent`
+- HTTP: `omni_rewriter.api.create_app`
+
+Generation clients live under `omni_rewriter.adapters.*` and may change faster than expand contracts.
+See `CHANGELOG.md` for release notes.
 
 ## Packaging
 

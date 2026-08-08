@@ -3,10 +3,13 @@
 from __future__ import annotations
 
 import asyncio
+import ipaddress
 import os
+import socket
 import time
 from pathlib import Path
 from typing import Any, Mapping
+from urllib.parse import urlsplit
 
 import httpx
 from pydantic import Field, SecretStr
@@ -168,11 +171,17 @@ class H3Client:
         url = _download_url(data)
         if not url:
             url = f"{self.config.base_url.rstrip('/')}/v1/videos/{task_id}/content"
+        same_origin = _same_origin(url, self.config.base_url)
+        # Local H3 origins may be loopback; only SSRF-check cross-origin download URLs.
+        if not same_origin:
+            await _reject_private_download_host(url)
+        # Never forward bearer tokens off the configured H3 origin.
+        headers = self._headers() if same_origin else {"Accept": "application/json"}
         destination_path = Path(destination)
         temporary = destination_path.with_name(f".{destination_path.name}.part")
         client = self._get_client()
         try:
-            async with client.stream("GET", url, headers=self._headers()) as response:
+            async with client.stream("GET", url, headers=headers) as response:
                 if response.is_error:
                     raise BackendResponseError(f"H3 download returned HTTP {response.status_code}")
                 length = response.headers.get("content-length")
@@ -245,3 +254,31 @@ def _download_url(data: Mapping[str, Any]) -> str | None:
         if isinstance(value, str) and value:
             return value
     return None
+
+
+def _same_origin(url: str, base_url: str) -> bool:
+    left = urlsplit(url)
+    right = urlsplit(base_url if "://" in base_url else f"http://{base_url}")
+    return (
+        left.scheme.lower() == right.scheme.lower()
+        and (left.hostname or "").lower() == (right.hostname or "").lower()
+        and left.port == right.port
+    )
+
+
+async def _reject_private_download_host(url: str) -> None:
+    parsed = urlsplit(url)
+    if parsed.scheme not in {"http", "https"} or not parsed.hostname:
+        raise BackendResponseError("H3 returned an unsupported download URL")
+    try:
+        records = await asyncio.get_running_loop().getaddrinfo(
+            parsed.hostname,
+            parsed.port or (443 if parsed.scheme == "https" else 80),
+            type=socket.SOCK_STREAM,
+        )
+    except socket.gaierror as exc:
+        raise BackendResponseError("H3 download hostname could not be resolved") from exc
+    for record in records:
+        address = ipaddress.ip_address(record[4][0])
+        if not address.is_global:
+            raise BackendResponseError("H3 download hostname resolves to a non-public address")

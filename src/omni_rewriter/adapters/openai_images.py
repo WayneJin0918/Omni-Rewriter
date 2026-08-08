@@ -184,9 +184,7 @@ class OpenAIImagesClient:
         raise GenerationResponseError("OpenAI images item omitted b64_json and url")
 
     def _headers(self) -> dict[str, str]:
-        secret = (
-            self.config.api_key.get_secret_value() if self.config.api_key is not None else None
-        )
+        secret = self.config.api_key.get_secret_value() if self.config.api_key is not None else None
         return bearer_headers(secret)
 
     def _get_client(self) -> httpx.AsyncClient:

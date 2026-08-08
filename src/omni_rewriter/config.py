@@ -49,6 +49,7 @@ class Settings(StrictModel):
     backend_max_tokens: int | None = Field(default=None, gt=0)
     enable_thinking: bool | None = False
     max_repairs: int = Field(default=2, ge=0, le=10)
+    allow_local_media: bool = True
 
     h3_base_url: str = "http://127.0.0.1:30000"
     h3_api_key: SecretStr | None = None
@@ -91,9 +92,7 @@ class Settings(StrictModel):
     def from_env(cls) -> "Settings":
         """Read only OMNI_WRITER_* and MINIMAX_* variables."""
 
-        backend_key = _optional("OMNI_WRITER_BACKEND_API_KEY") or _optional(
-            "OMNI_WRITER_API_KEY"
-        )
+        backend_key = _optional("OMNI_WRITER_BACKEND_API_KEY") or _optional("OMNI_WRITER_API_KEY")
         h3_key = _optional("OMNI_WRITER_H3_API_KEY")
         image_key = _optional("OMNI_WRITER_IMAGE_API_KEY")
         video_key = _optional("OMNI_WRITER_VIDEO_API_KEY")
@@ -118,23 +117,18 @@ class Settings(StrictModel):
             backend_max_tokens=int(max_tokens) if max_tokens else None,
             enable_thinking=_bool(thinking) if thinking is not None else False,
             max_repairs=_env("OMNI_WRITER_MAX_REPAIRS", 2, int),
-            h3_base_url=os.environ.get(
-                "OMNI_WRITER_H3_BASE_URL", "http://127.0.0.1:30000"
-            ),
+            allow_local_media=_env("OMNI_WRITER_ALLOW_LOCAL_MEDIA", True, _bool),
+            h3_base_url=os.environ.get("OMNI_WRITER_H3_BASE_URL", "http://127.0.0.1:30000"),
             h3_api_key=SecretStr(h3_key) if h3_key else None,
             h3_timeout=_env("OMNI_WRITER_H3_TIMEOUT", 60.0, float),
             h3_poll_interval=_env("OMNI_WRITER_H3_POLL_INTERVAL", 2.0, float),
             h3_poll_timeout=_env("OMNI_WRITER_H3_POLL_TIMEOUT", 900.0, float),
-            h3_max_download_bytes=_env(
-                "OMNI_WRITER_H3_MAX_DOWNLOAD_BYTES", 2 * 1024**3, int
-            ),
+            h3_max_download_bytes=_env("OMNI_WRITER_H3_MAX_DOWNLOAD_BYTES", 2 * 1024**3, int),
             image_base_url=os.environ.get(
                 "OMNI_WRITER_IMAGE_BASE_URL", "http://127.0.0.1:30010/v1"
             ),
             image_api_key=SecretStr(image_key) if image_key else None,
-            image_model=os.environ.get(
-                "OMNI_WRITER_IMAGE_MODEL", "Qwen/Qwen-Image-2512"
-            ),
+            image_model=os.environ.get("OMNI_WRITER_IMAGE_MODEL", "Qwen/Qwen-Image-2512"),
             image_timeout=_env("OMNI_WRITER_IMAGE_TIMEOUT", 300.0, float),
             image_max_download_bytes=_env(
                 "OMNI_WRITER_IMAGE_MAX_DOWNLOAD_BYTES", 64 * 1024**2, int
@@ -143,16 +137,12 @@ class Settings(StrictModel):
                 Literal["b64_json", "url"],
                 os.environ.get("OMNI_WRITER_IMAGE_RESPONSE_FORMAT", "b64_json"),
             ),
-            video_base_url=os.environ.get(
-                "OMNI_WRITER_VIDEO_BASE_URL", "http://127.0.0.1:8091/v1"
-            ),
+            video_base_url=os.environ.get("OMNI_WRITER_VIDEO_BASE_URL", "http://127.0.0.1:8091/v1"),
             video_api_key=SecretStr(video_key) if video_key else None,
             video_timeout=_env("OMNI_WRITER_VIDEO_TIMEOUT", 60.0, float),
             video_poll_interval=_env("OMNI_WRITER_VIDEO_POLL_INTERVAL", 2.0, float),
             video_poll_timeout=_env("OMNI_WRITER_VIDEO_POLL_TIMEOUT", 900.0, float),
-            video_max_download_bytes=_env(
-                "OMNI_WRITER_VIDEO_MAX_DOWNLOAD_BYTES", 2 * 1024**3, int
-            ),
+            video_max_download_bytes=_env("OMNI_WRITER_VIDEO_MAX_DOWNLOAD_BYTES", 2 * 1024**3, int),
             video_max_reference_bytes=_env(
                 "OMNI_WRITER_VIDEO_MAX_REFERENCE_BYTES", 32 * 1024**2, int
             ),
@@ -160,9 +150,7 @@ class Settings(StrictModel):
                 Literal["json", "multipart"],
                 os.environ.get("OMNI_WRITER_VIDEO_TRANSPORT", "multipart"),
             ),
-            wan_model=os.environ.get(
-                "OMNI_WRITER_WAN_MODEL", "Wan-AI/Wan2.2-T2V-A14B"
-            ),
+            wan_model=os.environ.get("OMNI_WRITER_WAN_MODEL", "Wan-AI/Wan2.2-T2V-A14B"),
             wan_default_size=os.environ.get("OMNI_WRITER_WAN_DEFAULT_SIZE", "832x480"),
             hunyuan_image_base_url=os.environ.get(
                 "OMNI_WRITER_HUNYUAN_IMAGE_BASE_URL", "http://127.0.0.1:8000/v1"
@@ -171,12 +159,8 @@ class Settings(StrictModel):
             hunyuan_image_model=os.environ.get(
                 "OMNI_WRITER_HUNYUAN_IMAGE_MODEL", "vllm_hunyuan_image3"
             ),
-            hunyuan_image_timeout=_env(
-                "OMNI_WRITER_HUNYUAN_IMAGE_TIMEOUT", 600.0, float
-            ),
-            hunyuan_image_max_bytes=_env(
-                "OMNI_WRITER_HUNYUAN_IMAGE_MAX_BYTES", 64 * 1024**2, int
-            ),
+            hunyuan_image_timeout=_env("OMNI_WRITER_HUNYUAN_IMAGE_TIMEOUT", 600.0, float),
+            hunyuan_image_max_bytes=_env("OMNI_WRITER_HUNYUAN_IMAGE_MAX_BYTES", 64 * 1024**2, int),
             minimax_api_key=SecretStr(minimax_key) if minimax_key else None,
             minimax_base_url=os.environ.get(
                 "MINIMAX_API_BASE",

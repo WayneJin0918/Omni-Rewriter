@@ -18,8 +18,10 @@ Harness**。它把意图扩写为目标 PE 方言；媒体生成是显式且独�
 - [H3 PE 站点](day2-h3-pe/index.html)：Omni-Rewriter 在 H3 上的 PE 宣传落地页（同步 `gh-pages`）。
 - [H3 PE showcase](h3-pe-showcase/index.html)：面向 MiniMax-H3 的公开 RAW vs PE 落地页。
 - [图像 PE](image-pe_zh.md)：Seedream 与 Qwen-Image-Edit 打包。
-- [H3 adapters（英文）](h3-adapters.md)：已实现的本地 H3 与 MiniMax 客户端。
+- [H3 adapters](h3-adapters_zh.md) · [English](h3-adapters.md)：本地 H3 与 MiniMax 客户端。
+- [图像 Gallery](assets/gallery/image/)：低分辨率 RAW vs PE WebP 样例。
 - [公开 H3 参考资料](references/README.md)：用于收紧 H3 规则的脱敏资料。
+- [示例请求](../examples/requests/)：可直接 `expand` 的 `RewriteRequest` JSON。
 
 ## 项目治理
 
@@ -28,6 +30,7 @@ Harness**。它把意图扩写为目标 PE 方言；媒体生成是显式且独�
 - [贡献指南](CONTRIBUTING.md)
 - [安全策略](SECURITY.md)
 - [行为准则](CODE_OF_CONDUCT.md)
+- [Agent 说明](AGENTS.md)：维护者 / Agent 约定。
 
 ## 范围
 

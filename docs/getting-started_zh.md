@@ -14,14 +14,20 @@ python -m pip install -U pip
 python -m pip install -e ".[cli,server]"
 ```
 
-通过环境变量配置 OpenAI-compatible writer backend。项目不会自动加载 `.env`：
+通过环境变量配置 OpenAI-compatible writer backend。项目不会自动加载 `.env`。Gallery 浏览不需要
+GPU；`expand` 需要任意能返回结构化 JSON 的 chat 端点。
 
 ```bash
 cp .env.example .env
+# Hosted Writer（无需本地 checkpoint）：
+# export OMNI_WRITER_BACKEND_BASE_URL=https://api.openai.com/v1
+# export OMNI_WRITER_BACKEND_MODEL=gpt-5.6
+# export OMNI_WRITER_BACKEND_API_KEY=sk-...
 set -a; source .env; set +a
 ```
 
-仓库内 Qwen/vLLM 脚本只是 writer 模型的开发便利工具，不是生成图像或视频的 runtime。
+可直接 `expand` 的请求见 [`examples/requests/`](../examples/requests/)。仓库内 Qwen/vLLM
+脚本只是 Writer 的开发便利工具，不是图像/视频生成 runtime。
 
 ## 扩写视频意图
 
@@ -36,8 +42,8 @@ set -a; source .env; set +a
 ```
 
 ```bash
-omni-rewriter expand request.json
-omni-rewriter expand request.json --output h3
+omni-rewriter expand examples/requests/t2va_kite.json
+omni-rewriter expand examples/requests/t2va_kite.json --output h3
 ```
 
 无媒体时推断为 `t2va`；首帧、尾帧、首尾帧组合及任意引用分别路由到 `i2va`、`l2va`、
@@ -73,10 +79,12 @@ omni-rewriter eval tests/fixtures/manifest.jsonl --manifest
 ```bash
 uvicorn 'omni_rewriter.api:create_app' --factory --host 127.0.0.1 --port 8080
 curl -sS -X POST http://127.0.0.1:8080/v1/expand \
-  -H 'content-type: application/json' --data @request.json
+  -H 'content-type: application/json' --data @examples/requests/t2va_kite.json
 ```
 
-另有 `GET /health`、`POST /v1/validate`，OpenAPI 文档位于 `/docs`。
+另有 `GET /health`、`POST /v1/validate`，OpenAPI 文档位于 `/docs`。HTTP API 默认绑定
+loopback；`create_app` 默认拒绝本地文件媒体路径（仅在受信主机上设置
+`OMNI_WRITER_ALLOW_LOCAL_MEDIA=1`）。
 
 ## 仅在显式请求时生成
 

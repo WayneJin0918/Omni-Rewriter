@@ -1,0 +1,15 @@
+{
+  "request": {
+    "prompt": "Create a rain-soaked neon storefront poster; title exactly “Summer Special”.",
+    "task": "t2i",
+    "metadata": {
+      "image_pe_profile": "seedream"
+    }
+  },
+  "output": {
+    "task": "t2i",
+    "profile": "seedream",
+    "prompt": "Rain-soaked neon sushi storefront at night, wet asphalt reflections, horizontal poster composition, title text exactly “Summer Special”, cool cyan and magenta lights, no people.",
+    "ratio": "16:9"
+  }
+}

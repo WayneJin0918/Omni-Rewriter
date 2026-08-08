@@ -30,8 +30,8 @@ See [ROADMAP.md](ROADMAP.md). High-value areas:
 - New PE dialects / stricter validators
 - Generation adapters (expand ≠ generate)
 - Runtime compatibility fixtures with pinned public evidence
-- Experiments and low-res gallery assets
-- Docs, translations, examples
+- Low-res gallery assets under `docs/assets/gallery/`
+- Docs, translations, and request fixtures under `tests/fixtures/` / `examples/requests/`
 - Future SFT / RL data pipelines (design first)
 
 The model backlog is deliberately split into

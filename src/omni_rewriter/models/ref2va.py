@@ -23,7 +23,9 @@ VISUAL_RETENTION = {
     "weak_reference",
 }
 AUDIO_RETENTION = {"fully_copy", "partially_copy", "reference", "weak_reference"}
-DEFINITION_RE = re.compile(r"^(<(?P<kind>Subject|Picture|Video|Audio) [1-9]\d*>)\s+.+$", re.MULTILINE)
+DEFINITION_RE = re.compile(
+    r"^(<(?P<kind>Subject|Picture|Video|Audio) [1-9]\d*>)\s+.+$", re.MULTILINE
+)
 RETENTION_RE = re.compile(
     r"^(<(?P<kind>Subject|Picture|Video|Audio) [1-9]\d*>)(?:\s+\([^)]*\))?:\s+"
     r"(?P<marker>[a-z_]+)\s+-\s+.+$",

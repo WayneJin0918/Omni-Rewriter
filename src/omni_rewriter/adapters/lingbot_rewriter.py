@@ -124,7 +124,9 @@ class LingBotRewriterClient:
             content = LingBotCaptionContent.model_validate_json(self._json_text(raw_mapping))
             caption = LingBotCaption(caption=content, duration=duration)
         except (ValueError, TypeError) as exc:
-            raise StructuredOutputError("LingBot LoRA mapping returned invalid caption JSON") from exc
+            raise StructuredOutputError(
+                "LingBot LoRA mapping returned invalid caption JSON"
+            ) from exc
         return LingBotRewriteResult(
             mode=mode,
             detailed_caption=detailed,

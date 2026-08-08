@@ -1,0 +1,15 @@
+{
+  "prompt": "Change the dress to deep emerald silk; keep face and pose.",
+  "task": "image_edit",
+  "media": [
+    {
+      "media_type": "image",
+      "role": "reference",
+      "uri": "https://example.test/edit_ref.png",
+      "name": "ref.png"
+    }
+  ],
+  "metadata": {
+    "image_pe_profile": "qwen_image_edit"
+  }
+}

@@ -128,7 +128,9 @@ def draft_system_prompt(
 ) -> str:
     """Build the task-specific structured drafting prompt."""
 
-    schema = json.dumps(response_model.model_json_schema(), ensure_ascii=False, separators=(",", ":"))
+    schema = json.dumps(
+        response_model.model_json_schema(), ensure_ascii=False, separators=(",", ":")
+    )
     if task in IMAGE_TASKS:
         active = profile or (
             ImagePEProfile.QWEN_IMAGE_EDIT
@@ -159,7 +161,9 @@ def repair_system_prompt(
 ) -> str:
     """Build a repair prompt that changes only what deterministic validation rejects."""
 
-    schema = json.dumps(response_model.model_json_schema(), ensure_ascii=False, separators=(",", ":"))
+    schema = json.dumps(
+        response_model.model_json_schema(), ensure_ascii=False, separators=(",", ":")
+    )
     if image:
         active = profile or ImagePEProfile.SEEDREAM
         return (

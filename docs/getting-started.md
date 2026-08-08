@@ -15,15 +15,20 @@ python -m pip install -e ".[cli,server]"
 ```
 
 Configure an OpenAI-compatible writer backend through the environment. The project does not load
-`.env` automatically:
+`.env` automatically. Gallery demos need no GPU; `expand` needs any chat endpoint that returns
+structured JSON.
 
 ```bash
 cp .env.example .env
+# Hosted Writer (no local checkpoint):
+# export OMNI_WRITER_BACKEND_BASE_URL=https://api.openai.com/v1
+# export OMNI_WRITER_BACKEND_MODEL=gpt-5.6
+# export OMNI_WRITER_BACKEND_API_KEY=sk-...
 set -a; source .env; set +a
 ```
 
-The included Qwen/vLLM scripts are development conveniences for the writer model, not generation
-runtimes for image or video outputs.
+Copy-paste requests live in [`examples/requests/`](../examples/requests/). Optional Qwen/vLLM
+scripts are development conveniences for open Writers, not image/video generation runtimes.
 
 ## Expand a video intent
 
@@ -84,6 +89,9 @@ Also available: `GET /health`, `POST /v1/validate`, and OpenAPI docs at `/docs`.
 ## Generate only when requested
 
 `expand` returns typed JSON and rendered text. To create media, explicitly connect a compatible
-adapter or runner. The repository currently implements H3/MiniMax clients; other model families
-have different upstream runtimes and are not interchangeable. See
-[Generation adapters](generation-adapters.md).
+adapter or runner. The repository ships H3/MiniMax clients plus optional image/video adapters
+(Qwen-Image HTTP, HunyuanImage custom-vLLM, Wan Omni mapping, LingBot runner); live compatibility
+is evidence-scoped. See [Generation adapters](generation-adapters.md).
+
+Bind the HTTP API to loopback unless you intentionally open it. Local filesystem media paths are
+denied by default for `create_app` (set `OMNI_WRITER_ALLOW_LOCAL_MEDIA=1` only for trusted hosts).

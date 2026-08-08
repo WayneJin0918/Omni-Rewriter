@@ -3,6 +3,7 @@
 
   <p><strong>面向图像与视频生成的开源 Agentic Prompt Expansion Harness。</strong></p>
   <p>通过有界 AI Agent 工作流，将自然语言意图转换为经过校验、可直接交给生成器的提示词。</p>
+  <p><sub>Harness（循环）→ Writer（LLM）→ PE profile（方言）→ Adapter（可选生成）</sub></p>
 
   [![Agent Harness](https://img.shields.io/badge/Agentic-PE%20Harness-7C3AED)](architecture_zh.md)
   [![CI](https://github.com/WayneJin0918/Omni-Rewriter/actions/workflows/ci.yml/badge.svg)](https://github.com/WayneJin0918/Omni-Rewriter/actions/workflows/ci.yml)
@@ -84,14 +85,14 @@ Harness 与 Writer 只约定一种协议：**OpenAI 兼容 Chat + 结构化 JSON
    图像/视频生成适配器）。
 
 <p align="center">
-  <img alt="闭源" src="https://img.shields.io/badge/closed--source-supported-brightgreen?style=flat-square&labelColor=be123c" />
-  <img alt="GPT-5.6" src="https://img.shields.io/badge/GPT--5.6-supported-brightgreen?style=flat-square&labelColor=be123c" />
-  <img alt="Claude Opus 5" src="https://img.shields.io/badge/Claude%20Opus%205-supported-brightgreen?style=flat-square&labelColor=be123c" />
+  <img alt="闭源" src="https://img.shields.io/badge/closed--source-protocol--ok-brightgreen?style=flat-square&labelColor=be123c" />
+  <img alt="GPT-5.6" src="https://img.shields.io/badge/GPT--5.6-protocol--ok-brightgreen?style=flat-square&labelColor=be123c" />
+  <img alt="Claude Opus 5" src="https://img.shields.io/badge/Claude%20Opus%205-protocol--ok-brightgreen?style=flat-square&labelColor=be123c" />
 </p>
 
 <p align="center">
-  <img alt="开源" src="https://img.shields.io/badge/open--source-supported-brightgreen?style=flat-square&labelColor=0f766e" />
-  <img alt="QwenLM" src="https://img.shields.io/badge/QwenLM-supported-brightgreen?style=flat-square&labelColor=0f766e" />
+  <img alt="开源" src="https://img.shields.io/badge/open--source-protocol--ok-brightgreen?style=flat-square&labelColor=0f766e" />
+  <img alt="QwenLM" src="https://img.shields.io/badge/QwenLM-protocol--ok-brightgreen?style=flat-square&labelColor=0f766e" />
   <img alt="MiMo wanted" src="https://img.shields.io/badge/MiMo-wanted-lightgrey?style=flat-square&labelColor=0f766e" />
   <img alt="Kimi wanted" src="https://img.shields.io/badge/Kimi-wanted-lightgrey?style=flat-square&labelColor=0f766e" />
   <img alt="DeepSeek wanted" src="https://img.shields.io/badge/DeepSeek-wanted-lightgrey?style=flat-square&labelColor=0f766e" />
@@ -104,21 +105,22 @@ Harness 与 Writer 只约定一种协议：**OpenAI 兼容 Chat + 结构化 JSON
 
 ## 模型生态
 
-PE / 生成器社区看板 — 左侧色 = 分类（Video / Image / Unified）；右侧 = `available` /
-`wanted`。请优先提交带标题前缀的小 PR，详见 [CONTRIBUTING.md](CONTRIBUTING.md)。
+社区看板 — 左侧色 = 分类（Video / Image / Unified）；右侧 = 证据深度
+（`PE` / `adapter` / `unverified` / `wanted`）。请优先提交带标题前缀的小 PR，详见
+[CONTRIBUTING.md](CONTRIBUTING.md)。
 
 <p align="center">
-  <img alt="MiniMax-H3 available" src="https://img.shields.io/badge/MiniMax--H3-available-brightgreen?style=flat-square&labelColor=4f46e5" />
-  <img alt="LingBot Video available" src="https://img.shields.io/badge/LingBot%20Video-available-brightgreen?style=flat-square&labelColor=4f46e5" />
-  <img alt="WAN available" src="https://img.shields.io/badge/WAN-available-brightgreen?style=flat-square&labelColor=4f46e5" />
+  <img alt="MiniMax-H3 PE" src="https://img.shields.io/badge/MiniMax--H3-PE-brightgreen?style=flat-square&labelColor=4f46e5" />
+  <img alt="LingBot Video adapter" src="https://img.shields.io/badge/LingBot%20Video-adapter-yellow?style=flat-square&labelColor=4f46e5" />
+  <img alt="WAN unverified" src="https://img.shields.io/badge/WAN-unverified-lightgrey?style=flat-square&labelColor=4f46e5" />
   <img alt="HunyuanVideo wanted" src="https://img.shields.io/badge/HunyuanVideo-wanted-lightgrey?style=flat-square&labelColor=4f46e5" />
   <img alt="CogVideoX wanted" src="https://img.shields.io/badge/CogVideoX-wanted-lightgrey?style=flat-square&labelColor=4f46e5" />
   <img alt="LTX-Video wanted" src="https://img.shields.io/badge/LTX--Video-wanted-lightgrey?style=flat-square&labelColor=4f46e5" />
   <img alt="Mochi 1 wanted" src="https://img.shields.io/badge/Mochi%201-wanted-lightgrey?style=flat-square&labelColor=4f46e5" />
   <img alt="Step-Video wanted" src="https://img.shields.io/badge/Step--Video-wanted-lightgrey?style=flat-square&labelColor=4f46e5" />
-  <img alt="Seedream available" src="https://img.shields.io/badge/Seedream-available-brightgreen?style=flat-square&labelColor=0d9488" />
-  <img alt="Qwen-Image / Edit available" src="https://img.shields.io/badge/Qwen--Image%20%2F%20Edit-available-brightgreen?style=flat-square&labelColor=0d9488" />
-  <img alt="HunyuanImage-3.0 available" src="https://img.shields.io/badge/HunyuanImage--3.0-available-brightgreen?style=flat-square&labelColor=0d9488" />
+  <img alt="Seedream PE" src="https://img.shields.io/badge/Seedream-PE-brightgreen?style=flat-square&labelColor=0d9488" />
+  <img alt="Qwen-Image / Edit PE" src="https://img.shields.io/badge/Qwen--Image%20%2F%20Edit-PE-brightgreen?style=flat-square&labelColor=0d9488" />
+  <img alt="HunyuanImage-3.0 adapter" src="https://img.shields.io/badge/HunyuanImage--3.0-adapter-yellow?style=flat-square&labelColor=0d9488" />
   <img alt="FLUX.1 / Kontext wanted" src="https://img.shields.io/badge/FLUX.1%20%2F%20Kontext-wanted-lightgrey?style=flat-square&labelColor=0d9488" />
   <img alt="Stable Diffusion 3.5 wanted" src="https://img.shields.io/badge/Stable%20Diffusion%203.5-wanted-lightgrey?style=flat-square&labelColor=0d9488" />
   <img alt="Kolors wanted" src="https://img.shields.io/badge/Kolors-wanted-lightgrey?style=flat-square&labelColor=0d9488" />
@@ -132,7 +134,9 @@ PE / 生成器社区看板 — 左侧色 = 分类（Video / Image / Unified）�
 </p>
 
 <p align="center">
-  <img alt="available" src="https://img.shields.io/badge/status-available-brightgreen?style=flat-square" />
+  <img alt="PE" src="https://img.shields.io/badge/status-PE-brightgreen?style=flat-square" />
+  <img alt="adapter" src="https://img.shields.io/badge/status-adapter-yellow?style=flat-square" />
+  <img alt="unverified" src="https://img.shields.io/badge/status-unverified-lightgrey?style=flat-square" />
   <img alt="wanted" src="https://img.shields.io/badge/status-wanted-lightgrey?style=flat-square" />
   &nbsp;
   <img alt="Video category" src="https://img.shields.io/badge/category-Video-4f46e5?style=flat-square&labelColor=312e81" />
@@ -167,7 +171,7 @@ PE / 生成器社区看板 — 左侧色 = 分类（Video / Image / Unified）�
   </tr>
 </table>
 
-<p align="center"><sub>当前视频配置：MiniMax-H3。首页优先展示 15s 压力集（s11–s16）中运镜/剪辑/对白更复杂、PE 优势更明显的片段。</sub><br>
+<p align="center"><sub>当前视频配置：MiniMax-H3。首页三组：s15 演唱会急推、s14 厨房甩镜、s13 天台环绕（来自已发布 15 组）。</sub><br>
 <a href="https://waynejin0918.github.io/Omni-Rewriter/"><b>H3 PE 站点 →</b></a>
 ·
 <a href="day2-h3-pe/index.html">本地 H3 PE 页面</a>
@@ -178,45 +182,32 @@ PE / 生成器社区看板 — 左侧色 = 分类（Video / Image / Unified）�
 
 ## 快速开始
 
+Gallery 演示不需要 GPU。`expand` 需要任意能返回结构化 JSON 的 OpenAI 兼容 Chat 接口
+（托管 API/网关，或 vLLM/SGLang 上的开源权重）。
+
 ```bash
 python -m venv .venv
 source .venv/bin/activate
 python -m pip install -U pip
 python -m pip install -e ".[cli,server]"
 cp .env.example .env
-set -a; source .env; set +a
 ```
 
-在 `.env` 中指向任意 OpenAI 兼容 Writer（闭源 API/网关，或部署在 **vLLM** /
-**SGLang** 上的开源模型），然后扩写：
+托管 Writer 示例（无需本地权重）：
 
 ```bash
-# .env 中配置 OMNI_WRITER_BACKEND_BASE_URL 与 OMNI_WRITER_BACKEND_MODEL
+export OMNI_WRITER_BACKEND_BASE_URL=https://api.openai.com/v1
+export OMNI_WRITER_BACKEND_MODEL=gpt-5.6
+export OMNI_WRITER_BACKEND_API_KEY=sk-...
 
-cat > request.json <<'JSON'
-{
-  "prompt": "一只手工风筝在傍晚微风中飞过草坡。",
-  "duration_seconds": 6,
-  "metadata": {"aspect_ratio": "16:9", "seed": "7"}
-}
-JSON
-
-omni-rewriter expand request.json
-omni-rewriter expand request.json --output h3
+omni-rewriter expand examples/requests/t2va_kite.json
+omni-rewriter expand examples/requests/t2va_kite.json --output h3
+omni-rewriter expand examples/requests/t2i_neon.json
 omni-rewriter validate output.json
 ```
 
-图像任务必须显式指定 `task`，并省略 `duration_seconds`：
-
-```json
-{
-  "prompt": "雨夜霓虹寿司店门口的横版海报",
-  "task": "t2i",
-  "metadata": {"image_pe_profile": "seedream"}
-}
-```
-
-视频、T2I 与图像编辑的最短路径见[快速开始文档](getting-started_zh.md)。
+示例请求见 [`examples/requests/`](../examples/requests/)。更多路径见
+[快速开始文档](getting-started_zh.md)。
 
 ## 项目分层
 
@@ -264,5 +255,5 @@ Omni-Rewriter 并非为了复现闭源系统的未公开行为，而是依据公
 弥合产品演示、公开 API 与实际部署流程之间的差距。未经测试的运行时兼容性会明确标记为
 “未验证”。
 
-源码使用 [Apache License 2.0](LICENSE)。第三方模型、服务、文档与名称遵循各自条款。
+源码使用 [Apache License 2.0](../LICENSE)。第三方模型、服务、文档与名称遵循各自条款。
 安全说明见 [SECURITY.md](SECURITY.md)。

@@ -9,9 +9,7 @@ from pydantic import Field, field_validator
 
 from .common import StrictModel, TaskType
 
-ALLOWED_RATIOS = frozenset(
-    {"21:9", "16:9", "3:2", "4:3", "1:1", "3:4", "2:3", "9:16"}
-)
+ALLOWED_RATIOS = frozenset({"21:9", "16:9", "3:2", "4:3", "1:1", "3:4", "2:3", "9:16"})
 RATIO_RE = re.compile(r"^(?:\d+:\d+|\[image [1-9]\d*\])$")
 IMAGE_REF_RE = re.compile(r"\[image ([1-9]\d*)\]")
 
@@ -53,13 +51,9 @@ class ImageRewrite(StrictModel):
     def validate_ratio(cls, value: str) -> str:
         stripped = value.strip()
         if not RATIO_RE.fullmatch(stripped):
-            raise ValueError(
-                "ratio must be one of 21:9,16:9,3:2,4:3,1:1,3:4,2:3,9:16 or [image N]"
-            )
+            raise ValueError("ratio must be one of 21:9,16:9,3:2,4:3,1:1,3:4,2:3,9:16 or [image N]")
         if ":" in stripped and stripped not in ALLOWED_RATIOS:
-            raise ValueError(
-                "ratio must be one of 21:9,16:9,3:2,4:3,1:1,3:4,2:3,9:16 or [image N]"
-            )
+            raise ValueError("ratio must be one of 21:9,16:9,3:2,4:3,1:1,3:4,2:3,9:16 or [image N]")
         return stripped
 
     def render(self) -> str:

@@ -103,7 +103,7 @@ def test_validate_output_image_envelope() -> None:
         "output": {
             "task": "t2i",
             "profile": "seedream",
-            "prompt": 'A night street storefront with a neon sign reading “営業中”.',
+            "prompt": "A night street storefront with a neon sign reading “営業中”.",
             "ratio": "3:2",
         },
     }

@@ -22,6 +22,7 @@ from omni_rewriter.adapters import (
     OpenAIImagesClientConfig,
     WanOmniAdapter,
 )
+from omni_rewriter.adapters.base import bounded_download
 from omni_rewriter.config import Settings
 from omni_rewriter.models import MediaReference, MediaRole, MediaType, RewriteRequest, TaskType
 
@@ -333,9 +334,7 @@ async def test_omni_videos_multipart_uploads_bounded_data_reference() -> None:
 
     client = httpx.AsyncClient(transport=httpx.MockTransport(handler))
     adapter = omni_videos(client, transport="multipart")
-    request = video_request(
-        media=[frame(MediaRole.FIRST_FRAME, f"data:image/png;base64,{image}")]
-    )
+    request = video_request(media=[frame(MediaRole.FIRST_FRAME, f"data:image/png;base64,{image}")])
     assert await adapter.submit(request, "expanded") == "video-1"
     assert content_types[0].startswith("multipart/form-data; boundary=")
     assert b'name="input_reference"; filename="input_reference.png"' in bodies[0]
@@ -391,3 +390,16 @@ def test_generation_configs_are_strict_and_settings_build_clients(
     assert settings.omni_videos_client_config().transport == "json"
     assert settings.openai_images_client_config().response_format == "url"
     assert settings.wan_omni_adapter().default_size == "640x480"
+
+
+@pytest.mark.asyncio
+async def test_bounded_download_rejects_private_hosts() -> None:
+    client = httpx.AsyncClient()
+    with pytest.raises(GenerationResponseError, match="non-public"):
+        await bounded_download(
+            client,
+            "http://127.0.0.1/secret.bin",
+            max_bytes=16,
+            service="test",
+        )
+    await client.aclose()

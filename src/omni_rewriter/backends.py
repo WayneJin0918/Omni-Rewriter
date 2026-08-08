@@ -28,11 +28,7 @@ def _guidance_safe_schema(value: Any) -> Any:
     """
 
     if isinstance(value, Mapping):
-        return {
-            key: _guidance_safe_schema(item)
-            for key, item in value.items()
-            if key != "pattern"
-        }
+        return {key: _guidance_safe_schema(item) for key, item in value.items() if key != "pattern"}
     if isinstance(value, list):
         return [_guidance_safe_schema(item) for item in value]
     return value
@@ -106,9 +102,7 @@ class OpenAICompatibleBackend:
             payload["max_tokens"] = self.config.max_tokens
         if self.config.enable_thinking is not None:
             # vLLM forwards model-specific switches through the chat template.
-            payload["chat_template_kwargs"] = {
-                "enable_thinking": self.config.enable_thinking
-            }
+            payload["chat_template_kwargs"] = {"enable_thinking": self.config.enable_thinking}
         if response_model is not None:
             payload["response_format"] = {
                 "type": "json_schema",
@@ -141,9 +135,7 @@ class OpenAICompatibleBackend:
                     await asyncio.sleep(min(0.25 * (2**attempt), 2.0))
                     continue
             if response.is_error:
-                raise BackendResponseError(
-                    f"chat backend returned HTTP {response.status_code}"
-                )
+                raise BackendResponseError(f"chat backend returned HTTP {response.status_code}")
             return self._extract_content(response)
         raise BackendTransportError("chat request retry loop terminated unexpectedly")
 
@@ -211,3 +203,6 @@ class ScriptedBackend:
         if isinstance(response, Exception):
             raise response
         return response
+
+    async def aclose(self) -> None:
+        """No-op so ScriptedBackend can stand in for OpenAICompatibleBackend in tests."""

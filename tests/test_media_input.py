@@ -30,6 +30,14 @@ async def test_prepare_local_png(tmp_path: Path, png_bytes: bytes) -> None:
 
 
 @pytest.mark.asyncio
+async def test_prepare_denies_local_when_disabled(tmp_path: Path, png_bytes: bytes) -> None:
+    path = tmp_path / "tiny.png"
+    path.write_bytes(png_bytes)
+    with pytest.raises(MediaURIError, match="local media paths are disabled"):
+        await MediaPreparer(MediaInputConfig(allow_local_files=False)).prepare(image(str(path)))
+
+
+@pytest.mark.asyncio
 async def test_prepare_data_uri_and_message(png_bytes: bytes) -> None:
     uri = "data:image/png;base64," + base64.b64encode(png_bytes).decode()
     preparer = MediaPreparer()

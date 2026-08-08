@@ -171,9 +171,7 @@ class RewriteAgent:
                     "required_task": task.value,
                 }
                 if request.duration_seconds is not None:
-                    repair_payload["required_duration_seconds"] = str(
-                        request.duration_seconds
-                    )
+                    repair_payload["required_duration_seconds"] = str(request.duration_seconds)
                 if profile is not None:
                     repair_payload["required_profile"] = profile.value
                 candidate_raw = await self.backend.complete(
@@ -260,8 +258,7 @@ class RewriteAgent:
             return output
         if output.duration_seconds != request.duration_seconds:
             raise ValueError(
-                "duration_seconds must exactly match the request "
-                f"({request.duration_seconds})"
+                f"duration_seconds must exactly match the request ({request.duration_seconds})"
             )
         if isinstance(output, BaseRewrite) and output.task is not request.resolved_task:
             raise ValueError(f"task must exactly match the request ({request.resolved_task.value})")

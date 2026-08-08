@@ -3,6 +3,7 @@
 
   <p><strong>An open agentic prompt-expansion harness for image and video generation.</strong></p>
   <p>Turn everyday intent into validated, model-ready prompts through a bounded AI-agent workflow.</p>
+  <p><sub>Harness (loop) → Writer (LLM) → PE profile (dialect) → Adapter (optional generate)</sub></p>
 
   [![Agent Harness](https://img.shields.io/badge/Agentic-PE%20Harness-7C3AED)](docs/architecture.md)
   [![CI](https://github.com/WayneJin0918/Omni-Rewriter/actions/workflows/ci.yml/badge.svg)](https://github.com/WayneJin0918/Omni-Rewriter/actions/workflows/ci.yml)
@@ -88,14 +89,14 @@ model family you pick.
    image/video generation adapters outside `expand`).
 
 <p align="center">
-  <img alt="closed-source" src="https://img.shields.io/badge/closed--source-supported-brightgreen?style=flat-square&labelColor=be123c" />
-  <img alt="GPT-5.6" src="https://img.shields.io/badge/GPT--5.6-supported-brightgreen?style=flat-square&labelColor=be123c" />
-  <img alt="Claude Opus 5" src="https://img.shields.io/badge/Claude%20Opus%205-supported-brightgreen?style=flat-square&labelColor=be123c" />
+  <img alt="closed-source" src="https://img.shields.io/badge/closed--source-protocol--ok-brightgreen?style=flat-square&labelColor=be123c" />
+  <img alt="GPT-5.6" src="https://img.shields.io/badge/GPT--5.6-protocol--ok-brightgreen?style=flat-square&labelColor=be123c" />
+  <img alt="Claude Opus 5" src="https://img.shields.io/badge/Claude%20Opus%205-protocol--ok-brightgreen?style=flat-square&labelColor=be123c" />
 </p>
 
 <p align="center">
-  <img alt="open-source" src="https://img.shields.io/badge/open--source-supported-brightgreen?style=flat-square&labelColor=0f766e" />
-  <img alt="QwenLM" src="https://img.shields.io/badge/QwenLM-supported-brightgreen?style=flat-square&labelColor=0f766e" />
+  <img alt="open-source" src="https://img.shields.io/badge/open--source-protocol--ok-brightgreen?style=flat-square&labelColor=0f766e" />
+  <img alt="QwenLM" src="https://img.shields.io/badge/QwenLM-protocol--ok-brightgreen?style=flat-square&labelColor=0f766e" />
   <img alt="MiMo wanted" src="https://img.shields.io/badge/MiMo-wanted-lightgrey?style=flat-square&labelColor=0f766e" />
   <img alt="Kimi wanted" src="https://img.shields.io/badge/Kimi-wanted-lightgrey?style=flat-square&labelColor=0f766e" />
   <img alt="DeepSeek wanted" src="https://img.shields.io/badge/DeepSeek-wanted-lightgrey?style=flat-square&labelColor=0f766e" />
@@ -108,22 +109,22 @@ Generation adapters stay outside <code>expand</code> — see the
 
 ## Model ecosystem
 
-PE / generator community board — left color = category (Video / Image / Unified); right =
-`available` / `wanted`. Prefer small PRs with a title prefix — see
+Community board — left color = category (Video / Image / Unified); right = evidence depth
+(`PE` / `adapter` / `unverified` / `wanted`). Prefer small PRs with a title prefix — see
 [CONTRIBUTING.md](docs/CONTRIBUTING.md).
 
 <p align="center">
-  <img alt="MiniMax-H3 available" src="https://img.shields.io/badge/MiniMax--H3-available-brightgreen?style=flat-square&labelColor=4f46e5" />
-  <img alt="LingBot Video available" src="https://img.shields.io/badge/LingBot%20Video-available-brightgreen?style=flat-square&labelColor=4f46e5" />
-  <img alt="WAN available" src="https://img.shields.io/badge/WAN-available-brightgreen?style=flat-square&labelColor=4f46e5" />
+  <img alt="MiniMax-H3 PE" src="https://img.shields.io/badge/MiniMax--H3-PE-brightgreen?style=flat-square&labelColor=4f46e5" />
+  <img alt="LingBot Video adapter" src="https://img.shields.io/badge/LingBot%20Video-adapter-yellow?style=flat-square&labelColor=4f46e5" />
+  <img alt="WAN unverified" src="https://img.shields.io/badge/WAN-unverified-lightgrey?style=flat-square&labelColor=4f46e5" />
   <img alt="HunyuanVideo wanted" src="https://img.shields.io/badge/HunyuanVideo-wanted-lightgrey?style=flat-square&labelColor=4f46e5" />
   <img alt="CogVideoX wanted" src="https://img.shields.io/badge/CogVideoX-wanted-lightgrey?style=flat-square&labelColor=4f46e5" />
   <img alt="LTX-Video wanted" src="https://img.shields.io/badge/LTX--Video-wanted-lightgrey?style=flat-square&labelColor=4f46e5" />
   <img alt="Mochi 1 wanted" src="https://img.shields.io/badge/Mochi%201-wanted-lightgrey?style=flat-square&labelColor=4f46e5" />
   <img alt="Step-Video wanted" src="https://img.shields.io/badge/Step--Video-wanted-lightgrey?style=flat-square&labelColor=4f46e5" />
-  <img alt="Seedream available" src="https://img.shields.io/badge/Seedream-available-brightgreen?style=flat-square&labelColor=0d9488" />
-  <img alt="Qwen-Image / Edit available" src="https://img.shields.io/badge/Qwen--Image%20%2F%20Edit-available-brightgreen?style=flat-square&labelColor=0d9488" />
-  <img alt="HunyuanImage-3.0 available" src="https://img.shields.io/badge/HunyuanImage--3.0-available-brightgreen?style=flat-square&labelColor=0d9488" />
+  <img alt="Seedream PE" src="https://img.shields.io/badge/Seedream-PE-brightgreen?style=flat-square&labelColor=0d9488" />
+  <img alt="Qwen-Image / Edit PE" src="https://img.shields.io/badge/Qwen--Image%20%2F%20Edit-PE-brightgreen?style=flat-square&labelColor=0d9488" />
+  <img alt="HunyuanImage-3.0 adapter" src="https://img.shields.io/badge/HunyuanImage--3.0-adapter-yellow?style=flat-square&labelColor=0d9488" />
   <img alt="FLUX.1 / Kontext wanted" src="https://img.shields.io/badge/FLUX.1%20%2F%20Kontext-wanted-lightgrey?style=flat-square&labelColor=0d9488" />
   <img alt="Stable Diffusion 3.5 wanted" src="https://img.shields.io/badge/Stable%20Diffusion%203.5-wanted-lightgrey?style=flat-square&labelColor=0d9488" />
   <img alt="Kolors wanted" src="https://img.shields.io/badge/Kolors-wanted-lightgrey?style=flat-square&labelColor=0d9488" />
@@ -137,7 +138,9 @@ PE / generator community board — left color = category (Video / Image / Unifie
 </p>
 
 <p align="center">
-  <img alt="available" src="https://img.shields.io/badge/status-available-brightgreen?style=flat-square" />
+  <img alt="PE" src="https://img.shields.io/badge/status-PE-brightgreen?style=flat-square" />
+  <img alt="adapter" src="https://img.shields.io/badge/status-adapter-yellow?style=flat-square" />
+  <img alt="unverified" src="https://img.shields.io/badge/status-unverified-lightgrey?style=flat-square" />
   <img alt="wanted" src="https://img.shields.io/badge/status-wanted-lightgrey?style=flat-square" />
   &nbsp;
   <img alt="Video category" src="https://img.shields.io/badge/category-Video-4f46e5?style=flat-square&labelColor=312e81" />
@@ -172,7 +175,7 @@ PE / generator community board — left color = category (Video / Image / Unifie
   </tr>
 </table>
 
-<p align="center"><sub>Current video profile: MiniMax-H3. Homepage picks are complex camera/cut/dialogue PE-wins from the 15s stress set (s11–s16).</sub><br>
+<p align="center"><sub>Current video profile: MiniMax-H3. Homepage picks: s15 concert crash-zoom, s14 kitchen whip-pan, s13 rooftop arc (from the published 15-pair set).</sub><br>
 <a href="https://waynejin0918.github.io/Omni-Rewriter/"><b>H3 PE site →</b></a>
 ·
 <a href="docs/day2-h3-pe/index.html">Local H3 PE page</a>
@@ -183,45 +186,31 @@ PE / generator community board — left color = category (Video / Image / Unifie
 
 ## Quick start
 
+Gallery demos need no GPU. `expand` needs any OpenAI-compatible chat endpoint that returns
+structured JSON (hosted API/gateway, or open weights on vLLM/SGLang).
+
 ```bash
 python -m venv .venv
 source .venv/bin/activate
 python -m pip install -U pip
 python -m pip install -e ".[cli,server]"
 cp .env.example .env
-set -a; source .env; set +a
 ```
 
-Point `.env` at any OpenAI-compatible writer (closed API/gateway or open model on
-**vLLM** / **SGLang**), then expand:
+Hosted Writer example (no local checkpoint):
 
 ```bash
-# OMNI_WRITER_BACKEND_BASE_URL + OMNI_WRITER_BACKEND_MODEL in .env
+export OMNI_WRITER_BACKEND_BASE_URL=https://api.openai.com/v1   # or any gateway
+export OMNI_WRITER_BACKEND_MODEL=gpt-5.6
+export OMNI_WRITER_BACKEND_API_KEY=sk-...
 
-cat > request.json <<'JSON'
-{
-  "prompt": "A handmade kite catches an evening breeze above a grassy hill.",
-  "duration_seconds": 6,
-  "metadata": {"aspect_ratio": "16:9", "seed": "7"}
-}
-JSON
-
-omni-rewriter expand request.json
-omni-rewriter expand request.json --output h3
+omni-rewriter expand examples/requests/t2va_kite.json
+omni-rewriter expand examples/requests/t2va_kite.json --output h3
+omni-rewriter expand examples/requests/t2i_neon.json
 omni-rewriter validate output.json
 ```
 
-Image tasks must explicitly set `task` and omit `duration_seconds`:
-
-```json
-{
-  "prompt": "A rain-soaked neon sushi storefront, horizontal poster",
-  "task": "t2i",
-  "metadata": {"image_pe_profile": "seedream"}
-}
-```
-
-For the shortest video, T2I, and image-edit paths, see
+Checked-in requests: [`examples/requests/`](examples/requests/). More paths:
 [Getting Started](docs/getting-started.md).
 
 ## Project layers

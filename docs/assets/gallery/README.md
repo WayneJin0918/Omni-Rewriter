@@ -5,8 +5,8 @@ comparisons. The files contain no burned-in labels or side-by-side composites;
 use HTML or Markdown labels around the separate assets.
 
 Current homepage set favors the strongest complex camera / cut / dialogue PE-wins
-from the MiniMax-H3 15s stress scenarios (`s11–s16`): concert crash-zoom multicuts,
-kitchen whip-pan montage, and rooftop arc proposal.
+from the published MiniMax-H3 pairs: concert crash-zoom (`s15`), kitchen whip-pan
+(`s14`), and rooftop arc (`s13`).
 
 Exact asset paths:
 

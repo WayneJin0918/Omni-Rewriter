@@ -1,0 +1,53 @@
+name: Model contribution
+description: Propose a PE profile, dialect, adapter, or runtime evidence for a community model
+title: "[model] "
+labels: ["enhancement"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Pick one row from [community-models.md](https://github.com/WayneJin0918/Omni-Rewriter/blob/main/docs/community-models.md)
+        (or the [中文 board](https://github.com/WayneJin0918/Omni-Rewriter/blob/main/docs/community-models_zh.md)).
+        Expand ≠ generate — report PE / adapter / live-runtime status separately.
+  - type: dropdown
+    id: category
+    attributes:
+      label: Model category
+      options:
+        - Video
+        - Image
+        - Unified
+        - Not sure
+    validations:
+      required: true
+  - type: input
+    id: community_row
+    attributes:
+      label: Community board row
+      description: Exact model/family name from the backlog table
+      placeholder: e.g. Wan 2.x native PE
+    validations:
+      required: true
+  - type: dropdown
+    id: scope
+    attributes:
+      label: Intended scope for the first PR
+      options:
+        - Docs / fixtures only
+        - PE profile + validator + renderer
+        - Generation adapter (evidence-scoped)
+        - Live runtime smoke notes
+    validations:
+      required: true
+  - type: textarea
+    id: evidence
+    attributes:
+      label: Public upstream contract / evidence links
+      description: Pin versions. Label untested paths unverified.
+    validations:
+      required: true
+  - type: textarea
+    id: notes
+    attributes:
+      label: Notes
+      description: Constraints, related issues, or why this row matters

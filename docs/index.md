@@ -20,8 +20,10 @@ remains an explicit, separate step.
 - [H3 PE site](day2-h3-pe/index.html) — Omni-Rewriter H3 PE promotional landing (also `gh-pages`).
 - [H3 PE showcase](h3-pe-showcase/index.html) — public RAW vs PE landing page for MiniMax-H3.
 - [Image PE](image-pe.md) — Seedream and Qwen-Image-Edit image packing.
-- [H3 adapters](h3-adapters.md) — implemented local H3 and MiniMax clients.
+- [Image gallery](assets/gallery/image/) — low-res RAW vs PE WebP samples.
+- [H3 adapters](h3-adapters.md) · [中文](h3-adapters_zh.md) — local H3 and MiniMax clients.
 - [Public H3 references](references/README.md) — sanitized sources used to tighten H3 rules.
+- [Example requests](../examples/requests/) — copy-paste `RewriteRequest` JSON.
 
 ## Project governance
 
@@ -30,6 +32,7 @@ remains an explicit, separate step.
 - [Contributing](CONTRIBUTING.md)
 - [Security policy](SECURITY.md)
 - [Code of conduct](CODE_OF_CONDUCT.md)
+- [Agent notes](AGENTS.md) — maintainer/agent conventions.
 
 ## Scope
 

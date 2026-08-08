@@ -32,8 +32,16 @@ classifiers = [
   "Operating System :: OS Independent",
   "Programming Language :: Python :: 3",
   "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3.12",
   "Typing :: Typed",
 ]
+
+[project.urls]
+Homepage = "https://github.com/WayneJin0918/Omni-Rewriter"
+Documentation = "https://waynejin0918.github.io/Omni-Rewriter/"
+Repository = "https://github.com/WayneJin0918/Omni-Rewriter"
+Issues = "https://github.com/WayneJin0918/Omni-Rewriter/issues"
+Changelog = "https://github.com/WayneJin0918/Omni-Rewriter/blob/main/CHANGELOG.md"
 
 [project.optional-dependencies]
 cli = ["typer>=0.12"]
