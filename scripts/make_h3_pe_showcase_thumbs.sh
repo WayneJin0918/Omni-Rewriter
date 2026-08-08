@@ -22,14 +22,13 @@ SCENES=(
   "s07_bowling:8"
   "s08_jazz:4"
   "s09_noir:5"
-  "s10_phone_call:6"
   # camera / cut stress set
   "s11_museum_reveal:6"
   "s12_alley_chase:4"
   "s13_rooftop_orbit:5"
   "s14_kitchen_stations:3"
   "s15_concert_crashzoom:2"
-  "s16_train_matchcut:7"
+  "s19_fencing_duel:3"
 )
 
 command -v ffmpeg >/dev/null || {

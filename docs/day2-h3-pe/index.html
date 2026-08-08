@@ -8,79 +8,125 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,700&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+
   <style>
     :root {
       --bg: #14060c; --ink: #fff5f7; --muted: #f0c0cc; --rose: #e11d48;
       --rose-deep: #9f1239; --blush: #fb7185; --card: rgba(255, 245, 247, 0.045);
-      --line: rgba(251, 113, 133, 0.28); --max: 1560px;
+      --line: rgba(251, 113, 133, 0.28); --max: 1120px;
     }
     * { box-sizing: border-box; }
     html { scroll-behavior: smooth; }
     body {
       margin: 0; color: var(--ink); font-family: Manrope, system-ui, sans-serif;
       background:
-        radial-gradient(1200px 600px at 12% -10%, rgba(225, 29, 72, 0.35), transparent 55%),
-        radial-gradient(900px 500px at 90% 8%, rgba(251, 113, 133, 0.18), transparent 50%),
+        radial-gradient(900px 480px at 14% -8%, rgba(225, 29, 72, 0.32), transparent 55%),
+        radial-gradient(700px 420px at 88% 6%, rgba(251, 113, 133, 0.16), transparent 50%),
         linear-gradient(180deg, #1a0710 0%, var(--bg) 40%, #0d0408 100%);
-      min-height: 100vh; line-height: 1.5;
+      min-height: 100vh; line-height: 1.55;
     }
     a { color: var(--blush); text-decoration-thickness: 1px; text-underline-offset: 0.18em; }
     a:hover { color: #fff; }
-    .wrap { width: min(var(--max), calc(100% - 1.5rem)); margin: 0 auto; }
-    .topnav { display:flex; align-items:center; justify-content:space-between; padding:0.9rem 0; gap:1rem; flex-wrap:wrap; }
-    .brand { font-family: Fraunces, Georgia, serif; font-weight:700; letter-spacing:-0.02em; font-size:1.1rem; color:var(--ink); text-decoration:none; }
+    .wrap { width: min(var(--max), calc(100% - 2.5rem)); margin: 0 auto; }
+    .topnav { display:flex; align-items:center; justify-content:space-between; padding:1rem 0; gap:1rem; flex-wrap:wrap; }
+    .brand { font-family: Fraunces, Georgia, serif; font-weight:700; letter-spacing:-0.02em; font-size:1.15rem; color:var(--ink); text-decoration:none; }
     .brand span { color: var(--blush); }
-    .nav-links { display:flex; gap:0.85rem; flex-wrap:wrap; font-size:0.88rem; }
+    .nav-links { display:flex; gap:1rem; flex-wrap:wrap; font-size:0.9rem; }
     .nav-links a { color: var(--muted); text-decoration: none; }
     .nav-links a:hover { color: var(--ink); }
-    .hero { padding: 2.2rem 0 2.4rem; display:grid; gap:1rem; max-width:48rem; }
+    .hero { padding: 2.4rem 0 2.6rem; display:grid; gap:1.05rem; max-width:40rem; }
     .eyebrow { display:inline-flex; align-items:center; gap:0.5rem; font-size:0.74rem; font-weight:700; letter-spacing:0.14em; text-transform:uppercase; color:var(--blush); }
     .eyebrow::before { content:""; width:1.4rem; height:2px; background:var(--rose); }
-    h1 { font-family: Fraunces, Georgia, serif; font-weight:700; font-size:clamp(1.9rem,4vw,3rem); line-height:1.05; letter-spacing:-0.03em; margin:0; }
-    .lede { margin:0; color:var(--muted); font-size:1rem; max-width:40rem; }
+    h1 { font-family: Fraunces, Georgia, serif; font-weight:700; font-size:clamp(2rem,4.2vw,3.1rem); line-height:1.05; letter-spacing:-0.03em; margin:0; }
+    .lede { margin:0; color:var(--muted); font-size:1.05rem; max-width:38rem; }
     .cta-row { display:flex; flex-wrap:wrap; gap:0.65rem; }
-    .btn { display:inline-flex; align-items:center; justify-content:center; padding:0.68rem 1rem; border-radius:999px; font-weight:700; font-size:0.92rem; text-decoration:none; border:1px solid transparent; transition:transform .15s ease, border-color .15s ease; }
+    .btn { display:inline-flex; align-items:center; justify-content:center; padding:0.7rem 1.05rem; border-radius:999px; font-weight:700; font-size:0.92rem; text-decoration:none; border:1px solid transparent; transition:transform .15s ease, border-color .15s ease; }
     .btn:hover { transform: translateY(-1px); }
     .btn-primary { background:linear-gradient(135deg,var(--rose),var(--rose-deep)); color:white; box-shadow:0 10px 28px rgba(225,29,72,0.32); }
     .btn-primary:hover { color:white; }
     .btn-ghost { border-color:var(--line); color:var(--ink); background:rgba(255,255,255,0.03); }
     .btn-ghost:hover { border-color:var(--blush); color:white; }
-    section.block { padding:2.2rem 0; border-top:1px solid var(--line); }
-    .section-kicker { font-size:0.74rem; font-weight:700; letter-spacing:0.14em; text-transform:uppercase; color:var(--blush); margin-bottom:0.4rem; }
-    .block h2 { font-family: Fraunces, Georgia, serif; font-size:clamp(1.35rem,2.4vw,1.9rem); margin:0 0 0.55rem; letter-spacing:-0.02em; }
-    .block > p { color:var(--muted); max-width:48rem; margin-top:0; }
-    .pipeline { display:grid; grid-template-columns:repeat(5,minmax(0,1fr)); gap:0.5rem; margin-top:1.1rem; }
-    .step { background:var(--card); border:1px solid var(--line); border-radius:0.85rem; padding:0.75rem 0.7rem; min-height:6.2rem; }
-    .step strong { display:block; font-family: Fraunces, Georgia, serif; font-size:0.95rem; margin-bottom:0.25rem; }
-    .step span { color:var(--muted); font-size:0.8rem; }
-    .step em { display:block; margin-top:0.4rem; font-style:normal; color:var(--blush); font-size:0.68rem; letter-spacing:0.08em; text-transform:uppercase; }
-    .case-grid { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:0.65rem; margin-top:1.1rem; }
-    .case { margin:0; padding:0.55rem 0.55rem 0.45rem; border-radius:0.85rem; background:var(--card); border:1px solid var(--line); min-width:0; }
-    .case-head { display:flex; gap:0.45rem; align-items:flex-start; margin-bottom:0.35rem; }
-    .case-num { flex:0 0 auto; font-size:0.62rem; font-weight:700; letter-spacing:0.08em; padding:0.18rem 0.4rem; border-radius:999px; background:rgba(225,29,72,0.25); color:#fecdd3; }
-    .case h3 { font-family: Fraunces, Georgia, serif; margin:0; font-size:0.92rem; line-height:1.2; letter-spacing:-0.01em; }
-    .case-desc { margin:0.15rem 0 0; font-size:0.72rem; color:var(--muted); line-height:1.3; display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden; }
-    .pair { display:grid; grid-template-columns:1fr 1fr; gap:0.3rem; }
-    figure { margin:0; min-width:0; }
-    figcaption { font-size:0.58rem; font-weight:700; letter-spacing:0.1em; margin-bottom:0.18rem; color:var(--muted); }
-    figure img { display:block; width:100%; height:auto; border-radius:0.4rem; background:#080204; border:1px solid rgba(255,255,255,0.05); }
-    details.prompts { margin-top:0.35rem; }
-    details.prompts summary { cursor:pointer; list-style:none; font-size:0.68rem; letter-spacing:0.06em; text-transform:uppercase; color:var(--blush); font-weight:700; }
+    section.block { padding:2.4rem 0; border-top:1px solid var(--line); }
+    .section-kicker { font-size:0.74rem; font-weight:700; letter-spacing:0.14em; text-transform:uppercase; color:var(--blush); margin-bottom:0.45rem; }
+    .block h2 { font-family: Fraunces, Georgia, serif; font-size:clamp(1.4rem,2.5vw,1.95rem); margin:0 0 0.6rem; letter-spacing:-0.02em; }
+    .block > p { color:var(--muted); max-width:42rem; margin-top:0; }
+    .pipeline { display:grid; grid-template-columns:repeat(5,minmax(0,1fr)); gap:0.55rem; margin-top:1.2rem; }
+    .step { background:var(--card); border:1px solid var(--line); border-radius:0.9rem; padding:0.85rem 0.8rem; min-height:6.4rem; }
+    .step strong { display:block; font-family: Fraunces, Georgia, serif; font-size:0.98rem; margin-bottom:0.25rem; }
+    .step span { color:var(--muted); font-size:0.82rem; }
+    .step em { display:block; margin-top:0.45rem; font-style:normal; color:var(--blush); font-size:0.68rem; letter-spacing:0.08em; text-transform:uppercase; }
+    .case-grid { display:grid; grid-template-columns:1fr; gap:1.35rem; margin-top:1.35rem; }
+    .case {
+      margin:0; padding:1rem 1rem 0.85rem; border-radius:1rem;
+      background:rgba(255,245,247,0.035); border:1px solid var(--line);
+    }
+    .case-head { display:flex; gap:0.65rem; align-items:flex-start; margin-bottom:0.75rem; }
+    .case-num {
+      flex:0 0 auto; font-size:0.68rem; font-weight:700; letter-spacing:0.1em;
+      padding:0.28rem 0.55rem; border-radius:999px; background:rgba(225,29,72,0.28); color:#fecdd3;
+    }
+    .case h3 { font-family: Fraunces, Georgia, serif; margin:0; font-size:1.2rem; line-height:1.2; letter-spacing:-0.015em; }
+    .case-desc { margin:0.25rem 0 0; font-size:0.9rem; color:var(--muted); line-height:1.4; }
+    .compare-strip {
+      position: relative; display:grid; grid-template-columns:1fr 1fr; gap:0;
+      border-radius:0.85rem; overflow:hidden; background:#050204;
+      box-shadow: 0 8px 28px rgba(0,0,0,0.28);
+    }
+    .compare-strip figure { margin:0; position:relative; min-width:0; }
+    .compare-strip img {
+      display:block; width:100%; height:100%; object-fit:cover; aspect-ratio:16/9;
+      background:#080204;
+    }
+    .arm-label {
+      position:absolute; top:0.7rem; z-index:2; padding:0.32rem 0.65rem; border-radius:999px;
+      font-size:0.68rem; font-weight:700; letter-spacing:0.14em; text-transform:uppercase;
+      backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px);
+    }
+    .arm-label.raw {
+      left:0.7rem; color:rgba(255,255,255,0.96);
+      background:rgba(0,0,0,0.62); border:1px solid rgba(255,255,255,0.45);
+    }
+    .arm-label.pe {
+      right:0.7rem; color:#ffe4e9;
+      background:rgba(225,29,72,0.28); border:1px solid rgba(251,113,133,0.7);
+    }
+    details.prompts { margin-top:0.7rem; }
+    details.prompts summary {
+      cursor:pointer; list-style:none; font-size:0.75rem; letter-spacing:0.08em;
+      text-transform:uppercase; color:var(--blush); font-weight:700;
+    }
     details.prompts summary::-webkit-details-marker { display:none; }
-    details.prompts summary .hint { margin-left:0.35rem; color:var(--muted); font-weight:500; text-transform:none; letter-spacing:0; font-size:0.66rem; }
-    .prompt-grid { display:grid; grid-template-columns:1fr; gap:0.35rem; margin-top:0.35rem; }
-    .prompt-grid h4 { margin:0 0 0.2rem; font-size:0.65rem; letter-spacing:0.08em; text-transform:uppercase; color:var(--muted); }
-    pre.prompt { margin:0; white-space:pre-wrap; word-break:break-word; background:rgba(0,0,0,0.35); border:1px solid rgba(255,255,255,0.06); border-radius:0.45rem; padding:0.45rem 0.5rem; font-size:0.68rem; line-height:1.35; color:#ffe4e9; max-height:9rem; overflow:auto; }
-    .pillars { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:0.65rem; margin-top:1rem; }
-    .pillar { padding:0.9rem; border-radius:0.85rem; border:1px solid var(--line); background:rgba(255,255,255,0.03); }
-    .pillar h3 { font-family: Fraunces, Georgia, serif; margin:0 0 0.35rem; font-size:1.05rem; }
-    .pillar p { margin:0; font-size:0.88rem; color:var(--muted); }
-    footer { padding:2rem 0 2.4rem; border-top:1px solid var(--line); color:var(--muted); font-size:0.86rem; }
+    details.prompts summary .hint {
+      margin-left:0.4rem; color:var(--muted); font-weight:500; text-transform:none;
+      letter-spacing:0; font-size:0.74rem;
+    }
+    .prompt-grid { display:grid; grid-template-columns:1fr 1fr; gap:0.55rem; margin-top:0.55rem; }
+    .prompt-grid h4 { margin:0 0 0.25rem; font-size:0.68rem; letter-spacing:0.08em; text-transform:uppercase; color:var(--muted); }
+    pre.prompt {
+      margin:0; white-space:pre-wrap; word-break:break-word; background:rgba(0,0,0,0.35);
+      border:1px solid rgba(255,255,255,0.06); border-radius:0.55rem; padding:0.6rem 0.65rem;
+      font-size:0.74rem; line-height:1.4; color:#ffe4e9; max-height:11rem; overflow:auto;
+    }
+    .pillars { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:0.75rem; margin-top:1.1rem; }
+    .pillar { padding:1rem; border-radius:0.9rem; border:1px solid var(--line); background:rgba(255,255,255,0.03); }
+    .pillar h3 { font-family: Fraunces, Georgia, serif; margin:0 0 0.35rem; font-size:1.08rem; }
+    .pillar p { margin:0; font-size:0.9rem; color:var(--muted); }
+    footer { padding:2.2rem 0 2.6rem; border-top:1px solid var(--line); color:var(--muted); font-size:0.88rem; }
     footer .foot-row { display:flex; flex-wrap:wrap; gap:1rem; justify-content:space-between; }
     .note { opacity:0.85; max-width:38rem; }
-    @media (max-width: 1100px) { .case-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } .pipeline { grid-template-columns: 1fr 1fr; } }
-    @media (max-width: 700px) { .case-grid, .pillars, .pipeline { grid-template-columns: 1fr; } .hero { padding-top: 1.4rem; } }
+    @media (max-width: 900px) {
+      .pipeline { grid-template-columns: 1fr 1fr; }
+      .prompt-grid { grid-template-columns: 1fr; }
+      .pillars { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 640px) {
+      .wrap { width: min(var(--max), calc(100% - 1.25rem)); }
+      .pipeline, .compare-strip { grid-template-columns: 1fr; }
+      .compare-strip img { aspect-ratio: 16/9; }
+      .hero { padding-top: 1.5rem; }
+    }
   </style>
+
 </head>
 <body>
   <div class="wrap">
@@ -99,7 +145,7 @@
       <p class="lede">
         Omni-Rewriter turns everyday video intent into typed H3 prompts: shot timing, dialogue tags,
         camera grammar, and continuity checks with bounded repair. Expand is not generate. The
-        same-seed RAW vs PE grid below is our public PE instance for H3 — denser curation continues.
+        same-seed RAW vs PE compares below is our public PE instance for H3 — denser curation continues.
       </p>
       <div class="cta-row">
         <a class="btn btn-primary" href="https://github.com/WayneJin0918/Omni-Rewriter">Open source on GitHub</a>
@@ -135,28 +181,65 @@
     </section>
     <section class="block" id="cases">
       <div class="section-kicker">Cases</div>
-      <h2>Fourteen RAW vs PE pairs · dense compare</h2>
+      <h2>Fifteen RAW vs PE pairs · side-by-side</h2>
       <p>
-        Three pairs per row (<strong>six clips across</strong>) on wide screens. Expand any card for RAW prompt and full H3 PE.
-        Some clips are provisional — we will re-generate and re-filter for a higher quality bar later.
+        One pair per row: RAW and PE share a single compare strip with corner labels. Expand any card for the RAW prompt and full H3 PE.
+        Some clips are provisional — denser curation continues.
       </p>
       <div class="case-grid">
 
-    <article class="case" id="s02_multilingual">
+    <article class="case" id="s19_fencing_duel">
       <header class="case-head">
         <span class="case-num">01</span>
+        <div>
+          <h3>Fencing duel multi-angle</h3>
+          <p class="case-desc">Wide → crash-zoom clash → tip-hit CU → reverse-angle Touché with synced blade audio.</p>
+        </div>
+      </header>
+      <div class="compare-strip">
+        <figure>
+          <span class="arm-label raw">RAW</span>
+          <img src="assets/demos/s19_fencing_duel_raw.gif" alt="Fencing duel multi-angle RAW" loading="lazy">
+        </figure>
+        <figure>
+          <span class="arm-label pe">PE</span>
+          <img src="assets/demos/s19_fencing_duel_pe.gif" alt="Fencing duel multi-angle PE" loading="lazy">
+        </figure>
+      </div>
+      <details class="prompts">
+        <summary>Prompts <span class="hint">multi_angle_impact_sync · seed 1919</span></summary>
+        <div class="prompt-grid">
+          <div>
+            <h4>RAW</h4>
+            <pre class="prompt">A fencing bout in a bright salle: open wide on two fencers, crash-zoom into a blade clash, hard-cut to a tip-hit extreme close-up, then reverse-angle as the referee raises a hand and calls 'Touché!' in English with lip-sync; synchronize foot scrapes, blade rings, electronic scoring beep, and crowd hush to each cut.</pre>
+          </div>
+          <div>
+            <h4>H3 PE</h4>
+            <pre class="prompt">integrated_multimodal_description: Live-action, cinematic, 16:9 aspect ratio. [Shot 1] A wide static shot establishes a bright, sunlit fencing salle with two fencers in white gear facing each other in the en garde position, their blades held high. The fencers advance with quick, rhythmic footwork, creating a tense standoff. [Shot 2] At 00:04.500, a rapid crash-zoom accelerates into the center of the frame as the two blades collide with a sharp metallic ring, the camera shaking slightly from the impact force. [Shot 3] At 00:07.000, a hard cut to an extreme close-up of the fencer's tip piercing the opponent's lamé jacket, the electronic scoring light flashing red instantly. [Shot 4] At 00:09.500, a reverse-angle medium shot shows the referee stepping forward, raising a hand decisively while the fencers freeze. The referee (S1) says: &lt;d&gt;[English] Touché!&lt;/d&gt; with precise lip-sync. The scene holds on the referee's authoritative gesture and the fencers' reaction for the remainder of the clip.
+
+overall_soundscape: The soundscape begins with the rhythmic squeak of fencing shoes on the wooden floor and the low hum of the salle. As the blades clash in Shot 2, a sharp, high-pitched metallic ring dominates. In Shot 3, a distinct, loud electronic scoring beep triggers immediately upon the hit. Throughout the sequence, a subtle crowd hush builds, dropping to near silence as the referee speaks in Shot 4, emphasizing the spoken dialogue.
+
+non_diegetic_music: A tense, staccato orchestral string motif that accelerates in tempo during the advance, cuts abruptly to silence at the moment of the blade clash, and remains silent until a single, resolving major chord strikes exactly when the referee says 'Touché!'.</pre>
+          </div>
+        </div>
+      </details>
+    </article>
+
+    <article class="case" id="s02_multilingual">
+      <header class="case-head">
+        <span class="case-num">02</span>
         <div>
           <h3>Tokyo ramen bilingual dialogue</h3>
           <p class="case-desc">In a Tokyo ramen shop, bilingual JP/EN dialogue with kitchen ambience.</p>
         </div>
       </header>
-      <div class="pair">
+      <div class="compare-strip">
         <figure>
-          <figcaption>RAW</figcaption>
+          <span class="arm-label raw">RAW</span>
           <img src="assets/demos/s02_multilingual_raw.gif" alt="Tokyo ramen bilingual dialogue RAW" loading="lazy">
         </figure>
         <figure>
-          <figcaption>PE</figcaption>
+          <span class="arm-label pe">PE</span>
           <img src="assets/demos/s02_multilingual_pe.gif" alt="Tokyo ramen bilingual dialogue PE" loading="lazy">
         </figure>
       </div>
@@ -181,19 +264,19 @@ non_diegetic_music: None</pre>
 
     <article class="case" id="s05_wok">
       <header class="case-head">
-        <span class="case-num">02</span>
+        <span class="case-num">03</span>
         <div>
           <h3>Wok toss action sync</h3>
           <p class="case-desc">Chef flips a sizzling wok; sync flame, oil, and spatula hits.</p>
         </div>
       </header>
-      <div class="pair">
+      <div class="compare-strip">
         <figure>
-          <figcaption>RAW</figcaption>
+          <span class="arm-label raw">RAW</span>
           <img src="assets/demos/s05_wok_raw.gif" alt="Wok toss action sync RAW" loading="lazy">
         </figure>
         <figure>
-          <figcaption>PE</figcaption>
+          <span class="arm-label pe">PE</span>
           <img src="assets/demos/s05_wok_pe.gif" alt="Wok toss action sync PE" loading="lazy">
         </figure>
       </div>
@@ -218,19 +301,19 @@ non_diegetic_music: Fast-paced, percussive electronic beat with heavy bass and m
 
     <article class="case" id="s04_cyclist">
       <header class="case-head">
-        <span class="case-num">03</span>
+        <span class="case-num">04</span>
         <div>
           <h3>Neon-highway cyclist</h3>
           <p class="case-desc">Lone cyclist on neon highway with score + tire/chain ambience.</p>
         </div>
       </header>
-      <div class="pair">
+      <div class="compare-strip">
         <figure>
-          <figcaption>RAW</figcaption>
+          <span class="arm-label raw">RAW</span>
           <img src="assets/demos/s04_cyclist_raw.gif" alt="Neon-highway cyclist RAW" loading="lazy">
         </figure>
         <figure>
-          <figcaption>PE</figcaption>
+          <span class="arm-label pe">PE</span>
           <img src="assets/demos/s04_cyclist_pe.gif" alt="Neon-highway cyclist PE" loading="lazy">
         </figure>
       </div>
@@ -255,19 +338,19 @@ non_diegetic_music: A sweeping, cinematic orchestral score featuring deep cellos
 
     <article class="case" id="s01_dialogue">
       <header class="case-head">
-        <span class="case-num">04</span>
+        <span class="case-num">05</span>
         <div>
           <h3>Rainy bus-stop dialogue</h3>
           <p class="case-desc">Coworkers argue in English at a rainy bus stop.</p>
         </div>
       </header>
-      <div class="pair">
+      <div class="compare-strip">
         <figure>
-          <figcaption>RAW</figcaption>
+          <span class="arm-label raw">RAW</span>
           <img src="assets/demos/s01_dialogue_raw.gif" alt="Rainy bus-stop dialogue RAW" loading="lazy">
         </figure>
         <figure>
-          <figcaption>PE</figcaption>
+          <span class="arm-label pe">PE</span>
           <img src="assets/demos/s01_dialogue_pe.gif" alt="Rainy bus-stop dialogue PE" loading="lazy">
         </figure>
       </div>
@@ -292,19 +375,19 @@ non_diegetic_music: Low, tense ambient drone with subtle rhythmic pulses to unde
 
     <article class="case" id="s03_wetland">
       <header class="case-head">
-        <span class="case-num">05</span>
+        <span class="case-num">06</span>
         <div>
           <h3>Pre-dawn wetland ambience</h3>
           <p class="case-desc">Layered birds, insects, thunder, water, and wind; no dialogue.</p>
         </div>
       </header>
-      <div class="pair">
+      <div class="compare-strip">
         <figure>
-          <figcaption>RAW</figcaption>
+          <span class="arm-label raw">RAW</span>
           <img src="assets/demos/s03_wetland_raw.gif" alt="Pre-dawn wetland ambience RAW" loading="lazy">
         </figure>
         <figure>
-          <figcaption>PE</figcaption>
+          <span class="arm-label pe">PE</span>
           <img src="assets/demos/s03_wetland_pe.gif" alt="Pre-dawn wetland ambience PE" loading="lazy">
         </figure>
       </div>
@@ -329,19 +412,19 @@ non_diegetic_music: None. The scene relies entirely on diegetic natural sounds t
 
     <article class="case" id="s08_jazz">
       <header class="case-head">
-        <span class="case-num">06</span>
+        <span class="case-num">07</span>
         <div>
           <h3>Street jazz trio</h3>
           <p class="case-desc">Sax, bass, brushes with live diegetic music and crowd.</p>
         </div>
       </header>
-      <div class="pair">
+      <div class="compare-strip">
         <figure>
-          <figcaption>RAW</figcaption>
+          <span class="arm-label raw">RAW</span>
           <img src="assets/demos/s08_jazz_raw.gif" alt="Street jazz trio RAW" loading="lazy">
         </figure>
         <figure>
-          <figcaption>PE</figcaption>
+          <span class="arm-label pe">PE</span>
           <img src="assets/demos/s08_jazz_pe.gif" alt="Street jazz trio PE" loading="lazy">
         </figure>
       </div>
@@ -366,19 +449,19 @@ non_diegetic_music: None. The audio consists entirely of the live in-scene perfo
 
     <article class="case" id="s06_sneaker">
       <header class="case-head">
-        <span class="case-num">07</span>
+        <span class="case-num">08</span>
         <div>
           <h3>Timed sneaker ad cuts</h3>
           <p class="case-desc">Wide sprint → tracking → sole macro with footfall rhythm.</p>
         </div>
       </header>
-      <div class="pair">
+      <div class="compare-strip">
         <figure>
-          <figcaption>RAW</figcaption>
+          <span class="arm-label raw">RAW</span>
           <img src="assets/demos/s06_sneaker_raw.gif" alt="Timed sneaker ad cuts RAW" loading="lazy">
         </figure>
         <figure>
-          <figcaption>PE</figcaption>
+          <span class="arm-label pe">PE</span>
           <img src="assets/demos/s06_sneaker_pe.gif" alt="Timed sneaker ad cuts PE" loading="lazy">
         </figure>
       </div>
@@ -403,19 +486,19 @@ non_diegetic_music: Driving, upbeat electronic beat with a strong bassline that 
 
     <article class="case" id="s07_bowling">
       <header class="case-head">
-        <span class="case-num">08</span>
+        <span class="case-num">09</span>
         <div>
           <h3>Bowling physics impact</h3>
           <p class="case-desc">Spinning ball to pin crash with synced rumble.</p>
         </div>
       </header>
-      <div class="pair">
+      <div class="compare-strip">
         <figure>
-          <figcaption>RAW</figcaption>
+          <span class="arm-label raw">RAW</span>
           <img src="assets/demos/s07_bowling_raw.gif" alt="Bowling physics impact RAW" loading="lazy">
         </figure>
         <figure>
-          <figcaption>PE</figcaption>
+          <span class="arm-label pe">PE</span>
           <img src="assets/demos/s07_bowling_pe.gif" alt="Bowling physics impact PE" loading="lazy">
         </figure>
       </div>
@@ -441,19 +524,19 @@ non_diegetic_music: None</pre>
 
     <article class="case" id="s09_noir">
       <header class="case-head">
-        <span class="case-num">09</span>
+        <span class="case-num">10</span>
         <div>
           <h3>Noir voiceover walk</h3>
           <p class="case-desc">Detective in neon rain with closed lips + off-screen VO.</p>
         </div>
       </header>
-      <div class="pair">
+      <div class="compare-strip">
         <figure>
-          <figcaption>RAW</figcaption>
+          <span class="arm-label raw">RAW</span>
           <img src="assets/demos/s09_noir_raw.gif" alt="Noir voiceover walk RAW" loading="lazy">
         </figure>
         <figure>
-          <figcaption>PE</figcaption>
+          <span class="arm-label pe">PE</span>
           <img src="assets/demos/s09_noir_pe.gif" alt="Noir voiceover walk PE" loading="lazy">
         </figure>
       </div>
@@ -478,19 +561,19 @@ non_diegetic_music: A slow, melancholic saxophone melody with a minor key, under
 
     <article class="case" id="s15_concert_crashzoom">
       <header class="case-head">
-        <span class="case-num">10</span>
+        <span class="case-num">11</span>
         <div>
           <h3>Concert crash-zoom cuts</h3>
           <p class="case-desc">Wide crowd → crash zoom to singer → drummer CU → stage-wide finale.</p>
         </div>
       </header>
-      <div class="pair">
+      <div class="compare-strip">
         <figure>
-          <figcaption>RAW</figcaption>
+          <span class="arm-label raw">RAW</span>
           <img src="assets/demos/s15_concert_crashzoom_raw.gif" alt="Concert crash-zoom cuts RAW" loading="lazy">
         </figure>
         <figure>
-          <figcaption>PE</figcaption>
+          <span class="arm-label pe">PE</span>
           <img src="assets/demos/s15_concert_crashzoom_pe.gif" alt="Concert crash-zoom cuts PE" loading="lazy">
         </figure>
       </div>
@@ -515,19 +598,19 @@ non_diegetic_music: None; the audio consists entirely of the diegetic concert pe
 
     <article class="case" id="s14_kitchen_stations">
       <header class="case-head">
-        <span class="case-num">11</span>
+        <span class="case-num">12</span>
         <div>
           <h3>Kitchen whip-pan montage</h3>
           <p class="case-desc">Wide → whip to grill → plating cut → pull out as chef shouts an order.</p>
         </div>
       </header>
-      <div class="pair">
+      <div class="compare-strip">
         <figure>
-          <figcaption>RAW</figcaption>
+          <span class="arm-label raw">RAW</span>
           <img src="assets/demos/s14_kitchen_stations_raw.gif" alt="Kitchen whip-pan montage RAW" loading="lazy">
         </figure>
         <figure>
-          <figcaption>PE</figcaption>
+          <span class="arm-label pe">PE</span>
           <img src="assets/demos/s14_kitchen_stations_pe.gif" alt="Kitchen whip-pan montage PE" loading="lazy">
         </figure>
       </div>
@@ -552,19 +635,19 @@ non_diegetic_music: Fast-paced, percussive jazz-fusion track with a driving snar
 
     <article class="case" id="s13_rooftop_orbit">
       <header class="case-head">
-        <span class="case-num">12</span>
+        <span class="case-num">13</span>
         <div>
           <h3>Rooftop arc proposal</h3>
           <p class="case-desc">180° arc around a rooftop couple, then close-up acceptance with wind + piano.</p>
         </div>
       </header>
-      <div class="pair">
+      <div class="compare-strip">
         <figure>
-          <figcaption>RAW</figcaption>
+          <span class="arm-label raw">RAW</span>
           <img src="assets/demos/s13_rooftop_orbit_raw.gif" alt="Rooftop arc proposal RAW" loading="lazy">
         </figure>
         <figure>
-          <figcaption>PE</figcaption>
+          <span class="arm-label pe">PE</span>
           <img src="assets/demos/s13_rooftop_orbit_pe.gif" alt="Rooftop arc proposal PE" loading="lazy">
         </figure>
       </div>
@@ -589,19 +672,19 @@ non_diegetic_music: A quiet, emotional piano underscore that swells gently durin
 
     <article class="case" id="s11_museum_reveal">
       <header class="case-head">
-        <span class="case-num">13</span>
+        <span class="case-num">14</span>
         <div>
           <h3>Museum pedestal reveal</h3>
           <p class="case-desc">Low marble floor → pedestal up → push-in → hard cut to cracked glowing face.</p>
         </div>
       </header>
-      <div class="pair">
+      <div class="compare-strip">
         <figure>
-          <figcaption>RAW</figcaption>
+          <span class="arm-label raw">RAW</span>
           <img src="assets/demos/s11_museum_reveal_raw.gif" alt="Museum pedestal reveal RAW" loading="lazy">
         </figure>
         <figure>
-          <figcaption>PE</figcaption>
+          <span class="arm-label pe">PE</span>
           <img src="assets/demos/s11_museum_reveal_pe.gif" alt="Museum pedestal reveal PE" loading="lazy">
         </figure>
       </div>
@@ -626,19 +709,19 @@ non_diegetic_music: A soft, melancholic string score that begins quietly during 
 
     <article class="case" id="s12_alley_chase">
       <header class="case-head">
-        <span class="case-num">14</span>
+        <span class="case-num">15</span>
         <div>
           <h3>Alley chase tracking cuts</h3>
           <p class="case-desc">Handheld shake → whip to trucking → frontal close-up with continuous chase audio.</p>
         </div>
       </header>
-      <div class="pair">
+      <div class="compare-strip">
         <figure>
-          <figcaption>RAW</figcaption>
+          <span class="arm-label raw">RAW</span>
           <img src="assets/demos/s12_alley_chase_raw.gif" alt="Alley chase tracking cuts RAW" loading="lazy">
         </figure>
         <figure>
-          <figcaption>PE</figcaption>
+          <span class="arm-label pe">PE</span>
           <img src="assets/demos/s12_alley_chase_pe.gif" alt="Alley chase tracking cuts PE" loading="lazy">
         </figure>
       </div>

@@ -6,7 +6,7 @@
   <title>H3 PE showcase · Omni-Rewriter</title>
   <style>
     :root { color-scheme: light dark; font-family: ui-sans-serif, system-ui, sans-serif; }
-    body { max-width: 960px; margin: 0 auto; padding: 2rem 1rem; }
+    body { max-width: 1120px; margin: 0 auto; padding: 2rem 1rem; }
     h1 { margin-bottom: .35rem; }
     .lede { opacity: .85; margin-bottom: 1.5rem; }
     .scene { margin: 2rem 0; padding-top: 1rem; border-top: 1px solid color-mix(in srgb, currentColor 18%, transparent); }
@@ -15,13 +15,30 @@
     figure { margin:0; }
     figcaption { margin-bottom:.4rem; font-weight:700; letter-spacing:.08em; }
     img { display:block; width:100%; height:auto; border-radius:.4rem; background:#111; }
-    @media (max-width:620px) { .pair { grid-template-columns:1fr; } }
+    @media (max-width: 1120px) { .pair { grid-template-columns:1fr; } }
+  
+    main { max-width: 1120px; margin: 0 auto; padding: 0 1.25rem 2.5rem; }
+    .scene { margin: 1.4rem 0; padding: 1rem; border: 1px solid rgba(251,113,133,0.25); border-radius: 1rem; background: rgba(255,245,247,0.03); }
+    .scene h2 { margin: 0 0 0.25rem; font-size: 1.2rem; }
+    .scene .desc { margin: 0 0 0.7rem; color: #f0c0cc; font-size: 0.92rem; }
+    .scene .pair { display: grid; grid-template-columns: 1fr 1fr; gap: 0; border-radius: 0.85rem; overflow: hidden; background: #050204; }
+    .scene figure { margin: 0; position: relative; }
+    .scene figcaption {
+      position: absolute; top: 0.65rem; left: 0.65rem; z-index: 2;
+      padding: 0.28rem 0.55rem; border-radius: 999px; font-size: 0.66rem; font-weight: 700;
+      letter-spacing: 0.12em; text-transform: uppercase; background: rgba(0,0,0,0.62);
+      border: 1px solid rgba(255,255,255,0.4); color: #fff;
+    }
+    .scene figure:last-child figcaption { left: auto; right: 0.65rem; background: rgba(225,29,72,0.28); border-color: rgba(251,113,133,0.7); color: #ffe4e9; }
+    .scene img { display: block; width: 100%; aspect-ratio: 16/9; object-fit: cover; }
+    @media (max-width: 640px) { .scene .pair { grid-template-columns: 1fr; } }
+
   </style>
 </head>
 <body>
   <main>
     <h1>MiniMax-H3 · RAW vs PE showcase</h1>
-    <p class="lede">Same seed per scenario. Fourteen 15s pairs: strongest PE-win cases from the base set, plus the camera/cut stress set (s11–s15).</p>
+    <p class="lede">Same seed per scenario. Fifteen 15s pairs: strongest PE-win cases from the base set, plus the camera/cut stress set (s11–s15 + fencing).</p>
 
     <section class="scene">
       <h2>Tokyo ramen bilingual dialogue</h2>
@@ -134,6 +151,16 @@
       <div class="pair">
         <figure><figcaption>RAW</figcaption><img src="thumbs/s15_concert_crashzoom_raw.gif" alt="s15_concert_crashzoom RAW"></figure>
         <figure><figcaption>PE</figcaption><img src="thumbs/s15_concert_crashzoom_pe.gif" alt="s15_concert_crashzoom PE"></figure>
+      </div>
+    </section>
+
+
+    <section class="scene">
+      <h2>Fencing duel multi-angle</h2>
+      <p class="desc">Wide → crash-zoom clash → tip-hit CU → reverse-angle Touché with synced blade audio.</p>
+      <div class="pair">
+        <figure><figcaption>RAW</figcaption><img src="thumbs/s19_fencing_duel_raw.gif" alt="s19_fencing_duel RAW"></figure>
+        <figure><figcaption>PE</figcaption><img src="thumbs/s19_fencing_duel_pe.gif" alt="s19_fencing_duel PE"></figure>
       </div>
     </section>
   </main>
