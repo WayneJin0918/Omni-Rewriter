@@ -3,7 +3,7 @@
 Promotional landing page for Omni-Rewriter’s MiniMax-H3 prompt-expansion instance
 (rose/pink visual theme).
 
-- Grid: **15** RAW/PE pairs, **2 pairs per row** on wide screens, plus an interactive PE pipeline board
+- Grid: **15** RAW/PE pairs, **3 pairs per row** on wide screens, plus an interactive PE pipeline board
 - GitHub Pages branch: `gh-pages` → https://waynejin0918.github.io/Omni-Rewriter/
 - Open [`index.html`](index.html) locally
 
