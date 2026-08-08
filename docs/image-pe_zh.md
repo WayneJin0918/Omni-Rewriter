@@ -39,7 +39,7 @@ analyze → draft → deterministic validate → bounded repair 生命周期。
 `ratio` 只能是 `21:9`、`16:9`、`3:2`、`4:3`、`1:1`、`3:4`、`2:3`、`9:16`
 或 `[image N]`。画面内引用文字必须原样保留；引号样式应与指令语言一致。
 
-Seedream 风格 render：
+Seedream render：
 
 ```text
 <prompt>

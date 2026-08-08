@@ -18,7 +18,7 @@ flowchart TD
   G --> K{Consumer}
   K --> L[H3 / MiniMax video API]
   K --> M[Seedream / Qwen-Image* packing]
-  K --> N[Eval / compare site]
+  K --> N[Post-hoc eval / compare site]
 ```
 
 ## Why this exists
@@ -27,6 +27,10 @@ H3 is one video profile in the broader Omni-Rewriter prompt-expansion framework.
 video intent into typed H3-oriented text with deterministic grammar checks and bounded repair.
 Profile support does not imply bundled generation or official vendor status; it gives the
 community a reproducible bridge from public examples and APIs to validated prompts.
+
+The current internal VLM pairwise scorer is evaluation-only. It judges sampled frames after RAW
+and PE generation and does not feed scores back into drafting or repair. Accordingly, this profile
+provides validated prompt expansion, not VLM-guided PE optimization.
 
 ## Video PE layers (H3)
 

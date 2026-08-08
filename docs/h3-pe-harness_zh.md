@@ -6,6 +6,10 @@ H3 是 Omni-Rewriter 通用 Prompt Expansion 框架中的一个视频 profile。
 转换成类型化 H3-oriented 文本，并执行确定性语法检查与有界修复。支持该 profile 不表示
 自动生成视频或官方厂商身份；它为社区提供从公开示例和 API 到可复现提示词的桥梁。
 
+当前内部 VLM pairwise scorer 仅用于评测：它在 RAW/PE 视频生成后对抽帧进行判断，不会把
+分数反馈给 draft 或 repair。因此该 profile 提供的是经过校验的提示词扩写，而不是 VLM
+引导的 PE 优化。
+
 ```mermaid
 flowchart TD
   A[RewriteRequest<br/>prompt + media + task] --> B{H3 视频任务}

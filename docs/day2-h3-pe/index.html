@@ -119,7 +119,12 @@
     <section class="block" id="pipeline">
       <div class="section-kicker">02 — Pipeline</div>
       <h2>Analyze · draft · validate · repair · render</h2>
-      <p>A PE profile does not prove generation-runtime compatibility. Adapters stay optional and evidence-scoped.</p>
+      <p>
+        A PE profile does not prove generation-runtime compatibility. Adapters stay optional and
+        evidence-scoped. The current VLM pairwise scorer is post-hoc evaluation on sampled frames;
+        it does not feed scores back into prompt revision, so this page does not claim VLM-guided
+        PE optimization.
+      </p>
       <div class="pipeline">
         <div class="step"><em>01</em><strong>RewriteRequest</strong><span>Prompt, duration, task, metadata.</span></div>
         <div class="step"><em>02</em><strong>Analyze &amp; draft</strong><span>Invariants, state, transitions, evidence.</span></div>

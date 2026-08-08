@@ -48,6 +48,11 @@ adapters, and evaluation are separate extension layers.
 > **Expand is not generate.** The core harness produces validated text/JSON. Model loading and
 > media generation happen only when an application explicitly invokes an adapter or local runner.
 
+> [!CAUTION]
+> **Current VLM evaluation is post-hoc, not an optimization loop.** The internal pairwise scorer
+> judges sampled RAW/PE frames after generation; its scores do not feed back into prompt revision.
+> This release therefore claims validated prompt expansion, not VLM-guided PE optimization.
+
 <table>
   <tr>
     <td width="33%" valign="top"><b>Agentic & bounded</b><br>Analyze, draft, validate, and repair with strict schemas and deterministic guardrails.</td>
@@ -107,7 +112,7 @@ Prefer small PRs with a title prefix — see [CONTRIBUTING.md](CONTRIBUTING.md).
   <img alt="LTX-Video wanted" src="https://img.shields.io/badge/LTX--Video-wanted-lightgrey?style=flat-square&labelColor=4f46e5" />
   <img alt="Mochi 1 wanted" src="https://img.shields.io/badge/Mochi%201-wanted-lightgrey?style=flat-square&labelColor=4f46e5" />
   <img alt="Step-Video wanted" src="https://img.shields.io/badge/Step--Video-wanted-lightgrey?style=flat-square&labelColor=4f46e5" />
-  <img alt="Seedream-style available" src="https://img.shields.io/badge/Seedream--style-available-brightgreen?style=flat-square&labelColor=0d9488" />
+  <img alt="Seedream available" src="https://img.shields.io/badge/Seedream-available-brightgreen?style=flat-square&labelColor=0d9488" />
   <img alt="Qwen-Image / Edit available" src="https://img.shields.io/badge/Qwen--Image%20%2F%20Edit-available-brightgreen?style=flat-square&labelColor=0d9488" />
   <img alt="HunyuanImage-3.0 available" src="https://img.shields.io/badge/HunyuanImage--3.0-available-brightgreen?style=flat-square&labelColor=0d9488" />
   <img alt="FLUX.1 / Kontext wanted" src="https://img.shields.io/badge/FLUX.1%20%2F%20Kontext-wanted-lightgrey?style=flat-square&labelColor=0d9488" />

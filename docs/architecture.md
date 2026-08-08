@@ -3,7 +3,7 @@
 ## Scope
 
 Omni-Rewriter is an independent prompt-expansion framework. It converts a typed multimodal request
-into validated, generator-oriented intermediate text. H3 video and Seedream/Qwen-Image-Edit-style
+into validated, generator-oriented intermediate text. H3 video, Seedream, and Qwen-Image-Edit
 image packing are initial profiles built on shared contracts; future profiles should reuse the
 same routing, validation, repair, and rendering boundaries.
 
@@ -89,6 +89,14 @@ limits, or live provider availability.
 
 The agent can write JSONL traces when instantiated with `RewriteAgentConfig(trace_path=...)`.
 The default CLI/API service does not configure a trace path.
+
+## VLM evaluation boundary
+
+The experiment VLM scorer is a post-hoc diagnostic: it samples frames from already generated RAW
+and PE videos, judges each pair, and writes aggregate scores. It is not called by `expand`, and its
+scores do not select or revise prompt candidates. Consequently, structural validation and bounded
+repair are part of the current PE lifecycle, while VLM-guided generation, ranking, and iterative
+prompt revision remain future optimization work.
 
 ## Request and output contracts
 

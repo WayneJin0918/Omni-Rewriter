@@ -2,7 +2,7 @@
 
 Current Omni-Rewriter ships as a general **prompt-expansion framework**: transport-neutral
 requests, typed profile outputs, deterministic validation, dialect rendering, and bounded LLM
-repairs. H3 video and Seedream/Qwen-Image-Edit-style image PE are its first profiles.
+repairs. H3 video, Seedream, and Qwen-Image-Edit image PE are its first profiles.
 
 The project helps the community bridge polished demos and the explicit prompt contracts required
 by public/open generators. It relies on public evidence rather than attempting to reproduce
@@ -36,6 +36,8 @@ contributions are welcome — see [CONTRIBUTING.md](CONTRIBUTING.md).
 - [ ] **RL / preference optimization** (DPO / GRPO / RLOO) against downstream scores:
       H3 structural conformance, lip-sync / cut adherence judges, image aesthetic + instruction
       following judges.
+- [ ] Add a bounded VLM-guided PE loop: generate candidates, judge full temporal/audio evidence,
+      select or revise prompts, and record every iteration separately from deterministic repair.
 - [ ] Implement the explicit Video, Image, and Unified profile targets in
       [`docs/community-models.md`](docs/community-models.md), one evidence-scoped PR at a time.
 - [ ] Multilingual eval suites and public leaderboard hooks.

@@ -46,6 +46,11 @@ Harness**。它通过有界 `analyze → draft → validate → repair` Agent �
 > **扩写不等于生成。** 核心流程只输出经过校验的文本或 JSON。只有应用显式调用适配器或
 > 本地运行器时，才会加载模型并生成媒体。
 
+> [!CAUTION]
+> **当前 VLM 评测属于事后诊断，不是优化闭环。** 内部 pairwise scorer 在生成完成后对
+> RAW/PE 抽帧进行评分，分数不会反馈到提示词修订。因此当前版本声明的是经过校验的提示词
+> 扩写，而不是 VLM 引导的 PE 优化。
+
 <table>
   <tr>
     <td width="33%" valign="top"><b>Agent 驱动、有界执行</b><br>在严格契约和确定性护栏下完成分析、起草、校验与修复。</td>
@@ -105,7 +110,7 @@ CLI 与 HTTP API 共用相同 service 层。公共 schema 与完整生命周期�
   <img alt="LTX-Video wanted" src="https://img.shields.io/badge/LTX--Video-wanted-lightgrey?style=flat-square&labelColor=4f46e5" />
   <img alt="Mochi 1 wanted" src="https://img.shields.io/badge/Mochi%201-wanted-lightgrey?style=flat-square&labelColor=4f46e5" />
   <img alt="Step-Video wanted" src="https://img.shields.io/badge/Step--Video-wanted-lightgrey?style=flat-square&labelColor=4f46e5" />
-  <img alt="Seedream-style available" src="https://img.shields.io/badge/Seedream--style-available-brightgreen?style=flat-square&labelColor=0d9488" />
+  <img alt="Seedream available" src="https://img.shields.io/badge/Seedream-available-brightgreen?style=flat-square&labelColor=0d9488" />
   <img alt="Qwen-Image / Edit available" src="https://img.shields.io/badge/Qwen--Image%20%2F%20Edit-available-brightgreen?style=flat-square&labelColor=0d9488" />
   <img alt="HunyuanImage-3.0 available" src="https://img.shields.io/badge/HunyuanImage--3.0-available-brightgreen?style=flat-square&labelColor=0d9488" />
   <img alt="FLUX.1 / Kontext wanted" src="https://img.shields.io/badge/FLUX.1%20%2F%20Kontext-wanted-lightgrey?style=flat-square&labelColor=0d9488" />

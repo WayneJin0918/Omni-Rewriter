@@ -17,9 +17,9 @@ a generation runtime are compatible only after an integration test proves that e
 | Model family | Prompt-expansion support | Documented generation runtime/API | Repository status |
 | --- | --- | --- | --- |
 | MiniMax H3 | Implemented: Base and Ref video profiles | MiniMax public API; compatible local `/v1/videos` services | `MiniMaxClient` and `H3Client` implemented; see [H3 adapters](h3-adapters.md) |
-| Seedream-style image | Implemented: `seedream` packing | Provider-specific service | Provider-specific generation adapter not bundled |
+| Seedream image | Implemented: `seedream` packing | Provider-specific service | Provider-specific generation adapter not bundled |
 | Qwen-Image / Qwen-Image-Edit | Implemented: image and edit packing | Qwen-Image-2512 is registered natively in SGLang-Diffusion | `OpenAIImagesClient`; local Diffusers A/B recipe |
-| HunyuanImage-3.0 | Seedream-style T2I packing can be used | Upstream model-specific vLLM fork | `HunyuanImageVLLMClient`; local upstream runner recipe |
+| HunyuanImage-3.0 | Seedream T2I packing can be used | Upstream model-specific vLLM fork | `HunyuanImageVLLMClient`; local upstream runner recipe |
 | Wan | H3-style video output can be mapped | SGLang/vLLM-Omni contracts vary by release | `OmniVideosClient` + `WanOmniAdapter` |
 | LingBot Video | `LingBotCaption` schema | Independent upstream runner | Bounded subprocess runner + optional two-stage rewriter |
 | vLLM-Omni paths | No compatibility inferred | Upstream publishes a broad image/video support matrix | **Unverified by this repository** |

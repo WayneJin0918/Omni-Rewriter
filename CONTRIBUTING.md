@@ -93,7 +93,7 @@ Only these prefixes are reviewed by default. Put the model name in `[Model]` tit
 Examples:
 
 - `[Model][Video] Add Wan2.2 PE profile and fixtures`
-- `[Profile] Tighten Seedream-style quote validation`
+- `[Profile] Tighten Seedream quote validation`
 - `[Doc] Clarify expand vs generate boundary`
 
 ### Description

@@ -15,9 +15,9 @@ adapter 是显式边界客户端，必须定义 payload 映射、认证、轮询
 | 模型族 | Prompt Expansion 支持 | 文档化生成 runtime/API | 仓库状态 |
 | --- | --- | --- | --- |
 | MiniMax H3 | 已实现 Base/Ref 视频 profile | MiniMax 公开 API；兼容本地 `/v1/videos` 服务 | 已实现 `MiniMaxClient`、`H3Client`，见 [H3 adapters](h3-adapters.md) |
-| Seedream 风格图像 | 已实现 `seedream` 打包 | 厂商服务 | 未捆绑厂商专用生成 adapter |
+| Seedream 图像 | 已实现 `seedream` 打包 | 厂商服务 | 未捆绑厂商专用生成 adapter |
 | Qwen-Image / Qwen-Image-Edit | 已实现图像/编辑打包 | Qwen-Image-2512 在 SGLang-Diffusion 原生注册 | `OpenAIImagesClient`；本地 Diffusers A/B 配方 |
-| HunyuanImage-3.0 | 可使用 Seedream 风格 T2I 打包 | 上游模型专用 vLLM fork | `HunyuanImageVLLMClient`；上游本地 runner 配方 |
+| HunyuanImage-3.0 | 可使用 Seedream T2I 打包 | 上游模型专用 vLLM fork | `HunyuanImageVLLMClient`；上游本地 runner 配方 |
 | Wan | 可映射 H3 风格视频输出 | SGLang/vLLM-Omni 契约随版本变化 | `OmniVideosClient` + `WanOmniAdapter` |
 | LingBot Video | `LingBotCaption` schema | 上游独立 runner | 有界 subprocess runner + 可选两阶段 rewriter |
 | vLLM-Omni 路径 | 不推断兼容 | 上游发布广泛图像/视频支持矩阵 | **本仓库未验证** |
