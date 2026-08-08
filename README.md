@@ -1,5 +1,5 @@
 <div align="center">
-  <img src="Logo.png" alt="Omni-Rewriter" width="560">
+  <img src="docs/assets/brand/Logo.png" alt="Omni-Rewriter" width="560">
 
   <p><strong>An open agentic prompt-expansion harness for image and video generation.</strong></p>
   <p>Turn everyday intent into validated, model-ready prompts through a bounded AI-agent workflow.</p>

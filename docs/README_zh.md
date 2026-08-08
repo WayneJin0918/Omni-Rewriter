@@ -1,5 +1,5 @@
 <div align="center">
-  <img src="../Logo.png" alt="Omni-Rewriter" width="560">
+  <img src="assets/brand/Logo.png" alt="Omni-Rewriter" width="560">
 
   <p><strong>面向图像与视频生成的开源 Agentic Prompt Expansion Harness。</strong></p>
   <p>通过有界 AI Agent 工作流，将自然语言意图转换为经过校验、可直接交给生成器的提示词。</p>
