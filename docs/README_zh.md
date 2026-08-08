@@ -26,8 +26,7 @@
 
 ## 最新动态
 
-- **2026-08 — H3 工作流更新：**更新 H3 视频 PE 工作流中的时间轴、运镜、对白和有界修复
-  规则，参考 [MiniMax-H3 公开项目](https://github.com/MiniMax-AI/MiniMax-H3/tree/main)。
+- **2026-08 — H3 工作流更新：** 更新 H3 视频 PE 工作流中的时间轴、运镜、对白和有界修复规则，参考 [MiniMax-H3 公开项目](https://github.com/MiniMax-AI/MiniMax-H3/tree/main)。
 
 ## 项目简介
 
