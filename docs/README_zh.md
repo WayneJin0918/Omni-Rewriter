@@ -60,45 +60,48 @@ Omni-Rewriter 是一个开放的 **Prompt Expansion（PE）Agent Harness** —�
   </tr>
 </table>
 
-## Agent Harness 与 PE 流程
+## 工作原理
 
-**Harness** = 编排与契约。**PE 流程** = 每次 `expand` 内部的五步：
+**Agent Harness** 拥有整条循环；**Writer LM** 只在需要「写」的地方被调用（`Draft` /
+`Repair`）。校验与渲染保持确定性。输出是 PE 文本，不是媒体。
 
 ```mermaid
 flowchart LR
-  intent[Intent] --> request[RewriteRequest]
-  request --> analyze[Analyze]
+  req[RewriteRequest] --> analyze[Analyze]
   analyze --> draft[Draft]
   draft --> validate{Validate}
-  validate -->|可修复| repair[BoundedRepair]
+  validate -->|可修复| repair[Repair]
   repair --> validate
-  validate -->|通过| render[DialectRender]
-  render --> peText[PE_text_JSON]
+  validate -->|通过| render[Render]
+  render --> pe[PE text / JSON]
+  writer[(Writer LM)] -.->|structured JSON| draft
+  writer -.->|repair JSON| repair
 ```
 
-1. **Analyze** — 区分视频/图像，读取时长/媒体/元数据，选定 PE profile。
-2. **Draft** — 调用 **Writer Agent**（LLM），按该 profile 的 schema 产出结构化字段。
-3. **Validate** — 确定性校验（时间轴、引号、必填字段、方言规则）。
-4. **Bounded repair** — 可修复错误则在有限次数内让 Writer 再修；否则明确失败。
-5. **Dialect render** — 序列化为 H3 / Seedream / Qwen-Image-Edit 文本（仍不生成媒体）。
+| 步骤 | 负责方 | 做什么 |
+| --- | --- | --- |
+| **Analyze** | Harness + Writer | 区分视频/图像，读约束与媒体，选定 PE profile |
+| **Draft** | **Writer LM** | 按 profile schema 产出结构化 JSON |
+| **Validate** | Harness | 确定性校验（时间轴、引号、必填字段、方言规则） |
+| **Repair** | **Writer LM** | 可修复错误做有限次重试；否则硬失败 |
+| **Render** | Harness | 序列化为 H3 / Seedream / Qwen-Image-Edit 文本 |
 
 CLI（`omni-rewriter expand`）与 HTTP（`POST /v1/expand`）共用同一路径。详见
 [架构文档](architecture_zh.md)。
 
-## 当前支持
+## Writer LM Agent
 
-Writer 只需兼容 OpenAI 的 Chat 接口并能返回所需结构化 JSON。闭源与开源均可；开源栈常见于
-**vLLM** / **SGLang**。
+任意能返回所需结构化 JSON 的 **OpenAI 兼容** Chat 接口都可作为 Writer。Harness **不**附带
+专用 PE 微调权重。
 
 <p align="center">
-  <img alt="闭源 Writer" src="https://img.shields.io/badge/writers-closed--source-f8fafc?style=flat-square&labelColor=be123c" />
+  <img alt="闭源" src="https://img.shields.io/badge/closed--source-supported-brightgreen?style=flat-square&labelColor=be123c" />
   <img alt="GPT-5.6" src="https://img.shields.io/badge/GPT--5.6-supported-brightgreen?style=flat-square&labelColor=be123c" />
   <img alt="Claude Opus 5" src="https://img.shields.io/badge/Claude%20Opus%205-supported-brightgreen?style=flat-square&labelColor=be123c" />
-  <img alt="frontier agents" src="https://img.shields.io/badge/frontier%20APIs%20%2F%20gateways-supported-brightgreen?style=flat-square&labelColor=be123c" />
 </p>
 
 <p align="center">
-  <img alt="开源 Writer" src="https://img.shields.io/badge/writers-open--source-f8fafc?style=flat-square&labelColor=0f766e" />
+  <img alt="开源" src="https://img.shields.io/badge/open--source-supported-brightgreen?style=flat-square&labelColor=0f766e" />
   <img alt="QwenLM" src="https://img.shields.io/badge/QwenLM-supported-brightgreen?style=flat-square&labelColor=0f766e" />
   <img alt="MiMo wanted" src="https://img.shields.io/badge/MiMo-wanted-lightgrey?style=flat-square&labelColor=0f766e" />
   <img alt="Kimi wanted" src="https://img.shields.io/badge/Kimi-wanted-lightgrey?style=flat-square&labelColor=0f766e" />
@@ -106,21 +109,20 @@ Writer 只需兼容 OpenAI 的 Chat 接口并能返回所需结构化 JSON。闭
 </p>
 
 <p align="center">
-  <img alt="serving runtimes" src="https://img.shields.io/badge/serving-runtimes-f8fafc?style=flat-square&labelColor=1d4ed8" />
-  <img alt="vLLM" src="https://img.shields.io/badge/vLLM-writers%20%2B%20adapters-brightgreen?style=flat-square&labelColor=1d4ed8" />
-  <img alt="SGLang" src="https://img.shields.io/badge/SGLang-Qwen--Image%20%2B%20Wan-brightgreen?style=flat-square&labelColor=1d4ed8" />
+  <img alt="serve with" src="https://img.shields.io/badge/serve%20with-vLLM%20%2F%20SGLang-brightgreen?style=flat-square&labelColor=1d4ed8" />
+  <img alt="vLLM" src="https://img.shields.io/badge/vLLM-OpenAI%20chat%20%2B%20structured%20JSON-brightgreen?style=flat-square&labelColor=1d4ed8" />
+  <img alt="SGLang" src="https://img.shields.io/badge/SGLang-open%20writers%20%2B%20image%2Fvideo%20adapters-brightgreen?style=flat-square&labelColor=1d4ed8" />
 </p>
 
 <p align="center"><sub>
-<strong>vLLM</strong> — 开源 Writer 主路径（<code>/v1/chat/completions</code>、结构化输出）；另有 HunyuanImage 自定义 fork 适配器与可选 Wan / vLLM-Omni（需钉版本并验证）。<br>
-<strong>SGLang</strong> — Qwen-Image（SGLang-Diffusion <code>/v1/images/generations</code>）与可选 Wan 视频。<br>
-stock vLLM ≠ 自定义 fork ≠ vLLM-Omni。可选生成适配器在 <code>expand</code> 之外 ——
+将 <code>OMNI_WRITER_BACKEND_*</code> 指向闭源 API/网关，或部署在 vLLM/SGLang 上的开源模型。
+生成适配器（Qwen-Image、Wan、HunyuanImage 等）可选，且从不进入 <code>expand</code> ——
 见 <a href="generation-adapters_zh.md">兼容性矩阵</a>。
 </sub></p>
 
 ## 模型生态
 
-社区贡献看板 — 左侧色 = 分类（Video / Image / Unified）；右侧 = `available` /
+PE / 生成器社区看板 — 左侧色 = 分类（Video / Image / Unified）；右侧 = `available` /
 `wanted`。请优先提交带标题前缀的小 PR，详见 [CONTRIBUTING.md](CONTRIBUTING.md)。
 
 <p align="center">

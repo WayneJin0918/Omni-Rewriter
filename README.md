@@ -62,45 +62,48 @@ Two ideas stay distinct:
   </tr>
 </table>
 
-## Agent Harness & PE flow
+## How it works
 
-**Harness** = orchestration + contracts. **PE flow** = the five steps inside every `expand`:
+The **Agent Harness** owns the loop. The **Writer LM** is called only where creativity is needed
+(`Draft` / `Repair`). Validation and render stay deterministic. Output is PE text — not media.
 
 ```mermaid
 flowchart LR
-  intent[Intent] --> request[RewriteRequest]
-  request --> analyze[Analyze]
+  req[RewriteRequest] --> analyze[Analyze]
   analyze --> draft[Draft]
   draft --> validate{Validate}
-  validate -->|repairable| repair[BoundedRepair]
+  validate -->|repairable| repair[Repair]
   repair --> validate
-  validate -->|valid| render[DialectRender]
-  render --> peText[PE_text_JSON]
+  validate -->|ok| render[Render]
+  render --> pe[PE text / JSON]
+  writer[(Writer LM)] -.->|structured JSON| draft
+  writer -.->|repair JSON| repair
 ```
 
-1. **Analyze** — route video vs image, read duration/media/metadata, pick the PE profile.
-2. **Draft** — call the **writer agent** (LLM) for structured fields in that profile’s schema.
-3. **Validate** — run deterministic checks (timeline, quotes, required fields, dialect rules).
-4. **Bounded repair** — if errors are repairable, ask the writer again with a capped retry budget; otherwise fail loudly.
-5. **Dialect render** — serialize to H3 / Seedream / Qwen-Image-Edit text (still no media generation).
+| Step | Owner | What happens |
+| --- | --- | --- |
+| **Analyze** | Harness + Writer | Route video/image, read constraints/media, choose PE profile |
+| **Draft** | **Writer LM** | Fill the profile schema as structured JSON |
+| **Validate** | Harness | Deterministic checks (timeline, quotes, required fields, dialect rules) |
+| **Repair** | **Writer LM** | Bounded retries on repairable failures; otherwise hard-fail |
+| **Render** | Harness | Serialize to H3 / Seedream / Qwen-Image-Edit text |
 
-Same path for CLI (`omni-rewriter expand`) and HTTP (`POST /v1/expand`). See
+Same path for CLI (`omni-rewriter expand`) and HTTP (`POST /v1/expand`). Details:
 [architecture](docs/architecture.md).
 
-## Current support
+## Writer LM agents
 
-Writer agents need only an OpenAI-compatible chat endpoint that returns the required structured
-JSON. Closed and open writers both work; open stacks commonly sit on **vLLM** / **SGLang**.
+Any **OpenAI-compatible** chat endpoint that returns the required structured JSON can be the
+Writer. The harness does not ship a fine-tuned PE checkpoint.
 
 <p align="center">
-  <img alt="closed-source writers" src="https://img.shields.io/badge/writers-closed--source-f8fafc?style=flat-square&labelColor=be123c" />
+  <img alt="closed-source" src="https://img.shields.io/badge/closed--source-supported-brightgreen?style=flat-square&labelColor=be123c" />
   <img alt="GPT-5.6" src="https://img.shields.io/badge/GPT--5.6-supported-brightgreen?style=flat-square&labelColor=be123c" />
   <img alt="Claude Opus 5" src="https://img.shields.io/badge/Claude%20Opus%205-supported-brightgreen?style=flat-square&labelColor=be123c" />
-  <img alt="frontier agents" src="https://img.shields.io/badge/frontier%20APIs%20%2F%20gateways-supported-brightgreen?style=flat-square&labelColor=be123c" />
 </p>
 
 <p align="center">
-  <img alt="open-source writers" src="https://img.shields.io/badge/writers-open--source-f8fafc?style=flat-square&labelColor=0f766e" />
+  <img alt="open-source" src="https://img.shields.io/badge/open--source-supported-brightgreen?style=flat-square&labelColor=0f766e" />
   <img alt="QwenLM" src="https://img.shields.io/badge/QwenLM-supported-brightgreen?style=flat-square&labelColor=0f766e" />
   <img alt="MiMo wanted" src="https://img.shields.io/badge/MiMo-wanted-lightgrey?style=flat-square&labelColor=0f766e" />
   <img alt="Kimi wanted" src="https://img.shields.io/badge/Kimi-wanted-lightgrey?style=flat-square&labelColor=0f766e" />
@@ -108,22 +111,22 @@ JSON. Closed and open writers both work; open stacks commonly sit on **vLLM** / 
 </p>
 
 <p align="center">
-  <img alt="serving runtimes" src="https://img.shields.io/badge/serving-runtimes-f8fafc?style=flat-square&labelColor=1d4ed8" />
-  <img alt="vLLM" src="https://img.shields.io/badge/vLLM-writers%20%2B%20adapters-brightgreen?style=flat-square&labelColor=1d4ed8" />
-  <img alt="SGLang" src="https://img.shields.io/badge/SGLang-Qwen--Image%20%2B%20Wan-brightgreen?style=flat-square&labelColor=1d4ed8" />
+  <img alt="serve with" src="https://img.shields.io/badge/serve%20with-vLLM%20%2F%20SGLang-brightgreen?style=flat-square&labelColor=1d4ed8" />
+  <img alt="vLLM" src="https://img.shields.io/badge/vLLM-OpenAI%20chat%20%2B%20structured%20JSON-brightgreen?style=flat-square&labelColor=1d4ed8" />
+  <img alt="SGLang" src="https://img.shields.io/badge/SGLang-open%20writers%20%2B%20image%2Fvideo%20adapters-brightgreen?style=flat-square&labelColor=1d4ed8" />
 </p>
 
 <p align="center"><sub>
-<strong>vLLM</strong> — primary open-writer path (<code>/v1/chat/completions</code>, structured output); also HunyuanImage custom-fork adapter and optional Wan / vLLM-Omni (pin + verify).<br>
-<strong>SGLang</strong> — Qwen-Image (SGLang-Diffusion <code>/v1/images/generations</code>) and optional Wan video.<br>
-Stock vLLM ≠ custom forks ≠ vLLM-Omni. Optional generation adapters stay outside <code>expand</code> —
-see the <a href="docs/generation-adapters.md">compatibility matrix</a>.
+Point <code>OMNI_WRITER_BACKEND_*</code> at a closed API/gateway or an open model on vLLM/SGLang.
+Generation adapters (Qwen-Image, Wan, HunyuanImage, …) are optional and never run inside
+<code>expand</code> — see the <a href="docs/generation-adapters.md">compatibility matrix</a>.
 </sub></p>
 
 ## Model ecosystem
 
-Community board — left color = category (Video / Image / Unified); right = `available` /
-`wanted`. Prefer small PRs with a title prefix — see [CONTRIBUTING.md](docs/CONTRIBUTING.md).
+PE / generator community board — left color = category (Video / Image / Unified); right =
+`available` / `wanted`. Prefer small PRs with a title prefix — see
+[CONTRIBUTING.md](docs/CONTRIBUTING.md).
 
 <p align="center">
   <img alt="MiniMax-H3 available" src="https://img.shields.io/badge/MiniMax--H3-available-brightgreen?style=flat-square&labelColor=4f46e5" />
