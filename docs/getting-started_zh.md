@@ -49,6 +49,14 @@ omni-rewriter expand examples/requests/t2va_kite.json --output h3
 无媒体时推断为 `t2va`；首帧、尾帧、首尾帧组合及任意引用分别路由到 `i2va`、`l2va`、
 `fl2va` 和 `ref2va`。
 
+Seedance 视频 PE（默认融合 natural 文本；`seedance_render=json` 输出 JSON）：
+
+```bash
+omni-rewriter expand examples/requests/seedance_t2va_kitchen.json --output seedance
+```
+
+详见 [Seedance PE](seedance-pe_zh.md)。未设置 `video_pe_profile` 时默认仍为 H3。
+
 ## 扩写图像意图
 
 图像任务必须省略 `duration_seconds`：

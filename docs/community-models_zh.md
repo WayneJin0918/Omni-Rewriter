@@ -5,6 +5,14 @@
 这里明确列出欢迎社区补充的提示词配置。“待办”不代表“已支持”。完整贡献必须把提示词扩写与
 媒体生成分开，并为运行时或接口声明提供公开上游依据。
 
+## 已有 PE（仓库内）
+
+| 模型族 | 类别 | 状态 | 说明 |
+| --- | --- | --- | --- |
+| MiniMax-H3 | Video | PE | 默认 `video_pe_profile=h3` |
+| Seedance | Video | PE | `metadata.video_pe_profile=seedance`；无生成适配器 |
+| Seedream / Qwen-Image-Edit | Image | PE | `metadata.image_pe_profile` |
+
 ## Video｜视频
 
 | 模型族 | 公开上游 | 首期贡献目标 |

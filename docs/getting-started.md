@@ -50,6 +50,14 @@ omni-rewriter expand request.json --output h3
 With no media, routing infers `t2va`. First-frame, last-frame, endpoint-pair, and arbitrary
 reference inputs route to `i2va`, `l2va`, `fl2va`, and `ref2va` respectively.
 
+Seedance video PE (default render is fused natural text; set `seedance_render=json` for JSON):
+
+```bash
+omni-rewriter expand examples/requests/seedance_t2va_kitchen.json --output seedance
+```
+
+See [Seedance PE](seedance-pe.md). Default video dialect remains H3 when `video_pe_profile` is unset.
+
 ## Expand an image intent
 
 Image tasks must omit `duration_seconds`:

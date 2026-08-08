@@ -115,6 +115,7 @@ Community board — left color = category (Video / Image / Unified); right = evi
 
 <p align="center">
   <img alt="MiniMax-H3 PE" src="https://img.shields.io/badge/MiniMax--H3-PE-brightgreen?style=flat-square&labelColor=4f46e5" />
+  <img alt="Seedance PE" src="https://img.shields.io/badge/Seedance-PE-brightgreen?style=flat-square&labelColor=4f46e5" />
   <img alt="LingBot Video adapter" src="https://img.shields.io/badge/LingBot%20Video-adapter-yellow?style=flat-square&labelColor=4f46e5" />
   <img alt="WAN unverified" src="https://img.shields.io/badge/WAN-unverified-lightgrey?style=flat-square&labelColor=4f46e5" />
   <img alt="HunyuanVideo wanted" src="https://img.shields.io/badge/HunyuanVideo-wanted-lightgrey?style=flat-square&labelColor=4f46e5" />
@@ -218,7 +219,7 @@ Checked-in requests: [`examples/requests/`](examples/requests/). More paths:
 ```text
 RewriteRequest
   └─ Agent Harness       analyze · draft · validate · repair · render  (= PE flow)
-      └─ PE profile      H3 / Seedream / Qwen-Image-Edit dialect
+      └─ PE profile      H3 / Seedance / Seedream / Qwen-Image-Edit dialect
           └─ adapter     optional vLLM / SGLang / vendor client  (generate, not expand)
               └─ eval    structural checks · RAW/PE demos under docs/
 ```

@@ -1,0 +1,24 @@
+{
+  "prompt": "Use the two reference clips: keep both people, stage a short balcony chat about weekend plans.",
+  "duration_seconds": 10,
+  "task": "ref2va",
+  "media": [
+    {
+      "media_type": "video",
+      "role": "reference",
+      "uri": "https://example.test/seedance/ref_1.mp4",
+      "name": "host_ref"
+    },
+    {
+      "media_type": "video",
+      "role": "reference",
+      "uri": "https://example.test/seedance/ref_2.mp4",
+      "name": "guest_ref"
+    }
+  ],
+  "metadata": {
+    "video_pe_profile": "seedance",
+    "seedance_render": "json",
+    "seedance_ref_style": "public"
+  }
+}

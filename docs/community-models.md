@@ -6,6 +6,14 @@ This is the explicit profile backlog for community contributions. An entry means
 “supported.” A complete contribution separates prompt expansion from generation and cites a public
 upstream contract.
 
+## Available PE (in-repo)
+
+| Model family | Category | Status | Notes |
+| --- | --- | --- | --- |
+| MiniMax-H3 | Video | PE | Default `video_pe_profile=h3` |
+| Seedance | Video | PE | `metadata.video_pe_profile=seedance`; no generation adapter |
+| Seedream / Qwen-Image-Edit | Image | PE | `metadata.image_pe_profile` |
+
 ## Video
 
 | Model family | Public upstream | Initial contribution target |

@@ -93,3 +93,10 @@ class RewriteRequest(StrictModel):
         if self.resolved_task is TaskType.IMAGE_EDIT:
             return "qwen_image_edit"
         return "seedream"
+
+    @property
+    def video_pe_profile(self) -> str:
+        """Video PE dialect; default ``h3`` preserves existing MiniMax-H3 callers."""
+
+        raw = self.metadata.get("video_pe_profile", "").strip().lower()
+        return raw or "h3"

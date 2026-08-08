@@ -7,6 +7,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 for the thin public surface (`RewriteRequest` / rewrite outputs, `expand`, `validate_output`,
 `create_app`). Adapter modules under `omni_rewriter.adapters.*` may evolve faster within `0.x`.
 
+## [Unreleased]
+
+### Added
+
+- Seedance video PE profile (`metadata.video_pe_profile=seedance`) with `SeedanceRewrite`,
+  natural/json dual render, sanitized fixtures, and `--output seedance` (PE only; no adapter).
+
 ## [0.1.0] - 2026-08-09
 
 ### Added

@@ -21,10 +21,12 @@ from .models import (
     Ref2VARewrite,
     RewriteOutput,
     RewriteRequest,
+    SeedanceRewrite,
     TaskType,
 )
 from .models.common import IMAGE_TASKS, StrictModel
 from .models.image import IMAGE_REF_RE, ImagePEProfile
+from .models.seedance import VideoPEProfile, validate_seedance_against_request
 from .prompts import (
     ANALYZE_SYSTEM_PROMPT,
     draft_system_prompt,
@@ -34,6 +36,9 @@ from .prompts import (
 from .trace import JSONLTrace
 
 _FENCE_RE = re.compile(r"^\s*```(?:json)?\s*(.*?)\s*```\s*$", re.DOTALL | re.IGNORECASE)
+
+ResponseModel = type[BaseRewrite] | type[Ref2VARewrite] | type[ImageRewrite] | type[SeedanceRewrite]
+Profile = ImagePEProfile | VideoPEProfile | None
 
 
 class AgentState(StrEnum):
@@ -91,10 +96,18 @@ class RewriteAgent:
 
         run_id = uuid4().hex
         task = request.resolved_task
-        profile = _resolve_image_profile(request) if task in IMAGE_TASKS else None
-        response_model: type[BaseRewrite] | type[Ref2VARewrite] | type[ImageRewrite]
+        image_profile = _resolve_image_profile(request) if task in IMAGE_TASKS else None
+        video_profile = (
+            _resolve_video_profile(request) if task not in IMAGE_TASKS else VideoPEProfile.H3
+        )
+        profile: Profile = image_profile if image_profile is not None else video_profile
+        response_model: ResponseModel
         if task in IMAGE_TASKS:
             response_model = ImageRewrite
+        elif video_profile is VideoPEProfile.SEEDANCE:
+            if task not in {TaskType.T2VA, TaskType.REF2VA}:
+                raise ValueError("Seedance video PE currently supports only t2va and ref2va tasks")
+            response_model = SeedanceRewrite
         elif task is TaskType.REF2VA:
             response_model = Ref2VARewrite
         else:
@@ -105,7 +118,8 @@ class RewriteAgent:
             task=task.value,
             prompt_characters=len(request.prompt),
             media_count=len(request.media),
-            image_pe_profile=profile.value if profile else None,
+            image_pe_profile=image_profile.value if image_profile else None,
+            video_pe_profile=video_profile.value if task not in IMAGE_TASKS else None,
         )
 
         analysis_message = await self.media_preparer.prepare_message(
@@ -172,8 +186,10 @@ class RewriteAgent:
                 }
                 if request.duration_seconds is not None:
                     repair_payload["required_duration_seconds"] = str(request.duration_seconds)
-                if profile is not None:
-                    repair_payload["required_profile"] = profile.value
+                if image_profile is not None:
+                    repair_payload["required_profile"] = image_profile.value
+                if task not in IMAGE_TASKS:
+                    repair_payload["required_video_pe_profile"] = video_profile.value
                 candidate_raw = await self.backend.complete(
                     [
                         {
@@ -232,7 +248,7 @@ class RewriteAgent:
         self,
         raw: str,
         request: RewriteRequest,
-        response_model: type[BaseRewrite] | type[Ref2VARewrite] | type[ImageRewrite],
+        response_model: ResponseModel,
     ) -> RewriteOutput:
         output = response_model.model_validate(self._parse_json(raw))
         if isinstance(output, ImageRewrite):
@@ -255,6 +271,14 @@ class RewriteAgent:
                         f"ratio {output.ratio} references a missing image "
                         f"(media count={len(request.media)})"
                     )
+            return output
+        if isinstance(output, SeedanceRewrite):
+            validate_seedance_against_request(
+                output,
+                media_count=len(request.media),
+                task=request.resolved_task,
+                duration_seconds=request.duration_seconds,
+            )
             return output
         if output.duration_seconds != request.duration_seconds:
             raise ValueError(
@@ -283,3 +307,11 @@ def _resolve_image_profile(request: RewriteRequest) -> ImagePEProfile:
         raise ValueError(
             "metadata.image_pe_profile must be 'seedream' or 'qwen_image_edit'"
         ) from exc
+
+
+def _resolve_video_profile(request: RewriteRequest) -> VideoPEProfile:
+    raw = request.video_pe_profile
+    try:
+        return VideoPEProfile(raw)
+    except ValueError as exc:
+        raise ValueError("metadata.video_pe_profile must be 'h3' or 'seedance'") from exc

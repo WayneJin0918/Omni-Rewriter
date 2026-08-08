@@ -10,8 +10,17 @@ from .agent import RewriteAgent, RewriteAgentConfig, RewriteResult
 from .backends import OpenAICompatibleBackend
 from .config import Settings
 from .media_input import MediaInputConfig, MediaPreparer
-from .models import BaseRewrite, ImageRewrite, Ref2VARewrite, RewriteOutput, RewriteRequest
+from .models import (
+    BaseRewrite,
+    ImageRewrite,
+    Ref2VARewrite,
+    RewriteOutput,
+    RewriteRequest,
+    SeedanceRewrite,
+    render_seedance_output,
+)
 from .models.common import IMAGE_TASKS
+from .models.seedance import validate_seedance_against_request
 
 
 async def expand(request: RewriteRequest, settings: Settings | None = None) -> RewriteResult:
@@ -30,6 +39,14 @@ async def expand(request: RewriteRequest, settings: Settings | None = None) -> R
         await media.aclose()
 
 
+def render_output(output: RewriteOutput, request: RewriteRequest | None = None) -> str:
+    """Render dialect text, honoring Seedance metadata when present."""
+
+    if isinstance(output, SeedanceRewrite):
+        return render_seedance_output(output, request.metadata if request else None)
+    return output.render()
+
+
 def validate_output(payload: Mapping[str, Any]) -> tuple[RewriteOutput, RewriteRequest | None]:
     """Validate a direct output object or ``{"request": ..., "output": ...}`` envelope."""
 
@@ -45,8 +62,13 @@ def validate_output(payload: Mapping[str, Any]) -> tuple[RewriteOutput, RewriteR
     if not isinstance(output_data, Mapping):
         raise ValueError("output must be a JSON object")
 
+    profile = str(output_data.get("profile", "")).strip().lower()
+    seedance_requested = request is not None and request.video_pe_profile == "seedance"
+
     if request is not None and request.resolved_task in IMAGE_TASKS:
         output: RewriteOutput = ImageRewrite.model_validate(output_data)
+    elif profile == "seedance" or seedance_requested:
+        output = SeedanceRewrite.model_validate(output_data)
     elif "subject_definitions" in output_data or (
         request is not None and request.resolved_task.value == "ref2va"
     ):
@@ -60,6 +82,13 @@ def validate_output(payload: Mapping[str, Any]) -> tuple[RewriteOutput, RewriteR
         if isinstance(output, ImageRewrite):
             if output.task is not request.resolved_task:
                 raise ValueError("output task does not match request")
+        elif isinstance(output, SeedanceRewrite):
+            validate_seedance_against_request(
+                output,
+                media_count=len(request.media),
+                task=request.resolved_task,
+                duration_seconds=request.duration_seconds,
+            )
         else:
             if output.duration_seconds != request.duration_seconds:
                 raise ValueError("output duration_seconds does not match request")

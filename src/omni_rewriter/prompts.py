@@ -1,4 +1,4 @@
-"""Prompt assets for video (H3) and image (Seedream / Qwen-Image-Edit) PE dialects."""
+"""Prompt assets for video (H3 / Seedance) and image PE dialects."""
 
 from __future__ import annotations
 
@@ -9,6 +9,7 @@ from pydantic import BaseModel
 from .models import RewriteRequest, TaskType
 from .models.common import IMAGE_TASKS
 from .models.image import ImagePEProfile
+from .models.seedance import VideoPEProfile
 
 ANALYZE_SYSTEM_PROMPT = """\
 You are the analysis stage of a multimodal prompt-rewriting pipeline. Inspect the request and any
@@ -113,6 +114,26 @@ Image PE requirements (Qwen-Image-Edit-aligned):
 - Return JSON fields: task, profile, prompt, ratio.
 """
 
+_SEEDANCE_VIDEO_RULES = """\
+Seedance video PE requirements (public Seedance 2.0 prompt habits; sanitized Omni profile):
+- Emit structured fields for a terminal/execute T2V or R2V model. Do NOT invent private vendor
+  Context-IR fields. profile must be "seedance".
+- Supported tasks: t2va (no media) or ref2va (one or more reference media).
+- style: compact style traits (lens, grade, pacing). summary: one-paragraph story summary.
+  static_description: who/where/what is visible at rest. dynamic_description: motion, camera,
+  cuts, and timing. instruction: vivid PE body that may include reference tokens and dialogue.
+- Dialogue for lip-sync belongs in quoted speech inside instruction (English "..." or Chinese “…”).
+- Reference tokens: prefer public @VideoN (or [VideoN]). Omni <|media:N|> is also accepted.
+  Subject labels may use <主体N> or <Subject N>. Indices are 1-based and must match request media.
+- Subjects: for ref2va, list each retained person/object with id, optional media_index,
+  appearance, and optional voice. For t2va, subjects may be empty or invented cast without media.
+- non_diegetic_music is optional BGM guidance. generate_audio defaults true.
+- duration_seconds must exactly match the request (typical public Seedance clips are 4–15s).
+- Keep content benign and production-ready. Never emit hdfs:// URIs or private dump fields.
+- Return JSON fields: task, profile, duration_seconds, style, summary, static_description,
+  dynamic_description, subjects, instruction, non_diegetic_music, generate_audio.
+"""
+
 
 def _image_rules(profile: ImagePEProfile) -> str:
     if profile is ImagePEProfile.QWEN_IMAGE_EDIT:
@@ -124,7 +145,7 @@ def draft_system_prompt(
     task: TaskType,
     response_model: type[BaseModel],
     *,
-    profile: ImagePEProfile | None = None,
+    profile: ImagePEProfile | VideoPEProfile | None = None,
 ) -> str:
     """Build the task-specific structured drafting prompt."""
 
@@ -132,16 +153,28 @@ def draft_system_prompt(
         response_model.model_json_schema(), ensure_ascii=False, separators=(",", ":")
     )
     if task in IMAGE_TASKS:
-        active = profile or (
-            ImagePEProfile.QWEN_IMAGE_EDIT
-            if task is TaskType.IMAGE_EDIT
-            else ImagePEProfile.SEEDREAM
+        active = (
+            profile
+            if isinstance(profile, ImagePEProfile)
+            else (
+                ImagePEProfile.QWEN_IMAGE_EDIT
+                if task is TaskType.IMAGE_EDIT
+                else ImagePEProfile.SEEDREAM
+            )
         )
         return (
             "You are the drafting stage of Omni-Rewriter's image prompt-expansion pipeline. "
             "Return one JSON object only, with no Markdown or commentary. Preserve the user's "
             "intent and emit a production-ready visual blueprint.\n\n"
             f"{_image_rules(active)}\nThe exact JSON Schema is:\n{schema}"
+        )
+
+    if profile is VideoPEProfile.SEEDANCE:
+        return (
+            "You are the drafting stage of Omni-Rewriter's Seedance video prompt-expansion "
+            "pipeline. Return one JSON object only, with no Markdown or commentary. Preserve the "
+            "user's intent and emit a production-ready Seedance PE structure.\n\n"
+            f"{_SEEDANCE_VIDEO_RULES}\nThe exact JSON Schema is:\n{schema}"
         )
 
     task_rules = _REF_RULES if task is TaskType.REF2VA else _BASE_RULES
@@ -157,7 +190,7 @@ def repair_system_prompt(
     response_model: type[BaseModel],
     *,
     image: bool = False,
-    profile: ImagePEProfile | None = None,
+    profile: ImagePEProfile | VideoPEProfile | None = None,
 ) -> str:
     """Build a repair prompt that changes only what deterministic validation rejects."""
 
@@ -165,12 +198,19 @@ def repair_system_prompt(
         response_model.model_json_schema(), ensure_ascii=False, separators=(",", ":")
     )
     if image:
-        active = profile or ImagePEProfile.SEEDREAM
+        active = profile if isinstance(profile, ImagePEProfile) else ImagePEProfile.SEEDREAM
         return (
             "You repair a JSON candidate rejected by deterministic image-PE validation. Return one "
             "corrected JSON object only. Preserve valid creative details and change every item "
             "named in the validation errors. Do not discuss the corrections and do not add "
             f"fields.\n\n{_image_rules(active)}\nExact JSON Schema:\n{schema}"
+        )
+    if profile is VideoPEProfile.SEEDANCE:
+        return (
+            "You repair a JSON candidate rejected by deterministic Seedance validation. Return one "
+            "corrected JSON object only. Preserve valid creative details and change every item "
+            "named in the validation errors. Do not discuss the corrections and do not add "
+            f"fields.\n\n{_SEEDANCE_VIDEO_RULES}\nExact JSON Schema:\n{schema}"
         )
     return (
         "You repair a JSON candidate rejected by deterministic H3 validation. Return one corrected "
@@ -203,4 +243,6 @@ def request_context(request: RewriteRequest) -> str:
     }
     if request.resolved_task in IMAGE_TASKS:
         payload["image_pe_profile"] = request.image_pe_profile
+    else:
+        payload["video_pe_profile"] = request.video_pe_profile
     return json.dumps(payload, ensure_ascii=False)

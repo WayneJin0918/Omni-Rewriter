@@ -26,6 +26,17 @@ repairs, renderers, and public contracts over claims about private vendor intern
 5. Preserve transport-neutral public contracts and keep model-specific mapping at profile/adapter
    boundaries.
 
+## When expanding video (Seedance)
+
+1. Set `metadata.video_pe_profile=seedance` (default remains H3).
+2. Support `t2va` / `ref2va` only for this profile; require `duration_seconds`.
+3. Emit `SeedanceRewrite` fields: style, summary, static/dynamic descriptions, subjects,
+   instruction, optional BGM, `generate_audio`.
+4. Render via `seedance_render=natural|json` (default natural) and
+   `seedance_ref_style=public|omni` (default public `@VideoN`).
+5. Never commit private dump markers (`hdfs://`, `[redacted]`, `[redacted]`, …). See
+   `docs/seedance-pe.md`. No generation adapter in this profile pass.
+
 ## When expanding video (H3)
 
 1. Confirm task routing (`t2va` / `i2va` / `fl2va` / `l2va` / `ref2va`).
@@ -62,7 +73,8 @@ Use `docs/generation-adapters.md` for evidence links and wording.
 
 ## Repo contribution norms
 
-- Keep public contracts stable: `RewriteRequest`, `BaseRewrite`, `Ref2VARewrite`, `ImageRewrite`.
+- Keep public contracts stable: `RewriteRequest`, `BaseRewrite`, `Ref2VARewrite`, `ImageRewrite`,
+  `SeedanceRewrite`.
 - Add tests for every validator/rule change.
 - Prefer small PRs; fill the PR template; link issues.
 - Do not commit full-resolution generated videos; low-res gallery thumbs under `docs/assets/` are OK.

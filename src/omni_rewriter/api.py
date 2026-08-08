@@ -10,7 +10,7 @@ from .agent import RewriteResult
 from .config import Settings
 from .models import RewriteRequest
 from .service import expand as default_expand
-from .service import validate_output, validation_error
+from .service import render_output, validate_output, validation_error
 
 Expander = Callable[[RewriteRequest, Settings], Awaitable[RewriteResult]]
 
@@ -59,24 +59,28 @@ def create_app(
             if isinstance(exc, OmniRewriterError):
                 raise HTTPException(status_code=502, detail=str(exc)) from exc
             raise
+        rendered = render_output(result.output, request)
         return {
             "output": result.output.model_dump(mode="json"),
             "analysis": result.analysis.model_dump(mode="json"),
             "repairs": result.repairs,
             "run_id": result.run_id,
-            "h3_text": result.output.render(),
+            "rendered_text": rendered,
+            "h3_text": rendered,
         }
 
     @app.post("/v1/validate")
     async def validate_endpoint(payload: dict[str, Any]) -> dict[str, Any]:
         try:
-            output, _ = validate_output(payload)
+            output, request = validate_output(payload)
         except (ValueError, TypeError) as exc:
             raise HTTPException(status_code=422, detail=validation_error(exc)) from exc
+        rendered = render_output(output, request)
         return {
             "valid": True,
             "output": output.model_dump(mode="json"),
-            "h3_text": output.render(),
+            "rendered_text": rendered,
+            "h3_text": rendered,
         }
 
     return app

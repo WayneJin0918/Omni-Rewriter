@@ -61,8 +61,14 @@ from .models import (
     Ref2VARewrite,
     RewriteOutput,
     RewriteRequest,
+    SeedanceRefStyle,
+    SeedanceRenderMode,
+    SeedanceRewrite,
+    SeedanceSubject,
     TaskType,
+    VideoPEProfile,
     infer_task,
+    render_seedance_output,
 )
 from .render import H3Renderable, render_h3_prompt
 from .trace import JSONLTrace, redact
@@ -120,15 +126,21 @@ __all__ = [
     "RewriteRequest",
     "RewriteResult",
     "ScriptedBackend",
+    "SeedanceRefStyle",
+    "SeedanceRenderMode",
+    "SeedanceRewrite",
+    "SeedanceSubject",
     "Settings",
     "StructuredOutputError",
     "TaskType",
     "VideoGeneratorAdapter",
+    "VideoPEProfile",
     "WanOmniAdapter",
     "Evaluator",
     "infer_task",
     "redact",
     "render_h3_prompt",
+    "render_seedance_output",
 ]
 
 __version__ = "0.1.0"

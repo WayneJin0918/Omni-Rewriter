@@ -1,0 +1,25 @@
+{
+  "request": {
+    "prompt": "A short cozy kitchen interview: a host asks a guest how the soup tastes; soft daylight, gentle camera push.",
+    "duration_seconds": 8,
+    "task": "t2va",
+    "metadata": {
+      "video_pe_profile": "seedance",
+      "seedance_render": "natural",
+      "seedance_ref_style": "public"
+    }
+  },
+  "output": {
+    "task": "t2va",
+    "profile": "seedance",
+    "duration_seconds": "8",
+    "style": "Live-action, warm daylight kitchen, soft handheld push-in, gentle color grade.",
+    "summary": "A host interviews a guest beside a simmering pot; they exchange a short taste compliment and smile.",
+    "static_description": "A bright home kitchen with wooden counters, a steaming enamel pot, and two people standing across a small island.",
+    "dynamic_description": "Camera slowly pushes toward the pot, then reframes to a two-shot as the guest tastes a spoonful and answers.",
+    "subjects": [],
+    "instruction": "In a sunlit kitchen, the host asks, \"How does the soup taste today?\" The guest smiles and answers, \"It tastes like home.\" Keep lip-sync clear; soft steam rises from the pot.",
+    "non_diegetic_music": "Soft acoustic guitar bed, low volume.",
+    "generate_audio": true
+  }
+}

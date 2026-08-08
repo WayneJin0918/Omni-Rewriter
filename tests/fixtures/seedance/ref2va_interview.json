@@ -1,0 +1,52 @@
+{
+  "request": {
+    "prompt": "Use the two reference clips: keep both people, stage a short balcony chat about weekend plans.",
+    "duration_seconds": 10,
+    "task": "ref2va",
+    "media": [
+      {
+        "media_type": "video",
+        "role": "reference",
+        "uri": "https://example.test/seedance/ref_1.mp4",
+        "name": "host_ref"
+      },
+      {
+        "media_type": "video",
+        "role": "reference",
+        "uri": "https://example.test/seedance/ref_2.mp4",
+        "name": "guest_ref"
+      }
+    ],
+    "metadata": {
+      "video_pe_profile": "seedance",
+      "seedance_render": "json",
+      "seedance_ref_style": "public"
+    }
+  },
+  "output": {
+    "task": "ref2va",
+    "profile": "seedance",
+    "duration_seconds": "10",
+    "style": "Natural outdoor balcony light, medium two-shot, calm editorial pacing.",
+    "summary": "Two friends from the reference clips chat briefly about weekend plans on a balcony.",
+    "static_description": "A city balcony with a small table, potted plants, and soft afternoon sky behind the railing.",
+    "dynamic_description": "Camera holds a steady medium two-shot, then a gentle pan as the guest gestures while speaking.",
+    "subjects": [
+      {
+        "id": "<主体1>",
+        "media_index": 1,
+        "appearance": "Person from @Video1: dark jacket, short hair, warm smile.",
+        "voice": "Mid, friendly host tone"
+      },
+      {
+        "id": "<主体2>",
+        "media_index": 2,
+        "appearance": "Person from @Video2: light sweater, tied-back hair.",
+        "voice": "Soft conversational tone"
+      }
+    ],
+    "instruction": "Preserve @Video1 and @Video2 identities. <主体1> asks, \"Any plans for the weekend?\" <主体2> answers, \"Maybe a quiet picnic if the weather holds.\" Keep dialogue lip-synced and the balcony background stable.",
+    "non_diegetic_music": "Light piano motif under dialogue.",
+    "generate_audio": true
+  }
+}

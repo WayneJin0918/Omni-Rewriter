@@ -3,9 +3,10 @@
 ## Scope
 
 Omni-Rewriter is an independent prompt-expansion framework. It converts a typed multimodal request
-into validated, generator-oriented intermediate text. H3 video, Seedream, and Qwen-Image-Edit
-image packing are initial profiles built on shared contracts; future profiles should reuse the
-same routing, validation, repair, and rendering boundaries.
+into validated, generator-oriented intermediate text. H3 and Seedance video PE, plus Seedream and
+Qwen-Image-Edit image packing, are initial profiles built on shared contracts; future profiles
+should reuse the same routing, validation, repair, and rendering boundaries. Video dialect
+selection uses `metadata.video_pe_profile` (`h3` default, `seedance` optional).
 
 The package separates rewriting from generation: `expand` produces text, while adapters submit
 generation tasks only when an application explicitly calls them. The framework relies on public
@@ -160,8 +161,8 @@ app has no built-in authentication, authorization, rate limiting, moderation, or
 
 Treat these as the thin stable surface for SemVer `0.x` compatibility notes:
 
-- Models: `RewriteRequest`, rewrite outputs (`BaseRewrite`, `Ref2VARewrite`, `ImageRewrite`), and
-  `validate_output` / evaluator envelopes
+- Models: `RewriteRequest`, rewrite outputs (`BaseRewrite`, `Ref2VARewrite`, `ImageRewrite`,
+  `SeedanceRewrite`), and `validate_output` / evaluator envelopes
 - Orchestration: `omni_rewriter.service.expand`, `RewriteAgent`
 - HTTP: `omni_rewriter.api.create_app`
 

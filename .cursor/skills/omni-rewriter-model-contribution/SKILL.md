@@ -40,6 +40,8 @@ description: >-
 - Require `duration_seconds`.
 - Define timeline, camera, motion, cut, continuity, dialogue, and audio behavior where applicable.
 - Test timestamp bounds and task/media-role combinations.
+- Optional dialect selector: `metadata.video_pe_profile` (`h3` default, `seedance` for Seedance PE).
+  Seedance is PE-only until a public generation adapter exists.
 
 ### Image
 

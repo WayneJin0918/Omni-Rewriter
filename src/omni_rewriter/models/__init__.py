@@ -14,8 +14,16 @@ from .lingbot import (
 from .media import MediaReference
 from .ref2va import Ref2VARewrite
 from .request import RewriteRequest, infer_task
+from .seedance import (
+    SeedanceRefStyle,
+    SeedanceRenderMode,
+    SeedanceRewrite,
+    SeedanceSubject,
+    VideoPEProfile,
+    render_seedance_output,
+)
 
-RewriteOutput = BaseRewrite | Ref2VARewrite | ImageRewrite
+RewriteOutput = BaseRewrite | Ref2VARewrite | ImageRewrite | SeedanceRewrite
 
 __all__ = [
     "ALLOWED_RATIOS",
@@ -35,7 +43,13 @@ __all__ = [
     "Ref2VARewrite",
     "RewriteOutput",
     "RewriteRequest",
+    "SeedanceRefStyle",
+    "SeedanceRenderMode",
+    "SeedanceRewrite",
+    "SeedanceSubject",
     "TaskType",
     "VIDEO_TASKS",
+    "VideoPEProfile",
     "infer_task",
+    "render_seedance_output",
 ]

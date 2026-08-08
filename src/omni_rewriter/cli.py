@@ -19,7 +19,7 @@ from .errors import OmniRewriterError
 from .evaluator import BasicEvaluator
 from .models import RewriteRequest
 from .service import expand as expand_service
-from .service import validate_output, validation_error
+from .service import render_output, validate_output, validation_error
 
 app = typer.Typer(no_args_is_help=True, pretty_exceptions_show_locals=False)
 
@@ -28,6 +28,7 @@ class OutputFormat(StrEnum):
     JSON = "json"
     H3 = "h3"
     IMAGE = "image"
+    SEEDANCE = "seedance"
 
 
 def _read_json(source: str) -> dict[str, Any]:
@@ -58,17 +59,18 @@ def expand_command(
     except (ValueError, OmniRewriterError) as exc:
         typer.echo(_json(validation_error(exc)), err=True)
         raise typer.Exit(1) from exc
-    if output is OutputFormat.H3 or output is OutputFormat.IMAGE:
-        typer.echo(result.output.render())
+    rendered = render_output(result.output, request)
+    if output in {OutputFormat.H3, OutputFormat.IMAGE, OutputFormat.SEEDANCE}:
+        typer.echo(rendered)
         return
     payload = {
         "output": result.output.model_dump(mode="json"),
         "analysis": result.analysis.model_dump(mode="json"),
         "repairs": result.repairs,
         "run_id": result.run_id,
-        "rendered_text": result.output.render(),
+        "rendered_text": rendered,
         # Backward-compatible alias for video PE consumers.
-        "h3_text": result.output.render(),
+        "h3_text": rendered,
     }
     typer.echo(_json(payload))
 
@@ -82,20 +84,21 @@ def validate_command(
 
     payload = _read_json(source)
     try:
-        validated, _ = validate_output(payload)
+        validated, request = validate_output(payload)
     except (ValueError, TypeError) as exc:
         typer.echo(_json(validation_error(exc)), err=True)
         raise typer.Exit(1) from exc
-    if output is OutputFormat.H3 or output is OutputFormat.IMAGE:
-        typer.echo(validated.render())
+    rendered = render_output(validated, request)
+    if output in {OutputFormat.H3, OutputFormat.IMAGE, OutputFormat.SEEDANCE}:
+        typer.echo(rendered)
     else:
         typer.echo(
             _json(
                 {
                     "valid": True,
                     "output": validated.model_dump(mode="json"),
-                    "rendered_text": validated.render(),
-                    "h3_text": validated.render(),
+                    "rendered_text": rendered,
+                    "h3_text": rendered,
                 }
             )
         )

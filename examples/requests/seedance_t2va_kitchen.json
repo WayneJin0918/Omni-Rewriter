@@ -1,0 +1,10 @@
+{
+  "prompt": "A short cozy kitchen interview: a host asks a guest how the soup tastes; soft daylight, gentle camera push.",
+  "duration_seconds": 8,
+  "task": "t2va",
+  "metadata": {
+    "video_pe_profile": "seedance",
+    "seedance_render": "natural",
+    "seedance_ref_style": "public"
+  }
+}
