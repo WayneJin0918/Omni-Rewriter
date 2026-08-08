@@ -9,11 +9,12 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,700&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
 
+
   <style>
     :root {
       --bg: #14060c; --ink: #fff5f7; --muted: #f0c0cc; --rose: #e11d48;
       --rose-deep: #9f1239; --blush: #fb7185; --card: rgba(255, 245, 247, 0.045);
-      --line: rgba(251, 113, 133, 0.28); --max: 1120px;
+      --line: rgba(251, 113, 133, 0.28); --max: 1280px;
     }
     * { box-sizing: border-box; }
     html { scroll-behavior: smooth; }
@@ -27,14 +28,14 @@
     }
     a { color: var(--blush); text-decoration-thickness: 1px; text-underline-offset: 0.18em; }
     a:hover { color: #fff; }
-    .wrap { width: min(var(--max), calc(100% - 2.5rem)); margin: 0 auto; }
+    .wrap { width: min(var(--max), calc(100% - 2rem)); margin: 0 auto; }
     .topnav { display:flex; align-items:center; justify-content:space-between; padding:1rem 0; gap:1rem; flex-wrap:wrap; }
     .brand { font-family: Fraunces, Georgia, serif; font-weight:700; letter-spacing:-0.02em; font-size:1.15rem; color:var(--ink); text-decoration:none; }
     .brand span { color: var(--blush); }
     .nav-links { display:flex; gap:1rem; flex-wrap:wrap; font-size:0.9rem; }
     .nav-links a { color: var(--muted); text-decoration: none; }
     .nav-links a:hover { color: var(--ink); }
-    .hero { padding: 2.4rem 0 2.6rem; display:grid; gap:1.05rem; max-width:40rem; }
+    .hero { padding: 2.2rem 0 2.2rem; display:grid; gap:1.05rem; max-width:42rem; }
     .eyebrow { display:inline-flex; align-items:center; gap:0.5rem; font-size:0.74rem; font-weight:700; letter-spacing:0.14em; text-transform:uppercase; color:var(--blush); }
     .eyebrow::before { content:""; width:1.4rem; height:2px; background:var(--rose); }
     h1 { font-family: Fraunces, Georgia, serif; font-weight:700; font-size:clamp(2rem,4.2vw,3.1rem); line-height:1.05; letter-spacing:-0.03em; margin:0; }
@@ -46,31 +47,120 @@
     .btn-primary:hover { color:white; }
     .btn-ghost { border-color:var(--line); color:var(--ink); background:rgba(255,255,255,0.03); }
     .btn-ghost:hover { border-color:var(--blush); color:white; }
-    section.block { padding:2.4rem 0; border-top:1px solid var(--line); }
+    section.block { padding:2.2rem 0; border-top:1px solid var(--line); }
     .section-kicker { font-size:0.74rem; font-weight:700; letter-spacing:0.14em; text-transform:uppercase; color:var(--blush); margin-bottom:0.45rem; }
-    .block h2 { font-family: Fraunces, Georgia, serif; font-size:clamp(1.4rem,2.5vw,1.95rem); margin:0 0 0.6rem; letter-spacing:-0.02em; }
-    .block > p { color:var(--muted); max-width:42rem; margin-top:0; }
-    .pipeline { display:grid; grid-template-columns:repeat(5,minmax(0,1fr)); gap:0.55rem; margin-top:1.2rem; }
-    .step { background:var(--card); border:1px solid var(--line); border-radius:0.9rem; padding:0.85rem 0.8rem; min-height:6.4rem; }
-    .step strong { display:block; font-family: Fraunces, Georgia, serif; font-size:0.98rem; margin-bottom:0.25rem; }
-    .step span { color:var(--muted); font-size:0.82rem; }
-    .step em { display:block; margin-top:0.45rem; font-style:normal; color:var(--blush); font-size:0.68rem; letter-spacing:0.08em; text-transform:uppercase; }
-    .case-grid { display:grid; grid-template-columns:1fr; gap:1.35rem; margin-top:1.35rem; }
+    .block h2 { font-family: Fraunces, Georgia, serif; font-size:clamp(1.35rem,2.4vw,1.9rem); margin:0 0 0.55rem; letter-spacing:-0.02em; }
+    .block > p { color:var(--muted); max-width:46rem; margin-top:0; }
+
+    /* Interactive flow */
+    .flowboard {
+      margin-top: 1.15rem;
+      display: grid;
+      gap: 0.9rem;
+      padding: 1rem;
+      border-radius: 1.1rem;
+      border: 1px solid var(--line);
+      background:
+        linear-gradient(180deg, rgba(255,245,247,0.04), rgba(255,245,247,0.015)),
+        repeating-linear-gradient(0deg, transparent, transparent 23px, rgba(251,113,133,0.05) 24px),
+        repeating-linear-gradient(90deg, transparent, transparent 23px, rgba(251,113,133,0.05) 24px);
+    }
+    .flow-track {
+      display: grid;
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+      gap: 0.45rem;
+      position: relative;
+    }
+    .flow-track::before {
+      content: "";
+      position: absolute;
+      left: 6%; right: 6%; top: 1.55rem;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, rgba(251,113,133,0.55), transparent);
+      pointer-events: none;
+    }
+    .flow-node {
+      position: relative; z-index: 1;
+      appearance: none; border: 1px solid var(--line);
+      background: rgba(8,2,4,0.72);
+      color: inherit; text-align: left;
+      border-radius: 0.9rem; padding: 0.85rem 0.7rem 0.75rem;
+      cursor: pointer; min-height: 7.2rem;
+      transition: border-color .18s ease, transform .18s ease, background .18s ease, box-shadow .18s ease;
+    }
+    .flow-node:hover { transform: translateY(-2px); border-color: rgba(251,113,133,0.7); }
+    .flow-node[aria-pressed="true"] {
+      border-color: var(--blush);
+      background: linear-gradient(160deg, rgba(225,29,72,0.28), rgba(8,2,4,0.85));
+      box-shadow: 0 0 0 1px rgba(251,113,133,0.25), 0 12px 30px rgba(225,29,72,0.18);
+    }
+    .flow-node .dot {
+      width: 0.7rem; height: 0.7rem; border-radius: 999px;
+      background: rgba(251,113,133,0.35); border: 1px solid rgba(255,255,255,0.35);
+      margin-bottom: 0.55rem;
+      box-shadow: 0 0 0 4px rgba(225,29,72,0.08);
+    }
+    .flow-node[aria-pressed="true"] .dot {
+      background: var(--blush);
+      box-shadow: 0 0 0 5px rgba(225,29,72,0.18), 0 0 18px rgba(251,113,133,0.55);
+    }
+    .flow-node em {
+      display:block; font-style:normal; color:var(--blush);
+      font-size:0.66rem; letter-spacing:0.1em; text-transform:uppercase; margin-bottom:0.25rem;
+    }
+    .flow-node strong {
+      display:block; font-family: Fraunces, Georgia, serif;
+      font-size:0.98rem; margin-bottom:0.3rem; letter-spacing:-0.01em;
+    }
+    .flow-node span { color:var(--muted); font-size:0.78rem; line-height:1.35; display:block; }
+    .flow-detail {
+      display:grid; grid-template-columns: 1.1fr 1fr; gap: 0.9rem;
+      padding: 0.95rem 1rem; border-radius: 0.9rem;
+      border: 1px solid rgba(251,113,133,0.22);
+      background: rgba(0,0,0,0.28);
+      min-height: 7.5rem;
+    }
+    .flow-detail h3 {
+      margin:0 0 0.35rem; font-family: Fraunces, Georgia, serif;
+      font-size:1.15rem; letter-spacing:-0.015em;
+    }
+    .flow-detail p { margin:0; color:var(--muted); font-size:0.9rem; }
+    .flow-meta { display:grid; gap:0.45rem; align-content:start; }
+    .flow-chip {
+      display:inline-flex; align-items:center; gap:0.4rem;
+      width: fit-content; padding: 0.28rem 0.55rem; border-radius: 999px;
+      border: 1px solid rgba(251,113,133,0.35); color:#fecdd3;
+      font-size:0.7rem; letter-spacing:0.08em; text-transform:uppercase; font-weight:700;
+    }
+    .flow-list { margin:0; padding-left:1.05rem; color:var(--muted); font-size:0.86rem; }
+    .flow-list li { margin:0.2rem 0; }
+    .flow-hint { margin:0; color:rgba(240,192,204,0.75); font-size:0.78rem; }
+
+    .case-grid {
+      display:grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 0.85rem;
+      margin-top: 1.15rem;
+    }
     .case {
-      margin:0; padding:1rem 1rem 0.85rem; border-radius:1rem;
+      margin:0; padding:0.7rem 0.7rem 0.55rem; border-radius:0.9rem;
       background:rgba(255,245,247,0.035); border:1px solid var(--line);
+      min-width:0;
     }
-    .case-head { display:flex; gap:0.65rem; align-items:flex-start; margin-bottom:0.75rem; }
+    .case-head { display:flex; gap:0.5rem; align-items:flex-start; margin-bottom:0.5rem; }
     .case-num {
-      flex:0 0 auto; font-size:0.68rem; font-weight:700; letter-spacing:0.1em;
-      padding:0.28rem 0.55rem; border-radius:999px; background:rgba(225,29,72,0.28); color:#fecdd3;
+      flex:0 0 auto; font-size:0.62rem; font-weight:700; letter-spacing:0.1em;
+      padding:0.22rem 0.45rem; border-radius:999px; background:rgba(225,29,72,0.28); color:#fecdd3;
     }
-    .case h3 { font-family: Fraunces, Georgia, serif; margin:0; font-size:1.2rem; line-height:1.2; letter-spacing:-0.015em; }
-    .case-desc { margin:0.25rem 0 0; font-size:0.9rem; color:var(--muted); line-height:1.4; }
+    .case h3 { font-family: Fraunces, Georgia, serif; margin:0; font-size:0.98rem; line-height:1.2; letter-spacing:-0.015em; }
+    .case-desc {
+      margin:0.18rem 0 0; font-size:0.74rem; color:var(--muted); line-height:1.35;
+      display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden;
+    }
     .compare-strip {
       position: relative; display:grid; grid-template-columns:1fr 1fr; gap:0;
-      border-radius:0.85rem; overflow:hidden; background:#050204;
-      box-shadow: 0 8px 28px rgba(0,0,0,0.28);
+      border-radius:0.65rem; overflow:hidden; background:#050204;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.24);
     }
     .compare-strip figure { margin:0; position:relative; min-width:0; }
     .compare-strip img {
@@ -78,34 +168,34 @@
       background:#080204;
     }
     .arm-label {
-      position:absolute; top:0.7rem; z-index:2; padding:0.32rem 0.65rem; border-radius:999px;
-      font-size:0.68rem; font-weight:700; letter-spacing:0.14em; text-transform:uppercase;
+      position:absolute; top:0.45rem; z-index:2; padding:0.22rem 0.45rem; border-radius:999px;
+      font-size:0.58rem; font-weight:700; letter-spacing:0.12em; text-transform:uppercase;
       backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px);
     }
     .arm-label.raw {
-      left:0.7rem; color:rgba(255,255,255,0.96);
+      left:0.45rem; color:rgba(255,255,255,0.96);
       background:rgba(0,0,0,0.62); border:1px solid rgba(255,255,255,0.45);
     }
     .arm-label.pe {
-      right:0.7rem; color:#ffe4e9;
+      right:0.45rem; color:#ffe4e9;
       background:rgba(225,29,72,0.28); border:1px solid rgba(251,113,133,0.7);
     }
-    details.prompts { margin-top:0.7rem; }
+    details.prompts { margin-top:0.45rem; }
     details.prompts summary {
-      cursor:pointer; list-style:none; font-size:0.75rem; letter-spacing:0.08em;
+      cursor:pointer; list-style:none; font-size:0.68rem; letter-spacing:0.08em;
       text-transform:uppercase; color:var(--blush); font-weight:700;
     }
     details.prompts summary::-webkit-details-marker { display:none; }
     details.prompts summary .hint {
-      margin-left:0.4rem; color:var(--muted); font-weight:500; text-transform:none;
-      letter-spacing:0; font-size:0.74rem;
+      margin-left:0.35rem; color:var(--muted); font-weight:500; text-transform:none;
+      letter-spacing:0; font-size:0.66rem;
     }
-    .prompt-grid { display:grid; grid-template-columns:1fr 1fr; gap:0.55rem; margin-top:0.55rem; }
-    .prompt-grid h4 { margin:0 0 0.25rem; font-size:0.68rem; letter-spacing:0.08em; text-transform:uppercase; color:var(--muted); }
+    .prompt-grid { display:grid; grid-template-columns:1fr; gap:0.4rem; margin-top:0.4rem; }
+    .prompt-grid h4 { margin:0 0 0.2rem; font-size:0.62rem; letter-spacing:0.08em; text-transform:uppercase; color:var(--muted); }
     pre.prompt {
       margin:0; white-space:pre-wrap; word-break:break-word; background:rgba(0,0,0,0.35);
-      border:1px solid rgba(255,255,255,0.06); border-radius:0.55rem; padding:0.6rem 0.65rem;
-      font-size:0.74rem; line-height:1.4; color:#ffe4e9; max-height:11rem; overflow:auto;
+      border:1px solid rgba(255,255,255,0.06); border-radius:0.45rem; padding:0.45rem 0.5rem;
+      font-size:0.68rem; line-height:1.35; color:#ffe4e9; max-height:8.5rem; overflow:auto;
     }
     .pillars { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:0.75rem; margin-top:1.1rem; }
     .pillar { padding:1rem; border-radius:0.9rem; border:1px solid var(--line); background:rgba(255,255,255,0.03); }
@@ -114,18 +204,22 @@
     footer { padding:2.2rem 0 2.6rem; border-top:1px solid var(--line); color:var(--muted); font-size:0.88rem; }
     footer .foot-row { display:flex; flex-wrap:wrap; gap:1rem; justify-content:space-between; }
     .note { opacity:0.85; max-width:38rem; }
-    @media (max-width: 900px) {
-      .pipeline { grid-template-columns: 1fr 1fr; }
-      .prompt-grid { grid-template-columns: 1fr; }
+    @media (max-width: 980px) {
+      .flow-track { grid-template-columns: 1fr 1fr; }
+      .flow-track::before { display:none; }
+      .flow-detail { grid-template-columns: 1fr; }
       .pillars { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 820px) {
+      .case-grid { grid-template-columns: 1fr; }
     }
     @media (max-width: 640px) {
       .wrap { width: min(var(--max), calc(100% - 1.25rem)); }
-      .pipeline, .compare-strip { grid-template-columns: 1fr; }
-      .compare-strip img { aspect-ratio: 16/9; }
-      .hero { padding-top: 1.5rem; }
+      .flow-track, .compare-strip { grid-template-columns: 1fr; }
+      .hero { padding-top: 1.4rem; }
     }
   </style>
+
 
 </head>
 <body>
@@ -162,29 +256,70 @@
         failures in a bounded loop. Pairs share seed, aspect, and duration so differences come from the prompt path.
       </p>
     </section>
+
     <section class="block" id="pipeline">
       <div class="section-kicker">Pipeline</div>
       <h2>Analyze · draft · validate · repair · render</h2>
       <p>
-        A PE profile does not prove generation-runtime compatibility. Adapters stay optional and
-        evidence-scoped. The current VLM pairwise scorer is post-hoc evaluation on sampled frames;
-        it does not feed scores back into prompt revision, so this page does not claim VLM-guided
-        PE optimization.
+        Click a stage to inspect what happens there. Expand stays separate from generate: adapters are
+        optional and evidence-scoped. The VLM pairwise scorer is post-hoc only — scores do not revise prompts.
       </p>
-      <div class="pipeline">
-        <div class="step"><em>Input</em><strong>RewriteRequest</strong><span>Prompt, duration, task, metadata.</span></div>
-        <div class="step"><em>Plan</em><strong>Analyze &amp; draft</strong><span>Invariants, state, transitions, evidence.</span></div>
-        <div class="step"><em>Check</em><strong>Validate</strong><span>Deterministic H3 grammar checks.</span></div>
-        <div class="step"><em>Fix</em><strong>Bounded repair</strong><span>Retry with errors + invariants only.</span></div>
-        <div class="step"><em>Out</em><strong>Dialect render</strong><span>H3 text out; optional generate next.</span></div>
+      <div class="flowboard" id="pe-flow" data-active="input">
+        <div class="flow-track" role="tablist" aria-label="PE pipeline stages">
+          <button class="flow-node" type="button" role="tab" id="flow-tab-input" aria-controls="flow-panel" aria-pressed="true" data-step="input">
+            <div class="dot" aria-hidden="true"></div>
+            <em>01 · Input</em>
+            <strong>RewriteRequest</strong>
+            <span>Prompt, duration, task, metadata.</span>
+          </button>
+          <button class="flow-node" type="button" role="tab" id="flow-tab-plan" aria-controls="flow-panel" aria-pressed="false" data-step="plan">
+            <div class="dot" aria-hidden="true"></div>
+            <em>02 · Plan</em>
+            <strong>Analyze &amp; draft</strong>
+            <span>Invariants, state, transitions, evidence.</span>
+          </button>
+          <button class="flow-node" type="button" role="tab" id="flow-tab-check" aria-controls="flow-panel" aria-pressed="false" data-step="check">
+            <div class="dot" aria-hidden="true"></div>
+            <em>03 · Check</em>
+            <strong>Validate</strong>
+            <span>Deterministic H3 grammar checks.</span>
+          </button>
+          <button class="flow-node" type="button" role="tab" id="flow-tab-fix" aria-controls="flow-panel" aria-pressed="false" data-step="fix">
+            <div class="dot" aria-hidden="true"></div>
+            <em>04 · Fix</em>
+            <strong>Bounded repair</strong>
+            <span>Retry with errors + invariants only.</span>
+          </button>
+          <button class="flow-node" type="button" role="tab" id="flow-tab-out" aria-controls="flow-panel" aria-pressed="false" data-step="out">
+            <div class="dot" aria-hidden="true"></div>
+            <em>05 · Out</em>
+            <strong>Dialect render</strong>
+            <span>H3 text out; optional generate next.</span>
+          </button>
+        </div>
+        <div class="flow-detail" id="flow-panel" role="tabpanel" aria-labelledby="flow-tab-input">
+          <div>
+            <div class="flow-chip" id="flow-chip">Stage · Input</div>
+            <h3 id="flow-title">RewriteRequest</h3>
+            <p id="flow-body">Transport-neutral intent enters the harness with duration, task route, and metadata such as aspect ratio and seed.</p>
+          </div>
+          <div class="flow-meta">
+            <ul class="flow-list" id="flow-points">
+              <li>Video tasks require duration_seconds</li>
+              <li>Task routes: t2va / i2va / fl2va / …</li>
+              <li>Same seed later pairs RAW vs PE fairly</li>
+            </ul>
+            <p class="flow-hint">Tip: click stages left → right to walk the expansion loop.</p>
+          </div>
+        </div>
       </div>
     </section>
+
     <section class="block" id="cases">
       <div class="section-kicker">Cases</div>
-      <h2>Fifteen RAW vs PE pairs · side-by-side</h2>
+      <h2>Fifteen RAW vs PE pairs · two per row</h2>
       <p>
-        One pair per row: RAW and PE share a single compare strip with corner labels. Expand any card for the RAW prompt and full H3 PE.
-        Some clips are provisional — denser curation continues.
+        Two pairs per row on wide screens: each card keeps a RAW | PE strip with corner labels. Expand any card for the RAW prompt and full H3 PE.
       </p>
       <div class="case-grid">
 
@@ -775,5 +910,99 @@ non_diegetic_music: None; the scene relies entirely on diegetic sound to build t
       </div>
     </footer>
   </div>
+
+<script>
+(() => {
+  const steps = {
+    input: {
+      chip: "Stage · Input",
+      title: "RewriteRequest",
+      body: "Transport-neutral intent enters the harness with duration, task route, and metadata such as aspect ratio and seed.",
+      points: [
+        "Video tasks require duration_seconds",
+        "Task routes: t2va / i2va / fl2va / …",
+        "Same seed later pairs RAW vs PE fairly"
+      ]
+    },
+    plan: {
+      chip: "Stage · Plan",
+      title: "Analyze & draft",
+      body: "The writer plans six layers — invariants, state, transitions, evidence, observation, serialization — then drafts a typed H3 timeline.",
+      points: [
+        "Shot timing with [Shot N] At MM:SS.mmm",
+        "Dialogue as <d>[Language] …</d>",
+        "Camera grammar stays natural English"
+      ]
+    },
+    check: {
+      chip: "Stage · Check",
+      title: "Validate",
+      body: "Deterministic validators catch grammar, continuity, and profile-rule failures before anything is treated as finished PE.",
+      points: [
+        "Schema + dialect checks, not vibes",
+        "Failures stay machine-readable",
+        "No silent acceptance of broken markup"
+      ]
+    },
+    fix: {
+      chip: "Stage · Fix",
+      title: "Bounded repair",
+      body: "Repair loops only with the error set plus invariants — retries are capped so the harness cannot wander forever.",
+      points: [
+        "Bounded retry budget",
+        "Preserve user intent / invariants",
+        "Stop cleanly if still invalid"
+      ]
+    },
+    out: {
+      chip: "Stage · Out",
+      title: "Dialect render",
+      body: "Validated structure renders to H3 text. Generation adapters are opt-in consumers; PE never claims private Context-IR equivalence.",
+      points: [
+        "Expand ≠ generate",
+        "Adapters cite public runtime evidence",
+        "Untested paths stay labeled unverified"
+      ]
+    }
+  };
+
+  const root = document.getElementById("pe-flow");
+  if (!root) return;
+  const nodes = [...root.querySelectorAll(".flow-node")];
+  const chip = document.getElementById("flow-chip");
+  const title = document.getElementById("flow-title");
+  const body = document.getElementById("flow-body");
+  const points = document.getElementById("flow-points");
+  const panel = document.getElementById("flow-panel");
+
+  function activate(step, btn) {
+    const data = steps[step];
+    if (!data) return;
+    root.dataset.active = step;
+    nodes.forEach((n) => {
+      const on = n === btn;
+      n.setAttribute("aria-pressed", on ? "true" : "false");
+    });
+    chip.textContent = data.chip;
+    title.textContent = data.title;
+    body.textContent = data.body;
+    points.innerHTML = data.points.map((p) => `<li>${p}</li>`).join("");
+    panel.setAttribute("aria-labelledby", btn.id);
+  }
+
+  nodes.forEach((btn) => {
+    btn.addEventListener("click", () => activate(btn.dataset.step, btn));
+    btn.addEventListener("keydown", (e) => {
+      if (e.key !== "ArrowRight" && e.key !== "ArrowLeft") return;
+      e.preventDefault();
+      const i = nodes.indexOf(btn);
+      const next = e.key === "ArrowRight" ? nodes[(i + 1) % nodes.length] : nodes[(i - 1 + nodes.length) % nodes.length];
+      next.focus();
+      activate(next.dataset.step, next);
+    });
+  });
+})();
+</script>
+
 </body>
 </html>
