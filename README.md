@@ -93,8 +93,24 @@ Same path for CLI (`omni-rewriter expand`) and HTTP (`POST /v1/expand`). Details
 
 ## Writer LM agents
 
-Any **OpenAI-compatible** chat endpoint that returns the required structured JSON can be the
-Writer. The harness does not ship a fine-tuned PE checkpoint.
+The harness talks to Writers over one contract: **OpenAI-compatible chat + structured JSON**.
+It does not ship a fine-tuned PE checkpoint. How you host the Writer is separate from which
+model family you pick.
+
+**How the two Writer classes connect**
+
+- **Core agents (closed frontier)** — GPT-5.6, Claude Opus 5, and similar. Connect via a vendor
+  **API** or an OpenAI-compatible gateway (`OMNI_WRITER_BACKEND_BASE_URL` + model name).
+- **Terminal / open weights** — QwenLM today; MiMo, Kimi, DeepSeek wanted. Serve locally (or on
+  your cluster) with **vLLM** or **SGLang**, then point the same env vars at that OpenAI-compatible
+  endpoint.
+
+**Three access modes (same protocol)**
+
+1. **API** — hosted frontier agents; no local GPU required for the Writer.
+2. **vLLM** — common path for open-weight Writers (`/v1/chat/completions`, structured output).
+3. **SGLang** — alternate OpenAI-compatible serve path for open Writers (also used by optional
+   image/video generation adapters outside `expand`).
 
 <p align="center">
   <img alt="closed-source" src="https://img.shields.io/badge/closed--source-supported-brightgreen?style=flat-square&labelColor=be123c" />
@@ -110,16 +126,9 @@ Writer. The harness does not ship a fine-tuned PE checkpoint.
   <img alt="DeepSeek wanted" src="https://img.shields.io/badge/DeepSeek-wanted-lightgrey?style=flat-square&labelColor=0f766e" />
 </p>
 
-<p align="center">
-  <img alt="serve with" src="https://img.shields.io/badge/serve%20with-vLLM%20%2F%20SGLang-brightgreen?style=flat-square&labelColor=1d4ed8" />
-  <img alt="vLLM" src="https://img.shields.io/badge/vLLM-OpenAI%20chat%20%2B%20structured%20JSON-brightgreen?style=flat-square&labelColor=1d4ed8" />
-  <img alt="SGLang" src="https://img.shields.io/badge/SGLang-open%20writers%20%2B%20image%2Fvideo%20adapters-brightgreen?style=flat-square&labelColor=1d4ed8" />
-</p>
-
 <p align="center"><sub>
-Point <code>OMNI_WRITER_BACKEND_*</code> at a closed API/gateway or an open model on vLLM/SGLang.
-Generation adapters (Qwen-Image, Wan, HunyuanImage, …) are optional and never run inside
-<code>expand</code> — see the <a href="docs/generation-adapters.md">compatibility matrix</a>.
+Generation adapters stay outside <code>expand</code> — see the
+<a href="docs/generation-adapters.md">compatibility matrix</a>.
 </sub></p>
 
 ## Model ecosystem

@@ -91,8 +91,22 @@ CLI（`omni-rewriter expand`）与 HTTP（`POST /v1/expand`）共用同一路径
 
 ## Writer LM Agent
 
-任意能返回所需结构化 JSON 的 **OpenAI 兼容** Chat 接口都可作为 Writer。Harness **不**附带
-专用 PE 微调权重。
+Harness 与 Writer 只约定一种协议：**OpenAI 兼容 Chat + 结构化 JSON**。不附带专用 PE 微调权重。
+「用哪家模型」和「怎么部署接入」是两件事。
+
+**两类 Writer 分别怎么接**
+
+- **核心 Agent（闭源前沿）** — GPT-5.6、Claude Opus 5 等。走厂商 **API** 或 OpenAI 兼容网关
+  （`OMNI_WRITER_BACKEND_BASE_URL` + model name）。
+- **终端 / 开源权重** — 当前支持 QwenLM；MiMo、Kimi、DeepSeek 为 wanted。用 **vLLM** 或
+  **SGLang** 在本地/集群拉起 OpenAI 兼容服务，再指向同一组环境变量。
+
+**三种接入方式（协议相同）**
+
+1. **API** — 托管前沿 Agent，Writer 侧无需本地 GPU。
+2. **vLLM** — 开源 Writer 的常见部署路径（`/v1/chat/completions`、结构化输出）。
+3. **SGLang** — 开源 Writer 的另一条 OpenAI 兼容部署路径（也可服务 `expand` 之外的可选
+   图像/视频生成适配器）。
 
 <p align="center">
   <img alt="闭源" src="https://img.shields.io/badge/closed--source-supported-brightgreen?style=flat-square&labelColor=be123c" />
@@ -108,16 +122,9 @@ CLI（`omni-rewriter expand`）与 HTTP（`POST /v1/expand`）共用同一路径
   <img alt="DeepSeek wanted" src="https://img.shields.io/badge/DeepSeek-wanted-lightgrey?style=flat-square&labelColor=0f766e" />
 </p>
 
-<p align="center">
-  <img alt="serve with" src="https://img.shields.io/badge/serve%20with-vLLM%20%2F%20SGLang-brightgreen?style=flat-square&labelColor=1d4ed8" />
-  <img alt="vLLM" src="https://img.shields.io/badge/vLLM-OpenAI%20chat%20%2B%20structured%20JSON-brightgreen?style=flat-square&labelColor=1d4ed8" />
-  <img alt="SGLang" src="https://img.shields.io/badge/SGLang-open%20writers%20%2B%20image%2Fvideo%20adapters-brightgreen?style=flat-square&labelColor=1d4ed8" />
-</p>
-
 <p align="center"><sub>
-将 <code>OMNI_WRITER_BACKEND_*</code> 指向闭源 API/网关，或部署在 vLLM/SGLang 上的开源模型。
-生成适配器（Qwen-Image、Wan、HunyuanImage 等）可选，且从不进入 <code>expand</code> ——
-见 <a href="generation-adapters_zh.md">兼容性矩阵</a>。
+生成适配器在 <code>expand</code> 之外 —— 见
+<a href="generation-adapters_zh.md">兼容性矩阵</a>。
 </sub></p>
 
 ## 模型生态
