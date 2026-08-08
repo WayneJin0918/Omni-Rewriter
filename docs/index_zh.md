@@ -1,6 +1,6 @@
 # Omni-Rewriter 文档
 
-[English index](index.md) · [项目中文 README](../README_zh.md)
+[English index](index.md) · [项目中文 README](README_zh.md)
 
 Omni-Rewriter 当前开源的是面向多模态生成的强类型、可校验 **Agentic Prompt Expansion
 Harness**。它把意图扩写为目标 PE 方言；媒体生成是显式且独立的后续步骤。
@@ -24,10 +24,10 @@ Harness**。它把意图扩写为目标 PE 方言；媒体生成是显式且独�
 ## 项目治理
 
 - [社区模型待办](community-models_zh.md)：Video、Image 与 Unified 三类贡献清单。
-- [路线图](../ROADMAP.md)
-- [贡献指南](../CONTRIBUTING.md)
-- [安全策略](../SECURITY.md)
-- [行为准则](../CODE_OF_CONDUCT.md)
+- [路线图](ROADMAP.md)
+- [贡献指南](CONTRIBUTING.md)
+- [安全策略](SECURITY.md)
+- [行为准则](CODE_OF_CONDUCT.md)
 
 ## 范围
 

@@ -66,4 +66,4 @@ Use `docs/generation-adapters.md` for evidence links and wording.
 - Add tests for every validator/rule change.
 - Prefer small PRs; fill the PR template; link issues.
 - Do not commit full-resolution generated videos; low-res gallery thumbs under `docs/assets/` are OK.
-- Read `CONTRIBUTING.md` and `ROADMAP.md` before large features (SFT/RL are future work).
+- Read `docs/CONTRIBUTING.md` and `docs/ROADMAP.md` before large features (SFT/RL are future work).

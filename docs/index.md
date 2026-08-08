@@ -26,10 +26,10 @@ remains an explicit, separate step.
 ## Project governance
 
 - [Community model backlog](community-models.md) — Video, Image, and Unified contribution boards.
-- [Roadmap](../ROADMAP.md)
-- [Contributing](../CONTRIBUTING.md)
-- [Security policy](../SECURITY.md)
-- [Code of conduct](../CODE_OF_CONDUCT.md)
+- [Roadmap](ROADMAP.md)
+- [Contributing](CONTRIBUTING.md)
+- [Security policy](SECURITY.md)
+- [Code of conduct](CODE_OF_CONDUCT.md)
 
 ## Scope
 

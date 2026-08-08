@@ -35,9 +35,9 @@ See [ROADMAP.md](ROADMAP.md). High-value areas:
 - Future SFT / RL data pipelines (design first)
 
 The model backlog is deliberately split into
-[Video, Image, and Unified boards](docs/community-models.md). Before starting a model-family PR,
+[Video, Image, and Unified boards](community-models.md). Before starting a model-family PR,
 use the project skill
-[`omni-rewriter-model-contribution`](.cursor/skills/omni-rewriter-model-contribution/SKILL.md).
+[`omni-rewriter-model-contribution`](../.cursor/skills/omni-rewriter-model-contribution/SKILL.md).
 It provides the implementation order, category-specific checks, and a copyable contribution
 template.
 

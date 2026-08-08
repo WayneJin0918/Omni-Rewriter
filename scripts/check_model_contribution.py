@@ -123,7 +123,7 @@ def validate_changed_files(body: str, files: list[str]) -> list[str]:
     if not any(path.startswith("tests/") and path.endswith(".py") for path in files):
         errors.append("Model contributions must add or update a Python test under tests/")
     if not any(
-        path.startswith("docs/") or path in {"README.md", "README_zh.md", "ROADMAP.md"}
+        path.startswith("docs/") or path == "README.md"
         for path in files
     ):
         errors.append("Model contributions must update documentation or the support/backlog matrix")
@@ -156,7 +156,7 @@ def validate_repository(root: Path) -> list[str]:
 
     readme_sections = {
         "README.md": "## Model ecosystem",
-        "README_zh.md": "## 模型生态",
+        "docs/README_zh.md": "## 模型生态",
     }
     for relative, section in readme_sections.items():
         text = (root / relative).read_text(encoding="utf-8")

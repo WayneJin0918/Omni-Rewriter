@@ -1,6 +1,6 @@
 # 社区模型待办
 
-[English](community-models.md) · [贡献指南](../CONTRIBUTING.md)
+[English](community-models.md) · [贡献指南](CONTRIBUTING.md)
 
 这里明确列出欢迎社区补充的提示词配置。“待办”不代表“已支持”。完整贡献必须把提示词扩写与
 媒体生成分开，并为运行时或接口声明提供公开上游依据。

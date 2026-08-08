@@ -40,7 +40,7 @@ python scripts/check_model_contribution.py
 ### Essential Elements of an Effective PR Description Checklist
 
 - [ ] The purpose of the PR is clear, and related issues are linked when applicable.
-- [ ] The PR title uses a required prefix from `CONTRIBUTING.md`
+- [ ] The PR title uses a required prefix from `docs/CONTRIBUTING.md`
       (for example `[Model][Video] Add Wan2.2 PE profile`).
 - [ ] The test plan and test results are filled in.
 - [ ] Docs / README model-ecosystem cards are updated when support status changes.
@@ -48,4 +48,4 @@ python scripts/check_model_contribution.py
       `unverified`.
 - [ ] No secrets, `.env` files, checkpoints, or full-resolution `.mp4` videos are included.
 
-**BEFORE SUBMITTING, PLEASE READ `CONTRIBUTING.md`.**
+**BEFORE SUBMITTING, PLEASE READ `docs/CONTRIBUTING.md`.**

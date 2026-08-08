@@ -1,13 +1,13 @@
 <div align="center">
-  <img src="Logo.png" alt="Omni-Rewriter" width="560">
+  <img src="../Logo.png" alt="Omni-Rewriter" width="560">
 
   <p><strong>面向图像与视频生成的开源 Agentic Prompt Expansion Harness。</strong></p>
   <p>通过有界 AI Agent 工作流，将自然语言意图转换为经过校验、可直接交给生成器的提示词。</p>
 
-  [![Agent Harness](https://img.shields.io/badge/Agentic-PE%20Harness-7C3AED)](docs/architecture_zh.md)
+  [![Agent Harness](https://img.shields.io/badge/Agentic-PE%20Harness-7C3AED)](architecture_zh.md)
   [![CI](https://github.com/WayneJin0918/Omni-Rewriter/actions/workflows/ci.yml/badge.svg)](https://github.com/WayneJin0918/Omni-Rewriter/actions/workflows/ci.yml)
-  [![Python](https://img.shields.io/badge/python-3.11%2B-3776AB?logo=python&logoColor=white)](pyproject.toml)
-  [![License](https://img.shields.io/github/license/WayneJin0918/Omni-Rewriter)](LICENSE)
+  [![Python](https://img.shields.io/badge/python-3.11%2B-3776AB?logo=python&logoColor=white)](../pyproject.toml)
+  [![License](https://img.shields.io/github/license/WayneJin0918/Omni-Rewriter)](../LICENSE)
   [![Issues](https://img.shields.io/github/issues/WayneJin0918/Omni-Rewriter)](https://github.com/WayneJin0918/Omni-Rewriter/issues)
   [![PRs welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](CONTRIBUTING.md)
 </div>
@@ -15,11 +15,11 @@
 ---
 
 <p align="center">
-  <a href="README.md"><b>English</b></a> ·
-  <a href="docs/index_zh.md"><b>文档</b></a> ·
-  <a href="docs/getting-started_zh.md"><b>快速开始</b></a> ·
-  <a href="docs/architecture_zh.md"><b>架构</b></a> ·
-  <a href="docs/generation-adapters_zh.md"><b>适配器</b></a> ·
+  <a href="../README.md"><b>English</b></a> ·
+  <a href="index_zh.md"><b>文档</b></a> ·
+  <a href="getting-started_zh.md"><b>快速开始</b></a> ·
+  <a href="architecture_zh.md"><b>架构</b></a> ·
+  <a href="generation-adapters_zh.md"><b>适配器</b></a> ·
   <a href="ROADMAP.md"><b>路线图</b></a> ·
   <a href="CONTRIBUTING.md"><b>参与贡献</b></a>
 </p>
@@ -83,7 +83,7 @@ flowchart LR
 5. **Dialect render** — 序列化为 H3 / Seedream / Qwen-Image-Edit 文本（仍不生成媒体）。
 
 CLI（`omni-rewriter expand`）与 HTTP（`POST /v1/expand`）共用同一路径。详见
-[架构文档](docs/architecture_zh.md)。
+[架构文档](architecture_zh.md)。
 
 ## 当前支持
 
@@ -105,7 +105,7 @@ CLI（`omni-rewriter expand`）与 HTTP（`POST /v1/expand`）共用同一路径
 
 闭源 Writer 通常走厂商或网关 URL；开源 Writer/生成器常见部署在 **vLLM** 或 **SGLang**。
 stock vLLM、自定义 vLLM fork、vLLM-Omni **不可互换** —— 见
-[兼容性矩阵](docs/generation-adapters_zh.md)。
+[兼容性矩阵](generation-adapters_zh.md)。
 
 ### 已交付的 PE Profile
 
@@ -116,7 +116,7 @@ stock vLLM、自定义 vLLM fork、vLLM-Omni **不可互换** —— 见
 
 可选生成适配器（MiniMax/H3、Qwen-Image HTTP、HunyuanImage、Wan、LingBot 等）在
 `expand` 之外。证据与边界见
-[生成适配器](docs/generation-adapters_zh.md)。
+[生成适配器](generation-adapters_zh.md)。
 
 ## 模型生态
 
@@ -164,33 +164,33 @@ stock vLLM、自定义 vLLM fork、vLLM-Omni **不可互换** —— 见
   <a href="https://github.com/WayneJin0918/Omni-Rewriter/compare?quick_pull=1&title=%5BModel%5D%5BUnified%5D%20"><img src="https://img.shields.io/badge/Open%20PR-Unified-d97706?style=for-the-badge&logo=github&logoColor=white&labelColor=111827" alt="发起统一多模态 PR"></a>
 </p>
 
-<p align="center"><sub>请先使用<a href=".cursor/skills/omni-rewriter-model-contribution/SKILL.md">模型贡献 Skill</a>。证据范围详见<a href="docs/generation-adapters_zh.md">兼容性矩阵</a> · <a href="docs/community-models_zh.md">社区模型待办</a>。</sub></p>
+<p align="center"><sub>请先使用<a href="../.cursor/skills/omni-rewriter-model-contribution/SKILL.md">模型贡献 Skill</a>。证据范围详见<a href="generation-adapters_zh.md">兼容性矩阵</a> · <a href="community-models_zh.md">社区模型待办</a>。</sub></p>
 
 ## Video RAW vs PE
 
 <table cellspacing="0" cellpadding="0">
   <tr>
-    <td width="50%" align="center"><img src="docs/assets/gallery/s15_concert_crashzoom_raw.gif" alt="RAW 演唱会急推多切" width="100%"><br><sub>演唱会急推多切 · RAW</sub></td>
-    <td width="50%" align="center"><img src="docs/assets/gallery/s15_concert_crashzoom_pe.gif" alt="PE 演唱会急推多切" width="100%"><br><sub>演唱会急推多切 · PE</sub></td>
+    <td width="50%" align="center"><img src="assets/gallery/s15_concert_crashzoom_raw.gif" alt="RAW 演唱会急推多切" width="100%"><br><sub>演唱会急推多切 · RAW</sub></td>
+    <td width="50%" align="center"><img src="assets/gallery/s15_concert_crashzoom_pe.gif" alt="PE 演唱会急推多切" width="100%"><br><sub>演唱会急推多切 · PE</sub></td>
   </tr>
   <tr>
-    <td align="center"><img src="docs/assets/gallery/s14_kitchen_stations_raw.gif" alt="RAW 厨房甩镜蒙太奇" width="100%"><br><sub>厨房甩镜蒙太奇 · RAW</sub></td>
-    <td align="center"><img src="docs/assets/gallery/s14_kitchen_stations_pe.gif" alt="PE 厨房甩镜蒙太奇" width="100%"><br><sub>厨房甩镜蒙太奇 · PE</sub></td>
+    <td align="center"><img src="assets/gallery/s14_kitchen_stations_raw.gif" alt="RAW 厨房甩镜蒙太奇" width="100%"><br><sub>厨房甩镜蒙太奇 · RAW</sub></td>
+    <td align="center"><img src="assets/gallery/s14_kitchen_stations_pe.gif" alt="PE 厨房甩镜蒙太奇" width="100%"><br><sub>厨房甩镜蒙太奇 · PE</sub></td>
   </tr>
   <tr>
-    <td align="center"><img src="docs/assets/gallery/s13_rooftop_orbit_raw.gif" alt="RAW 天台环绕求婚" width="100%"><br><sub>天台环绕求婚 · RAW</sub></td>
-    <td align="center"><img src="docs/assets/gallery/s13_rooftop_orbit_pe.gif" alt="PE 天台环绕求婚" width="100%"><br><sub>天台环绕求婚 · PE</sub></td>
+    <td align="center"><img src="assets/gallery/s13_rooftop_orbit_raw.gif" alt="RAW 天台环绕求婚" width="100%"><br><sub>天台环绕求婚 · RAW</sub></td>
+    <td align="center"><img src="assets/gallery/s13_rooftop_orbit_pe.gif" alt="PE 天台环绕求婚" width="100%"><br><sub>天台环绕求婚 · PE</sub></td>
   </tr>
 </table>
 
 <p align="center"><sub>当前视频配置：MiniMax-H3。首页优先展示 15s 压力集（s11–s16）中运镜/剪辑/对白更复杂、PE 优势更明显的片段。</sub><br>
 <a href="https://waynejin0918.github.io/Omni-Rewriter/"><b>H3 PE 站点 →</b></a>
 ·
-<a href="docs/day2-h3-pe/index.html">本地 H3 PE 页面</a>
+<a href="day2-h3-pe/index.html">本地 H3 PE 页面</a>
 ·
-<a href="docs/h3-pe-showcase/index.html">完整 15 组 showcase</a>
+<a href="h3-pe-showcase/index.html">完整 15 组 showcase</a>
 ·
-<a href="docs/assets/gallery/index.html">精简 Gallery</a></p>
+<a href="assets/gallery/index.html">精简 Gallery</a></p>
 
 ## 快速开始
 
@@ -232,7 +232,7 @@ omni-rewriter validate output.json
 }
 ```
 
-视频、T2I 与图像编辑的最短路径见[快速开始文档](docs/getting-started_zh.md)。
+视频、T2I 与图像编辑的最短路径见[快速开始文档](getting-started_zh.md)。
 
 ## 项目分层
 
@@ -253,13 +253,13 @@ RewriteRequest
 
 | 指南 | 中文 | English |
 | --- | --- | --- |
-| 文档索引 | [打开](docs/index_zh.md) | [Open](docs/index.md) |
-| 快速开始 | [打开](docs/getting-started_zh.md) | [Open](docs/getting-started.md) |
-| 架构 | [打开](docs/architecture_zh.md) | [Open](docs/architecture.md) |
-| Video Prompt Expansion | [打开](docs/h3-pe-harness_zh.md) | [Open](docs/h3-pe-harness.md) |
-| 图像 Prompt Expansion | [打开](docs/image-pe_zh.md) | [Open](docs/image-pe.md) |
-| 生成适配器 | [打开](docs/generation-adapters_zh.md) | [Open](docs/generation-adapters.md) |
-| 评测 | [打开](docs/evaluation_zh.md) | [Open](docs/evaluation.md) |
+| 文档索引 | [打开](index_zh.md) | [Open](index.md) |
+| 快速开始 | [打开](getting-started_zh.md) | [Open](getting-started.md) |
+| 架构 | [打开](architecture_zh.md) | [Open](architecture.md) |
+| Video Prompt Expansion | [打开](h3-pe-harness_zh.md) | [Open](h3-pe-harness.md) |
+| 图像 Prompt Expansion | [打开](image-pe_zh.md) | [Open](image-pe.md) |
+| 生成适配器 | [打开](generation-adapters_zh.md) | [Open](generation-adapters.md) |
+| 评测 | [打开](evaluation_zh.md) | [Open](evaluation.md) |
 
 ## 开发与贡献
 

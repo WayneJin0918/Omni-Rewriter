@@ -1,6 +1,6 @@
 # Community model backlog
 
-[中文](community-models_zh.md) · [Contribution guide](../CONTRIBUTING.md)
+[中文](community-models_zh.md) · [Contribution guide](CONTRIBUTING.md)
 
 This is the explicit profile backlog for community contributions. An entry means “wanted,” not
 “supported.” A complete contribution separates prompt expansion from generation and cites a public

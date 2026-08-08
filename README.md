@@ -9,19 +9,19 @@
   [![Python](https://img.shields.io/badge/python-3.11%2B-3776AB?logo=python&logoColor=white)](pyproject.toml)
   [![License](https://img.shields.io/github/license/WayneJin0918/Omni-Rewriter)](LICENSE)
   [![Issues](https://img.shields.io/github/issues/WayneJin0918/Omni-Rewriter)](https://github.com/WayneJin0918/Omni-Rewriter/issues)
-  [![PRs welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](CONTRIBUTING.md)
+  [![PRs welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](docs/CONTRIBUTING.md)
 </div>
 
 ---
 
 <p align="center">
-  <a href="README_zh.md"><b>中文</b></a> ·
+  <a href="docs/README_zh.md"><b>中文</b></a> ·
   <a href="docs/index.md"><b>Documentation</b></a> ·
   <a href="docs/getting-started.md"><b>Getting Started</b></a> ·
   <a href="docs/architecture.md"><b>Architecture</b></a> ·
   <a href="docs/generation-adapters.md"><b>Adapters</b></a> ·
-  <a href="ROADMAP.md"><b>Roadmap</b></a> ·
-  <a href="CONTRIBUTING.md"><b>Contributing</b></a>
+  <a href="docs/ROADMAP.md"><b>Roadmap</b></a> ·
+  <a href="docs/CONTRIBUTING.md"><b>Contributing</b></a>
 </p>
 
 ## News
@@ -123,7 +123,7 @@ stay outside `expand`. Evidence and limits:
 ## Model ecosystem
 
 Community board — left color = category (Video / Image / Unified); right = `available` /
-`wanted`. Prefer small PRs with a title prefix — see [CONTRIBUTING.md](CONTRIBUTING.md).
+`wanted`. Prefer small PRs with a title prefix — see [CONTRIBUTING.md](docs/CONTRIBUTING.md).
 
 <p align="center">
   <img alt="MiniMax-H3 available" src="https://img.shields.io/badge/MiniMax--H3-available-brightgreen?style=flat-square&labelColor=4f46e5" />
@@ -275,8 +275,8 @@ python -m build
 ```
 
 Contributions are welcome across core schemas, dialects, adapters, evaluation, documentation, and
-future SFT/RL work. Start with [CONTRIBUTING.md](CONTRIBUTING.md) and
-[ROADMAP.md](ROADMAP.md).
+future SFT/RL work. Start with [CONTRIBUTING.md](docs/CONTRIBUTING.md) and
+[ROADMAP.md](docs/ROADMAP.md).
 
 ## Scope and license
 
@@ -286,4 +286,4 @@ public APIs, and deployable workflows. Untested runtime compatibility is labeled
 
 Source code is licensed under [Apache License 2.0](LICENSE). Third-party models, services,
 documentation, and names remain subject to their own terms. Security guidance is in
-[SECURITY.md](SECURITY.md).
+[SECURITY.md](docs/SECURITY.md).

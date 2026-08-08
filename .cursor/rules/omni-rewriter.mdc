@@ -16,4 +16,4 @@ alwaysApply: true
 - Do not claim to reproduce private MiniMax Context-IR, Seedream internals, or other private
   vendor behavior.
 - Keep PRs small, tested (`pytest`, `ruff`, `mypy`), and free of full `.mp4` blobs.
-- Welcome community contributions listed in `ROADMAP.md` (SFT/RL, adapters, dialects).
+- Welcome community contributions listed in `docs/ROADMAP.md` (SFT/RL, adapters, dialects).

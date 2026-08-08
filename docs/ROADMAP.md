@@ -11,7 +11,7 @@ contributions are welcome — see [CONTRIBUTING.md](CONTRIBUTING.md).
 
 ## Near-term (maintainers)
 
-- [x] Ingest public H3 skill contracts (`docs/references/jahnson-h3-skill-*.txt`) into PE rules,
+- [x] Ingest public H3 skill contracts (`references/jahnson-h3-skill-*.txt`) into PE rules,
       harness docs, and Cursor skills.
 - [x] Ship low-res RAW vs PE gallery media on the GitHub homepage.
 - [x] Add CONTRIBUTING / PR / issue templates / CODE_OF_CONDUCT / SECURITY.
@@ -37,7 +37,7 @@ contributions are welcome — see [CONTRIBUTING.md](CONTRIBUTING.md).
 - [ ] Add a bounded VLM-guided PE loop: generate candidates, judge full temporal/audio evidence,
       select or revise prompts, and record every iteration separately from deterministic repair.
 - [ ] Implement the explicit Video, Image, and Unified profile targets in
-      [`docs/community-models.md`](docs/community-models.md), one evidence-scoped PR at a time.
+      [`community-models.md`](community-models.md), one evidence-scoped PR at a time.
 - [ ] Multilingual eval suites and public leaderboard hooks.
 - [ ] Streaming expand API and batch JSONL expand CLI.
 - [ ] Safer media sandboxing for untrusted reference images in shared deployments.
