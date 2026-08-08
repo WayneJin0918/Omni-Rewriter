@@ -31,39 +31,15 @@
 
 ## 项目简介
 
-Omni-Rewriter 是一个开放的 **Prompt Expansion（PE）Agent Harness** —— 控制面：把日常的
-图像/视频意图变成强类型、经过校验、可交给生成器的提示词。
+开放的图像/视频 **Prompt Expansion（PE）Agent Harness**：契约、编排、校验与方言渲染 ——
+不附带专用 PE 权重，也不直接生成媒体。
 
-两个概念要分开看：
-
-| 术语 | 在本仓库中的含义 |
-| --- | --- |
-| **Agent Harness** | 开源产品本体：契约、编排、确定性校验、有界修复、方言渲染、CLI/HTTP。**不**附带专用微调扩写权重。 |
-| **PE（提示词扩写）** | Harness 执行的任务：把短意图改写成面向具体生成器的提示词方言（H3 视频、Seedream / Qwen-Image-Edit 图像等）。 |
-
-> [!IMPORTANT]
-> **扩写 ≠ 生成。** `expand` 止于 PE 文本/JSON。只有显式调用适配器（或你自己的生成器）时
-> 才会出图/出视频。
-
-> [!NOTE]
-> 专用 SFT/RL 扩写 checkpoint 仍在社区路线图。当前只需接入能返回所需结构化 JSON 的
-> Writer。
-
-> [!CAUTION]
-> 内置 VLM pairwise 评分是**事后诊断**（生成后再评帧），不是 VLM 引导的 PE 优化闭环。
-
-<table>
-  <tr>
-    <td width="33%" valign="top"><b>Agent 驱动、有界执行</b><br>在严格契约下完成 analyze → draft → validate → repair。</td>
-    <td width="33%" valign="top"><b>Profile 可扩展</b><br>视频/图像方言是插件；架构边界不是「仅 MiniMax」。</td>
-    <td width="33%" valign="top"><b>运行时可选</b><br>PE 可用闭源 API 或开源权重；生成适配器按需接入。</td>
-  </tr>
-</table>
+<sub>扩写 ≠ 生成。VLM pairwise 仅事后诊断。SFT/RL Writer 在路线图。</sub>
 
 ## 工作原理
 
-**Agent Harness** 拥有整条循环；**Writer LM** 只在需要「写」的地方被调用（`Draft` /
-`Repair`）。校验与渲染保持确定性。输出是 PE 文本，不是媒体。
+这是本仓库的方法。**Agent Harness** 拥有整条循环；**Writer LM** 只在 `Draft` / `Repair`
+被调用。校验与渲染保持确定性。输出是 PE 文本/JSON，从不产生媒体。
 
 ```mermaid
 flowchart LR

@@ -32,40 +32,15 @@
 
 ## About
 
-Omni-Rewriter is an open **Agent Harness for prompt expansion (PE)** — a control plane that turns
-everyday image/video intent into typed, validated, generator-ready prompts.
+Open **Agent Harness** for image/video **prompt expansion (PE)**: schemas, orchestration,
+validation, and dialect render — not a bundled PE checkpoint, not a media generator.
 
-Two ideas stay distinct:
-
-| Term | Meaning in this repo |
-| --- | --- |
-| **Agent Harness** | The open-source product: schemas, orchestration, deterministic validation, bounded repair, dialect renderers, CLI/HTTP. It does **not** ship a fine-tuned writer checkpoint. |
-| **PE (prompt expansion)** | The job the harness runs: rewrite short intent into a model-specific prompt dialect (H3 video, Seedream / Qwen-Image-Edit image, …). |
-
-> [!IMPORTANT]
-> **Expand ≠ generate.** `expand` stops at PE text/JSON. Image/video synthesis only runs when you
-> explicitly call an adapter (or your own generator).
-
-> [!NOTE]
-> Dedicated SFT/RL writer checkpoints remain a community roadmap item. Today you plug in any
-> writer that can return the required structured JSON.
-
-> [!CAUTION]
-> Built-in VLM pairwise scoring is **post-hoc** (judge frames after generation). It is not a
-> VLM-guided PE optimization loop.
-
-<table>
-  <tr>
-    <td width="33%" valign="top"><b>Agentic & bounded</b><br>Analyze → draft → validate → repair under strict schemas.</td>
-    <td width="33%" valign="top"><b>Profile-extensible</b><br>Video/image dialects are plugins; the harness boundary is not MiniMax-only.</td>
-    <td width="33%" valign="top"><b>Runtime-optional</b><br>PE works with closed APIs or open weights; generation adapters are opt-in.</td>
-  </tr>
-</table>
+<sub>Expand ≠ generate. VLM pairwise scoring is post-hoc only. SFT/RL writers are roadmap.</sub>
 
 ## How it works
 
-The **Agent Harness** owns the loop. The **Writer LM** is called only where creativity is needed
-(`Draft` / `Repair`). Validation and render stay deterministic. Output is PE text — not media.
+This is the method. The **Agent Harness** owns the loop; the **Writer LM** is called only for
+`Draft` / `Repair`. Validation and render stay deterministic. Output is PE text/JSON — never media.
 
 ```mermaid
 flowchart LR
