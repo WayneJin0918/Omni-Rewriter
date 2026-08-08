@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-MODEL="${OMNI_WRITER_MODEL:-/pfs/weiyang/WISE_re/CKPT/Qwen/Qwen3.5-9B}"
+MODEL="${OMNI_WRITER_MODEL:?Set OMNI_WRITER_MODEL to your local Qwen3.5 checkpoint path}"
 SERVED_MODEL_NAME="${OMNI_WRITER_SERVED_MODEL_NAME:-Qwen/Qwen3.5-9B}"
 HOST="${OMNI_WRITER_VLLM_HOST:-127.0.0.1}"
 PORT="${OMNI_WRITER_VLLM_PORT:-8000}"

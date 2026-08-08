@@ -2,7 +2,7 @@
 # Reference HunyuanImage-3.0 server. This requires Tencent's documented vLLM fork.
 set -euo pipefail
 
-MODEL="${OMNI_REWRITER_HUNYUAN_MODEL:-/pfs/weiyang/WISE_re/CKPT/tencent/HunyuanImage-3.0}"
+MODEL="${OMNI_REWRITER_HUNYUAN_MODEL:?Set OMNI_REWRITER_HUNYUAN_MODEL to your local HunyuanImage-3.0 checkpoint path}"
 HOST="${OMNI_REWRITER_HUNYUAN_HOST:-127.0.0.1}"
 PORT="${OMNI_REWRITER_HUNYUAN_PORT:-30030}"
 TP="${OMNI_REWRITER_HUNYUAN_TP:-8}"

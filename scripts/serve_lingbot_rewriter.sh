@@ -2,8 +2,8 @@
 set -euo pipefail
 
 PYTHON_BIN="${PYTHON_BIN:-python}"
-BASE_MODEL="${REWRITER_BASE_MODEL:-/pfs/weiyang/WISE_re/CKPT/Qwen/Qwen3.6-27B}"
-ADAPTER="${REWRITER_ADAPTER:-/pfs/weiyang/lingbot-video-rewriter-lora}"
+BASE_MODEL="${REWRITER_BASE_MODEL:?Set REWRITER_BASE_MODEL to your local writer checkpoint path}"
+ADAPTER="${REWRITER_ADAPTER:?Set REWRITER_ADAPTER to your LingBot rewriter LoRA directory}"
 HOST="${HOST:-127.0.0.1}"
 PORT="${PORT:-31000}"
 TP_SIZE="${TP_SIZE:-1}"

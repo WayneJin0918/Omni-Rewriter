@@ -65,7 +65,7 @@ Use `seedream` for a visual-blueprint render or `qwen_image_edit` for imperative
 ```bash
 omni-rewriter validate output.json
 omni-rewriter eval output.json
-omni-rewriter eval examples/fixtures/manifest.jsonl --manifest
+omni-rewriter eval tests/fixtures/manifest.jsonl --manifest
 ```
 
 These commands verify schemas and dialect grammar. They do not generate media or measure

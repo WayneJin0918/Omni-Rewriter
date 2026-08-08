@@ -2,7 +2,7 @@
 # Reference online endpoint for Qwen-Image-2512.
 set -euo pipefail
 
-MODEL="${OMNI_REWRITER_IMAGE_MODEL:-/pfs/weiyang/WISE_re/CKPT/Qwen/Qwen-Image-2512}"
+MODEL="${OMNI_REWRITER_IMAGE_MODEL:?Set OMNI_REWRITER_IMAGE_MODEL to your local Qwen-Image checkpoint path}"
 HOST="${OMNI_REWRITER_IMAGE_HOST:-127.0.0.1}"
 PORT="${OMNI_REWRITER_IMAGE_PORT:-30020}"
 NUM_GPUS="${OMNI_REWRITER_IMAGE_GPUS:-2}"

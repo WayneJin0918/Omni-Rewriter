@@ -67,6 +67,6 @@ omni-rewriter expand request.json
 omni-rewriter expand request.json --output image
 ```
 
-## Experiment
+## Demo surfaces
 
-See `experiments/image-pe-raw-vs-pe/` for raw-vs-PE text comparison (Seedream + Qwen-Image-Edit cases) and the intranet compare page.
+Homepage image RAW vs PE samples live under [`docs/assets/gallery/image/`](assets/gallery/image/).

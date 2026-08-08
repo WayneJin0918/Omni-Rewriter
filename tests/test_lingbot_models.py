@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import os
 from pathlib import Path
 
 import pytest
@@ -7,7 +8,8 @@ from pydantic import ValidationError
 
 from omni_rewriter.models import LingBotCaption
 
-UPSTREAM_CASES = Path("/pfs/weiyang/lingbot-video/assets/cases")
+_cases_env = os.environ.get("LINGBOT_VIDEO_CASES", "").strip()
+UPSTREAM_CASES = Path(_cases_env) if _cases_env else None
 
 
 def image_caption() -> dict[str, object]:
@@ -59,8 +61,12 @@ def video_caption() -> dict[str, object]:
     return value
 
 
-@pytest.mark.skipif(not UPSTREAM_CASES.is_dir(), reason="local LingBot examples unavailable")
+@pytest.mark.skipif(
+    UPSTREAM_CASES is None or not UPSTREAM_CASES.is_dir(),
+    reason="LINGBOT_VIDEO_CASES unset or not a directory",
+)
 def test_all_upstream_caption_examples_validate() -> None:
+    assert UPSTREAM_CASES is not None
     paths = sorted(UPSTREAM_CASES.glob("**/prompt.json"))
     assert len(paths) == 15
     for path in paths:

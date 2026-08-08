@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-UPSTREAM_ROOT="${LINGBOT_VIDEO_ROOT:-/pfs/weiyang/lingbot-video}"
-MODEL_DIR="${MODEL_DIR:-/pfs/weiyang/lingbot-video-moe-30b-a3b}"
+UPSTREAM_ROOT="${LINGBOT_VIDEO_ROOT:?Set LINGBOT_VIDEO_ROOT to your local lingbot-video checkout}"
+MODEL_DIR="${MODEL_DIR:?Set MODEL_DIR to your local LingBot video checkpoint directory}"
 PROMPT_JSON="${PROMPT_JSON:-$UPSTREAM_ROOT/assets/cases/t2v/example_1/prompt.json}"
 OUTPUT="${OUTPUT:-$PWD/outputs/lingbot-video.mp4}"
 BACKEND="${BACKEND:-diffusers}"

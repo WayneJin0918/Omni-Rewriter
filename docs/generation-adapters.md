@@ -74,17 +74,16 @@ reproducible adapter tests are added.
 
 ## Local reference recipes
 
-The scripts are operational recipes, not core dependencies:
+The scripts are operational recipes, not core dependencies. They require local checkpoint paths
+via environment variables (no machine-specific defaults):
 
-- `scripts/serve_sglang_qwen_image.sh`: Qwen-Image-2512 at
-  `/pfs/weiyang/WISE_re/CKPT/Qwen/Qwen-Image-2512`.
-- `scripts/serve_hunyuan_image3_vllm.sh`: HunyuanImage-3.0 through Tencent's vLLM fork.
-- `scripts/serve_sglang_wan.sh` and `scripts/serve_vllm_omni_wan.sh`: WAN reference launchers;
-  verify runtime/version support before use.
-- `scripts/serve_lingbot_rewriter.sh`: base Qwen3.6-27B expansion plus
-  `/pfs/weiyang/lingbot-video-rewriter-lora` JSON mapping.
-- `scripts/run_lingbot_video.sh`: independent generation through
-  `/pfs/weiyang/lingbot-video` and `/pfs/weiyang/lingbot-video-moe-30b-a3b`.
+- `scripts/serve_sglang_qwen_image.sh`: set `OMNI_REWRITER_IMAGE_MODEL`.
+- `scripts/serve_hunyuan_image3_vllm.sh`: set `OMNI_REWRITER_HUNYUAN_MODEL` (Tencent vLLM fork).
+- `scripts/serve_sglang_wan.sh` and `scripts/serve_vllm_omni_wan.sh`: set
+  `OMNI_REWRITER_WAN_MODEL`; verify runtime/version support before use.
+- `scripts/serve_lingbot_rewriter.sh`: set `REWRITER_BASE_MODEL` and `REWRITER_ADAPTER`.
+- `scripts/run_lingbot_video.sh`: set `LINGBOT_VIDEO_ROOT` and `MODEL_DIR`.
+- `scripts/serve_qwen35_dev.sh` / `serve_qwen35_prod.sh`: set `OMNI_WRITER_MODEL`.
 
 The LingBot stages are intentionally separate from the default Omni-Rewriter agent and from
 `service.expand`.

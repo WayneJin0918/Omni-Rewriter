@@ -63,7 +63,7 @@ omni-rewriter expand request.json --output h3
 ```bash
 omni-rewriter validate output.json
 omni-rewriter eval output.json
-omni-rewriter eval examples/fixtures/manifest.jsonl --manifest
+omni-rewriter eval tests/fixtures/manifest.jsonl --manifest
 ```
 
 这些命令检查 schema 和方言语法，不生成媒体，也不衡量感知质量。

@@ -66,17 +66,15 @@ Omni-Rewriter 集成测试。在加入可复现 adapter 测试前，端到端 pr
 
 ## 本地参考配方
 
-以下脚本是可选运行配方，不属于核心依赖：
+以下脚本是可选运行配方，不属于核心依赖；须通过环境变量提供本地权重路径（无机器默认值）：
 
-- `scripts/serve_sglang_qwen_image.sh`：加载
-  `/pfs/weiyang/WISE_re/CKPT/Qwen/Qwen-Image-2512`。
-- `scripts/serve_hunyuan_image3_vllm.sh`：通过腾讯 vLLM fork 启动 HunyuanImage-3.0。
-- `scripts/serve_sglang_wan.sh`、`scripts/serve_vllm_omni_wan.sh`：WAN 参考启动脚本；
-  使用前必须核对 runtime 版本支持。
-- `scripts/serve_lingbot_rewriter.sh`：Qwen3.6-27B base expansion 加
-  `/pfs/weiyang/lingbot-video-rewriter-lora` JSON mapping。
-- `scripts/run_lingbot_video.sh`：通过 `/pfs/weiyang/lingbot-video` 与
-  `/pfs/weiyang/lingbot-video-moe-30b-a3b` 独立生成。
+- `scripts/serve_sglang_qwen_image.sh`：设置 `OMNI_REWRITER_IMAGE_MODEL`。
+- `scripts/serve_hunyuan_image3_vllm.sh`：设置 `OMNI_REWRITER_HUNYUAN_MODEL`（腾讯 vLLM fork）。
+- `scripts/serve_sglang_wan.sh`、`scripts/serve_vllm_omni_wan.sh`：设置
+  `OMNI_REWRITER_WAN_MODEL`；使用前须核对 runtime 版本支持。
+- `scripts/serve_lingbot_rewriter.sh`：设置 `REWRITER_BASE_MODEL` 与 `REWRITER_ADAPTER`。
+- `scripts/run_lingbot_video.sh`：设置 `LINGBOT_VIDEO_ROOT` 与 `MODEL_DIR`。
+- `scripts/serve_qwen35_dev.sh` / `serve_qwen35_prod.sh`：设置 `OMNI_WRITER_MODEL`。
 
 LingBot 两阶段流程不替换默认 Omni-Rewriter agent，也不接入 `service.expand`。
 

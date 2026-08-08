@@ -40,6 +40,9 @@ trace/
 *.trace.json
 *.trace.jsonl
 
+# Local research dumps (kept off the public tree; demos live under docs/)
+experiments/
+
 # Generated or local media
 media/
 outputs/

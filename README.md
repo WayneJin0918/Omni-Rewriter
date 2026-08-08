@@ -61,14 +61,49 @@ adapters, and evaluation are separate extension layers.
   </tr>
 </table>
 
+## PE pipeline
+
+The product surface is the harness — not an experiment dump. Intent becomes a typed
+`RewriteRequest`, then a bounded agent loop produces dialect-ready PE text/JSON.
+**Expand does not generate media.**
+
+```mermaid
+flowchart LR
+  intent[Intent] --> request[RewriteRequest]
+  request --> analyze[Analyze]
+  analyze --> draft[Draft]
+  draft --> validate{Validate}
+  validate -->|repairable| repair[BoundedRepair]
+  repair --> validate
+  validate -->|valid| render[DialectRender]
+  render --> peText[PE_text_JSON]
+```
+
+- **Analyze** — classify task (video vs image), gather constraints and media roles.
+- **Draft** — writer returns structured profile fields for the chosen dialect.
+- **Validate** — deterministic schema and profile rules (duration, quotes, cuts, …).
+- **Bounded repair** — limited LLM fixes for repairable failures; hard fails otherwise.
+- **Dialect render** — emit H3 / Seedream / Qwen-Image-Edit text without calling a generator.
+
+CLI and HTTP (`POST /v1/expand`) share this service layer. Details:
+[architecture](docs/architecture.md).
+
+## Models used by this release
+
+| Role | What ships | Notes |
+| --- | --- | --- |
+| **Writer** | OpenAI-compatible chat backend | Demoed locally with **Qwen3.5** via `scripts/serve_qwen35_*.sh` (`OMNI_WRITER_MODEL` required). Also works with GPT / Claude gateways that return structured JSON. |
+| **Video PE profile** | **MiniMax-H3** | Timeline, camera, dialogue, and soundscape rules; render with `--output h3`. |
+| **Image PE profiles** | **Seedream**, **Qwen-Image-Edit** | PE text/metadata only — not a Seedream generation adapter. |
+
+Optional generation adapters (WAN, Qwen-Image HTTP, HunyuanImage, LingBot, …) are separate
+from `expand`. Compatibility claims stay evidence-scoped — see
+[generation adapters](docs/generation-adapters.md).
+
 <details>
-<summary><b>Writer / agent model compatibility</b> — frontier closed and open-weight backends</summary>
+<summary><b>Writer backend compatibility</b></summary>
 
 <br>
-
-The PE orchestration is writer-model agnostic when the backend can return the required structured
-JSON. It can use closed frontier agents such as **GPT-5.6** and **Claude Opus 5** through a
-compatible endpoint, as well as open **Qwen / Qwen3 / Qwen3.5** models served locally.
 
 | Writer family | Connection path | Repository evidence |
 | --- | --- | --- |
@@ -79,29 +114,10 @@ compatible endpoint, as well as open **Qwen / Qwen3 / Qwen3.5** models served lo
 
 </details>
 
-## How it works
-
-```mermaid
-flowchart LR
-  A["Generation intent"] --> B["Typed RewriteRequest"]
-  B --> C["Analyze"]
-  C --> D["Draft"]
-  D --> E{"Validate"}
-  E -- repairable --> F["Bounded repair"]
-  F --> E
-  E -- valid --> G["Dialect renderer"]
-  G --> H["Validated PE text / JSON"]
-  H -. optional .-> I["Online or local adapter"]
-  I -.-> J["RAW vs PE evaluation"]
-```
-
-The same service layer powers the CLI and HTTP API. See
-[architecture](docs/architecture.md) for public schemas and lifecycle details.
-
 ## Model ecosystem
 
-Left color = category (Video / Image / Unified); right = `available` / `wanted`.
-Prefer small PRs with a title prefix — see [CONTRIBUTING.md](CONTRIBUTING.md).
+Community board — left color = category (Video / Image / Unified); right = `available` /
+`wanted`. Prefer small PRs with a title prefix — see [CONTRIBUTING.md](CONTRIBUTING.md).
 
 <p align="center">
   <img alt="MiniMax-H3 available" src="https://img.shields.io/badge/MiniMax--H3-available-brightgreen?style=flat-square&labelColor=4f46e5" />
@@ -183,9 +199,11 @@ cp .env.example .env
 set -a; source .env; set +a
 ```
 
-Start an OpenAI-compatible writer backend, then expand a request:
+Start an OpenAI-compatible writer backend (set `OMNI_WRITER_MODEL` to your local
+checkpoint), then expand a request:
 
 ```bash
+export OMNI_WRITER_MODEL=/path/to/Qwen3.5-checkpoint
 scripts/serve_qwen35_dev.sh
 
 cat > request.json <<'JSON'
@@ -221,7 +239,7 @@ RewriteRequest
   └─ PE harness          analyze · draft · validate · repair
       └─ dialect         task-specific prompt schema and renderer
           └─ adapter     optional HTTP client or local runner
-              └─ eval    structural checks · RAW/PE experiments · galleries
+              └─ eval    structural checks · RAW/PE demos under docs/
 ```
 
 - **Core:** typed request/output contracts and deterministic validation.

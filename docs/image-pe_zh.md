@@ -68,3 +68,7 @@ omni-rewriter expand request.json --output image
 扩写结果可以交给应用自有 adapter，但 runtime 兼容性必须单独验证。Qwen-Image-2512 的
 SGLang-Diffusion 上游证据和其他模型路径见
 [生成适配器](generation-adapters_zh.md)。
+
+## 演示资产
+
+首页图像 RAW vs PE 样例见 [`docs/assets/gallery/image/`](assets/gallery/image/)。

@@ -3,7 +3,7 @@
 set -euo pipefail
 
 ROOT="$(cd "$(dirname "$0")/.." && pwd)"
-EXP="$ROOT/experiments/t2va-base-15s-raw-vs-pe"
+EXP="${OMNI_H3_DEMO_VIDEOS:?Set OMNI_H3_DEMO_VIDEOS to a local dir with videos/raw and videos/pe}"
 OUT="$ROOT/docs/assets/gallery"
 
 FPS=8

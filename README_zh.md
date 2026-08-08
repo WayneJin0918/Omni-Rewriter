@@ -59,14 +59,47 @@ Harness**。它通过有界 `analyze → draft → validate → repair` Agent �
   </tr>
 </table>
 
+## PE 流水线
+
+产品面是 Harness 本身，而不是实验目录转储。意图先进入类型化 `RewriteRequest`，再经有界
+Agent 循环产出可交给生成器的 PE 文本/JSON。**扩写不等于生成媒体。**
+
+```mermaid
+flowchart LR
+  intent[Intent] --> request[RewriteRequest]
+  request --> analyze[Analyze]
+  analyze --> draft[Draft]
+  draft --> validate{Validate}
+  validate -->|可修复| repair[BoundedRepair]
+  repair --> validate
+  validate -->|通过| render[DialectRender]
+  render --> peText[PE_text_JSON]
+```
+
+- **Analyze** — 判定视频/图像任务，收集约束与媒体角色。
+- **Draft** — 扩写模型按所选方言返回结构化字段。
+- **Validate** — 确定性 schema 与 profile 规则（时长、引号、切点等）。
+- **Bounded repair** — 对可修复错误做有限次数 LLM 修复，否则硬失败。
+- **Dialect render** — 输出 H3 / Seedream / Qwen-Image-Edit 文本，不调用生成器。
+
+CLI 与 HTTP（`POST /v1/expand`）共用该 service 层。详见
+[架构文档](docs/architecture_zh.md)。
+
+## 本版本使用的模型
+
+| 角色 | 已交付内容 | 说明 |
+| --- | --- | --- |
+| **扩写 Writer** | 兼容 OpenAI 的 Chat 后端 | 本地演示使用 **Qwen3.5**（`scripts/serve_qwen35_*.sh`，需设置 `OMNI_WRITER_MODEL`）。也可接能返回结构化 JSON 的 GPT / Claude 网关。 |
+| **视频 PE 配置** | **MiniMax-H3** | 时间轴、运镜、对白与声景规则；使用 `--output h3` 渲染。 |
+| **图像 PE 配置** | **Seedream**、**Qwen-Image-Edit** | 仅产出 PE 文本/元数据，并非 Seedream 生成适配器。 |
+
+可选生成适配器（WAN、Qwen-Image HTTP、HunyuanImage、LingBot 等）与 `expand` 解耦。兼容性
+声明以证据范围为限，见 [生成适配器](docs/generation-adapters_zh.md)。
+
 <details>
-<summary><b>扩写 Agent 模型兼容性</b> — 前沿闭源模型与开源权重模型</summary>
+<summary><b>扩写后端兼容性</b></summary>
 
 <br>
-
-只要后端能够返回所需的结构化 JSON，PE 编排就不绑定具体扩写模型。它既可以通过兼容接口
-使用 **GPT-5.6**、**Claude Opus 5** 等前沿闭源 Agent，也可以在本地运行开源的
-**Qwen / Qwen3 / Qwen3.5** 系列。
 
 | 扩写模型族 | 接入方式 | 仓库内依据 |
 | --- | --- | --- |
@@ -77,29 +110,10 @@ Harness**。它通过有界 `analyze → draft → validate → repair` Agent �
 
 </details>
 
-## 工作流程
-
-```mermaid
-flowchart LR
-  A["生成意图"] --> B["类型化 RewriteRequest"]
-  B --> C["Analyze"]
-  C --> D["Draft"]
-  D --> E{"Validate"}
-  E -- 可修复 --> F["有界 Repair"]
-  F --> E
-  E -- 通过 --> G["方言 Renderer"]
-  G --> H["已校验 PE 文本 / JSON"]
-  H -. 可选 .-> I["在线或本地 Adapter"]
-  I -.-> J["RAW vs PE 评测"]
-```
-
-CLI 与 HTTP API 共用相同 service 层。公共 schema 与完整生命周期见
-[架构文档](docs/architecture_zh.md)。
-
 ## 模型生态
 
-左侧色 = 分类（Video / Image / Unified）；右侧 = `available` / `wanted`。
-请优先提交带标题前缀的小 PR，详见 [CONTRIBUTING.md](CONTRIBUTING.md)。
+社区贡献看板 — 左侧色 = 分类（Video / Image / Unified）；右侧 = `available` /
+`wanted`。请优先提交带标题前缀的小 PR，详见 [CONTRIBUTING.md](CONTRIBUTING.md)。
 
 <p align="center">
   <img alt="MiniMax-H3 available" src="https://img.shields.io/badge/MiniMax--H3-available-brightgreen?style=flat-square&labelColor=4f46e5" />
@@ -181,9 +195,10 @@ cp .env.example .env
 set -a; source .env; set +a
 ```
 
-启动兼容 OpenAI API 的提示词扩写模型服务，然后处理请求：
+启动兼容 OpenAI API 的扩写后端（需设置 `OMNI_WRITER_MODEL` 指向本地权重），然后处理请求：
 
 ```bash
+export OMNI_WRITER_MODEL=/path/to/Qwen3.5-checkpoint
 scripts/serve_qwen35_dev.sh
 
 cat > request.json <<'JSON'
@@ -218,7 +233,7 @@ RewriteRequest
   └─ PE harness          analyze · draft · validate · repair
       └─ dialect         面向具体任务的提示词结构与渲染器
           └─ adapter     可选 HTTP client 或本地 runner
-              └─ eval    结构检查 · RAW/PE 实验 · Gallery
+              └─ eval    结构检查 · docs/ 下的 RAW/PE 演示
 ```
 
 - **核心层：** 强类型输入输出契约与确定性校验。

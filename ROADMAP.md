@@ -23,10 +23,8 @@ contributions are welcome — see [CONTRIBUTING.md](CONTRIBUTING.md).
       and independent LingBot adapters without coupling them to `expand`.
 - [x] Add mock contract tests for image/video submit, polling, base64/URL decoding, download
       limits, WAN mapping, Hunyuan extension fields, and LingBot subprocess/rewriter behavior.
-- [x] Expand `experiments/image-pe-raw-vs-pe` with reproducible Qwen T2I/Edit and Hunyuan A/B.
-- [ ] Add a provider-specific Seedream generation adapter after a public stable contract is chosen.
+- [x] Publish H3 RAW vs PE demo surfaces under `docs/` (landing, showcase, homepage gallery).
 - [ ] Run live SGLang/vLLM-Omni WAN compatibility matrices across pinned runtime releases.
-- [ ] Finish camera/cut stress video set (`s11`–`s16`) expand + generate against H3.
 - [ ] Strengthen image validators for quote-language consistency (Chinese `“”` vs English `""`).
 
 ## Community / research TODOs

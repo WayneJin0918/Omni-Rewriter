@@ -150,7 +150,7 @@ def test_evaluator_manifest_parse_error(
 
 
 def test_original_example_manifest() -> None:
-    manifest = Path(__file__).parents[1] / "examples" / "fixtures" / "manifest.jsonl"
+    manifest = Path(__file__).parents[1] / "tests" / "fixtures" / "manifest.jsonl"
     result_value = BasicEvaluator().evaluate_manifest(manifest)
     assert result_value["valid"] is True
     assert result_value["summary"] == {"total": 3, "passed": 3, "failed": 0}

@@ -21,10 +21,11 @@ The standalone comparison page is `docs/assets/gallery/index.html`.
 For the fuller public landing page (pipeline + all published pairs), see
 `docs/h3-pe-showcase/index.html`.
 
-Regenerate the GIFs from the gitignored experiment videos with:
+Regenerate the GIFs from local demo videos (directory must contain `videos/raw/`
+and `videos/pe/`):
 
 ```bash
-scripts/make_gallery_thumbs.sh
+OMNI_H3_DEMO_VIDEOS=/path/to/local-h3-demos scripts/make_gallery_thumbs.sh
 ```
 
 The script uses per-clip `palettegen`/`paletteuse` processing and enforces a

@@ -2,7 +2,7 @@
 # Reference WAN endpoint via SGLang diffusion.
 set -euo pipefail
 
-MODEL="${OMNI_REWRITER_WAN_MODEL:-/pfs/weiyang/Wan2.1-T2V-1.3B}"
+MODEL="${OMNI_REWRITER_WAN_MODEL:?Set OMNI_REWRITER_WAN_MODEL to your local WAN checkpoint path}"
 HOST="${OMNI_REWRITER_VIDEO_HOST:-127.0.0.1}"
 PORT="${OMNI_REWRITER_VIDEO_PORT:-30040}"
 NUM_GPUS="${OMNI_REWRITER_VIDEO_GPUS:-1}"

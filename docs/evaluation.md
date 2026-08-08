@@ -47,7 +47,7 @@ An invalid case reports structured validation errors plus conservative failure m
 Each non-empty line must be a JSON object accepted by the single-case evaluator:
 
 ```bash
-omni-rewriter eval examples/fixtures/manifest.jsonl --manifest
+omni-rewriter eval tests/fixtures/manifest.jsonl --manifest
 ```
 
 The result contains every case with its source line number and an aggregate total/passed/failed

@@ -8,15 +8,14 @@ In-repo demo grid for Omni-Rewriter's MiniMax-H3 prompt-expansion profile
   https://waynejin0918.github.io/Omni-Rewriter/ (served from the `gh-pages`
   branch when GitHub Pages is enabled).
 - Low-res RAW vs PE GIF thumbs live in `thumbs/` (no full `.mp4` blobs).
-- Regenerate thumbs from the gitignored experiment videos:
+- To regenerate thumbs from local videos, set `OMNI_H3_DEMO_VIDEOS` to a directory
+  that contains `videos/raw/` and `videos/pe/`, then run:
 
 ```bash
-scripts/make_h3_pe_showcase_thumbs.sh
+OMNI_H3_DEMO_VIDEOS=/path/to/local-h3-demos scripts/make_h3_pe_showcase_thumbs.sh
 ```
 
-Published pairs: **15** from `experiments/t2va-base-15s-raw-vs-pe/`
-(`s01–s09`, `s11–s15`, `s19`; dropped weak `s10` phone-call and `s16` train match-cut),
-including the camera/cut stress set (`s11–s15`) plus fencing multi-angle (`s19`).
+Published pairs: **15** (`s01–s09`, `s11–s15`, `s19`).
 
 Homepage highlights the best three stress demos (concert crash-zoom, kitchen
 whip-pan, rooftop arc) in `docs/assets/gallery/`.

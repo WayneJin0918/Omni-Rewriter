@@ -29,7 +29,7 @@ omni-rewriter eval output.json
 每个非空行必须是单样本 evaluator 可接受的 JSON 对象：
 
 ```bash
-omni-rewriter eval examples/fixtures/manifest.jsonl --manifest
+omni-rewriter eval tests/fixtures/manifest.jsonl --manifest
 ```
 
 结果包含每个样本及源行号，并聚合 total/passed/failed。任一样本失败、manifest 为空或输入

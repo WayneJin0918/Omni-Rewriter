@@ -8,19 +8,6 @@ and prompts live in HTML/Markdown, not inside image pixels.
 | `qwen_t2i_*` | Qwen-Image-2512 | identical seed/size/steps, RAW vs PE prompt |
 | `hunyuan_t2i_*` | HunyuanImage-3.0 | identical seed/ratio, RAW vs PE prompt |
 
-Full-resolution outputs and provenance manifests are generated under
-`experiments/image-pe-raw-vs-pe/outputs/` and remain gitignored. Reproduce with:
-
-Committed hardware, model, seed, size, step, and runtime details are recorded in
-[`experiments/image-pe-raw-vs-pe/GENERATION_RUNS.md`](../../../../experiments/image-pe-raw-vs-pe/GENERATION_RUNS.md).
-
-```bash
-# Qwen environments
-CUDA_VISIBLE_DEVICES=0 /pfs/weiyang/Miniconda3/envs/qwenimage/bin/python \
-  experiments/image-pe-raw-vs-pe/run_experiment.py generate --backend qwen-t2i
-
-# Hunyuan environment
-CUDA_VISIBLE_DEVICES=0,1,2,3,4,5,6,7 \
-  /pfs/weiyang/Miniconda3/envs/hyimage/bin/python \
-  experiments/image-pe-raw-vs-pe/run_experiment.py generate --backend hunyuan
-```
+Full-resolution generation remains local and gitignored. Use your own OpenAI-compatible
+or custom-vLLM image endpoints via the adapters documented in
+[`docs/generation-adapters.md`](../../../generation-adapters.md).
