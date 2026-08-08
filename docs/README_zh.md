@@ -59,7 +59,7 @@ flowchart LR
 | **Draft** | **Writer LM** | 按 profile schema 产出结构化 JSON |
 | **Validate** | Harness | 确定性校验（时间轴、引号、必填字段、方言规则） |
 | **Repair** | **Writer LM** | 可修复错误做有限次重试；否则硬失败 |
-| **Render** | Harness | 序列化为 H3 / Seedream / Qwen-Image-Edit 文本 |
+| **Render** | Harness | 输出面向终端 / 执行模型的 PE 文本（T2I、T2V 等） |
 
 CLI（`omni-rewriter expand`）与 HTTP（`POST /v1/expand`）共用同一路径。详见
 [架构文档](architecture_zh.md)。

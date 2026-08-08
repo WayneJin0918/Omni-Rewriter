@@ -61,7 +61,7 @@ flowchart LR
 | **Draft** | **Writer LM** | Fill the profile schema as structured JSON |
 | **Validate** | Harness | Deterministic checks (timeline, quotes, required fields, dialect rules) |
 | **Repair** | **Writer LM** | Bounded retries on repairable failures; otherwise hard-fail |
-| **Render** | Harness | Serialize to H3 / Seedream / Qwen-Image-Edit text |
+| **Render** | Harness | Emit PE text for terminal / execute models (T2I, T2V, …) |
 
 Same path for CLI (`omni-rewriter expand`) and HTTP (`POST /v1/expand`). Details:
 [architecture](docs/architecture.md).
