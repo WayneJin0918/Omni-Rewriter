@@ -17,7 +17,7 @@ remains an explicit, separate step.
 ## Video and image profiles
 
 - [Video PE](h3-pe-harness.md) — current H3 routing, timeline grammar, and bounded repair.
-- [Day Two H3 PE site](day2-h3-pe/index.html) — rose/pink Day Two landing (also `gh-pages`).
+- [H3 PE site](day2-h3-pe/index.html) — Omni-Rewriter H3 PE promotional landing (also `gh-pages`).
 - [H3 PE showcase](h3-pe-showcase/index.html) — public RAW vs PE landing page for MiniMax-H3.
 - [Image PE](image-pe.md) — Seedream and Qwen-Image-Edit image packing.
 - [H3 adapters](h3-adapters.md) — implemented local H3 and MiniMax clients.

@@ -4,7 +4,7 @@ In-repo demo grid for Omni-Rewriter's MiniMax-H3 prompt-expansion profile
 (all published pairs, compact layout).
 
 - Open [`index.html`](index.html) locally.
-- **Day Two marketing site:** [`../day2-h3-pe/`](../day2-h3-pe/) and
+- **H3 PE promotional site:** [`../day2-h3-pe/`](../day2-h3-pe/) and
   https://waynejin0918.github.io/Omni-Rewriter/ (served from the `gh-pages`
   branch when GitHub Pages is enabled).
 - Low-res RAW vs PE GIF thumbs live in `thumbs/` (no full `.mp4` blobs).

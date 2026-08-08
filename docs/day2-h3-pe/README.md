@@ -1,6 +1,7 @@
-# Day Two · H3 PE
+# H3 PE landing
 
-Promotional landing page for Omni-Rewriter MiniMax-H3 PE (rose/pink Day Two).
+Promotional landing page for Omni-Rewriter’s MiniMax-H3 prompt-expansion instance
+(rose/pink visual theme).
 
 - Dense grid: **16** RAW/PE pairs, **3 pairs / 6 clips per row** on wide screens
 - GitHub Pages branch: `gh-pages` → https://waynejin0918.github.io/Omni-Rewriter/

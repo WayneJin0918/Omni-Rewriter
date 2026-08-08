@@ -15,7 +15,7 @@ Harness**。它把意图扩写为目标 PE 方言；媒体生成是显式且独�
 ## 视频与图像配置
 
 - [Video PE](h3-pe-harness_zh.md)：当前 H3 视频路由、时间轴语法与有界修复。
-- [Day Two H3 PE 站点](day2-h3-pe/index.html)：红粉宣传落地页（同步 `gh-pages`）。
+- [H3 PE 站点](day2-h3-pe/index.html)：Omni-Rewriter 在 H3 上的 PE 宣传落地页（同步 `gh-pages`）。
 - [H3 PE showcase](h3-pe-showcase/index.html)：面向 MiniMax-H3 的公开 RAW vs PE 落地页。
 - [图像 PE](image-pe_zh.md)：Seedream 与 Qwen-Image-Edit 打包。
 - [H3 adapters（英文）](h3-adapters.md)：已实现的本地 H3 与 MiniMax 客户端。

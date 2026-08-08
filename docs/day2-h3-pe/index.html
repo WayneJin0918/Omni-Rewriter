@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Day Two · H3 PE — Omni-Rewriter</title>
-  <meta name="description" content="Omni-Rewriter Day Two validated prompt expansion for MiniMax-H3. Dense same-seed RAW vs PE demos, open source on GitHub.">
+  <title>H3 PE — Omni-Rewriter</title>
+  <meta name="description" content="Omni-Rewriter prompt expansion for MiniMax-H3: validated timelines, dialogue, camera grammar, and same-seed RAW vs PE demos. Open source on GitHub.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,700&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -94,12 +94,12 @@
       </nav>
     </header>
     <section class="hero">
-      <div class="eyebrow">Day Two · H3 PE</div>
-      <h1>Validated prompt expansion for MiniMax-H3</h1>
+      <div class="eyebrow">Omni-Rewriter · H3 PE</div>
+      <h1>Prompt expansion tuned for MiniMax-H3</h1>
       <p class="lede">
-        Structured H3 timelines, dialogue tags, camera grammar, and continuity — with deterministic
-        validation and bounded repair. Expand is not generate. Dense same-seed RAW vs PE grid below;
-        higher-bar regenerations and curation come next.
+        Omni-Rewriter turns everyday video intent into typed H3 prompts: shot timing, dialogue tags,
+        camera grammar, and continuity checks with bounded repair. Expand is not generate. The
+        same-seed RAW vs PE grid below is our public PE instance for H3 — denser curation continues.
       </p>
       <div class="cta-row">
         <a class="btn btn-primary" href="https://github.com/WayneJin0918/Omni-Rewriter">Open source on GitHub</a>
@@ -108,7 +108,7 @@
       </div>
     </section>
     <section class="block" id="why">
-      <div class="section-kicker">01 — Why PE for H3</div>
+      <div class="section-kicker">Why PE for H3</div>
       <h2>H3 rewards prompts that already know the cut</h2>
       <p>
         Short user intents rarely specify shot timing, speaker markup, camera motion, or ambient layers.
@@ -117,7 +117,7 @@
       </p>
     </section>
     <section class="block" id="pipeline">
-      <div class="section-kicker">02 — Pipeline</div>
+      <div class="section-kicker">Pipeline</div>
       <h2>Analyze · draft · validate · repair · render</h2>
       <p>
         A PE profile does not prove generation-runtime compatibility. Adapters stay optional and
@@ -126,15 +126,15 @@
         PE optimization.
       </p>
       <div class="pipeline">
-        <div class="step"><em>01</em><strong>RewriteRequest</strong><span>Prompt, duration, task, metadata.</span></div>
-        <div class="step"><em>02</em><strong>Analyze &amp; draft</strong><span>Invariants, state, transitions, evidence.</span></div>
-        <div class="step"><em>03</em><strong>Validate</strong><span>Deterministic H3 grammar checks.</span></div>
-        <div class="step"><em>04</em><strong>Bounded repair</strong><span>Retry with errors + invariants only.</span></div>
-        <div class="step"><em>05</em><strong>Dialect render</strong><span>H3 text out; optional generate next.</span></div>
+        <div class="step"><em>Input</em><strong>RewriteRequest</strong><span>Prompt, duration, task, metadata.</span></div>
+        <div class="step"><em>Plan</em><strong>Analyze &amp; draft</strong><span>Invariants, state, transitions, evidence.</span></div>
+        <div class="step"><em>Check</em><strong>Validate</strong><span>Deterministic H3 grammar checks.</span></div>
+        <div class="step"><em>Fix</em><strong>Bounded repair</strong><span>Retry with errors + invariants only.</span></div>
+        <div class="step"><em>Out</em><strong>Dialect render</strong><span>H3 text out; optional generate next.</span></div>
       </div>
     </section>
     <section class="block" id="cases">
-      <div class="section-kicker">03 — Case studies</div>
+      <div class="section-kicker">Cases</div>
       <h2>Sixteen RAW vs PE pairs · dense compare</h2>
       <p>
         Three pairs per row (<strong>six clips across</strong>) on wide screens. Expand any card for RAW prompt and full H3 PE.
@@ -736,8 +736,8 @@ non_diegetic_music: None</pre>
       </div>
     </section>
     <section class="block" id="ship">
-      <div class="section-kicker">04 — What ships</div>
-      <h2>Open harness, not a closed IR dump</h2>
+      <div class="section-kicker">In the repo</div>
+      <h2>Open PE harness for H3 and beyond</h2>
       <div class="pillars">
         <div class="pillar"><h3>H3 PE profile</h3><p>Typed output, validators, repair rules, and dialect renderer for video timelines.</p></div>
         <div class="pillar"><h3>Fixtures &amp; eval</h3><p>RAW vs expanded fixtures, gallery thumbs, and experiment manifests for reproducible demos.</p></div>
@@ -752,7 +752,10 @@ non_diegetic_music: None</pre>
       <div class="foot-row">
         <div>
           <div class="brand" style="margin-bottom:0.35rem">Omni-<span>Rewriter</span></div>
-          <p class="note">Community Day Two PE support for MiniMax-H3. Not affiliated with NVIDIA Sol Engine or MiniMax. This page does not claim to reproduce private vendor Context-IR internals.</p>
+          <p class="note">
+            Public Omni-Rewriter instance of validated prompt expansion for MiniMax-H3.
+            Expand is not generate; this page does not claim to reproduce private vendor Context-IR.
+          </p>
         </div>
         <div>
           <a href="https://github.com/WayneJin0918/Omni-Rewriter">github.com/WayneJin0918/Omni-Rewriter</a><br>
