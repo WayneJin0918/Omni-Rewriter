@@ -32,40 +32,39 @@
 
 ## About
 
-Omni-Rewriter is an open, model-extensible **agentic prompt expansion (PE) harness** for image and
-video generation. Its AI-agent loop transforms natural multimodal intent into typed, validated,
-generator-oriented text through bounded `analyze → draft → validate → repair`.
+Omni-Rewriter is an open **Agent Harness for prompt expansion (PE)** — a control plane that turns
+everyday image/video intent into typed, validated, generator-ready prompts.
 
-The framework is deliberately model-agnostic: task schemas, validation, rendering, runtime
-adapters, and evaluation are separate extension layers.
+Two ideas stay distinct:
 
-> [!NOTE]
-> **Current open-source release: Agent Harness.** It delivers agent orchestration, schemas,
-> deterministic checks, and bounded repair today; dedicated SFT/RL writer checkpoints remain
-> community roadmap items.
+| Term | Meaning in this repo |
+| --- | --- |
+| **Agent Harness** | The open-source product: schemas, orchestration, deterministic validation, bounded repair, dialect renderers, CLI/HTTP. It does **not** ship a fine-tuned writer checkpoint. |
+| **PE (prompt expansion)** | The job the harness runs: rewrite short intent into a model-specific prompt dialect (H3 video, Seedream / Qwen-Image-Edit image, …). |
 
 > [!IMPORTANT]
-> **Expand is not generate.** The core harness produces validated text/JSON. Model loading and
-> media generation happen only when an application explicitly invokes an adapter or local runner.
+> **Expand ≠ generate.** `expand` stops at PE text/JSON. Image/video synthesis only runs when you
+> explicitly call an adapter (or your own generator).
+
+> [!NOTE]
+> Dedicated SFT/RL writer checkpoints remain a community roadmap item. Today you plug in any
+> writer that can return the required structured JSON.
 
 > [!CAUTION]
-> **Current VLM evaluation is post-hoc, not an optimization loop.** The internal pairwise scorer
-> judges sampled RAW/PE frames after generation; its scores do not feed back into prompt revision.
-> This release therefore claims validated prompt expansion, not VLM-guided PE optimization.
+> Built-in VLM pairwise scoring is **post-hoc** (judge frames after generation). It is not a
+> VLM-guided PE optimization loop.
 
 <table>
   <tr>
-    <td width="33%" valign="top"><b>Agentic & bounded</b><br>Analyze, draft, validate, and repair with strict schemas and deterministic guardrails.</td>
-    <td width="33%" valign="top"><b>Model-extensible</b><br>Profiles and renderers encode public prompt dialects without making them the architecture.</td>
-    <td width="33%" valign="top"><b>Runtime-optional</b><br>Expansion remains independent from vendor APIs, online services, and heavyweight local inference.</td>
+    <td width="33%" valign="top"><b>Agentic & bounded</b><br>Analyze → draft → validate → repair under strict schemas.</td>
+    <td width="33%" valign="top"><b>Profile-extensible</b><br>Video/image dialects are plugins; the harness boundary is not MiniMax-only.</td>
+    <td width="33%" valign="top"><b>Runtime-optional</b><br>PE works with closed APIs or open weights; generation adapters are opt-in.</td>
   </tr>
 </table>
 
-## PE pipeline
+## Agent Harness & PE flow
 
-The product surface is the harness — not an experiment dump. Intent becomes a typed
-`RewriteRequest`, then a bounded agent loop produces dialect-ready PE text/JSON.
-**Expand does not generate media.**
+**Harness** = orchestration + contracts. **PE flow** = the five steps inside every `expand`:
 
 ```mermaid
 flowchart LR
@@ -79,40 +78,47 @@ flowchart LR
   render --> peText[PE_text_JSON]
 ```
 
-- **Analyze** — classify task (video vs image), gather constraints and media roles.
-- **Draft** — writer returns structured profile fields for the chosen dialect.
-- **Validate** — deterministic schema and profile rules (duration, quotes, cuts, …).
-- **Bounded repair** — limited LLM fixes for repairable failures; hard fails otherwise.
-- **Dialect render** — emit H3 / Seedream / Qwen-Image-Edit text without calling a generator.
+1. **Analyze** — route video vs image, read duration/media/metadata, pick the PE profile.
+2. **Draft** — call the **writer agent** (LLM) for structured fields in that profile’s schema.
+3. **Validate** — run deterministic checks (timeline, quotes, required fields, dialect rules).
+4. **Bounded repair** — if errors are repairable, ask the writer again with a capped retry budget; otherwise fail loudly.
+5. **Dialect render** — serialize to H3 / Seedream / Qwen-Image-Edit text (still no media generation).
 
-CLI and HTTP (`POST /v1/expand`) share this service layer. Details:
+Same path for CLI (`omni-rewriter expand`) and HTTP (`POST /v1/expand`). See
 [architecture](docs/architecture.md).
 
-## Models used by this release
+## Current support
 
-| Role | What ships | Notes |
+### Writer agents (who draft & repair PE)
+
+Any OpenAI-compatible chat endpoint that returns the required structured JSON.
+
+| Class | Supported today |
+| --- | --- |
+| **Closed-source** | **GPT-5.6**, **Claude Opus 5** (and similar frontier agents) via OpenAI-compatible APIs or gateways |
+| **Open-source** | **Qwen / Qwen3 / Qwen3.5** and other open chat models served behind the same protocol |
+
+### Serving & runtimes (vLLM / SGLang)
+
+| Runtime | Role in Omni-Rewriter |
+| --- | --- |
+| **vLLM** | Primary path for **open writer** serving (`/v1/chat/completions`, structured output). Also used for HunyuanImage-3.0 via the documented custom vLLM fork adapter, and optional Wan via vLLM-Omni (version-specific; label unverified until pinned). |
+| **SGLang** | Documented path for **Qwen-Image** (SGLang-Diffusion `/v1/images/generations`) and optional **Wan** video serving. |
+
+Closed writers typically use the vendor or gateway URL; open writers/generators commonly sit on
+**vLLM** or **SGLang**. Stock vLLM, custom vLLM forks, and vLLM-Omni are **not** interchangeable —
+see the [compatibility matrix](docs/generation-adapters.md).
+
+### PE profiles shipped now
+
+| Modality | Profile | What you get |
 | --- | --- | --- |
-| **Writer** | OpenAI-compatible chat backend | Demoed locally with **Qwen3.5** via `scripts/serve_qwen35_*.sh` (`OMNI_WRITER_MODEL` required). Also works with GPT / Claude gateways that return structured JSON. |
-| **Video PE profile** | **MiniMax-H3** | Timeline, camera, dialogue, and soundscape rules; render with `--output h3`. |
-| **Image PE profiles** | **Seedream**, **Qwen-Image-Edit** | PE text/metadata only — not a Seedream generation adapter. |
+| **Video** | **MiniMax-H3** | Timeline / camera / dialogue / soundscape PE; `--output h3` |
+| **Image** | **Seedream**, **Qwen-Image-Edit** | Validated PE text/metadata only (not a Seedream cloud generator) |
 
-Optional generation adapters (WAN, Qwen-Image HTTP, HunyuanImage, LingBot, …) are separate
-from `expand`. Compatibility claims stay evidence-scoped — see
+Optional generation adapters (MiniMax/H3 clients, Qwen-Image HTTP, HunyuanImage, Wan, LingBot, …)
+stay outside `expand`. Evidence and limits:
 [generation adapters](docs/generation-adapters.md).
-
-<details>
-<summary><b>Writer backend compatibility</b></summary>
-
-<br>
-
-| Writer family | Connection path | Repository evidence |
-| --- | --- | --- |
-| **GPT-5.6** | OpenAI-compatible chat-completions endpoint | Contract-compatible; provider access and live behavior are environment-specific |
-| **Claude Opus 5** | OpenAI-compatible gateway | Gateway path supported; a native Anthropic client is not bundled |
-| **Qwen series** | vLLM OpenAI-compatible server | Local launch scripts, structured output, and `enable_thinking` control |
-| **Other writers** | Any compatible structured-output endpoint | Supported at the protocol boundary; live compatibility must be verified |
-
-</details>
 
 ## Model ecosystem
 
@@ -199,12 +205,11 @@ cp .env.example .env
 set -a; source .env; set +a
 ```
 
-Start an OpenAI-compatible writer backend (set `OMNI_WRITER_MODEL` to your local
-checkpoint), then expand a request:
+Point `.env` at any OpenAI-compatible writer (closed API/gateway or open model on
+**vLLM** / **SGLang**), then expand:
 
 ```bash
-export OMNI_WRITER_MODEL=/path/to/Qwen3.5-checkpoint
-scripts/serve_qwen35_dev.sh
+# OMNI_WRITER_BACKEND_BASE_URL + OMNI_WRITER_BACKEND_MODEL in .env
 
 cat > request.json <<'JSON'
 {
@@ -236,17 +241,16 @@ For the shortest video, T2I, and image-edit paths, see
 
 ```text
 RewriteRequest
-  └─ PE harness          analyze · draft · validate · repair
-      └─ dialect         task-specific prompt schema and renderer
-          └─ adapter     optional HTTP client or local runner
+  └─ Agent Harness       analyze · draft · validate · repair · render  (= PE flow)
+      └─ PE profile      H3 / Seedream / Qwen-Image-Edit dialect
+          └─ adapter     optional vLLM / SGLang / vendor client  (generate, not expand)
               └─ eval    structural checks · RAW/PE demos under docs/
 ```
 
-- **Core:** typed request/output contracts and deterministic validation.
-- **Profiles:** public model-specific prompt grammar and rendering.
-- **Adapters:** opt-in runtime mappings; never called by `service.expand`.
-- **Evaluation:** reproducible manifests and structure-first checks.
-- **Future:** community SFT/RL, additional dialects, adapters, and judges.
+- **Harness:** contracts + agent loop (this release).
+- **Profiles:** public prompt dialects for video/image generators.
+- **Adapters:** opt-in generation clients; never called by `service.expand`.
+- **Evaluation:** structure-first checks; VLM pairwise is post-hoc only.
 
 ## Documentation
 

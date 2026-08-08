@@ -31,38 +31,38 @@
 
 ## 项目简介
 
-Omni-Rewriter 是一个开放、面向多模型扩展的**图像与视频 Agentic Prompt Expansion（PE）
-Harness**。它通过有界 `analyze → draft → validate → repair` Agent 循环，把自然语言意图
-与多模态参考转换为强类型、经过校验、面向生成器的中间文本。
+Omni-Rewriter 是一个开放的 **Prompt Expansion（PE）Agent Harness** —— 控制面：把日常的
+图像/视频意图变成强类型、经过校验、可交给生成器的提示词。
 
-框架本身不绑定具体模型：任务结构、校验规则、方言渲染、运行时适配器与评测都是彼此独立的
-扩展层。
+两个概念要分开看：
 
-> [!NOTE]
-> **当前开源版本：Agent Harness。** 现阶段提供 Agent 编排、强类型契约、确定性校验与有界
-> 修复；专用 SFT/RL 扩写模型仍属于社区路线图。
+| 术语 | 在本仓库中的含义 |
+| --- | --- |
+| **Agent Harness** | 开源产品本体：契约、编排、确定性校验、有界修复、方言渲染、CLI/HTTP。**不**附带专用微调扩写权重。 |
+| **PE（提示词扩写）** | Harness 执行的任务：把短意图改写成面向具体生成器的提示词方言（H3 视频、Seedream / Qwen-Image-Edit 图像等）。 |
 
 > [!IMPORTANT]
-> **扩写不等于生成。** 核心流程只输出经过校验的文本或 JSON。只有应用显式调用适配器或
-> 本地运行器时，才会加载模型并生成媒体。
+> **扩写 ≠ 生成。** `expand` 止于 PE 文本/JSON。只有显式调用适配器（或你自己的生成器）时
+> 才会出图/出视频。
+
+> [!NOTE]
+> 专用 SFT/RL 扩写 checkpoint 仍在社区路线图。当前只需接入能返回所需结构化 JSON 的
+> Writer。
 
 > [!CAUTION]
-> **当前 VLM 评测属于事后诊断，不是优化闭环。** 内部 pairwise scorer 在生成完成后对
-> RAW/PE 抽帧进行评分，分数不会反馈到提示词修订。因此当前版本声明的是经过校验的提示词
-> 扩写，而不是 VLM 引导的 PE 优化。
+> 内置 VLM pairwise 评分是**事后诊断**（生成后再评帧），不是 VLM 引导的 PE 优化闭环。
 
 <table>
   <tr>
-    <td width="33%" valign="top"><b>Agent 驱动、有界执行</b><br>在严格契约和确定性护栏下完成分析、起草、校验与修复。</td>
-    <td width="33%" valign="top"><b>面向多模型扩展</b><br>配置档与渲染器描述公开提示词方言，但不将其固化为架构边界。</td>
-    <td width="33%" valign="top"><b>与运行时解耦</b><br>提示词扩写不依赖厂商 API、在线服务或重型本地推理环境。</td>
+    <td width="33%" valign="top"><b>Agent 驱动、有界执行</b><br>在严格契约下完成 analyze → draft → validate → repair。</td>
+    <td width="33%" valign="top"><b>Profile 可扩展</b><br>视频/图像方言是插件；架构边界不是「仅 MiniMax」。</td>
+    <td width="33%" valign="top"><b>运行时可选</b><br>PE 可用闭源 API 或开源权重；生成适配器按需接入。</td>
   </tr>
 </table>
 
-## PE 流水线
+## Agent Harness 与 PE 流程
 
-产品面是 Harness 本身，而不是实验目录转储。意图先进入类型化 `RewriteRequest`，再经有界
-Agent 循环产出可交给生成器的 PE 文本/JSON。**扩写不等于生成媒体。**
+**Harness** = 编排与契约。**PE 流程** = 每次 `expand` 内部的五步：
 
 ```mermaid
 flowchart LR
@@ -76,39 +76,47 @@ flowchart LR
   render --> peText[PE_text_JSON]
 ```
 
-- **Analyze** — 判定视频/图像任务，收集约束与媒体角色。
-- **Draft** — 扩写模型按所选方言返回结构化字段。
-- **Validate** — 确定性 schema 与 profile 规则（时长、引号、切点等）。
-- **Bounded repair** — 对可修复错误做有限次数 LLM 修复，否则硬失败。
-- **Dialect render** — 输出 H3 / Seedream / Qwen-Image-Edit 文本，不调用生成器。
+1. **Analyze** — 区分视频/图像，读取时长/媒体/元数据，选定 PE profile。
+2. **Draft** — 调用 **Writer Agent**（LLM），按该 profile 的 schema 产出结构化字段。
+3. **Validate** — 确定性校验（时间轴、引号、必填字段、方言规则）。
+4. **Bounded repair** — 可修复错误则在有限次数内让 Writer 再修；否则明确失败。
+5. **Dialect render** — 序列化为 H3 / Seedream / Qwen-Image-Edit 文本（仍不生成媒体）。
 
-CLI 与 HTTP（`POST /v1/expand`）共用该 service 层。详见
+CLI（`omni-rewriter expand`）与 HTTP（`POST /v1/expand`）共用同一路径。详见
 [架构文档](docs/architecture_zh.md)。
 
-## 本版本使用的模型
+## 当前支持
 
-| 角色 | 已交付内容 | 说明 |
+### Writer Agent（负责起草与修复 PE）
+
+任意能返回所需结构化 JSON 的 OpenAI 兼容 Chat 接口。
+
+| 类别 | 当前支持 |
+| --- | --- |
+| **闭源** | **GPT-5.6**、**Claude Opus 5**（及同类前沿 Agent），经 OpenAI 兼容 API / 网关接入 |
+| **开源** | **Qwen / Qwen3 / Qwen3.5** 及其他同样协议下的开源对话模型 |
+
+### 服务与运行时（vLLM / SGLang）
+
+| 运行时 | 在 Omni-Rewriter 中的角色 |
+| --- | --- |
+| **vLLM** | **开源 Writer** 的主要服务路径（`/v1/chat/completions`、结构化输出）。另有 HunyuanImage-3.0 自定义 vLLM fork 适配器，以及可选的 Wan / vLLM-Omni（版本相关，未钉死前标为未验证）。 |
+| **SGLang** | **Qwen-Image**（SGLang-Diffusion `/v1/images/generations`）与可选 **Wan** 视频服务的文档化路径。 |
+
+闭源 Writer 通常走厂商或网关 URL；开源 Writer/生成器常见部署在 **vLLM** 或 **SGLang**。
+stock vLLM、自定义 vLLM fork、vLLM-Omni **不可互换** —— 见
+[兼容性矩阵](docs/generation-adapters_zh.md)。
+
+### 已交付的 PE Profile
+
+| 模态 | Profile | 产出 |
 | --- | --- | --- |
-| **扩写 Writer** | 兼容 OpenAI 的 Chat 后端 | 本地演示使用 **Qwen3.5**（`scripts/serve_qwen35_*.sh`，需设置 `OMNI_WRITER_MODEL`）。也可接能返回结构化 JSON 的 GPT / Claude 网关。 |
-| **视频 PE 配置** | **MiniMax-H3** | 时间轴、运镜、对白与声景规则；使用 `--output h3` 渲染。 |
-| **图像 PE 配置** | **Seedream**、**Qwen-Image-Edit** | 仅产出 PE 文本/元数据，并非 Seedream 生成适配器。 |
+| **视频** | **MiniMax-H3** | 时间轴 / 运镜 / 对白 / 声景 PE；`--output h3` |
+| **图像** | **Seedream**、**Qwen-Image-Edit** | 仅校验后的 PE 文本/元数据（不是 Seedream 云端生成器） |
 
-可选生成适配器（WAN、Qwen-Image HTTP、HunyuanImage、LingBot 等）与 `expand` 解耦。兼容性
-声明以证据范围为限，见 [生成适配器](docs/generation-adapters_zh.md)。
-
-<details>
-<summary><b>扩写后端兼容性</b></summary>
-
-<br>
-
-| 扩写模型族 | 接入方式 | 仓库内依据 |
-| --- | --- | --- |
-| **GPT-5.6** | 兼容 OpenAI Chat Completions 的接口 | 协议契约兼容；访问权限与实际表现取决于部署环境 |
-| **Claude Opus 5** | 兼容 OpenAI 协议的网关 | 支持网关路径；仓库暂未内置 Anthropic 原生客户端 |
-| **Qwen 系列** | vLLM 提供的 OpenAI 兼容服务 | 本地启动脚本、结构化输出及 `enable_thinking` 控制 |
-| **其他扩写模型** | 任意兼容结构化输出的接口 | 在协议边界上可接入；端到端兼容性需要实际验证 |
-
-</details>
+可选生成适配器（MiniMax/H3、Qwen-Image HTTP、HunyuanImage、Wan、LingBot 等）在
+`expand` 之外。证据与边界见
+[生成适配器](docs/generation-adapters_zh.md)。
 
 ## 模型生态
 
@@ -195,11 +203,11 @@ cp .env.example .env
 set -a; source .env; set +a
 ```
 
-启动兼容 OpenAI API 的扩写后端（需设置 `OMNI_WRITER_MODEL` 指向本地权重），然后处理请求：
+在 `.env` 中指向任意 OpenAI 兼容 Writer（闭源 API/网关，或部署在 **vLLM** /
+**SGLang** 上的开源模型），然后扩写：
 
 ```bash
-export OMNI_WRITER_MODEL=/path/to/Qwen3.5-checkpoint
-scripts/serve_qwen35_dev.sh
+# .env 中配置 OMNI_WRITER_BACKEND_BASE_URL 与 OMNI_WRITER_BACKEND_MODEL
 
 cat > request.json <<'JSON'
 {
@@ -230,17 +238,16 @@ omni-rewriter validate output.json
 
 ```text
 RewriteRequest
-  └─ PE harness          analyze · draft · validate · repair
-      └─ dialect         面向具体任务的提示词结构与渲染器
-          └─ adapter     可选 HTTP client 或本地 runner
+  └─ Agent Harness       analyze · draft · validate · repair · render  （= PE 流程）
+      └─ PE profile      H3 / Seedream / Qwen-Image-Edit 方言
+          └─ adapter     可选 vLLM / SGLang / 厂商 client  （生成，不是 expand）
               └─ eval    结构检查 · docs/ 下的 RAW/PE 演示
 ```
 
-- **核心层：** 强类型输入输出契约与确定性校验。
-- **配置档：** 基于公开契约的模型提示词语法与渲染。
-- **适配器：** 可选运行时映射，绝不由 `service.expand` 自动调用。
-- **评测层：** 可复现实验清单与结构优先评测。
-- **后续方向：** 社区 SFT/RL、更多方言、适配器与评测器。
+- **Harness：** 契约与 Agent 循环（当前开源交付）。
+- **Profiles：** 面向视频/图像生成器的公开提示词方言。
+- **Adapters：** 可选生成客户端；绝不由 `service.expand` 自动调用。
+- **评测：** 结构优先；VLM pairwise 仅事后诊断。
 
 ## 文档导航
 
