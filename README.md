@@ -89,36 +89,36 @@ Same path for CLI (`omni-rewriter expand`) and HTTP (`POST /v1/expand`). See
 
 ## Current support
 
-### Writer agents (who draft & repair PE)
+Writer agents need only an OpenAI-compatible chat endpoint that returns the required structured
+JSON. Closed and open writers both work; open stacks commonly sit on **vLLM** / **SGLang**.
 
-Any OpenAI-compatible chat endpoint that returns the required structured JSON.
+<p align="center">
+  <img alt="closed-source writers" src="https://img.shields.io/badge/writers-closed--source-f8fafc?style=flat-square&labelColor=be123c" />
+  <img alt="GPT-5.6" src="https://img.shields.io/badge/GPT--5.6-supported-brightgreen?style=flat-square&labelColor=be123c" />
+  <img alt="Claude Opus 5" src="https://img.shields.io/badge/Claude%20Opus%205-supported-brightgreen?style=flat-square&labelColor=be123c" />
+  <img alt="frontier agents" src="https://img.shields.io/badge/frontier%20APIs%20%2F%20gateways-supported-brightgreen?style=flat-square&labelColor=be123c" />
+</p>
 
-| Class | Supported today |
-| --- | --- |
-| **Closed-source** | **GPT-5.6**, **Claude Opus 5** (and similar frontier agents) via OpenAI-compatible APIs or gateways |
-| **Open-source** | **Qwen / Qwen3 / Qwen3.5** and other open chat models served behind the same protocol |
+<p align="center">
+  <img alt="open-source writers" src="https://img.shields.io/badge/writers-open--source-f8fafc?style=flat-square&labelColor=0f766e" />
+  <img alt="Qwen3.8" src="https://img.shields.io/badge/Qwen3.8-supported-brightgreen?style=flat-square&labelColor=0f766e" />
+  <img alt="Qwen3.5" src="https://img.shields.io/badge/Qwen3.5-supported-brightgreen?style=flat-square&labelColor=0f766e" />
+  <img alt="Qwen3" src="https://img.shields.io/badge/Qwen3-supported-brightgreen?style=flat-square&labelColor=0f766e" />
+  <img alt="Qwen series" src="https://img.shields.io/badge/Qwen%20series-through%203.8-brightgreen?style=flat-square&labelColor=0f766e" />
+</p>
 
-### Serving & runtimes (vLLM / SGLang)
+<p align="center">
+  <img alt="serving runtimes" src="https://img.shields.io/badge/serving-runtimes-f8fafc?style=flat-square&labelColor=1d4ed8" />
+  <img alt="vLLM" src="https://img.shields.io/badge/vLLM-writers%20%2B%20adapters-brightgreen?style=flat-square&labelColor=1d4ed8" />
+  <img alt="SGLang" src="https://img.shields.io/badge/SGLang-Qwen--Image%20%2B%20Wan-brightgreen?style=flat-square&labelColor=1d4ed8" />
+</p>
 
-| Runtime | Role in Omni-Rewriter |
-| --- | --- |
-| **vLLM** | Primary path for **open writer** serving (`/v1/chat/completions`, structured output). Also used for HunyuanImage-3.0 via the documented custom vLLM fork adapter, and optional Wan via vLLM-Omni (version-specific; label unverified until pinned). |
-| **SGLang** | Documented path for **Qwen-Image** (SGLang-Diffusion `/v1/images/generations`) and optional **Wan** video serving. |
-
-Closed writers typically use the vendor or gateway URL; open writers/generators commonly sit on
-**vLLM** or **SGLang**. Stock vLLM, custom vLLM forks, and vLLM-Omni are **not** interchangeable —
-see the [compatibility matrix](docs/generation-adapters.md).
-
-### PE profiles shipped now
-
-| Modality | Profile | What you get |
-| --- | --- | --- |
-| **Video** | **MiniMax-H3** | Timeline / camera / dialogue / soundscape PE; `--output h3` |
-| **Image** | **Seedream**, **Qwen-Image-Edit** | Validated PE text/metadata only (not a Seedream cloud generator) |
-
-Optional generation adapters (MiniMax/H3 clients, Qwen-Image HTTP, HunyuanImage, Wan, LingBot, …)
-stay outside `expand`. Evidence and limits:
-[generation adapters](docs/generation-adapters.md).
+<p align="center"><sub>
+<strong>vLLM</strong> — primary open-writer path (<code>/v1/chat/completions</code>, structured output); also HunyuanImage custom-fork adapter and optional Wan / vLLM-Omni (pin + verify).<br>
+<strong>SGLang</strong> — Qwen-Image (SGLang-Diffusion <code>/v1/images/generations</code>) and optional Wan video.<br>
+Stock vLLM ≠ custom forks ≠ vLLM-Omni. Optional generation adapters stay outside <code>expand</code> —
+see the <a href="docs/generation-adapters.md">compatibility matrix</a>.
+</sub></p>
 
 ## Model ecosystem
 

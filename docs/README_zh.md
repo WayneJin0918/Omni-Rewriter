@@ -87,36 +87,36 @@ CLI（`omni-rewriter expand`）与 HTTP（`POST /v1/expand`）共用同一路径
 
 ## 当前支持
 
-### Writer Agent（负责起草与修复 PE）
+Writer 只需兼容 OpenAI 的 Chat 接口并能返回所需结构化 JSON。闭源与开源均可；开源栈常见于
+**vLLM** / **SGLang**。
 
-任意能返回所需结构化 JSON 的 OpenAI 兼容 Chat 接口。
+<p align="center">
+  <img alt="闭源 Writer" src="https://img.shields.io/badge/writers-closed--source-f8fafc?style=flat-square&labelColor=be123c" />
+  <img alt="GPT-5.6" src="https://img.shields.io/badge/GPT--5.6-supported-brightgreen?style=flat-square&labelColor=be123c" />
+  <img alt="Claude Opus 5" src="https://img.shields.io/badge/Claude%20Opus%205-supported-brightgreen?style=flat-square&labelColor=be123c" />
+  <img alt="frontier agents" src="https://img.shields.io/badge/frontier%20APIs%20%2F%20gateways-supported-brightgreen?style=flat-square&labelColor=be123c" />
+</p>
 
-| 类别 | 当前支持 |
-| --- | --- |
-| **闭源** | **GPT-5.6**、**Claude Opus 5**（及同类前沿 Agent），经 OpenAI 兼容 API / 网关接入 |
-| **开源** | **Qwen / Qwen3 / Qwen3.5** 及其他同样协议下的开源对话模型 |
+<p align="center">
+  <img alt="开源 Writer" src="https://img.shields.io/badge/writers-open--source-f8fafc?style=flat-square&labelColor=0f766e" />
+  <img alt="Qwen3.8" src="https://img.shields.io/badge/Qwen3.8-supported-brightgreen?style=flat-square&labelColor=0f766e" />
+  <img alt="Qwen3.5" src="https://img.shields.io/badge/Qwen3.5-supported-brightgreen?style=flat-square&labelColor=0f766e" />
+  <img alt="Qwen3" src="https://img.shields.io/badge/Qwen3-supported-brightgreen?style=flat-square&labelColor=0f766e" />
+  <img alt="Qwen series" src="https://img.shields.io/badge/Qwen%20series-through%203.8-brightgreen?style=flat-square&labelColor=0f766e" />
+</p>
 
-### 服务与运行时（vLLM / SGLang）
+<p align="center">
+  <img alt="serving runtimes" src="https://img.shields.io/badge/serving-runtimes-f8fafc?style=flat-square&labelColor=1d4ed8" />
+  <img alt="vLLM" src="https://img.shields.io/badge/vLLM-writers%20%2B%20adapters-brightgreen?style=flat-square&labelColor=1d4ed8" />
+  <img alt="SGLang" src="https://img.shields.io/badge/SGLang-Qwen--Image%20%2B%20Wan-brightgreen?style=flat-square&labelColor=1d4ed8" />
+</p>
 
-| 运行时 | 在 Omni-Rewriter 中的角色 |
-| --- | --- |
-| **vLLM** | **开源 Writer** 的主要服务路径（`/v1/chat/completions`、结构化输出）。另有 HunyuanImage-3.0 自定义 vLLM fork 适配器，以及可选的 Wan / vLLM-Omni（版本相关，未钉死前标为未验证）。 |
-| **SGLang** | **Qwen-Image**（SGLang-Diffusion `/v1/images/generations`）与可选 **Wan** 视频服务的文档化路径。 |
-
-闭源 Writer 通常走厂商或网关 URL；开源 Writer/生成器常见部署在 **vLLM** 或 **SGLang**。
-stock vLLM、自定义 vLLM fork、vLLM-Omni **不可互换** —— 见
-[兼容性矩阵](generation-adapters_zh.md)。
-
-### 已交付的 PE Profile
-
-| 模态 | Profile | 产出 |
-| --- | --- | --- |
-| **视频** | **MiniMax-H3** | 时间轴 / 运镜 / 对白 / 声景 PE；`--output h3` |
-| **图像** | **Seedream**、**Qwen-Image-Edit** | 仅校验后的 PE 文本/元数据（不是 Seedream 云端生成器） |
-
-可选生成适配器（MiniMax/H3、Qwen-Image HTTP、HunyuanImage、Wan、LingBot 等）在
-`expand` 之外。证据与边界见
-[生成适配器](generation-adapters_zh.md)。
+<p align="center"><sub>
+<strong>vLLM</strong> — 开源 Writer 主路径（<code>/v1/chat/completions</code>、结构化输出）；另有 HunyuanImage 自定义 fork 适配器与可选 Wan / vLLM-Omni（需钉版本并验证）。<br>
+<strong>SGLang</strong> — Qwen-Image（SGLang-Diffusion <code>/v1/images/generations</code>）与可选 Wan 视频。<br>
+stock vLLM ≠ 自定义 fork ≠ vLLM-Omni。可选生成适配器在 <code>expand</code> 之外 ——
+见 <a href="generation-adapters_zh.md">兼容性矩阵</a>。
+</sub></p>
 
 ## 模型生态
 
