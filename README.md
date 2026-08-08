@@ -101,10 +101,10 @@ JSON. Closed and open writers both work; open stacks commonly sit on **vLLM** / 
 
 <p align="center">
   <img alt="open-source writers" src="https://img.shields.io/badge/writers-open--source-f8fafc?style=flat-square&labelColor=0f766e" />
-  <img alt="Qwen3.8" src="https://img.shields.io/badge/Qwen3.8-supported-brightgreen?style=flat-square&labelColor=0f766e" />
-  <img alt="Qwen3.5" src="https://img.shields.io/badge/Qwen3.5-supported-brightgreen?style=flat-square&labelColor=0f766e" />
-  <img alt="Qwen3" src="https://img.shields.io/badge/Qwen3-supported-brightgreen?style=flat-square&labelColor=0f766e" />
-  <img alt="Qwen series" src="https://img.shields.io/badge/Qwen%20series-through%203.8-brightgreen?style=flat-square&labelColor=0f766e" />
+  <img alt="QwenLM" src="https://img.shields.io/badge/QwenLM-supported-brightgreen?style=flat-square&labelColor=0f766e" />
+  <img alt="MiMo wanted" src="https://img.shields.io/badge/MiMo-wanted-lightgrey?style=flat-square&labelColor=0f766e" />
+  <img alt="Kimi wanted" src="https://img.shields.io/badge/Kimi-wanted-lightgrey?style=flat-square&labelColor=0f766e" />
+  <img alt="DeepSeek wanted" src="https://img.shields.io/badge/DeepSeek-wanted-lightgrey?style=flat-square&labelColor=0f766e" />
 </p>
 
 <p align="center">
