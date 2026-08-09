@@ -67,9 +67,9 @@ omni-rewriter expand examples/requests/seedance_ref2va_pottery.json --output see
 
 ## 脱敏策略
 
-入库样例不得包含 `hdfs://`、`[redacted]`、`[redacted]`、`uttid`、员工路径或内部
-`caption_version` 等私有字段。使用 `https://example.test/seedance/...` 占位。样例是**良性演示**，
-不是官方 Seedance 训练数据。
+入库样例不得包含私有存储 URI、厂商内部 dump 字段名、员工路径或其他非公开语料元数据。
+使用 `https://example.test/seedance/...` 占位。样例是**良性演示**，不是官方 Seedance 训练数据。
+运行时检查见 `assert_sanitized_seedance_payload`。
 
 ## 样例
 

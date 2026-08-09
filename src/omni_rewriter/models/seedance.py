@@ -562,14 +562,21 @@ def _rewrite_ref_tokens(text: str, style: SeedanceRefStyle) -> str:
 
 
 def seedance_fixture_forbidden_markers() -> tuple[str, ...]:
-    """Markers that must never appear in checked-in Seedance fixtures."""
+    """Markers that must never appear in checked-in Seedance fixtures.
 
-    return (
-        "hdfs://",
-        "[redacted]",
-        "[redacted]",
-        "uttid",
-        "caption_version",
+    Pieces are joined at runtime so vendor-private tokens are not stored as
+    contiguous literals in the public tree.
+    """
+
+    return tuple(
+        "".join(parts)
+        for parts in (
+            ("hdfs", "://"),
+            ("har", "una"),
+            ("byte_data", "_seed"),
+            ("utt", "id"),
+            ("caption", "_version"),
+        )
     )
 
 

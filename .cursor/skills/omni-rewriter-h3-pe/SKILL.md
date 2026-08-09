@@ -37,8 +37,9 @@ repairs, renderers, and public contracts over claims about private vendor intern
    `<sfx>` / `(music)` delimiters). Do not claim private vendor internals.
 4. Render via `seedance_render=natural|fused|json` (default natural = public 2.5 template) and
    `seedance_ref_style=public|omni` (default public type-local `@Video 1`).
-5. Never commit private dump markers (`hdfs://`, `[redacted]`, `[redacted]`, …). See
-   `docs/dialects/seedance-pe.md`. No generation adapter in this profile pass.
+5. Never commit private dump markers or vendor-internal corpus metadata. See
+   `docs/dialects/seedance-pe.md` and `assert_sanitized_seedance_payload`. No generation
+   adapter in this profile pass.
 
 ## When expanding video (H3)
 

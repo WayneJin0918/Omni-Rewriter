@@ -106,10 +106,10 @@ omni-rewriter expand examples/requests/seedance_ref2va_interview.json --output s
 
 ## Sanitization policy
 
-Checked-in fixtures must never contain `hdfs://`, `[redacted]`, `[redacted]`, `uttid`, employee
-paths, or internal `caption_version` / private dump fields. Use synthetic
+Checked-in fixtures must never contain private storage URIs, vendor-internal dump field
+names, employee paths, or other non-public corpus metadata. Use synthetic
 `https://example.test/seedance/...` placeholders. Fixtures are **benign demos**, not official
-Seedance training data.
+Seedance training data. Runtime checks live in `assert_sanitized_seedance_payload`.
 
 ## Fixtures
 

@@ -142,7 +142,7 @@ Seedance video PE requirements (public Seedance 2.5 prompt habits; sanitized Omn
 - non_diegetic_music is optional BGM guidance. generate_audio defaults true.
 - duration_seconds must exactly match the request (public Seedance 2.5 clips are commonly up
   to about 30s; do not write aspect ratio / duration / resolution into instruction text).
-- Keep content benign and production-ready. Never emit hdfs:// URIs or private dump fields.
+- Keep content benign and production-ready. Never emit private storage URIs or dump fields.
 - Return JSON fields: task, profile, duration_seconds, style, summary, static_description,
   dynamic_description, subjects, reference_roles, stages, preserve, unused_materials,
   instruction, non_diegetic_music, generate_audio.
