@@ -9,12 +9,19 @@ Promotional site for Omni-Rewriter’s MiniMax-H3 prompt-expansion instance
 | --- | --- |
 | [`index.html`](index.html) | **Entry** — full-bleed promo demo, then CTA into the main site |
 | [`home.html`](home.html) | **Main homepage** — interactive PE pipeline + RAW/PE grid |
-| [`assets/promo/`](assets/promo/) | Poster + promo mp4 (mp4 is gitignored on `main`; copy when syncing `gh-pages`) |
+| [`assets/promo/`](assets/promo/) | Poster on `main`; promo mp4 is gitignored (copy when syncing `gh-pages`) |
+
+Demo GIFs are **not** stored on `main`. `home.html` loads them from GitHub Pages:
+
+`https://waynejin0918.github.io/Omni-Rewriter/assets/demos/<clip>.gif`
+
+(same files on the `gh-pages` branch under `assets/demos/`). See
+[../site/README.md](../site/README.md) for lean-clone and optional local fetch.
 
 ## Local preview
 
 ```bash
-# from repo root — ensure the web mp4 exists
+# from repo root — ensure the web mp4 exists (gitignored)
 cp docs/promo/out/v6/omni_rewriter_promo_v6.mp4 \
   docs/day2-h3-pe/assets/promo/omni_rewriter_promo.mp4
 # or re-encode smaller:
@@ -26,11 +33,15 @@ python -m http.server 8765 --directory docs/day2-h3-pe
 # open http://127.0.0.1:8765/
 ```
 
+Grid images need Pages (or a local `assets/demos/` fetch as in
+[../site/README.md](../site/README.md)).
+
 ## Deploy (`gh-pages`)
 
 GitHub Pages: https://waynejin0918.github.io/Omni-Rewriter/
 
 After edits on `main`, sync **this directory** to the `gh-pages` branch **root** and push.
-Include `assets/promo/omni_rewriter_promo.mp4` on `gh-pages` even though `*.mp4` is ignored on `main`.
+Include `assets/demos/*.gif` and `assets/promo/omni_rewriter_promo.mp4` on `gh-pages`
+even though those paths are ignored / untracked on `main`.
 
 Source: https://github.com/WayneJin0918/Omni-Rewriter

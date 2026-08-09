@@ -22,7 +22,7 @@ htmlcov/
 # Builds and packages
 build/
 dist/
-site/
+/site/
 *.egg-info/
 *.whl
 
@@ -66,3 +66,7 @@ checkpoints/
 
 # Promo assemble intermediates / local renders (scripts + PE JSON stay tracked)
 docs/promo/out/
+
+# Heavy site demo GIFs live on gh-pages / GitHub Pages (not required for source clones)
+docs/day2-h3-pe/assets/demos/
+docs/h3-pe-showcase/thumbs/

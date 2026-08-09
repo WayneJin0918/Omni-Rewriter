@@ -23,6 +23,25 @@ pytest
 python scripts/check_model_contribution.py
 ```
 
+### Lean clone (skip heavy site demos)
+
+Demo GIFs for the H3 PE site live on GitHub Pages / `gh-pages`, not on `main`.
+Prefer a partial + sparse clone so you do not pull those trees into your working
+copy. See [site/README.md](site/README.md).
+
+```bash
+git clone --filter=blob:none --sparse https://github.com/WayneJin0918/Omni-Rewriter.git
+cd Omni-Rewriter
+git sparse-checkout set \
+  '/*' \
+  '!/docs/day2-h3-pe/assets/demos' \
+  '!/docs/h3-pe-showcase/thumbs' \
+  '!/docs/promo/out'
+```
+
+Tip deletions shrink future tip clones; history still holds older blobs until a
+history rewrite (not done by default).
+
 ## What to work on
 
 See [ROADMAP.md](ROADMAP.md). High-value areas:
