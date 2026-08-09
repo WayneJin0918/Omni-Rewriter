@@ -8,7 +8,7 @@ import subprocess
 from pathlib import Path
 
 import yaml
-from PIL import Image, ImageDraw, ImageFont, ImageFilter
+from PIL import Image, ImageDraw, ImageFilter, ImageFont
 
 ROOT = Path(__file__).resolve().parents[2]
 DEFAULT_MATRIX = ROOT / "docs/promo/model_matrix.yaml"
