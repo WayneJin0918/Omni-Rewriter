@@ -1,0 +1,1092 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>H3 PE — Omni-Rewriter</title>
+  <meta name="description" content="Omni-Rewriter prompt expansion for MiniMax-H3: validated timelines, dialogue, camera grammar, and same-seed RAW vs PE demos. Open source on GitHub.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,700&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+
+  <style>
+    :root {
+      --bg: #14060c; --ink: #fff5f7; --muted: #f0c0cc; --rose: #e11d48;
+      --rose-deep: #9f1239; --blush: #fb7185; --card: rgba(255, 245, 247, 0.045);
+      --line: rgba(251, 113, 133, 0.28); --max: 1120px;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0; color: var(--ink); font-family: Manrope, system-ui, sans-serif;
+      background:
+        radial-gradient(900px 480px at 14% -8%, rgba(225, 29, 72, 0.32), transparent 55%),
+        radial-gradient(700px 420px at 88% 6%, rgba(251, 113, 133, 0.16), transparent 50%),
+        linear-gradient(180deg, #1a0710 0%, var(--bg) 40%, #0d0408 100%);
+      min-height: 100vh; line-height: 1.55;
+    }
+    a { color: var(--blush); text-decoration-thickness: 1px; text-underline-offset: 0.18em; }
+    a:hover { color: #fff; }
+    .wrap { width: min(var(--max), calc(100% - 2rem)); margin: 0 auto; }
+    .topnav { display:flex; align-items:center; justify-content:space-between; padding:1rem 0; gap:1rem; flex-wrap:wrap; }
+    .brand { font-family: Fraunces, Georgia, serif; font-weight:700; letter-spacing:-0.02em; font-size:1.15rem; color:var(--ink); text-decoration:none; }
+    .brand span { color: var(--blush); }
+    .nav-links { display:flex; gap:1rem; flex-wrap:wrap; font-size:0.9rem; }
+    .nav-links a { color: var(--muted); text-decoration: none; }
+    .nav-links a:hover { color: var(--ink); }
+    .hero { padding: 2.4rem 0 2.3rem; display:grid; gap:1.05rem; max-width:44rem; }
+    .eyebrow { display:inline-flex; align-items:center; gap:0.5rem; font-size:0.74rem; font-weight:700; letter-spacing:0.14em; text-transform:uppercase; color:var(--blush); }
+    .eyebrow::before { content:""; width:1.4rem; height:2px; background:var(--rose); }
+    h1 { font-family: Fraunces, Georgia, serif; font-weight:700; font-size:clamp(2rem,4.2vw,3.1rem); line-height:1.05; letter-spacing:-0.03em; margin:0; }
+    .lede { margin:0; color:var(--muted); font-size:1.05rem; max-width:38rem; }
+    .cta-row { display:flex; flex-wrap:wrap; gap:0.65rem; }
+    .btn { display:inline-flex; align-items:center; justify-content:center; padding:0.7rem 1.05rem; border-radius:999px; font-weight:700; font-size:0.92rem; text-decoration:none; border:1px solid transparent; transition:transform .15s ease, border-color .15s ease; }
+    .btn:hover { transform: translateY(-1px); }
+    .btn-primary { background:linear-gradient(135deg,var(--rose),var(--rose-deep)); color:white; box-shadow:0 10px 28px rgba(225,29,72,0.32); }
+    .btn-primary:hover { color:white; }
+    .btn-ghost { border-color:var(--line); color:var(--ink); background:rgba(255,255,255,0.03); }
+    .btn-ghost:hover { border-color:var(--blush); color:white; }
+    section.block { padding:2.2rem 0; border-top:1px solid var(--line); }
+    .section-kicker { font-size:0.74rem; font-weight:700; letter-spacing:0.14em; text-transform:uppercase; color:var(--blush); margin-bottom:0.45rem; }
+    .block h2 { font-family: Fraunces, Georgia, serif; font-size:clamp(1.35rem,2.4vw,1.9rem); margin:0 0 0.55rem; letter-spacing:-0.02em; }
+    .block > p { color:var(--muted); max-width:46rem; margin-top:0; }
+
+    /* Interactive flow */
+    .flowboard {
+      margin-top: 1.15rem;
+      display: grid;
+      gap: 0.9rem;
+      padding: 1rem;
+      border-radius: 1.1rem;
+      border: 1px solid var(--line);
+      background:
+        linear-gradient(180deg, rgba(255,245,247,0.04), rgba(255,245,247,0.015)),
+        repeating-linear-gradient(0deg, transparent, transparent 23px, rgba(251,113,133,0.05) 24px),
+        repeating-linear-gradient(90deg, transparent, transparent 23px, rgba(251,113,133,0.05) 24px);
+    }
+    .flow-track {
+      display: grid;
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+      gap: 0.45rem;
+      position: relative;
+    }
+    .flow-track::before {
+      content: "";
+      position: absolute;
+      left: 6%; right: 6%; top: 1.55rem;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, rgba(251,113,133,0.55), transparent);
+      pointer-events: none;
+    }
+    .flow-node {
+      position: relative; z-index: 1;
+      appearance: none; border: 1px solid var(--line);
+      background: rgba(8,2,4,0.72);
+      color: inherit; text-align: left;
+      border-radius: 0.9rem; padding: 0.85rem 0.7rem 0.75rem;
+      cursor: pointer; min-height: 7.2rem;
+      transition: border-color .18s ease, transform .18s ease, background .18s ease, box-shadow .18s ease;
+    }
+    .flow-node:hover { transform: translateY(-2px); border-color: rgba(251,113,133,0.7); }
+    .flow-node[aria-pressed="true"] {
+      border-color: var(--blush);
+      background: linear-gradient(160deg, rgba(225,29,72,0.28), rgba(8,2,4,0.85));
+      box-shadow: 0 0 0 1px rgba(251,113,133,0.25), 0 12px 30px rgba(225,29,72,0.18);
+    }
+    .flow-node .dot {
+      width: 0.7rem; height: 0.7rem; border-radius: 999px;
+      background: rgba(251,113,133,0.35); border: 1px solid rgba(255,255,255,0.35);
+      margin-bottom: 0.55rem;
+      box-shadow: 0 0 0 4px rgba(225,29,72,0.08);
+    }
+    .flow-node[aria-pressed="true"] .dot {
+      background: var(--blush);
+      box-shadow: 0 0 0 5px rgba(225,29,72,0.18), 0 0 18px rgba(251,113,133,0.55);
+    }
+    .flow-node em {
+      display:block; font-style:normal; color:var(--blush);
+      font-size:0.66rem; letter-spacing:0.1em; text-transform:uppercase; margin-bottom:0.25rem;
+    }
+    .flow-node strong {
+      display:block; font-family: Fraunces, Georgia, serif;
+      font-size:0.98rem; margin-bottom:0.3rem; letter-spacing:-0.01em;
+    }
+    .flow-node span { color:var(--muted); font-size:0.78rem; line-height:1.35; display:block; }
+    .flow-detail {
+      display:grid; grid-template-columns: 1.1fr 1fr; gap: 0.9rem;
+      padding: 0.95rem 1rem; border-radius: 0.9rem;
+      border: 1px solid rgba(251,113,133,0.22);
+      background: rgba(0,0,0,0.28);
+      min-height: 7.5rem;
+    }
+    .flow-detail h3 {
+      margin:0 0 0.35rem; font-family: Fraunces, Georgia, serif;
+      font-size:1.15rem; letter-spacing:-0.015em;
+    }
+    .flow-detail p { margin:0; color:var(--muted); font-size:0.9rem; }
+    .flow-meta { display:grid; gap:0.45rem; align-content:start; }
+    .flow-chip {
+      display:inline-flex; align-items:center; gap:0.4rem;
+      width: fit-content; padding: 0.28rem 0.55rem; border-radius: 999px;
+      border: 1px solid rgba(251,113,133,0.35); color:#fecdd3;
+      font-size:0.7rem; letter-spacing:0.08em; text-transform:uppercase; font-weight:700;
+    }
+    .flow-list { margin:0; padding-left:1.05rem; color:var(--muted); font-size:0.86rem; }
+    .flow-list li { margin:0.2rem 0; }
+    .flow-hint { margin:0; color:rgba(240,192,204,0.75); font-size:0.78rem; }
+
+    .case-grid {
+      display:grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 0.75rem;
+      margin-top: 1.15rem;
+    }
+    .case {
+      margin:0; padding:0.65rem 0.65rem 0.5rem; border-radius:0.9rem;
+      background: linear-gradient(165deg, rgba(255,245,247,0.06), rgba(255,245,247,0.02));
+      border:1px solid var(--line);
+      min-width:0;
+      transition: border-color .18s ease, transform .18s ease, box-shadow .18s ease;
+    }
+    .case:hover {
+      border-color: rgba(251,113,133,0.55);
+      transform: translateY(-2px);
+      box-shadow: 0 14px 28px rgba(0,0,0,0.22);
+    }
+    .case-head { display:flex; gap:0.5rem; align-items:flex-start; margin-bottom:0.5rem; }
+    .case-num {
+      flex:0 0 auto; font-size:0.62rem; font-weight:700; letter-spacing:0.1em;
+      padding:0.22rem 0.45rem; border-radius:999px; background:rgba(225,29,72,0.28); color:#fecdd3;
+    }
+    .case h3 { font-family: Fraunces, Georgia, serif; margin:0; font-size:0.9rem; line-height:1.2; letter-spacing:-0.015em; }
+    .case-desc {
+      margin:0.15rem 0 0; font-size:0.7rem; color:var(--muted); line-height:1.3;
+      display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden;
+    }
+    .compare-strip {
+      position: relative; display:grid; grid-template-columns:1fr 1fr; gap:0;
+      border-radius:0.65rem; overflow:hidden; background:#050204;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.24);
+    }
+    .compare-strip figure { margin:0; position:relative; min-width:0; }
+    .compare-strip img {
+      display:block; width:100%; height:100%; object-fit:cover; aspect-ratio:16/9;
+      background:#080204;
+    }
+    .arm-label {
+      position:absolute; top:0.45rem; z-index:2; padding:0.22rem 0.45rem; border-radius:999px;
+      font-size:0.58rem; font-weight:700; letter-spacing:0.12em; text-transform:uppercase;
+      backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px);
+    }
+    .arm-label.raw {
+      left:0.45rem; color:rgba(255,255,255,0.96);
+      background:rgba(0,0,0,0.62); border:1px solid rgba(255,255,255,0.45);
+    }
+    .arm-label.pe {
+      right:0.45rem; color:#ffe4e9;
+      background:rgba(225,29,72,0.28); border:1px solid rgba(251,113,133,0.7);
+    }
+    details.prompts { margin-top:0.45rem; }
+    details.prompts summary {
+      cursor:pointer; list-style:none; font-size:0.68rem; letter-spacing:0.08em;
+      text-transform:uppercase; color:var(--blush); font-weight:700;
+    }
+    details.prompts summary::-webkit-details-marker { display:none; }
+    .prompt-grid { display:grid; grid-template-columns:1fr; gap:0.4rem; margin-top:0.4rem; }
+    .prompt-grid h4 { margin:0 0 0.2rem; font-size:0.62rem; letter-spacing:0.08em; text-transform:uppercase; color:var(--muted); }
+    pre.prompt {
+      margin:0; white-space:pre-wrap; word-break:break-word; background:rgba(0,0,0,0.35);
+      border:1px solid rgba(255,255,255,0.06); border-radius:0.45rem; padding:0.45rem 0.5rem;
+      font-size:0.68rem; line-height:1.35; color:#ffe4e9; max-height:8.5rem; overflow:auto;
+    }
+    .pillars { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:0.75rem; margin-top:1.1rem; }
+    .pillar {
+      padding:1.05rem; border-radius:1rem; border:1px solid var(--line);
+      background: linear-gradient(165deg, rgba(255,245,247,0.06), rgba(255,245,247,0.02));
+      transition: border-color .18s ease, transform .18s ease;
+    }
+    .pillar:hover { border-color: rgba(251,113,133,0.55); transform: translateY(-2px); }
+    .pillar h3 { font-family: Fraunces, Georgia, serif; margin:0 0 0.35rem; font-size:1.08rem; }
+    .pillar p { margin:0; font-size:0.9rem; color:var(--muted); }
+    .link-cards {
+      display:grid; grid-template-columns: repeat(3, minmax(0,1fr));
+      gap: 0.75rem; margin-top: 1.15rem;
+    }
+    a.link-card {
+      display:grid; gap:0.35rem; text-decoration:none; color: inherit;
+      padding: 1.05rem 1.05rem 0.95rem; border-radius: 1rem;
+      border: 1px solid var(--line);
+      background:
+        radial-gradient(120% 90% at 100% 0%, rgba(225,29,72,0.18), transparent 55%),
+        linear-gradient(165deg, rgba(255,245,247,0.07), rgba(255,245,247,0.02));
+      transition: transform .18s ease, border-color .18s ease, box-shadow .18s ease;
+      min-height: 7.2rem;
+    }
+    a.link-card:hover {
+      transform: translateY(-3px);
+      border-color: rgba(251,113,133,0.7);
+      box-shadow: 0 16px 34px rgba(0,0,0,0.28);
+      color: inherit;
+    }
+    a.link-card .lc-kicker {
+      font-size:0.68rem; font-weight:700; letter-spacing:0.12em; text-transform:uppercase; color:var(--blush);
+    }
+    a.link-card strong {
+      font-family: Fraunces, Georgia, serif; font-size:1.12rem; letter-spacing:-0.015em;
+    }
+    a.link-card span { color:var(--muted); font-size:0.86rem; line-height:1.4; }
+    a.link-card .lc-go {
+      margin-top:0.35rem; font-size:0.78rem; font-weight:700; color:#fecdd3; letter-spacing:0.04em;
+    }
+    footer {
+      padding: 1.6rem 0 2.4rem; border-top: 1px solid var(--line);
+      color: var(--muted); font-size: 0.88rem;
+    }
+    .foot-card {
+      display:grid; grid-template-columns: 1.4fr 1fr; gap: 0.85rem;
+      padding: 1.15rem 1.2rem; border-radius: 1.1rem;
+      border: 1px solid var(--line);
+      background:
+        radial-gradient(80% 120% at 0% 0%, rgba(225,29,72,0.16), transparent 55%),
+        linear-gradient(165deg, rgba(255,245,247,0.06), rgba(255,245,247,0.02));
+    }
+    .foot-card .brand { margin-bottom: 0.4rem; display:inline-block; }
+    .foot-links { display:grid; gap:0.45rem; align-content:start; }
+    .foot-links a {
+      display:flex; align-items:center; justify-content:space-between;
+      text-decoration:none; color: var(--ink);
+      padding: 0.7rem 0.8rem; border-radius: 0.75rem;
+      border: 1px solid rgba(251,113,133,0.22);
+      background: rgba(0,0,0,0.22);
+      transition: border-color .15s ease, background .15s ease;
+    }
+    .foot-links a:hover { border-color: var(--blush); background: rgba(225,29,72,0.14); color:#fff; }
+    .foot-links a em { font-style:normal; color:var(--blush); font-size:0.78rem; }
+    .note { opacity:0.9; max-width:38rem; margin:0; }
+    @media (max-width: 1100px) {
+      .case-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    }
+    @media (max-width: 980px) {
+      .flow-track { grid-template-columns: 1fr 1fr; }
+      .flow-track::before { display:none; }
+      .flow-detail { grid-template-columns: 1fr; }
+      .pillars, .link-cards, .foot-card { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 700px) {
+      .case-grid { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 640px) {
+      .wrap { width: min(var(--max), calc(100% - 1.25rem)); }
+      .flow-track, .compare-strip { grid-template-columns: 1fr; }
+      .hero { padding-top: 1.4rem; }
+    }
+  </style>
+
+
+</head>
+<body>
+  <div class="wrap">
+    <header class="topnav">
+      <a class="brand" href="https://github.com/WayneJin0918/Omni-Rewriter">Omni-<span>Rewriter</span></a>
+      <nav class="nav-links">
+        <a href="index.html">Promo</a>
+        <a href="https://github.com/WayneJin0918/Omni-Rewriter">GitHub</a>
+        <a href="#pipeline">Pipeline</a>
+        <a href="#cases">Cases</a>
+        <a href="#ship">In the repo</a>
+      </nav>
+    </header>
+    <section class="hero">
+      <div class="eyebrow">Omni-Rewriter · H3 PE</div>
+      <h1>Prompt expansion tuned for MiniMax-H3</h1>
+      <p class="lede">
+        Omni-Rewriter turns everyday video intent into typed H3 prompts: shot timing, dialogue tags,
+        camera grammar, and continuity checks with bounded repair. Expand is not generate. The
+        same-seed RAW vs PE compares below is our public PE instance for H3 — denser curation continues.
+      </p>
+      <div class="cta-row">
+        <a class="btn btn-primary" href="https://github.com/WayneJin0918/Omni-Rewriter">Open source on GitHub</a>
+        <a class="btn btn-ghost" href="https://github.com/WayneJin0918/Omni-Rewriter/blob/main/docs/dialects/h3-pe-harness.md">Read the PE harness</a>
+        <a class="btn btn-ghost" href="https://github.com/WayneJin0918/Omni-Rewriter/tree/main/docs/h3-pe-showcase">In-repo showcase</a>
+      </div>
+    </section>
+    <section class="block" id="why">
+      <div class="section-kicker">Why PE for H3</div>
+      <h2>H3 rewards prompts that already know the cut</h2>
+      <p>
+        Short user intents rarely specify shot timing, speaker markup, camera motion, or ambient layers.
+        Omni-Rewriter expands transport-neutral intent into a typed H3 dialect, validates it, and repairs
+        failures in a bounded loop. Pairs share seed, aspect, and duration so differences come from the prompt path.
+      </p>
+    </section>
+
+    <section class="block" id="pipeline">
+      <div class="section-kicker">Pipeline</div>
+      <h2>Analyze · draft · validate · repair · render</h2>
+      <p>
+        Click a stage to inspect what happens there. Expand stays separate from generate: adapters are
+        optional and evidence-scoped. The VLM pairwise scorer is post-hoc only — scores do not revise prompts.
+      </p>
+      <div class="flowboard" id="pe-flow" data-active="input">
+        <div class="flow-track" role="tablist" aria-label="PE pipeline stages">
+          <button class="flow-node" type="button" role="tab" id="flow-tab-input" aria-controls="flow-panel" aria-pressed="true" data-step="input">
+            <div class="dot" aria-hidden="true"></div>
+            <em>01 · Input</em>
+            <strong>RewriteRequest</strong>
+            <span>Prompt, duration, task, metadata.</span>
+          </button>
+          <button class="flow-node" type="button" role="tab" id="flow-tab-plan" aria-controls="flow-panel" aria-pressed="false" data-step="plan">
+            <div class="dot" aria-hidden="true"></div>
+            <em>02 · Plan</em>
+            <strong>Analyze &amp; draft</strong>
+            <span>Invariants, state, transitions, evidence.</span>
+          </button>
+          <button class="flow-node" type="button" role="tab" id="flow-tab-check" aria-controls="flow-panel" aria-pressed="false" data-step="check">
+            <div class="dot" aria-hidden="true"></div>
+            <em>03 · Check</em>
+            <strong>Validate</strong>
+            <span>Deterministic H3 grammar checks.</span>
+          </button>
+          <button class="flow-node" type="button" role="tab" id="flow-tab-fix" aria-controls="flow-panel" aria-pressed="false" data-step="fix">
+            <div class="dot" aria-hidden="true"></div>
+            <em>04 · Fix</em>
+            <strong>Bounded repair</strong>
+            <span>Retry with errors + invariants only.</span>
+          </button>
+          <button class="flow-node" type="button" role="tab" id="flow-tab-out" aria-controls="flow-panel" aria-pressed="false" data-step="out">
+            <div class="dot" aria-hidden="true"></div>
+            <em>05 · Out</em>
+            <strong>Dialect render</strong>
+            <span>H3 text out; optional generate next.</span>
+          </button>
+        </div>
+        <div class="flow-detail" id="flow-panel" role="tabpanel" aria-labelledby="flow-tab-input">
+          <div>
+            <div class="flow-chip" id="flow-chip">Stage · Input</div>
+            <h3 id="flow-title">RewriteRequest</h3>
+            <p id="flow-body">Transport-neutral intent enters the harness with duration, task route, and metadata such as aspect ratio and seed.</p>
+          </div>
+          <div class="flow-meta">
+            <ul class="flow-list" id="flow-points">
+              <li>Video tasks require duration_seconds</li>
+              <li>Task routes: t2va / i2va / fl2va / …</li>
+              <li>Same seed later pairs RAW vs PE fairly</li>
+            </ul>
+            <p class="flow-hint">Tip: click stages left → right to walk the expansion loop.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="block" id="cases">
+      <div class="section-kicker">Cases</div>
+      <h2>Fifteen RAW vs PE pairs · three per row</h2>
+      <p>
+        Three pairs per row on wide screens: each card keeps a compact RAW | PE strip with corner labels. Expand any card for the RAW prompt and full H3 PE.
+      </p>
+      <div class="case-grid">
+
+    <article class="case" id="s19_fencing_duel">
+      <header class="case-head">
+        <span class="case-num">01</span>
+        <div>
+          <h3>Fencing duel multi-angle</h3>
+          <p class="case-desc">Wide → crash-zoom clash → tip-hit CU → reverse-angle Touché with synced blade audio.</p>
+        </div>
+      </header>
+      <div class="compare-strip">
+        <figure>
+          <span class="arm-label raw">RAW</span>
+          <img src="https://waynejin0918.github.io/Omni-Rewriter/assets/demos/s19_fencing_duel_raw.gif" alt="Fencing duel multi-angle RAW" loading="lazy">
+        </figure>
+        <figure>
+          <span class="arm-label pe">PE</span>
+          <img src="https://waynejin0918.github.io/Omni-Rewriter/assets/demos/s19_fencing_duel_pe.gif" alt="Fencing duel multi-angle PE" loading="lazy">
+        </figure>
+      </div>
+      <details class="prompts">
+        <summary>Prompts</summary>
+        <div class="prompt-grid">
+          <div>
+            <h4>RAW</h4>
+            <pre class="prompt">A fencing bout in a bright salle: open wide on two fencers, crash-zoom into a blade clash, hard-cut to a tip-hit extreme close-up, then reverse-angle as the referee raises a hand and calls 'Touché!' in English with lip-sync; synchronize foot scrapes, blade rings, electronic scoring beep, and crowd hush to each cut.</pre>
+          </div>
+          <div>
+            <h4>H3 PE</h4>
+            <pre class="prompt">integrated_multimodal_description: Live-action, cinematic, 16:9 aspect ratio. [Shot 1] A wide static shot establishes a bright, sunlit fencing salle with two fencers in white gear facing each other in the en garde position, their blades held high. The fencers advance with quick, rhythmic footwork, creating a tense standoff. [Shot 2] At 00:04.500, a rapid crash-zoom accelerates into the center of the frame as the two blades collide with a sharp metallic ring, the camera shaking slightly from the impact force. [Shot 3] At 00:07.000, a hard cut to an extreme close-up of the fencer's tip piercing the opponent's lamé jacket, the electronic scoring light flashing red instantly. [Shot 4] At 00:09.500, a reverse-angle medium shot shows the referee stepping forward, raising a hand decisively while the fencers freeze. The referee (S1) says: &lt;d&gt;[English] Touché!&lt;/d&gt; with precise lip-sync. The scene holds on the referee's authoritative gesture and the fencers' reaction for the remainder of the clip.
+
+overall_soundscape: The soundscape begins with the rhythmic squeak of fencing shoes on the wooden floor and the low hum of the salle. As the blades clash in Shot 2, a sharp, high-pitched metallic ring dominates. In Shot 3, a distinct, loud electronic scoring beep triggers immediately upon the hit. Throughout the sequence, a subtle crowd hush builds, dropping to near silence as the referee speaks in Shot 4, emphasizing the spoken dialogue.
+
+non_diegetic_music: A tense, staccato orchestral string motif that accelerates in tempo during the advance, cuts abruptly to silence at the moment of the blade clash, and remains silent until a single, resolving major chord strikes exactly when the referee says 'Touché!'.</pre>
+          </div>
+        </div>
+      </details>
+    </article>
+
+    <article class="case" id="s02_multilingual">
+      <header class="case-head">
+        <span class="case-num">02</span>
+        <div>
+          <h3>Tokyo ramen bilingual dialogue</h3>
+          <p class="case-desc">In a Tokyo ramen shop, bilingual JP/EN dialogue with kitchen ambience.</p>
+        </div>
+      </header>
+      <div class="compare-strip">
+        <figure>
+          <span class="arm-label raw">RAW</span>
+          <img src="https://waynejin0918.github.io/Omni-Rewriter/assets/demos/s02_multilingual_raw.gif" alt="Tokyo ramen bilingual dialogue RAW" loading="lazy">
+        </figure>
+        <figure>
+          <span class="arm-label pe">PE</span>
+          <img src="https://waynejin0918.github.io/Omni-Rewriter/assets/demos/s02_multilingual_pe.gif" alt="Tokyo ramen bilingual dialogue PE" loading="lazy">
+        </figure>
+      </div>
+      <details class="prompts">
+        <summary>Prompts</summary>
+        <div class="prompt-grid">
+          <div>
+            <h4>RAW</h4>
+            <pre class="prompt">In a Tokyo ramen shop, the chef calls orders in Japanese and a tourist replies in English; both languages must be audible and lip-synced over kitchen sounds.</pre>
+          </div>
+          <div>
+            <h4>H3 PE</h4>
+            <pre class="prompt">integrated_multimodal_description: Live-action, cinematic, 16:9 aspect ratio. [Shot 1] Inside a bustling Tokyo ramen shop with steam rising from large pots and wooden counters. A focused Japanese chef in a white apron stands behind the counter, looking directly at a young tourist. The chef calls out orders with animated gestures. The tourist, holding a menu, looks up and responds. The chef (S1) says: &lt;d&gt;[Japanese] Shio ramen, gochisou sama!&lt;/d&gt; The tourist (S2) replies: &lt;d&gt;[English] Yes, please! One miso ramen with extra chashu.&lt;/d&gt; The chef nods and turns to the kitchen, while the tourist smiles and waits. The camera slowly pushes in on the steam and the chef&#x27;s hands working the noodles. [Shot 2] At 00:05.000, the chef vigorously tosses noodles in a wok over a high flame, sending sparks flying as the tourist watches in awe. [Shot 3] At 00:10.000, the finished bowl is placed on the counter with a steaming broth, garnished with green onions and a slice of chashu, as the tourist reaches for chopsticks.
+
+overall_soundscape: Loud kitchen ambience including boiling water, clattering bowls, chopping sounds, and the hiss of a gas stove. The chef&#x27;s Japanese dialogue and the tourist&#x27;s English dialogue are clear, distinct, and perfectly lip-synced, cutting through the background noise without distortion.
+
+non_diegetic_music: None</pre>
+          </div>
+        </div>
+      </details>
+    </article>
+
+    <article class="case" id="s05_wok">
+      <header class="case-head">
+        <span class="case-num">03</span>
+        <div>
+          <h3>Wok toss action sync</h3>
+          <p class="case-desc">Chef flips a sizzling wok; sync flame, oil, and spatula hits.</p>
+        </div>
+      </header>
+      <div class="compare-strip">
+        <figure>
+          <span class="arm-label raw">RAW</span>
+          <img src="https://waynejin0918.github.io/Omni-Rewriter/assets/demos/s05_wok_raw.gif" alt="Wok toss action sync RAW" loading="lazy">
+        </figure>
+        <figure>
+          <span class="arm-label pe">PE</span>
+          <img src="https://waynejin0918.github.io/Omni-Rewriter/assets/demos/s05_wok_pe.gif" alt="Wok toss action sync PE" loading="lazy">
+        </figure>
+      </div>
+      <details class="prompts">
+        <summary>Prompts</summary>
+        <div class="prompt-grid">
+          <div>
+            <h4>RAW</h4>
+            <pre class="prompt">A chef flips a sizzling wok, tosses noodles high, and catches them; synchronize every motion with roaring flame, sizzling oil, metal clangs, and spatula hits.</pre>
+          </div>
+          <div>
+            <h4>H3 PE</h4>
+            <pre class="prompt">integrated_multimodal_description: Live-action, cinematic, high-energy close-up of a professional chef in a bustling kitchen. [Shot 1] The chef, wearing a white uniform and black apron, grips a large metal wok with intense focus. He executes a powerful upward flick of the wrist, launching a cascade of steaming noodles high into the air. As the noodles arc, a massive burst of roaring orange flame erupts from the wok, illuminating the chef&#x27;s determined face. The noodles tumble back down, and the chef expertly catches them with a sharp, rhythmic clang of the metal spatula against the wok&#x27;s rim. The camera tracks the motion dynamically, emphasizing the synchronization between the toss, the flame, and the catch. The scene is bathed in warm, dramatic lighting with steam swirling around the action.
+
+overall_soundscape: Intense, rhythmic kitchen soundscape featuring a continuous roar of high-heat flames, sharp sizzling of oil hitting hot metal, loud metallic clangs of the spatula striking the wok, and the soft whoosh of noodles being tossed through the air. The sounds are perfectly synchronized with the visual motions of the chef&#x27;s movements.
+
+non_diegetic_music: Fast-paced, percussive electronic beat with heavy bass and metallic percussion hits that mirror the rhythm of the wok tossing and spatula strikes, building tension and energy throughout the 15-second clip.</pre>
+          </div>
+        </div>
+      </details>
+    </article>
+
+    <article class="case" id="s04_cyclist">
+      <header class="case-head">
+        <span class="case-num">04</span>
+        <div>
+          <h3>Neon-highway cyclist</h3>
+          <p class="case-desc">Lone cyclist on neon highway with score + tire/chain ambience.</p>
+        </div>
+      </header>
+      <div class="compare-strip">
+        <figure>
+          <span class="arm-label raw">RAW</span>
+          <img src="https://waynejin0918.github.io/Omni-Rewriter/assets/demos/s04_cyclist_raw.gif" alt="Neon-highway cyclist RAW" loading="lazy">
+        </figure>
+        <figure>
+          <span class="arm-label pe">PE</span>
+          <img src="https://waynejin0918.github.io/Omni-Rewriter/assets/demos/s04_cyclist_pe.gif" alt="Neon-highway cyclist PE" loading="lazy">
+        </figure>
+      </div>
+      <details class="prompts">
+        <summary>Prompts</summary>
+        <div class="prompt-grid">
+          <div>
+            <h4>RAW</h4>
+            <pre class="prompt">A lone cyclist rides an empty neon highway at night; use a cinematic orchestral score together with audible tire hum, chain clicks, breathing, and wind.</pre>
+          </div>
+          <div>
+            <h4>H3 PE</h4>
+            <pre class="prompt">integrated_multimodal_description: Live-action, cinematic, 16:9 aspect ratio. [Shot 1] A lone cyclist pedals steadily on a deserted highway at night, flanked by glowing neon signs in vibrant blues and magentas that reflect off the wet asphalt. The camera tracks alongside the rider at a low angle, capturing the rhythmic motion of the legs and the blur of the neon lights against the dark sky. The cyclist wears a sleek, dark outfit with a reflective helmet, and the bike&#x27;s chain and tires are clearly visible in motion. The scene maintains a consistent empty road with no other vehicles or pedestrians, ensuring the solitude of the rider is preserved throughout the 15-second duration.
+
+overall_soundscape: Foreground: rhythmic tire hum on asphalt, distinct metallic chain clicks with every pedal stroke, and the rider&#x27;s steady, audible breathing. Midground: a constant, low-frequency wind rush that swells slightly as the camera moves. Background: a distant, cinematic orchestral score with swelling strings and deep brass that underscores the isolation and grandeur of the night ride.
+
+non_diegetic_music: A sweeping, cinematic orchestral score featuring deep cellos and soaring violins that build a sense of epic solitude and forward momentum, perfectly synchronized with the cyclist&#x27;s pace and the neon-lit environment.</pre>
+          </div>
+        </div>
+      </details>
+    </article>
+
+    <article class="case" id="s01_dialogue">
+      <header class="case-head">
+        <span class="case-num">05</span>
+        <div>
+          <h3>Rainy bus-stop dialogue</h3>
+          <p class="case-desc">Coworkers argue in English at a rainy bus stop.</p>
+        </div>
+      </header>
+      <div class="compare-strip">
+        <figure>
+          <span class="arm-label raw">RAW</span>
+          <img src="https://waynejin0918.github.io/Omni-Rewriter/assets/demos/s01_dialogue_raw.gif" alt="Rainy bus-stop dialogue RAW" loading="lazy">
+        </figure>
+        <figure>
+          <span class="arm-label pe">PE</span>
+          <img src="https://waynejin0918.github.io/Omni-Rewriter/assets/demos/s01_dialogue_pe.gif" alt="Rainy bus-stop dialogue PE" loading="lazy">
+        </figure>
+      </div>
+      <details class="prompts">
+        <summary>Prompts</summary>
+        <div class="prompt-grid">
+          <div>
+            <h4>RAW</h4>
+            <pre class="prompt">Two coworkers at a rainy bus stop argue about being late; include clear spoken English dialogue with visible lip-sync, rain, traffic, and street ambience.</pre>
+          </div>
+          <div>
+            <h4>H3 PE</h4>
+            <pre class="prompt">integrated_multimodal_description: Live-action, cinematic, 16:9 aspect ratio. [Shot 1] A medium shot captures two coworkers standing under a small awning at a rainy bus stop; heavy rain falls in the background with blurred city traffic lights reflecting on wet pavement. The woman (S1) looks anxious and checks her watch while the man (S2) gestures impatiently. The woman (S1) says: &lt;d&gt;[English] We&#x27;re already late, and the bus is nowhere in sight!&lt;/d&gt; The man (S2) replies with a tense mid voice: &lt;d&gt;[English] Stop panicking! If we run now, we&#x27;ll just slip on the wet sidewalk.&lt;/d&gt; The woman (S1) turns sharply, her lips moving in perfect sync: &lt;d&gt;[English] Running is better than missing this meeting entirely!&lt;/d&gt; The camera slowly pushes in as the rain intensifies, highlighting the tension between them. [Shot 2] At 00:10.500, a close-up on the man&#x27;s face shows raindrops sliding down his cheek as he sighs, looking defeated but still arguing: &lt;d&gt;[English] Fine, but if we get soaked, don&#x27;t say I didn&#x27;t warn you.&lt;/d&gt; The scene fades slightly as a bus horn blares in the distance, signaling their arrival.
+
+overall_soundscape: Heavy rain falling continuously, splashing against the pavement and awning; distant city traffic noise with occasional car horns and engine hums; footsteps shifting on wet ground; a distant bus horn blaring at the end.
+
+non_diegetic_music: Low, tense ambient drone with subtle rhythmic pulses to underscore the argument, fading out as the bus horn sounds.</pre>
+          </div>
+        </div>
+      </details>
+    </article>
+
+    <article class="case" id="s03_wetland">
+      <header class="case-head">
+        <span class="case-num">06</span>
+        <div>
+          <h3>Pre-dawn wetland ambience</h3>
+          <p class="case-desc">Layered birds, insects, thunder, water, and wind; no dialogue.</p>
+        </div>
+      </header>
+      <div class="compare-strip">
+        <figure>
+          <span class="arm-label raw">RAW</span>
+          <img src="https://waynejin0918.github.io/Omni-Rewriter/assets/demos/s03_wetland_raw.gif" alt="Pre-dawn wetland ambience RAW" loading="lazy">
+        </figure>
+        <figure>
+          <span class="arm-label pe">PE</span>
+          <img src="https://waynejin0918.github.io/Omni-Rewriter/assets/demos/s03_wetland_pe.gif" alt="Pre-dawn wetland ambience PE" loading="lazy">
+        </figure>
+      </div>
+      <details class="prompts">
+        <summary>Prompts</summary>
+        <div class="prompt-grid">
+          <div>
+            <h4>RAW</h4>
+            <pre class="prompt">A pre-dawn wetland wakes beneath distant lightning; layer birds, insects, thunder, water, and wind through reeds with no dialogue and rich natural audio throughout.</pre>
+          </div>
+          <div>
+            <h4>H3 PE</h4>
+            <pre class="prompt">integrated_multimodal_description: Live-action, cinematic, 16:9 aspect ratio. [Shot 1] A dark, misty wetland at pre-dawn is revealed by the faint glow of distant lightning flashing intermittently behind a dense wall of tall, wet reeds. The camera slowly pushes forward through the reeds, capturing the texture of water droplets on leaves and the subtle sway caused by a gentle wind. As the shot progresses, small insects begin to flutter near the water&#x27;s surface, and a few birds take flight in the background, silhouetted against the occasional lightning flash. The lighting shifts subtly with each thunderclap, illuminating the water&#x27;s ripples and the steam rising from the marsh. The scene maintains a consistent, moody atmosphere with no abrupt changes in lighting or texture, ensuring a seamless transition from darkness to the brief, dramatic illumination of the storm.
+
+overall_soundscape: Rich, layered natural audio without dialogue. The soundscape begins with the low hum of wind moving through reeds and the gentle lapping of water against the marshy shore. As the scene progresses, the chirping of insects becomes more prominent, blending with the distant calls of waking birds. Occasional deep, rolling thunder rumbles in the background, synchronized with the visual lightning flashes, adding a sense of depth and immersion. The audio maintains a continuous, organic flow, with no sudden silences or artificial elements, creating a fully immersive natural environment.
+
+non_diegetic_music: None. The scene relies entirely on diegetic natural sounds to establish atmosphere and mood.</pre>
+          </div>
+        </div>
+      </details>
+    </article>
+
+    <article class="case" id="s08_jazz">
+      <header class="case-head">
+        <span class="case-num">07</span>
+        <div>
+          <h3>Street jazz trio</h3>
+          <p class="case-desc">Sax, bass, brushes with live diegetic music and crowd.</p>
+        </div>
+      </header>
+      <div class="compare-strip">
+        <figure>
+          <span class="arm-label raw">RAW</span>
+          <img src="https://waynejin0918.github.io/Omni-Rewriter/assets/demos/s08_jazz_raw.gif" alt="Street jazz trio RAW" loading="lazy">
+        </figure>
+        <figure>
+          <span class="arm-label pe">PE</span>
+          <img src="https://waynejin0918.github.io/Omni-Rewriter/assets/demos/s08_jazz_pe.gif" alt="Street jazz trio PE" loading="lazy">
+        </figure>
+      </div>
+      <details class="prompts">
+        <summary>Prompts</summary>
+        <div class="prompt-grid">
+          <div>
+            <h4>RAW</h4>
+            <pre class="prompt">A street jazz trio of saxophone, upright bass, and brush drums performs in a plaza while passersby clap; the live in-scene music and crowd reactions must be audible.</pre>
+          </div>
+          <div>
+            <h4>H3 PE</h4>
+            <pre class="prompt">integrated_multimodal_description: Live-action, cinematic, 16:9 aspect ratio. [Shot 1] A sun-drenched urban plaza with stone paving and blurred historic architecture in the background. A street jazz trio performs energetically: a saxophonist in a sharp suit sways while playing a tenor sax, a bassist in a turtleneck plucks an upright bass with rhythmic precision, and a drummer in a flat cap uses brushes on a snare drum. Passersby in casual attire slow down, smile, and clap along to the beat. The camera starts with a medium-wide shot of the trio, then slowly pushes in to a close-up of the saxophonist&#x27;s fingers, then cuts to a low-angle shot of the bassist&#x27;s hands, and finally pulls back to a wide shot showing the clapping crowd surrounding them. The lighting is warm afternoon sunlight casting long shadows. No dialogue is spoken.
+
+overall_soundscape: Diegetic live jazz music featuring a swinging saxophone melody, a walking upright bass line, and the soft, rhythmic swish of brush drums. The sound of the crowd clapping in time with the music is prominent and layered over the instruments, creating an immersive street performance atmosphere. Ambient city noise like distant traffic and wind is faintly audible underneath.
+
+non_diegetic_music: None. The audio consists entirely of the live in-scene performance and crowd reactions.</pre>
+          </div>
+        </div>
+      </details>
+    </article>
+
+    <article class="case" id="s06_sneaker">
+      <header class="case-head">
+        <span class="case-num">08</span>
+        <div>
+          <h3>Timed sneaker ad cuts</h3>
+          <p class="case-desc">Wide sprint → tracking → sole macro with footfall rhythm.</p>
+        </div>
+      </header>
+      <div class="compare-strip">
+        <figure>
+          <span class="arm-label raw">RAW</span>
+          <img src="https://waynejin0918.github.io/Omni-Rewriter/assets/demos/s06_sneaker_raw.gif" alt="Timed sneaker ad cuts RAW" loading="lazy">
+        </figure>
+        <figure>
+          <span class="arm-label pe">PE</span>
+          <img src="https://waynejin0918.github.io/Omni-Rewriter/assets/demos/s06_sneaker_pe.gif" alt="Timed sneaker ad cuts PE" loading="lazy">
+        </figure>
+      </div>
+      <details class="prompts">
+        <summary>Prompts</summary>
+        <div class="prompt-grid">
+          <div>
+            <h4>RAW</h4>
+            <pre class="prompt">A fifteen-second sneaker advertisement moves from a wide city sprint to a side tracking shot and then a sole macro, with rhythmic footfalls and transition whooshes.</pre>
+          </div>
+          <div>
+            <h4>H3 PE</h4>
+            <pre class="prompt">integrated_multimodal_description: Live-action, cinematic, high-energy sneaker advertisement. [Shot 1] A wide shot of a runner sprinting through a bustling modern city street at dawn, wearing sleek athletic sneakers, camera pulling back to reveal the urban scale. [Shot 2] At 00:05.000, a smooth side-tracking shot follows the runner&#x27;s legs in motion, emphasizing speed and the dynamic flex of the shoe material against the blurred city background. [Shot 3] At 00:10.000, an extreme macro close-up of the sneaker sole striking the pavement, capturing the texture of the rubber and the compression of the cushioning with every step.
+
+overall_soundscape: Rhythmic, heavy footfalls synchronized with the runner&#x27;s pace, punctuated by sharp whoosh sounds during the camera transitions between shots. Ambient city noise is present but muffled to prioritize the impact of the steps.
+
+non_diegetic_music: Driving, upbeat electronic beat with a strong bassline that matches the tempo of the running, building intensity throughout the 15-second duration.</pre>
+          </div>
+        </div>
+      </details>
+    </article>
+
+    <article class="case" id="s07_bowling">
+      <header class="case-head">
+        <span class="case-num">09</span>
+        <div>
+          <h3>Bowling physics impact</h3>
+          <p class="case-desc">Spinning ball to pin crash with synced rumble.</p>
+        </div>
+      </header>
+      <div class="compare-strip">
+        <figure>
+          <span class="arm-label raw">RAW</span>
+          <img src="https://waynejin0918.github.io/Omni-Rewriter/assets/demos/s07_bowling_raw.gif" alt="Bowling physics impact RAW" loading="lazy">
+        </figure>
+        <figure>
+          <span class="arm-label pe">PE</span>
+          <img src="https://waynejin0918.github.io/Omni-Rewriter/assets/demos/s07_bowling_pe.gif" alt="Bowling physics impact PE" loading="lazy">
+        </figure>
+      </div>
+      <details class="prompts">
+        <summary>Prompts</summary>
+        <div class="prompt-grid">
+          <div>
+            <h4>RAW</h4>
+            <pre class="prompt">In a bowling alley a spinning ball rolls down the lane and strikes the pins; show realistic momentum and pin scatter with rolling rumble and a loud synchronized crash.</pre>
+          </div>
+          <div>
+            <h4>H3 PE</h4>
+            <pre class="prompt">integrated_multimodal_description: Live-action, cinematic, 16:9 aspect ratio. [Shot 1] A polished wooden bowling lane stretches into the distance under warm overhead lights. A heavy, multi-colored bowling ball spins rapidly as it rolls down the center of the lane, creating a low rolling rumble. At 00:08.500, the ball strikes the head pin with significant force, causing a realistic chain reaction where pins scatter violently in all directions with accurate momentum transfer and wood-on-wood impact physics. The camera remains static, capturing the full sequence from release to the final settling of the pins.
+
+overall_soundscape: A continuous low-frequency rolling rumble as the ball travels down the lane, building in intensity until a sudden, loud, synchronized crash of wood pins shattering and scattering, followed by the clatter of pins hitting the floor and the return mechanism.
+
+non_diegetic_music: None</pre>
+          </div>
+        </div>
+      </details>
+    </article>
+
+
+    <article class="case" id="s09_noir">
+      <header class="case-head">
+        <span class="case-num">10</span>
+        <div>
+          <h3>Noir voiceover walk</h3>
+          <p class="case-desc">Detective in neon rain with closed lips + off-screen VO.</p>
+        </div>
+      </header>
+      <div class="compare-strip">
+        <figure>
+          <span class="arm-label raw">RAW</span>
+          <img src="https://waynejin0918.github.io/Omni-Rewriter/assets/demos/s09_noir_raw.gif" alt="Noir voiceover walk RAW" loading="lazy">
+        </figure>
+        <figure>
+          <span class="arm-label pe">PE</span>
+          <img src="https://waynejin0918.github.io/Omni-Rewriter/assets/demos/s09_noir_pe.gif" alt="Noir voiceover walk PE" loading="lazy">
+        </figure>
+      </div>
+      <details class="prompts">
+        <summary>Prompts</summary>
+        <div class="prompt-grid">
+          <div>
+            <h4>RAW</h4>
+            <pre class="prompt">A film-noir detective walks through neon rain while a calm male off-screen voiceover narrates the case; her lips remain closed beneath rain and distant sirens.</pre>
+          </div>
+          <div>
+            <h4>H3 PE</h4>
+            <pre class="prompt">integrated_multimodal_description: Live-action, cinematic film-noir style, high contrast lighting with deep shadows and vibrant neon reflections on wet pavement. [Shot 1] A female detective in a trench coat walks steadily through heavy rain in a dark urban alleyway. Neon signs in pink and blue cast dramatic, shifting reflections on the wet ground and her rain-soaked coat. Her expression is stoic and focused, her lips remain firmly closed throughout the entire shot as she navigates the slick street. The camera tracks her movement smoothly from a low angle, emphasizing the towering buildings and the falling rain. The atmosphere is thick with mist and the glow of distant city lights. A calm, deep male voiceover says in an off-screen voiceover: &lt;d&gt;[English] The city doesn&#x27;t sleep, it just waits. And tonight, the rain washes away the sins of yesterday, leaving only the truth in the gutter.&lt;/d&gt; The on-screen character&#x27;s lips remain closed.
+
+overall_soundscape: Heavy rain falling continuously, splashing against pavement and puddles. Distant, wailing police sirens echo through the urban canyon, fading in and out. The rhythmic sound of the detective&#x27;s footsteps on wet asphalt.
+
+non_diegetic_music: A slow, melancholic saxophone melody with a minor key, underscored by a steady, heartbeat-like bass drum, evoking a classic noir tension.</pre>
+          </div>
+        </div>
+      </details>
+    </article>
+
+    <article class="case" id="s15_concert_crashzoom">
+      <header class="case-head">
+        <span class="case-num">11</span>
+        <div>
+          <h3>Concert crash-zoom cuts</h3>
+          <p class="case-desc">Wide crowd → crash zoom to singer → drummer CU → stage-wide finale.</p>
+        </div>
+      </header>
+      <div class="compare-strip">
+        <figure>
+          <span class="arm-label raw">RAW</span>
+          <img src="https://waynejin0918.github.io/Omni-Rewriter/assets/demos/s15_concert_crashzoom_raw.gif" alt="Concert crash-zoom cuts RAW" loading="lazy">
+        </figure>
+        <figure>
+          <span class="arm-label pe">PE</span>
+          <img src="https://waynejin0918.github.io/Omni-Rewriter/assets/demos/s15_concert_crashzoom_pe.gif" alt="Concert crash-zoom cuts PE" loading="lazy">
+        </figure>
+      </div>
+      <details class="prompts">
+        <summary>Prompts</summary>
+        <div class="prompt-grid">
+          <div>
+            <h4>RAW</h4>
+            <pre class="prompt">A live arena concert with four timed cuts in 15 seconds: wide crowd, crash zoom onto the lead singer mid-lyric in English, cut to drummer close-up, then pull out to a stage-wide finale; diegetic band performance, crowd roar, and stage whooshes must stay continuous.</pre>
+          </div>
+          <div>
+            <h4>H3 PE</h4>
+            <pre class="prompt">integrated_multimodal_description: Live-action, cinematic concert footage. [Shot 1] A wide static shot captures a massive arena crowd waving glow sticks under flashing stage lights, establishing the scale of the event. [Shot 2] At 00:03.500, a rapid crash zoom thrusts forward to a tight close-up of the lead singer, eyes closed, passionately delivering a line as the camera locks focus on their face. The singer (S1) says: &lt;d&gt;[English] We own this night!&lt;/d&gt; [Shot 3] At 00:07.000, a hard cut shifts to an extreme close-up of the drummer&#x27;s hands striking the snare and cymbals with high velocity, sweat flying from the motion. [Shot 4] At 00:10.500, a smooth pull out reveals the entire stage setup with the full band silhouetted against a wall of pyrotechnics, holding the final pose as the lights flare. The visual state remains stable on the finale pose until the end.
+
+overall_soundscape: Continuous, high-energy diegetic audio track featuring the band&#x27;s live performance, a roaring crowd that swells and sustains across all cuts, and sharp stage whooshes synchronized with the crash zoom and pyrotechnic finale.
+
+non_diegetic_music: None; the audio consists entirely of the diegetic concert performance and crowd noise.</pre>
+          </div>
+        </div>
+      </details>
+    </article>
+
+    <article class="case" id="s14_kitchen_stations">
+      <header class="case-head">
+        <span class="case-num">12</span>
+        <div>
+          <h3>Kitchen whip-pan montage</h3>
+          <p class="case-desc">Wide → whip to grill → plating cut → pull out as chef shouts an order.</p>
+        </div>
+      </header>
+      <div class="compare-strip">
+        <figure>
+          <span class="arm-label raw">RAW</span>
+          <img src="https://waynejin0918.github.io/Omni-Rewriter/assets/demos/s14_kitchen_stations_raw.gif" alt="Kitchen whip-pan montage RAW" loading="lazy">
+        </figure>
+        <figure>
+          <span class="arm-label pe">PE</span>
+          <img src="https://waynejin0918.github.io/Omni-Rewriter/assets/demos/s14_kitchen_stations_pe.gif" alt="Kitchen whip-pan montage PE" loading="lazy">
+        </figure>
+      </div>
+      <details class="prompts">
+        <summary>Prompts</summary>
+        <div class="prompt-grid">
+          <div>
+            <h4>RAW</h4>
+            <pre class="prompt">A busy restaurant kitchen montage: open on a wide shot, fast whip-pan to the grill, hard-cut to a plating close-up, then pull out to the pass window as the chef shouts a short English order; sync sizzles, knife chops, ticket printer, and plate clinks to each cut.</pre>
+          </div>
+          <div>
+            <h4>H3 PE</h4>
+            <pre class="prompt">integrated_multimodal_description: Live-action, cinematic, high-energy montage of a busy restaurant kitchen. [Shot 1] A wide static shot establishes the chaotic kitchen with steam rising and staff moving rapidly; the camera executes a fast whip-pan to the right, blurring the background to transition to the grill station. [Shot 2] At 00:03.500, a hard-cut to a tight close-up of a steak sizzling on a hot grill, followed immediately by a chef&#x27;s hand rapidly chopping herbs with a knife; the camera holds steady to capture the texture and steam. [Shot 3] At 00:07.000, a hard-cut to an extreme close-up of a plate being garnished, then a smooth pull-out (dolly back) to reveal the chef standing at the pass window, looking stressed and urgent. The chef shouts a short order: (S1) says: &lt;d&gt;[English] Two ribeyes, medium-rare, fire now!&lt;/d&gt; The camera continues to pull back slightly as the ticket printer whirs and a plate clinks against the counter, ending on a medium shot of the pass window with the kitchen still active in the background.
+
+overall_soundscape: A rhythmic, high-tempo soundscape synchronized to the visual cuts: a loud, continuous sizzle during the grill shot, sharp and rapid knife chops on the cutting board, the mechanical whir and tear of a ticket printer, and distinct metallic plate clinks. The chef&#x27;s shouted order cuts through the ambient noise with clear, urgent projection.
+
+non_diegetic_music: Fast-paced, percussive jazz-fusion track with a driving snare beat and staccato brass hits that accentuate the camera whip-pan and hard-cuts, building tension until the final pull-out.</pre>
+          </div>
+        </div>
+      </details>
+    </article>
+
+    <article class="case" id="s13_rooftop_orbit">
+      <header class="case-head">
+        <span class="case-num">13</span>
+        <div>
+          <h3>Rooftop arc proposal</h3>
+          <p class="case-desc">180° arc around a rooftop couple, then close-up acceptance with wind + piano.</p>
+        </div>
+      </header>
+      <div class="compare-strip">
+        <figure>
+          <span class="arm-label raw">RAW</span>
+          <img src="https://waynejin0918.github.io/Omni-Rewriter/assets/demos/s13_rooftop_orbit_raw.gif" alt="Rooftop arc proposal RAW" loading="lazy">
+        </figure>
+        <figure>
+          <span class="arm-label pe">PE</span>
+          <img src="https://waynejin0918.github.io/Omni-Rewriter/assets/demos/s13_rooftop_orbit_pe.gif" alt="Rooftop arc proposal PE" loading="lazy">
+        </figure>
+      </div>
+      <details class="prompts">
+        <summary>Prompts</summary>
+        <div class="prompt-grid">
+          <div>
+            <h4>RAW</h4>
+            <pre class="prompt">On a windy rooftop at golden hour, the camera arcs 180 degrees around a couple; the man proposes in clear English with lip-sync, then cut to her close-up reaction as she answers; wind, city hum, and a quiet piano underscore remain audible.</pre>
+          </div>
+          <div>
+            <h4>H3 PE</h4>
+            <pre class="prompt">integrated_multimodal_description: Live-action, cinematic, golden hour lighting with warm directional sunlight and long shadows on a windy rooftop overlooking a city skyline. [Shot 1] The camera executes a smooth 180-degree Arc Shot around a couple standing close together; the man (S1) drops to one knee, holding a ring box, while the woman (S2) looks down with a surprised expression. The man (S1) says: &lt;d&gt;[English] Will you marry me?&lt;/d&gt; The wind visibly ruffles their hair and clothes. [Shot 2] At 00:08.500, cut to a tight close-up of the woman&#x27;s face; tears well in her eyes as she nods and smiles broadly. The woman (S2) says: &lt;d&gt;[English] Yes, absolutely yes!&lt;/d&gt; The background city lights begin to twinkle as the sun dips lower. The shot holds on her joyful expression until the end.
+
+overall_soundscape: Persistent strong wind noise buffeting the microphone, distant low-frequency city traffic hum, and the clear, synchronized English dialogue of the proposal and acceptance.
+
+non_diegetic_music: A quiet, emotional piano underscore that swells gently during the proposal and peaks softly during the acceptance, remaining audible beneath the wind and dialogue.</pre>
+          </div>
+        </div>
+      </details>
+    </article>
+
+    <article class="case" id="s11_museum_reveal">
+      <header class="case-head">
+        <span class="case-num">14</span>
+        <div>
+          <h3>Museum pedestal reveal</h3>
+          <p class="case-desc">Low marble floor → pedestal up → push-in → hard cut to cracked glowing face.</p>
+        </div>
+      </header>
+      <div class="compare-strip">
+        <figure>
+          <span class="arm-label raw">RAW</span>
+          <img src="https://waynejin0918.github.io/Omni-Rewriter/assets/demos/s11_museum_reveal_raw.gif" alt="Museum pedestal reveal RAW" loading="lazy">
+        </figure>
+        <figure>
+          <span class="arm-label pe">PE</span>
+          <img src="https://waynejin0918.github.io/Omni-Rewriter/assets/demos/s11_museum_reveal_pe.gif" alt="Museum pedestal reveal PE" loading="lazy">
+        </figure>
+      </div>
+      <details class="prompts">
+        <summary>Prompts</summary>
+        <div class="prompt-grid">
+          <div>
+            <h4>RAW</h4>
+            <pre class="prompt">In a dark museum hall, start low on a marble floor, pedestal up to reveal a glowing statue, then slowly push in; around mid-clip hard-cut to a tight detail of the statue&#x27;s cracked face as footsteps echo and a soft string score swells. No dialogue.</pre>
+          </div>
+          <div>
+            <h4>H3 PE</h4>
+            <pre class="prompt">integrated_multimodal_description: Live-action, cinematic, 16:9 aspect ratio. [Shot 1] Start with a low-angle view of a polished dark marble floor in a dimly lit museum hall; the camera performs a smooth Pedestal Up motion to reveal a full-body ancient statue emitting a soft, ethereal blue glow from within its stone, followed immediately by a slow, deliberate Push In towards the figure&#x27;s torso, establishing the eerie atmosphere and the statue&#x27;s luminous quality. [Shot 2] At 00:07.500, execute a hard-cut to an extreme close-up of the statue&#x27;s face, revealing deep, jagged cracks running across the stone surface where the internal light flickers intensely; the camera remains static but the lighting pulses slightly to emphasize the damage, holding this tense detail for the remainder of the clip to allow the visual consequence of the cracks to be fully observed.
+
+overall_soundscape: Deep, resonant reverb of a large empty hall; distinct, rhythmic footsteps echoing on marble floorboards that begin softly and grow slightly louder, syncing with the reveal in Shot 1 and continuing through the cut into Shot 2; a subtle, low-frequency hum emanating from the glowing statue itself.
+
+non_diegetic_music: A soft, melancholic string score that begins quietly during the pedestal up, gradually swelling in volume and intensity as the camera pushes in, reaching a crescendo peak exactly at the hard-cut to the close-up, then sustaining a tense, high-pitched harmonic drone for the duration of the close-up shot.</pre>
+          </div>
+        </div>
+      </details>
+    </article>
+
+    <article class="case" id="s12_alley_chase">
+      <header class="case-head">
+        <span class="case-num">15</span>
+        <div>
+          <h3>Alley chase tracking cuts</h3>
+          <p class="case-desc">Handheld shake → whip to trucking → frontal close-up with continuous chase audio.</p>
+        </div>
+      </header>
+      <div class="compare-strip">
+        <figure>
+          <span class="arm-label raw">RAW</span>
+          <img src="https://waynejin0918.github.io/Omni-Rewriter/assets/demos/s12_alley_chase_raw.gif" alt="Alley chase tracking cuts RAW" loading="lazy">
+        </figure>
+        <figure>
+          <span class="arm-label pe">PE</span>
+          <img src="https://waynejin0918.github.io/Omni-Rewriter/assets/demos/s12_alley_chase_pe.gif" alt="Alley chase tracking cuts PE" loading="lazy">
+        </figure>
+      </div>
+      <details class="prompts">
+        <summary>Prompts</summary>
+        <div class="prompt-grid">
+          <div>
+            <h4>RAW</h4>
+            <pre class="prompt">A nighttime alley chase: a handheld tracking shot follows a runner from behind with strong camera shake, then whip-cut to a side trucking shot, then cut to a frontal close-up as they gasp English dialogue while sprinting; keep footfalls, panting, clattering trash cans, and distant sirens continuous across cuts.</pre>
+          </div>
+          <div>
+            <h4>H3 PE</h4>
+            <pre class="prompt">integrated_multimodal_description: [Shot 1] Live-action, cinematic, handheld tracking shot from behind a runner sprinting through a narrow, dimly lit nighttime alley with strong camera shake mimicking the urgency of the chase; the runner&#x27;s footsteps kick up dust and debris as they pass clattering trash cans. [Shot 2] At 00:04.500, a whip-cut transitions to a side trucking shot moving parallel to the runner, maintaining the same speed and low-light atmosphere, emphasizing the physical exertion and the tightness of the alley walls. [Shot 3] At 00:09.000, a hard cut to a frontal close-up of the runner&#x27;s face, sweat dripping, eyes wide with fear, as they gasp for air and shout: &lt;d&gt;[English] I can&#x27;t stop, they&#x27;re right behind me!&lt;/d&gt; The camera remains slightly shaky to maintain the handheld aesthetic. The runner continues sprinting forward, the background blurring slightly to indicate speed, until the shot holds on their determined expression for the final seconds.
+
+overall_soundscape: Continuous, immersive soundscape of heavy, rhythmic footfalls on pavement, labored panting and gasping from the runner, the metallic clatter of trash cans being bumped or knocked over, and distant, wailing police sirens that persist seamlessly across all three shots without interruption.
+
+non_diegetic_music: None; the scene relies entirely on diegetic sound to build tension and realism.</pre>
+          </div>
+        </div>
+      </details>
+    </article>
+
+      </div>
+    </section>
+
+    <section class="block" id="ship">
+      <div class="section-kicker">In the repo</div>
+      <h2>Open PE harness for H3 and beyond</h2>
+      <p>Everything on this page ships as typed profiles, fixtures, and optional adapters — expand stays separate from generate.</p>
+      <div class="pillars">
+        <div class="pillar"><h3>H3 PE profile</h3><p>Typed output, validators, repair rules, and dialect renderer for video timelines.</p></div>
+        <div class="pillar"><h3>Fixtures &amp; eval</h3><p>RAW vs expanded fixtures and gallery thumbs for reproducible demos (no private experiment dumps).</p></div>
+        <div class="pillar"><h3>Optional adapters</h3><p>Generation stays opt-in. Cite public runtime evidence; never equate PE with private Context-IR.</p></div>
+      </div>
+      <div class="link-cards">
+        <a class="link-card" href="https://github.com/WayneJin0918/Omni-Rewriter">
+          <div class="lc-kicker">GitHub</div>
+          <strong>Star / fork the repo</strong>
+          <span>Source, issues, and model-contribution PRs live here.</span>
+          <div class="lc-go">Open repository →</div>
+        </a>
+        <a class="link-card" href="https://github.com/WayneJin0918/Omni-Rewriter/blob/main/docs/dialects/h3-pe-harness.md">
+          <div class="lc-kicker">Docs</div>
+          <strong>Read the PE harness</strong>
+          <span>Profile rules, validation loop, and H3 dialect notes.</span>
+          <div class="lc-go">Open harness guide →</div>
+        </a>
+        <a class="link-card" href="https://github.com/WayneJin0918/Omni-Rewriter/blob/main/docs/CONTRIBUTING.md">
+          <div class="lc-kicker">Contribute</div>
+          <strong>Add a model PR</strong>
+          <span>vLLM-style Purpose / Test Plan / Test Result template.</span>
+          <div class="lc-go">Open contributing →</div>
+        </a>
+      </div>
+    </section>
+    <footer>
+      <div class="foot-card">
+        <div>
+          <a class="brand" href="https://github.com/WayneJin0918/Omni-Rewriter">Omni-<span>Rewriter</span></a>
+          <p class="note">
+            Public Omni-Rewriter instance of validated prompt expansion for MiniMax-H3.
+            Expand is not generate; this page does not claim to reproduce private vendor Context-IR.
+          </p>
+        </div>
+        <div class="foot-links">
+          <a href="https://github.com/WayneJin0918/Omni-Rewriter">GitHub repo <em>↗</em></a>
+          <a href="https://github.com/WayneJin0918/Omni-Rewriter/tree/main/docs/h3-pe-showcase">In-repo showcase <em>↗</em></a>
+          <a href="https://github.com/WayneJin0918/Omni-Rewriter/blob/main/LICENSE">License <em>↗</em></a>
+        </div>
+      </div>
+    </footer>
+
+  </div>
+
+<script>
+(() => {
+  const steps = {
+    input: {
+      chip: "Stage · Input",
+      title: "RewriteRequest",
+      body: "Transport-neutral intent enters the harness with duration, task route, and metadata such as aspect ratio and seed.",
+      points: [
+        "Video tasks require duration_seconds",
+        "Task routes: t2va / i2va / fl2va / …",
+        "Same seed later pairs RAW vs PE fairly"
+      ]
+    },
+    plan: {
+      chip: "Stage · Plan",
+      title: "Analyze & draft",
+      body: "The writer plans six layers — invariants, state, transitions, evidence, observation, serialization — then drafts a typed H3 timeline.",
+      points: [
+        "Shot timing with [Shot N] At MM:SS.mmm",
+        "Dialogue as <d>[Language] …</d>",
+        "Camera grammar stays natural English"
+      ]
+    },
+    check: {
+      chip: "Stage · Check",
+      title: "Validate",
+      body: "Deterministic validators catch grammar, continuity, and profile-rule failures before anything is treated as finished PE.",
+      points: [
+        "Schema + dialect checks, not vibes",
+        "Failures stay machine-readable",
+        "No silent acceptance of broken markup"
+      ]
+    },
+    fix: {
+      chip: "Stage · Fix",
+      title: "Bounded repair",
+      body: "Repair loops only with the error set plus invariants — retries are capped so the harness cannot wander forever.",
+      points: [
+        "Bounded retry budget",
+        "Preserve user intent / invariants",
+        "Stop cleanly if still invalid"
+      ]
+    },
+    out: {
+      chip: "Stage · Out",
+      title: "Dialect render",
+      body: "Validated structure renders to H3 text. Generation adapters are opt-in consumers; PE never claims private Context-IR equivalence.",
+      points: [
+        "Open across video and image",
+        "Adapters cite public runtime evidence",
+        "Untested paths stay labeled unverified"
+      ]
+    }
+  };
+
+  const root = document.getElementById("pe-flow");
+  if (!root) return;
+  const nodes = [...root.querySelectorAll(".flow-node")];
+  const chip = document.getElementById("flow-chip");
+  const title = document.getElementById("flow-title");
+  const body = document.getElementById("flow-body");
+  const points = document.getElementById("flow-points");
+  const panel = document.getElementById("flow-panel");
+
+  function activate(step, btn) {
+    const data = steps[step];
+    if (!data) return;
+    root.dataset.active = step;
+    nodes.forEach((n) => {
+      const on = n === btn;
+      n.setAttribute("aria-pressed", on ? "true" : "false");
+    });
+    chip.textContent = data.chip;
+    title.textContent = data.title;
+    body.textContent = data.body;
+    points.innerHTML = data.points.map((p) => `<li>${p}</li>`).join("");
+    panel.setAttribute("aria-labelledby", btn.id);
+  }
+
+  nodes.forEach((btn) => {
+    btn.addEventListener("click", () => activate(btn.dataset.step, btn));
+    btn.addEventListener("keydown", (e) => {
+      if (e.key !== "ArrowRight" && e.key !== "ArrowLeft") return;
+      e.preventDefault();
+      const i = nodes.indexOf(btn);
+      const next = e.key === "ArrowRight" ? nodes[(i + 1) % nodes.length] : nodes[(i - 1 + nodes.length) % nodes.length];
+      next.focus();
+      activate(next.dataset.step, next);
+    });
+  });
+})();
+</script>
+
+</body>
+</html>
