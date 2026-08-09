@@ -43,7 +43,9 @@ def _font(size: int) -> ImageFont.FreeTypeFont | ImageFont.ImageFont:
     return ImageFont.load_default()
 
 
-def _fit_font(draw: ImageDraw.ImageDraw, text: str, max_w: int, prefer: int = 23) -> ImageFont.ImageFont:
+def _fit_font(
+    draw: ImageDraw.ImageDraw, text: str, max_w: int, prefer: int = 23
+) -> ImageFont.ImageFont:
     for size in range(prefer, 13, -1):
         ff = _font(size)
         bbox = draw.textbbox((0, 0), text, font=ff)

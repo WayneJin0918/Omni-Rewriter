@@ -100,7 +100,9 @@ def render_bridge_still(freeze: Path, out_png: Path) -> None:
     lane = _font(26)
     cx, cy = W // 2, H // 2 - 36
 
-    dr.text((cx + 1.5, cy + 1.5), "Open across models", font=title, fill=(40, 26, 20, 140), anchor="mm")
+    dr.text(
+        (cx + 1.5, cy + 1.5), "Open across models", font=title, fill=(40, 26, 20, 140), anchor="mm"
+    )
     dr.text((cx, cy), "Open across models", font=title, fill=(255, 250, 245, 245), anchor="mm")
     dr.text(
         (cx, cy + 48),

@@ -384,7 +384,9 @@ def main() -> None:
         proof_to_models = 0.55
     else:
         if args.models_broll is None:
-            raise SystemExit("provide --models-finale, or --models-bridge + brand, or --models-broll")
+            raise SystemExit(
+                "provide --models-finale, or --models-bridge + brand, or --models-broll"
+            )
         broll_n = work / "n_broll.mp4"
         normalize(args.models_broll, broll_n, "eq=saturation=1.05:contrast=1.02")
         model_clips = [broll_n]

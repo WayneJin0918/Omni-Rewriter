@@ -55,7 +55,9 @@ async def _one(
             break
         except Exception as exc:  # noqa: BLE001 - transport flakes mid-wait
             last_err = exc
-            print(f"  wait retry seed={seed} attempt={attempt} err={type(exc).__name__}", flush=True)
+            print(
+                f"  wait retry seed={seed} attempt={attempt} err={type(exc).__name__}", flush=True
+            )
             await asyncio.sleep(8)
     if result is None:
         raise RuntimeError(f"wait failed for seed={seed} task={task_id}: {last_err}")
@@ -114,7 +116,9 @@ def main() -> None:
     )
     args = parser.parse_args()
     prefix = args.prefix or args.envelope.stem
-    results = asyncio.run(_run(args.envelope, args.out_dir, args.seeds, args.duration, prefix=prefix))
+    results = asyncio.run(
+        _run(args.envelope, args.out_dir, args.seeds, args.duration, prefix=prefix)
+    )
     manifest = args.out_dir / "batch_manifest.json"
     manifest.write_text(json.dumps({"takes": results}, indent=2) + "\n")
     print(json.dumps({"takes": results}, indent=2))

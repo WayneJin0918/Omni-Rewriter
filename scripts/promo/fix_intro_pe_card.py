@@ -15,7 +15,11 @@ FONT_REG = "/usr/share/fonts/truetype/comfortaa/Comfortaa-Regular.ttf"
 
 
 def _font(size: int, *, bold: bool = True) -> ImageFont.FreeTypeFont | ImageFont.ImageFont:
-    for path in (FONT if bold else FONT_REG, FONT, "/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf"):
+    for path in (
+        FONT if bold else FONT_REG,
+        FONT,
+        "/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf",
+    ):
         if Path(path).exists():
             return ImageFont.truetype(path, size=size)
     return ImageFont.load_default()
@@ -116,7 +120,9 @@ def render_clean_pe(freeze: Path, out_png: Path) -> None:
     composed.convert("RGB").save(out_png)
 
 
-def still_hold(png: Path, audio_src: Path, dest: Path, *, seconds: float, audio_start: float) -> None:
+def still_hold(
+    png: Path, audio_src: Path, dest: Path, *, seconds: float, audio_start: float
+) -> None:
     frames = max(int(seconds * 24), 24)
     subprocess.check_call(
         [

@@ -96,9 +96,17 @@ def render_bridge(freeze: Path, out_png: Path) -> None:
     cx, cy = W // 2, H // 2 - 40
     # thin accent rule
     dr.rounded_rectangle((cx - 48, cy - 70, cx + 48, cy - 66), radius=2, fill=(255, 200, 180, 160))
-    dr.text((cx + 1.5, cy + 1.5), "Open across models", font=title, fill=(40, 26, 20, 150), anchor="mm")
+    dr.text(
+        (cx + 1.5, cy + 1.5), "Open across models", font=title, fill=(40, 26, 20, 150), anchor="mm"
+    )
     dr.text((cx, cy), "Open across models", font=title, fill=(255, 250, 245, 250), anchor="mm")
-    dr.text((cx, cy + 50), "prompt expansion · one harness", font=sub, fill=(230, 216, 205, 215), anchor="mm")
+    dr.text(
+        (cx, cy + 50),
+        "prompt expansion · one harness",
+        font=sub,
+        fill=(230, 216, 205, 215),
+        anchor="mm",
+    )
     dr.text((cx - 96, cy + 124), "T2V", font=lane, fill=(255, 188, 176, 240), anchor="mm")
     dr.text((cx, cy + 124), "·", font=lane, fill=(220, 210, 200, 190), anchor="mm")
     dr.text((cx + 96, cy + 124), "T2I", font=lane, fill=(180, 236, 212, 240), anchor="mm")
@@ -143,20 +151,40 @@ def render_lanes(freeze: Path, matrix_path: Path, out_png: Path) -> None:
     cx = W // 2
     dr.text((cx + 1.5, 168), "Omni-Rewriter", font=brand, fill=(40, 24, 18, 130), anchor="mm")
     dr.text((cx, 166), "Omni-Rewriter", font=brand, fill=(255, 252, 248, 250), anchor="mm")
-    dr.text((cx, 214), "one harness across video and image", font=sub, fill=(232, 220, 210, 210), anchor="mm")
+    dr.text(
+        (cx, 214),
+        "one harness across video and image",
+        font=sub,
+        fill=(232, 220, 210, 210),
+        anchor="mm",
+    )
     left_x, right_x, list_top = W // 2 - 230, W // 2 + 230, 280
     # soft column plates
     for x0, x1, fill in (
         (left_x - 150, left_x + 150, (255, 180, 160, 22)),
         (right_x - 150, right_x + 150, (160, 230, 200, 22)),
     ):
-        dr.rounded_rectangle((x0, list_top - 18, x1, list_top + 34 + 6 * 28 + 16), radius=18, fill=fill)
+        dr.rounded_rectangle(
+            (x0, list_top - 18, x1, list_top + 34 + 6 * 28 + 16), radius=18, fill=fill
+        )
     dr.text((left_x, list_top), "T2V", font=lane, fill=(255, 190, 178, 240), anchor="mm")
     dr.text((right_x, list_top), "T2I", font=lane, fill=(184, 240, 216, 240), anchor="mm")
     for i, name in enumerate(video):
-        dr.text((left_x, list_top + 36 + i * 28), name, font=body, fill=(255, 250, 245, 240), anchor="mm")
+        dr.text(
+            (left_x, list_top + 36 + i * 28),
+            name,
+            font=body,
+            fill=(255, 250, 245, 240),
+            anchor="mm",
+        )
     for i, name in enumerate(image):
-        dr.text((right_x, list_top + 36 + i * 28), name, font=body, fill=(255, 250, 245, 240), anchor="mm")
+        dr.text(
+            (right_x, list_top + 36 + i * 28),
+            name,
+            font=body,
+            fill=(255, 250, 245, 240),
+            anchor="mm",
+        )
     composed = Image.alpha_composite(soft.convert("RGBA"), _wash(92))
     composed = Image.alpha_composite(composed, overlay)
     out_png.parent.mkdir(parents=True, exist_ok=True)

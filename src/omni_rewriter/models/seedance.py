@@ -295,10 +295,7 @@ class SeedanceRewrite(StrictModel):
 
         style = SeedanceRefStyle(ref_style) if ref_style else SeedanceRefStyle.PUBLIC
         instruction = _rewrite_ref_tokens(self.instruction, style)
-        sections: list[str] = [
-            "[Generation Goal]\n"
-            f"{self.summary.strip()}"
-        ]
+        sections: list[str] = [f"[Generation Goal]\n{self.summary.strip()}"]
 
         if self.reference_roles:
             role_lines = []
@@ -343,9 +340,7 @@ class SeedanceRewrite(StrictModel):
                 prefix = f"Stage {index}"
                 if stage.time_range:
                     prefix = f"{prefix} ({stage.time_range})"
-                event_lines.append(
-                    f"{prefix}: {stage.event} End state: {stage.end_state}"
-                )
+                event_lines.append(f"{prefix}: {stage.event} End state: {stage.end_state}")
         else:
             event_lines.append(f"Primary event: {self.dynamic_description}")
         event_lines.append(instruction)
@@ -409,9 +404,7 @@ class SeedanceRewrite(StrictModel):
             stage_lines = []
             for index, stage in enumerate(self.stages, start=1):
                 timing = f" [{stage.time_range}]" if stage.time_range else ""
-                stage_lines.append(
-                    f"- Stage {index}{timing}: {stage.event} → {stage.end_state}"
-                )
+                stage_lines.append(f"- Stage {index}{timing}: {stage.event} → {stage.end_state}")
             lines.append("阶段：\n" + "\n".join(stage_lines))
         lines.append(f"生动指令：{instruction}")
         if self.non_diegetic_music:
@@ -443,9 +436,7 @@ def render_seedance_output(
     try:
         mode = SeedanceRenderMode(mode_raw or SeedanceRenderMode.NATURAL.value)
     except ValueError as exc:
-        raise ValueError(
-            "metadata.seedance_render must be 'natural', 'fused', or 'json'"
-        ) from exc
+        raise ValueError("metadata.seedance_render must be 'natural', 'fused', or 'json'") from exc
     try:
         ref_style = SeedanceRefStyle(style_raw or SeedanceRefStyle.PUBLIC.value)
     except ValueError as exc:
@@ -506,7 +497,9 @@ def validate_seedance_against_request(
             SeedanceMediaKind.VIDEO: MediaType.VIDEO,
             SeedanceMediaKind.AUDIO: MediaType.AUDIO,
         }
-        for kind, index in sorted(output.typed_refs_in_text(), key=lambda item: (item[0].value, item[1])):
+        for kind, index in sorted(
+            output.typed_refs_in_text(), key=lambda item: (item[0].value, item[1])
+        ):
             available = type_counts[kind_to_media[kind]]
             if index < 1 or index > available:
                 raise ValueError(
@@ -525,8 +518,10 @@ def validate_seedance_against_request(
                     f"media reference index {index} is out of range (media count={media_count})"
                 )
 
-    if task is TaskType.T2VA and media_count == 0 and (
-        output.typed_refs_in_text() or output.flat_media_indices_in_text()
+    if (
+        task is TaskType.T2VA
+        and media_count == 0
+        and (output.typed_refs_in_text() or output.flat_media_indices_in_text())
     ):
         raise ValueError("t2va Seedance instruction must not reference media indices")
 

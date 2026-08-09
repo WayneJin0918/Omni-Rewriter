@@ -82,10 +82,14 @@ def render_combo_plate(matrix: dict) -> Image.Image:
         draw.rounded_rectangle((x0, 90, x0 + W // 2 - 56, H - 48), radius=22, fill=(40, 34, 48))
         y = 110
         for model in models:
-            draw.rounded_rectangle((x0 + 16, y, x0 + W // 2 - 72, y + 58), radius=12, fill=(52, 46, 60))
+            draw.rounded_rectangle(
+                (x0 + 16, y, x0 + W // 2 - 72, y + 58), radius=12, fill=(52, 46, 60)
+            )
             draw.rectangle((x0 + 16, y, x0 + 22, y + 58), fill=accent)
             draw.text((x0 + 36, y + 10), model["name"], fill=(245, 245, 248), font=body)
-            draw.text((x0 + 36, y + 34), model["status"], fill=_status_color(model["status"]), font=small)
+            draw.text(
+                (x0 + 36, y + 34), model["status"], fill=_status_color(model["status"]), font=small
+            )
             y += 68
 
     draw_col(matrix["video"], 40, (255, 180, 168))
@@ -125,9 +129,13 @@ def render_elegant_overlay(matrix: dict) -> Image.Image:
                 outline=(*accent, 160),
                 width=2,
             )
-            draw.ellipse((x0 + 14, y + 16, x0 + 26, y + 28), fill=(*_status_color(model["status"]), 230))
+            draw.ellipse(
+                (x0 + 14, y + 16, x0 + 26, y + 28), fill=(*_status_color(model["status"]), 230)
+            )
             draw.text((x0 + 36, y + 10), name, fill=(255, 255, 255, 235), font=body)
-            draw.text((x0 + chip_w - 70, y + 14), model["status"], fill=(230, 230, 235, 180), font=tiny)
+            draw.text(
+                (x0 + chip_w - 70, y + 14), model["status"], fill=(230, 230, 235, 180), font=tiny
+            )
             y += 56
 
     chips(matrix["video"], 56, (255, 180, 168))
