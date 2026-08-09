@@ -18,7 +18,24 @@
     "static_description": "A bright home kitchen with wooden counters, a steaming enamel pot, and two people standing across a small island.",
     "dynamic_description": "Camera slowly pushes toward the pot, then reframes to a two-shot as the guest tastes a spoonful and answers.",
     "subjects": [],
-    "instruction": "In a sunlit kitchen, the host asks, \"How does the soup taste today?\" The guest smiles and answers, \"It tastes like home.\" Keep lip-sync clear; soft steam rises from the pot.",
+    "reference_roles": [],
+    "stages": [
+      {
+        "time_range": "0-4s",
+        "event": "The host asks how the soup tastes while steam rises from the pot.",
+        "end_state": "Both people face each other across the island; the spoon is near the guest."
+      },
+      {
+        "time_range": "4-8s",
+        "event": "The guest tastes a spoonful and answers warmly.",
+        "end_state": "The guest smiles with the spoon lowered; the pot remains centered in frame."
+      }
+    ],
+    "preserve": [
+      "Keep both speakers' identities, the pot count, kitchen layout, and soft daylight consistent."
+    ],
+    "unused_materials": [],
+    "instruction": "In a sunlit kitchen, the host asks in natural conversational English: {How does the soup taste today?} The guest smiles and answers: {It tastes like home.} Keep lip-sync clear; soft steam rises from the pot. <Gentle spoon clink against ceramic.>",
     "non_diegetic_music": "Soft acoustic guitar bed, low volume.",
     "generate_audio": true
   }

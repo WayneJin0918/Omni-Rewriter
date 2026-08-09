@@ -67,14 +67,14 @@ Claude Opus 5 等前沿闭源模型可通过兼容的服务商接口或网关接
 正数 `duration_seconds`；图像任务必须省略。媒体可以是 image/video/audio，并带语义 role。
 
 视频输出使用 `BaseRewrite` 或 `Ref2VARewrite`；图像输出使用 `ImageRewrite`。这些公开模型应
-保持向后兼容。方言专属约束见 [H3 PE](h3-pe-harness_zh.md) 与
-[图像 PE](image-pe_zh.md)。
+保持向后兼容。方言专属约束见 [H3 PE](dialects/h3-pe-harness_zh.md) 与
+[图像 PE](dialects/image-pe_zh.md)。
 
 ## Runtime 配置
 
 Python 设置来自进程环境，不自动解析 dotenv。仓库内 vLLM 脚本只服务 writer backend；
 它们不表示相同 vLLM 安装能够生成任意图像或视频。模型生成 runtime 的证据与边界见
-[生成适配器](generation-adapters_zh.md)。
+[生成适配器](dialects/generation-adapters_zh.md)。
 
 ## 信任边界
 

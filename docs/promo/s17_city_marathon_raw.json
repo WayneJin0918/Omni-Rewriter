@@ -1,0 +1,22 @@
+{
+  "request": {
+    "prompt": "city marathon runners, energetic, 15 seconds",
+    "duration_seconds": 15,
+    "task": "t2va",
+    "metadata": {
+      "aspect_ratio": "16:9",
+      "short_edge": "768",
+      "seed": "98101",
+      "campaign": "oss-promo-v6",
+      "arm": "raw",
+      "id": "s17_city_marathon"
+    }
+  },
+  "output": {
+    "task": "t2va",
+    "duration_seconds": "15",
+    "integrated_multimodal_description": "[Shot 1] A city marathon with lots of runners, energetic vibe, cameras moving around, crowd noise, finish somehow exciting.",
+    "overall_soundscape": "Crowd and footsteps.",
+    "non_diegetic_music": "Upbeat music."
+  }
+}

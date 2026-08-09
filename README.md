@@ -20,7 +20,7 @@
   <a href="docs/index.md"><b>Documentation</b></a> ·
   <a href="docs/getting-started.md"><b>Getting Started</b></a> ·
   <a href="docs/architecture.md"><b>Architecture</b></a> ·
-  <a href="docs/generation-adapters.md"><b>Adapters</b></a> ·
+  <a href="docs/dialects/generation-adapters.md"><b>Adapters</b></a> ·
   <a href="docs/ROADMAP.md"><b>Roadmap</b></a> ·
   <a href="docs/CONTRIBUTING.md"><b>Contributing</b></a>
 </p>
@@ -104,7 +104,7 @@ model family you pick.
 
 <p align="center"><sub>
 Generation adapters stay outside <code>expand</code> — see the
-<a href="docs/generation-adapters.md">compatibility matrix</a>.
+<a href="docs/dialects/generation-adapters.md">compatibility matrix</a>.
 </sub></p>
 
 ## Model ecosystem
@@ -157,7 +157,7 @@ Community board — left color = category (Video / Image / Unified); right = evi
   <a href="https://github.com/WayneJin0918/Omni-Rewriter/compare?quick_pull=1&title=%5BModel%5D%5BUnified%5D%20"><img src="https://img.shields.io/badge/Open%20PR-Unified-d97706?style=for-the-badge&logo=github&logoColor=white&labelColor=111827" alt="Open Unified PR"></a>
 </p>
 
-<p align="center"><sub>Use the <a href=".cursor/skills/omni-rewriter-model-contribution/SKILL.md">model contribution skill</a>. Evidence-scoped details: <a href="docs/generation-adapters.md">compatibility matrix</a> · <a href="docs/community-models.md">full backlog</a>.</sub></p>
+<p align="center"><sub>Use the <a href=".cursor/skills/omni-rewriter-model-contribution/SKILL.md">model contribution skill</a>. Evidence-scoped details: <a href="docs/dialects/generation-adapters.md">compatibility matrix</a> · <a href="docs/dialects/community-models.md">full backlog</a>.</sub></p>
 
 ## Video RAW vs PE
 
@@ -179,7 +179,7 @@ Community board — left color = category (Video / Image / Unified); right = evi
 <p align="center"><sub>Current video profile: MiniMax-H3. Homepage picks: s15 concert crash-zoom, s14 kitchen whip-pan, s13 rooftop arc (from the published 15-pair set).</sub><br>
 <a href="https://waynejin0918.github.io/Omni-Rewriter/"><b>H3 PE site →</b></a>
 ·
-<a href="docs/day2-h3-pe/index.html">Local H3 PE page</a>
+<a href="docs/day2-h3-pe/index.html">Local H3 PE entry (demo → home)</a>
 ·
 <a href="docs/h3-pe-showcase/index.html">Full 15-pair showcase</a>
 ·
@@ -236,9 +236,9 @@ RewriteRequest
 | Documentation index | [Open](docs/index.md) | [打开](docs/index_zh.md) |
 | Getting started | [Open](docs/getting-started.md) | [打开](docs/getting-started_zh.md) |
 | Architecture | [Open](docs/architecture.md) | [打开](docs/architecture_zh.md) |
-| Video prompt expansion | [Open](docs/h3-pe-harness.md) | [打开](docs/h3-pe-harness_zh.md) |
-| Image prompt expansion | [Open](docs/image-pe.md) | [打开](docs/image-pe_zh.md) |
-| Generation adapters | [Open](docs/generation-adapters.md) | [打开](docs/generation-adapters_zh.md) |
+| Video prompt expansion | [Open](docs/dialects/h3-pe-harness.md) | [打开](docs/dialects/h3-pe-harness_zh.md) |
+| Image prompt expansion | [Open](docs/dialects/image-pe.md) | [打开](docs/dialects/image-pe_zh.md) |
+| Generation adapters | [Open](docs/dialects/generation-adapters.md) | [打开](docs/dialects/generation-adapters_zh.md) |
 | Evaluation | [Open](docs/evaluation.md) | [打开](docs/evaluation_zh.md) |
 
 ## Development

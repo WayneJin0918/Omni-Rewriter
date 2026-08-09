@@ -2,42 +2,48 @@
 
 [中文索引](index_zh.md) · [Project README](../README.md)
 
-Omni-Rewriter's current open-source release is a typed, validated **agentic prompt-expansion
-harness** for multimodal generation. It expands intent into a target PE dialect; media generation
-remains an explicit, separate step.
+Omni-Rewriter is a typed, validated **agentic prompt-expansion harness** for multimodal
+generation. It expands intent into a target PE dialect; media generation remains an
+explicit, separate step.
 
 ## Start here
 
-- [Getting started](getting-started.md) — install, expand, validate, and choose a profile.
-- [Architecture](architecture.md) — framework layers, contracts, lifecycle, and trust boundaries.
-- [Generation adapters](generation-adapters.md) — the expand/generate boundary and runtime
-  compatibility evidence.
-- [Evaluation](evaluation.md) — deterministic conformance checks and their limits.
+- [Getting started](getting-started.md)
+- [Architecture](architecture.md)
+- [Evaluation](evaluation.md)
 
-## Video and image profiles
+## Dialects & adapters
 
-- [Video PE](h3-pe-harness.md) — current H3 routing, timeline grammar, and bounded repair.
-- [Seedance PE](seedance-pe.md) — Seedance video dialect (`natural` / `json` render; PE only).
-- [H3 PE site](day2-h3-pe/index.html) — Omni-Rewriter H3 PE promotional landing (also `gh-pages`).
-- [H3 PE showcase](h3-pe-showcase/index.html) — public RAW vs PE landing page for MiniMax-H3.
-- [Image PE](image-pe.md) — Seedream and Qwen-Image-Edit image packing.
-- [Image gallery](assets/gallery/image/) — low-res RAW vs PE WebP samples.
-- [H3 adapters](h3-adapters.md) · [中文](h3-adapters_zh.md) — local H3 and MiniMax clients.
-- [Public H3 references](references/README.md) — sanitized sources used to tighten H3 rules.
-- [Example requests](../examples/requests/) — copy-paste `RewriteRequest` JSON.
+Canonical pages: [`dialects/`](dialects/README.md)
+
+- [Video PE (H3)](dialects/h3-pe-harness.md)
+- [Seedance PE](dialects/seedance-pe.md)
+- [Image PE](dialects/image-pe.md)
+- [H3 adapters](dialects/h3-adapters.md)
+- [Generation adapters](dialects/generation-adapters.md)
+- [Community model backlog](dialects/community-models.md)
+- [Public H3 references](references/README.md)
+- [Example requests](../examples/requests/)
+
+## Public demos & promo
+
+See [`site/README.md`](site/README.md).
+
+- [H3 PE site](day2-h3-pe/index.html) — promo entry → [`home.html`](day2-h3-pe/home.html)
+- [H3 PE showcase](h3-pe-showcase/index.html) — full RAW vs PE grid
+- [Compact video gallery](assets/gallery/) · [Image gallery](assets/gallery/image/)
+- [Promo pipeline](promo/README.md) · [Promo copy EN](promo/copy_en.md) / [中文](promo/copy_zh.md)
 
 ## Project governance
 
-- [Community model backlog](community-models.md) — Video, Image, and Unified contribution boards.
 - [Roadmap](ROADMAP.md)
 - [Contributing](CONTRIBUTING.md)
-- [Security policy](SECURITY.md)
+- [Security](SECURITY.md)
 - [Code of conduct](CODE_OF_CONDUCT.md)
-- [Agent notes](AGENTS.md) — maintainer/agent conventions.
+- [Agent notes](AGENTS.md)
 
 ## Scope
 
-The framework provides schemas, analysis/draft/repair orchestration, deterministic validation, and
-dialect rendering. A PE profile does not imply a bundled checkpoint or compatible generation
-runtime. Omni-Rewriter uses public contracts to help the community bridge polished demos, public
-APIs, and reproducible deployment workflows.
+Schemas, analysis/draft/repair orchestration, deterministic validation, and dialect
+rendering. A PE profile does not imply a bundled checkpoint or compatible generation
+runtime.

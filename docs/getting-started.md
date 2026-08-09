@@ -50,13 +50,14 @@ omni-rewriter expand request.json --output h3
 With no media, routing infers `t2va`. First-frame, last-frame, endpoint-pair, and arbitrary
 reference inputs route to `i2va`, `l2va`, `fl2va`, and `ref2va` respectively.
 
-Seedance video PE (default render is fused natural text; set `seedance_render=json` for JSON):
+Seedance video PE (default render is the public Seedance 2.5 natural template; use
+`seedance_render=fused` for legacy labeled text, or `seedance_render=json` for JSON):
 
 ```bash
 omni-rewriter expand examples/requests/seedance_t2va_kitchen.json --output seedance
 ```
 
-See [Seedance PE](seedance-pe.md). Default video dialect remains H3 when `video_pe_profile` is unset.
+See [Seedance PE](dialects/seedance-pe.md). Default video dialect remains H3 when `video_pe_profile` is unset.
 
 ## Expand an image intent
 
@@ -71,7 +72,7 @@ Image tasks must omit `duration_seconds`:
 ```
 
 Use `seedream` for a visual-blueprint render or `qwen_image_edit` for imperative editing. See
-[Image PE](image-pe.md) for request and ratio constraints.
+[Image PE](dialects/image-pe.md) for request and ratio constraints.
 
 ## Validate and evaluate
 
@@ -99,7 +100,7 @@ Also available: `GET /health`, `POST /v1/validate`, and OpenAPI docs at `/docs`.
 `expand` returns typed JSON and rendered text. To create media, explicitly connect a compatible
 adapter or runner. The repository ships H3/MiniMax clients plus optional image/video adapters
 (Qwen-Image HTTP, HunyuanImage custom-vLLM, Wan Omni mapping, LingBot runner); live compatibility
-is evidence-scoped. See [Generation adapters](generation-adapters.md).
+is evidence-scoped. See [Generation adapters](dialects/generation-adapters.md).
 
 Bind the HTTP API to loopback unless you intentionally open it. Local filesystem media paths are
 denied by default for `create_app` (set `OMNI_WRITER_ALLOW_LOCAL_MEDIA=1` only for trusted hosts).

@@ -33,19 +33,52 @@
     "dynamic_description": "Camera holds a steady medium two-shot, then a gentle pan as the guest gestures while speaking.",
     "subjects": [
       {
-        "id": "<主体1>",
+        "id": "<Host>",
+        "media_type": "video",
         "media_index": 1,
-        "appearance": "Person from @Video1: dark jacket, short hair, warm smile.",
+        "appearance": "Person from @Video 1: dark jacket, short hair, warm smile.",
         "voice": "Mid, friendly host tone"
       },
       {
-        "id": "<主体2>",
+        "id": "<Guest>",
+        "media_type": "video",
         "media_index": 2,
-        "appearance": "Person from @Video2: light sweater, tied-back hair.",
+        "appearance": "Person from @Video 2: light sweater, tied-back hair.",
         "voice": "Soft conversational tone"
       }
     ],
-    "instruction": "Preserve @Video1 and @Video2 identities. <主体1> asks, \"Any plans for the weekend?\" <主体2> answers, \"Maybe a quiet picnic if the weather holds.\" Keep dialogue lip-synced and the balcony background stable.",
+    "reference_roles": [
+      {
+        "media_type": "video",
+        "index": 1,
+        "defines": "the host's facial features, short hair, and dark jacket",
+        "exclude": "the original clip background or other people"
+      },
+      {
+        "media_type": "video",
+        "index": 2,
+        "defines": "the guest's facial features, tied-back hair, and light sweater",
+        "exclude": "the original clip background or other people"
+      }
+    ],
+    "stages": [
+      {
+        "time_range": "0-5s",
+        "event": "<Host> asks about weekend plans while both lean on the balcony railing.",
+        "end_state": "Both faces remain clear in a medium two-shot; hands rest on the railing."
+      },
+      {
+        "time_range": "5-10s",
+        "event": "<Guest> answers and gestures lightly toward the skyline.",
+        "end_state": "Dialogue finishes with both mouths closed; balcony layout unchanged."
+      }
+    ],
+    "preserve": [
+      "Do not interchange the two characters' appearances, clothing, actions, positions, or dialogue.",
+      "Keep balcony geometry, prop count, camera axis, and afternoon light consistent."
+    ],
+    "unused_materials": [],
+    "instruction": "Preserve @Video 1 and @Video 2 identities. <Host> asks in natural conversational English: {Any plans for the weekend?} <Guest> answers: {Maybe a quiet picnic if the weather holds.} Keep dialogue lip-synced and the balcony background stable.",
     "non_diegetic_music": "Light piano motif under dialogue.",
     "generate_audio": true
   }

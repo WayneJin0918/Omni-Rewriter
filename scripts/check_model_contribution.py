@@ -129,8 +129,8 @@ def validate_changed_files(body: str, files: list[str]) -> list[str]:
 def validate_repository(root: Path) -> list[str]:
     errors: list[str] = []
     required = (
-        root / "docs/community-models.md",
-        root / "docs/community-models_zh.md",
+        root / "docs/dialects/community-models.md",
+        root / "docs/dialects/community-models_zh.md",
         root / ".cursor/skills/omni-rewriter-model-contribution/SKILL.md",
         root / ".cursor/skills/omni-rewriter-model-contribution/CONTRIBUTION_TEMPLATE.md",
     )
@@ -138,7 +138,7 @@ def validate_repository(root: Path) -> list[str]:
         if not path.is_file():
             errors.append(f"Missing contribution file: {path.relative_to(root)}")
 
-    for relative in ("docs/community-models.md", "docs/community-models_zh.md"):
+    for relative in ("docs/dialects/community-models.md", "docs/dialects/community-models_zh.md"):
         path = root / relative
         if not path.is_file():
             continue

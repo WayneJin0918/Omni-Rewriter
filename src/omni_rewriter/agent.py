@@ -278,6 +278,7 @@ class RewriteAgent:
                 media_count=len(request.media),
                 task=request.resolved_task,
                 duration_seconds=request.duration_seconds,
+                media_types=[item.media_type for item in request.media],
             )
             return output
         if output.duration_seconds != request.duration_seconds:

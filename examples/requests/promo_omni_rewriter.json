@@ -1,0 +1,10 @@
+{
+  "prompt": "Make a sleek 15-second product promo for Omni-Rewriter, an open agentic prompt-expansion harness for image and video generation. Show the story: messy raw intent becomes structured PE through Analyze → Draft → Validate → Repair → Render; emphasize expand is not generate; end on the brand Omni-Rewriter and the line Harness owns the loop. Modern dark UI, violet accent light, no gore, no violence, English on-screen title Omni-Rewriter.",
+  "duration_seconds": 15,
+  "task": "t2va",
+  "metadata": {
+    "aspect_ratio": "16:9",
+    "seed": "omni-promo-1",
+    "campaign": "oss-promo"
+  }
+}

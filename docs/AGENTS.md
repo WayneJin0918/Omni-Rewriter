@@ -6,7 +6,9 @@ profiles, runtimes, or models:
 
 1. Read `docs/architecture.md`, the relevant profile guide, and
    `.cursor/skills/omni-rewriter-h3-pe/SKILL.md`. For a new model family, also follow
-   `.cursor/skills/omni-rewriter-model-contribution/SKILL.md`.
+   `.cursor/skills/omni-rewriter-model-contribution/SKILL.md`. For promo films / RAW-vs-PE
+   montages, follow `.cursor/skills/omni-rewriter-promo-pipeline/SKILL.md` and
+   `docs/promo/README.md`.
 2. Preserve public contracts in `src/omni_rewriter/models/`.
 3. Add/adjust tests under `tests/`.
 4. Update docs if task routing or render formats change.

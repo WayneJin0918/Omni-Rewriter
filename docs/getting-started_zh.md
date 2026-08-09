@@ -49,13 +49,14 @@ omni-rewriter expand examples/requests/t2va_kite.json --output h3
 无媒体时推断为 `t2va`；首帧、尾帧、首尾帧组合及任意引用分别路由到 `i2va`、`l2va`、
 `fl2va` 和 `ref2va`。
 
-Seedance 视频 PE（默认融合 natural 文本；`seedance_render=json` 输出 JSON）：
+Seedance 视频 PE（默认公开 Seedance 2.5 natural 模板；`seedance_render=fused` 为旧版标签文本；
+`seedance_render=json` 输出 JSON）：
 
 ```bash
 omni-rewriter expand examples/requests/seedance_t2va_kitchen.json --output seedance
 ```
 
-详见 [Seedance PE](seedance-pe_zh.md)。未设置 `video_pe_profile` 时默认仍为 H3。
+详见 [Seedance PE](dialects/seedance-pe_zh.md)。未设置 `video_pe_profile` 时默认仍为 H3。
 
 ## 扩写图像意图
 
@@ -70,7 +71,7 @@ omni-rewriter expand examples/requests/seedance_t2va_kitchen.json --output seeda
 ```
 
 `seedream` 输出视觉蓝图式 render；`qwen_image_edit` 输出命令式编辑指令。请求与比例限制见
-[图像 PE](image-pe_zh.md)。
+[图像 PE](dialects/image-pe_zh.md)。
 
 ## 校验与评测
 
@@ -98,4 +99,4 @@ loopback；`create_app` 默认拒绝本地文件媒体路径（仅在受信主�
 
 `expand` 返回类型化 JSON 和渲染文本。创建媒体必须显式连接兼容 adapter 或 runner。仓库当前
 实现 H3/MiniMax 客户端；其他模型族使用不同上游 runtime，不能默认互换。详见
-[生成适配器](generation-adapters_zh.md)。
+[生成适配器](dialects/generation-adapters_zh.md)。

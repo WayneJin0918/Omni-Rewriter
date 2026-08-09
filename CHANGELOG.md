@@ -14,6 +14,12 @@ for the thin public surface (`RewriteRequest` / rewrite outputs, `expand`, `vali
 - Seedance video PE profile (`metadata.video_pe_profile=seedance`) with `SeedanceRewrite`,
   natural/json dual render, sanitized fixtures, and `--output seedance` (PE only; no adapter).
 
+### Changed
+
+- Seedance PE aligned to public Seedance 2.5 prompt habits: typed `@Image`/`@Video`/`@Audio`
+  validation, optional `reference_roles` / `stages` / `preserve` / `unused_materials`, natural
+  render as the public template, and `seedance_render=fused` for the legacy labeled dialect.
+
 ## [0.1.0] - 2026-08-09
 
 ### Added

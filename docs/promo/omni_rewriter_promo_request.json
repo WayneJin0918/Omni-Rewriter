@@ -1,0 +1,12 @@
+{
+  "prompt": "Warm lively Omni-Rewriter intro with soft hold exit",
+  "duration_seconds": 15,
+  "task": "t2va",
+  "metadata": {
+    "aspect_ratio": "16:9",
+    "short_edge": "768",
+    "seed": "98201",
+    "campaign": "oss-promo-v6",
+    "chunk": "A-intro"
+  }
+}

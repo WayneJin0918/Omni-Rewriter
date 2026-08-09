@@ -11,7 +11,7 @@ description: >-
 
 ## Start here
 
-1. Read `docs/architecture.md`, `docs/community-models.md`, and the relevant profile guide.
+1. Read `docs/architecture.md`, `docs/dialects/community-models.md`, and the relevant profile guide.
 2. Classify the contribution as exactly one of `video`, `image`, or `unified`.
 3. Copy the structure in [CONTRIBUTION_TEMPLATE.md](CONTRIBUTION_TEMPLATE.md).
 4. Keep prompt expansion and media generation as separate deliverables.

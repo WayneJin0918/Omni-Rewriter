@@ -6,8 +6,8 @@ body:
   - type: markdown
     attributes:
       value: |
-        Pick one row from [community-models.md](https://github.com/WayneJin0918/Omni-Rewriter/blob/main/docs/community-models.md)
-        (or the [中文 board](https://github.com/WayneJin0918/Omni-Rewriter/blob/main/docs/community-models_zh.md)).
+        Pick one row from [community-models.md](https://github.com/WayneJin0918/Omni-Rewriter/blob/main/docs/dialects/community-models.md)
+        (or the [中文 board](https://github.com/WayneJin0918/Omni-Rewriter/blob/main/docs/dialects/community-models_zh.md)).
         Expand ≠ generate — report PE / adapter / live-runtime status separately.
   - type: dropdown
     id: category

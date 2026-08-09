@@ -1,15 +1,3 @@
 #!/usr/bin/env bash
-# Reference OpenAI-compatible WAN video endpoint via vLLM-Omni.
-set -euo pipefail
-
-MODEL="${OMNI_WRITER_WAN_MODEL:-${OMNI_REWRITER_WAN_MODEL:?Set OMNI_WRITER_WAN_MODEL (or OMNI_REWRITER_WAN_MODEL) to your local WAN checkpoint path}}"
-HOST="${OMNI_WRITER_VIDEO_HOST:-${OMNI_REWRITER_VIDEO_HOST:-127.0.0.1}}"
-PORT="${OMNI_WRITER_VIDEO_PORT:-${OMNI_REWRITER_VIDEO_PORT:-30040}}"
-
-# vLLM-Omni is an optional runtime and is not installed by omni-rewriter.
-# WAN family/version support must be checked against the selected vLLM-Omni release.
-exec vllm serve "${MODEL}" \
-  --omni \
-  --host "${HOST}" \
-  --port "${PORT}" \
-  "$@"
+# Compatibility wrapper — canonical script lives in scripts/serve/
+exec "$(cd "$(dirname "$0")" && pwd)/serve/serve_vllm_omni_wan.sh" "$@"

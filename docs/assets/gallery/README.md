@@ -4,9 +4,9 @@ Four-second, low-resolution GIF clips for RAW and prompt-expanded (PE) video
 comparisons. The files contain no burned-in labels or side-by-side composites;
 use HTML or Markdown labels around the separate assets.
 
-Current homepage set favors the strongest complex camera / cut / dialogue PE-wins
-from the published MiniMax-H3 pairs: concert crash-zoom (`s15`), kitchen whip-pan
-(`s14`), and rooftop arc (`s13`).
+Current README set is the same three PE-win pairs as the site demos (concert
+`s15`, kitchen `s14`, rooftop `s13`), using the compact day2/showcase thumbs so
+GitHub stays lean without dropping those scenes.
 
 Exact asset paths:
 

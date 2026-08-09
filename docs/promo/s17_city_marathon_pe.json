@@ -1,0 +1,22 @@
+{
+  "request": {
+    "prompt": "City marathon pack run with crash zooms, whip pans, and finish-line surge",
+    "duration_seconds": 15,
+    "task": "t2va",
+    "metadata": {
+      "aspect_ratio": "16:9",
+      "short_edge": "768",
+      "seed": "98102",
+      "campaign": "oss-promo-v6",
+      "arm": "pe",
+      "id": "s17_city_marathon"
+    }
+  },
+  "output": {
+    "task": "t2va",
+    "duration_seconds": "15",
+    "integrated_multimodal_description": "[Shot 1] Photoreal live-action sports film at sunrise on a downtown avenue: a tight pack of marathon runners in bright singlets surges toward camera; asphalt glints with chalk mile marks. Handheld Tracking shot backward, amplitude medium, speed fast. No on-screen subtitles. A sports announcer (S1) says in an off-screen voiceover: <d>[English] The pack hits the bridge.</d> [Shot 2] At 00:04.000, Whip Pan right to a low Crash Zoom on pounding shoes and race bibs; crowd barriers streak past. The announcer (S1) continues in an off-screen voiceover: <d>[English] Cadence locks.</d> [Shot 3] At 00:08.000, hard cut to a side Truck left along the lead three runners under bridge shadows; camera speed medium, amplitude small. [Shot 4] At 00:11.500, Crash Zoom into the finish-line tape as the lead runner breaks it; confetti and finish-chute banners bloom; hold the surge.",
+    "overall_soundscape": "Synchronized footfalls, crowd cheers rising, a sharp tape-snap at the finish, city traffic under.",
+    "non_diegetic_music": "Driving percussion bed that peaks on the finish break."
+  }
+}

@@ -175,7 +175,7 @@ Harness 与 Writer 只约定一种协议：**OpenAI 兼容 Chat + 结构化 JSON
 <p align="center"><sub>当前视频配置：MiniMax-H3。首页三组：s15 演唱会急推、s14 厨房甩镜、s13 天台环绕（来自已发布 15 组）。</sub><br>
 <a href="https://waynejin0918.github.io/Omni-Rewriter/"><b>H3 PE 站点 →</b></a>
 ·
-<a href="day2-h3-pe/index.html">本地 H3 PE 页面</a>
+<a href="day2-h3-pe/index.html">本地 H3 PE 进入页（短片 → 主站）</a>
 ·
 <a href="h3-pe-showcase/index.html">完整 15 组 showcase</a>
 ·
@@ -232,9 +232,9 @@ RewriteRequest
 | 文档索引 | [打开](index_zh.md) | [Open](index.md) |
 | 快速开始 | [打开](getting-started_zh.md) | [Open](getting-started.md) |
 | 架构 | [打开](architecture_zh.md) | [Open](architecture.md) |
-| Video Prompt Expansion | [打开](h3-pe-harness_zh.md) | [Open](h3-pe-harness.md) |
-| 图像 Prompt Expansion | [打开](image-pe_zh.md) | [Open](image-pe.md) |
-| 生成适配器 | [打开](generation-adapters_zh.md) | [Open](generation-adapters.md) |
+| Video Prompt Expansion | [打开](dialects/h3-pe-harness_zh.md) | [Open](dialects/h3-pe-harness.md) |
+| 图像 Prompt Expansion | [打开](dialects/image-pe_zh.md) | [Open](dialects/image-pe.md) |
+| 生成适配器 | [打开](dialects/generation-adapters_zh.md) | [Open](dialects/generation-adapters.md) |
 | 评测 | [打开](evaluation_zh.md) | [Open](evaluation.md) |
 
 ## 开发与贡献

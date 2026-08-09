@@ -63,3 +63,6 @@ generated/
 .cache/
 checkpoints/
 /models/
+
+# Promo assemble intermediates / local renders (scripts + PE JSON stay tracked)
+docs/promo/out/

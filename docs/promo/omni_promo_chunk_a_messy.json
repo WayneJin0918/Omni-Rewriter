@@ -1,0 +1,21 @@
+{
+  "request": {
+    "prompt": "Warm lively Omni-Rewriter intro with soft hold exit",
+    "duration_seconds": 15,
+    "task": "t2va",
+    "metadata": {
+      "aspect_ratio": "16:9",
+      "short_edge": "768",
+      "seed": "98201",
+      "campaign": "oss-promo-v6",
+      "chunk": "A-intro"
+    }
+  },
+  "output": {
+    "task": "t2va",
+    "duration_seconds": "15",
+    "integrated_multimodal_description": "[Shot 1] Photoreal warm product film on a sunlit cream desk with soft peach bounce light: a blinking cursor beside one short messy user prompt in clear black type that reads exactly \"make a cool video somehow\". No other on-screen sentences. No subtitles. No HUD. No corner captions. No people. Narrator voice stays off-screen and must never be printed in the frame. Gentle Push In. A warm narrator (S1) says in an off-screen voiceover only: <d>[English] This is where most prompts stop.</d> [Shot 2] At 00:03.800, the messy prompt shatters into flying sticky-note scraps that land as five rounded pastel glass cards labeled Analyze, Draft, Validate, Repair, Render, bouncing into a tidy lane. Whip Pan right, amplitude medium, speed brisk. Still no subtitle burn-in. The narrator (S1) continues in an off-screen voiceover only: <d>[English] Omni-Rewriter builds the missing structure.</d> [Shot 3] At 00:08.000, the five cards fuse into one clear hero PE card with readable fields and a soft mint edge glow; gentle Push In, amplitude small, speed slow. The narrator (S1) says in an off-screen voiceover only: <d>[English] Closing the gap to production-ready.</d> [Shot 4] At 00:11.500, hold the hero card centered in warm daylight with almost no camera motion; only a tiny specular wink; settle into stillness for a soft transition—no whip-out, no hard slam.",
+    "overall_soundscape": "Soft cursor clicks, paper shatter whoosh, toy-card taps, quiet desk air on the hold.",
+    "non_diegetic_music": "Bright warm pluck groove that eases down during the final hold."
+  }
+}

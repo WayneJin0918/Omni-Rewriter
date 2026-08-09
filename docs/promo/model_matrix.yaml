@@ -1,0 +1,41 @@
+# Canonical promo model matrix (excludes Seedance by design).
+# Status mirrors README badges: PE | adapter | unverified | wanted
+
+video:
+  - name: MiniMax-H3
+    status: PE
+  - name: LingBot Video
+    status: adapter
+  - name: WAN
+    status: unverified
+  - name: HunyuanVideo
+    status: wanted
+  - name: CogVideoX
+    status: wanted
+  - name: LTX-Video
+    status: wanted
+  - name: Mochi 1
+    status: wanted
+  - name: Step-Video
+    status: wanted
+
+image:
+  - name: Seedream
+    status: PE
+  - name: Qwen-Image / Edit
+    status: PE
+  - name: HunyuanImage-3.0
+    status: adapter
+  - name: FLUX.1 / Kontext
+    status: wanted
+  - name: Stable Diffusion 3.5
+    status: wanted
+  - name: Kolors
+    status: wanted
+  - name: PixArt-Sigma
+    status: wanted
+  - name: Sana
+    status: wanted
+
+github: https://github.com/WayneJin0918/Omni-Rewriter
+tagline: One harness across video and image

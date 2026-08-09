@@ -31,11 +31,14 @@ repairs, renderers, and public contracts over claims about private vendor intern
 1. Set `metadata.video_pe_profile=seedance` (default remains H3).
 2. Support `t2va` / `ref2va` only for this profile; require `duration_seconds`.
 3. Emit `SeedanceRewrite` fields: style, summary, static/dynamic descriptions, subjects,
-   instruction, optional BGM, `generate_audio`.
-4. Render via `seedance_render=natural|json` (default natural) and
-   `seedance_ref_style=public|omni` (default public `@VideoN`).
+   optional `reference_roles` / `stages` / `preserve` / `unused_materials`, instruction,
+   optional BGM, `generate_audio`. Follow public Seedance 2.5 habits (typed `@Image` /
+   `@Video` / `@Audio`, role+exclude lines, observable stage end states, `{dialogue}` /
+   `<sfx>` / `(music)` delimiters). Do not claim private vendor internals.
+4. Render via `seedance_render=natural|fused|json` (default natural = public 2.5 template) and
+   `seedance_ref_style=public|omni` (default public type-local `@Video 1`).
 5. Never commit private dump markers (`hdfs://`, `[redacted]`, `[redacted]`, …). See
-   `docs/seedance-pe.md`. No generation adapter in this profile pass.
+   `docs/dialects/seedance-pe.md`. No generation adapter in this profile pass.
 
 ## When expanding video (H3)
 
@@ -59,7 +62,7 @@ Source skill archives: `docs/references/jahnson-h3-skill-{t2va,fl2va,ref2va}.txt
    `{21:9,16:9,3:2,4:3,1:1,3:4,2:3,9:16}` or `[image N]`.
 4. Preserve on-canvas quoted text exactly; match quote style to instruction language.
 
-See `docs/image-pe.md`.
+See `docs/dialects/image-pe.md`.
 
 ## Runtime evidence
 
@@ -69,7 +72,7 @@ See `docs/image-pe.md`.
 - LingBot-World: independent upstream runner.
 - vLLM-Omni model-family claims: unverified here until an end-to-end repository test exists.
 
-Use `docs/generation-adapters.md` for evidence links and wording.
+Use `docs/dialects/generation-adapters.md` for evidence links and wording.
 
 ## Repo contribution norms
 

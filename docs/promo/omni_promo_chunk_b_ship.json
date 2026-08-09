@@ -1,0 +1,21 @@
+{
+  "request": {
+    "prompt": "Warm lively dual-lane hanging glass boards in a sunlit maker studio; open center for brand; both T2V and T2I lanes always visible",
+    "duration_seconds": 8,
+    "task": "t2va",
+    "metadata": {
+      "aspect_ratio": "16:9",
+      "short_edge": "768",
+      "seed": "98220",
+      "campaign": "oss-promo-v6-brand",
+      "chunk": "B-models"
+    }
+  },
+  "output": {
+    "task": "t2va",
+    "duration_seconds": "8",
+    "integrated_multimodal_description": "[Shot 1] Photoreal warm maker studio with daylight and soft coral gels: two vertical lanes of frosted glass hanging boards gently sway in the center of a sunlit room\u2014left lane header T2V, right lane header T2I. Keep an open composed center between the lanes for a later brand overlay. Boards bob with lively but small motion; never leave their lanes. No Seedance branding. Never render the word Seedance, seedance, or any Seedance logo anywhere in frame. No people. No corner captions. No subtitle burn-in. No model names printed on the slats. Slow Push In with a tiny orbit. A warm narrator (S1) says in an off-screen voiceover only: <d>[English] Video and image models.</d> [Shot 2] At 00:03.200, both T2V and T2I lanes stay fully visible while sunlight drifts across the boards; camera Orbit right, amplitude small, speed medium\u2014keep energy, not a static hold. Never cut away to image-only. The narrator (S1) continues in an off-screen voiceover only: <d>[English] One open harness.</d> [Shot 3] At 00:06.000, hold the dual-lane warm composition with gentle residual sway and open center space\u2014soft stillness for a brand fade.",
+    "overall_soundscape": "Soft glass docks, light desk ambience, tiny cheerful ticks.",
+    "non_diegetic_music": "Upbeat warm indie-pop bed that resolves gently."
+  }
+}

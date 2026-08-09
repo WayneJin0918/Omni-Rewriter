@@ -40,8 +40,17 @@ def test_seedance_t2va_schema_and_natural_render() -> None:
     assert isinstance(output, SeedanceRewrite)
     assert request is not None
     text = render_output(output, request)
+    assert "[Generation Goal]" in text
+    assert "[Event Script]" in text
+    assert "{How does the soup taste today?}" in text
+    assert "duration_seconds" not in text
+
+
+def test_seedance_fused_render_keeps_legacy_labels() -> None:
+    envelope = _load("t2va_kitchen.json")
+    output = SeedanceRewrite.model_validate(envelope["output"])
+    text = output.render_fused()
     assert "风格特点：" in text
-    assert "How does the soup taste today?" in text
     assert "duration_seconds：8" in text
 
 
@@ -54,10 +63,23 @@ def test_seedance_ref2va_json_render_and_media_indices() -> None:
     payload = json.loads(rendered)
     assert payload["profile"] == "seedance"
     assert payload["subjects"][0]["media_index"] == 1
-    assert "@Video1" in payload["instruction"]
+    assert payload["subjects"][0]["media_type"] == "video"
+    assert "@Video 1" in payload["instruction"]
+    assert payload["reference_roles"][0]["exclude"]
 
 
-def test_seedance_ref_style_omni_rewrites_tokens() -> None:
+def test_seedance_pottery_typed_image_and_video_roles() -> None:
+    envelope = _load("ref2va_pottery.json")
+    output, request = validate_output(envelope)
+    assert isinstance(output, SeedanceRewrite)
+    assert request is not None
+    text = render_output(output, request)
+    assert "@Image 1 defines the ceramic artist's facial features" in text
+    assert "@Video 1 defines the pacing of throwing clay" in text
+    assert "[Maintain Consistency]" in text
+
+
+def test_seedance_ref_style_omni_rewrites_video_tokens() -> None:
     envelope = _load("ref2va_interview.json")
     output, _ = validate_output(envelope)
     assert isinstance(output, SeedanceRewrite)
@@ -69,7 +91,7 @@ def test_seedance_rejects_dangling_media_index() -> None:
     envelope = _load("t2va_kitchen.json")
     output = SeedanceRewrite.model_validate(envelope["output"])
     broken = output.model_copy(
-        update={"instruction": output.instruction + " See @Video1 for plating."}
+        update={"instruction": output.instruction + " See @Video 1 for plating."}
     )
     with pytest.raises(ValueError, match="out of range"):
         validate_seedance_against_request(
@@ -77,11 +99,28 @@ def test_seedance_rejects_dangling_media_index() -> None:
             media_count=0,
             task=TaskType.T2VA,
             duration_seconds=Decimal("8"),
+            media_types=[],
         )
 
 
-def test_seedance_ref2va_requires_subjects() -> None:
-    with pytest.raises(ValidationError, match="at least one subject"):
+def test_seedance_rejects_typed_index_beyond_available_images() -> None:
+    envelope = _load("ref2va_pottery.json")
+    output = SeedanceRewrite.model_validate(envelope["output"])
+    broken = output.model_copy(
+        update={"instruction": output.instruction + " Also reuse @Image 9 details."}
+    )
+    with pytest.raises(ValueError, match="image reference index 9"):
+        validate_seedance_against_request(
+            broken,
+            media_count=3,
+            task=TaskType.REF2VA,
+            duration_seconds=Decimal("12"),
+            media_types=[MediaType.IMAGE, MediaType.IMAGE, MediaType.VIDEO],
+        )
+
+
+def test_seedance_ref2va_requires_subjects_or_roles() -> None:
+    with pytest.raises(ValidationError, match="at least one subject or reference_role"):
         SeedanceRewrite(
             task=TaskType.REF2VA,
             duration_seconds=Decimal("6"),
@@ -90,7 +129,8 @@ def test_seedance_ref2va_requires_subjects() -> None:
             static_description="static",
             dynamic_description="dynamic",
             subjects=[],
-            instruction="Keep @Video1 identity.",
+            reference_roles=[],
+            instruction="Keep @Video 1 identity.",
         )
 
 
@@ -112,7 +152,7 @@ async def test_agent_seedance_t2va(
     backend = ScriptedBackend([json.dumps(analysis_output), json.dumps(envelope["output"])])
     result = await RewriteAgent(backend).run(RewriteRequest.model_validate(envelope["request"]))
     assert isinstance(result.output, SeedanceRewrite)
-    assert "风格特点" in result.output.render()
+    assert "[Generation Goal]" in result.output.render()
 
 
 @pytest.mark.asyncio
@@ -152,7 +192,44 @@ async def test_agent_seedance_ref2va(
             "seedance_ref_style": "public",
         },
     )
+    # Fixture roles are video-typed; retarget to the synthetic image refs for this agent path.
+    output["subjects"] = [
+        {
+            "id": "<Host>",
+            "media_type": "image",
+            "media_index": 1,
+            "appearance": "Person from @Image 1: dark jacket, short hair, warm smile.",
+            "voice": "Mid, friendly host tone",
+        },
+        {
+            "id": "<Guest>",
+            "media_type": "image",
+            "media_index": 2,
+            "appearance": "Person from @Image 2: light sweater, tied-back hair.",
+            "voice": "Soft conversational tone",
+        },
+    ]
+    output["reference_roles"] = [
+        {
+            "media_type": "image",
+            "index": 1,
+            "defines": "the host's facial features, short hair, and dark jacket",
+            "exclude": "the image background",
+        },
+        {
+            "media_type": "image",
+            "index": 2,
+            "defines": "the guest's facial features, tied-back hair, and light sweater",
+            "exclude": "the image background",
+        },
+    ]
+    output["instruction"] = (
+        "Preserve @Image 1 and @Image 2 identities. <Host> asks in natural conversational "
+        "English: {Any plans for the weekend?} <Guest> answers: "
+        "{Maybe a quiet picnic if the weather holds.}"
+    )
     backend = ScriptedBackend([json.dumps(analysis_output), json.dumps(output)])
     result = await RewriteAgent(backend).run(request)
     assert isinstance(result.output, SeedanceRewrite)
     assert result.output.subjects[0].media_index == 1
+    assert result.output.reference_roles[0].media_type.value == "image"

@@ -10,4 +10,4 @@ and prompts live in HTML/Markdown, not inside image pixels.
 
 Full-resolution generation remains local and gitignored. Use your own OpenAI-compatible
 or custom-vLLM image endpoints via the adapters documented in
-[`docs/generation-adapters.md`](../../../generation-adapters.md).
+[`docs/dialects/generation-adapters.md`](../../dialects/generation-adapters.md).

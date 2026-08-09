@@ -15,9 +15,12 @@ from .media import MediaReference
 from .ref2va import Ref2VARewrite
 from .request import RewriteRequest, infer_task
 from .seedance import (
+    SeedanceMediaKind,
+    SeedanceReferenceRole,
     SeedanceRefStyle,
     SeedanceRenderMode,
     SeedanceRewrite,
+    SeedanceStage,
     SeedanceSubject,
     VideoPEProfile,
     render_seedance_output,
@@ -43,9 +46,12 @@ __all__ = [
     "Ref2VARewrite",
     "RewriteOutput",
     "RewriteRequest",
+    "SeedanceMediaKind",
+    "SeedanceReferenceRole",
     "SeedanceRefStyle",
     "SeedanceRenderMode",
     "SeedanceRewrite",
+    "SeedanceStage",
     "SeedanceSubject",
     "TaskType",
     "VIDEO_TASKS",

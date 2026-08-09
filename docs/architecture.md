@@ -13,7 +13,7 @@ generation tasks only when an application explicitly calls them. The framework r
 contracts and reproducible evidence to bridge demos, APIs, and deployable workflows rather than
 attempting to reproduce undisclosed closed-source behavior.
 
-Flowcharts and skill notes live in [h3-pe-harness.md](h3-pe-harness.md).
+Flowcharts and skill notes live in [dialects/h3-pe-harness.md](dialects/h3-pe-harness.md).
 
 ## Components
 

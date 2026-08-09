@@ -29,11 +29,13 @@ Scripts accept either name; if both are set, `OMNI_WRITER_*` wins.
 
 | Script | Purpose |
 | --- | --- |
-| `serve_qwen35_dev.sh` / `serve_qwen35_prod.sh` | Local vLLM Writer |
-| `serve_sglang_qwen_image.sh` | Optional Qwen-Image SGLang |
-| `serve_hunyuan_image3_vllm.sh` | Optional HunyuanImage custom-vLLM |
-| `serve_sglang_wan.sh` / `serve_vllm_omni_wan.sh` | Optional WAN video serve (unverified compatibility) |
-| `serve_lingbot_rewriter.sh` / `run_lingbot_video.sh` | LingBot rewriter / video helpers |
+| `serve/*.sh` (wrappers at `scripts/serve_*.sh`) | Local Writer / optional generation runtimes |
+| `serve/serve_lingbot_rewriter.sh` / `serve/run_lingbot_video.sh` | LingBot helpers |
 | `make_gallery_thumbs.sh` / `make_h3_pe_showcase_thumbs.sh` | Low-res GIF thumbs (no `.mp4` commits) |
+| `promo/submit_h3_chunk.py` | Submit a promo PE envelope to H3 (`OMNI_WRITER_H3_BASE_URL`) |
+| `promo/build_proof_cards.py` | Refined RAW\|PE cards with PE audio |
+| `promo/build_model_plates.py` | Accurate T2V/T2I name plates (`docs/promo/model_matrix.yaml`) |
+| `promo/burn_names_on_slats.py` | Burn model names onto hanging T2V/T2I slats in a freeze |
+| `promo/assemble_promo.py` | Soft-xfade promo assemble |
 | `check_model_contribution.py` | PR contract checker |
 | `ai_review_pr.py` | Optional advisory model review |

@@ -1,0 +1,90 @@
+{
+  "request": {
+    "prompt": "Ceramic artist finishes a pale blue cup at dawn using appearance, studio, and motion references; exclude unwanted backgrounds.",
+    "duration_seconds": 12,
+    "task": "ref2va",
+    "media": [
+      {
+        "media_type": "image",
+        "role": "reference",
+        "uri": "https://example.test/seedance/artist.png",
+        "name": "artist"
+      },
+      {
+        "media_type": "image",
+        "role": "reference",
+        "uri": "https://example.test/seedance/studio.png",
+        "name": "studio"
+      },
+      {
+        "media_type": "video",
+        "role": "reference",
+        "uri": "https://example.test/seedance/throwing.mp4",
+        "name": "motion"
+      }
+    ],
+    "metadata": {
+      "video_pe_profile": "seedance",
+      "seedance_render": "natural",
+      "seedance_ref_style": "public"
+    }
+  },
+  "output": {
+    "task": "ref2va",
+    "profile": "seedance",
+    "duration_seconds": "12",
+    "style": "Soft morning window light, warm clay tones, medium shot into slow push-in.",
+    "summary": "Generate a studio clip of a ceramic artist finishing a pale blue cup and shelving it at dawn.",
+    "static_description": "A tidy pottery studio with a wheel, wooden shelf, and pale blue cup centered on the wheel head.",
+    "dynamic_description": "Begin on a medium shot of wheel-throwing, push in to cup texture, then cut to a frontal shelf placement.",
+    "subjects": [
+      {
+        "id": "<Ceramic Artist>",
+        "media_type": "image",
+        "media_index": 1,
+        "appearance": "Facial features, hairstyle, and dark green apron from @Image 1.",
+        "voice": null
+      }
+    ],
+    "reference_roles": [
+      {
+        "media_type": "image",
+        "index": 1,
+        "defines": "the ceramic artist's facial features, hairstyle, and dark green apron",
+        "exclude": "the image background"
+      },
+      {
+        "media_type": "image",
+        "index": 2,
+        "defines": "the wooden workbench, window placement, and morning light of the pottery studio",
+        "exclude": "the people in the image"
+      },
+      {
+        "media_type": "video",
+        "index": 1,
+        "defines": "the pacing of throwing clay with both hands, lifting the cup, and placing it down",
+        "exclude": "the person's identity, clothing, or scene from the video"
+      }
+    ],
+    "stages": [
+      {
+        "time_range": "0-6s",
+        "event": "<Ceramic Artist> finishes shaping a pale blue cup on the wheel.",
+        "end_state": "Cup is fully formed on the wheel; both hands support the rim."
+      },
+      {
+        "time_range": "6-12s",
+        "event": "The artist lifts the cup and places it in the center of the wooden shelf.",
+        "end_state": "Exactly one pale blue cup rests centered on the shelf; hands have left the cup."
+      }
+    ],
+    "preserve": [
+      "Keep one ceramic artist and one pale blue cup throughout.",
+      "Keep apron, studio window light, shelf geometry, and camera direction consistent."
+    ],
+    "unused_materials": [],
+    "instruction": "The ceramic artist finishes a pale blue cup in the pottery studio at dawn, lifts it from the wheel, and places it in the center of a wooden shelf. Begin with a medium shot of the wheel-throwing process, then slowly push in toward the cup's surface texture. Retain the low hum of the pottery wheel and subtle indoor ambience.",
+    "non_diegetic_music": null,
+    "generate_audio": true
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "prompt": "Ceramic artist finishes a pale blue cup at dawn using appearance, studio, and motion references; exclude unwanted backgrounds.",
+  "duration_seconds": 12,
+  "task": "ref2va",
+  "media": [
+    {
+      "media_type": "image",
+      "role": "reference",
+      "uri": "https://example.test/seedance/artist.png",
+      "name": "artist"
+    },
+    {
+      "media_type": "image",
+      "role": "reference",
+      "uri": "https://example.test/seedance/studio.png",
+      "name": "studio"
+    },
+    {
+      "media_type": "video",
+      "role": "reference",
+      "uri": "https://example.test/seedance/throwing.mp4",
+      "name": "motion"
+    }
+  ],
+  "metadata": {
+    "video_pe_profile": "seedance",
+    "seedance_render": "natural",
+    "seedance_ref_style": "public"
+  }
+}

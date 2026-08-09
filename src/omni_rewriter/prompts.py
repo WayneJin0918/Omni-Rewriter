@@ -115,23 +115,37 @@ Image PE requirements (Qwen-Image-Edit-aligned):
 """
 
 _SEEDANCE_VIDEO_RULES = """\
-Seedance video PE requirements (public Seedance 2.0 prompt habits; sanitized Omni profile):
-- Emit structured fields for a terminal/execute T2V or R2V model. Do NOT invent private vendor
-  Context-IR fields. profile must be "seedance".
+Seedance video PE requirements (public Seedance 2.5 prompt habits; sanitized Omni profile):
+- Emit structured fields that render into a Seedance 2.5 submit-ready Prompt. Do NOT invent
+  private vendor Context-IR fields. profile must be "seedance". Expand ≠ generate.
 - Supported tasks: t2va (no media) or ref2va (one or more reference media).
-- style: compact style traits (lens, grade, pacing). summary: one-paragraph story summary.
-  static_description: who/where/what is visible at rest. dynamic_description: motion, camera,
-  cuts, and timing. instruction: vivid PE body that may include reference tokens and dialogue.
-- Dialogue for lip-sync belongs in quoted speech inside instruction (English "..." or Chinese “…”).
-- Reference tokens: prefer public @VideoN (or [VideoN]). Omni <|media:N|> is also accepted.
-  Subject labels may use <主体N> or <Subject N>. Indices are 1-based and must match request media.
-- Subjects: for ref2va, list each retained person/object with id, optional media_index,
-  appearance, and optional voice. For t2va, subjects may be empty or invented cast without media.
+- Core formula: Subject + Action/Event + Scene + optional Visual Style + Camera/Cut + Audio.
+- style: compact visual treatment. summary: generation goal / story summary.
+  static_description: opening state (who/where/what at rest).
+  dynamic_description: motion, camera, cuts, and pacing when stages are empty.
+  instruction: vivid event body (may include reference tokens, dialogue, and audio cues).
+- Optional structured helpers:
+  - reference_roles[]: one activated material per entry with media_type
+    (image|video|audio), type-local index, defines, optional exclude.
+  - stages[]: consecutive beats with optional time_range, event, and observable end_state.
+  - preserve[]: identities, counts, prop ownership, space, camera, and audio to keep.
+  - unused_materials[]: explicit unused @Image/@Video/@Audio numbers when the request lists
+    more materials than the scene activates.
+- Reference tokens are type-local and preferably spaced: @Image 1, @Video 1, @Audio 1
+  (compact @Video1 / [Video1] also accepted). Omni <|media:N|> is flat request order.
+  Do not rely on image labels alone; write material mappings in the PE fields.
+- Dialogue: prefer Seedance delimiters when mixing audio types — {dialogue}, <sound effect>,
+  (music), 【subtitle】. Plain quoted speech is still allowed. Declare spoken language when
+  non-default. Do not invent dialogue the user did not supply.
+- Subjects: for ref2va, list retained people/objects with id, optional media_type+media_index,
+  appearance, and optional voice. For t2va, subjects may be empty.
 - non_diegetic_music is optional BGM guidance. generate_audio defaults true.
-- duration_seconds must exactly match the request (typical public Seedance clips are 4–15s).
+- duration_seconds must exactly match the request (public Seedance 2.5 clips are commonly up
+  to about 30s; do not write aspect ratio / duration / resolution into instruction text).
 - Keep content benign and production-ready. Never emit hdfs:// URIs or private dump fields.
 - Return JSON fields: task, profile, duration_seconds, style, summary, static_description,
-  dynamic_description, subjects, instruction, non_diegetic_music, generate_audio.
+  dynamic_description, subjects, reference_roles, stages, preserve, unused_materials,
+  instruction, non_diegetic_music, generate_audio.
 """
 
 
