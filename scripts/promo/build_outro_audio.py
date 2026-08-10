@@ -125,7 +125,9 @@ def mix_vo_with_bgm(
     )
 
 
-def mux_audio_segment(video: Path, audio: Path, dest: Path, *, audio_start: float, seconds: float) -> None:
+def mux_audio_segment(
+    video: Path, audio: Path, dest: Path, *, audio_start: float, seconds: float
+) -> None:
     run(
         [
             "ffmpeg",
@@ -157,7 +159,9 @@ def mux_audio_segment(video: Path, audio: Path, dest: Path, *, audio_start: floa
 def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--atmosphere", type=Path, required=True, help="Intro clip for BGM bed")
-    parser.add_argument("--finale-video", type=Path, required=True, help="Silent/designed models finale")
+    parser.add_argument(
+        "--finale-video", type=Path, required=True, help="Silent/designed models finale"
+    )
     parser.add_argument("--end-video", type=Path, required=True, help="Endcard video")
     parser.add_argument("--out-dir", type=Path, required=True)
     parser.add_argument("--out-finale", type=Path, required=True)
