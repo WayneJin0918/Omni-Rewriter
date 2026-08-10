@@ -8,8 +8,8 @@ https://waynejin0918.github.io/Omni-Rewriter/
 ## What stays off `main`
 
 Heavy RAW/PE demo GIFs are **not** tracked on `main`. They ship on `gh-pages`
-under `assets/demos/` and are referenced from site HTML via absolute Pages URLs
-(`…/Omni-Rewriter/assets/demos/<clip>.gif`).
+under `assets/demos/` and are referenced from site HTML via relative
+`assets/demos/<clip>.gif` paths (works for local preview and `gh-pages` root).
 
 Also gitignored on `main`:
 

@@ -2,7 +2,7 @@
 name: omni-rewriter-h3-pe
 description: >-
   Extend Omni-Rewriter's validated prompt-expansion framework and its H3 video
-  and Seedream / Qwen-Image-Edit image profiles. Use when writing profile rules,
+  and Seedream / Qwen-Image image profiles. Use when writing profile rules,
   RewriteRequest fixtures, PE repairs, renderers, adapters, or raw-vs-expanded
   comparisons.
 ---

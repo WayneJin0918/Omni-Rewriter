@@ -1,4 +1,4 @@
-"""Image PE outputs for Seedream and Qwen-Image-Edit dialects."""
+"""Image PE outputs for Seedream and Qwen-Image dialects."""
 
 from __future__ import annotations
 

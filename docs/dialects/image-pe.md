@@ -1,4 +1,4 @@
-# Image PE (Seedream / Qwen-Image-Edit)
+# Image PE (Seedream / Qwen-Image)
 
 [中文](image-pe_zh.md) · [Framework architecture](../architecture.md)
 
@@ -15,7 +15,7 @@ other image generator. Public prompt shapes do not establish parity with private
 |---|---|---|
 | `t2i` | Text-to-image (optional refs) | omit `duration_seconds` |
 | `i2i` | Image-to-image with references | omit; requires media |
-| `image_edit` | Edit-oriented dialect (defaults to Qwen-Image-Edit rules) | omit; requires media |
+| `image_edit` | Edit-oriented dialect (defaults to Qwen-Image rules) | omit; requires media |
 
 Video tasks still require `duration_seconds`. Image tasks reject it.
 

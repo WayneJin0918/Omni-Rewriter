@@ -11,12 +11,9 @@ Promotional site for Omni-Rewriter’s MiniMax-H3 prompt-expansion instance
 | [`home.html`](home.html) | **Main homepage** — interactive PE pipeline + RAW/PE grid |
 | [`assets/promo/`](assets/promo/) | Poster on `main`; promo mp4 is gitignored (copy when syncing `gh-pages`) |
 
-Demo GIFs are **not** stored on `main`. `home.html` loads them from GitHub Pages:
-
-`https://waynejin0918.github.io/Omni-Rewriter/assets/demos/<clip>.gif`
-
-(same files on the `gh-pages` branch under `assets/demos/`). See
-[../site/README.md](../site/README.md) for lean-clone and optional local fetch.
+Demo GIFs are **not** stored on `main`. `home.html` loads them via relative
+`assets/demos/<clip>.gif` (same layout on `gh-pages`). For local preview, fetch
+demos onto disk first — see [../site/README.md](../site/README.md).
 
 ## Local preview
 

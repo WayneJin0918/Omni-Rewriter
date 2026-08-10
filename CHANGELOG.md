@@ -26,7 +26,7 @@ for the thin public surface (`RewriteRequest` / rewrite outputs, `expand`, `vali
 
 ### Added
 
-- Typed prompt-expansion harness with H3 video, Seedream, and Qwen-Image-Edit PE profiles.
+- Typed prompt-expansion harness with H3 video, Seedream, and Qwen-Image PE profiles.
 - CLI (`omni-rewriter`), optional FastAPI `create_app`, and example `RewriteRequest` JSON under
   `examples/requests/`.
 - Generation adapters for local H3 / MiniMax plus optional image and video runners (evidence-scoped).

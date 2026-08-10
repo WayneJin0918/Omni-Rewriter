@@ -187,8 +187,9 @@ Community board — left color = category (Video / Image / Unified); right = evi
 
 ## Quick start
 
-Gallery demos need no GPU. `expand` needs any OpenAI-compatible chat endpoint that returns
-structured JSON (hosted API/gateway, or open weights on vLLM/SGLang).
+Gallery demos need no GPU. Preferred local path: **SGLang Qwen (small Writer) + SGLang MiniMax-H3
+(~30B FL2VA)**. Hosted API Writers are a fallback. Expand ≠ generate — H3 is only for optional
+media after PE.
 
 ```bash
 python -m venv .venv
@@ -198,21 +199,52 @@ python -m pip install -e ".[cli,server]"
 cp .env.example .env
 ```
 
-Hosted Writer example (no local checkpoint):
+### 1) Local SGLang (recommended)
+
+Terminal A — small Qwen Writer (OpenAI-compatible chat on `:8000`):
+
+```bash
+export OMNI_WRITER_MODEL=/path/to/Qwen3.5-9B          # local checkpoint
+export OMNI_WRITER_SERVED_MODEL_NAME=Qwen/Qwen3.5-9B
+bash scripts/serve/serve_sglang_qwen_writer.sh
+```
+
+Terminal B — MiniMax-H3 FL2VA via SGLang diffusion (videos API on `:30010`):
+
+```bash
+export OMNI_WRITER_H3_MODEL=/path/to/MiniMax-H3/FL2VA  # local H3 checkpoint
+export OMNI_WRITER_H3_NUM_GPUS=8                       # match your node
+bash scripts/serve/serve_sglang_h3.sh
+```
+
+Point Omni-Rewriter at both, then expand (and optionally generate):
+
+```bash
+export OMNI_WRITER_BACKEND_BASE_URL=http://127.0.0.1:8000/v1
+export OMNI_WRITER_BACKEND_MODEL=Qwen/Qwen3.5-9B
+export OMNI_WRITER_H3_BASE_URL=http://127.0.0.1:30010
+
+omni-rewriter expand examples/requests/t2va_kite.json
+omni-rewriter expand examples/requests/t2va_kite.json --output h3
+omni-rewriter validate output.json
+# optional generate (needs H3 up): scripts/promo/submit_h3_chunk.py … — see H3 adapters
+```
+
+### 2) Hosted API Writer (fallback)
+
+No local Writer GPU — use any OpenAI-compatible chat API (H3 generate can still be local):
 
 ```bash
 export OMNI_WRITER_BACKEND_BASE_URL=https://api.openai.com/v1   # or any gateway
 export OMNI_WRITER_BACKEND_MODEL=gpt-5.6
 export OMNI_WRITER_BACKEND_API_KEY=sk-...
 
-omni-rewriter expand examples/requests/t2va_kite.json
 omni-rewriter expand examples/requests/t2va_kite.json --output h3
-omni-rewriter expand examples/requests/t2i_neon.json
-omni-rewriter validate output.json
 ```
 
-Checked-in requests: [`examples/requests/`](examples/requests/). More paths:
-[Getting Started](docs/getting-started.md).
+Checked-in requests: [`examples/requests/`](examples/requests/). Scripts:
+[`scripts/serve/`](scripts/serve/). Details: [Getting Started](docs/getting-started.md),
+[H3 adapters](docs/dialects/h3-adapters.md).
 
 ## Project layers
 

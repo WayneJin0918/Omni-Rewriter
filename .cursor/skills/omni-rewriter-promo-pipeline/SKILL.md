@@ -24,10 +24,17 @@ designed finale → assemble**. Expand is not generate. Do not commit full `.mp4
 6. Proof audio comes from the **PE** arm only.
 7. Models act = short designed **finale** (`build_models_finale.py`): bridge → brand hero →
    staggered T2V|T2I lanes, **one continuous audio bed**. No H3 hanging-board B-roll; no
-   slat-glued names. Target full film about **30–35s**.
+   slat-glued names. Target full film about **30–35s**. Keep still-plate motion tiny (no sway).
 8. After H3 intro, run `fix_intro_pe_card.py` so the PE close-up uses a clean designed card
    (H3 often garbles PE body text).
 9. Prefer intro freeze as atmosphere; keep both T2V and T2I named in the lanes beat.
+10. Assemble regenerates each outgoing tail as a **designed hold** from the last frame
+    (blur/vignette/accent — not raw `tpad` clone) so dialogue survives `acrossfade` and the
+    gap still looks intentional.
+11. Outro CTA voice: prefer **H3 15s take** with the same warm narrator (S1) + pluck BGM as the
+    intro (`omni_promo_outro_vo.json`), then **clip** the usable window (e.g. 0.35–~10s) into
+    `build_outro_audio.py --vo-audio … --bgm-vol 0` → `outro_full.mp4` → assemble `--no-endcard`.
+    Edge-TTS is fallback only when H3 is unavailable.
 
 ## Layout
 

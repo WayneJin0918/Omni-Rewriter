@@ -7,6 +7,18 @@ can change.
 
 ## Local H3 adapter
 
+Recommended local serve helper (MiniMax-H3 FL2VA / ~30B-class via SGLang diffusion):
+
+```bash
+export OMNI_WRITER_H3_MODEL=/path/to/MiniMax-H3/FL2VA
+export OMNI_WRITER_H3_NUM_GPUS=8
+bash scripts/serve/serve_sglang_h3.sh
+export OMNI_WRITER_H3_BASE_URL=http://127.0.0.1:30010
+```
+
+Pair with a small SGLang Qwen Writer for `expand` (`scripts/serve/serve_sglang_qwen_writer.sh`).
+See [Getting started](../getting-started.md).
+
 `H3Client` targets an SGLang-style local service:
 
 - `POST /v1/videos` submits a task.

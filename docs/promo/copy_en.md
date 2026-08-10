@@ -16,7 +16,7 @@ Most prompts stop at a wish. Omni-Rewriter builds the missing structure — timi
 
 Omni-Rewriter is an open, model-extensible **prompt-expansion (PE)** framework. You bring a messy human prompt; the harness drafts typed structure, validates it, and repairs until it is ready for generation backends.
 
-Our public MiniMax-H3 PE profile shows the difference with same-seed compares: clearer timelines, dialogue, and camera moves when the prompt is expanded first. Image dialects (Seedream / Qwen-Image-Edit) and community adapters follow the same idea — label compatibility honestly.
+Our public MiniMax-H3 PE profile shows the difference with same-seed compares: clearer timelines, dialogue, and camera moves when the prompt is expanded first. Image dialects (Seedream / Qwen-Image) and community adapters follow the same idea — label compatibility honestly.
 
 ## CTA lines
 

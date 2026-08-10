@@ -14,20 +14,48 @@ python -m pip install -U pip
 python -m pip install -e ".[cli,server]"
 ```
 
-通过环境变量配置 OpenAI-compatible writer backend。项目不会自动加载 `.env`。Gallery 浏览不需要
-GPU；`expand` 需要任意能返回结构化 JSON 的 chat 端点。
+通过环境变量配置 backend（项目不会自动加载 `.env`）。Gallery 浏览不需要 GPU。推荐：
+**本地 SGLang 小 Qwen（Writer）+ 本地 SGLang MiniMax-H3**；托管 API Writer 作为备选。
+Expand ≠ generate。
 
 ```bash
 cp .env.example .env
-# Hosted Writer（无需本地 checkpoint）：
-# export OMNI_WRITER_BACKEND_BASE_URL=https://api.openai.com/v1
-# export OMNI_WRITER_BACKEND_MODEL=gpt-5.6
-# export OMNI_WRITER_BACKEND_API_KEY=sk-...
 set -a; source .env; set +a
 ```
 
-可直接 `expand` 的请求见 [`examples/requests/`](../examples/requests/)。仓库内 Qwen/vLLM
-脚本只是 Writer 的开发便利工具，不是图像/视频生成 runtime。
+### 推荐：SGLang Qwen（Writer）+ SGLang H3（~30B FL2VA）
+
+```bash
+# 终端 A — 小 Qwen chat Writer
+export OMNI_WRITER_MODEL=/path/to/Qwen3.5-9B
+export OMNI_WRITER_SERVED_MODEL_NAME=Qwen/Qwen3.5-9B
+bash scripts/serve/serve_sglang_qwen_writer.sh
+
+# 终端 B — MiniMax-H3 FL2VA（可选生成）
+export OMNI_WRITER_H3_MODEL=/path/to/MiniMax-H3/FL2VA
+export OMNI_WRITER_H3_NUM_GPUS=8
+bash scripts/serve/serve_sglang_h3.sh
+
+# expand 所用 shell
+export OMNI_WRITER_BACKEND_BASE_URL=http://127.0.0.1:8000/v1
+export OMNI_WRITER_BACKEND_MODEL=Qwen/Qwen3.5-9B
+export OMNI_WRITER_H3_BASE_URL=http://127.0.0.1:30010
+```
+
+脚本：[`serve_sglang_qwen_writer.sh`](../scripts/serve/serve_sglang_qwen_writer.sh)、
+[`serve_sglang_h3.sh`](../scripts/serve/serve_sglang_h3.sh)。H3 客户端说明见
+[H3 adapters](dialects/h3-adapters.md)。
+
+### 备选：托管 API Writer
+
+```bash
+export OMNI_WRITER_BACKEND_BASE_URL=https://api.openai.com/v1
+export OMNI_WRITER_BACKEND_MODEL=gpt-5.6
+export OMNI_WRITER_BACKEND_API_KEY=sk-...
+```
+
+可直接 `expand` 的请求见 [`examples/requests/`](../examples/requests/)。vLLM Qwen 脚本
+（`serve_qwen35_*.sh`）仍可作为 Writer 的备选启动方式。
 
 ## 扩写视频意图
 

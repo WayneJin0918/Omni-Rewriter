@@ -1,4 +1,4 @@
-# 图像 PE（Seedream / Qwen-Image-Edit）
+# 图像 PE（Seedream / Qwen-Image）
 
 [English](image-pe.md) · [框架架构](../architecture_zh.md)
 
@@ -14,7 +14,7 @@ analyze → draft → deterministic validate → bounded repair 生命周期。
 | --- | --- | --- |
 | `t2i` | 文生图，可带可选引用 | 必须省略 `duration_seconds` |
 | `i2i` | 带引用的图生图 | 必须省略；要求媒体 |
-| `image_edit` | 编辑型方言，默认 Qwen-Image-Edit 规则 | 必须省略；要求媒体 |
+| `image_edit` | 编辑型方言，默认 Qwen-Image 规则 | 必须省略；要求媒体 |
 
 视频任务仍然要求 `duration_seconds`；图像任务会拒绝该字段。
 

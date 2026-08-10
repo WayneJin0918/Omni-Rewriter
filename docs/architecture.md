@@ -4,7 +4,7 @@
 
 Omni-Rewriter is an independent prompt-expansion framework. It converts a typed multimodal request
 into validated, generator-oriented intermediate text. H3 and Seedance video PE, plus Seedream and
-Qwen-Image-Edit image packing, are initial profiles built on shared contracts; future profiles
+Qwen-Image image packing, are initial profiles built on shared contracts; future profiles
 should reuse the same routing, validation, repair, and rendering boundaries. Video dialect
 selection uses `metadata.video_pe_profile` (`h3` default, `seedance` optional).
 

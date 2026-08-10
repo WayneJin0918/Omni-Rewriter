@@ -102,7 +102,7 @@ Image PE requirements (Seedream-aligned blueprint):
 """
 
 _QWEN_IMAGE_EDIT_RULES = """\
-Image PE requirements (Qwen-Image-Edit-aligned):
+Image PE requirements (Qwen-Image-aligned):
 - Produce a precise edit instruction that preserves the user's edit intent and identity of
   subjects that should remain unchanged.
 - Describe only visual operations: keep / replace / add / remove / restyle / relight / recompose.

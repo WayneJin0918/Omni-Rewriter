@@ -14,21 +14,48 @@ python -m pip install -U pip
 python -m pip install -e ".[cli,server]"
 ```
 
-Configure an OpenAI-compatible writer backend through the environment. The project does not load
-`.env` automatically. Gallery demos need no GPU; `expand` needs any chat endpoint that returns
-structured JSON.
+Configure backends through the environment (the project does not load `.env` automatically).
+Gallery demos need no GPU. Preferred path: **local SGLang Qwen Writer + local SGLang MiniMax-H3**;
+hosted API Writers are a fallback. Expand ≠ generate.
 
 ```bash
 cp .env.example .env
-# Hosted Writer (no local checkpoint):
-# export OMNI_WRITER_BACKEND_BASE_URL=https://api.openai.com/v1
-# export OMNI_WRITER_BACKEND_MODEL=gpt-5.6
-# export OMNI_WRITER_BACKEND_API_KEY=sk-...
 set -a; source .env; set +a
 ```
 
-Copy-paste requests live in [`examples/requests/`](../examples/requests/). Optional Qwen/vLLM
-scripts are development conveniences for open Writers, not image/video generation runtimes.
+### Recommended: SGLang Qwen (Writer) + SGLang H3 (~30B FL2VA)
+
+```bash
+# Terminal A — small Qwen chat Writer
+export OMNI_WRITER_MODEL=/path/to/Qwen3.5-9B
+export OMNI_WRITER_SERVED_MODEL_NAME=Qwen/Qwen3.5-9B
+bash scripts/serve/serve_sglang_qwen_writer.sh
+
+# Terminal B — MiniMax-H3 FL2VA (optional generate)
+export OMNI_WRITER_H3_MODEL=/path/to/MiniMax-H3/FL2VA
+export OMNI_WRITER_H3_NUM_GPUS=8
+bash scripts/serve/serve_sglang_h3.sh
+
+# Shell for expand
+export OMNI_WRITER_BACKEND_BASE_URL=http://127.0.0.1:8000/v1
+export OMNI_WRITER_BACKEND_MODEL=Qwen/Qwen3.5-9B
+export OMNI_WRITER_H3_BASE_URL=http://127.0.0.1:30010
+```
+
+Serve helpers: [`scripts/serve/serve_sglang_qwen_writer.sh`](../scripts/serve/serve_sglang_qwen_writer.sh),
+[`scripts/serve/serve_sglang_h3.sh`](../scripts/serve/serve_sglang_h3.sh). H3 client notes:
+[H3 adapters](dialects/h3-adapters.md).
+
+### Fallback: hosted API Writer
+
+```bash
+export OMNI_WRITER_BACKEND_BASE_URL=https://api.openai.com/v1
+export OMNI_WRITER_BACKEND_MODEL=gpt-5.6
+export OMNI_WRITER_BACKEND_API_KEY=sk-...
+```
+
+Copy-paste requests: [`examples/requests/`](../examples/requests/). vLLM Qwen scripts remain
+available as an alternate Writer serve path (`serve_qwen35_*.sh`).
 
 ## Expand a video intent
 

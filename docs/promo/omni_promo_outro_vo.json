@@ -1,0 +1,21 @@
+{
+  "request": {
+    "prompt": "Warm Omni-Rewriter outro narrator CTA matching intro voice",
+    "duration_seconds": 15,
+    "task": "t2va",
+    "metadata": {
+      "aspect_ratio": "16:9",
+      "short_edge": "768",
+      "seed": "98211",
+      "campaign": "oss-promo-v6",
+      "chunk": "outro-vo"
+    }
+  },
+  "output": {
+    "task": "t2va",
+    "duration_seconds": "15",
+    "integrated_multimodal_description": "[Shot 1] Photoreal warm product film, soft peach daylight on a cream desk: centered dark charcoal end-title card reading exactly \"Omni-Rewriter\" with a mint-teal line below reading exactly \"github.com/WayneJin0918/Omni-Rewriter\". No other on-screen sentences. No subtitles. No HUD. No corner captions. No people. Narrator voice stays off-screen and must never be printed in the frame. Almost still camera, tiny specular wink only. A warm narrator (S1) says in an off-screen voiceover only: <d>[English] Star Omni-Rewriter on GitHub.</d> [Shot 2] At 00:04.000, keep the same end-title card composition with a soft brightness ease; still no people, no burned-in captions. The narrator (S1) continues in an off-screen voiceover only: <d>[English] We support MiniMax-H3, Seedream, and Qwen Image \u2014 plus adapters across video and image.</d> [Shot 3] At 00:10.000, hold the card in warm stillness for a soft settle; almost no camera motion.",
+    "overall_soundscape": "Quiet warm room tone, soft title-card settle, no crowd, no UI beeps.",
+    "non_diegetic_music": "Bright warm pluck groove that eases down during the final hold."
+  }
+}

@@ -16,7 +16,7 @@ Omni-Rewriter 是开源的提示词扩展（PE）框架：把日常的视频 / �
 
 Omni-Rewriter 是开放、可扩展模型接入的 **提示词扩展（PE）** 框架。你给出一句随意的人话；框架负责起草类型化结构、做确定性校验，并在边界内修复，直到可以交给生成后端。
 
-面向公众的 MiniMax-H3 PE 配置档，用同种子对照展示扩展前后的差异：时间轴、对白与运镜往往更清楚。图像侧（Seedream / Qwen-Image-Edit 等）与社区适配器同一思路——兼容性声明如实标注。
+面向公众的 MiniMax-H3 PE 配置档，用同种子对照展示扩展前后的差异：时间轴、对白与运镜往往更清楚。图像侧（Seedream / Qwen-Image 等）与社区适配器同一思路——兼容性声明如实标注。
 
 ## 行动号召
 
@@ -67,7 +67,7 @@ Omni-Rewriter 是开源的提示词扩展（PE）框架：一句日常意图进�
 
 当前矩阵偏 T2V 与 T2I（不含 Seedance），覆盖已落地 PE、适配中与规划中：
 · T2V：MiniMax-H3、LingBot Video、WAN、HunyuanVideo、CogVideoX、LTX-Video、Mochi 1、Step-Video
-· T2I：Seedream、Qwen-Image / Edit、HunyuanImage-3.0、FLUX.1 / Kontext、Stable Diffusion 3.5、Kolors、PixArt-Sigma、Sana
+· T2I：Seedream、Qwen-Image、HunyuanImage-3.0、FLUX.1 / Kontext、Stable Diffusion 3.5、Kolors、PixArt-Sigma、Sana
 
 感兴趣可以看看仓库和主站～
 GitHub：https://github.com/WayneJin0918/Omni-Rewriter
@@ -86,7 +86,7 @@ https://waynejin0918.github.io/Omni-Rewriter/
 
 (3) 当前模型矩阵覆盖 T2V 与 T2I（宣传矩阵不含 Seedance），并如实区分已落地 PE / 适配中 / 规划中：
 · T2V：MiniMax-H3（PE）、LingBot Video（适配中）、WAN（待核验）、HunyuanVideo / CogVideoX / LTX-Video / Mochi 1 / Step-Video（规划中）
-· T2I：Seedream、Qwen-Image / Edit（PE）、HunyuanImage-3.0（适配中）、FLUX.1 / Kontext、Stable Diffusion 3.5、Kolors、PixArt-Sigma、Sana（规划中）
+· T2I：Seedream、Qwen-Image（PE）、HunyuanImage-3.0（适配中）、FLUX.1 / Kontext、Stable Diffusion 3.5、Kolors、PixArt-Sigma、Sana（规划中）
 其中 MiniMax-H3 是目前对外展示较完整的视频 PE 实例；欢迎对照主站示例与仓库文档一起看。
 
 欢迎大家 star、试用，也欢迎一起交流、提 issue / PR～后续我们会持续迭代，为社区贡献更多内容～

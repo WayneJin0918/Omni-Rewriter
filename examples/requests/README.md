@@ -10,7 +10,7 @@ OpenAI-compatible Writer that returns structured JSON.
 | `seedance_ref2va_interview.json` | Seedance ref2va PE (`json` render; placeholder refs) |
 | `seedance_ref2va_pottery.json` | Seedance ref2va with typed `@Image` / `@Video` roles |
 | `t2i_neon.json` | Seedream T2I PE |
-| `image_edit_dress.json` | Qwen-Image-Edit PE (synthetic reference URL) |
+| `image_edit_dress.json` | Qwen-Image PE (synthetic reference URL) |
 
 ```bash
 export OMNI_WRITER_BACKEND_BASE_URL=https://api.openai.com/v1

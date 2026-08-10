@@ -29,7 +29,9 @@ Scripts accept either name; if both are set, `OMNI_WRITER_*` wins.
 
 | Script | Purpose |
 | --- | --- |
-| `serve/*.sh` (wrappers at `scripts/serve_*.sh`) | Local Writer / optional generation runtimes |
+| `serve/serve_sglang_qwen_writer.sh` | **Recommended** local Qwen Writer via SGLang (`:8000`) |
+| `serve/serve_sglang_h3.sh` | **Recommended** local MiniMax-H3 FL2VA via SGLang (`:30010`) |
+| `serve/*.sh` (wrappers at `scripts/serve_*.sh`) | Other local Writer / optional generation runtimes |
 | `serve/serve_lingbot_rewriter.sh` / `serve/run_lingbot_video.sh` | LingBot helpers |
 | `make_gallery_thumbs.sh` / `make_h3_pe_showcase_thumbs.sh` | Low-res GIF thumbs (no `.mp4` commits) |
 | `promo/submit_h3_chunk.py` | Submit a promo PE envelope to H3 (`OMNI_WRITER_H3_BASE_URL`) |

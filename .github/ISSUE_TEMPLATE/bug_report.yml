@@ -20,7 +20,7 @@ body:
       label: Area
       options:
         - Video H3 PE
-        - Image PE (Seedream / Qwen-Image-Edit)
+        - Image PE (Seedream / Qwen-Image)
         - CLI / API
         - Adapters
         - Docs / CI

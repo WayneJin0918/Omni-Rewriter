@@ -183,8 +183,8 @@ Harness 与 Writer 只约定一种协议：**OpenAI 兼容 Chat + 结构化 JSON
 
 ## 快速开始
 
-Gallery 演示不需要 GPU。`expand` 需要任意能返回结构化 JSON 的 OpenAI 兼容 Chat 接口
-（托管 API/网关，或 vLLM/SGLang 上的开源权重）。
+Gallery 浏览不需要 GPU。推荐本地路径：**SGLang 小 Qwen（Writer）+ SGLang MiniMax-H3
+（~30B FL2VA）**。托管 API Writer 作为备选。Expand ≠ generate——H3 仅用于可选成片。
 
 ```bash
 python -m venv .venv
@@ -194,21 +194,47 @@ python -m pip install -e ".[cli,server]"
 cp .env.example .env
 ```
 
-托管 Writer 示例（无需本地权重）：
+### 1) 本地 SGLang（推荐）
+
+终端 A — 小 Qwen Writer（`:8000` OpenAI-compatible chat）：
+
+```bash
+export OMNI_WRITER_MODEL=/path/to/Qwen3.5-9B
+export OMNI_WRITER_SERVED_MODEL_NAME=Qwen/Qwen3.5-9B
+bash scripts/serve/serve_sglang_qwen_writer.sh
+```
+
+终端 B — MiniMax-H3 FL2VA（SGLang diffusion，`:30010`）：
+
+```bash
+export OMNI_WRITER_H3_MODEL=/path/to/MiniMax-H3/FL2VA
+export OMNI_WRITER_H3_NUM_GPUS=8
+bash scripts/serve/serve_sglang_h3.sh
+```
+
+```bash
+export OMNI_WRITER_BACKEND_BASE_URL=http://127.0.0.1:8000/v1
+export OMNI_WRITER_BACKEND_MODEL=Qwen/Qwen3.5-9B
+export OMNI_WRITER_H3_BASE_URL=http://127.0.0.1:30010
+
+omni-rewriter expand examples/requests/t2va_kite.json
+omni-rewriter expand examples/requests/t2va_kite.json --output h3
+omni-rewriter validate output.json
+```
+
+### 2) 托管 API Writer（备选）
 
 ```bash
 export OMNI_WRITER_BACKEND_BASE_URL=https://api.openai.com/v1
 export OMNI_WRITER_BACKEND_MODEL=gpt-5.6
 export OMNI_WRITER_BACKEND_API_KEY=sk-...
 
-omni-rewriter expand examples/requests/t2va_kite.json
 omni-rewriter expand examples/requests/t2va_kite.json --output h3
-omni-rewriter expand examples/requests/t2i_neon.json
-omni-rewriter validate output.json
 ```
 
-示例请求见 [`examples/requests/`](../examples/requests/)。更多路径见
-[快速开始文档](getting-started_zh.md)。
+示例请求见 [`examples/requests/`](../examples/requests/)。脚本见
+[`scripts/serve/`](../scripts/serve/)。详见 [快速开始](getting-started_zh.md)、
+[H3 adapters](dialects/h3-adapters.md)。
 
 ## 项目分层
 

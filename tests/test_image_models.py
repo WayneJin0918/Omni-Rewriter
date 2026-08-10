@@ -1,4 +1,4 @@
-"""Unit tests for Seedream / Qwen-Image-Edit image PE models and routing."""
+"""Unit tests for Seedream / Qwen-Image image PE models and routing."""
 
 from __future__ import annotations
 

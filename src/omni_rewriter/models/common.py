@@ -17,7 +17,7 @@ class TaskType(StrEnum):
     FL2VA = "fl2va"
     L2VA = "l2va"
     REF2VA = "ref2va"
-    # Image PE (Seedream / Qwen-Image-Edit dialects)
+    # Image PE (Seedream / Qwen-Image dialects)
     T2I = "t2i"
     I2I = "i2i"
     IMAGE_EDIT = "image_edit"

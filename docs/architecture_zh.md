@@ -5,7 +5,7 @@
 ## 范围与分层
 
 Omni-Rewriter 是独立的 Prompt Expansion 框架：把类型化多模态请求转换成经过校验、面向
-生成器的中间文本。H3 视频、Seedream 和 Qwen-Image-Edit 图像打包是建立在公共契约上的
+生成器的中间文本。H3 视频、Seedream 和 Qwen-Image 图像打包是建立在公共契约上的
 首批 profile；新 profile 应复用相同的路由、校验、修复和渲染边界。
 
 `expand` 只产出文本。只有应用显式调用 adapter 或独立 runner，才会提交生成任务。框架

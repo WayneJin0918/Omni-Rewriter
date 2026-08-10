@@ -88,29 +88,20 @@ def _wash(peak: int = 100) -> Image.Image:
 
 
 def render_bridge(freeze: Path, out_png: Path) -> None:
-    soft = _atmosphere(freeze, blur=6.0, warm=0.3)
+    """Short lane tease — avoid repeating the product pitch from intro/brand."""
+    soft = _atmosphere(freeze, blur=7.0, warm=0.34)
     overlay = Image.new("RGBA", (W, H), (0, 0, 0, 0))
     dr = ImageDraw.Draw(overlay)
-    _vignette(dr, 100)
-    title, sub, lane = _font(44), _font(22, bold=False), _font(28)
-    cx, cy = W // 2, H // 2 - 40
-    # thin accent rule
-    dr.rounded_rectangle((cx - 48, cy - 70, cx + 48, cy - 66), radius=2, fill=(255, 200, 180, 160))
-    dr.text(
-        (cx + 1.5, cy + 1.5), "Open across models", font=title, fill=(40, 26, 20, 150), anchor="mm"
-    )
-    dr.text((cx, cy), "Open across models", font=title, fill=(255, 250, 245, 250), anchor="mm")
-    dr.text(
-        (cx, cy + 50),
-        "prompt expansion · one harness",
-        font=sub,
-        fill=(230, 216, 205, 215),
-        anchor="mm",
-    )
-    dr.text((cx - 96, cy + 124), "T2V", font=lane, fill=(255, 188, 176, 240), anchor="mm")
-    dr.text((cx, cy + 124), "·", font=lane, fill=(220, 210, 200, 190), anchor="mm")
-    dr.text((cx + 96, cy + 124), "T2I", font=lane, fill=(180, 236, 212, 240), anchor="mm")
-    composed = Image.alpha_composite(soft.convert("RGBA"), _wash(82))
+    _vignette(dr, 110)
+    title, lane = _font(40), _font(30)
+    cx, cy = W // 2, H // 2 - 24
+    dr.rounded_rectangle((cx - 48, cy - 58, cx + 48, cy - 54), radius=2, fill=(255, 200, 180, 150))
+    dr.text((cx + 1.5, cy + 1.5), "Models", font=title, fill=(40, 26, 20, 140), anchor="mm")
+    dr.text((cx, cy), "Models", font=title, fill=(255, 250, 245, 250), anchor="mm")
+    dr.text((cx - 96, cy + 72), "T2V", font=lane, fill=(255, 188, 176, 240), anchor="mm")
+    dr.text((cx, cy + 72), "·", font=lane, fill=(220, 210, 200, 190), anchor="mm")
+    dr.text((cx + 96, cy + 72), "T2I", font=lane, fill=(180, 236, 212, 240), anchor="mm")
+    composed = Image.alpha_composite(soft.convert("RGBA"), _wash(88))
     composed = Image.alpha_composite(composed, overlay)
     out_png.parent.mkdir(parents=True, exist_ok=True)
     composed.convert("RGB").save(out_png)
@@ -128,7 +119,7 @@ def render_brand_hero(freeze: Path, out_png: Path) -> None:
     dr.text((cx, cy), "Omni-Rewriter", font=brand, fill=(255, 252, 248, 255), anchor="mm")
     dr.text(
         (cx, cy + 62),
-        "one harness across video and image",
+        "open · model-extensible PE",
         font=sub,
         fill=(232, 220, 210, 220),
         anchor="mm",
@@ -140,25 +131,16 @@ def render_brand_hero(freeze: Path, out_png: Path) -> None:
 
 
 def render_lanes(freeze: Path, matrix_path: Path, out_png: Path) -> None:
+    del freeze  # solid board — do not reuse intro hanging-card freeze
     matrix = yaml.safe_load(matrix_path.read_text())
     video = [m["name"] for m in matrix["video"][:6]]
     image = [m["name"] for m in matrix["image"][:6]]
-    soft = _atmosphere(freeze, blur=3.4, warm=0.24)
+    soft = Image.new("RGB", (W, H), (22, 18, 24))
     overlay = Image.new("RGBA", (W, H), (0, 0, 0, 0))
     dr = ImageDraw.Draw(overlay)
-    _vignette(dr, 110)
-    brand, sub, lane, body = _font(56), _font(20, bold=False), _font(20), _font(18)
-    cx = W // 2
-    dr.text((cx + 1.5, 168), "Omni-Rewriter", font=brand, fill=(40, 24, 18, 130), anchor="mm")
-    dr.text((cx, 166), "Omni-Rewriter", font=brand, fill=(255, 252, 248, 250), anchor="mm")
-    dr.text(
-        (cx, 214),
-        "one harness across video and image",
-        font=sub,
-        fill=(232, 220, 210, 210),
-        anchor="mm",
-    )
-    left_x, right_x, list_top = W // 2 - 230, W // 2 + 230, 280
+    _vignette(dr, 80)
+    lane, body = _font(22), _font(18)
+    left_x, right_x, list_top = W // 2 - 230, W // 2 + 230, 210
     # soft column plates
     for x0, x1, fill in (
         (left_x - 150, left_x + 150, (255, 180, 160, 22)),
@@ -199,35 +181,34 @@ def still_to_clip(
     seconds: float,
     fade_in: float,
     audio_start: float,
-    zoom_rate: float,
-    sway: float,
+    zoom_rate: float = 0.0,
+    sway: float = 0.0,
     fade_out: float = 0.0,
 ) -> None:
-    frames = max(int(seconds * 24), 24)
-    z_expr = f"min(1.07,1+{zoom_rate}*on)"
-    x_expr = f"iw/2-(iw/zoom/2)+{sway}*sin(on/15)"
-    y_expr = "(ih-ih/zoom)/2+3*sin(on/19)"
+    """Hold a still plate with no zoompan/sway (those read as shake on graphics)."""
+    del zoom_rate, sway  # kept in signature for call-site compatibility
     fade_out_f = ""
     if fade_out > 0:
         st = max(0.0, seconds - fade_out)
         fade_out_f = f",fade=t=out:st={st:.2f}:d={fade_out:.2f}"
+    fade_in_f = f",fade=t=in:st=0:d={fade_in:.2f}" if fade_in > 0.01 else ""
     subprocess.check_call(
         [
             "ffmpeg",
             "-y",
             "-loop",
             "1",
+            "-framerate",
+            "24",
             "-i",
             str(png),
             "-i",
             str(audio_src),
             "-filter_complex",
             (
-                f"[0:v]scale=1520:868,zoompan=z='{z_expr}':x='{x_expr}':y='{y_expr}':"
-                f"d={frames}:s={W}x{H}:fps=24,format=yuv420p,"
-                f"fade=t=in:st=0:d={fade_in:.2f}{fade_out_f}[v];"
+                f"[0:v]scale={W}:{H}:flags=lanczos,format=yuv420p{fade_in_f}{fade_out_f}[v];"
                 f"[1:a]atrim=start={audio_start:.2f}:duration={seconds},asetpts=PTS-STARTPTS,"
-                f"afade=t=in:st=0:d={min(fade_in, 0.55):.2f},"
+                f"afade=t=in:st=0:d={min(max(fade_in, 0.01), 0.55):.2f},"
                 f"aformat=sample_rates=48000:channel_layouts=stereo[a]"
             ),
             "-map",
@@ -236,6 +217,8 @@ def still_to_clip(
             "[a]",
             "-t",
             str(seconds),
+            "-r",
+            "24",
             "-c:v",
             "libx264",
             "-pix_fmt",
@@ -317,7 +300,8 @@ def mux_continuous_audio(
             "-filter_complex",
             (
                 f"[1:a]atrim=start={audio_start:.2f}:duration={seconds:.3f},asetpts=PTS-STARTPTS,"
-                f"afade=t=in:st=0:d=0.4,afade=t=out:st={max(0.0, seconds - 0.55):.2f}:d=0.55,"
+                f"apad=whole_dur={seconds:.3f},volume=0.82,"
+                f"afade=t=in:st=0:d=0.45,afade=t=out:st={max(0.0, seconds - 0.7):.2f}:d=0.7,"
                 f"aformat=sample_rates=48000:channel_layouts=stereo[a]"
             ),
             "-map",
@@ -342,16 +326,32 @@ def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--atmosphere", type=Path, required=True)
     parser.add_argument("--matrix", type=Path, default=DEFAULT_MATRIX)
-    parser.add_argument("--freeze-at", type=float, default=11.5)
+    parser.add_argument(
+        "--freeze-at",
+        type=float,
+        default=7.2,
+        help="Freeze frame inside atmosphere (must be < atmosphere duration)",
+    )
     parser.add_argument("--out-dir", type=Path, required=True)
-    parser.add_argument("--bridge-seconds", type=float, default=2.2)
-    parser.add_argument("--brand-seconds", type=float, default=2.6)
+    parser.add_argument(
+        "--bridge-seconds",
+        type=float,
+        default=0.0,
+        help="0 skips the Models tease (reduces copy/visual repeat)",
+    )
+    parser.add_argument("--brand-seconds", type=float, default=2.0)
     parser.add_argument("--lanes-seconds", type=float, default=3.6)
     parser.add_argument(
         "--audio-start",
         type=float,
         default=None,
-        help="Continuous bed start in atmosphere clip (default: freeze-at - 0.5)",
+        help="Continuous bed start in atmosphere clip (default: 1.8 — mid phrase, not loop tail)",
+    )
+    parser.add_argument(
+        "--audio-bed",
+        type=Path,
+        default=None,
+        help="Optional alternate audio bed (e.g. older cut). Defaults to --atmosphere",
     )
     parser.add_argument("--out-finale", type=Path, required=True)
     args = parser.parse_args()
@@ -386,61 +386,39 @@ def main() -> None:
         stderr=subprocess.DEVNULL,
     )
 
-    bridge_mp4 = out / "seg_bridge.mp4"
     brand_mp4 = out / "seg_brand.mp4"
     lanes_mp4 = out / "seg_lanes.mp4"
-    still_to_clip(
-        bridge_png,
-        silent,
-        bridge_mp4,
-        seconds=args.bridge_seconds,
-        fade_in=0.4,
-        audio_start=0.0,
-        zoom_rate=0.0030,
-        sway=9.0,
-    )
     still_to_clip(
         brand_png,
         silent,
         brand_mp4,
         seconds=args.brand_seconds,
-        fade_in=0.5,
+        fade_in=0.3,
         audio_start=0.0,
-        zoom_rate=0.0020,
-        sway=6.0,
     )
-    still_to_clip(
-        brand_png,
-        silent,
-        out / "seg_lanes_base.mp4",
-        seconds=args.lanes_seconds,
-        fade_in=0.15,
-        audio_start=0.0,
-        zoom_rate=0.0016,
-        sway=5.0,
-    )
+    # Lanes arrive on a dark board (not brand plate) — avoids double Omni-Rewriter hold.
     still_to_clip(
         lanes_png,
         silent,
         out / "seg_lanes_full.mp4",
         seconds=args.lanes_seconds,
-        fade_in=0.01,
+        fade_in=0.25,
         audio_start=0.0,
-        zoom_rate=0.0016,
-        sway=5.0,
     )
-    # Faster stagger (~0.55s) so the list doesn't linger empty.
+    # Soft alpha reveal of the lists over the dark board (no second brand plate).
     subprocess.check_call(
         [
             "ffmpeg",
             "-y",
+            "-f",
+            "lavfi",
             "-i",
-            str(out / "seg_lanes_base.mp4"),
+            f"color=c=0x161218:s={W}x{H}:d={args.lanes_seconds}:r=24",
             "-i",
             str(out / "seg_lanes_full.mp4"),
             "-filter_complex",
             (
-                "[1:v]format=yuva420p,fade=t=in:st=0.55:d=0.7:alpha=1[ov];"
+                "[1:v]format=yuva420p,fade=t=in:st=0.15:d=0.55:alpha=1[ov];"
                 "[0:v][ov]overlay=0:0:format=auto,format=yuv420p[v]"
             ),
             "-map",
@@ -458,17 +436,33 @@ def main() -> None:
         stderr=subprocess.DEVNULL,
     )
 
-    mid = out / "finale_bridge_brand.mp4"
     video_only = out / "finale_video_only.mp4"
-    xfade_video(bridge_mp4, brand_mp4, mid, duration=0.4)
-    xfade_video(mid, lanes_mp4, video_only, duration=0.45)
-    audio_start = (
-        args.audio_start if args.audio_start is not None else max(0.0, args.freeze_at - 0.5)
-    )
-    mux_continuous_audio(video_only, args.atmosphere, args.out_finale, audio_start=audio_start)
+    if args.bridge_seconds > 0.05:
+        bridge_mp4 = out / "seg_bridge.mp4"
+        still_to_clip(
+            bridge_png,
+            silent,
+            bridge_mp4,
+            seconds=args.bridge_seconds,
+            fade_in=0.25,
+            audio_start=0.0,
+        )
+        mid = out / "finale_bridge_brand.mp4"
+        xfade_video(bridge_mp4, brand_mp4, mid, duration=0.3)
+        xfade_video(mid, lanes_mp4, video_only, duration=0.35)
+    else:
+        xfade_video(brand_mp4, lanes_mp4, video_only, duration=0.35)
+    # Prefer mid-intro bed (or an older cut via --audio-bed) so the phrase does not
+    # restart from the same intro loop that viewers just heard.
+    bed = args.audio_bed or args.atmosphere
+    bed_dur = _dur(bed)
+    audio_start = args.audio_start if args.audio_start is not None else 1.8
+    audio_start = min(audio_start, max(0.0, bed_dur - 1.0))
+    mux_continuous_audio(video_only, bed, args.out_finale, audio_start=audio_start)
     print(f"wrote {args.out_finale}")
-    for p in (bridge_mp4, brand_mp4, lanes_mp4):
-        print(f"wrote {p}")
+    for p in (brand_mp4, lanes_mp4, out / "seg_bridge.mp4"):
+        if p.exists():
+            print(f"wrote {p}")
 
 
 if __name__ == "__main__":

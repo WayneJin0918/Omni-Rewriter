@@ -22,7 +22,7 @@ video:
 image:
   - name: Seedream
     status: PE
-  - name: Qwen-Image / Edit
+  - name: Qwen-Image
     status: PE
   - name: HunyuanImage-3.0
     status: adapter

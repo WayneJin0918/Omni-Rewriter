@@ -113,29 +113,176 @@ def normalize(src: Path, dest: Path, vf: str | None = None) -> None:
 
 
 def make_endcard(dest: Path, seconds: float = 3.5) -> None:
-    """Dark endcard with gentle push-in."""
-    frames = max(int(seconds * 24), 24)
+    """Dark endcard — bake text to PNG then hold; no live drawtext/zoom filters."""
+    from PIL import Image, ImageDraw, ImageFont
+
+    png = dest.with_suffix(".png")
+    img = Image.new("RGB", (1344, 768), (28, 24, 34))
+    dr = ImageDraw.Draw(img)
+    try:
+        title = ImageFont.truetype(FONT, 58)
+        link = ImageFont.truetype(FONT, 28)
+    except OSError:
+        title = ImageFont.load_default()
+        link = title
+    dr.text((672, 360), "Omni-Rewriter", font=title, fill=(255, 255, 255), anchor="mm")
+    dr.text(
+        (672, 430),
+        "github.com/WayneJin0918/Omni-Rewriter",
+        font=link,
+        fill=(184, 240, 216),
+        anchor="mm",
+    )
+    img.save(png)
     run(
         [
             "ffmpeg",
             "-y",
+            "-loop",
+            "1",
+            "-framerate",
+            "24",
+            "-i",
+            str(png),
             "-f",
             "lavfi",
             "-i",
-            f"color=c=0x1C1822:s=1500x858:d={seconds}",
+            "anullsrc=channel_layout=stereo:sample_rate=48000",
+            "-map",
+            "0:v",
+            "-map",
+            "1:a",
+            "-t",
+            str(seconds),
+            "-c:v",
+            "libx264",
+            "-pix_fmt",
+            "yuv420p",
+            "-c:a",
+            "aac",
+            "-b:a",
+            "160k",
+            "-shortest",
+            str(dest),
+        ]
+    )
+
+
+def _extract_last_frame(src: Path, dest: Path) -> None:
+    dest.parent.mkdir(parents=True, exist_ok=True)
+    # Prefer sseof — end seeks with -ss are flaky on short re-encoded clips.
+    subprocess.check_call(
+        [
+            "ffmpeg",
+            "-y",
+            "-sseof",
+            "-0.08",
+            "-i",
+            str(src),
+            "-update",
+            "1",
+            "-frames:v",
+            "1",
+            str(dest),
+        ],
+        stdout=subprocess.DEVNULL,
+        stderr=subprocess.DEVNULL,
+    )
+    if not dest.is_file() or dest.stat().st_size < 32:
+        at = max(0.0, dur(src) * 0.92)
+        subprocess.check_call(
+            [
+                "ffmpeg",
+                "-y",
+                "-ss",
+                f"{at:.3f}",
+                "-i",
+                str(src),
+                "-update",
+                "1",
+                "-frames:v",
+                "1",
+                str(dest),
+            ],
+            stdout=subprocess.DEVNULL,
+            stderr=subprocess.DEVNULL,
+        )
+    if not dest.is_file() or dest.stat().st_size < 32:
+        raise RuntimeError(f"failed to extract hold frame from {src}")
+
+
+def render_designed_hold_plate(freeze: Path, out_png: Path, *, kind: str) -> None:
+    """Designed breath-hold from an existing frame (not a raw freeze clone)."""
+    from PIL import Image, ImageDraw, ImageFilter, ImageFont
+
+    w, h = 1344, 768
+    base = Image.open(freeze).convert("RGB").resize((w, h), Image.Resampling.LANCZOS)
+    soft = base.filter(ImageFilter.GaussianBlur(radius=3.4 if kind != "end" else 1.2))
+    warm = Image.new("RGB", (w, h), (42, 28, 26))
+    soft = Image.blend(soft, warm, 0.22 if kind.startswith("proof") else 0.28)
+
+    overlay = Image.new("RGBA", (w, h), (0, 0, 0, 0))
+    dr = ImageDraw.Draw(overlay)
+    for i in range(0, 200, 4):
+        a = int(110 * (1 - i / 200))
+        dr.rectangle((0, 0, w, i), fill=(12, 10, 14, a))
+        dr.rectangle((0, h - i, w, h), fill=(12, 10, 14, a))
+
+    # Soft center wash + thin accent rule — keeps continuity without new copy.
+    wash = Image.new("RGBA", (w, h), (0, 0, 0, 0))
+    wdr = ImageDraw.Draw(wash)
+    wdr.ellipse((w // 2 - 420, h // 2 - 260, w // 2 + 420, h // 2 + 260), fill=(18, 12, 16, 70))
+    wash = wash.filter(ImageFilter.GaussianBlur(radius=28))
+    dr.rounded_rectangle(
+        (w // 2 - 40, h // 2 - 8, w // 2 + 40, h // 2 - 5),
+        radius=2,
+        fill=(255, 210, 190, 150),
+    )
+
+    accent = {
+        "intro": (184, 240, 216, 200),
+        "proof": (255, 196, 176, 200),
+        "models": (255, 220, 200, 190),
+    }.get(kind.split("_")[0], (230, 220, 210, 180))
+    dr.rounded_rectangle((48, h - 28, 52 + 120, h - 24), radius=2, fill=accent)
+
+    try:
+        font = ImageFont.truetype(FONT, 18)
+    except OSError:
+        font = ImageFont.load_default()
+    label = {
+        "intro": "PE",
+        "proof": "RAW  |  PE",
+        "models": "models",
+    }.get(kind.split("_")[0], "")
+    if label:
+        dr.text((56, h - 52), label, font=font, fill=(245, 240, 235, 200), anchor="lt")
+
+    composed = Image.alpha_composite(soft.convert("RGBA"), wash)
+    composed = Image.alpha_composite(composed, overlay)
+    out_png.parent.mkdir(parents=True, exist_ok=True)
+    composed.convert("RGB").save(out_png)
+
+
+def _hold_clip_from_png(png: Path, dest: Path, seconds: float) -> None:
+    run(
+        [
+            "ffmpeg",
+            "-y",
+            "-loop",
+            "1",
+            "-framerate",
+            "24",
+            "-i",
+            str(png),
             "-f",
             "lavfi",
             "-i",
             "anullsrc=channel_layout=stereo:sample_rate=48000",
             "-filter_complex",
             (
-                f"[0:v]drawtext=fontfile={FONT}:text='Omni-Rewriter':"
-                "x=(w-text_w)/2:y=(h/2)-56:fontsize=58:fontcolor=white,"
-                f"drawtext=fontfile={FONT}:text='github.com/WayneJin0918/Omni-Rewriter':"
-                "x=(w-text_w)/2:y=(h/2)+18:fontsize=28:fontcolor=0xB8F0D8,"
-                f"zoompan=z='min(1.06,1+0.0012*on)':x='iw/2-(iw/zoom/2)':"
-                f"y='ih/2-(ih/zoom/2)':d={frames}:s=1344x768:fps=24,"
-                f"fade=t=in:st=0:d=0.45,format=yuv420p[v]"
+                f"[0:v]scale=1344:768:flags=lanczos,format=yuv420p,"
+                f"fade=t=in:st=0:d={min(0.28, seconds / 3):.2f}[v]"
             ),
             "-map",
             "[v]",
@@ -152,6 +299,60 @@ def make_endcard(dest: Path, seconds: float = 3.5) -> None:
             "-b:a",
             "160k",
             "-shortest",
+            str(dest),
+        ]
+    )
+
+
+def pad_tail_for_xfade(src: Path, dest: Path, pad: float, *, kind: str = "clip") -> None:
+    """Append a designed hold (from last frame) + silence so acrossfade keeps dialogue intact."""
+    if pad <= 0.01:
+        run(["ffmpeg", "-y", "-i", str(src), "-c", "copy", str(dest)])
+        return
+    work = dest.parent / f"_hold_{dest.stem}"
+    work.mkdir(parents=True, exist_ok=True)
+    freeze = work / "tail.png"
+    plate = work / "hold.png"
+    hold = work / "hold.mp4"
+    _extract_last_frame(src, freeze)
+    render_designed_hold_plate(freeze, plate, kind=kind)
+    _hold_clip_from_png(plate, hold, pad)
+    # Soften the cut into silence: intro gets a longer settle; others a light ease-out.
+    src_d = dur(src)
+    fade = 0.95 if kind == "intro" else min(0.45, max(0.2, pad * 0.45))
+    fade = min(fade, max(0.12, src_d - 0.05))
+    fade_st = max(0.0, src_d - fade)
+    # Concat original + designed hold (re-encode for matching timebase).
+    run(
+        [
+            "ffmpeg",
+            "-y",
+            "-i",
+            str(src),
+            "-i",
+            str(hold),
+            "-filter_complex",
+            (
+                "[0:v]fps=24,format=yuv420p,setpts=PTS-STARTPTS[v0];"
+                "[1:v]fps=24,format=yuv420p,setpts=PTS-STARTPTS[v1];"
+                "[0:a]aformat=sample_rates=48000:channel_layouts=stereo,"
+                f"afade=t=out:st={fade_st:.3f}:d={fade:.3f},"
+                "asetpts=PTS-STARTPTS[a0];"
+                "[1:a]aformat=sample_rates=48000:channel_layouts=stereo,asetpts=PTS-STARTPTS[a1];"
+                "[v0][a0][v1][a1]concat=n=2:v=1:a=1[v][a]"
+            ),
+            "-map",
+            "[v]",
+            "-map",
+            "[a]",
+            "-c:v",
+            "libx264",
+            "-pix_fmt",
+            "yuv420p",
+            "-c:a",
+            "aac",
+            "-b:a",
+            "160k",
             str(dest),
         ]
     )
@@ -211,33 +412,63 @@ def overlay_plates_on_broll(
     )
 
 
+def _pad_kind(path: Path) -> str:
+    name = path.name.lower()
+    if "intro" in name:
+        return "intro"
+    if "proof" in name:
+        return "proof"
+    if "model" in name or "finale" in name:
+        return "models"
+    return "clip"
+
+
 def xfade_concat(clips: list[Path], xfade_ds: list[float], dest: Path) -> None:
+    """Soft video xfade; each outgoing tail is a designed hold regenerated from last frame."""
     assert len(clips) >= 2
     assert len(xfade_ds) == len(clips) - 1
-    durs = [dur(p) for p in clips]
+    pad_dir = dest.parent / f"_xfade_pad_{dest.stem}"
+    pad_dir.mkdir(parents=True, exist_ok=True)
+    padded: list[Path] = []
+    for i, clip in enumerate(clips):
+        if i < len(xfade_ds):
+            out = pad_dir / f"p{i:02d}.mp4"
+            pad_tail_for_xfade(clip, out, xfade_ds[i], kind=_pad_kind(clip))
+            padded.append(out)
+        else:
+            padded.append(clip)
+
+    durs = [dur(p) for p in padded]
     offsets: list[tuple[float, float]] = []
     timeline = durs[0]
     for i, xd in enumerate(xfade_ds):
-        offsets.append((xd, timeline - xd))
+        # Fade lives inside the padded silence/freeze tail.
+        offsets.append((xd, max(0.05, timeline - xd)))
         timeline = timeline + durs[i + 1] - xd
 
     inputs: list[str] = []
-    for p in clips:
+    for p in padded:
         inputs += ["-i", str(p)]
     parts: list[str] = []
     prev = "[0:v]"
-    for i in range(1, len(clips)):
+    for i in range(1, len(padded)):
         xd, off = offsets[i - 1]
-        out_l = f"[v{i}]" if i < len(clips) - 1 else "[vout]"
+        out_l = f"[v{i}]" if i < len(padded) - 1 else "[vout]"
         parts.append(
             f"{prev}[{i}:v]xfade=transition=fade:duration={xd:.2f}:offset={off:.3f}{out_l}"
         )
         prev = out_l
+    # Audio crossfade shorter than video so next-clip dialogue is not ducked as hard.
+    # Intro→proof uses a longer settle so the opening bed does not hard-stop.
     prev_a = "[0:a]"
-    for i in range(1, len(clips)):
+    for i in range(1, len(padded)):
         xd, _ = offsets[i - 1]
-        out_l = f"[a{i}]" if i < len(clips) - 1 else "[aout]"
-        parts.append(f"{prev_a}[{i}:a]acrossfade=d={xd:.2f}{out_l}")
+        if i == 1 and _pad_kind(clips[0]) == "intro":
+            ad = min(xd, 0.85)
+        else:
+            ad = min(xd, 0.22)
+        out_l = f"[a{i}]" if i < len(padded) - 1 else "[aout]"
+        parts.append(f"{prev_a}[{i}:a]acrossfade=d={ad:.2f}:c1=tri:c2=tri{out_l}")
         prev_a = out_l
 
     run(
@@ -306,6 +537,17 @@ def main() -> None:
     )
     parser.add_argument("--out", type=Path, required=True)
     parser.add_argument("--work-dir", type=Path, required=True)
+    parser.add_argument(
+        "--end",
+        type=Path,
+        default=None,
+        help="Optional prebuilt endcard (e.g. with outro VO). Default: generate static card.",
+    )
+    parser.add_argument(
+        "--no-endcard",
+        action="store_true",
+        help="Skip endcard — use when --models-finale already includes the CTA hold",
+    )
     args = parser.parse_args()
 
     work = args.work_dir
@@ -324,7 +566,7 @@ def main() -> None:
     model_clips: list[Path] = []
     model_xfade: list[float] = []
     hold_src = args.models_brand_hold or args.models_named_hold
-    proof_to_models = 0.9
+    proof_to_models = 0.5
 
     if args.models_finale is not None:
         finale_n = work / "n_models_finale.mp4"
@@ -332,6 +574,7 @@ def main() -> None:
         model_clips = [finale_n]
         models_mode = "designed_finale"
         model_xfade = []
+        proof_to_models = 1.0
     elif args.models_bridge is not None and args.models_brand_hold is not None:
         bridge_n = work / "n_models_bridge.mp4"
         hold_n = work / "n_models_hold.mp4"
@@ -394,18 +637,27 @@ def main() -> None:
         model_xfade = []
         proof_to_models = 0.55
 
-    end = work / "n_end.mp4"
-    make_endcard(end, seconds=2.8)
+    end_clips: list[Path] = []
+    end_xfade: list[float] = []
+    if not args.no_endcard:
+        end = work / "n_end.mp4"
+        if args.end is not None:
+            normalize(args.end, end)
+        else:
+            make_endcard(end, seconds=2.2)
+        end_clips = [end]
+        end_xfade = [0.25]
 
-    # Soft module transitions; longer intro→proof to hide hard cut
-    clips = [intro_n, *proof_n, *model_clips, end]
+    # Soft module transitions; pads are designed holds so speech survives.
+    # Intro→proof keeps ~1s of breath so the first proof does not slam in.
+    clips = [intro_n, *proof_n, *model_clips, *end_clips]
     # intro→proof0, proof gaps, proof→models, optional models internal, models→end
     xfade = (
         [1.0]
-        + [0.45] * max(len(proof_n) - 1, 0)
-        + ([proof_to_models] if model_clips else [])
+        + [0.35] * max(len(proof_n) - 1, 0)
+        + ([max(proof_to_models, 0.85)] if model_clips else [])
         + model_xfade
-        + [0.6]
+        + end_xfade
     )
     assert len(xfade) == len(clips) - 1, (len(xfade), len(clips), clips)
 
