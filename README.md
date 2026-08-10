@@ -8,7 +8,7 @@
   [![Agent Harness](https://img.shields.io/badge/Agentic-PE%20Harness-7C3AED)](docs/architecture.md)
   [![CI](https://github.com/WayneJin0918/Omni-Rewriter/actions/workflows/ci.yml/badge.svg)](https://github.com/WayneJin0918/Omni-Rewriter/actions/workflows/ci.yml)
   [![Python](https://img.shields.io/badge/python-3.11%2B-3776AB?logo=python&logoColor=white)](pyproject.toml)
-  [![License](https://img.shields.io/github/license/WayneJin0918/Omni-Rewriter)](https://github.com/WayneJin0918/Omni-Rewriter/blob/main/LICENSE)
+  [![License](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](https://github.com/WayneJin0918/Omni-Rewriter/blob/main/LICENSE)
   [![Issues](https://img.shields.io/github/issues/WayneJin0918/Omni-Rewriter)](https://github.com/WayneJin0918/Omni-Rewriter/issues)
   [![PRs welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](docs/CONTRIBUTING.md)
 </div>
