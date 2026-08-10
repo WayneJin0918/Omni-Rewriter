@@ -8,7 +8,7 @@
   [![Agent Harness](https://img.shields.io/badge/Agentic-PE%20Harness-7C3AED)](architecture_zh.md)
   [![CI](https://github.com/WayneJin0918/Omni-Rewriter/actions/workflows/ci.yml/badge.svg)](https://github.com/WayneJin0918/Omni-Rewriter/actions/workflows/ci.yml)
   [![Python](https://img.shields.io/badge/python-3.11%2B-3776AB?logo=python&logoColor=white)](../pyproject.toml)
-  [![License](https://img.shields.io/github/license/WayneJin0918/Omni-Rewriter)](../LICENSE)
+  [![License](https://img.shields.io/github/license/WayneJin0918/Omni-Rewriter)](https://github.com/WayneJin0918/Omni-Rewriter/blob/main/LICENSE)
   [![Issues](https://img.shields.io/github/issues/WayneJin0918/Omni-Rewriter)](https://github.com/WayneJin0918/Omni-Rewriter/issues)
   [![PRs welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](CONTRIBUTING.md)
 </div>
@@ -120,7 +120,7 @@ Harness 与 Writer 只约定一种协议：**OpenAI 兼容 Chat + 结构化 JSON
   <img alt="Mochi 1 wanted" src="https://img.shields.io/badge/Mochi%201-wanted-lightgrey?style=flat-square&labelColor=4f46e5" />
   <img alt="Step-Video wanted" src="https://img.shields.io/badge/Step--Video-wanted-lightgrey?style=flat-square&labelColor=4f46e5" />
   <img alt="Seedream PE" src="https://img.shields.io/badge/Seedream-PE-brightgreen?style=flat-square&labelColor=0d9488" />
-  <img alt="Qwen-Image / Edit PE" src="https://img.shields.io/badge/Qwen--Image%20%2F%20Edit-PE-brightgreen?style=flat-square&labelColor=0d9488" />
+  <img alt="Qwen-Image PE" src="https://img.shields.io/badge/Qwen--Image-PE-brightgreen?style=flat-square&labelColor=0d9488" />
   <img alt="HunyuanImage-3.0 adapter" src="https://img.shields.io/badge/HunyuanImage--3.0-adapter-yellow?style=flat-square&labelColor=0d9488" />
   <img alt="FLUX.1 / Kontext wanted" src="https://img.shields.io/badge/FLUX.1%20%2F%20Kontext-wanted-lightgrey?style=flat-square&labelColor=0d9488" />
   <img alt="Stable Diffusion 3.5 wanted" src="https://img.shields.io/badge/Stable%20Diffusion%203.5-wanted-lightgrey?style=flat-square&labelColor=0d9488" />
@@ -215,7 +215,7 @@ omni-rewriter validate output.json
 ```text
 RewriteRequest
   └─ Agent Harness       analyze · draft · validate · repair · render  （= PE 流程）
-      └─ PE profile      H3 / Seedance / Seedream / Qwen-Image-Edit 方言
+      └─ PE profile      H3 / Seedance / Seedream / Qwen-Image 方言
           └─ adapter     可选 vLLM / SGLang / 厂商 client  （生成，不是 expand）
               └─ eval    结构检查 · docs/ 下的 RAW/PE 演示
 ```
@@ -256,5 +256,5 @@ Omni-Rewriter 并非为了复现闭源系统的未公开行为，而是依据公
 弥合产品演示、公开 API 与实际部署流程之间的差距。未经测试的运行时兼容性会明确标记为
 “未验证”。
 
-源码使用 [Apache License 2.0](../LICENSE)。第三方模型、服务、文档与名称遵循各自条款。
+源码使用 [Apache License 2.0](https://github.com/WayneJin0918/Omni-Rewriter/blob/main/LICENSE)。第三方模型、服务、文档与名称遵循各自条款。
 安全说明见 [SECURITY.md](SECURITY.md)。

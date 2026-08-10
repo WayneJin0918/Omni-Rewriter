@@ -8,7 +8,7 @@
   [![Agent Harness](https://img.shields.io/badge/Agentic-PE%20Harness-7C3AED)](docs/architecture.md)
   [![CI](https://github.com/WayneJin0918/Omni-Rewriter/actions/workflows/ci.yml/badge.svg)](https://github.com/WayneJin0918/Omni-Rewriter/actions/workflows/ci.yml)
   [![Python](https://img.shields.io/badge/python-3.11%2B-3776AB?logo=python&logoColor=white)](pyproject.toml)
-  [![License](https://img.shields.io/github/license/WayneJin0918/Omni-Rewriter)](LICENSE)
+  [![License](https://img.shields.io/github/license/WayneJin0918/Omni-Rewriter)](https://github.com/WayneJin0918/Omni-Rewriter/blob/main/LICENSE)
   [![Issues](https://img.shields.io/github/issues/WayneJin0918/Omni-Rewriter)](https://github.com/WayneJin0918/Omni-Rewriter/issues)
   [![PRs welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](docs/CONTRIBUTING.md)
 </div>
@@ -124,7 +124,7 @@ Community board — left color = category (Video / Image / Unified); right = evi
   <img alt="Mochi 1 wanted" src="https://img.shields.io/badge/Mochi%201-wanted-lightgrey?style=flat-square&labelColor=4f46e5" />
   <img alt="Step-Video wanted" src="https://img.shields.io/badge/Step--Video-wanted-lightgrey?style=flat-square&labelColor=4f46e5" />
   <img alt="Seedream PE" src="https://img.shields.io/badge/Seedream-PE-brightgreen?style=flat-square&labelColor=0d9488" />
-  <img alt="Qwen-Image / Edit PE" src="https://img.shields.io/badge/Qwen--Image%20%2F%20Edit-PE-brightgreen?style=flat-square&labelColor=0d9488" />
+  <img alt="Qwen-Image PE" src="https://img.shields.io/badge/Qwen--Image-PE-brightgreen?style=flat-square&labelColor=0d9488" />
   <img alt="HunyuanImage-3.0 adapter" src="https://img.shields.io/badge/HunyuanImage--3.0-adapter-yellow?style=flat-square&labelColor=0d9488" />
   <img alt="FLUX.1 / Kontext wanted" src="https://img.shields.io/badge/FLUX.1%20%2F%20Kontext-wanted-lightgrey?style=flat-square&labelColor=0d9488" />
   <img alt="Stable Diffusion 3.5 wanted" src="https://img.shields.io/badge/Stable%20Diffusion%203.5-wanted-lightgrey?style=flat-square&labelColor=0d9488" />
@@ -219,7 +219,7 @@ Checked-in requests: [`examples/requests/`](examples/requests/). More paths:
 ```text
 RewriteRequest
   └─ Agent Harness       analyze · draft · validate · repair · render  (= PE flow)
-      └─ PE profile      H3 / Seedance / Seedream / Qwen-Image-Edit dialect
+      └─ PE profile      H3 / Seedance / Seedream / Qwen-Image dialect
           └─ adapter     optional vLLM / SGLang / vendor client  (generate, not expand)
               └─ eval    structural checks · RAW/PE demos under docs/
 ```
@@ -261,6 +261,6 @@ Omni-Rewriter does not attempt to reproduce undisclosed closed-source behavior. 
 contracts and reproducible examples to help the community close the gap between polished demos,
 public APIs, and deployable workflows. Untested runtime compatibility is labeled unverified.
 
-Source code is licensed under [Apache License 2.0](LICENSE). Third-party models, services,
+Source code is licensed under [Apache License 2.0](https://github.com/WayneJin0918/Omni-Rewriter/blob/main/LICENSE). Third-party models, services,
 documentation, and names remain subject to their own terms. Security guidance is in
 [SECURITY.md](docs/SECURITY.md).
