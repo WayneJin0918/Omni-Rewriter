@@ -53,12 +53,19 @@
     .block > p { color:var(--muted); max-width:46rem; margin-top:0; }
     .news-window {
       margin-top: 1.15rem;
-      height: 17rem;
-      overflow-y: auto;
+      max-height: 13.5rem;
+      overflow-x: hidden;
+      overflow-y: scroll;
       overscroll-behavior: contain;
+      -webkit-overflow-scrolling: touch;
       scrollbar-gutter: stable;
       padding: 0.2rem 0.65rem 0.2rem 0.2rem;
       border-block: 1px solid rgba(251,113,133,0.18);
+    }
+    .news-window::-webkit-scrollbar { width: 0.45rem; }
+    .news-window::-webkit-scrollbar-thumb {
+      background: rgba(251,113,133,0.45);
+      border-radius: 999px;
     }
     .news-window:focus-visible { outline: 2px solid var(--blush); outline-offset: 0.25rem; }
     .news-item {
@@ -361,21 +368,20 @@
       <h2>Updates, in a compact window</h2>
       <p>
         Technical milestones and community outreach, with compatibility claims kept to the exact
-        path tested. Scroll inside the fixed-height window for older entries.
+        path tested. Scroll inside the news window for older entries.
       </p>
       <div class="news-window" tabindex="0" aria-label="Project news; scroll vertically for older updates">
         <article class="news-item">
           <time class="news-date" datetime="2026-08-11">Aug 11, 2026</time>
           <div class="news-copy">
-            <h3>Community H3 + SGLang integration notes shared upstream</h3>
+            <h3>Discussions + PE validate Action</h3>
             <p>
-              We exercised local H3-Base generation through an SGLang source checkout and disclosed
-              the local compatibility patch instead of calling it stock support. Feedback is welcome in
-              the <a href="https://github.com/sgl-project/sglang/discussions/34375">SGLang discussion</a>
-              and <a href="https://github.com/MiniMax-AI/MiniMax-H3/issues/41">MiniMax-H3 inquiry</a>.
-              This is community outreach, not an official endorsement.
+              GitHub
+              <a href="https://github.com/WayneJin0918/Omni-Rewriter/discussions">Discussions</a>
+              are open, and a composite Action (<code>action.yml</code>) can lint PE JSON envelopes
+              in any repo’s CI. Validate only — expand ≠ generate.
             </p>
-            <span class="news-status">Tested path · feedback requested</span>
+            <span class="news-status">CI · community</span>
           </div>
         </article>
         <article class="news-item">
@@ -387,6 +393,17 @@
               MiniMax-H3 FL2VA generation on port 30010. Expand remains separate from generate.
             </p>
             <span class="news-status">Docs</span>
+          </div>
+        </article>
+        <article class="news-item">
+          <time class="news-date" datetime="2026-08-10">Aug 10, 2026</time>
+          <div class="news-copy">
+            <h3>H3 workflow refresh</h3>
+            <p>
+              Updated the H3 video PE workflow with validated timeline, camera, dialogue, and
+              bounded-repair rules, informed by the public MiniMax-H3 project.
+            </p>
+            <span class="news-status">Profile</span>
           </div>
         </article>
         <article class="news-item">

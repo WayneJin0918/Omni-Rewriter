@@ -33,12 +33,6 @@
   [Discussions](https://github.com/WayneJin0918/Omni-Rewriter/discussions) are open, and a
   composite Action (`action.yml`) can lint PE JSON envelopes in any repo’s CI (validate only;
   expand ≠ generate).
-- **2026-08 — Community H3 + SGLang integration notes:** exercised an evidence-scoped local
-  H3-Base path through an SGLang source checkout, then shared the assumptions and local
-  compatibility patch for feedback in an
-  [SGLang discussion](https://github.com/sgl-project/sglang/discussions/34375) and a
-  [MiniMax-H3 inquiry](https://github.com/MiniMax-AI/MiniMax-H3/issues/41).
-  These are community reports, not official endorsements.
 - **2026-08 — H3 workflow refresh:** updated the H3 video PE workflow with validated timeline,
   camera, dialogue, and bounded-repair rules, informed by the
   [public MiniMax-H3 project](https://github.com/MiniMax-AI/MiniMax-H3/tree/main).

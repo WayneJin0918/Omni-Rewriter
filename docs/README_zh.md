@@ -30,11 +30,6 @@
 - **2026-08 — Discussions + PE 校验 Action：** 已开启
   [Discussions](https://github.com/WayneJin0918/Omni-Rewriter/discussions)；根目录
   `action.yml` 可在任意仓库 CI 中校验 PE JSON（只校验，不 generate）。
-- **2026-08 — H3 + SGLang 社区对接记录：** 已在带有一处本地兼容补丁的 SGLang
-  源码检出上跑通 H3-Base 本地链路，并将准确边界与假设提交至
-  [SGLang Discussion](https://github.com/sgl-project/sglang/discussions/34375) 和
-  [MiniMax-H3 Issue](https://github.com/MiniMax-AI/MiniMax-H3/issues/41) 征求反馈。
-  这是社区验证记录，不代表官方背书。
 - **2026-08 — H3 工作流更新：** 更新 H3 视频 PE 工作流中的时间轴、运镜、对白和有界修复规则，参考 [MiniMax-H3 公开项目](https://github.com/MiniMax-AI/MiniMax-H3/tree/main)。
 
 ## 项目简介
