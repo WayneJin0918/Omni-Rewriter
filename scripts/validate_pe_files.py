@@ -69,7 +69,9 @@ def main(argv: list[str] | None = None) -> int:
     try:
         files = _expand(args.patterns)
     except FileNotFoundError as exc:
-        print(json.dumps({"valid": False, "errors": [{"msg": str(exc)}]}, indent=2), file=sys.stderr)
+        print(
+            json.dumps({"valid": False, "errors": [{"msg": str(exc)}]}, indent=2), file=sys.stderr
+        )
         return 1
 
     if not files:
