@@ -29,6 +29,7 @@ Scripts accept either name; if both are set, `OMNI_WRITER_*` wins.
 
 | Script | Purpose |
 | --- | --- |
+| `validate_pe_files.py` | CI / Action helper: validate one or more PE JSON envelopes |
 | `serve/serve_sglang_qwen_writer.sh` | **Recommended** local Qwen Writer via SGLang (`:8000`) |
 | `serve/serve_sglang_h3.sh` | **Recommended** local MiniMax-H3 FL2VA via SGLang (`:30010`) |
 | `serve/*.sh` (wrappers at `scripts/serve_*.sh`) | Other local Writer / optional generation runtimes |

@@ -51,6 +51,39 @@
     .section-kicker { font-size:0.74rem; font-weight:700; letter-spacing:0.14em; text-transform:uppercase; color:var(--blush); margin-bottom:0.45rem; }
     .block h2 { font-family: Fraunces, Georgia, serif; font-size:clamp(1.35rem,2.4vw,1.9rem); margin:0 0 0.55rem; letter-spacing:-0.02em; }
     .block > p { color:var(--muted); max-width:46rem; margin-top:0; }
+    .news-window {
+      margin-top: 1.15rem;
+      height: 17rem;
+      overflow-y: auto;
+      overscroll-behavior: contain;
+      scrollbar-gutter: stable;
+      padding: 0.2rem 0.65rem 0.2rem 0.2rem;
+      border-block: 1px solid rgba(251,113,133,0.18);
+    }
+    .news-window:focus-visible { outline: 2px solid var(--blush); outline-offset: 0.25rem; }
+    .news-item {
+      display:grid; grid-template-columns: 7.5rem 1fr; gap: 0.9rem;
+      padding: 1rem 0.25rem;
+      border-bottom: 1px solid rgba(251,113,133,0.16);
+    }
+    .news-item:last-child { border-bottom: 0; }
+    .news-date {
+      color: var(--blush); font-size: 0.7rem; font-weight: 700;
+      letter-spacing: 0.08em; text-transform: uppercase;
+    }
+    .news-copy { min-width: 0; }
+    .news-copy h3 {
+      margin: 0 0 0.28rem; font-family: Fraunces, Georgia, serif;
+      font-size: 1rem; letter-spacing: -0.01em;
+    }
+    .news-copy p { margin: 0; color: var(--muted); font-size: 0.86rem; }
+    .news-copy a { font-weight: 700; }
+    .news-status {
+      display:inline-flex; margin-top:0.5rem; padding:0.2rem 0.45rem;
+      border:1px solid rgba(251,113,133,0.28); border-radius:999px;
+      color:#fecdd3; font-size:0.62rem; font-weight:700;
+      letter-spacing:0.08em; text-transform:uppercase;
+    }
 
     /* Interactive flow */
     .flowboard {
@@ -279,6 +312,7 @@
     @media (max-width: 640px) {
       .wrap { width: min(var(--max), calc(100% - 1.25rem)); }
       .flow-track, .compare-strip { grid-template-columns: 1fr; }
+      .news-item { grid-template-columns: 1fr; gap: 0.3rem; }
       .hero { padding-top: 1.4rem; }
     }
   </style>
@@ -292,6 +326,7 @@
       <nav class="nav-links">
         <a href="index.html">Promo</a>
         <a href="https://github.com/WayneJin0918/Omni-Rewriter">GitHub</a>
+        <a href="#news">News</a>
         <a href="#pipeline">Pipeline</a>
         <a href="#cases">Cases</a>
         <a href="#ship">In the repo</a>
@@ -319,6 +354,65 @@
         Omni-Rewriter expands transport-neutral intent into a typed H3 dialect, validates it, and repairs
         failures in a bounded loop. Pairs share seed, aspect, and duration so differences come from the prompt path.
       </p>
+    </section>
+
+    <section class="block" id="news">
+      <div class="section-kicker">Project news</div>
+      <h2>Updates, in a compact window</h2>
+      <p>
+        Technical milestones and community outreach, with compatibility claims kept to the exact
+        path tested. Scroll inside the fixed-height window for older entries.
+      </p>
+      <div class="news-window" tabindex="0" aria-label="Project news; scroll vertically for older updates">
+        <article class="news-item">
+          <time class="news-date" datetime="2026-08-11">Aug 11, 2026</time>
+          <div class="news-copy">
+            <h3>Community H3 + SGLang integration notes shared upstream</h3>
+            <p>
+              We exercised local H3-Base generation through an SGLang source checkout and disclosed
+              the local compatibility patch instead of calling it stock support. Feedback is welcome in
+              the <a href="https://github.com/sgl-project/sglang/discussions/34375">SGLang discussion</a>
+              and <a href="https://github.com/MiniMax-AI/MiniMax-H3/issues/41">MiniMax-H3 inquiry</a>.
+              This is community outreach, not an official endorsement.
+            </p>
+            <span class="news-status">Tested path · feedback requested</span>
+          </div>
+        </article>
+        <article class="news-item">
+          <time class="news-date" datetime="2026-08-10">Aug 10, 2026</time>
+          <div class="news-copy">
+            <h3>Local SGLang Writer + H3 quick start</h3>
+            <p>
+              The recommended local path now separates a small Qwen Writer on port 8000 from optional
+              MiniMax-H3 FL2VA generation on port 30010. Expand remains separate from generate.
+            </p>
+            <span class="news-status">Docs</span>
+          </div>
+        </article>
+        <article class="news-item">
+          <time class="news-date" datetime="2026-08-09">Aug 9, 2026</time>
+          <div class="news-copy">
+            <h3>Omni-Rewriter v0.1.0</h3>
+            <p>
+              First public release: typed H3, Seedream, and Qwen-Image PE profiles; CLI and optional
+              FastAPI interfaces; deterministic validation and bounded repair.
+              <a href="https://github.com/WayneJin0918/Omni-Rewriter/releases/tag/v0.1.0">Read the release</a>.
+            </p>
+            <span class="news-status">Release</span>
+          </div>
+        </article>
+        <article class="news-item">
+          <time class="news-date" datetime="2026-08-09">Aug 9, 2026</time>
+          <div class="news-copy">
+            <h3>Seedance PE profile added</h3>
+            <p>
+              A sanitized, PE-only Seedance profile joined the model-extensible harness. No generation
+              adapter or private vendor behavior is claimed.
+            </p>
+            <span class="news-status">Profile</span>
+          </div>
+        </article>
+      </div>
     </section>
 
     <section class="block" id="pipeline">

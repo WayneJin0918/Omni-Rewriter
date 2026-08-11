@@ -7,9 +7,11 @@
 
   [![Agent Harness](https://img.shields.io/badge/Agentic-PE%20Harness-7C3AED)](docs/architecture.md)
   [![CI](https://github.com/WayneJin0918/Omni-Rewriter/actions/workflows/ci.yml/badge.svg)](https://github.com/WayneJin0918/Omni-Rewriter/actions/workflows/ci.yml)
+  [![Validate PE](https://github.com/WayneJin0918/Omni-Rewriter/actions/workflows/validate-pe.yml/badge.svg)](https://github.com/WayneJin0918/Omni-Rewriter/actions/workflows/validate-pe.yml)
   [![Python](https://img.shields.io/badge/python-3.11%2B-3776AB?logo=python&logoColor=white)](pyproject.toml)
   [![License](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](https://github.com/WayneJin0918/Omni-Rewriter/blob/main/LICENSE)
   [![Issues](https://img.shields.io/github/issues/WayneJin0918/Omni-Rewriter)](https://github.com/WayneJin0918/Omni-Rewriter/issues)
+  [![Discussions](https://img.shields.io/badge/GitHub-Discussions-121212?logo=github)](https://github.com/WayneJin0918/Omni-Rewriter/discussions)
   [![PRs welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](docs/CONTRIBUTING.md)
 </div>
 
@@ -27,6 +29,16 @@
 
 ## News
 
+- **2026-08 — Discussions + PE validate Action:** GitHub
+  [Discussions](https://github.com/WayneJin0918/Omni-Rewriter/discussions) are open, and a
+  composite Action (`action.yml`) can lint PE JSON envelopes in any repo’s CI (validate only;
+  expand ≠ generate).
+- **2026-08 — Community H3 + SGLang integration notes:** exercised an evidence-scoped local
+  H3-Base path through an SGLang source checkout, then shared the assumptions and local
+  compatibility patch for feedback in an
+  [SGLang discussion](https://github.com/sgl-project/sglang/discussions/34375) and a
+  [MiniMax-H3 inquiry](https://github.com/MiniMax-AI/MiniMax-H3/issues/41).
+  These are community reports, not official endorsements.
 - **2026-08 — H3 workflow refresh:** updated the H3 video PE workflow with validated timeline,
   camera, dialogue, and bounded-repair rules, informed by the
   [public MiniMax-H3 project](https://github.com/MiniMax-AI/MiniMax-H3/tree/main).
@@ -229,6 +241,20 @@ omni-rewriter expand examples/requests/t2va_kite.json --output h3
 omni-rewriter validate output.json
 # optional generate (needs H3 up): scripts/promo/submit_h3_chunk.py … — see H3 adapters
 ```
+
+### Lint PE JSON in CI (GitHub Action)
+
+Reuse the composite Action from this repo to fail CI on invalid PE envelopes (no Writer, no media):
+
+```yaml
+- uses: actions/checkout@v4
+- uses: WayneJin0918/Omni-Rewriter@main   # pin a tag/SHA when you can
+  with:
+    files: prompts/**/*.json
+```
+
+Same checker locally: `python scripts/validate_pe_files.py tests/fixtures/**/*.json`.
+See [Discussions #4](https://github.com/WayneJin0918/Omni-Rewriter/discussions/4).
 
 ### 2) Hosted API Writer (fallback)
 

@@ -1,0 +1,56 @@
+name: Omni-Rewriter PE Validate
+description: >
+  Validate prompt-expansion (PE) JSON envelopes with Omni-Rewriter's deterministic
+  schema checks. Expand ≠ generate — this Action only validates PE JSON.
+author: Omni-Rewriter contributors
+branding:
+  icon: check-circle
+  color: purple
+
+inputs:
+  files:
+    description: >
+      Space-separated PE JSON files or globs relative to the workspace
+      (for example: tests/fixtures/**/*.json prompts/**/*.json).
+    required: true
+  python-version:
+    description: Python version for the validator
+    required: false
+    default: "3.12"
+  fail-fast:
+    description: Stop after the first invalid file (true/false)
+    required: false
+    default: "true"
+
+runs:
+  using: composite
+  steps:
+    - name: Set up Python
+      uses: actions/setup-python@v5
+      with:
+        python-version: ${{ inputs.python-version }}
+
+    - name: Install Omni-Rewriter
+      shell: bash
+      run: |
+        python -m pip install --upgrade pip
+        python -m pip install "${{ github.action_path }}[cli]"
+
+    - name: Validate PE envelopes
+      shell: bash
+      env:
+        OMNI_PE_FILES: ${{ inputs.files }}
+        OMNI_PE_FAIL_FAST: ${{ inputs.fail-fast }}
+      run: |
+        set -euo pipefail
+        flags=()
+        if [[ "${OMNI_PE_FAIL_FAST}" == "true" ]]; then
+          flags+=(--fail-fast)
+        else
+          flags+=(--no-fail-fast)
+        fi
+        # Word-split the input so space/newline-separated globs work.
+        # shellcheck disable=SC2086
+        python "${{ github.action_path }}/scripts/validate_pe_files.py" \
+          "${flags[@]}" \
+          ${OMNI_PE_FILES}

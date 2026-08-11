@@ -1,0 +1,31 @@
+name: Validate PE envelopes
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: validate-pe-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  validate-fixtures:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Validate checked-in PE fixtures
+        uses: ./
+        with:
+          files: >
+            tests/fixtures/t2va_kite.json
+            tests/fixtures/i2va_lantern.json
+            tests/fixtures/ref2va_teacup.json
+            tests/fixtures/t2i_neon.json
+            tests/fixtures/seedance/t2va_kitchen.json
+            tests/fixtures/seedance/ref2va_interview.json
+            tests/fixtures/seedance/ref2va_pottery.json
+          python-version: "3.12"
