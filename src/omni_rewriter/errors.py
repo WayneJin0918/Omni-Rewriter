@@ -47,3 +47,7 @@ class StructuredOutputError(AgentError):
 
 class RepairExhaustedError(AgentError):
     """The bounded validation and repair loop was exhausted."""
+
+
+class ReconstructError(OmniRewriterError):
+    """Video reconstruct (v2pe) failed before or during observation."""

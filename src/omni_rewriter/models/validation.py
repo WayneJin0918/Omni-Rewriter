@@ -7,6 +7,57 @@ SHOT_RE = re.compile(r"\[Shot (?P<number>[1-9]\d*)\](?: At (?P<time>\d{2}:\d{2}\
 REFERENCE_RE = re.compile(r"<(?P<kind>Subject|Picture|Video|Audio) (?P<number>[1-9]\d*)>")
 SPEAKER_RE = re.compile(r"\(S(?P<first>[1-9]\d*)(?P<rest>(?:,S[1-9]\d*)*)\)")
 DIALOGUE_RE = re.compile(r"<d>\[(?P<language>[^\[\]\r\n]+)\] (?P<text>.*?)</d>", re.DOTALL)
+_SHOT1_COLON_RE = re.compile(r"\[Shot 1\]\s*:\s*")
+_SHOT_TIME_COLON_RE = re.compile(
+    r"\[Shot ([1-9]\d*)\] At (\d{2}:\d{2}\.\d{3})\s*[:;]\s*"
+)
+
+
+def normalize_h3_shot_headers(text: str) -> str:
+    """Writer often uses ``[Shot 1]:`` / ``At MM:SS.mmm:``; H3 requires a comma after time."""
+
+    text = _SHOT1_COLON_RE.sub("[Shot 1] ", text)
+    return _SHOT_TIME_COLON_RE.sub(r"[Shot \1] At \2, ", text)
+
+
+def _format_timecode(seconds: Decimal) -> str:
+    if seconds < 0:
+        seconds = Decimal("0")
+    total_ms = int((seconds * 1000).to_integral_value())
+    minutes, ms = divmod(total_ms, 60_000)
+    secs, milli = divmod(ms, 1000)
+    return f"{minutes:02d}:{secs:02d}.{milli:03d}"
+
+
+def clamp_h3_shot_times(text: str, duration: Decimal) -> str:
+    """Move shot starts that sit on/after duration to 1ms before it (or drop them)."""
+
+    limit = duration - Decimal("0.001")
+    if limit <= 0:
+        return text
+    pieces: list[str] = []
+    last = 0
+    previous = Decimal("-1")
+    for match in SHOT_RE.finditer(text):
+        stamp = match["time"]
+        if stamp is None:
+            pieces.append(text[last : match.end()])
+            last = match.end()
+            continue
+        current = _seconds(stamp)
+        if current >= duration:
+            current = limit
+        if current <= previous:
+            bumped = previous + Decimal("0.001")
+            if bumped >= duration:
+                return "".join(pieces) + text[last : match.start()].rstrip()
+            current = bumped
+        pieces.append(text[last : match.start()])
+        pieces.append(f"[Shot {match['number']}] At {_format_timecode(current)},")
+        last = match.end()
+        previous = current
+    pieces.append(text[last:])
+    return "".join(pieces)
 
 
 def _seconds(timecode: str) -> Decimal:

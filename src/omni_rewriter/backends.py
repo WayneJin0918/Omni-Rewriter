@@ -135,7 +135,10 @@ class OpenAICompatibleBackend:
                     await asyncio.sleep(min(0.25 * (2**attempt), 2.0))
                     continue
             if response.is_error:
-                raise BackendResponseError(f"chat backend returned HTTP {response.status_code}")
+                detail = response.text[:800].replace("\n", " ")
+                raise BackendResponseError(
+                    f"chat backend returned HTTP {response.status_code}: {detail}"
+                )
             return self._extract_content(response)
         raise BackendTransportError("chat request retry loop terminated unexpectedly")
 

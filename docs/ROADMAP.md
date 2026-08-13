@@ -40,6 +40,12 @@ contributions are welcome — see [CONTRIBUTING.md](CONTRIBUTING.md).
       [`community-models.md`](community-models.md), one evidence-scoped PR at a time.
 - [ ] Multilingual eval suites and public leaderboard hooks.
 - [ ] Streaming expand API and batch JSONL expand CLI.
+- [x] **Video reconstruct / v2pe (v1):** observe a local short clip (ffmpeg evidence pack →
+      `VideoObservation`) then reuse draft/validate/repair to emit H3 `t2va` PE. Expand ≠
+      generate; do not inline the source mp4 into `expand`. CLI `omni-rewriter reconstruct`,
+      HTTP observation JSON at `POST /v1/reconstruct`. Design:
+      [`design/video-reconstruct-pe.md`](design/video-reconstruct-pe.md). Optional generate and
+      fl2va/i2va remain later.
 - [ ] Safer media sandboxing for untrusted reference images in shared deployments.
 
 Contributions that keep the public contracts (`RewriteRequest`, `ImageRewrite`, `BaseRewrite`,

@@ -15,6 +15,10 @@ from .models.common import StrictModel
 
 T = TypeVar("T")
 
+# Recommended local Writer: Qwen3.6-35B-A3B (language + vision). Expand ≠ generate.
+# https://huggingface.co/Qwen/Qwen3.6-35B-A3B
+DEFAULT_WRITER_MODEL = "Qwen/Qwen3.6-35B-A3B"
+
 
 def _env(name: str, default: T, parse: Callable[[str], T]) -> T:
     value = os.environ.get(name)
@@ -41,7 +45,7 @@ class Settings(StrictModel):
     """Runtime settings read explicitly from supported environment variables."""
 
     backend_base_url: str = "http://127.0.0.1:8000/v1"
-    backend_model: str = "Qwen/Qwen3.5-122B-A10B"
+    backend_model: str = DEFAULT_WRITER_MODEL
     backend_api_key: SecretStr | None = None
     backend_timeout: float = Field(default=120.0, gt=0)
     backend_retries: int = Field(default=2, ge=0, le=10)
@@ -108,7 +112,7 @@ class Settings(StrictModel):
             ),
             backend_model=os.environ.get(
                 "OMNI_WRITER_BACKEND_MODEL",
-                os.environ.get("OMNI_WRITER_MODEL", "Qwen/Qwen3.5-122B-A10B"),
+                os.environ.get("OMNI_WRITER_MODEL", DEFAULT_WRITER_MODEL),
             ),
             backend_api_key=SecretStr(backend_key) if backend_key else None,
             backend_timeout=_env("OMNI_WRITER_TIMEOUT", 120.0, float),

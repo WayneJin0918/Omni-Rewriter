@@ -16,8 +16,8 @@ bash scripts/serve/serve_sglang_h3.sh
 export OMNI_WRITER_H3_BASE_URL=http://127.0.0.1:30010
 ```
 
-Pair with a small SGLang Qwen Writer for `expand` (`scripts/serve/serve_sglang_qwen_writer.sh`).
-See [Getting started](../getting-started.md).
+Pair with the SGLang Qwen3.6-35B-A3B Writer for `expand` and reconstruct observe
+(`scripts/serve/serve_sglang_qwen_writer.sh`). See [Getting started](../getting-started.md).
 
 `H3Client` targets an SGLang-style local service:
 

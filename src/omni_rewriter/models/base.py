@@ -2,11 +2,19 @@
 
 import re
 from decimal import ROUND_HALF_UP, Decimal
+from typing import Any
 
 from pydantic import Field, model_validator
 
 from .common import StrictModel, TaskType
-from .validation import labels_in, validate_markup, validate_reference_numbering, validate_timeline
+from .validation import (
+    clamp_h3_shot_times,
+    labels_in,
+    normalize_h3_shot_headers,
+    validate_markup,
+    validate_reference_numbering,
+    validate_timeline,
+)
 
 
 def _duration(value: Decimal) -> str:
@@ -21,6 +29,20 @@ class BaseRewrite(StrictModel):
     integrated_multimodal_description: str = Field(min_length=1)
     overall_soundscape: str = Field(min_length=1)
     non_diegetic_music: str = Field(min_length=1)
+
+    @model_validator(mode="before")
+    @classmethod
+    def normalize_h3_body(cls, data: Any) -> Any:
+        if not isinstance(data, dict):
+            return data
+        body = data.get("integrated_multimodal_description")
+        duration = data.get("duration_seconds")
+        if isinstance(body, str):
+            body = normalize_h3_shot_headers(body)
+            if duration is not None:
+                body = clamp_h3_shot_times(body, Decimal(str(duration)))
+            data = {**data, "integrated_multimodal_description": body}
+        return data
 
     @model_validator(mode="after")
     def validate_h3_grammar(self) -> "BaseRewrite":

@@ -27,7 +27,7 @@ python -m pip install -e ".[cli,server]"
 ```
 
 Configure backends through the environment (the project does not load `.env` automatically).
-Gallery demos need no GPU. Preferred path: **local SGLang Qwen Writer + local SGLang MiniMax-H3**;
+Gallery demos need no GPU. Preferred path: **local SGLang Qwen3.6-35B-A3B Writer + local SGLang MiniMax-H3**;
 hosted API Writers are a fallback. Expand ≠ generate.
 
 ```bash
@@ -35,12 +35,13 @@ cp .env.example .env
 set -a; source .env; set +a
 ```
 
-### Recommended: SGLang Qwen (Writer) + SGLang H3 (~30B FL2VA)
+### Recommended: SGLang Qwen3.6-35B-A3B (Writer) + SGLang H3 (~30B FL2VA)
 
 ```bash
-# Terminal A — small Qwen chat Writer
-export OMNI_WRITER_MODEL=/path/to/Qwen3.5-9B
-export OMNI_WRITER_SERVED_MODEL_NAME=Qwen/Qwen3.5-9B
+# Terminal A — language + vision Qwen chat Writer
+# https://huggingface.co/Qwen/Qwen3.6-35B-A3B
+export OMNI_WRITER_MODEL=Qwen/Qwen3.6-35B-A3B
+export OMNI_WRITER_SERVED_MODEL_NAME=Qwen/Qwen3.6-35B-A3B
 bash scripts/serve/serve_sglang_qwen_writer.sh
 
 # Terminal B — MiniMax-H3 FL2VA (optional generate)
@@ -50,7 +51,7 @@ bash scripts/serve/serve_sglang_h3.sh
 
 # Shell for expand
 export OMNI_WRITER_BACKEND_BASE_URL=http://127.0.0.1:8000/v1
-export OMNI_WRITER_BACKEND_MODEL=Qwen/Qwen3.5-9B
+export OMNI_WRITER_BACKEND_MODEL=Qwen/Qwen3.6-35B-A3B
 export OMNI_WRITER_H3_BASE_URL=http://127.0.0.1:30010
 ```
 
@@ -66,7 +67,7 @@ export OMNI_WRITER_BACKEND_MODEL=gpt-5.6
 export OMNI_WRITER_BACKEND_API_KEY=sk-...
 ```
 
-Copy-paste requests: [`examples/requests/`](../examples/requests/). vLLM Qwen scripts remain
+Copy-paste requests: [`examples/requests/`](../examples/requests/). vLLM Qwen3.5 scripts remain
 available as an alternate Writer serve path (`serve_qwen35_*.sh`).
 
 ## Expand a video intent
@@ -124,6 +125,36 @@ omni-rewriter eval tests/fixtures/manifest.jsonl --manifest
 These commands verify schemas and dialect grammar. They do not generate media or measure
 perceptual quality.
 
+## Reconstruct a local clip (v2pe)
+
+Read a short local mp4 into validated H3 `t2va` PE. The source file stays on disk; `expand` never
+sees the original bytes. Expand ≠ generate.
+
+```bash
+# No Writer: ffmpeg evidence pack only
+omni-rewriter reconstruct clip.mp4 --pack-only --pack-dir /tmp/pe-pack
+
+# No GPU: validate the synthetic observation envelope
+omni-rewriter validate docs/design/examples/observation_kite.json
+
+# Text Writer: observation JSON → same draft/validate/repair loop
+omni-rewriter reconstruct --from-observation docs/design/examples/observation_kite.json
+
+# Vision Writer: JPEG keyframes → VideoObservation → H3 PE
+omni-rewriter reconstruct clip.mp4 --pack-dir /tmp/pe-pack
+```
+
+HTTP `POST /v1/reconstruct` accepts `VideoObservation` JSON only (no mp4 upload). Local smoke:
+
+```bash
+PYTHONPATH=src python scripts/smoke_reconstruct.py
+PYTHONPATH=src python scripts/smoke_reconstruct.py --clip /path/to/short.mp4
+```
+
+Clips longer than 45s are rejected for observe. H3 **generate** stays on the public 4–15s
+window; longer sources replay the first 15s. Design:
+[Video reconstruct PE](design/video-reconstruct-pe.md).
+
 ## Optional API
 
 ```bash
@@ -132,7 +163,8 @@ curl -sS -X POST http://127.0.0.1:8080/v1/expand \
   -H 'content-type: application/json' --data @request.json
 ```
 
-Also available: `GET /health`, `POST /v1/validate`, and OpenAPI docs at `/docs`.
+Also available: `GET /health`, `POST /v1/validate`, `POST /v1/reconstruct` (observation JSON
+only), and OpenAPI docs at `/docs`.
 
 ## Generate only when requested
 

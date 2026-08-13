@@ -1,0 +1,26 @@
+[
+  {
+    "id": "h3_t2va_10s",
+    "title": "MiniMax-H3 official T2VA",
+    "caption": "First 10s Source vs Omni-Rewriter",
+    "compare_gif": "h3_t2va_10s_compare.gif"
+  },
+  {
+    "id": "h3_cinematic_15s",
+    "title": "MiniMax-H3 cinematic showcase",
+    "caption": "First 10s Source vs Omni-Rewriter",
+    "compare_gif": "h3_cinematic_15s_compare.gif"
+  },
+  {
+    "id": "seedance_ornithopter_20s",
+    "title": "Seedance 2.5 ornithopter",
+    "caption": "First 10s Source vs Omni-Rewriter (public H3 generate window is 4–15s)",
+    "compare_gif": "seedance_ornithopter_20s_compare.gif"
+  },
+  {
+    "id": "h3_montage_40s",
+    "title": "H3 official montage",
+    "caption": "First 10s Source vs Omni-Rewriter (public H3 generate window is 4–15s)",
+    "compare_gif": "h3_montage_40s_compare.gif"
+  }
+]

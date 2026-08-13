@@ -30,12 +30,13 @@ Omni-Rewriter 是面向多模态生成的类型化、可校验 **提示词扩展
 
 - [H3 PE 站点](day2-h3-pe/index.html) — 短片进入页 → [`home.html`](day2-h3-pe/home.html)
 - [H3 PE showcase](h3-pe-showcase/index.html)
-- [精简视频 Gallery](assets/gallery/) · [图像 Gallery](assets/gallery/image/)
+- [精简视频 Gallery](assets/gallery/) · [SOURCE vs REPLAY 复刻](assets/gallery/reconstruct/) · [图像 Gallery](assets/gallery/image/)
 - [宣传流水线](promo/README.md) · [中文宣传稿](promo/copy_zh.md) / [EN](promo/copy_en.md)
 
 ## 项目治理
 
 - [路线图](ROADMAP.md)
+- [视频复刻 PE](design/video-reconstruct-pe.md)
 - [贡献指南](CONTRIBUTING.md)
 - [安全策略](SECURITY.md)
 - [行为准则](CODE_OF_CONDUCT.md)

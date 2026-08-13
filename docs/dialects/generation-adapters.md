@@ -74,8 +74,9 @@ reproducible adapter tests are added.
 
 ## Local reference recipes
 
-The scripts are operational recipes, not core dependencies. They require local checkpoint paths
-via environment variables (no machine-specific defaults):
+The scripts are operational recipes, not core dependencies. Generation scripts require local
+checkpoint paths via environment variables (no machine-specific defaults). The recommended Writer
+script defaults to the public Qwen3.6-35B-A3B Hugging Face id:
 
 - `../../scripts/serve/serve_sglang_qwen_image.sh`: set `OMNI_REWRITER_IMAGE_MODEL`.
 - `../../scripts/serve/serve_hunyuan_image3_vllm.sh`: set `OMNI_REWRITER_HUNYUAN_MODEL` (Tencent vLLM fork).
@@ -83,7 +84,10 @@ via environment variables (no machine-specific defaults):
   `OMNI_REWRITER_WAN_MODEL`; verify runtime/version support before use.
 - `../../scripts/serve/serve_lingbot_rewriter.sh`: set `REWRITER_BASE_MODEL` and `REWRITER_ADAPTER`.
 - `../../scripts/run_lingbot_video.sh`: set `LINGBOT_VIDEO_ROOT` and `MODEL_DIR`.
-- `../../scripts/serve/serve_qwen35_dev.sh` / `../../scripts/serve/serve_qwen35_prod.sh`: set `OMNI_WRITER_MODEL`.
+- `../../scripts/serve/serve_sglang_qwen_writer.sh`: recommended Qwen3.6-35B-A3B Writer
+  (HF id by default). Set `OMNI_WRITER_MODEL` to a local snapshot if you already downloaded it.
+- `../../scripts/serve/serve_qwen35_dev.sh` / `../../scripts/serve/serve_qwen35_prod.sh`:
+  alternate vLLM path for Qwen3.5 checkpoints; set `OMNI_WRITER_MODEL`.
 
 The LingBot stages are intentionally separate from the default Omni-Rewriter agent and from
 `service.expand`.

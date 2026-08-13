@@ -31,12 +31,13 @@ See [`site/README.md`](site/README.md).
 
 - [H3 PE site](day2-h3-pe/index.html) — promo entry → [`home.html`](day2-h3-pe/home.html)
 - [H3 PE showcase](h3-pe-showcase/index.html) — full RAW vs PE grid
-- [Compact video gallery](assets/gallery/) · [Image gallery](assets/gallery/image/)
+- [Compact video gallery](assets/gallery/) · [SOURCE vs REPLAY reconstruct](assets/gallery/reconstruct/) · [Image gallery](assets/gallery/image/)
 - [Promo pipeline](promo/README.md) · [Promo copy EN](promo/copy_en.md) / [中文](promo/copy_zh.md)
 
 ## Project governance
 
 - [Roadmap](ROADMAP.md)
+- [Video reconstruct PE](design/video-reconstruct-pe.md)
 - [Contributing](CONTRIBUTING.md)
 - [Security](SECURITY.md)
 - [Code of conduct](CODE_OF_CONDUCT.md)

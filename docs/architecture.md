@@ -30,6 +30,9 @@ flowchart TD
   V -->|ok| O[BaseRewrite / Ref2VARewrite / ImageRewrite]
   O --> Out[JSON + dialect render]
   Out --> Gen[explicit adapter or independent runner]
+  Rec[reconstruct CLI] --> Pack[ffmpeg EvidencePack]
+  Pack --> Obs[VideoObservation]
+  Obs --> S
 ```
 
 ```text
@@ -60,15 +63,18 @@ OpenAI-compatible writer -> analyze -> draft -> validate <-> bounded repair
 - `adapters/` maps requests to generation-service payloads without coupling those services to the
   writer.
 - `evaluator.py` provides deterministic conformance metrics.
+- `reconstruct/` probes a local clip with ffmpeg, asks a vision Writer for `VideoObservation`,
+  then re-enters `expand` as t2va with no media. The source mp4 is never inlined.
 
 ## Writer / agent model boundary
 
 The orchestration requires an OpenAI-compatible chat-completions endpoint with structured JSON
 output. Closed frontier models such as GPT-5.6 and Claude Opus 5 can be connected through a
 compatible provider endpoint or gateway; direct provider behavior remains deployment-specific.
-Open Qwen-family models can be served through the included vLLM recipes, including the Qwen
-`enable_thinking` switch. Protocol compatibility is not evidence of equal PE quality, context
-limits, or live provider availability.
+The recommended local Writer is [Qwen3.6-35B-A3B](https://huggingface.co/Qwen/Qwen3.6-35B-A3B)
+(causal LM with vision encoder) via SGLang. Older Qwen3.5 checkpoints can still be served through
+the included vLLM recipes, including the Qwen `enable_thinking` switch. Protocol compatibility is
+not evidence of equal PE quality, context limits, or live provider availability.
 
 ## Lifecycle
 
@@ -123,24 +129,28 @@ T2VA and keyframe outputs have `task`, `duration_seconds`,
 All Python settings come from the process environment; no dotenv parser runs automatically.
 See the root README and `.env.example` for the complete set.
 
-The vLLM scripts additionally accept:
+The recommended SGLang Writer (`scripts/serve/serve_sglang_qwen_writer.sh`) defaults to
+[Qwen/Qwen3.6-35B-A3B](https://huggingface.co/Qwen/Qwen3.6-35B-A3B), 32K context, TP=4, and
+`--reasoning-parser qwen3`. Qwen's published full-context recipe uses TP=8 and 262,144 tokens;
+shorten context or raise TP if you OOM. These are operational starting points, not capacity
+guarantees.
 
-- `OMNI_WRITER_MODEL`: checkpoint path.
+The vLLM Qwen3.5 scripts additionally accept:
+
+- `OMNI_WRITER_MODEL`: checkpoint path or Hugging Face id.
 - `OMNI_WRITER_SERVED_MODEL_NAME`: API-visible model name.
 - `OMNI_WRITER_VLLM_HOST` and `OMNI_WRITER_VLLM_PORT`.
 - `OMNI_WRITER_MAX_MODEL_LEN`: maximum context length.
 - `OMNI_WRITER_TENSOR_PARALLEL_SIZE`: tensor-parallel GPU count.
 - `OMNI_WRITER_GPU_MEMORY_UTILIZATION`: per-worker memory fraction.
 
-Development defaults target the local 9B checkpoint, 16K context, TP=1, and 0.90 memory
-utilization. Production defaults target the local 122B-A10B checkpoint, 32K context, TP=8, and
-0.92 utilization. These are operational starting points, not universal capacity guarantees.
-Override them for checkpoint context limits, GPU count/memory, concurrency, and deployment
-policy. Arguments appended to the script command line are passed directly to `vllm serve`.
+`serve_qwen35_dev.sh` targets a local 9B checkpoint (16K, TP=1, 0.90). `serve_qwen35_prod.sh`
+targets a local 122B-A10B checkpoint (32K, TP=8, 0.92). Arguments appended to the script command
+line are passed through to the serve process.
 
-The served model name and `OMNI_WRITER_BACKEND_MODEL` must match. The default Python backend model
-is the production served name; when using the dev script, set
-`OMNI_WRITER_BACKEND_MODEL=Qwen/Qwen3.5-9B`.
+The served model name and `OMNI_WRITER_BACKEND_MODEL` must match. The default Python backend
+model is `Qwen/Qwen3.6-35B-A3B`. When using a Qwen3.5 vLLM script, set
+`OMNI_WRITER_BACKEND_MODEL` to that script's served name.
 
 ## Trust boundaries
 
@@ -162,9 +172,10 @@ app has no built-in authentication, authorization, rate limiting, moderation, or
 Treat these as the thin stable surface for SemVer `0.x` compatibility notes:
 
 - Models: `RewriteRequest`, rewrite outputs (`BaseRewrite`, `Ref2VARewrite`, `ImageRewrite`,
-  `SeedanceRewrite`), and `validate_output` / evaluator envelopes
-- Orchestration: `omni_rewriter.service.expand`, `RewriteAgent`
-- HTTP: `omni_rewriter.api.create_app`
+  `SeedanceRewrite`), `VideoObservation`, and `validate_output` / evaluator envelopes
+- Orchestration: `omni_rewriter.service.expand`, `RewriteAgent`,
+  `omni_rewriter.reconstruct.reconstruct`
+- HTTP: `omni_rewriter.api.create_app` (`/v1/expand`, `/v1/validate`, `/v1/reconstruct`)
 
 Generation clients live under `omni_rewriter.adapters.*` and may change faster than expand contracts.
 See `CHANGELOG.md` for release notes.

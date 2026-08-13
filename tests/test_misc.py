@@ -5,10 +5,18 @@ from pathlib import Path
 
 import pytest
 
-from omni_rewriter.config import Settings
+from omni_rewriter.config import DEFAULT_WRITER_MODEL, Settings
 from omni_rewriter.errors import BackendConfigurationError
 from omni_rewriter.service import validate_output, validation_error
 from omni_rewriter.trace import JSONLTrace, redact
+
+
+def test_settings_default_writer_model(monkeypatch: pytest.MonkeyPatch) -> None:
+    monkeypatch.delenv("OMNI_WRITER_BACKEND_MODEL", raising=False)
+    monkeypatch.delenv("OMNI_WRITER_MODEL", raising=False)
+    assert DEFAULT_WRITER_MODEL == "Qwen/Qwen3.6-35B-A3B"
+    assert Settings().backend_model == DEFAULT_WRITER_MODEL
+    assert Settings.from_env().backend_model == DEFAULT_WRITER_MODEL
 
 
 def test_settings_from_env(monkeypatch: pytest.MonkeyPatch) -> None:
@@ -17,6 +25,7 @@ def test_settings_from_env(monkeypatch: pytest.MonkeyPatch) -> None:
     monkeypatch.setenv("OMNI_WRITER_ENABLE_THINKING", "true")
     monkeypatch.setenv("OMNI_WRITER_MAX_REPAIRS", "3")
     monkeypatch.setenv("MINIMAX_API_KEY", "secret")
+    monkeypatch.delenv("OMNI_WRITER_H3_BASE_URL", raising=False)
     settings = Settings.from_env()
     assert settings.chat_backend_config().model == "local-qwen"
     assert settings.chat_backend_config().enable_thinking is True

@@ -27,6 +27,8 @@ jobs:
           cache: pip
       - name: Install development dependencies
         run: python -m pip install --upgrade pip && python -m pip install -e ".[dev]"
+      - name: Install ffmpeg
+        run: sudo apt-get update && sudo apt-get install -y --no-install-recommends ffmpeg
       - name: Model contribution repository contract
         run: python scripts/check_model_contribution.py
       - name: Ruff

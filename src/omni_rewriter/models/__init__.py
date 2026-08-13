@@ -12,6 +12,14 @@ from .lingbot import (
     LingBotVideoDescription,
 )
 from .media import MediaReference
+from .observation import (
+    DialogueObservation,
+    ShotObservation,
+    VideoObservation,
+    bind_probe_duration,
+    format_timecode,
+    parse_timecode,
+)
 from .ref2va import Ref2VARewrite
 from .request import RewriteRequest, infer_task
 from .seedance import (
@@ -31,6 +39,7 @@ RewriteOutput = BaseRewrite | Ref2VARewrite | ImageRewrite | SeedanceRewrite
 __all__ = [
     "ALLOWED_RATIOS",
     "BaseRewrite",
+    "DialogueObservation",
     "IMAGE_TASKS",
     "ImagePEProfile",
     "ImageRewrite",
@@ -53,9 +62,14 @@ __all__ = [
     "SeedanceRewrite",
     "SeedanceStage",
     "SeedanceSubject",
+    "ShotObservation",
     "TaskType",
     "VIDEO_TASKS",
+    "VideoObservation",
     "VideoPEProfile",
+    "bind_probe_duration",
+    "format_timecode",
     "infer_task",
+    "parse_timecode",
     "render_seedance_output",
 ]

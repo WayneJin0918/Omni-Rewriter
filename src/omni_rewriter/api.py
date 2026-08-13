@@ -8,7 +8,9 @@ from typing import Any
 
 from .agent import RewriteResult
 from .config import Settings
+from .errors import OmniRewriterError
 from .models import RewriteRequest
+from .models.observation import VideoObservation
 from .service import expand as default_expand
 from .service import render_output, validate_output, validation_error
 
@@ -82,5 +84,29 @@ def create_app(
             "rendered_text": rendered,
             "h3_text": rendered,
         }
+
+    @app.post("/v1/reconstruct")
+    async def reconstruct_endpoint(payload: dict[str, Any]) -> dict[str, Any]:
+        """Observation → H3 t2va PE. Local mp4 stays on the CLI; do not POST a clip."""
+
+        from .reconstruct.service import reconstruct, result_payload
+
+        raw = payload.get("observation", payload)
+        if not isinstance(raw, dict):
+            raise HTTPException(
+                status_code=422,
+                detail=validation_error(ValueError("observation must be a JSON object")),
+            )
+        try:
+            observation = VideoObservation.model_validate(raw)
+            result = await reconstruct(observation=observation, settings=api_settings)
+        except (ValueError, TypeError) as exc:
+            raise HTTPException(status_code=422, detail=validation_error(exc)) from exc
+        except OmniRewriterError as exc:
+            raise HTTPException(status_code=502, detail=str(exc)) from exc
+        from .reconstruct.service import ReconstructResult
+
+        assert isinstance(result, ReconstructResult)
+        return result_payload(result)
 
     return app

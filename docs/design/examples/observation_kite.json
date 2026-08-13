@@ -1,0 +1,60 @@
+{
+  "note": "Synthetic VideoObservation plus a derived H3 t2va envelope. No source video. duration_seconds is treated as ffprobe ground truth.",
+  "observation": {
+    "duration_seconds": 6.0,
+    "invariants": [
+      "A handmade red diamond kite with a short white tail",
+      "One grassy hill under warm evening light",
+      "Live-action, cinematic, 16:9"
+    ],
+    "shots": [
+      {
+        "index": 1,
+        "start": "00:00.000",
+        "end": "00:03.000",
+        "visual_job": "Establish the kite lifting off the hill into clear sky",
+        "camera": "Static",
+        "on_screen_state": "The kite sits low, then rises; grass is still visible at the bottom of frame"
+      },
+      {
+        "index": 2,
+        "start": "00:03.000",
+        "end": "00:06.000",
+        "visual_job": "Show the kite bank once into sunset light",
+        "camera": "Arc Shot, small amplitude, slow",
+        "on_screen_state": "The kite fills more of the frame; the hill drops away; warm rim light on the paper"
+      }
+    ],
+    "dialogue": [
+      {
+        "at": "00:04.200",
+        "speaker": "S1",
+        "language": "English",
+        "text": "Hold the line!",
+        "inferred": true
+      }
+    ],
+    "soundscape": "A soft breeze moves through dry grass; faint paper flutter as the kite turns.",
+    "music": "Two gentle plucked-string notes repeat, low in the mix.",
+    "uncertainties": [
+      "Spoken line is inferred; no ASR was run on this synthetic example",
+      "Exact kite logo printing is unreadable and omitted"
+    ]
+  },
+  "request": {
+    "prompt": "Reconstruct a 6s live-action clip: a handmade red kite lifts off a grassy hill, then banks once into sunset light. Optional inferred line at 00:04.200: Hold the line!",
+    "duration_seconds": 6,
+    "metadata": {
+      "aspect_ratio": "16:9",
+      "video_pe_profile": "h3",
+      "reconstruct": "v1-t2va"
+    }
+  },
+  "output": {
+    "task": "t2va",
+    "duration_seconds": 6,
+    "integrated_multimodal_description": "[Shot 1] Live-action, cinematic, a handmade red diamond kite with a short white tail lifts off a quiet grassy hill into a clear evening sky, camera static as the kite rises and grass stays visible at the bottom of frame. [Shot 2] At 00:03.000, a slow small-amplitude arc shot follows the kite as it banks left into warm sunset rim light, the hill dropping away; a person off-screen (S1) calls: <d>[English] Hold the line!</d>",
+    "overall_soundscape": "A soft breeze moves through dry grass, with faint paper flutter as the kite turns.",
+    "non_diegetic_music": "Two gentle plucked-string notes repeat, kept low in the mix."
+  }
+}

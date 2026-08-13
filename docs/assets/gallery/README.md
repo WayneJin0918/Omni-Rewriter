@@ -22,6 +22,7 @@ The fuller site grids load demos from GitHub Pages
 [`docs/site/README.md`](../../site/README.md).
 
 The standalone comparison page is `docs/assets/gallery/index.html`.
+Reconstruct SOURCE vs REPLAY thumbs live in `docs/assets/gallery/reconstruct/`.
 For the fuller public landing page (pipeline + all published pairs), see
 `docs/h3-pe-showcase/index.html`.
 

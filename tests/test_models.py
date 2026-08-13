@@ -82,7 +82,25 @@ def test_media_rejects_incompatible_roles(kind: MediaType, role: MediaRole) -> N
         MediaReference(media_type=kind, role=role, uri="asset.bin")
 
 
-def test_base_model_and_render(base_output: dict[str, object]) -> None:
+def test_base_normalizes_colon_shot_headers(base_output: dict[str, object]) -> None:
+    base_output["integrated_multimodal_description"] = (
+        "[Shot 1]: A kite lifts off the hill. "
+        "[Shot 2] At 00:03.000: it banks into sunset light."
+    )
+    output = BaseRewrite.model_validate(base_output)
+    body = output.integrated_multimodal_description
+    assert "[Shot 1] A kite" in body
+    assert "[Shot 2] At 00:03.000, it banks" in body
+
+
+def test_base_clamps_shot_on_duration(base_output: dict[str, object]) -> None:
+    base_output["duration_seconds"] = "6"
+    base_output["integrated_multimodal_description"] = (
+        "[Shot 1] A kite lifts off the hill. "
+        "[Shot 2] At 00:06.000, it banks into sunset light."
+    )
+    output = BaseRewrite.model_validate(base_output)
+    assert "[Shot 2] At 00:05.999," in output.integrated_multimodal_description
     output = BaseRewrite.model_validate(base_output)
     rendered = render_h3_prompt(output)
     assert isinstance(output, H3Renderable)

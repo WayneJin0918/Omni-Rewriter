@@ -30,6 +30,8 @@
 
 ## 最新动态
 
+- **2026-08-14：** `omni-rewriter reconstruct` 把本地成片写成 H3 PE。推荐 Writer 为
+  [Qwen3.6-35B-A3B](https://huggingface.co/Qwen/Qwen3.6-35B-A3B)。扩写 ≠ 生成。
 - **2026-08 — 只校验安装：** `pip install omni-rewriter` 后即可
   `omni-rewriter validate`——不需要 GPU / Writer / generate。CI 可用
   `WayneJin0918/Omni-Rewriter@v0.1.0`。
@@ -188,7 +190,31 @@ Harness 与 Writer 只约定一种协议：**OpenAI 兼容 Chat + 结构化 JSON
 ·
 <a href="h3-pe-showcase/index.html">完整 15 组 showcase</a>
 ·
-<a href="assets/gallery/index.html">精简 Gallery</a></p>
+<a href="assets/gallery/index.html">精简 Gallery</a>
+·
+<a href="assets/gallery/reconstruct/index.html">SOURCE vs REPLAY 复刻</a></p>
+
+## Video SOURCE vs REPLAY
+
+`omni-rewriter reconstruct` 观察本地成片得到校验后的 H3 `t2va` PE，再可选 MiniMax-H3 replay。
+画面烧英文：**左 Source / 右 Omni-Rewriter**。各取前 10s 再对比。Expand ≠ generate。
+
+<table cellspacing="0" cellpadding="0">
+  <tr>
+    <td align="center"><img src="assets/gallery/reconstruct/h3_t2va_10s_compare.gif" alt="10s 官方 T2VA Source vs Omni-Rewriter" width="100%"><br><sub>10s 官方 T2VA · 左 Source · 右 Omni-Rewriter</sub></td>
+  </tr>
+  <tr>
+    <td align="center"><img src="assets/gallery/reconstruct/h3_cinematic_15s_compare.gif" alt="H3 cinematic 前 10s Source vs Omni-Rewriter" width="100%"><br><sub>H3 cinematic · 前 10s · 左 Source · 右 Omni-Rewriter</sub></td>
+  </tr>
+  <tr>
+    <td align="center"><img src="assets/gallery/reconstruct/seedance_ornithopter_20s_compare.gif" alt="Seedance 前 10s Source vs Omni-Rewriter" width="100%"><br><sub>Seedance 宣传片 · 前 10s · 左 Source · 右 Omni-Rewriter</sub></td>
+  </tr>
+  <tr>
+    <td align="center"><img src="assets/gallery/reconstruct/h3_montage_40s_compare.gif" alt="H3 蒙太奇 前 10s Source vs Omni-Rewriter" width="100%"><br><sub>H3 蒙太奇 · 前 10s · 左 Source · 右 Omni-Rewriter</sub></td>
+  </tr>
+</table>
+
+<p align="center"><a href="assets/gallery/reconstruct/index.html"><b>SOURCE vs REPLAY gallery →</b></a></p>
 
 ## 试一下（不需要 GPU）
 
@@ -214,9 +240,21 @@ omni-rewriter validate kite.json
 
 下面的 expand 仍需要 OpenAI 兼容 Writer。扩写 ≠ 生成。
 
+## 复刻成片
+
+把本地短 mp4 读成可校验的 H3 `t2va` PE。成片留在磁盘。
+
+```bash
+omni-rewriter reconstruct clip.mp4 --pack-only --pack-dir /tmp/pe-pack
+omni-rewriter reconstruct --from-observation docs/design/examples/observation_kite.json
+omni-rewriter reconstruct clip.mp4
+```
+
+`--pack-only` 只要 ffmpeg。`--from-observation` 要文本 Writer。读片需要带视觉的 Writer。生成仍是另一步。
+
 ## 快速开始
 
-Gallery 浏览不需要 GPU。推荐本地路径：**SGLang 小 Qwen（Writer）+ SGLang MiniMax-H3
+Gallery 浏览不需要 GPU。推荐本地路径：**SGLang Qwen3.6-35B-A3B（语言+视觉 Writer）+ SGLang MiniMax-H3
 （~30B FL2VA）**。托管 API Writer 作为备选。Expand ≠ generate——H3 仅用于可选成片。
 
 ```bash
@@ -229,11 +267,11 @@ cp .env.example .env
 
 ### 1) 本地 SGLang（推荐）
 
-终端 A — 小 Qwen Writer（`:8000` OpenAI-compatible chat）：
+终端 A — Qwen3.6-35B-A3B Writer（`:8000` OpenAI-compatible chat）：
 
 ```bash
-export OMNI_WRITER_MODEL=/path/to/Qwen3.5-9B
-export OMNI_WRITER_SERVED_MODEL_NAME=Qwen/Qwen3.5-9B
+export OMNI_WRITER_MODEL=Qwen/Qwen3.6-35B-A3B
+export OMNI_WRITER_SERVED_MODEL_NAME=Qwen/Qwen3.6-35B-A3B
 bash scripts/serve/serve_sglang_qwen_writer.sh
 ```
 
@@ -247,7 +285,7 @@ bash scripts/serve/serve_sglang_h3.sh
 
 ```bash
 export OMNI_WRITER_BACKEND_BASE_URL=http://127.0.0.1:8000/v1
-export OMNI_WRITER_BACKEND_MODEL=Qwen/Qwen3.5-9B
+export OMNI_WRITER_BACKEND_MODEL=Qwen/Qwen3.6-35B-A3B
 export OMNI_WRITER_H3_BASE_URL=http://127.0.0.1:30010
 
 omni-rewriter expand examples/requests/t2va_kite.json

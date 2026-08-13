@@ -9,6 +9,23 @@ for the thin public surface (`RewriteRequest` / rewrite outputs, `expand`, `vali
 
 ## [Unreleased]
 
+### Added
+
+- Video reconstruct v1 (`omni-rewriter reconstruct`): local ffmpeg evidence pack →
+  `VideoObservation` → existing draft/validate/repair as H3 `t2va` PE. Source mp4 is not inlined
+  into `expand`. HTTP `POST /v1/reconstruct` accepts observation JSON only. Observe cap is 45s;
+  optional H3 generate stays on the public integer 4–15s window (`envelope_for_h3_replay`).
+  SOURCE vs REPLAY promo thumbs: `docs/assets/gallery/reconstruct/`.
+
+### Changed
+
+- Recommended local language + vision Writer is
+  [Qwen/Qwen3.6-35B-A3B](https://huggingface.co/Qwen/Qwen3.6-35B-A3B). Defaults in `Settings`,
+  `.env.example`, and `scripts/serve/serve_sglang_qwen_writer.sh` now point at that checkpoint
+  (SGLang, TP=4, 32K context, `--reasoning-parser qwen3`). Expand ≠ generate. Live PE quality
+  with this Writer is unverified until a local expand/reconstruct run. Qwen3.5 vLLM scripts
+  remain as an alternate path.
+
 ## [0.1.1] - 2026-08-13
 
 ### Added

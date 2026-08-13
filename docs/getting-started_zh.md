@@ -27,7 +27,7 @@ python -m pip install -e ".[cli,server]"
 ```
 
 通过环境变量配置 backend（项目不会自动加载 `.env`）。Gallery 浏览不需要 GPU。推荐：
-**本地 SGLang 小 Qwen（Writer）+ 本地 SGLang MiniMax-H3**；托管 API Writer 作为备选。
+**本地 SGLang Qwen3.6-35B-A3B（语言+视觉 Writer）+ 本地 SGLang MiniMax-H3**；托管 API Writer 作为备选。
 Expand ≠ generate。
 
 ```bash
@@ -35,12 +35,13 @@ cp .env.example .env
 set -a; source .env; set +a
 ```
 
-### 推荐：SGLang Qwen（Writer）+ SGLang H3（~30B FL2VA）
+### 推荐：SGLang Qwen3.6-35B-A3B（Writer）+ SGLang H3（~30B FL2VA）
 
 ```bash
-# 终端 A — 小 Qwen chat Writer
-export OMNI_WRITER_MODEL=/path/to/Qwen3.5-9B
-export OMNI_WRITER_SERVED_MODEL_NAME=Qwen/Qwen3.5-9B
+# 终端 A — 语言+视觉 Qwen chat Writer
+# https://huggingface.co/Qwen/Qwen3.6-35B-A3B
+export OMNI_WRITER_MODEL=Qwen/Qwen3.6-35B-A3B
+export OMNI_WRITER_SERVED_MODEL_NAME=Qwen/Qwen3.6-35B-A3B
 bash scripts/serve/serve_sglang_qwen_writer.sh
 
 # 终端 B — MiniMax-H3 FL2VA（可选生成）
@@ -50,7 +51,7 @@ bash scripts/serve/serve_sglang_h3.sh
 
 # expand 所用 shell
 export OMNI_WRITER_BACKEND_BASE_URL=http://127.0.0.1:8000/v1
-export OMNI_WRITER_BACKEND_MODEL=Qwen/Qwen3.5-9B
+export OMNI_WRITER_BACKEND_MODEL=Qwen/Qwen3.6-35B-A3B
 export OMNI_WRITER_H3_BASE_URL=http://127.0.0.1:30010
 ```
 
@@ -66,7 +67,7 @@ export OMNI_WRITER_BACKEND_MODEL=gpt-5.6
 export OMNI_WRITER_BACKEND_API_KEY=sk-...
 ```
 
-可直接 `expand` 的请求见 [`examples/requests/`](../examples/requests/)。vLLM Qwen 脚本
+可直接 `expand` 的请求见 [`examples/requests/`](../examples/requests/)。vLLM Qwen3.5 脚本
 （`serve_qwen35_*.sh`）仍可作为 Writer 的备选启动方式。
 
 ## 扩写视频意图
@@ -123,6 +124,25 @@ omni-rewriter eval tests/fixtures/manifest.jsonl --manifest
 
 这些命令检查 schema 和方言语法，不生成媒体，也不衡量感知质量。
 
+## 复刻本地成片（v2pe）
+
+把本地短 mp4 读成可校验的 H3 `t2va` PE。成片留在磁盘，`expand` 看不到原始字节。扩写 ≠ 生成。
+
+```bash
+omni-rewriter reconstruct clip.mp4 --pack-only --pack-dir /tmp/pe-pack
+omni-rewriter validate docs/design/examples/observation_kite.json
+omni-rewriter reconstruct --from-observation docs/design/examples/observation_kite.json
+omni-rewriter reconstruct clip.mp4 --pack-dir /tmp/pe-pack
+```
+
+`POST /v1/reconstruct` 只收 `VideoObservation` JSON，不接收 mp4。本地 smoke：
+
+```bash
+PYTHONPATH=src python scripts/smoke_reconstruct.py
+```
+
+v1 观察最长 45s。H3 **generate** 仍是公开 4–15s 窗口，更长源片 replay 取前 15s。设计见 [视频复刻 PE](design/video-reconstruct-pe.md)。
+
 ## 可选 API
 
 ```bash
@@ -131,7 +151,7 @@ curl -sS -X POST http://127.0.0.1:8080/v1/expand \
   -H 'content-type: application/json' --data @examples/requests/t2va_kite.json
 ```
 
-另有 `GET /health`、`POST /v1/validate`，OpenAPI 文档位于 `/docs`。HTTP API 默认绑定
+另有 `GET /health`、`POST /v1/validate`、`POST /v1/reconstruct`（只收观察 JSON），OpenAPI 文档位于 `/docs`。HTTP API 默认绑定
 loopback；`create_app` 默认拒绝本地文件媒体路径（仅在受信主机上设置
 `OMNI_WRITER_ALLOW_LOCAL_MEDIA=1`）。
 

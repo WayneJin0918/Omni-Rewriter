@@ -30,6 +30,8 @@
 
 ## News
 
+- **2026-08-14:** `omni-rewriter reconstruct` observes a local clip into H3 PE. Recommended
+  Writer is [Qwen3.6-35B-A3B](https://huggingface.co/Qwen/Qwen3.6-35B-A3B). Expand ≠ generate.
 - **2026-08 — Validate-only install:** `pip install omni-rewriter` then
   `omni-rewriter validate` — no GPU, no Writer, no generate. Reuse the same checker in CI via
   `WayneJin0918/Omni-Rewriter@v0.1.0`.
@@ -193,7 +195,32 @@ Community board — left color = category (Video / Image / Unified); right = evi
 ·
 <a href="docs/h3-pe-showcase/index.html">Full 15-pair showcase</a>
 ·
-<a href="docs/assets/gallery/index.html">Compact gallery</a></p>
+<a href="docs/assets/gallery/index.html">Compact gallery</a>
+·
+<a href="docs/assets/gallery/reconstruct/index.html">SOURCE vs REPLAY reconstruct</a></p>
+
+## Video SOURCE vs REPLAY
+
+Observe a local clip (`omni-rewriter reconstruct`) into validated H3 `t2va` PE, then optionally
+replay on MiniMax-H3. Each clip is labeled **Source** (left) vs **Omni-Rewriter** (right).
+Compare uses the first 10s of each side. Expand ≠ generate.
+
+<table cellspacing="0" cellpadding="0">
+  <tr>
+    <td align="center"><img src="docs/assets/gallery/reconstruct/h3_t2va_10s_compare.gif" alt="10s official T2VA Source vs Omni-Rewriter" width="100%"><br><sub>10s official T2VA · left Source · right Omni-Rewriter</sub></td>
+  </tr>
+  <tr>
+    <td align="center"><img src="docs/assets/gallery/reconstruct/h3_cinematic_15s_compare.gif" alt="H3 cinematic first 10s Source vs Omni-Rewriter" width="100%"><br><sub>H3 cinematic · first 10s · left Source · right Omni-Rewriter</sub></td>
+  </tr>
+  <tr>
+    <td align="center"><img src="docs/assets/gallery/reconstruct/seedance_ornithopter_20s_compare.gif" alt="Seedance first 10s Source vs Omni-Rewriter" width="100%"><br><sub>Seedance promo · first 10s · left Source · right Omni-Rewriter</sub></td>
+  </tr>
+  <tr>
+    <td align="center"><img src="docs/assets/gallery/reconstruct/h3_montage_40s_compare.gif" alt="H3 montage first 10s Source vs Omni-Rewriter" width="100%"><br><sub>H3 montage · first 10s · left Source · right Omni-Rewriter</sub></td>
+  </tr>
+</table>
+
+<p align="center"><a href="docs/assets/gallery/reconstruct/index.html"><b>SOURCE vs REPLAY gallery →</b></a></p>
 
 ## Try it (no GPU)
 
@@ -219,11 +246,24 @@ In another repo’s GitHub Actions:
 
 Expand (below) still needs an OpenAI-compatible Writer. Expand ≠ generate.
 
+## Reconstruct a clip
+
+Turn a local short mp4 into validated H3 `t2va` PE. The source stays on disk.
+
+```bash
+omni-rewriter reconstruct clip.mp4 --pack-only --pack-dir /tmp/pe-pack
+omni-rewriter reconstruct --from-observation docs/design/examples/observation_kite.json
+omni-rewriter reconstruct clip.mp4
+```
+
+`--pack-only` needs ffmpeg, not a Writer. `--from-observation` needs a text Writer. A full mp4
+read needs a vision Writer. Generate remains a separate adapter step.
+
 ## Quick start (expand)
 
-Gallery demos need no GPU. Preferred local path: **SGLang Qwen (small Writer) + SGLang MiniMax-H3
-(~30B FL2VA)**. Hosted API Writers are a fallback. Expand ≠ generate — H3 is only for optional
-media after PE.
+Gallery demos need no GPU. Preferred local path: **SGLang Qwen3.6-35B-A3B (language + vision
+Writer) + SGLang MiniMax-H3 (~30B FL2VA)**. Hosted API Writers are a fallback. Expand ≠ generate
+— H3 is only for optional media after PE.
 
 ```bash
 python -m venv .venv
@@ -235,11 +275,12 @@ cp .env.example .env
 
 ### 1) Local SGLang (recommended)
 
-Terminal A — small Qwen Writer (OpenAI-compatible chat on `:8000`):
+Terminal A — Qwen3.6-35B-A3B Writer (OpenAI-compatible chat on `:8000`):
 
 ```bash
-export OMNI_WRITER_MODEL=/path/to/Qwen3.5-9B          # local checkpoint
-export OMNI_WRITER_SERVED_MODEL_NAME=Qwen/Qwen3.5-9B
+export OMNI_WRITER_MODEL=Qwen/Qwen3.6-35B-A3B          # HF id or local snapshot
+export OMNI_WRITER_SERVED_MODEL_NAME=Qwen/Qwen3.6-35B-A3B
+# optional: OMNI_WRITER_TENSOR_PARALLEL_SIZE=4
 bash scripts/serve/serve_sglang_qwen_writer.sh
 ```
 
@@ -255,7 +296,7 @@ Point Omni-Rewriter at both, then expand (and optionally generate):
 
 ```bash
 export OMNI_WRITER_BACKEND_BASE_URL=http://127.0.0.1:8000/v1
-export OMNI_WRITER_BACKEND_MODEL=Qwen/Qwen3.5-9B
+export OMNI_WRITER_BACKEND_MODEL=Qwen/Qwen3.6-35B-A3B
 export OMNI_WRITER_H3_BASE_URL=http://127.0.0.1:30010
 
 omni-rewriter expand examples/requests/t2va_kite.json

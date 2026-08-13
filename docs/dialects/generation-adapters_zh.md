@@ -66,7 +66,8 @@ Omni-Rewriter 集成测试。在加入可复现 adapter 测试前，端到端 pr
 
 ## 本地参考配方
 
-以下脚本是可选运行配方，不属于核心依赖；须通过环境变量提供本地权重路径（无机器默认值）：
+以下脚本是可选运行配方，不属于核心依赖。生成脚本须通过环境变量提供本地权重路径（无机器默认值）。
+推荐 Writer 脚本默认指向公开的 Qwen3.6-35B-A3B Hugging Face id：
 
 - `../../scripts/serve/serve_sglang_qwen_image.sh`：设置 `OMNI_REWRITER_IMAGE_MODEL`。
 - `../../scripts/serve/serve_hunyuan_image3_vllm.sh`：设置 `OMNI_REWRITER_HUNYUAN_MODEL`（腾讯 vLLM fork）。
@@ -74,7 +75,10 @@ Omni-Rewriter 集成测试。在加入可复现 adapter 测试前，端到端 pr
   `OMNI_REWRITER_WAN_MODEL`；使用前须核对 runtime 版本支持。
 - `../../scripts/serve/serve_lingbot_rewriter.sh`：设置 `REWRITER_BASE_MODEL` 与 `REWRITER_ADAPTER`。
 - `../../scripts/run_lingbot_video.sh`：设置 `LINGBOT_VIDEO_ROOT` 与 `MODEL_DIR`。
-- `../../scripts/serve/serve_qwen35_dev.sh` / `../../scripts/serve/serve_qwen35_prod.sh`：设置 `OMNI_WRITER_MODEL`。
+- `../../scripts/serve/serve_sglang_qwen_writer.sh`：推荐 Qwen3.6-35B-A3B Writer（默认 HF id）。
+  已有本地快照时设置 `OMNI_WRITER_MODEL`。
+- `../../scripts/serve/serve_qwen35_dev.sh` / `../../scripts/serve/serve_qwen35_prod.sh`：Qwen3.5
+  的 vLLM 备选路径；设置 `OMNI_WRITER_MODEL`。
 
 LingBot 两阶段流程不替换默认 Omni-Rewriter agent，也不接入 `service.expand`。
 

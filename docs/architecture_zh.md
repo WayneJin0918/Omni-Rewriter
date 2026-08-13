@@ -36,6 +36,7 @@ flowchart TD
 - `render.py` 与 model `render()`：输出目标 PE 方言文本。
 - `adapters/`：把请求映射到生成服务，不与 writer 生命周期耦合。
 - `evaluator.py`：确定性格式一致性指标。
+- `reconstruct/`：本地 ffmpeg 证据包 → `VideoObservation` → 无媒体的 t2va `expand`。源 mp4 不内联。
 
 ## 扩写 Agent 模型边界
 

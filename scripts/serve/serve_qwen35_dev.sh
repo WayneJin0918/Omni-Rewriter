@@ -1,4 +1,6 @@
 #!/usr/bin/env bash
+# Alternate vLLM path for a local Qwen3.5 checkpoint.
+# Recommended Writer is Qwen3.6-35B-A3B via scripts/serve/serve_sglang_qwen_writer.sh.
 set -euo pipefail
 
 MODEL="${OMNI_WRITER_MODEL:?Set OMNI_WRITER_MODEL to your local Qwen3.5 checkpoint path}"
