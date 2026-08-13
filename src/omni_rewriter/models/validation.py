@@ -8,9 +8,7 @@ REFERENCE_RE = re.compile(r"<(?P<kind>Subject|Picture|Video|Audio) (?P<number>[1
 SPEAKER_RE = re.compile(r"\(S(?P<first>[1-9]\d*)(?P<rest>(?:,S[1-9]\d*)*)\)")
 DIALOGUE_RE = re.compile(r"<d>\[(?P<language>[^\[\]\r\n]+)\] (?P<text>.*?)</d>", re.DOTALL)
 _SHOT1_COLON_RE = re.compile(r"\[Shot 1\]\s*:\s*")
-_SHOT_TIME_COLON_RE = re.compile(
-    r"\[Shot ([1-9]\d*)\] At (\d{2}:\d{2}\.\d{3})\s*[:;]\s*"
-)
+_SHOT_TIME_COLON_RE = re.compile(r"\[Shot ([1-9]\d*)\] At (\d{2}:\d{2}\.\d{3})\s*[:;]\s*")
 
 
 def normalize_h3_shot_headers(text: str) -> str:

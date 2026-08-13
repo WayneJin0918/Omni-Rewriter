@@ -84,8 +84,7 @@ def test_media_rejects_incompatible_roles(kind: MediaType, role: MediaRole) -> N
 
 def test_base_normalizes_colon_shot_headers(base_output: dict[str, object]) -> None:
     base_output["integrated_multimodal_description"] = (
-        "[Shot 1]: A kite lifts off the hill. "
-        "[Shot 2] At 00:03.000: it banks into sunset light."
+        "[Shot 1]: A kite lifts off the hill. [Shot 2] At 00:03.000: it banks into sunset light."
     )
     output = BaseRewrite.model_validate(base_output)
     body = output.integrated_multimodal_description
@@ -96,8 +95,7 @@ def test_base_normalizes_colon_shot_headers(base_output: dict[str, object]) -> N
 def test_base_clamps_shot_on_duration(base_output: dict[str, object]) -> None:
     base_output["duration_seconds"] = "6"
     base_output["integrated_multimodal_description"] = (
-        "[Shot 1] A kite lifts off the hill. "
-        "[Shot 2] At 00:06.000, it banks into sunset light."
+        "[Shot 1] A kite lifts off the hill. [Shot 2] At 00:06.000, it banks into sunset light."
     )
     output = BaseRewrite.model_validate(base_output)
     assert "[Shot 2] At 00:05.999," in output.integrated_multimodal_description
