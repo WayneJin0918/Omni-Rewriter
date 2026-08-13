@@ -166,7 +166,8 @@ Harness 与 Writer 只约定一种协议：**OpenAI 兼容 Chat + 结构化 JSON
 
 <p align="center"><sub>请先使用<a href="../.cursor/skills/omni-rewriter-model-contribution/SKILL.md">模型贡献 Skill</a>。证据范围详见<a href="generation-adapters_zh.md">兼容性矩阵</a> · <a href="community-models_zh.md">社区模型待办</a>。</sub></p>
 
-## Video RAW vs PE
+<details>
+<summary><strong>Video RAW vs PE</strong></summary>
 
 <table cellspacing="0" cellpadding="0">
   <tr>
@@ -194,7 +195,11 @@ Harness 与 Writer 只约定一种协议：**OpenAI 兼容 Chat + 结构化 JSON
 ·
 <a href="assets/gallery/reconstruct/index.html">SOURCE vs REPLAY 复刻</a></p>
 
-## Video SOURCE vs REPLAY
+</details>
+
+<details>
+<summary><strong>Video SOURCE vs REPLAY</strong></summary>
+
 
 `omni-rewriter reconstruct` 观察本地成片得到校验后的 H3 `t2va` PE，再可选 MiniMax-H3 replay。
 画面烧英文：**左 Source / 右 Omni-Rewriter**。各取前 10s 再对比。Expand ≠ generate。
@@ -215,6 +220,8 @@ Harness 与 Writer 只约定一种协议：**OpenAI 兼容 Chat + 结构化 JSON
 </table>
 
 <p align="center"><a href="assets/gallery/reconstruct/index.html"><b>SOURCE vs REPLAY gallery →</b></a></p>
+
+</details>
 
 ## 试一下（不需要 GPU）
 

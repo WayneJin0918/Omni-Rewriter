@@ -171,7 +171,8 @@ Community board — left color = category (Video / Image / Unified); right = evi
 
 <p align="center"><sub>Use the <a href=".cursor/skills/omni-rewriter-model-contribution/SKILL.md">model contribution skill</a>. Evidence-scoped details: <a href="docs/dialects/generation-adapters.md">compatibility matrix</a> · <a href="docs/dialects/community-models.md">full backlog</a>.</sub></p>
 
-## Video RAW vs PE
+<details>
+<summary><strong>Video RAW vs PE</strong></summary>
 
 <table cellspacing="0" cellpadding="0">
   <tr>
@@ -199,7 +200,11 @@ Community board — left color = category (Video / Image / Unified); right = evi
 ·
 <a href="docs/assets/gallery/reconstruct/index.html">SOURCE vs REPLAY reconstruct</a></p>
 
-## Video SOURCE vs REPLAY
+</details>
+
+<details>
+<summary><strong>Video SOURCE vs REPLAY</strong></summary>
+
 
 Observe a local clip (`omni-rewriter reconstruct`) into validated H3 `t2va` PE, then optionally
 replay on MiniMax-H3. Each clip is labeled **Source** (left) vs **Omni-Rewriter** (right).
@@ -221,6 +226,8 @@ Compare uses the first 10s of each side. Expand ≠ generate.
 </table>
 
 <p align="center"><a href="docs/assets/gallery/reconstruct/index.html"><b>SOURCE vs REPLAY gallery →</b></a></p>
+
+</details>
 
 ## Try it (no GPU)
 
