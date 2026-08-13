@@ -1,7 +1,7 @@
 name: Omni-Rewriter PE Validate
 description: >
-  Validate prompt-expansion (PE) JSON envelopes with Omni-Rewriter's deterministic
-  schema checks. Expand ≠ generate — this Action only validates PE JSON.
+  Validate PE JSON envelopes with Omni-Rewriter schema checks. Validate only;
+  expand ≠ generate.
 author: Omni-Rewriter contributors
 branding:
   icon: check-circle

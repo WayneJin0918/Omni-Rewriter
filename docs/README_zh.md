@@ -7,9 +7,12 @@
 
   [![Agent Harness](https://img.shields.io/badge/Agentic-PE%20Harness-7C3AED)](architecture_zh.md)
   [![CI](https://github.com/WayneJin0918/Omni-Rewriter/actions/workflows/ci.yml/badge.svg)](https://github.com/WayneJin0918/Omni-Rewriter/actions/workflows/ci.yml)
+  [![Validate PE](https://github.com/WayneJin0918/Omni-Rewriter/actions/workflows/validate-pe.yml/badge.svg)](https://github.com/WayneJin0918/Omni-Rewriter/actions/workflows/validate-pe.yml)
+  [![PyPI](https://img.shields.io/pypi/v/omni-rewriter.svg)](https://pypi.org/project/omni-rewriter/)
   [![Python](https://img.shields.io/badge/python-3.11%2B-3776AB?logo=python&logoColor=white)](../pyproject.toml)
   [![License](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](https://github.com/WayneJin0918/Omni-Rewriter/blob/main/LICENSE)
   [![Issues](https://img.shields.io/github/issues/WayneJin0918/Omni-Rewriter)](https://github.com/WayneJin0918/Omni-Rewriter/issues)
+  [![Discussions](https://img.shields.io/badge/GitHub-Discussions-121212?logo=github)](https://github.com/WayneJin0918/Omni-Rewriter/discussions)
   [![PRs welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](CONTRIBUTING.md)
 </div>
 
@@ -27,6 +30,9 @@
 
 ## 最新动态
 
+- **2026-08 — 只校验安装：** `pip install omni-rewriter` 后即可
+  `omni-rewriter validate`——不需要 GPU / Writer / generate。CI 可用
+  `WayneJin0918/Omni-Rewriter@v0.1.0`。
 - **2026-08 — Discussions + PE 校验 Action：** 已开启
   [Discussions](https://github.com/WayneJin0918/Omni-Rewriter/discussions)；根目录
   `action.yml` 可在任意仓库 CI 中校验 PE JSON（只校验，不 generate）。
@@ -183,6 +189,30 @@ Harness 与 Writer 只约定一种协议：**OpenAI 兼容 Chat + 结构化 JSON
 <a href="h3-pe-showcase/index.html">完整 15 组 showcase</a>
 ·
 <a href="assets/gallery/index.html">精简 Gallery</a></p>
+
+## 试一下（不需要 GPU）
+
+校验一份 PE envelope。这条路径不调用 Writer，也不生成媒体。
+
+```bash
+pip install omni-rewriter
+# 或: uvx --from omni-rewriter omni-rewriter validate kite.json
+
+curl -fsSL -o kite.json \
+  https://raw.githubusercontent.com/WayneJin0918/Omni-Rewriter/v0.1.0/tests/fixtures/t2va_kite.json
+omni-rewriter validate kite.json
+```
+
+在其他仓库的 GitHub Actions 里：
+
+```yaml
+- uses: actions/checkout@v4
+- uses: WayneJin0918/Omni-Rewriter@v0.1.0
+  with:
+    files: prompts/**/*.json
+```
+
+下面的 expand 仍需要 OpenAI 兼容 Writer。扩写 ≠ 生成。
 
 ## 快速开始
 

@@ -4,8 +4,20 @@
 
 ## Install
 
-Omni-Rewriter requires Python 3.11+. The package expands and validates prompts; model servers and
-generation checkpoints are separate runtime choices.
+Omni-Rewriter requires Python 3.11+. **Validate needs no GPU and no Writer.** Expand needs an
+OpenAI-compatible chat endpoint. Generation checkpoints are a separate runtime choice.
+
+```bash
+python -m pip install omni-rewriter
+curl -fsSL -o kite.json \
+  https://raw.githubusercontent.com/WayneJin0918/Omni-Rewriter/v0.1.0/tests/fixtures/t2va_kite.json
+omni-rewriter validate kite.json
+```
+
+Same checker in CI: `uses: WayneJin0918/Omni-Rewriter@v0.1.0` (see
+[`pe-validate-action.md`](pe-validate-action.md)). Expand still needs a Writer.
+
+From a git clone (CLI + optional HTTP server):
 
 ```bash
 python -m venv .venv

@@ -4,8 +4,20 @@
 
 ## 安装
 
-Omni-Rewriter 需要 Python 3.11+。Python 包负责扩写和校验提示词；模型服务与生成 checkpoint
-属于独立的 runtime 选择。
+Omni-Rewriter 需要 Python 3.11+。**只做 `validate` 不需要 GPU，也不需要 Writer。** `expand` 需要
+OpenAI 兼容聊天接口。生成 checkpoint 是独立 runtime。
+
+```bash
+python -m pip install omni-rewriter
+curl -fsSL -o kite.json \
+  https://raw.githubusercontent.com/WayneJin0918/Omni-Rewriter/v0.1.0/tests/fixtures/t2va_kite.json
+omni-rewriter validate kite.json
+```
+
+CI 用同一套校验：`uses: WayneJin0918/Omni-Rewriter@v0.1.0`（见
+[`pe-validate-action.md`](pe-validate-action.md)）。`expand` 仍需要 Writer。
+
+从 git clone 安装（CLI + 可选 HTTP）：
 
 ```bash
 python -m venv .venv

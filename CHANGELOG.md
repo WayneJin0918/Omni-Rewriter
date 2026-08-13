@@ -9,10 +9,14 @@ for the thin public surface (`RewriteRequest` / rewrite outputs, `expand`, `vali
 
 ## [Unreleased]
 
+## [0.1.1] - 2026-08-13
+
 ### Added
 
 - Seedance video PE profile (`metadata.video_pe_profile=seedance`) with `SeedanceRewrite`,
   natural/json dual render, sanitized fixtures, and `--output seedance` (PE only; no adapter).
+- Validate-only install: `typer` is a core dependency so `pip install omni-rewriter` exposes
+  `omni-rewriter validate` with no Writer. Trusted-publishing workflow on GitHub Release.
 
 ### Changed
 
@@ -37,4 +41,5 @@ for the thin public surface (`RewriteRequest` / rewrite outputs, `expand`, `vali
 - HTTP `create_app` denies local filesystem media by default (`OMNI_WRITER_ALLOW_LOCAL_MEDIA`).
 - Adapter downloads reject non-public resolved hosts; H3 auth headers stay origin-scoped.
 
+[0.1.1]: https://github.com/WayneJin0918/Omni-Rewriter/releases/tag/v0.1.1
 [0.1.0]: https://github.com/WayneJin0918/Omni-Rewriter/releases/tag/v0.1.0

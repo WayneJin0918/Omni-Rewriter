@@ -8,6 +8,7 @@
   [![Agent Harness](https://img.shields.io/badge/Agentic-PE%20Harness-7C3AED)](docs/architecture.md)
   [![CI](https://github.com/WayneJin0918/Omni-Rewriter/actions/workflows/ci.yml/badge.svg)](https://github.com/WayneJin0918/Omni-Rewriter/actions/workflows/ci.yml)
   [![Validate PE](https://github.com/WayneJin0918/Omni-Rewriter/actions/workflows/validate-pe.yml/badge.svg)](https://github.com/WayneJin0918/Omni-Rewriter/actions/workflows/validate-pe.yml)
+  [![PyPI](https://img.shields.io/pypi/v/omni-rewriter.svg)](https://pypi.org/project/omni-rewriter/)
   [![Python](https://img.shields.io/badge/python-3.11%2B-3776AB?logo=python&logoColor=white)](pyproject.toml)
   [![License](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](https://github.com/WayneJin0918/Omni-Rewriter/blob/main/LICENSE)
   [![Issues](https://img.shields.io/github/issues/WayneJin0918/Omni-Rewriter)](https://github.com/WayneJin0918/Omni-Rewriter/issues)
@@ -29,6 +30,9 @@
 
 ## News
 
+- **2026-08 — Validate-only install:** `pip install omni-rewriter` then
+  `omni-rewriter validate` — no GPU, no Writer, no generate. Reuse the same checker in CI via
+  `WayneJin0918/Omni-Rewriter@v0.1.0`.
 - **2026-08 — Discussions + PE validate Action:** GitHub
   [Discussions](https://github.com/WayneJin0918/Omni-Rewriter/discussions) are open, and a
   composite Action (`action.yml`) can lint PE JSON envelopes in any repo’s CI (validate only;
@@ -191,7 +195,31 @@ Community board — left color = category (Video / Image / Unified); right = evi
 ·
 <a href="docs/assets/gallery/index.html">Compact gallery</a></p>
 
-## Quick start
+## Try it (no GPU)
+
+Lint a PE envelope. This path does not call a Writer and does not generate media.
+
+```bash
+pip install omni-rewriter
+# or: uvx --from omni-rewriter omni-rewriter validate kite.json
+
+curl -fsSL -o kite.json \
+  https://raw.githubusercontent.com/WayneJin0918/Omni-Rewriter/v0.1.0/tests/fixtures/t2va_kite.json
+omni-rewriter validate kite.json
+```
+
+In another repo’s GitHub Actions:
+
+```yaml
+- uses: actions/checkout@v4
+- uses: WayneJin0918/Omni-Rewriter@v0.1.0
+  with:
+    files: prompts/**/*.json
+```
+
+Expand (below) still needs an OpenAI-compatible Writer. Expand ≠ generate.
+
+## Quick start (expand)
 
 Gallery demos need no GPU. Preferred local path: **SGLang Qwen (small Writer) + SGLang MiniMax-H3
 (~30B FL2VA)**. Hosted API Writers are a fallback. Expand ≠ generate — H3 is only for optional
@@ -238,17 +266,18 @@ omni-rewriter validate output.json
 
 ### Lint PE JSON in CI (GitHub Action)
 
-Reuse the composite Action from this repo to fail CI on invalid PE envelopes (no Writer, no media):
+Same checker as `omni-rewriter validate` (no Writer, no media):
 
 ```yaml
 - uses: actions/checkout@v4
-- uses: WayneJin0918/Omni-Rewriter@main   # pin a tag/SHA when you can
+- uses: WayneJin0918/Omni-Rewriter@v0.1.0
   with:
     files: prompts/**/*.json
 ```
 
-Same checker locally: `python scripts/validate_pe_files.py tests/fixtures/**/*.json`.
+Local multi-file helper: `python scripts/validate_pe_files.py tests/fixtures/**/*.json`.
 See [Discussions #4](https://github.com/WayneJin0918/Omni-Rewriter/discussions/4).
+Marketplace listing copy: [`docs/pe-validate-action.md`](docs/pe-validate-action.md).
 
 ### 2) Hosted API Writer (fallback)
 
