@@ -43,6 +43,7 @@ Repository = "https://github.com/WayneJin0918/Omni-Rewriter"
 Issues = "https://github.com/WayneJin0918/Omni-Rewriter/issues"
 Changelog = "https://github.com/WayneJin0918/Omni-Rewriter/blob/main/CHANGELOG.md"
 PyPI = "https://pypi.org/project/omni-rewriter/"
+HuggingFace = "https://huggingface.co/spaces/Wayne-King/omni-rewriter-replay"
 
 [project.optional-dependencies]
 cli = ["typer>=0.12"]

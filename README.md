@@ -13,6 +13,7 @@
   [![License](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](https://github.com/WayneJin0918/Omni-Rewriter/blob/main/LICENSE)
   [![Issues](https://img.shields.io/github/issues/WayneJin0918/Omni-Rewriter)](https://github.com/WayneJin0918/Omni-Rewriter/issues)
   [![Discussions](https://img.shields.io/badge/GitHub-Discussions-121212?logo=github)](https://github.com/WayneJin0918/Omni-Rewriter/discussions)
+  [![Hugging Face](https://img.shields.io/badge/%F0%9F%A4%97%20Hugging%20Face-Replay-ffcc00)](https://huggingface.co/spaces/Wayne-King/omni-rewriter-replay)
   [![PRs welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](docs/CONTRIBUTING.md)
 </div>
 
@@ -31,7 +32,8 @@
 ## News
 
 - **2026-08-14:** `omni-rewriter reconstruct` observes a local clip into H3 PE. Recommended
-  Writer is [Qwen3.6-35B-A3B](https://huggingface.co/Qwen/Qwen3.6-35B-A3B). This is Omni-Rewriter Replay.
+  Writer is [Qwen3.6-35B-A3B](https://huggingface.co/Qwen/Qwen3.6-35B-A3B). This is Omni-Rewriter Replay
+  ([HF gallery](https://huggingface.co/spaces/Wayne-King/omni-rewriter-replay)).
 - **2026-08 — Validate-only install:** `pip install omni-rewriter` then
   `omni-rewriter validate` — no GPU, no Writer, no generate. Reuse the same checker in CI via
   `WayneJin0918/Omni-Rewriter@v0.1.0`.

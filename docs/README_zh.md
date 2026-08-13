@@ -13,6 +13,7 @@
   [![License](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](https://github.com/WayneJin0918/Omni-Rewriter/blob/main/LICENSE)
   [![Issues](https://img.shields.io/github/issues/WayneJin0918/Omni-Rewriter)](https://github.com/WayneJin0918/Omni-Rewriter/issues)
   [![Discussions](https://img.shields.io/badge/GitHub-Discussions-121212?logo=github)](https://github.com/WayneJin0918/Omni-Rewriter/discussions)
+  [![Hugging Face](https://img.shields.io/badge/%F0%9F%A4%97%20Hugging%20Face-Replay-ffcc00)](https://huggingface.co/spaces/Wayne-King/omni-rewriter-replay)
   [![PRs welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](CONTRIBUTING.md)
 </div>
 
@@ -31,7 +32,8 @@
 ## 最新动态
 
 - **2026-08-14：** `omni-rewriter reconstruct` 把本地成片写成 H3 PE。推荐 Writer 为
-  [Qwen3.6-35B-A3B](https://huggingface.co/Qwen/Qwen3.6-35B-A3B)。这是 Omni-Rewriter Replay。
+  [Qwen3.6-35B-A3B](https://huggingface.co/Qwen/Qwen3.6-35B-A3B)。这是 Omni-Rewriter Replay
+  （[HF gallery](https://huggingface.co/spaces/Wayne-King/omni-rewriter-replay)）。
 - **2026-08 — 只校验安装：** `pip install omni-rewriter` 后即可
   `omni-rewriter validate`——不需要 GPU / Writer / generate。CI 可用
   `WayneJin0918/Omni-Rewriter@v0.1.0`。
