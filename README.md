@@ -31,7 +31,7 @@
 ## News
 
 - **2026-08-14:** `omni-rewriter reconstruct` observes a local clip into H3 PE. Recommended
-  Writer is [Qwen3.6-35B-A3B](https://huggingface.co/Qwen/Qwen3.6-35B-A3B). Expand ≠ generate.
+  Writer is [Qwen3.6-35B-A3B](https://huggingface.co/Qwen/Qwen3.6-35B-A3B). This is Omni-Rewriter Replay.
 - **2026-08 — Validate-only install:** `pip install omni-rewriter` then
   `omni-rewriter validate` — no GPU, no Writer, no generate. Reuse the same checker in CI via
   `WayneJin0918/Omni-Rewriter@v0.1.0`.

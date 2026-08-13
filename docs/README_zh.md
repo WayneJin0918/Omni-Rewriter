@@ -31,7 +31,7 @@
 ## 最新动态
 
 - **2026-08-14：** `omni-rewriter reconstruct` 把本地成片写成 H3 PE。推荐 Writer 为
-  [Qwen3.6-35B-A3B](https://huggingface.co/Qwen/Qwen3.6-35B-A3B)。扩写 ≠ 生成。
+  [Qwen3.6-35B-A3B](https://huggingface.co/Qwen/Qwen3.6-35B-A3B)。这是 Omni-Rewriter Replay。
 - **2026-08 — 只校验安装：** `pip install omni-rewriter` 后即可
   `omni-rewriter validate`——不需要 GPU / Writer / generate。CI 可用
   `WayneJin0918/Omni-Rewriter@v0.1.0`。
