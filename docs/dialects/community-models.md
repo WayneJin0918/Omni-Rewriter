@@ -12,6 +12,7 @@ upstream contract.
 | --- | --- | --- | --- |
 | MiniMax-H3 | Video | PE | Default `video_pe_profile=h3` |
 | Seedance | Video | PE | `metadata.video_pe_profile=seedance`; no generation adapter |
+| LTX-2.5 | Video | PE | `metadata.video_pe_profile=ltx`; optional official-CLI runner, live runtime unverified |
 | Seedream / Qwen-Image | Image | PE | `metadata.image_pe_profile` |
 
 ## Video

@@ -125,6 +125,7 @@ Harness 与 Writer 只约定一种协议：**OpenAI 兼容 Chat + 结构化 JSON
 <p align="center">
   <img alt="MiniMax-H3 PE" src="https://img.shields.io/badge/MiniMax--H3-PE-brightgreen?style=flat-square&labelColor=4f46e5" />
   <img alt="Seedance PE" src="https://img.shields.io/badge/Seedance-PE-brightgreen?style=flat-square&labelColor=4f46e5" />
+  <img alt="LTX-2.5 PE" src="https://img.shields.io/badge/LTX--2.5-PE-brightgreen?style=flat-square&labelColor=4f46e5" />
   <img alt="LingBot Video adapter" src="https://img.shields.io/badge/LingBot%20Video-adapter-yellow?style=flat-square&labelColor=4f46e5" />
   <img alt="WAN unverified" src="https://img.shields.io/badge/WAN-unverified-lightgrey?style=flat-square&labelColor=4f46e5" />
   <img alt="HunyuanVideo wanted" src="https://img.shields.io/badge/HunyuanVideo-wanted-lightgrey?style=flat-square&labelColor=4f46e5" />
@@ -321,7 +322,7 @@ omni-rewriter expand examples/requests/t2va_kite.json --output h3
 ```text
 RewriteRequest
   └─ Agent Harness       analyze · draft · validate · repair · render  （= PE 流程）
-      └─ PE profile      H3 / Seedance / Seedream / Qwen-Image 方言
+      └─ PE profile      H3 / Seedance / LTX-2.5 / Seedream / Qwen-Image 方言
           └─ adapter     可选 vLLM / SGLang / 厂商 client  （生成，不是 expand）
               └─ eval    结构检查 · docs/ 下的 RAW/PE 演示
 ```

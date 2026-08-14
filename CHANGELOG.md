@@ -11,6 +11,9 @@ for the thin public surface (`RewriteRequest` / rewrite outputs, `expand`, `vali
 
 ### Added
 
+- LTX-2.5 video PE profile (`metadata.video_pe_profile=ltx`) with `LTXRewrite`, a single
+  flowing-paragraph render, fixtures, `--output ltx`, and an optional official
+  `ltx_pipelines.distilled` runner. Live generate is unverified. Expand ≠ generate.
 - Video reconstruct v1 (`omni-rewriter reconstruct`): local ffmpeg evidence pack →
   `VideoObservation` → existing draft/validate/repair as H3 `t2va` PE. Source mp4 is not inlined
   into `expand`. HTTP `POST /v1/reconstruct` accepts observation JSON only. Observe cap is 45s;

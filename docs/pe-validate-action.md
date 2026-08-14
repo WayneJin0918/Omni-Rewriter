@@ -13,7 +13,7 @@ Publishing cannot be finished from the API; it needs one click in the GitHub UI.
 | **Name** | Omni-Rewriter PE Validate |
 | **Description** (`action.yml`, &lt;125 chars) | Validate PE JSON envelopes with Omni-Rewriter schema checks. Validate only; expand ≠ generate. |
 | **Headline** (Marketplace, ≤120 chars) | Lint prompt-expansion JSON envelopes in CI. Validate only — expand ≠ generate. |
-| **Long description** (Marketplace page) | Deterministic schema checks for Omni-Rewriter PE envelopes (`RewriteOutput` or `{request, output}`). Fails the job on invalid H3 / Seedance / Seedream / Qwen-Image JSON. Does not call a Writer and does not generate media. |
+| **Long description** (Marketplace page) | Deterministic schema checks for Omni-Rewriter PE envelopes (`RewriteOutput` or `{request, output}`). Fails the job on invalid H3 / Seedance / LTX-2.5 / Seedream / Qwen-Image JSON. Does not call a Writer and does not generate media. |
 | **Categories** | Continuous integration · Code quality |
 | **Color / icon** | purple / check-circle (already in `action.yml`) |
 | **Primary tag to use** | `WayneJin0918/Omni-Rewriter@v0.1.0` (pin a tag/SHA; avoid floating `@main` in production) |

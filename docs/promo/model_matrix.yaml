@@ -4,6 +4,8 @@
 video:
   - name: MiniMax-H3
     status: PE
+  - name: LTX-2.5
+    status: PE
   - name: LingBot Video
     status: adapter
   - name: WAN

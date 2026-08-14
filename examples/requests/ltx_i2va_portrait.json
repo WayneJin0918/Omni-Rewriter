@@ -1,0 +1,16 @@
+{
+  "prompt": "Animate this portrait: she looks up and smiles.",
+  "duration_seconds": 5,
+  "task": "i2va",
+  "media": [
+    {
+      "media_type": "image",
+      "role": "first_frame",
+      "uri": "https://example.test/ltx/portrait.png",
+      "name": "portrait"
+    }
+  ],
+  "metadata": {
+    "video_pe_profile": "ltx"
+  }
+}

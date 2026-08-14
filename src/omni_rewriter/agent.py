@@ -18,6 +18,7 @@ from .media_input import MediaPreparer
 from .models import (
     BaseRewrite,
     ImageRewrite,
+    LTXRewrite,
     Ref2VARewrite,
     RewriteOutput,
     RewriteRequest,
@@ -26,6 +27,7 @@ from .models import (
 )
 from .models.common import IMAGE_TASKS, StrictModel
 from .models.image import IMAGE_REF_RE, ImagePEProfile
+from .models.ltx import LTX_SUPPORTED_TASKS, validate_ltx_against_request
 from .models.seedance import VideoPEProfile, validate_seedance_against_request
 from .prompts import (
     ANALYZE_SYSTEM_PROMPT,
@@ -37,7 +39,13 @@ from .trace import JSONLTrace
 
 _FENCE_RE = re.compile(r"^\s*```(?:json)?\s*(.*?)\s*```\s*$", re.DOTALL | re.IGNORECASE)
 
-ResponseModel = type[BaseRewrite] | type[Ref2VARewrite] | type[ImageRewrite] | type[SeedanceRewrite]
+ResponseModel = (
+    type[BaseRewrite]
+    | type[Ref2VARewrite]
+    | type[ImageRewrite]
+    | type[SeedanceRewrite]
+    | type[LTXRewrite]
+)
 Profile = ImagePEProfile | VideoPEProfile | None
 
 
@@ -108,6 +116,12 @@ class RewriteAgent:
             if task not in {TaskType.T2VA, TaskType.REF2VA}:
                 raise ValueError("Seedance video PE currently supports only t2va and ref2va tasks")
             response_model = SeedanceRewrite
+        elif video_profile is VideoPEProfile.LTX:
+            if task not in LTX_SUPPORTED_TASKS:
+                raise ValueError(
+                    "LTX video PE supports only t2va, i2va, fl2va, l2va, and ref2va tasks"
+                )
+            response_model = LTXRewrite
         elif task is TaskType.REF2VA:
             response_model = Ref2VARewrite
         else:
@@ -281,6 +295,15 @@ class RewriteAgent:
                 media_types=[item.media_type for item in request.media],
             )
             return output
+        if isinstance(output, LTXRewrite):
+            validate_ltx_against_request(
+                output,
+                media_count=len(request.media),
+                task=request.resolved_task,
+                duration_seconds=request.duration_seconds,
+                media_types=[item.media_type for item in request.media],
+            )
+            return output
         if output.duration_seconds != request.duration_seconds:
             raise ValueError(
                 f"duration_seconds must exactly match the request ({request.duration_seconds})"
@@ -315,4 +338,4 @@ def _resolve_video_profile(request: RewriteRequest) -> VideoPEProfile:
     try:
         return VideoPEProfile(raw)
     except ValueError as exc:
-        raise ValueError("metadata.video_pe_profile must be 'h3' or 'seedance'") from exc
+        raise ValueError("metadata.video_pe_profile must be 'h3', 'seedance', or 'ltx'") from exc

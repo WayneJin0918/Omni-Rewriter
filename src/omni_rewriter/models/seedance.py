@@ -38,6 +38,7 @@ class VideoPEProfile(StrEnum):
 
     H3 = "h3"
     SEEDANCE = "seedance"
+    LTX = "ltx"
 
 
 class SeedanceRenderMode(StrEnum):

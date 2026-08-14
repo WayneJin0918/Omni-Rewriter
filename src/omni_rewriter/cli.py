@@ -31,6 +31,7 @@ class OutputFormat(StrEnum):
     H3 = "h3"
     IMAGE = "image"
     SEEDANCE = "seedance"
+    LTX = "ltx"
 
 
 def _read_json(source: str) -> dict[str, Any]:
@@ -62,7 +63,7 @@ def expand_command(
         typer.echo(_json(validation_error(exc)), err=True)
         raise typer.Exit(1) from exc
     rendered = render_output(result.output, request)
-    if output in {OutputFormat.H3, OutputFormat.IMAGE, OutputFormat.SEEDANCE}:
+    if output in {OutputFormat.H3, OutputFormat.IMAGE, OutputFormat.SEEDANCE, OutputFormat.LTX}:
         typer.echo(rendered)
         return
     payload = {
@@ -91,7 +92,7 @@ def validate_command(
         typer.echo(_json(validation_error(exc)), err=True)
         raise typer.Exit(1) from exc
     rendered = render_output(validated, request)
-    if output in {OutputFormat.H3, OutputFormat.IMAGE, OutputFormat.SEEDANCE}:
+    if output in {OutputFormat.H3, OutputFormat.IMAGE, OutputFormat.SEEDANCE, OutputFormat.LTX}:
         typer.echo(rendered)
     else:
         typer.echo(
@@ -176,7 +177,7 @@ def reconstruct_command(
     from .reconstruct.evidence import EvidencePack, EvidencePackConfig
     from .reconstruct.service import reconstruct, result_payload
 
-    if output in {OutputFormat.IMAGE, OutputFormat.SEEDANCE}:
+    if output in {OutputFormat.IMAGE, OutputFormat.SEEDANCE, OutputFormat.LTX}:
         raise typer.BadParameter("reconstruct v1 emits H3 t2va; use --output json or h3")
     if pack_only and from_observation is not None:
         raise typer.BadParameter("--pack-only cannot be combined with --from-observation")

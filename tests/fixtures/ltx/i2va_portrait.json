@@ -1,0 +1,32 @@
+{
+  "request": {
+    "prompt": "Animate this portrait: she looks up and smiles.",
+    "duration_seconds": 5,
+    "task": "i2va",
+    "media": [
+      {
+        "media_type": "image",
+        "role": "first_frame",
+        "uri": "https://example.test/ltx/portrait.png",
+        "name": "portrait"
+      }
+    ],
+    "metadata": {
+      "video_pe_profile": "ltx"
+    }
+  },
+  "output": {
+    "task": "i2va",
+    "profile": "ltx",
+    "duration_seconds": "5",
+    "action": "A woman lifts her gaze toward the camera and lets a small smile form",
+    "movements": "Her shoulders settle, then she blinks once and the smile reaches her eyes",
+    "appearance": "The same woman as the reference still: dark coiled hair, a cream knit sweater, and a faint scar at the left brow",
+    "environment": "A quiet indoor room with a blurred bookshelf and a pale curtain behind her",
+    "camera": "A static medium close-up at eye level with a shallow depth of field",
+    "lighting": "Soft window light from camera left, cool shadows on the far cheek",
+    "audio": "Soft room tone and a single quiet inhale before she whispers, \"There you are.\"",
+    "changes": null,
+    "generate_audio": true
+  }
+}

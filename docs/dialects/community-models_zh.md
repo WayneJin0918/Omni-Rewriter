@@ -11,6 +11,7 @@
 | --- | --- | --- | --- |
 | MiniMax-H3 | Video | PE | 默认 `video_pe_profile=h3` |
 | Seedance | Video | PE | `metadata.video_pe_profile=seedance`；无生成适配器 |
+| LTX-2.5 | Video | PE | `metadata.video_pe_profile=ltx`；可选官方 CLI runner，live runtime 未验证 |
 | Seedream / Qwen-Image | Image | PE | `metadata.image_pe_profile` |
 
 ## Video｜视频

@@ -99,6 +99,14 @@ omni-rewriter expand examples/requests/seedance_t2va_kitchen.json --output seeda
 
 See [Seedance PE](dialects/seedance-pe.md). Default video dialect remains H3 when `video_pe_profile` is unset.
 
+LTX-2.5 video PE (one flowing paragraph; `ltx_render=json` for JSON):
+
+```bash
+omni-rewriter expand examples/requests/ltx_t2va_workshop.json --output ltx
+```
+
+See [LTX-2.5 PE](dialects/ltx-pe.md).
+
 ## Expand an image intent
 
 Image tasks must omit `duration_seconds`:

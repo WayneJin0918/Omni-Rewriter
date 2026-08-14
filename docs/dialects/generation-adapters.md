@@ -22,6 +22,7 @@ a generation runtime are compatible only after an integration test proves that e
 | HunyuanImage-3.0 | Seedream T2I packing can be used | Upstream model-specific vLLM fork | `HunyuanImageVLLMClient`; local upstream runner recipe |
 | Wan | H3-style video output can be mapped | SGLang/vLLM-Omni contracts vary by release | `OmniVideosClient` + `WanOmniAdapter` |
 | LingBot Video | `LingBotCaption` schema | Independent upstream runner | Bounded subprocess runner + optional two-stage rewriter |
+| LTX-2.5 | Implemented: `ltx` paragraph PE | Official `python -m ltx_pipelines.distilled` ([Lightricks/LTX-2](https://github.com/Lightricks/LTX-2)) | `LTXVideoRunner`; live runtime **unverified** |
 | vLLM-Omni paths | No compatibility inferred | Upstream publishes a broad image/video support matrix | **Unverified by this repository** |
 
 ## Evidence and qualifications
@@ -84,6 +85,7 @@ script defaults to the public Qwen3.6-35B-A3B Hugging Face id:
   `OMNI_REWRITER_WAN_MODEL`; verify runtime/version support before use.
 - `../../scripts/serve/serve_lingbot_rewriter.sh`: set `REWRITER_BASE_MODEL` and `REWRITER_ADAPTER`.
 - `../../scripts/run_lingbot_video.sh`: set `LINGBOT_VIDEO_ROOT` and `MODEL_DIR`.
+- `../../scripts/run_ltx25.sh`: set `OMNI_LTX_CHECKPOINT` (and optional `OMNI_LTX_UPSTREAM`); live generate unverified.
 - `../../scripts/serve/serve_sglang_qwen_writer.sh`: recommended Qwen3.6-35B-A3B Writer
   (HF id by default). Set `OMNI_WRITER_MODEL` to a local snapshot if you already downloaded it.
 - `../../scripts/serve/serve_qwen35_dev.sh` / `../../scripts/serve/serve_qwen35_prod.sh`:

@@ -99,6 +99,14 @@ omni-rewriter expand examples/requests/seedance_t2va_kitchen.json --output seeda
 
 详见 [Seedance PE](dialects/seedance-pe_zh.md)。未设置 `video_pe_profile` 时默认仍为 H3。
 
+LTX-2.5 视频 PE（单段连贯段落；`ltx_render=json` 输出 JSON）：
+
+```bash
+omni-rewriter expand examples/requests/ltx_t2va_workshop.json --output ltx
+```
+
+详见 [LTX-2.5 PE](dialects/ltx-pe_zh.md)。
+
 ## 扩写图像意图
 
 图像任务必须省略 `duration_seconds`：

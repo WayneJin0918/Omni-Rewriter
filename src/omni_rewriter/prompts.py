@@ -1,4 +1,4 @@
-"""Prompt assets for video (H3 / Seedance) and image PE dialects."""
+"""Prompt assets for video (H3 / Seedance / LTX) and image PE dialects."""
 
 from __future__ import annotations
 
@@ -148,6 +148,33 @@ Seedance video PE requirements (public Seedance 2.5 prompt habits; sanitized Omn
   instruction, non_diegetic_music, generate_audio.
 """
 
+_LTX_VIDEO_RULES = """\
+LTX-2.5 video PE requirements (public LTX-2 prompting guide; expand ≠ generate):
+- Emit structured fields that render into ONE flowing cinematographer paragraph.
+  profile must be "ltx". Do not invent private LTX internals.
+- Official public habits: start directly with the main action; describe movements,
+  appearance, environment, camera, lighting, and sudden changes chronologically;
+  keep descriptions literal and precise; stay within 200 words.
+- Duration, aspect ratio, and resolution are generate parameters. Never write them
+  into PE fields. Do not use H3 [Shot N] labels, Seedance @Image/@Video tokens,
+  or <|media:N|> / <Picture N> markers.
+- Supported tasks: t2va (no media), i2va (one first-frame image), l2va (one last-frame
+  image), fl2va (first + last image), ref2va (one or more images). Image conditioning
+  is a generate-time --image flag, not a prompt token. Describe appearance in prose.
+- action: first sentence, the main visible action.
+  movements: gestures and motion after the opening action.
+  appearance: people/objects, clothing, materials.
+  environment: background and space.
+  camera: angle, movement, depth of field.
+  lighting: light direction, color, quality.
+  changes: optional sudden events.
+  audio: required when generate_audio is true — diegetic sound, voice quality, and
+  spoken lines in quotes when the user asked for speech.
+- duration_seconds must exactly match the request.
+- Return JSON fields: task, profile, duration_seconds, action, movements, appearance,
+  environment, camera, lighting, audio, changes, generate_audio.
+"""
+
 
 def _image_rules(profile: ImagePEProfile) -> str:
     if profile is ImagePEProfile.QWEN_IMAGE_EDIT:
@@ -191,6 +218,14 @@ def draft_system_prompt(
             f"{_SEEDANCE_VIDEO_RULES}\nThe exact JSON Schema is:\n{schema}"
         )
 
+    if profile is VideoPEProfile.LTX:
+        return (
+            "You are the drafting stage of Omni-Rewriter's LTX-2.5 video prompt-expansion "
+            "pipeline. Return one JSON object only, with no Markdown or commentary. Preserve the "
+            "user's intent and emit a production-ready LTX PE structure.\n\n"
+            f"{_LTX_VIDEO_RULES}\nThe exact JSON Schema is:\n{schema}"
+        )
+
     task_rules = _REF_RULES if task is TaskType.REF2VA else _BASE_RULES
     return (
         "You are the drafting stage of a deterministic H3 video-prompt pipeline. "
@@ -225,6 +260,13 @@ def repair_system_prompt(
             "corrected JSON object only. Preserve valid creative details and change every item "
             "named in the validation errors. Do not discuss the corrections and do not add "
             f"fields.\n\n{_SEEDANCE_VIDEO_RULES}\nExact JSON Schema:\n{schema}"
+        )
+    if profile is VideoPEProfile.LTX:
+        return (
+            "You repair a JSON candidate rejected by deterministic LTX validation. Return one "
+            "corrected JSON object only. Preserve valid creative details and change every item "
+            "named in the validation errors. Do not discuss the corrections and do not add "
+            f"fields.\n\n{_LTX_VIDEO_RULES}\nExact JSON Schema:\n{schema}"
         )
     return (
         "You repair a JSON candidate rejected by deterministic H3 validation. Return one corrected "

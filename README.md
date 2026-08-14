@@ -130,6 +130,7 @@ Community board — left color = category (Video / Image / Unified); right = evi
 <p align="center">
   <img alt="MiniMax-H3 PE" src="https://img.shields.io/badge/MiniMax--H3-PE-brightgreen?style=flat-square&labelColor=4f46e5" />
   <img alt="Seedance PE" src="https://img.shields.io/badge/Seedance-PE-brightgreen?style=flat-square&labelColor=4f46e5" />
+  <img alt="LTX-2.5 PE" src="https://img.shields.io/badge/LTX--2.5-PE-brightgreen?style=flat-square&labelColor=4f46e5" />
   <img alt="LingBot Video adapter" src="https://img.shields.io/badge/LingBot%20Video-adapter-yellow?style=flat-square&labelColor=4f46e5" />
   <img alt="WAN unverified" src="https://img.shields.io/badge/WAN-unverified-lightgrey?style=flat-square&labelColor=4f46e5" />
   <img alt="HunyuanVideo wanted" src="https://img.shields.io/badge/HunyuanVideo-wanted-lightgrey?style=flat-square&labelColor=4f46e5" />
@@ -350,7 +351,7 @@ Checked-in requests: [`examples/requests/`](examples/requests/). Scripts:
 ```text
 RewriteRequest
   └─ Agent Harness       analyze · draft · validate · repair · render  (= PE flow)
-      └─ PE profile      H3 / Seedance / Seedream / Qwen-Image dialect
+      └─ PE profile      H3 / Seedance / LTX-2.5 / Seedream / Qwen-Image dialect
           └─ adapter     optional vLLM / SGLang / vendor client  (generate, not expand)
               └─ eval    structural checks · RAW/PE demos under docs/
 ```

@@ -41,6 +41,20 @@ repairs, renderers, and public contracts over claims about private vendor intern
    `docs/dialects/seedance-pe.md` and `assert_sanitized_seedance_payload`. No generation
    adapter in this profile pass.
 
+
+## When expanding video (LTX-2.5)
+
+1. Set `metadata.video_pe_profile=ltx` (default remains H3).
+2. Support `t2va` / `i2va` / `l2va` / `fl2va` / `ref2va`; require `duration_seconds`.
+3. Emit `LTXRewrite` fields that render to one flowing paragraph: action, movements,
+   appearance, environment, camera, lighting, optional changes, audio when
+   `generate_audio` is true. Follow the public LTX-2 guide (start with the action,
+   ~200 words, no duration/resolution in the body). Image refs are generate-time
+   `--image` flags, not prompt tokens.
+4. Render via `ltx_render=paragraph|json` (default paragraph). Optional
+   `LTXVideoRunner` maps the paragraph onto `python -m ltx_pipelines.distilled`.
+   Live generate is unverified. See `docs/dialects/ltx-pe.md`.
+
 ## When expanding video (H3)
 
 1. Confirm task routing (`t2va` / `i2va` / `fl2va` / `l2va` / `ref2va`).

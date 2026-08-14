@@ -13,13 +13,16 @@ from .media_input import MediaInputConfig, MediaPreparer
 from .models import (
     BaseRewrite,
     ImageRewrite,
+    LTXRewrite,
     Ref2VARewrite,
     RewriteOutput,
     RewriteRequest,
     SeedanceRewrite,
+    render_ltx_output,
     render_seedance_output,
 )
 from .models.common import IMAGE_TASKS
+from .models.ltx import validate_ltx_against_request
 from .models.seedance import validate_seedance_against_request
 
 
@@ -40,10 +43,12 @@ async def expand(request: RewriteRequest, settings: Settings | None = None) -> R
 
 
 def render_output(output: RewriteOutput, request: RewriteRequest | None = None) -> str:
-    """Render dialect text, honoring Seedance metadata when present."""
+    """Render dialect text, honoring Seedance/LTX metadata when present."""
 
     if isinstance(output, SeedanceRewrite):
         return render_seedance_output(output, request.metadata if request else None)
+    if isinstance(output, LTXRewrite):
+        return render_ltx_output(output, request.metadata if request else None)
     return output.render()
 
 
@@ -64,11 +69,14 @@ def validate_output(payload: Mapping[str, Any]) -> tuple[RewriteOutput, RewriteR
 
     profile = str(output_data.get("profile", "")).strip().lower()
     seedance_requested = request is not None and request.video_pe_profile == "seedance"
+    ltx_requested = request is not None and request.video_pe_profile == "ltx"
 
     if request is not None and request.resolved_task in IMAGE_TASKS:
         output: RewriteOutput = ImageRewrite.model_validate(output_data)
     elif profile == "seedance" or seedance_requested:
         output = SeedanceRewrite.model_validate(output_data)
+    elif profile == "ltx" or ltx_requested:
+        output = LTXRewrite.model_validate(output_data)
     elif "subject_definitions" in output_data or (
         request is not None and request.resolved_task.value == "ref2va"
     ):
@@ -84,6 +92,14 @@ def validate_output(payload: Mapping[str, Any]) -> tuple[RewriteOutput, RewriteR
                 raise ValueError("output task does not match request")
         elif isinstance(output, SeedanceRewrite):
             validate_seedance_against_request(
+                output,
+                media_count=len(request.media),
+                task=request.resolved_task,
+                duration_seconds=request.duration_seconds,
+                media_types=[item.media_type for item in request.media],
+            )
+        elif isinstance(output, LTXRewrite):
+            validate_ltx_against_request(
                 output,
                 media_count=len(request.media),
                 task=request.resolved_task,

@@ -1,0 +1,24 @@
+{
+  "request": {
+    "prompt": "A potter throws a bowl on a wheel in a sunlit studio.",
+    "duration_seconds": 5,
+    "task": "t2va",
+    "metadata": {
+      "video_pe_profile": "ltx"
+    }
+  },
+  "output": {
+    "task": "t2va",
+    "profile": "ltx",
+    "duration_seconds": "5",
+    "action": "A potter throws a clay bowl on a spinning wheel in a sunlit studio",
+    "movements": "His wet hands rise along the wall of the clay, then pinch a thin rim as the wheel slows",
+    "appearance": "A middle-aged man with clay-smeared forearms, a faded linen apron, and short damp hair",
+    "environment": "A compact workshop with wooden shelves of bisque ware, a dusty window, and a water bucket at his feet",
+    "camera": "A medium close-up holds on his hands and the forming bowl, then a slow push-in as the rim tightens",
+    "lighting": "Warm late-morning sunlight from the window, with a soft fill from the pale walls",
+    "audio": "The wheel hums steadily, wet clay slaps, and he exhales a short satisfied breath",
+    "changes": null,
+    "generate_audio": true
+  }
+}

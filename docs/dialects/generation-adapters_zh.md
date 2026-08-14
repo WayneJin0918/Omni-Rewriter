@@ -20,6 +20,7 @@ adapter 是显式边界客户端，必须定义 payload 映射、认证、轮询
 | HunyuanImage-3.0 | 可使用 Seedream T2I 打包 | 上游模型专用 vLLM fork | `HunyuanImageVLLMClient`；上游本地 runner 配方 |
 | Wan | 可映射 H3 风格视频输出 | SGLang/vLLM-Omni 契约随版本变化 | `OmniVideosClient` + `WanOmniAdapter` |
 | LingBot Video | `LingBotCaption` schema | 上游独立 runner | 有界 subprocess runner + 可选两阶段 rewriter |
+| LTX-2.5 | 已实现 `ltx` 段落 PE | 官方 `python -m ltx_pipelines.distilled`（[Lightricks/LTX-2](https://github.com/Lightricks/LTX-2)） | `LTXVideoRunner`；live runtime **未验证** |
 | vLLM-Omni 路径 | 不推断兼容 | 上游发布广泛图像/视频支持矩阵 | **本仓库未验证** |
 
 ## 证据与限定
@@ -75,6 +76,7 @@ Omni-Rewriter 集成测试。在加入可复现 adapter 测试前，端到端 pr
   `OMNI_REWRITER_WAN_MODEL`；使用前须核对 runtime 版本支持。
 - `../../scripts/serve/serve_lingbot_rewriter.sh`：设置 `REWRITER_BASE_MODEL` 与 `REWRITER_ADAPTER`。
 - `../../scripts/run_lingbot_video.sh`：设置 `LINGBOT_VIDEO_ROOT` 与 `MODEL_DIR`。
+- `../../scripts/run_ltx25.sh`：设置 `OMNI_LTX_CHECKPOINT`（可选 `OMNI_LTX_UPSTREAM`）；本地生成未验证。
 - `../../scripts/serve/serve_sglang_qwen_writer.sh`：推荐 Qwen3.6-35B-A3B Writer（默认 HF id）。
   已有本地快照时设置 `OMNI_WRITER_MODEL`。
 - `../../scripts/serve/serve_qwen35_dev.sh` / `../../scripts/serve/serve_qwen35_prod.sh`：Qwen3.5

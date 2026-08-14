@@ -18,6 +18,7 @@ Canonical pages: [`dialects/`](dialects/README.md)
 
 - [Video PE (H3)](dialects/h3-pe-harness.md)
 - [Seedance PE](dialects/seedance-pe.md)
+- [LTX-2.5 PE](dialects/ltx-pe.md)
 - [Image PE](dialects/image-pe.md)
 - [H3 adapters](dialects/h3-adapters.md)
 - [Generation adapters](dialects/generation-adapters.md)
