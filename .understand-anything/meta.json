@@ -1,0 +1,98 @@
+{
+  "schemaVersion": 1,
+  "source": {
+    "commit": "e4613085f5f3b0213cb567e3f1e6021ea7c22ead",
+    "analysisMode": "static-only",
+    "trackedFileCount": 244,
+    "readMethod": "git-object-show"
+  },
+  "model": {
+    "provider": "custom:litellm",
+    "model": "gpt-5.3-codex-spark",
+    "authorizedByUser": true
+  },
+  "roles": [
+    {
+      "name": "deterministic-project-inventory",
+      "status": "accepted",
+      "evidence": "eval-artifacts/static-inventory.json"
+    },
+    {
+      "name": "project-scanner",
+      "status": "accepted",
+      "evidence": {
+        "path": "eval-artifacts/roles/project-scanner.txt",
+        "sha256": "894411f298d088b5c23072509a6899ec83231c107889543ed36b911ae4998308",
+        "ignoredUntracked": true
+      }
+    },
+    {
+      "name": "file-analyzer-core",
+      "status": "accepted",
+      "evidence": {
+        "path": "eval-artifacts/roles/file-analyzer-core.txt",
+        "sha256": "626093aa23bef3c9442098fac15b08cd4d010a76e87e97aa0cceca311e223cab",
+        "ignoredUntracked": true
+      }
+    },
+    {
+      "name": "file-analyzer-adapters-reconstruction",
+      "status": "accepted",
+      "evidence": {
+        "path": "eval-artifacts/roles/file-analyzer-adapters-reconstruction.txt",
+        "sha256": "e94467ab0d2f4a71823b42306e276e0f68abca70641db989ce1a1dce364dbd98",
+        "ignoredUntracked": true
+      }
+    },
+    {
+      "name": "architecture-analyzer",
+      "status": "accepted",
+      "evidence": {
+        "path": "eval-artifacts/roles/architecture-analyzer.txt",
+        "sha256": "277206451f8488761aaa6ac4e3bab3f4a2aa3ef6839d061c59292fab0fec5455",
+        "ignoredUntracked": true
+      }
+    },
+    {
+      "name": "tour-builder",
+      "status": "accepted",
+      "evidence": {
+        "path": "eval-artifacts/roles/tour-builder.txt",
+        "sha256": "2aefdb10254bcb444b400480ad02c464357f19865e28bca65d280d3975264f7d",
+        "ignoredUntracked": true
+      }
+    },
+    {
+      "name": "domain-analyzer",
+      "status": "accepted",
+      "evidence": {
+        "path": "eval-artifacts/roles/domain-analyzer-current.txt",
+        "sha256": "8968519ae6373e660a52430bf9070de62929d389494229431751b119d12026ac",
+        "ignoredUntracked": true,
+        "knowledgeGraphSha256": "5f0c62d58c42571df329a7e57ed0cbc6a9fccb1af4585edc27f6a9cf3f3cd5f3"
+      }
+    }
+  ],
+  "artifacts": {
+    "knowledgeGraph": {
+      "path": ".understand-anything/knowledge-graph.json",
+      "sha256": "5f0c62d58c42571df329a7e57ed0cbc6a9fccb1af4585edc27f6a9cf3f3cd5f3"
+    },
+    "domainGraph": {
+      "path": ".understand-anything/domain-graph.json",
+      "sha256": "66334cb6cf848d6bf8d44ff3916d554ef424a510aa011df137852dcb82d06c05"
+    },
+    "report": {
+      "path": "docs/repo-understanding/baselines/e4613085f5f3b0213cb567e3f1e6021ea7c22ead/report.md",
+      "sha256": "4d37ff9da012e2b7b74cb83d10c2b2926976732d73ebc0c7c4005a45892acc9b"
+    },
+    "readme": {
+      "path": "docs/repo-understanding/README.md",
+      "sha256": "8cafca08d32d3697e22f6e697491e2f20da5c5f2d15e5da9f0258b6f7313f4cb"
+    }
+  },
+  "limitations": [
+    "Static source inspection only. No repository scripts, dependency installation, tests, servers, dashboards, model runtimes, or provider APIs were run.",
+    "Static edges show imports and checked-in references; they do not prove runtime reachability, compatibility, deployment, or model behavior."
+  ]
+}
