@@ -1,0 +1,162 @@
+{
+  "schemaVersion": 1,
+  "name": "Omni-Rewriter static domain graph",
+  "source": {
+    "commit": "e4613085f5f3b0213cb567e3f1e6021ea7c22ead",
+    "analysisMode": "static-only"
+  },
+  "derivedFrom": {
+    "knowledgeGraphPath": ".understand-anything/knowledge-graph.json",
+    "knowledgeGraphSha256": "5f0c62d58c42571df329a7e57ed0cbc6a9fccb1af4585edc27f6a9cf3f3cd5f3"
+  },
+  "domains": [
+    {
+      "id": "prompt-expansion",
+      "title": "Typed prompt-expansion lifecycle",
+      "nodeIds": [
+        "file:184",
+        "file:212",
+        "file:204",
+        "file:186"
+      ],
+      "paths": [
+        "src/omni_rewriter/agent.py",
+        "src/omni_rewriter/service.py",
+        "src/omni_rewriter/prompts.py",
+        "src/omni_rewriter/backends.py"
+      ],
+      "evidence": [
+        "src/omni_rewriter/agent.py:102",
+        "src/omni_rewriter/service.py:29"
+      ]
+    },
+    {
+      "id": "typed-dialects",
+      "title": "Typed request/output dialects",
+      "nodeIds": [
+        "file:201",
+        "file:193",
+        "file:195",
+        "file:202",
+        "file:197"
+      ],
+      "paths": [
+        "src/omni_rewriter/models/request.py",
+        "src/omni_rewriter/models/base.py",
+        "src/omni_rewriter/models/image.py",
+        "src/omni_rewriter/models/seedance.py",
+        "src/omni_rewriter/models/ltx.py"
+      ],
+      "evidence": [
+        "src/omni_rewriter/models/request.py:34",
+        "src/omni_rewriter/models/base.py:24"
+      ]
+    },
+    {
+      "id": "media-and-observation",
+      "title": "Bounded media preparation and reconstruction",
+      "nodeIds": [
+        "file:191",
+        "file:207",
+        "file:208",
+        "file:210"
+      ],
+      "paths": [
+        "src/omni_rewriter/media_input.py",
+        "src/omni_rewriter/reconstruct/evidence.py",
+        "src/omni_rewriter/reconstruct/observe.py",
+        "src/omni_rewriter/reconstruct/service.py"
+      ],
+      "evidence": [
+        "src/omni_rewriter/media_input.py:73",
+        "src/omni_rewriter/reconstruct/service.py:52"
+      ]
+    },
+    {
+      "id": "optional-generation",
+      "title": "Explicit generation adapters",
+      "nodeIds": [
+        "file:174",
+        "file:175",
+        "file:176",
+        "file:177",
+        "file:178",
+        "file:179",
+        "file:180",
+        "file:181",
+        "file:182",
+        "file:183"
+      ],
+      "paths": [
+        "src/omni_rewriter/adapters/__init__.py",
+        "src/omni_rewriter/adapters/base.py",
+        "src/omni_rewriter/adapters/h3.py",
+        "src/omni_rewriter/adapters/hunyuan_image.py",
+        "src/omni_rewriter/adapters/lingbot_rewriter.py",
+        "src/omni_rewriter/adapters/lingbot_runner.py",
+        "src/omni_rewriter/adapters/ltx_runner.py",
+        "src/omni_rewriter/adapters/minimax.py",
+        "src/omni_rewriter/adapters/omni_videos.py",
+        "src/omni_rewriter/adapters/openai_images.py"
+      ],
+      "evidence": [
+        "docs/architecture.md:53",
+        "src/omni_rewriter/adapters/base.py:1"
+      ]
+    },
+    {
+      "id": "delivery-and-quality",
+      "title": "CLI/API, validation action, tests, and documentation",
+      "nodeIds": [
+        "file:187",
+        "file:185",
+        "file:023",
+        "file:013",
+        "file:016"
+      ],
+      "paths": [
+        "src/omni_rewriter/cli.py",
+        "src/omni_rewriter/api.py",
+        "action.yml",
+        ".github/workflows/ci.yml",
+        ".github/workflows/validate-pe.yml"
+      ],
+      "evidence": [
+        "src/omni_rewriter/cli.py:52",
+        "src/omni_rewriter/api.py:29",
+        "action.yml:25"
+      ]
+    }
+  ],
+  "edges": [
+    {
+      "from": "prompt-expansion",
+      "to": "typed-dialects",
+      "type": "validates-against"
+    },
+    {
+      "from": "prompt-expansion",
+      "to": "media-and-observation",
+      "type": "prepares-input"
+    },
+    {
+      "from": "media-and-observation",
+      "to": "prompt-expansion",
+      "type": "re-enters-as-request"
+    },
+    {
+      "from": "prompt-expansion",
+      "to": "optional-generation",
+      "type": "renders-for-explicit-consumer"
+    },
+    {
+      "from": "delivery-and-quality",
+      "to": "prompt-expansion",
+      "type": "invokes-or-checks"
+    }
+  ],
+  "limitations": [
+    "Static source inspection only. No repository scripts, dependency installation, tests, servers, dashboards, model runtimes, or provider APIs were run.",
+    "Static edges show imports and checked-in references; they do not prove runtime reachability, compatibility, deployment, or model behavior."
+  ]
+}

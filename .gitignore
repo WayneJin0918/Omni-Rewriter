@@ -70,3 +70,15 @@ docs/promo/out/
 # Heavy site demo GIFs live on gh-pages / GitHub Pages (not required for source clones)
 docs/day2-h3-pe/assets/demos/
 docs/h3-pe-showcase/thumbs/
+
+# Repository-understanding static-analysis evidence (canonical artifacts below remain tracked).
+eval-artifacts/
+roles/
+raw-role-output/
+dashboard/
+dashboard-*/
+.understandignore
+.understand-anything/*
+!.understand-anything/knowledge-graph.json
+!.understand-anything/domain-graph.json
+!.understand-anything/meta.json

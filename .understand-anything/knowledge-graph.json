@@ -1,0 +1,6723 @@
+{
+  "schemaVersion": 1,
+  "name": "Omni-Rewriter source-pinned knowledge graph",
+  "source": {
+    "commit": "e4613085f5f3b0213cb567e3f1e6021ea7c22ead",
+    "analysisMode": "static-only",
+    "trackedFileCount": 244,
+    "readMethod": "git-object-show"
+  },
+  "nodes": [
+    {
+      "id": "file:001",
+      "type": "file",
+      "path": ".cursor/rules/omni-rewriter.mdc",
+      "kind": "repository-file",
+      "layer": "shared",
+      "blobSha256": "6c703ad7e89b63be5aa4cfaf88120c01f2e50a9c7919e4f8dca6acb7863cc146",
+      "evidence": [
+        {
+          "path": ".cursor/rules/omni-rewriter.mdc",
+          "line": 1
+        }
+      ]
+    },
+    {
+      "id": "file:002",
+      "type": "file",
+      "path": ".cursor/skills/omni-rewriter-h3-pe/SKILL.md",
+      "kind": "documentation",
+      "layer": "shared",
+      "blobSha256": "d12028a2c11bb0ed28b38400c39396edab199b391758e2223a3dabf806d70110",
+      "evidence": [
+        {
+          "path": ".cursor/skills/omni-rewriter-h3-pe/SKILL.md",
+          "line": 1
+        }
+      ]
+    },
+    {
+      "id": "file:003",
+      "type": "file",
+      "path": ".cursor/skills/omni-rewriter-model-contribution/CONTRIBUTION_TEMPLATE.md",
+      "kind": "documentation",
+      "layer": "shared",
+      "blobSha256": "1bd17dee8e0c6c47748bdd678d9e6436838b9d5ece66fca369c67161822c93be",
+      "evidence": [
+        {
+          "path": ".cursor/skills/omni-rewriter-model-contribution/CONTRIBUTION_TEMPLATE.md",
+          "line": 1
+        }
+      ]
+    },
+    {
+      "id": "file:004",
+      "type": "file",
+      "path": ".cursor/skills/omni-rewriter-model-contribution/SKILL.md",
+      "kind": "documentation",
+      "layer": "shared",
+      "blobSha256": "d8e15e38f9b7f992c7bf6c5a6d3a280dfd8838726c0f526deebad9a2343560aa",
+      "evidence": [
+        {
+          "path": ".cursor/skills/omni-rewriter-model-contribution/SKILL.md",
+          "line": 1
+        }
+      ]
+    },
+    {
+      "id": "file:005",
+      "type": "file",
+      "path": ".cursor/skills/omni-rewriter-promo-pipeline/SKILL.md",
+      "kind": "documentation",
+      "layer": "shared",
+      "blobSha256": "f7b1249b228d93d978413aeb01602d9fa239b7f9bca4f19c8255f53600ced81b",
+      "evidence": [
+        {
+          "path": ".cursor/skills/omni-rewriter-promo-pipeline/SKILL.md",
+          "line": 1
+        }
+      ]
+    },
+    {
+      "id": "file:006",
+      "type": "file",
+      "path": ".env.example",
+      "kind": "repository-file",
+      "layer": "infrastructure",
+      "blobSha256": "3d1c5f625fd80bc5e675bd3a9f834f9e92f505238b170e8a99e290512eae7550",
+      "evidence": [
+        {
+          "path": ".env.example",
+          "line": 1
+        }
+      ]
+    },
+    {
+      "id": "file:007",
+      "type": "file",
+      "path": ".github/ISSUE_TEMPLATE/bug_report.yml",
+      "kind": "structured-data",
+      "layer": "infrastructure",
+      "blobSha256": "5096873e74e489d4f196ef4f2789e4b380e354c0681ad1f9af9026ed1f955433",
+      "evidence": [
+        {
+          "path": ".github/ISSUE_TEMPLATE/bug_report.yml",
+          "line": 1
+        }
+      ]
+    },
+    {
+      "id": "file:008",
+      "type": "file",
+      "path": ".github/ISSUE_TEMPLATE/config.yml",
+      "kind": "structured-data",
+      "layer": "infrastructure",
+      "blobSha256": "e543783b564dcb65da2d443dcbbcc3c0a46845af3594bc5e8216843b0c074f5c",
+      "evidence": [
+        {
+          "path": ".github/ISSUE_TEMPLATE/config.yml",
+          "line": 1
+        }
+      ]
+    },
+    {
+      "id": "file:009",
+      "type": "file",
+      "path": ".github/ISSUE_TEMPLATE/feature_request.yml",
+      "kind": "structured-data",
+      "layer": "infrastructure",
+      "blobSha256": "573820a881f851205aa179556d0fe96357165a0355234f8789f95d48535a76f0",
+      "evidence": [
+        {
+          "path": ".github/ISSUE_TEMPLATE/feature_request.yml",
+          "line": 1
+        }
+      ]
+    },
+    {
+      "id": "file:010",
+      "type": "file",
+      "path": ".github/ISSUE_TEMPLATE/model_contribution.yml",
+      "kind": "structured-data",
+      "layer": "infrastructure",
+      "blobSha256": "147380987021d9dd05faf598fb6a5d54babff42b1d7559ea4d7a2a7e763c26b4",
+      "evidence": [
+        {
+          "path": ".github/ISSUE_TEMPLATE/model_contribution.yml",
+          "line": 1
+        }
+      ]
+    },
+    {
+      "id": "file:011",
+      "type": "file",
+      "path": ".github/PULL_REQUEST_TEMPLATE.md",
+      "kind": "documentation",
+      "layer": "infrastructure",
+      "blobSha256": "3e7d1e0254a5c87062a41728df973990ab0457e23b16365ab842b2f47b7e6afa",
+      "evidence": [
+        {
+          "path": ".github/PULL_REQUEST_TEMPLATE.md",
+          "line": 1
+        }
+      ]
+    },
+    {
+      "id": "file:012",
+      "type": "file",
+      "path": ".github/workflows/ai-model-review.yml",
+      "kind": "structured-data",
+      "layer": "infrastructure",
+      "blobSha256": "de4a28249fcd720780e57d18cd59dfb6beb1633629c4a248cb8fad91e801746a",
+      "evidence": [
+        {
+          "path": ".github/workflows/ai-model-review.yml",
+          "line": 1
+        }
+      ]
+    },
+    {
+      "id": "file:013",
+      "type": "file",
+      "path": ".github/workflows/ci.yml",
+      "kind": "structured-data",
+      "layer": "infrastructure",
+      "blobSha256": "27dc4da929edc468f3f0ba4e6a49d35af37bb8c5542f13be83676425b588ee80",
+      "evidence": [
+        {
+          "path": ".github/workflows/ci.yml",
+          "line": 1
+        }
+      ]
+    },
+    {
+      "id": "file:014",
+      "type": "file",
+      "path": ".github/workflows/model-contribution-check.yml",
+      "kind": "structured-data",
+      "layer": "infrastructure",
+      "blobSha256": "3882a7d8e5daae306102ec2bb29ddf440ab9c37604e0d1badb3c9326fc64f0c9",
+      "evidence": [
+        {
+          "path": ".github/workflows/model-contribution-check.yml",
+          "line": 1
+        }
+      ]
+    },
+    {
+      "id": "file:015",
+      "type": "file",
+      "path": ".github/workflows/publish-pypi.yml",
+      "kind": "structured-data",
+      "layer": "infrastructure",
+      "blobSha256": "93be4bf483c2d1f06249be08b6b9cdc5214b50b156be2613269c3f6919e7db3f",
+      "evidence": [
+        {
+          "path": ".github/workflows/publish-pypi.yml",
+          "line": 1
+        }
+      ]
+    },
+    {
+      "id": "file:016",
+      "type": "file",
+      "path": ".github/workflows/validate-pe.yml",
+      "kind": "structured-data",
+      "layer": "infrastructure",
+      "blobSha256": "8670e981f77bfc0e0be1b31a505e56d5686898bfefb55af1140bc6462edee04a",
+      "evidence": [
+        {
+          "path": ".github/workflows/validate-pe.yml",
+          "line": 1
+        }
+      ]
+    },
+    {
+      "id": "file:017",
+      "type": "file",
+      "path": ".gitignore",
+      "kind": "repository-file",
+      "layer": "shared",
+      "blobSha256": "d6664ad5fe1cb63f3ddeebd9e7fbc2734ee50f80e14411ee876648f6ad01777b",
+      "evidence": [
+        {
+          "path": ".gitignore",
+          "line": 1
+        }
+      ]
+    },
+    {
+      "id": "file:018",
+      "type": "file",
+      "path": "AGENTS.md",
+      "kind": "documentation",
+      "layer": "shared",
+      "blobSha256": "95aaaa14b8197ddf71bfbc485341a9c118c547f69d16bc254b0eb891b0fc2f17",
+      "evidence": [
+        {
+          "path": "AGENTS.md",
+          "line": 1
+        }
+      ]
+    },
+    {
+      "id": "file:019",
+      "type": "file",
+      "path": "CHANGELOG.md",
+      "kind": "documentation",
+      "layer": "shared",
+      "blobSha256": "70ee2b84df7202efee3bad7a2cc84380d0e57718142d551f9730b3dd96007a0e",
+      "evidence": [
+        {
+          "path": "CHANGELOG.md",
+          "line": 1
+        }
+      ]
+    },
+    {
+      "id": "file:020",
+      "type": "file",
+      "path": "LICENSE",
+      "kind": "repository-file",
+      "layer": "shared",
+      "blobSha256": "c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4",
+      "evidence": [
+        {
+          "path": "LICENSE",
+          "line": 1
+        }
+      ]
+    },
+    {
+      "id": "file:021",
+      "type": "file",
+      "path": "NOTICE",
+      "kind": "repository-file",
+      "layer": "shared",
+      "blobSha256": "9dedc1b84be66b730ee274dcde791d783e39d6c66410c329b43778f972b04991",
+      "evidence": [
+        {
+          "path": "NOTICE",
+          "line": 1
+        }
+      ]
+    },
+    {
+      "id": "file:022",
+      "type": "file",
+      "path": "README.md",
+      "kind": "documentation",
+      "layer": "shared",
+      "blobSha256": "eaf9ff9cc0a06adee9c03d3102cd9193dcca5c776274664f110095cd78520539",
+      "evidence": [
+        {
+          "path": "README.md",
+          "line": 1
+        }
+      ]
+    },
+    {
+      "id": "file:023",
+      "type": "file",
+      "path": "action.yml",
+      "kind": "structured-data",
+      "layer": "infrastructure",
+      "blobSha256": "ec1302188ec1ac6ee1b6c50b082008ec4aad4c790360f0fe139c33c064715dc2",
+      "evidence": [
+        {
+          "path": "action.yml",
+          "line": 1
+        }
+      ]
+    },
+    {
+      "id": "file:024",
+      "type": "file",
+      "path": "docs/AGENTS.md",
+      "kind": "documentation",
+      "layer": "shared",
+      "blobSha256": "562141bdc9effd44217ca4ad54585a4659e8d9972d2d1084d49858ad39682b9f",
+      "evidence": [
+        {
+          "path": "docs/AGENTS.md",
+          "line": 1
+        }
+      ]
+    },
+    {
+      "id": "file:025",
+      "type": "file",
+      "path": "docs/CODE_OF_CONDUCT.md",
+      "kind": "documentation",
+      "layer": "shared",
+      "blobSha256": "47731cea7a9a617a80a212601f7c4bbcaa82f05d54f191b19a213c707f8062fe",
+      "evidence": [
+        {
+          "path": "docs/CODE_OF_CONDUCT.md",
+          "line": 1
+        }
+      ]
+    },
+    {
+      "id": "file:026",
+      "type": "file",
+      "path": "docs/CONTRIBUTING.md",
+      "kind": "documentation",
+      "layer": "shared",
+      "blobSha256": "a18cec83fa0b0c44f8c3843801235b2ec1306195e2178bc903bcd1e3a01c6d12",
+      "evidence": [
+        {
+          "path": "docs/CONTRIBUTING.md",
+          "line": 1
+        }
+      ]
+    },
+    {
+      "id": "file:027",
+      "type": "file",
+      "path": "docs/README_zh.md",
+      "kind": "documentation",
+      "layer": "shared",
+      "blobSha256": "f3b85277438c15470d0f25864b73c57582c7277dea920ef104bd5765e825ecb1",
+      "evidence": [
+        {
+          "path": "docs/README_zh.md",
+          "line": 1
+        }
+      ]
+    },
+    {
+      "id": "file:028",
+      "type": "file",
+      "path": "docs/ROADMAP.md",
+      "kind": "documentation",
+      "layer": "shared",
+      "blobSha256": "3a84b3bea555c0def31dfe3ff0bb5002c10f9aee2348d179279f46cd09fc5c98",
+      "evidence": [
+        {
+          "path": "docs/ROADMAP.md",
+          "line": 1
+        }
+      ]
+    },
+    {
+      "id": "file:029",
+      "type": "file",
+      "path": "docs/SECURITY.md",
+      "kind": "documentation",
+      "layer": "shared",
+      "blobSha256": "9cf8636b50f896d77fcf4d30952109f4cd3ecf03d56c12754fc22c5f276da9b9",
+      "evidence": [
+        {
+          "path": "docs/SECURITY.md",
+          "line": 1
+        }
+      ]
+    },
+    {
+      "id": "file:030",
+      "type": "file",
+      "path": "docs/architecture.md",
+      "kind": "documentation",
+      "layer": "shared",
+      "blobSha256": "a5915b9ec16f4d8f41a1ca339c9ce51fe856c039498fc8fd6ecce4eb9b493f1b",
+      "evidence": [
+        {
+          "path": "docs/architecture.md",
+          "line": 1
+        }
+      ]
+    },
+    {
+      "id": "file:031",
+      "type": "file",
+      "path": "docs/architecture_zh.md",
+      "kind": "documentation",
+      "layer": "shared",
+      "blobSha256": "bab7feb52b9141c9809b3e1989707331543938a91a98f6c9d90ac983a05511bf",
+      "evidence": [
+        {
+          "path": "docs/architecture_zh.md",
+          "line": 1
+        }
+      ]
+    },
+    {
+      "id": "file:032",
+      "type": "file",
+      "path": "docs/assets/brand/Logo.png",
+      "kind": "media-asset",
+      "layer": "shared",
+      "blobSha256": "c2dca7e1c40070afaa82cdd013233fa066a779cb52349ee603834357ad8d4979",
+      "evidence": [
+        {
+          "path": "docs/assets/brand/Logo.png",
+          "line": 1
+        }
+      ]
+    },
+    {
+      "id": "file:033",
+      "type": "file",
+      "path": "docs/assets/brand/README.md",
+      "kind": "documentation",
+      "layer": "shared",
+      "blobSha256": "62b777bcf59833907db2d397ff44260037fff1601b71c3dd4b06cd51139a13ba",
+      "evidence": [
+        {
+          "path": "docs/assets/brand/README.md",
+          "line": 1
+        }
+      ]
+    },
+    {
+      "id": "file:034",
+      "type": "file",
+      "path": "docs/assets/gallery/README.md",
+      "kind": "documentation",
+      "layer": "shared",
+      "blobSha256": "8ebe325bfb27acae5a890306e400ab1a35b9eab9d1f32a704785fb2e7a12596c",
+      "evidence": [
+        {
+          "path": "docs/assets/gallery/README.md",
+          "line": 1
+        }
+      ]
+    },
+    {
+      "id": "file:035",
+      "type": "file",
+      "path": "docs/assets/gallery/image/README.md",
+      "kind": "documentation",
+      "layer": "shared",
+      "blobSha256": "9f956b8b13d24a391ab9616183df88f1c23663bce5cd859484de5fb89f9c18a1",
+      "evidence": [
+        {
+          "path": "docs/assets/gallery/image/README.md",
+          "line": 1
+        }
+      ]
+    },
+    {
+      "id": "file:036",
+      "type": "file",
+      "path": "docs/assets/gallery/image/hunyuan_t2i_pe.webp",
+      "kind": "media-asset",
+      "layer": "shared",
+      "blobSha256": "63be0f4471c88f63d561da16e385fa86711c79abf99361f70f34352bf50fc986",
+      "evidence": [
+        {
+          "path": "docs/assets/gallery/image/hunyuan_t2i_pe.webp",
+          "line": 1
+        }
+      ]
+    },
+    {
+      "id": "file:037",
+      "type": "file",
+      "path": "docs/assets/gallery/image/hunyuan_t2i_raw.webp",
+      "kind": "media-asset",
+      "layer": "shared",
+      "blobSha256": "ec1ff0fd7621eca4018e1cd771cf139f5ffd6d8a7dcee2d8d8fb2c9faae10612",
+      "evidence": [
+        {
+          "path": "docs/assets/gallery/image/hunyuan_t2i_raw.webp",
+          "line": 1
+        }
+      ]
+    },
+    {
+      "id": "file:038",
+      "type": "file",
+      "path": "docs/assets/gallery/image/index.html",
+      "kind": "html-document",
+      "layer": "shared",
+      "blobSha256": "210b20c9fcd595d8b97a3271d211d5cfb74228824a7e8c8533afd636945bc66d",
+      "evidence": [
+        {
+          "path": "docs/assets/gallery/image/index.html",
+          "line": 1
+        }
+      ]
+    },
+    {
+      "id": "file:039",
+      "type": "file",
+      "path": "docs/assets/gallery/image/qwen_t2i_pe.webp",
+      "kind": "media-asset",
+      "layer": "shared",
+      "blobSha256": "392578820d76ddf7e871f162e505d083b19b357772882466ecd8c8c500379677",
+      "evidence": [
+        {
+          "path": "docs/assets/gallery/image/qwen_t2i_pe.webp",
+          "line": 1
+        }
+      ]
+    },
+    {
+      "id": "file:040",
+      "type": "file",
+      "path": "docs/assets/gallery/image/qwen_t2i_raw.webp",
+      "kind": "media-asset",
+      "layer": "shared",
+      "blobSha256": "6e549564c9900d7c24ebf69f43708f3a25aec81e7ef5ee90a9883be2e8130450",
+      "evidence": [
+        {
+          "path": "docs/assets/gallery/image/qwen_t2i_raw.webp",
+          "line": 1
+        }
+      ]
+    },
+    {
+      "id": "file:041",
+      "type": "file",
+      "path": "docs/assets/gallery/index.html",
+      "kind": "html-document",
+      "layer": "shared",
+      "blobSha256": "6175fe8100fbe4423332d7b2d245b721d4d31c79d1dacc915e954d6320d4e7ca",
+      "evidence": [
+        {
+          "path": "docs/assets/gallery/index.html",
+          "line": 1
+        }
+      ]
+    },
+    {
+      "id": "file:042",
+      "type": "file",
+      "path": "docs/assets/gallery/reconstruct/README.md",
+      "kind": "documentation",
+      "layer": "shared",
+      "blobSha256": "845ff7d0f25c7efabc027550ac9c75ebe6ebb4924079f41c6dc2850e77f2e9b1",
+      "evidence": [
+        {
+          "path": "docs/assets/gallery/reconstruct/README.md",
+          "line": 1
+        }
+      ]
+    },
+    {
+      "id": "file:043",
+      "type": "file",
+      "path": "docs/assets/gallery/reconstruct/h3_cinematic_15s_compare.gif",
+      "kind": "media-asset",
+      "layer": "shared",
+      "blobSha256": "336819db02573013a785c3eda3172ef7f76d4fe4d8c0c0c7ebbfb91b6dd63656",
+      "evidence": [
+        {
+          "path": "docs/assets/gallery/reconstruct/h3_cinematic_15s_compare.gif",
+          "line": 1
+        }
+      ]
+    },
+    {
+      "id": "file:044",
+      "type": "file",
+      "path": "docs/assets/gallery/reconstruct/h3_montage_40s_compare.gif",
+      "kind": "media-asset",
+      "layer": "shared",
+      "blobSha256": "f8028d7e1db3a823c587a092c1cbfabac1e94fcf257addc71ae851e661223ed3",
+      "evidence": [
+        {
+          "path": "docs/assets/gallery/reconstruct/h3_montage_40s_compare.gif",
+          "line": 1
+        }
+      ]
+    },
+    {
+      "id": "file:045",
+      "type": "file",
+      "path": "docs/assets/gallery/reconstruct/h3_t2va_10s_compare.gif",
+      "kind": "media-asset",
+      "layer": "shared",
+      "blobSha256": "bc3a9779af1e6d6b0264a74f0119d0757da71840056bad2f3a7531a70e2fad9c",
+      "evidence": [
+        {
+          "path": "docs/assets/gallery/reconstruct/h3_t2va_10s_compare.gif",
+          "line": 1
+        }
+      ]
+    },
+    {
+      "id": "file:046",
+      "type": "file",
+      "path": "docs/assets/gallery/reconstruct/index.html",
+      "kind": "html-document",
+      "layer": "shared",
+      "blobSha256": "35affb3ece23a2ed82100fdb55f8aa4a95fea4ccf59793365cc1830564ca2e8d",
+      "evidence": [
+        {
+          "path": "docs/assets/gallery/reconstruct/index.html",
+          "line": 1
+        }
+      ]
+    },
+    {
+      "id": "file:047",
+      "type": "file",
+      "path": "docs/assets/gallery/reconstruct/manifest.json",
+      "kind": "structured-data",
+      "layer": "shared",
+      "blobSha256": "bd9d31ac4499b094c6fd2c6b22359b75ca937b4ba9faae73d09614fe35b8d9dd",
+      "evidence": [
+        {
+          "path": "docs/assets/gallery/reconstruct/manifest.json",
+          "line": 1
+        }
+      ]
+    },
+    {
+      "id": "file:048",
+      "type": "file",
+      "path": "docs/assets/gallery/reconstruct/seedance_ornithopter_20s_compare.gif",
+      "kind": "media-asset",
+      "layer": "shared",
+      "blobSha256": "787b3fdc384e62537c4bd3a446aafd042cec4826a959cce0322533f6eb5cb2d6",
+      "evidence": [
+        {
+          "path": "docs/assets/gallery/reconstruct/seedance_ornithopter_20s_compare.gif",
+          "line": 1
+        }
+      ]
+    },
+    {
+      "id": "file:049",
+      "type": "file",
+      "path": "docs/assets/gallery/s13_rooftop_orbit_pe.gif",
+      "kind": "media-asset",
+      "layer": "shared",
+      "blobSha256": "a7c21acff1f3d6e7c55f544e02e535add10c0777723c237d6bc263e71e9b7634",
+      "evidence": [
+        {
+          "path": "docs/assets/gallery/s13_rooftop_orbit_pe.gif",
+          "line": 1
+        }
+      ]
+    },
+    {
+      "id": "file:050",
+      "type": "file",
+      "path": "docs/assets/gallery/s13_rooftop_orbit_raw.gif",
+      "kind": "media-asset",
+      "layer": "shared",
+      "blobSha256": "3028b980c4fd4f0a2ad22969fbdb6f83de6ce76a6e94bd8db24d00453dfe7707",
+      "evidence": [
+        {
+          "path": "docs/assets/gallery/s13_rooftop_orbit_raw.gif",
+          "line": 1
+        }
+      ]
+    },
+    {
+      "id": "file:051",
+      "type": "file",
+      "path": "docs/assets/gallery/s14_kitchen_stations_pe.gif",
+      "kind": "media-asset",
+      "layer": "shared",
+      "blobSha256": "ef22cd58617a35cf7e731694e21ee20effb20b181b90164f4fbc835d53689848",
+      "evidence": [
+        {
+          "path": "docs/assets/gallery/s14_kitchen_stations_pe.gif",
+          "line": 1
+        }
+      ]
+    },
+    {
+      "id": "file:052",
+      "type": "file",
+      "path": "docs/assets/gallery/s14_kitchen_stations_raw.gif",
+      "kind": "media-asset",
+      "layer": "shared",
+      "blobSha256": "c10f074cebbb5baafef27a1efa96d79d164df7e0306aff404202bbaf48d5e542",
+      "evidence": [
+        {
+          "path": "docs/assets/gallery/s14_kitchen_stations_raw.gif",
+          "line": 1
+        }
+      ]
+    },
+    {
+      "id": "file:053",
+      "type": "file",
+      "path": "docs/assets/gallery/s15_concert_crashzoom_pe.gif",
+      "kind": "media-asset",
+      "layer": "shared",
+      "blobSha256": "b2508f5005162155d8f804e409ce44fd3145d08aa47aba563f32b58bc497e619",
+      "evidence": [
+        {
+          "path": "docs/assets/gallery/s15_concert_crashzoom_pe.gif",
+          "line": 1
+        }
+      ]
+    },
+    {
+      "id": "file:054",
+      "type": "file",
+      "path": "docs/assets/gallery/s15_concert_crashzoom_raw.gif",
+      "kind": "media-asset",
+      "layer": "shared",
+      "blobSha256": "176d76865b04f8ed3c34248ba730aee4c41c89339ac6d2f17ae3717b7ff68d5f",
+      "evidence": [
+        {
+          "path": "docs/assets/gallery/s15_concert_crashzoom_raw.gif",
+          "line": 1
+        }
+      ]
+    },
+    {
+      "id": "file:055",
+      "type": "file",
+      "path": "docs/community-models.md",
+      "kind": "documentation",
+      "layer": "shared",
+      "blobSha256": "58e05bada54ad220b0d09e20e330f9009c9e1b434e1df558c8311abe2c651917",
+      "evidence": [
+        {
+          "path": "docs/community-models.md",
+          "line": 1
+        }
+      ]
+    },
+    {
+      "id": "file:056",
+      "type": "file",
+      "path": "docs/community-models_zh.md",
+      "kind": "documentation",
+      "layer": "shared",
+      "blobSha256": "40cc98561457b33a45ff15a1d031304b26dad7e8ab6dc4815c42afe6a4eb0a79",
+      "evidence": [
+        {
+          "path": "docs/community-models_zh.md",
+          "line": 1
+        }
+      ]
+    },
+    {
+      "id": "file:057",
+      "type": "file",
+      "path": "docs/day2-h3-pe/README.md",
+      "kind": "documentation",
+      "layer": "shared",
+      "blobSha256": "a578047c9bde0781902bab532ba0d17a6a591b84c1af3fc8d2510cc3a16a71d3",
+      "evidence": [
+        {
+          "path": "docs/day2-h3-pe/README.md",
+          "line": 1
+        }
+      ]
+    },
+    {
+      "id": "file:058",
+      "type": "file",
+      "path": "docs/day2-h3-pe/assets/promo/poster.png",
+      "kind": "media-asset",
+      "layer": "shared",
+      "blobSha256": "347c8f2faf6b26a9e9d14512303d4ccf00c20174c8aaf2dff96a93bf5c3e2727",
+      "evidence": [
+        {
+          "path": "docs/day2-h3-pe/assets/promo/poster.png",
+          "line": 1
+        }
+      ]
+    },
+    {
+      "id": "file:059",
+      "type": "file",
+      "path": "docs/day2-h3-pe/home.html",
+      "kind": "html-document",
+      "layer": "shared",
+      "blobSha256": "493b4f8564d5c0a08f93f2cd21d333756ee799de3027611fa77415bf4ebcbe81",
+      "evidence": [
+        {
+          "path": "docs/day2-h3-pe/home.html",
+          "line": 1
+        }
+      ]
+    },
+    {
+      "id": "file:060",
+      "type": "file",
+      "path": "docs/day2-h3-pe/index.html",
+      "kind": "html-document",
+      "layer": "shared",
+      "blobSha256": "3d3198f02bb1e41a1680560196ac7baeaa021498a77bfd8bb90404d44ef6cfc2",
+      "evidence": [
+        {
+          "path": "docs/day2-h3-pe/index.html",
+          "line": 1
+        }
+      ]
+    },
+    {
+      "id": "file:061",
+      "type": "file",
+      "path": "docs/design/examples/observation_kite.json",
+      "kind": "structured-data",
+      "layer": "shared",
+      "blobSha256": "eb1f7976be4dc04e1228297b8acdf9aaca6cd52c022f26f644ac6de8446a239d",
+      "evidence": [
+        {
+          "path": "docs/design/examples/observation_kite.json",
+          "line": 1
+        }
+      ]
+    },
+    {
+      "id": "file:062",
+      "type": "file",
+      "path": "docs/design/video-reconstruct-pe.md",
+      "kind": "documentation",
+      "layer": "shared",
+      "blobSha256": "820bc4e93f9b6e8f9170c89018e0bc10f6da1e4957613c5edd6c42d2bf69e9a7",
+      "evidence": [
+        {
+          "path": "docs/design/video-reconstruct-pe.md",
+          "line": 1
+        }
+      ]
+    },
+    {
+      "id": "file:063",
+      "type": "file",
+      "path": "docs/dialects/README.md",
+      "kind": "documentation",
+      "layer": "shared",
+      "blobSha256": "e01ae792f9a16ca832f8d9945b71769406d5096792aa4a3b7e98da7bd03f2482",
+      "evidence": [
+        {
+          "path": "docs/dialects/README.md",
+          "line": 1
+        }
+      ]
+    },
+    {
+      "id": "file:064",
+      "type": "file",
+      "path": "docs/dialects/community-models.md",
+      "kind": "documentation",
+      "layer": "shared",
+      "blobSha256": "be76867110d151e8af5461ef3f0c79e4f3944e78b4be24425747af3014b6e781",
+      "evidence": [
+        {
+          "path": "docs/dialects/community-models.md",
+          "line": 1
+        }
+      ]
+    },
+    {
+      "id": "file:065",
+      "type": "file",
+      "path": "docs/dialects/community-models_zh.md",
+      "kind": "documentation",
+      "layer": "shared",
+      "blobSha256": "ab2a220a44699b002be84287123302231e72163108c1c34201ea04350956aa2a",
+      "evidence": [
+        {
+          "path": "docs/dialects/community-models_zh.md",
+          "line": 1
+        }
+      ]
+    },
+    {
+      "id": "file:066",
+      "type": "file",
+      "path": "docs/dialects/generation-adapters.md",
+      "kind": "documentation",
+      "layer": "shared",
+      "blobSha256": "3d9d742cd701ee3995b68e59f42413b5d2c0f3115de51a0040f9447ff044d5f9",
+      "evidence": [
+        {
+          "path": "docs/dialects/generation-adapters.md",
+          "line": 1
+        }
+      ]
+    },
+    {
+      "id": "file:067",
+      "type": "file",
+      "path": "docs/dialects/generation-adapters_zh.md",
+      "kind": "documentation",
+      "layer": "shared",
+      "blobSha256": "8e61b6b4745db46dfc00e3a1abca7960f9374fa0c3387c968df0a11df08b39df",
+      "evidence": [
+        {
+          "path": "docs/dialects/generation-adapters_zh.md",
+          "line": 1
+        }
+      ]
+    },
+    {
+      "id": "file:068",
+      "type": "file",
+      "path": "docs/dialects/h3-adapters.md",
+      "kind": "documentation",
+      "layer": "shared",
+      "blobSha256": "c54bbc427176cb1a5dab7d6bcff5f2a81bafd73c472f0b6af4f315626e9c201f",
+      "evidence": [
+        {
+          "path": "docs/dialects/h3-adapters.md",
+          "line": 1
+        }
+      ]
+    },
+    {
+      "id": "file:069",
+      "type": "file",
+      "path": "docs/dialects/h3-adapters_zh.md",
+      "kind": "documentation",
+      "layer": "shared",
+      "blobSha256": "d36ffe2643a6d1d1b88a1fc9a18bbd56fa92814dd1d7ba8fcafe57599893e57d",
+      "evidence": [
+        {
+          "path": "docs/dialects/h3-adapters_zh.md",
+          "line": 1
+        }
+      ]
+    },
+    {
+      "id": "file:070",
+      "type": "file",
+      "path": "docs/dialects/h3-pe-harness.md",
+      "kind": "documentation",
+      "layer": "shared",
+      "blobSha256": "f51d5eb855c7984d7c215720ca066c4243a63b9bf838d7d925b2bdbeb3e564f8",
+      "evidence": [
+        {
+          "path": "docs/dialects/h3-pe-harness.md",
+          "line": 1
+        }
+      ]
+    },
+    {
+      "id": "file:071",
+      "type": "file",
+      "path": "docs/dialects/h3-pe-harness_zh.md",
+      "kind": "documentation",
+      "layer": "shared",
+      "blobSha256": "71da587ec8847306bb70646be8f1d07f46f8cbda991cb9604e8827df72bf67e7",
+      "evidence": [
+        {
+          "path": "docs/dialects/h3-pe-harness_zh.md",
+          "line": 1
+        }
+      ]
+    },
+    {
+      "id": "file:072",
+      "type": "file",
+      "path": "docs/dialects/image-pe.md",
+      "kind": "documentation",
+      "layer": "shared",
+      "blobSha256": "4aa92d678c976fc329c82e3adfbdcbcd3a17ed4bea624203b2ea74a8efb47314",
+      "evidence": [
+        {
+          "path": "docs/dialects/image-pe.md",
+          "line": 1
+        }
+      ]
+    },
+    {
+      "id": "file:073",
+      "type": "file",
+      "path": "docs/dialects/image-pe_zh.md",
+      "kind": "documentation",
+      "layer": "shared",
+      "blobSha256": "2895063df0c1012c422d418e35156534890449b9c0f65784eff357309e5bfd6e",
+      "evidence": [
+        {
+          "path": "docs/dialects/image-pe_zh.md",
+          "line": 1
+        }
+      ]
+    },
+    {
+      "id": "file:074",
+      "type": "file",
+      "path": "docs/dialects/ltx-pe.md",
+      "kind": "documentation",
+      "layer": "shared",
+      "blobSha256": "65d845c28640957c82f773cf30f7e7c7524a75a42db8f52621e8b59df4e5a395",
+      "evidence": [
+        {
+          "path": "docs/dialects/ltx-pe.md",
+          "line": 1
+        }
+      ]
+    },
+    {
+      "id": "file:075",
+      "type": "file",
+      "path": "docs/dialects/ltx-pe_zh.md",
+      "kind": "documentation",
+      "layer": "shared",
+      "blobSha256": "cc89c82ac18cf320fd76174053e81ce9067648c74b377e14460f4852528e9b54",
+      "evidence": [
+        {
+          "path": "docs/dialects/ltx-pe_zh.md",
+          "line": 1
+        }
+      ]
+    },
+    {
+      "id": "file:076",
+      "type": "file",
+      "path": "docs/dialects/seedance-pe.md",
+      "kind": "documentation",
+      "layer": "shared",
+      "blobSha256": "7c0710edc0aed3e67e669c87727dc3a7d084235ba957d1a9f84dcd94d1d3b496",
+      "evidence": [
+        {
+          "path": "docs/dialects/seedance-pe.md",
+          "line": 1
+        }
+      ]
+    },
+    {
+      "id": "file:077",
+      "type": "file",
+      "path": "docs/dialects/seedance-pe_zh.md",
+      "kind": "documentation",
+      "layer": "shared",
+      "blobSha256": "be1f99da5d63a001c970fe64788e78224fa0415c4a0eae2614e818051195f672",
+      "evidence": [
+        {
+          "path": "docs/dialects/seedance-pe_zh.md",
+          "line": 1
+        }
+      ]
+    },
+    {
+      "id": "file:078",
+      "type": "file",
+      "path": "docs/evaluation.md",
+      "kind": "documentation",
+      "layer": "shared",
+      "blobSha256": "78dc24a1049793eff815b4351cd8cd7695492d72394f339a0eb7b1a3f41aa164",
+      "evidence": [
+        {
+          "path": "docs/evaluation.md",
+          "line": 1
+        }
+      ]
+    },
+    {
+      "id": "file:079",
+      "type": "file",
+      "path": "docs/evaluation_zh.md",
+      "kind": "documentation",
+      "layer": "shared",
+      "blobSha256": "a8334eb4d031bf2fe392e46ffa85839ccee7d7fab8f613d56a11c7427cd45b40",
+      "evidence": [
+        {
+          "path": "docs/evaluation_zh.md",
+          "line": 1
+        }
+      ]
+    },
+    {
+      "id": "file:080",
+      "type": "file",
+      "path": "docs/generation-adapters.md",
+      "kind": "documentation",
+      "layer": "shared",
+      "blobSha256": "27ab0620da83f9c59770ec9212c2d758e0e8ff76bbd02e7a59b9fb7ddb4fc670",
+      "evidence": [
+        {
+          "path": "docs/generation-adapters.md",
+          "line": 1
+        }
+      ]
+    },
+    {
+      "id": "file:081",
+      "type": "file",
+      "path": "docs/generation-adapters_zh.md",
+      "kind": "documentation",
+      "layer": "shared",
+      "blobSha256": "e56fa0b82f986e0caf0555a8a1fb2dfe9358ebca1f4224934b59235b8599543e",
+      "evidence": [
+        {
+          "path": "docs/generation-adapters_zh.md",
+          "line": 1
+        }
+      ]
+    },
+    {
+      "id": "file:082",
+      "type": "file",
+      "path": "docs/getting-started.md",
+      "kind": "documentation",
+      "layer": "shared",
+      "blobSha256": "9dc57c7fe20cc4474d4a241bc7c3497b1d9527ce8b329ab1e8700288761ace3c",
+      "evidence": [
+        {
+          "path": "docs/getting-started.md",
+          "line": 1
+        }
+      ]
+    },
+    {
+      "id": "file:083",
+      "type": "file",
+      "path": "docs/getting-started_zh.md",
+      "kind": "documentation",
+      "layer": "shared",
+      "blobSha256": "69984863ca18da7e5577a6c6df45e38c3ac16ba7bd23aea0721a0951dfadcfcf",
+      "evidence": [
+        {
+          "path": "docs/getting-started_zh.md",
+          "line": 1
+        }
+      ]
+    },
+    {
+      "id": "file:084",
+      "type": "file",
+      "path": "docs/h3-adapters.md",
+      "kind": "documentation",
+      "layer": "shared",
+      "blobSha256": "9ea9447e67a77f2149d27da25b45e346a3d0eea2f714ed39b66ca92b3cd1fc10",
+      "evidence": [
+        {
+          "path": "docs/h3-adapters.md",
+          "line": 1
+        }
+      ]
+    },
+    {
+      "id": "file:085",
+      "type": "file",
+      "path": "docs/h3-adapters_zh.md",
+      "kind": "documentation",
+      "layer": "shared",
+      "blobSha256": "9dc1f6460bd3f741745e91e70d5bd0b24c6f834117b199bbc1044ee85139ed03",
+      "evidence": [
+        {
+          "path": "docs/h3-adapters_zh.md",
+          "line": 1
+        }
+      ]
+    },
+    {
+      "id": "file:086",
+      "type": "file",
+      "path": "docs/h3-pe-harness.md",
+      "kind": "documentation",
+      "layer": "shared",
+      "blobSha256": "4c0899ec0d8ef936b9584045fd95571cb2bb9026524694fd07b6d9f660728560",
+      "evidence": [
+        {
+          "path": "docs/h3-pe-harness.md",
+          "line": 1
+        }
+      ]
+    },
+    {
+      "id": "file:087",
+      "type": "file",
+      "path": "docs/h3-pe-harness_zh.md",
+      "kind": "documentation",
+      "layer": "shared",
+      "blobSha256": "349179d22d1b8654f160941a808aca0bcfb83857be0a2bd9e3ec69775d5e7c90",
+      "evidence": [
+        {
+          "path": "docs/h3-pe-harness_zh.md",
+          "line": 1
+        }
+      ]
+    },
+    {
+      "id": "file:088",
+      "type": "file",
+      "path": "docs/h3-pe-showcase/README.md",
+      "kind": "documentation",
+      "layer": "shared",
+      "blobSha256": "d8e0532a68615585950931c2d778d5581ad49f7a012867ef482dea2fb264abb1",
+      "evidence": [
+        {
+          "path": "docs/h3-pe-showcase/README.md",
+          "line": 1
+        }
+      ]
+    },
+    {
+      "id": "file:089",
+      "type": "file",
+      "path": "docs/h3-pe-showcase/index.html",
+      "kind": "html-document",
+      "layer": "shared",
+      "blobSha256": "f5af5f5f81f5c30c164bd832b101521543df6506284f91c7ed8d58ba0283bfc5",
+      "evidence": [
+        {
+          "path": "docs/h3-pe-showcase/index.html",
+          "line": 1
+        }
+      ]
+    },
+    {
+      "id": "file:090",
+      "type": "file",
+      "path": "docs/image-pe.md",
+      "kind": "documentation",
+      "layer": "shared",
+      "blobSha256": "943340b15d9364403c2f1d36da3bfc0074269c4d607aeb9810e98413e3d84182",
+      "evidence": [
+        {
+          "path": "docs/image-pe.md",
+          "line": 1
+        }
+      ]
+    },
+    {
+      "id": "file:091",
+      "type": "file",
+      "path": "docs/image-pe_zh.md",
+      "kind": "documentation",
+      "layer": "shared",
+      "blobSha256": "e2b0937ad58a1fd684ef231bf4bcb2fd1af2e53aa88e477d0a7b356173266915",
+      "evidence": [
+        {
+          "path": "docs/image-pe_zh.md",
+          "line": 1
+        }
+      ]
+    },
+    {
+      "id": "file:092",
+      "type": "file",
+      "path": "docs/index.md",
+      "kind": "documentation",
+      "layer": "shared",
+      "blobSha256": "ce9b6d3aea3ae3bba3c94c5af54ccfed0a9f4a66c2ee6aea11da236c9cfaa3fe",
+      "evidence": [
+        {
+          "path": "docs/index.md",
+          "line": 1
+        }
+      ]
+    },
+    {
+      "id": "file:093",
+      "type": "file",
+      "path": "docs/index_zh.md",
+      "kind": "documentation",
+      "layer": "shared",
+      "blobSha256": "bbe7bf6f9b8c66668f62c1e62702d9d6fd645b520857ec2ab946e5ca767e2428",
+      "evidence": [
+        {
+          "path": "docs/index_zh.md",
+          "line": 1
+        }
+      ]
+    },
+    {
+      "id": "file:094",
+      "type": "file",
+      "path": "docs/ltx-pe.md",
+      "kind": "documentation",
+      "layer": "shared",
+      "blobSha256": "ffd751c9bfd0317145d32895cd9572c1ea1f8b7e3f9fae9c760d8c0ea9aceb13",
+      "evidence": [
+        {
+          "path": "docs/ltx-pe.md",
+          "line": 1
+        }
+      ]
+    },
+    {
+      "id": "file:095",
+      "type": "file",
+      "path": "docs/ltx-pe_zh.md",
+      "kind": "documentation",
+      "layer": "shared",
+      "blobSha256": "71525131f949a1ddf6956ea54296979665f6ab926482e58e9d1e7d8863728ab1",
+      "evidence": [
+        {
+          "path": "docs/ltx-pe_zh.md",
+          "line": 1
+        }
+      ]
+    },
+    {
+      "id": "file:096",
+      "type": "file",
+      "path": "docs/pe-validate-action.md",
+      "kind": "documentation",
+      "layer": "shared",
+      "blobSha256": "071fd360ecef2214b55f3e934110f53f9594bcc52920f2d6abe20e1fb5a888b9",
+      "evidence": [
+        {
+          "path": "docs/pe-validate-action.md",
+          "line": 1
+        }
+      ]
+    },
+    {
+      "id": "file:097",
+      "type": "file",
+      "path": "docs/promo/README.md",
+      "kind": "documentation",
+      "layer": "shared",
+      "blobSha256": "5e3b5a5c9acc31f67d055abc9f24c6e63f929e87a671fcb287a7027429e87ccc",
+      "evidence": [
+        {
+          "path": "docs/promo/README.md",
+          "line": 1
+        }
+      ]
+    },
+    {
+      "id": "file:098",
+      "type": "file",
+      "path": "docs/promo/copy_en.md",
+      "kind": "documentation",
+      "layer": "shared",
+      "blobSha256": "4f8a43f9f4f29a42f284ed2ef5f84cce0321c7fd7e21a4cd2a70eaf0c8237d29",
+      "evidence": [
+        {
+          "path": "docs/promo/copy_en.md",
+          "line": 1
+        }
+      ]
+    },
+    {
+      "id": "file:099",
+      "type": "file",
+      "path": "docs/promo/copy_zh.md",
+      "kind": "documentation",
+      "layer": "shared",
+      "blobSha256": "5bb6ee4554187ef78651564eda5e7ea4d09e232c408b6aad422d4a468c4ac661",
+      "evidence": [
+        {
+          "path": "docs/promo/copy_zh.md",
+          "line": 1
+        }
+      ]
+    },
+    {
+      "id": "file:100",
+      "type": "file",
+      "path": "docs/promo/model_matrix.yaml",
+      "kind": "structured-data",
+      "layer": "shared",
+      "blobSha256": "e7e4e109c1da4fe2fb6e3bdf8c5c219bec140a28b68809ed1f8948190a57e17e",
+      "evidence": [
+        {
+          "path": "docs/promo/model_matrix.yaml",
+          "line": 1
+        }
+      ]
+    },
+    {
+      "id": "file:101",
+      "type": "file",
+      "path": "docs/promo/omni_promo_chunk_a_messy.json",
+      "kind": "structured-data",
+      "layer": "shared",
+      "blobSha256": "107619e518b0e2aa292409fb4b210bf4848df7e024202dc1404fab99336c5a08",
+      "evidence": [
+        {
+          "path": "docs/promo/omni_promo_chunk_a_messy.json",
+          "line": 1
+        }
+      ]
+    },
+    {
+      "id": "file:102",
+      "type": "file",
+      "path": "docs/promo/omni_promo_chunk_a_messy.txt",
+      "kind": "documentation",
+      "layer": "shared",
+      "blobSha256": "e3606368df3631d667fc0799dfbab111641c70856b4f32c09a08a1959c341363",
+      "evidence": [
+        {
+          "path": "docs/promo/omni_promo_chunk_a_messy.txt",
+          "line": 1
+        }
+      ]
+    },
+    {
+      "id": "file:103",
+      "type": "file",
+      "path": "docs/promo/omni_promo_chunk_b_ship.json",
+      "kind": "structured-data",
+      "layer": "shared",
+      "blobSha256": "ae340f85894e784d0c1f498f854d5faed151e46d8698a6d97ef38a67b27da12d",
+      "evidence": [
+        {
+          "path": "docs/promo/omni_promo_chunk_b_ship.json",
+          "line": 1
+        }
+      ]
+    },
+    {
+      "id": "file:104",
+      "type": "file",
+      "path": "docs/promo/omni_promo_chunk_b_ship.txt",
+      "kind": "documentation",
+      "layer": "shared",
+      "blobSha256": "12d43d2a38bb898e737be8256691a2b908938181fab6e04a952843b2e1312b18",
+      "evidence": [
+        {
+          "path": "docs/promo/omni_promo_chunk_b_ship.txt",
+          "line": 1
+        }
+      ]
+    },
+    {
+      "id": "file:105",
+      "type": "file",
+      "path": "docs/promo/omni_promo_outro_vo.json",
+      "kind": "structured-data",
+      "layer": "shared",
+      "blobSha256": "cce0965e1cf55d4e481a7305b522f5a8f5983e26d6319800b2ba82981c240b6e",
+      "evidence": [
+        {
+          "path": "docs/promo/omni_promo_outro_vo.json",
+          "line": 1
+        }
+      ]
+    },
+    {
+      "id": "file:106",
+      "type": "file",
+      "path": "docs/promo/omni_rewriter_promo_h3.json",
+      "kind": "structured-data",
+      "layer": "shared",
+      "blobSha256": "107619e518b0e2aa292409fb4b210bf4848df7e024202dc1404fab99336c5a08",
+      "evidence": [
+        {
+          "path": "docs/promo/omni_rewriter_promo_h3.json",
+          "line": 1
+        }
+      ]
+    },
+    {
+      "id": "file:107",
+      "type": "file",
+      "path": "docs/promo/omni_rewriter_promo_h3.txt",
+      "kind": "documentation",
+      "layer": "shared",
+      "blobSha256": "e3606368df3631d667fc0799dfbab111641c70856b4f32c09a08a1959c341363",
+      "evidence": [
+        {
+          "path": "docs/promo/omni_rewriter_promo_h3.txt",
+          "line": 1
+        }
+      ]
+    },
+    {
+      "id": "file:108",
+      "type": "file",
+      "path": "docs/promo/omni_rewriter_promo_request.json",
+      "kind": "structured-data",
+      "layer": "shared",
+      "blobSha256": "09c6e4051ff02f99343f3b52470af8239ed93bdbef8b0256f372c5d15479ed55",
+      "evidence": [
+        {
+          "path": "docs/promo/omni_rewriter_promo_request.json",
+          "line": 1
+        }
+      ]
+    },
+    {
+      "id": "file:109",
+      "type": "file",
+      "path": "docs/promo/s17_city_marathon_pe.json",
+      "kind": "structured-data",
+      "layer": "shared",
+      "blobSha256": "4aa621eda4da21f847846072d1eec245a2f46bce376aea2fd38fc391dba0d65b",
+      "evidence": [
+        {
+          "path": "docs/promo/s17_city_marathon_pe.json",
+          "line": 1
+        }
+      ]
+    },
+    {
+      "id": "file:110",
+      "type": "file",
+      "path": "docs/promo/s17_city_marathon_pe.txt",
+      "kind": "documentation",
+      "layer": "shared",
+      "blobSha256": "b1b689cd0562ce641fde8d4c26fe60c7c8cb2c431c91f8fd05ee320d112a6585",
+      "evidence": [
+        {
+          "path": "docs/promo/s17_city_marathon_pe.txt",
+          "line": 1
+        }
+      ]
+    },
+    {
+      "id": "file:111",
+      "type": "file",
+      "path": "docs/promo/s17_city_marathon_raw.json",
+      "kind": "structured-data",
+      "layer": "shared",
+      "blobSha256": "5a36ec967509feae00f12b5fb5a641d0233aa7327d879117705e5015c432c944",
+      "evidence": [
+        {
+          "path": "docs/promo/s17_city_marathon_raw.json",
+          "line": 1
+        }
+      ]
+    },
+    {
+      "id": "file:112",
+      "type": "file",
+      "path": "docs/promo/s17_city_marathon_raw.txt",
+      "kind": "documentation",
+      "layer": "shared",
+      "blobSha256": "5105038ab7d065ac058e45b1f7ef51a91f465dd1de93639aa10c7ae154f122ba",
+      "evidence": [
+        {
+          "path": "docs/promo/s17_city_marathon_raw.txt",
+          "line": 1
+        }
+      ]
+    },
+    {
+      "id": "file:113",
+      "type": "file",
+      "path": "docs/references/README.md",
+      "kind": "documentation",
+      "layer": "shared",
+      "blobSha256": "8ba086d2fdd4b5256f5afe21327c6cbd234cd716e5c5683f3213406eaf87b270",
+      "evidence": [
+        {
+          "path": "docs/references/README.md",
+          "line": 1
+        }
+      ]
+    },
+    {
+      "id": "file:114",
+      "type": "file",
+      "path": "docs/references/jahnson-h3-skill-fl2va.txt",
+      "kind": "documentation",
+      "layer": "shared",
+      "blobSha256": "3abe3c0245046212ebf4a6fbb8539f2af110ccd5eaddd039325650c3a68b9c36",
+      "evidence": [
+        {
+          "path": "docs/references/jahnson-h3-skill-fl2va.txt",
+          "line": 1
+        }
+      ]
+    },
+    {
+      "id": "file:115",
+      "type": "file",
+      "path": "docs/references/jahnson-h3-skill-ref2va.txt",
+      "kind": "documentation",
+      "layer": "shared",
+      "blobSha256": "56d40278e42698b0cac7551ec0c55f5fc25ca9b8eb4ffa12f38f71b425434522",
+      "evidence": [
+        {
+          "path": "docs/references/jahnson-h3-skill-ref2va.txt",
+          "line": 1
+        }
+      ]
+    },
+    {
+      "id": "file:116",
+      "type": "file",
+      "path": "docs/references/jahnson-h3-skill-t2va.txt",
+      "kind": "documentation",
+      "layer": "shared",
+      "blobSha256": "93616d99b650dca973a5c1590f792bace6c3ee4c57e13fbb926f0d2d17628bf2",
+      "evidence": [
+        {
+          "path": "docs/references/jahnson-h3-skill-t2va.txt",
+          "line": 1
+        }
+      ]
+    },
+    {
+      "id": "file:117",
+      "type": "file",
+      "path": "docs/seedance-pe.md",
+      "kind": "documentation",
+      "layer": "shared",
+      "blobSha256": "f7c9a0b86a69bd47be6936af1fede949a5b10b1a4524140541153c079dc7941d",
+      "evidence": [
+        {
+          "path": "docs/seedance-pe.md",
+          "line": 1
+        }
+      ]
+    },
+    {
+      "id": "file:118",
+      "type": "file",
+      "path": "docs/seedance-pe_zh.md",
+      "kind": "documentation",
+      "layer": "shared",
+      "blobSha256": "49d6d93ff370baef3224657f1b709ccba9d0a410eea2b804eef55150b2b6b76a",
+      "evidence": [
+        {
+          "path": "docs/seedance-pe_zh.md",
+          "line": 1
+        }
+      ]
+    },
+    {
+      "id": "file:119",
+      "type": "file",
+      "path": "docs/site/README.md",
+      "kind": "documentation",
+      "layer": "shared",
+      "blobSha256": "14ea933a7c753052513bd4a2b540e655eee81f7c6887de3890a62de00af0f078",
+      "evidence": [
+        {
+          "path": "docs/site/README.md",
+          "line": 1
+        }
+      ]
+    },
+    {
+      "id": "file:120",
+      "type": "file",
+      "path": "examples/requests/README.md",
+      "kind": "documentation",
+      "layer": "shared",
+      "blobSha256": "1d3f164b02a30b3337199487ec550aecbcfc422ca3b5a24dd8beddf296d257d4",
+      "evidence": [
+        {
+          "path": "examples/requests/README.md",
+          "line": 1
+        }
+      ]
+    },
+    {
+      "id": "file:121",
+      "type": "file",
+      "path": "examples/requests/image_edit_dress.json",
+      "kind": "structured-data",
+      "layer": "shared",
+      "blobSha256": "3b5367ed77d6ce7963e7dc05d21485367eb98e8dace816c3626a35d83ff9fce4",
+      "evidence": [
+        {
+          "path": "examples/requests/image_edit_dress.json",
+          "line": 1
+        }
+      ]
+    },
+    {
+      "id": "file:122",
+      "type": "file",
+      "path": "examples/requests/ltx_i2va_portrait.json",
+      "kind": "structured-data",
+      "layer": "shared",
+      "blobSha256": "45ea50c3649f5d58890e10e5fbc2a17b904af275d888b1ee0697986d72dfefcc",
+      "evidence": [
+        {
+          "path": "examples/requests/ltx_i2va_portrait.json",
+          "line": 1
+        }
+      ]
+    },
+    {
+      "id": "file:123",
+      "type": "file",
+      "path": "examples/requests/ltx_t2va_workshop.json",
+      "kind": "structured-data",
+      "layer": "shared",
+      "blobSha256": "000b18e5669a7679af1296aff095121e10a938bb49506f597ea3f54e760ccb8c",
+      "evidence": [
+        {
+          "path": "examples/requests/ltx_t2va_workshop.json",
+          "line": 1
+        }
+      ]
+    },
+    {
+      "id": "file:124",
+      "type": "file",
+      "path": "examples/requests/promo_omni_rewriter.json",
+      "kind": "structured-data",
+      "layer": "shared",
+      "blobSha256": "24f77642db5748c019b9787928f43197049dd685d0cde3dd4705330326301bd8",
+      "evidence": [
+        {
+          "path": "examples/requests/promo_omni_rewriter.json",
+          "line": 1
+        }
+      ]
+    },
+    {
+      "id": "file:125",
+      "type": "file",
+      "path": "examples/requests/seedance_ref2va_interview.json",
+      "kind": "structured-data",
+      "layer": "shared",
+      "blobSha256": "7c777d01e48e0a209613e08ac54e8ac1aa372baa70ce4b20ab56b0aad948af7d",
+      "evidence": [
+        {
+          "path": "examples/requests/seedance_ref2va_interview.json",
+          "line": 1
+        }
+      ]
+    },
+    {
+      "id": "file:126",
+      "type": "file",
+      "path": "examples/requests/seedance_ref2va_pottery.json",
+      "kind": "structured-data",
+      "layer": "shared",
+      "blobSha256": "7111a716641028869829a8eb1adc2948862a4907cfda4525b98bdd4cc1ee2cf5",
+      "evidence": [
+        {
+          "path": "examples/requests/seedance_ref2va_pottery.json",
+          "line": 1
+        }
+      ]
+    },
+    {
+      "id": "file:127",
+      "type": "file",
+      "path": "examples/requests/seedance_t2va_kitchen.json",
+      "kind": "structured-data",
+      "layer": "shared",
+      "blobSha256": "2f4ce47668a91190eb4b56fb93395792eab8c210eaff1b6c450c4bf6a5961a15",
+      "evidence": [
+        {
+          "path": "examples/requests/seedance_t2va_kitchen.json",
+          "line": 1
+        }
+      ]
+    },
+    {
+      "id": "file:128",
+      "type": "file",
+      "path": "examples/requests/t2i_neon.json",
+      "kind": "structured-data",
+      "layer": "shared",
+      "blobSha256": "9a08d715c89dd6ecc2c2738d5556b8274700276ebd15f452aa77bc49a3aedb85",
+      "evidence": [
+        {
+          "path": "examples/requests/t2i_neon.json",
+          "line": 1
+        }
+      ]
+    },
+    {
+      "id": "file:129",
+      "type": "file",
+      "path": "examples/requests/t2va_kite.json",
+      "kind": "structured-data",
+      "layer": "shared",
+      "blobSha256": "c81566254e84956803fd5869b6b64381b39d21e5c475002ffc851db5b99525af",
+      "evidence": [
+        {
+          "path": "examples/requests/t2va_kite.json",
+          "line": 1
+        }
+      ]
+    },
+    {
+      "id": "file:130",
+      "type": "file",
+      "path": "pyproject.toml",
+      "kind": "structured-data",
+      "layer": "infrastructure",
+      "blobSha256": "5dc3ee7527dab1842ed14c5e90065524ceb74438f5203cb1b57a79a6dff68cb2",
+      "evidence": [
+        {
+          "path": "pyproject.toml",
+          "line": 1
+        }
+      ]
+    },
+    {
+      "id": "file:131",
+      "type": "file",
+      "path": "scripts/README.md",
+      "kind": "documentation",
+      "layer": "apps-script-server",
+      "blobSha256": "f6ca7f36f67e426bac783767b0ffb1d5d93bcb08966d62e80098855315f48417",
+      "evidence": [
+        {
+          "path": "scripts/README.md",
+          "line": 1
+        }
+      ]
+    },
+    {
+      "id": "file:132",
+      "type": "file",
+      "path": "scripts/ai_review_pr.py",
+      "kind": "python-module",
+      "layer": "apps-script-server",
+      "blobSha256": "4b14ea563b86a77986a72a19f563204e765a12dbe9f318a98d16df872fded1f6",
+      "evidence": [
+        {
+          "path": "scripts/ai_review_pr.py",
+          "line": 1
+        }
+      ]
+    },
+    {
+      "id": "file:133",
+      "type": "file",
+      "path": "scripts/check_model_contribution.py",
+      "kind": "python-module",
+      "layer": "apps-script-server",
+      "blobSha256": "ea342bc6482edfa27fbb8c4ba2424eb6cbc7aca8eb6674c065238712469ef6b1",
+      "evidence": [
+        {
+          "path": "scripts/check_model_contribution.py",
+          "line": 1
+        }
+      ]
+    },
+    {
+      "id": "file:134",
+      "type": "file",
+      "path": "scripts/make_gallery_thumbs.sh",
+      "kind": "shell-script",
+      "layer": "apps-script-server",
+      "blobSha256": "9519d08e0fca25e2bdd2b5b5f1f5b9fab171ca67b2a02ec2383af5bc3459fed7",
+      "evidence": [
+        {
+          "path": "scripts/make_gallery_thumbs.sh",
+          "line": 1
+        }
+      ]
+    },
+    {
+      "id": "file:135",
+      "type": "file",
+      "path": "scripts/make_h3_pe_showcase_thumbs.sh",
+      "kind": "shell-script",
+      "layer": "apps-script-server",
+      "blobSha256": "941d33476cf70c47252dc3d4f7aeb6e0638ad9b80dd415b83c71cc49e1c7f78b",
+      "evidence": [
+        {
+          "path": "scripts/make_h3_pe_showcase_thumbs.sh",
+          "line": 1
+        }
+      ]
+    },
+    {
+      "id": "file:136",
+      "type": "file",
+      "path": "scripts/promo/assemble_promo.py",
+      "kind": "python-module",
+      "layer": "apps-script-server",
+      "blobSha256": "93d0598868d194f3ee44cd3310cfdee26c465126ad884d2c11e7c772f8080d55",
+      "evidence": [
+        {
+          "path": "scripts/promo/assemble_promo.py",
+          "line": 1
+        }
+      ]
+    },
+    {
+      "id": "file:137",
+      "type": "file",
+      "path": "scripts/promo/build_model_plates.py",
+      "kind": "python-module",
+      "layer": "apps-script-server",
+      "blobSha256": "47ad2921c404fc6cc28845e5ce673b3bf0a3e300a34f0a2d0d1307cb79e07fae",
+      "evidence": [
+        {
+          "path": "scripts/promo/build_model_plates.py",
+          "line": 1
+        }
+      ]
+    },
+    {
+      "id": "file:138",
+      "type": "file",
+      "path": "scripts/promo/build_models_brand_card.py",
+      "kind": "python-module",
+      "layer": "apps-script-server",
+      "blobSha256": "577692ae9469f48250582e1efc575497cbb2116b2d06410d16b3ccc835626352",
+      "evidence": [
+        {
+          "path": "scripts/promo/build_models_brand_card.py",
+          "line": 1
+        }
+      ]
+    },
+    {
+      "id": "file:139",
+      "type": "file",
+      "path": "scripts/promo/build_models_finale.py",
+      "kind": "python-module",
+      "layer": "apps-script-server",
+      "blobSha256": "787aa103128debe7423815af031ecdbe2ca4bc0e035bba94e293bf05ed753a2d",
+      "evidence": [
+        {
+          "path": "scripts/promo/build_models_finale.py",
+          "line": 1
+        }
+      ]
+    },
+    {
+      "id": "file:140",
+      "type": "file",
+      "path": "scripts/promo/build_outro_audio.py",
+      "kind": "python-module",
+      "layer": "apps-script-server",
+      "blobSha256": "a76c1db6cfc229e6238d59f5fa5f5a9b3baa6d43217a51f3f6ac9fa958202cc1",
+      "evidence": [
+        {
+          "path": "scripts/promo/build_outro_audio.py",
+          "line": 1
+        }
+      ]
+    },
+    {
+      "id": "file:141",
+      "type": "file",
+      "path": "scripts/promo/build_proof_cards.py",
+      "kind": "python-module",
+      "layer": "apps-script-server",
+      "blobSha256": "3af173c6d7920b9f208b90683aae2bcc871341d5b37f17d8b9c5e91940189fe3",
+      "evidence": [
+        {
+          "path": "scripts/promo/build_proof_cards.py",
+          "line": 1
+        }
+      ]
+    },
+    {
+      "id": "file:142",
+      "type": "file",
+      "path": "scripts/promo/build_reconstruct_cards.py",
+      "kind": "python-module",
+      "layer": "apps-script-server",
+      "blobSha256": "327771c30cfc97d0f69120674f7f8aaaf9532c57948c1eeefd57b4321b5d3d01",
+      "evidence": [
+        {
+          "path": "scripts/promo/build_reconstruct_cards.py",
+          "line": 1
+        }
+      ]
+    },
+    {
+      "id": "file:143",
+      "type": "file",
+      "path": "scripts/promo/burn_names_on_slats.py",
+      "kind": "python-module",
+      "layer": "apps-script-server",
+      "blobSha256": "41c695dd77dc62c54b1c3c96ff649772e71455b13c955673ce520675b9d8031a",
+      "evidence": [
+        {
+          "path": "scripts/promo/burn_names_on_slats.py",
+          "line": 1
+        }
+      ]
+    },
+    {
+      "id": "file:144",
+      "type": "file",
+      "path": "scripts/promo/fix_intro_pe_card.py",
+      "kind": "python-module",
+      "layer": "apps-script-server",
+      "blobSha256": "569820e525b29d028f8c024fdc8bf0862756110d25655cf7a2939b5d2fee0bfe",
+      "evidence": [
+        {
+          "path": "scripts/promo/fix_intro_pe_card.py",
+          "line": 1
+        }
+      ]
+    },
+    {
+      "id": "file:145",
+      "type": "file",
+      "path": "scripts/promo/submit_h3_batch.py",
+      "kind": "python-module",
+      "layer": "apps-script-server",
+      "blobSha256": "f38ffbd6c1f75afb9aa046d9a72d6d80dd2f09d3b055e8b5833f807ccd69621b",
+      "evidence": [
+        {
+          "path": "scripts/promo/submit_h3_batch.py",
+          "line": 1
+        }
+      ]
+    },
+    {
+      "id": "file:146",
+      "type": "file",
+      "path": "scripts/promo/submit_h3_chunk.py",
+      "kind": "python-module",
+      "layer": "apps-script-server",
+      "blobSha256": "59c7264762e540ad1a00d6d4dbea0b641d081fb6fd3f2717003ed73d3b0d13fc",
+      "evidence": [
+        {
+          "path": "scripts/promo/submit_h3_chunk.py",
+          "line": 1
+        }
+      ]
+    },
+    {
+      "id": "file:147",
+      "type": "file",
+      "path": "scripts/reconstruct_replay_demo.py",
+      "kind": "python-module",
+      "layer": "apps-script-server",
+      "blobSha256": "8ccb45c10d976577c6eaf0cfc03f7b8ccb72d528ad5419db684dfcba63d30855",
+      "evidence": [
+        {
+          "path": "scripts/reconstruct_replay_demo.py",
+          "line": 1
+        }
+      ]
+    },
+    {
+      "id": "file:148",
+      "type": "file",
+      "path": "scripts/run_lingbot_video.sh",
+      "kind": "shell-script",
+      "layer": "apps-script-server",
+      "blobSha256": "e3c9039ad71000ac858931ff2ee9a5d921df2f940705718139c6f393490b2983",
+      "evidence": [
+        {
+          "path": "scripts/run_lingbot_video.sh",
+          "line": 1
+        }
+      ]
+    },
+    {
+      "id": "file:149",
+      "type": "file",
+      "path": "scripts/run_ltx25.sh",
+      "kind": "shell-script",
+      "layer": "apps-script-server",
+      "blobSha256": "10b9b8d6b25a77020c096a74fdc9995da7973e1887b4c5f85d6caaaf36b59539",
+      "evidence": [
+        {
+          "path": "scripts/run_ltx25.sh",
+          "line": 1
+        }
+      ]
+    },
+    {
+      "id": "file:150",
+      "type": "file",
+      "path": "scripts/serve/README.md",
+      "kind": "documentation",
+      "layer": "apps-script-server",
+      "blobSha256": "d55daab02e72328e25f33f05242b9860bd4c2cd27777743a115cc60bfb7cab35",
+      "evidence": [
+        {
+          "path": "scripts/serve/README.md",
+          "line": 1
+        }
+      ]
+    },
+    {
+      "id": "file:151",
+      "type": "file",
+      "path": "scripts/serve/run_lingbot_video.sh",
+      "kind": "shell-script",
+      "layer": "apps-script-server",
+      "blobSha256": "9d1ce1adf82d25e2190cda181050674578b706ba10dc74c09917f475c3e0096d",
+      "evidence": [
+        {
+          "path": "scripts/serve/run_lingbot_video.sh",
+          "line": 1
+        }
+      ]
+    },
+    {
+      "id": "file:152",
+      "type": "file",
+      "path": "scripts/serve/run_ltx25.sh",
+      "kind": "shell-script",
+      "layer": "apps-script-server",
+      "blobSha256": "3478cfb8ce3938a7b35b2f5b4e829ff3a6b3f80e64ea8670f0b4458da25e740e",
+      "evidence": [
+        {
+          "path": "scripts/serve/run_ltx25.sh",
+          "line": 1
+        }
+      ]
+    },
+    {
+      "id": "file:153",
+      "type": "file",
+      "path": "scripts/serve/serve_hunyuan_image3_vllm.sh",
+      "kind": "shell-script",
+      "layer": "apps-script-server",
+      "blobSha256": "0d0f9a44eb7a05ce02f4ba846ba6be56534ba428c3fec0758dad7f44e870bafe",
+      "evidence": [
+        {
+          "path": "scripts/serve/serve_hunyuan_image3_vllm.sh",
+          "line": 1
+        }
+      ]
+    },
+    {
+      "id": "file:154",
+      "type": "file",
+      "path": "scripts/serve/serve_lingbot_rewriter.sh",
+      "kind": "shell-script",
+      "layer": "apps-script-server",
+      "blobSha256": "12fad22def964548bf85e5a5269760ec2617d4b552117ab52edb6e20efc762ba",
+      "evidence": [
+        {
+          "path": "scripts/serve/serve_lingbot_rewriter.sh",
+          "line": 1
+        }
+      ]
+    },
+    {
+      "id": "file:155",
+      "type": "file",
+      "path": "scripts/serve/serve_qwen35_dev.sh",
+      "kind": "shell-script",
+      "layer": "apps-script-server",
+      "blobSha256": "74bfe2f79b560cce9e20a35649c2d8685e08275398004e09ad8068a2121789e1",
+      "evidence": [
+        {
+          "path": "scripts/serve/serve_qwen35_dev.sh",
+          "line": 1
+        }
+      ]
+    },
+    {
+      "id": "file:156",
+      "type": "file",
+      "path": "scripts/serve/serve_qwen35_prod.sh",
+      "kind": "shell-script",
+      "layer": "apps-script-server",
+      "blobSha256": "47c1f4e862a6050779bc2a4e6d0b822db28906822a0f3e7793400b90095a7dfc",
+      "evidence": [
+        {
+          "path": "scripts/serve/serve_qwen35_prod.sh",
+          "line": 1
+        }
+      ]
+    },
+    {
+      "id": "file:157",
+      "type": "file",
+      "path": "scripts/serve/serve_sglang_h3.sh",
+      "kind": "shell-script",
+      "layer": "apps-script-server",
+      "blobSha256": "df22e4f31c3bfbdc6cc9e124418a6968cf68d7b25beaef4d959808b0b13662ce",
+      "evidence": [
+        {
+          "path": "scripts/serve/serve_sglang_h3.sh",
+          "line": 1
+        }
+      ]
+    },
+    {
+      "id": "file:158",
+      "type": "file",
+      "path": "scripts/serve/serve_sglang_qwen_image.sh",
+      "kind": "shell-script",
+      "layer": "apps-script-server",
+      "blobSha256": "274f75e9604bd0cd677ab3d06396052265fa0bb7f1f40d7194a7df5de1f32a02",
+      "evidence": [
+        {
+          "path": "scripts/serve/serve_sglang_qwen_image.sh",
+          "line": 1
+        }
+      ]
+    },
+    {
+      "id": "file:159",
+      "type": "file",
+      "path": "scripts/serve/serve_sglang_qwen_writer.sh",
+      "kind": "shell-script",
+      "layer": "apps-script-server",
+      "blobSha256": "26bd363754669b5c87415fc36e0fb0dc3d777e92f7bf40610dcf3f8080d592ba",
+      "evidence": [
+        {
+          "path": "scripts/serve/serve_sglang_qwen_writer.sh",
+          "line": 1
+        }
+      ]
+    },
+    {
+      "id": "file:160",
+      "type": "file",
+      "path": "scripts/serve/serve_sglang_wan.sh",
+      "kind": "shell-script",
+      "layer": "apps-script-server",
+      "blobSha256": "9c824ecb3f1b877c1c846c61362d68f8d9aecf1b2118096ccb00273e680bb38b",
+      "evidence": [
+        {
+          "path": "scripts/serve/serve_sglang_wan.sh",
+          "line": 1
+        }
+      ]
+    },
+    {
+      "id": "file:161",
+      "type": "file",
+      "path": "scripts/serve/serve_vllm_omni_wan.sh",
+      "kind": "shell-script",
+      "layer": "apps-script-server",
+      "blobSha256": "efaa3e1f778c2bb7143366cadadf6309d561fa594d33fbb5adb12fc2dd2a3f3f",
+      "evidence": [
+        {
+          "path": "scripts/serve/serve_vllm_omni_wan.sh",
+          "line": 1
+        }
+      ]
+    },
+    {
+      "id": "file:162",
+      "type": "file",
+      "path": "scripts/serve_hunyuan_image3_vllm.sh",
+      "kind": "shell-script",
+      "layer": "apps-script-server",
+      "blobSha256": "ffc67cae33f1b08c89cf031567ba8869a8f1fdd96473325bb6e5fc2e1218de55",
+      "evidence": [
+        {
+          "path": "scripts/serve_hunyuan_image3_vllm.sh",
+          "line": 1
+        }
+      ]
+    },
+    {
+      "id": "file:163",
+      "type": "file",
+      "path": "scripts/serve_lingbot_rewriter.sh",
+      "kind": "shell-script",
+      "layer": "apps-script-server",
+      "blobSha256": "f334eb23b58361671b5658c562bc7272113f816761d42416e8013dab543a05a4",
+      "evidence": [
+        {
+          "path": "scripts/serve_lingbot_rewriter.sh",
+          "line": 1
+        }
+      ]
+    },
+    {
+      "id": "file:164",
+      "type": "file",
+      "path": "scripts/serve_qwen35_dev.sh",
+      "kind": "shell-script",
+      "layer": "apps-script-server",
+      "blobSha256": "42623714681a14759dc8f1887c9f8fbc4d4c35d28c050da496103e9e65058d0d",
+      "evidence": [
+        {
+          "path": "scripts/serve_qwen35_dev.sh",
+          "line": 1
+        }
+      ]
+    },
+    {
+      "id": "file:165",
+      "type": "file",
+      "path": "scripts/serve_qwen35_prod.sh",
+      "kind": "shell-script",
+      "layer": "apps-script-server",
+      "blobSha256": "9a094c0dce1d62c02ac3513fcd0c2419b2cdd9a2dfa31707e0141ed220478eee",
+      "evidence": [
+        {
+          "path": "scripts/serve_qwen35_prod.sh",
+          "line": 1
+        }
+      ]
+    },
+    {
+      "id": "file:166",
+      "type": "file",
+      "path": "scripts/serve_sglang_h3.sh",
+      "kind": "shell-script",
+      "layer": "apps-script-server",
+      "blobSha256": "567c8bb14097f39d880a0a655ebd5c924c10ee78fe116609882b77d26c33683c",
+      "evidence": [
+        {
+          "path": "scripts/serve_sglang_h3.sh",
+          "line": 1
+        }
+      ]
+    },
+    {
+      "id": "file:167",
+      "type": "file",
+      "path": "scripts/serve_sglang_qwen_image.sh",
+      "kind": "shell-script",
+      "layer": "apps-script-server",
+      "blobSha256": "088286e92037680e2b143f93ba0f79a0f1718f3420f00248e1046b6a3c1bf32f",
+      "evidence": [
+        {
+          "path": "scripts/serve_sglang_qwen_image.sh",
+          "line": 1
+        }
+      ]
+    },
+    {
+      "id": "file:168",
+      "type": "file",
+      "path": "scripts/serve_sglang_qwen_writer.sh",
+      "kind": "shell-script",
+      "layer": "apps-script-server",
+      "blobSha256": "78304e0f82a3ceffc72e5c04dbb0acc7ed54792ecb1107253da0ba0d93e23d90",
+      "evidence": [
+        {
+          "path": "scripts/serve_sglang_qwen_writer.sh",
+          "line": 1
+        }
+      ]
+    },
+    {
+      "id": "file:169",
+      "type": "file",
+      "path": "scripts/serve_sglang_wan.sh",
+      "kind": "shell-script",
+      "layer": "apps-script-server",
+      "blobSha256": "ad952e193fddb9f498d3fe1988ab37884f13ccfb483097e7bf2486af492e832b",
+      "evidence": [
+        {
+          "path": "scripts/serve_sglang_wan.sh",
+          "line": 1
+        }
+      ]
+    },
+    {
+      "id": "file:170",
+      "type": "file",
+      "path": "scripts/serve_vllm_omni_wan.sh",
+      "kind": "shell-script",
+      "layer": "apps-script-server",
+      "blobSha256": "4a2a198dda4e98d249d58d86649811a33fc55b00c349601b6a03d482462b9e4f",
+      "evidence": [
+        {
+          "path": "scripts/serve_vllm_omni_wan.sh",
+          "line": 1
+        }
+      ]
+    },
+    {
+      "id": "file:171",
+      "type": "file",
+      "path": "scripts/smoke_reconstruct.py",
+      "kind": "python-module",
+      "layer": "apps-script-server",
+      "blobSha256": "c949d85cabd089bc7ae2980de5d60b5e39c9622ec5ce3230402be36c48611fc4",
+      "evidence": [
+        {
+          "path": "scripts/smoke_reconstruct.py",
+          "line": 1
+        }
+      ]
+    },
+    {
+      "id": "file:172",
+      "type": "file",
+      "path": "scripts/validate_pe_files.py",
+      "kind": "python-module",
+      "layer": "apps-script-server",
+      "blobSha256": "aff2958104b74cb25ff799544c752dda9ea61a727204928b53a2410d18436b7c",
+      "evidence": [
+        {
+          "path": "scripts/validate_pe_files.py",
+          "line": 1
+        }
+      ]
+    },
+    {
+      "id": "file:173",
+      "type": "file",
+      "path": "src/omni_rewriter/__init__.py",
+      "kind": "python-module",
+      "layer": "shared",
+      "blobSha256": "dd6e3e70d663c957558a5035f7ba76414de696405d01fc741bbda33bcc797036",
+      "evidence": [
+        {
+          "path": "src/omni_rewriter/__init__.py",
+          "line": 1
+        }
+      ]
+    },
+    {
+      "id": "file:174",
+      "type": "file",
+      "path": "src/omni_rewriter/adapters/__init__.py",
+      "kind": "python-module",
+      "layer": "service-backend",
+      "blobSha256": "f8392269e9b4b003370cff77f64c8921ba13821a12df54291ab92cfa286ea3a8",
+      "evidence": [
+        {
+          "path": "src/omni_rewriter/adapters/__init__.py",
+          "line": 1
+        }
+      ]
+    },
+    {
+      "id": "file:175",
+      "type": "file",
+      "path": "src/omni_rewriter/adapters/base.py",
+      "kind": "python-module",
+      "layer": "service-backend",
+      "blobSha256": "651bec160fdce1cb03ad4d565261ba8fc30905c5c5b581f2bd1b0f3910b01a9d",
+      "evidence": [
+        {
+          "path": "src/omni_rewriter/adapters/base.py",
+          "line": 1
+        }
+      ]
+    },
+    {
+      "id": "file:176",
+      "type": "file",
+      "path": "src/omni_rewriter/adapters/h3.py",
+      "kind": "python-module",
+      "layer": "service-backend",
+      "blobSha256": "fcfada14e4ef1b33527f8aa7f47d4838338a13af1b3553ba4be3e317854a5819",
+      "evidence": [
+        {
+          "path": "src/omni_rewriter/adapters/h3.py",
+          "line": 1
+        }
+      ]
+    },
+    {
+      "id": "file:177",
+      "type": "file",
+      "path": "src/omni_rewriter/adapters/hunyuan_image.py",
+      "kind": "python-module",
+      "layer": "service-backend",
+      "blobSha256": "f136873bd3cc6f6b9ed57bd48c0331678a36b39f5ddf41795e98cbc510cba3bd",
+      "evidence": [
+        {
+          "path": "src/omni_rewriter/adapters/hunyuan_image.py",
+          "line": 1
+        }
+      ]
+    },
+    {
+      "id": "file:178",
+      "type": "file",
+      "path": "src/omni_rewriter/adapters/lingbot_rewriter.py",
+      "kind": "python-module",
+      "layer": "service-backend",
+      "blobSha256": "6808826a1c2f7415056baf9a33a4fe00d251dbaf0af68ae20b351c80aa1add07",
+      "evidence": [
+        {
+          "path": "src/omni_rewriter/adapters/lingbot_rewriter.py",
+          "line": 1
+        }
+      ]
+    },
+    {
+      "id": "file:179",
+      "type": "file",
+      "path": "src/omni_rewriter/adapters/lingbot_runner.py",
+      "kind": "python-module",
+      "layer": "service-backend",
+      "blobSha256": "bfe113a205897e131e275f8ee049b11b9fad705ce832263b71dc2e587f4285c8",
+      "evidence": [
+        {
+          "path": "src/omni_rewriter/adapters/lingbot_runner.py",
+          "line": 1
+        }
+      ]
+    },
+    {
+      "id": "file:180",
+      "type": "file",
+      "path": "src/omni_rewriter/adapters/ltx_runner.py",
+      "kind": "python-module",
+      "layer": "service-backend",
+      "blobSha256": "7ca2b57b10123bc12f7c66cc85cf2848ce3b0510420df53ea1420e9a8ed3b1c9",
+      "evidence": [
+        {
+          "path": "src/omni_rewriter/adapters/ltx_runner.py",
+          "line": 1
+        }
+      ]
+    },
+    {
+      "id": "file:181",
+      "type": "file",
+      "path": "src/omni_rewriter/adapters/minimax.py",
+      "kind": "python-module",
+      "layer": "service-backend",
+      "blobSha256": "220473090d0644404f144a60a6a914911346d91278bd0e6c0e9ab1b0ee6605eb",
+      "evidence": [
+        {
+          "path": "src/omni_rewriter/adapters/minimax.py",
+          "line": 1
+        }
+      ]
+    },
+    {
+      "id": "file:182",
+      "type": "file",
+      "path": "src/omni_rewriter/adapters/omni_videos.py",
+      "kind": "python-module",
+      "layer": "service-backend",
+      "blobSha256": "4893dd189788213845f0773717f880262adad86a22eb40aa66497c2061ddccc2",
+      "evidence": [
+        {
+          "path": "src/omni_rewriter/adapters/omni_videos.py",
+          "line": 1
+        }
+      ]
+    },
+    {
+      "id": "file:183",
+      "type": "file",
+      "path": "src/omni_rewriter/adapters/openai_images.py",
+      "kind": "python-module",
+      "layer": "service-backend",
+      "blobSha256": "7569c60e4c9e73f2bfeddecd30bbeb7cc893900382d4a64877b09a5ad191a2f7",
+      "evidence": [
+        {
+          "path": "src/omni_rewriter/adapters/openai_images.py",
+          "line": 1
+        }
+      ]
+    },
+    {
+      "id": "file:184",
+      "type": "file",
+      "path": "src/omni_rewriter/agent.py",
+      "kind": "python-module",
+      "layer": "service-backend",
+      "blobSha256": "de8f7eeccba321a3553516ea0dbbdf4be46926892fcfbd78340e6d81cedef775",
+      "evidence": [
+        {
+          "path": "src/omni_rewriter/agent.py",
+          "line": 1
+        }
+      ]
+    },
+    {
+      "id": "file:185",
+      "type": "file",
+      "path": "src/omni_rewriter/api.py",
+      "kind": "python-module",
+      "layer": "presentation-ui",
+      "blobSha256": "96f8ce52e9389b97ec8fba980533776a2a96b6c12a511abe48bedc03986ae98b",
+      "evidence": [
+        {
+          "path": "src/omni_rewriter/api.py",
+          "line": 1
+        }
+      ]
+    },
+    {
+      "id": "file:186",
+      "type": "file",
+      "path": "src/omni_rewriter/backends.py",
+      "kind": "python-module",
+      "layer": "service-backend",
+      "blobSha256": "31364ca5612881b7a0d84e511ed06c36fc640b7663a6a035904b0568da224ad4",
+      "evidence": [
+        {
+          "path": "src/omni_rewriter/backends.py",
+          "line": 1
+        }
+      ]
+    },
+    {
+      "id": "file:187",
+      "type": "file",
+      "path": "src/omni_rewriter/cli.py",
+      "kind": "python-module",
+      "layer": "presentation-ui",
+      "blobSha256": "2998b4431a3cb24a284f432ab4dd01da7b80a092406461c296b50904fa4ca34b",
+      "evidence": [
+        {
+          "path": "src/omni_rewriter/cli.py",
+          "line": 1
+        }
+      ]
+    },
+    {
+      "id": "file:188",
+      "type": "file",
+      "path": "src/omni_rewriter/config.py",
+      "kind": "python-module",
+      "layer": "service-backend",
+      "blobSha256": "3cc5cd8212d62ce23b788be2e743ff888bfeef71a1dbd47ce1907e579d0b1c96",
+      "evidence": [
+        {
+          "path": "src/omni_rewriter/config.py",
+          "line": 1
+        }
+      ]
+    },
+    {
+      "id": "file:189",
+      "type": "file",
+      "path": "src/omni_rewriter/errors.py",
+      "kind": "python-module",
+      "layer": "shared",
+      "blobSha256": "98c2bf9ef4c0d6c42b2cefcda8584cb8075ac2f5c8893a0f86d8657b9b12c99c",
+      "evidence": [
+        {
+          "path": "src/omni_rewriter/errors.py",
+          "line": 1
+        }
+      ]
+    },
+    {
+      "id": "file:190",
+      "type": "file",
+      "path": "src/omni_rewriter/evaluator.py",
+      "kind": "python-module",
+      "layer": "service-backend",
+      "blobSha256": "01f58e0ecd79d92bd53ad2dd26ac5f49f45a329cc807f085f3bfd7c0b2de8079",
+      "evidence": [
+        {
+          "path": "src/omni_rewriter/evaluator.py",
+          "line": 1
+        }
+      ]
+    },
+    {
+      "id": "file:191",
+      "type": "file",
+      "path": "src/omni_rewriter/media_input.py",
+      "kind": "python-module",
+      "layer": "service-backend",
+      "blobSha256": "12c4751223213fb03806cc9ad8e162f67bc76afb2c2bb1a4d2a3cfabc74afeef",
+      "evidence": [
+        {
+          "path": "src/omni_rewriter/media_input.py",
+          "line": 1
+        }
+      ]
+    },
+    {
+      "id": "file:192",
+      "type": "file",
+      "path": "src/omni_rewriter/models/__init__.py",
+      "kind": "python-module",
+      "layer": "shared",
+      "blobSha256": "610c4cb894a67accecf91ba63526ce80d84e4d42f8d0ef27eed692b98a229b11",
+      "evidence": [
+        {
+          "path": "src/omni_rewriter/models/__init__.py",
+          "line": 1
+        }
+      ]
+    },
+    {
+      "id": "file:193",
+      "type": "file",
+      "path": "src/omni_rewriter/models/base.py",
+      "kind": "python-module",
+      "layer": "shared",
+      "blobSha256": "d3eb21899d41baeb62469b3d298bfee9a8b7e48a141f6992d925a783d096a849",
+      "evidence": [
+        {
+          "path": "src/omni_rewriter/models/base.py",
+          "line": 1
+        }
+      ]
+    },
+    {
+      "id": "file:194",
+      "type": "file",
+      "path": "src/omni_rewriter/models/common.py",
+      "kind": "python-module",
+      "layer": "shared",
+      "blobSha256": "0392b57eee84ec11137d9e199238bdbf5863e0f11db00fb7b5a262547524388c",
+      "evidence": [
+        {
+          "path": "src/omni_rewriter/models/common.py",
+          "line": 1
+        }
+      ]
+    },
+    {
+      "id": "file:195",
+      "type": "file",
+      "path": "src/omni_rewriter/models/image.py",
+      "kind": "python-module",
+      "layer": "shared",
+      "blobSha256": "63f62585984a5c0be1c16a4a20037ded751270c03635a4b6843bd30e52ddc877",
+      "evidence": [
+        {
+          "path": "src/omni_rewriter/models/image.py",
+          "line": 1
+        }
+      ]
+    },
+    {
+      "id": "file:196",
+      "type": "file",
+      "path": "src/omni_rewriter/models/lingbot.py",
+      "kind": "python-module",
+      "layer": "shared",
+      "blobSha256": "4a4427964c46c16026f8f77a2c055f9c9803208e25a1bad19bb77acc115c29e0",
+      "evidence": [
+        {
+          "path": "src/omni_rewriter/models/lingbot.py",
+          "line": 1
+        }
+      ]
+    },
+    {
+      "id": "file:197",
+      "type": "file",
+      "path": "src/omni_rewriter/models/ltx.py",
+      "kind": "python-module",
+      "layer": "shared",
+      "blobSha256": "33ba2653509048aecf57dc3a481ccbbfedfd9c2a052a6d522f0234515e473cd0",
+      "evidence": [
+        {
+          "path": "src/omni_rewriter/models/ltx.py",
+          "line": 1
+        }
+      ]
+    },
+    {
+      "id": "file:198",
+      "type": "file",
+      "path": "src/omni_rewriter/models/media.py",
+      "kind": "python-module",
+      "layer": "shared",
+      "blobSha256": "59befe0baad665ea5a59f34430a21d2276d6f49cbb2207e3fdd4af3808f4252b",
+      "evidence": [
+        {
+          "path": "src/omni_rewriter/models/media.py",
+          "line": 1
+        }
+      ]
+    },
+    {
+      "id": "file:199",
+      "type": "file",
+      "path": "src/omni_rewriter/models/observation.py",
+      "kind": "python-module",
+      "layer": "shared",
+      "blobSha256": "4646899d53652ee7ea748af7a00a9e9a3aa04a96a17392586e34b6f0296c5a7e",
+      "evidence": [
+        {
+          "path": "src/omni_rewriter/models/observation.py",
+          "line": 1
+        }
+      ]
+    },
+    {
+      "id": "file:200",
+      "type": "file",
+      "path": "src/omni_rewriter/models/ref2va.py",
+      "kind": "python-module",
+      "layer": "shared",
+      "blobSha256": "c9446fe3b898ae316c4eebecb3ff385c7b89adc155befb61fc50443ec9d41aca",
+      "evidence": [
+        {
+          "path": "src/omni_rewriter/models/ref2va.py",
+          "line": 1
+        }
+      ]
+    },
+    {
+      "id": "file:201",
+      "type": "file",
+      "path": "src/omni_rewriter/models/request.py",
+      "kind": "python-module",
+      "layer": "shared",
+      "blobSha256": "e41ec8f679136ea10b400361a363f7eed0176909738b97f15953596087889e03",
+      "evidence": [
+        {
+          "path": "src/omni_rewriter/models/request.py",
+          "line": 1
+        }
+      ]
+    },
+    {
+      "id": "file:202",
+      "type": "file",
+      "path": "src/omni_rewriter/models/seedance.py",
+      "kind": "python-module",
+      "layer": "shared",
+      "blobSha256": "4702dd993064821354ead340086184d4259d3ca1648d2b7a67a42b3016cd0ca7",
+      "evidence": [
+        {
+          "path": "src/omni_rewriter/models/seedance.py",
+          "line": 1
+        }
+      ]
+    },
+    {
+      "id": "file:203",
+      "type": "file",
+      "path": "src/omni_rewriter/models/validation.py",
+      "kind": "python-module",
+      "layer": "shared",
+      "blobSha256": "b22664ce6ed91761b699b74239edb6a71f572b470502ac1fc84ec761e409c2ea",
+      "evidence": [
+        {
+          "path": "src/omni_rewriter/models/validation.py",
+          "line": 1
+        }
+      ]
+    },
+    {
+      "id": "file:204",
+      "type": "file",
+      "path": "src/omni_rewriter/prompts.py",
+      "kind": "python-module",
+      "layer": "service-backend",
+      "blobSha256": "a9f1d1d5f3b6e451ba3b72f061ff05d4a029ca3f97afc86845e26477dd383a75",
+      "evidence": [
+        {
+          "path": "src/omni_rewriter/prompts.py",
+          "line": 1
+        }
+      ]
+    },
+    {
+      "id": "file:205",
+      "type": "file",
+      "path": "src/omni_rewriter/py.typed",
+      "kind": "repository-file",
+      "layer": "service-backend",
+      "blobSha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "evidence": [
+        {
+          "path": "src/omni_rewriter/py.typed",
+          "line": 1
+        }
+      ]
+    },
+    {
+      "id": "file:206",
+      "type": "file",
+      "path": "src/omni_rewriter/reconstruct/__init__.py",
+      "kind": "python-module",
+      "layer": "service-backend",
+      "blobSha256": "629ed8366a438adfb6805588c9151a681d17f97af7f5a14af4cb1a547850e424",
+      "evidence": [
+        {
+          "path": "src/omni_rewriter/reconstruct/__init__.py",
+          "line": 1
+        }
+      ]
+    },
+    {
+      "id": "file:207",
+      "type": "file",
+      "path": "src/omni_rewriter/reconstruct/evidence.py",
+      "kind": "python-module",
+      "layer": "service-backend",
+      "blobSha256": "f5d9b2c58f128b4f3792acfb6a79bc5ba8473dc4eaf1f1c1d39b6f7a69157650",
+      "evidence": [
+        {
+          "path": "src/omni_rewriter/reconstruct/evidence.py",
+          "line": 1
+        }
+      ]
+    },
+    {
+      "id": "file:208",
+      "type": "file",
+      "path": "src/omni_rewriter/reconstruct/observe.py",
+      "kind": "python-module",
+      "layer": "service-backend",
+      "blobSha256": "42107e1ba8076c609bff2a159b9fadbc90bc48dd33d5f5cfc2b1119212a64923",
+      "evidence": [
+        {
+          "path": "src/omni_rewriter/reconstruct/observe.py",
+          "line": 1
+        }
+      ]
+    },
+    {
+      "id": "file:209",
+      "type": "file",
+      "path": "src/omni_rewriter/reconstruct/replay.py",
+      "kind": "python-module",
+      "layer": "service-backend",
+      "blobSha256": "d0e3bbd62d2c27fa7af49d398c646fc2cef64016a872258dce72ae3c1178e406",
+      "evidence": [
+        {
+          "path": "src/omni_rewriter/reconstruct/replay.py",
+          "line": 1
+        }
+      ]
+    },
+    {
+      "id": "file:210",
+      "type": "file",
+      "path": "src/omni_rewriter/reconstruct/service.py",
+      "kind": "python-module",
+      "layer": "service-backend",
+      "blobSha256": "0f7fc58b2d7524ae8d5e58b415a3777e5ed3b1de35fd3886b4ab505e98890f19",
+      "evidence": [
+        {
+          "path": "src/omni_rewriter/reconstruct/service.py",
+          "line": 1
+        }
+      ]
+    },
+    {
+      "id": "file:211",
+      "type": "file",
+      "path": "src/omni_rewriter/render.py",
+      "kind": "python-module",
+      "layer": "shared",
+      "blobSha256": "970fd6fddb50517184ee4f0d53329661457ff266e5b7d730a2deb16c23f46d41",
+      "evidence": [
+        {
+          "path": "src/omni_rewriter/render.py",
+          "line": 1
+        }
+      ]
+    },
+    {
+      "id": "file:212",
+      "type": "file",
+      "path": "src/omni_rewriter/service.py",
+      "kind": "python-module",
+      "layer": "service-backend",
+      "blobSha256": "a977e508210cf786f190b292a5487eaad9305c67f1a83dabb0067354c447444e",
+      "evidence": [
+        {
+          "path": "src/omni_rewriter/service.py",
+          "line": 1
+        }
+      ]
+    },
+    {
+      "id": "file:213",
+      "type": "file",
+      "path": "src/omni_rewriter/trace.py",
+      "kind": "python-module",
+      "layer": "shared",
+      "blobSha256": "374c4d4037f4e6ab23b03cfa6f75c64c5ce5c33d967a0f990bb7b7299483e1b7",
+      "evidence": [
+        {
+          "path": "src/omni_rewriter/trace.py",
+          "line": 1
+        }
+      ]
+    },
+    {
+      "id": "file:214",
+      "type": "file",
+      "path": "tests/conftest.py",
+      "kind": "python-module",
+      "layer": "shared",
+      "blobSha256": "25ef5016850b1729ac647ff4063a42bf1204767ad3e4fa33b6f0843c7fb68230",
+      "evidence": [
+        {
+          "path": "tests/conftest.py",
+          "line": 1
+        }
+      ]
+    },
+    {
+      "id": "file:215",
+      "type": "file",
+      "path": "tests/fixtures/i2va_lantern.json",
+      "kind": "structured-data",
+      "layer": "shared",
+      "blobSha256": "f72f9f0f25280027779d4fd4c04c75eead77c94d3df571f67b9bd291d03534fd",
+      "evidence": [
+        {
+          "path": "tests/fixtures/i2va_lantern.json",
+          "line": 1
+        }
+      ]
+    },
+    {
+      "id": "file:216",
+      "type": "file",
+      "path": "tests/fixtures/ltx/i2va_portrait.json",
+      "kind": "structured-data",
+      "layer": "shared",
+      "blobSha256": "538b86a650826bf8b4bdfcc8ec31db707b2e6cd8f3fc4682629953234234fe80",
+      "evidence": [
+        {
+          "path": "tests/fixtures/ltx/i2va_portrait.json",
+          "line": 1
+        }
+      ]
+    },
+    {
+      "id": "file:217",
+      "type": "file",
+      "path": "tests/fixtures/ltx/t2va_workshop.json",
+      "kind": "structured-data",
+      "layer": "shared",
+      "blobSha256": "d142a3db9751bd96d4ad8df957c6e09d4521f428f5f5ce0c2b4271230a185784",
+      "evidence": [
+        {
+          "path": "tests/fixtures/ltx/t2va_workshop.json",
+          "line": 1
+        }
+      ]
+    },
+    {
+      "id": "file:218",
+      "type": "file",
+      "path": "tests/fixtures/manifest.jsonl",
+      "kind": "structured-data",
+      "layer": "shared",
+      "blobSha256": "437e01a618fd1415c8fbe605c5f905f980d0524a69c8d9a9a79f93dc02a54054",
+      "evidence": [
+        {
+          "path": "tests/fixtures/manifest.jsonl",
+          "line": 1
+        }
+      ]
+    },
+    {
+      "id": "file:219",
+      "type": "file",
+      "path": "tests/fixtures/ref2va_teacup.json",
+      "kind": "structured-data",
+      "layer": "shared",
+      "blobSha256": "984a3b478eb3f33ae68e4962ebaf7ef790d1dfd99e7d08d57b3f7be060a99795",
+      "evidence": [
+        {
+          "path": "tests/fixtures/ref2va_teacup.json",
+          "line": 1
+        }
+      ]
+    },
+    {
+      "id": "file:220",
+      "type": "file",
+      "path": "tests/fixtures/seedance/ref2va_interview.json",
+      "kind": "structured-data",
+      "layer": "shared",
+      "blobSha256": "0d6ad6c6256a38ad0ee562aeddd68257048f7ba51570b402575aeb9f9bb7290b",
+      "evidence": [
+        {
+          "path": "tests/fixtures/seedance/ref2va_interview.json",
+          "line": 1
+        }
+      ]
+    },
+    {
+      "id": "file:221",
+      "type": "file",
+      "path": "tests/fixtures/seedance/ref2va_pottery.json",
+      "kind": "structured-data",
+      "layer": "shared",
+      "blobSha256": "dca9c7cbf51e3c9a78ce51a271a5db1d9fbcaf64018af7f6396228f2d898f3fb",
+      "evidence": [
+        {
+          "path": "tests/fixtures/seedance/ref2va_pottery.json",
+          "line": 1
+        }
+      ]
+    },
+    {
+      "id": "file:222",
+      "type": "file",
+      "path": "tests/fixtures/seedance/t2va_kitchen.json",
+      "kind": "structured-data",
+      "layer": "shared",
+      "blobSha256": "4abb47844fe46a749c51b91a1b9c36f165b99f92ef171c79ab2aa803e0b0700f",
+      "evidence": [
+        {
+          "path": "tests/fixtures/seedance/t2va_kitchen.json",
+          "line": 1
+        }
+      ]
+    },
+    {
+      "id": "file:223",
+      "type": "file",
+      "path": "tests/fixtures/t2i_neon.json",
+      "kind": "structured-data",
+      "layer": "shared",
+      "blobSha256": "bafe06a214cffb3f00ac84a768965392b94f00a211e9c5cd2265a2c5ac7115a9",
+      "evidence": [
+        {
+          "path": "tests/fixtures/t2i_neon.json",
+          "line": 1
+        }
+      ]
+    },
+    {
+      "id": "file:224",
+      "type": "file",
+      "path": "tests/fixtures/t2va_kite.json",
+      "kind": "structured-data",
+      "layer": "shared",
+      "blobSha256": "7008fdf98c58b69ca64674d0d1715a9d0e7d9e2f7b03656780ca245f3e5d55da",
+      "evidence": [
+        {
+          "path": "tests/fixtures/t2va_kite.json",
+          "line": 1
+        }
+      ]
+    },
+    {
+      "id": "file:225",
+      "type": "file",
+      "path": "tests/test_adapters.py",
+      "kind": "python-module",
+      "layer": "shared",
+      "blobSha256": "ef7b21f57562d27ac732e8f1dd516161c5c3cd72059b36310692fb101e0fc4ec",
+      "evidence": [
+        {
+          "path": "tests/test_adapters.py",
+          "line": 1
+        }
+      ]
+    },
+    {
+      "id": "file:226",
+      "type": "file",
+      "path": "tests/test_agent.py",
+      "kind": "python-module",
+      "layer": "shared",
+      "blobSha256": "dc27b62a016c60ea8ff7b0e5454980953a600c8c8dc77b24b7b7178a48cda14c",
+      "evidence": [
+        {
+          "path": "tests/test_agent.py",
+          "line": 1
+        }
+      ]
+    },
+    {
+      "id": "file:227",
+      "type": "file",
+      "path": "tests/test_backends.py",
+      "kind": "python-module",
+      "layer": "shared",
+      "blobSha256": "af326bcb50b18aeab1a88a376d3fda1f95c11f9ee574d5ccd030317766b74be0",
+      "evidence": [
+        {
+          "path": "tests/test_backends.py",
+          "line": 1
+        }
+      ]
+    },
+    {
+      "id": "file:228",
+      "type": "file",
+      "path": "tests/test_generation_adapters.py",
+      "kind": "python-module",
+      "layer": "shared",
+      "blobSha256": "a9163d94725b4fad2034b98b5fd8f4a774c670310753e902724531f766341947",
+      "evidence": [
+        {
+          "path": "tests/test_generation_adapters.py",
+          "line": 1
+        }
+      ]
+    },
+    {
+      "id": "file:229",
+      "type": "file",
+      "path": "tests/test_image_models.py",
+      "kind": "python-module",
+      "layer": "shared",
+      "blobSha256": "f5c471451025b0c6526c05f020879138b535ef1c50a24d3348b9a2562012f36a",
+      "evidence": [
+        {
+          "path": "tests/test_image_models.py",
+          "line": 1
+        }
+      ]
+    },
+    {
+      "id": "file:230",
+      "type": "file",
+      "path": "tests/test_interfaces.py",
+      "kind": "python-module",
+      "layer": "shared",
+      "blobSha256": "c0db6794a900b47bf370738b2c45e9f7d188add4087c49fb2ccb01d9e3655a42",
+      "evidence": [
+        {
+          "path": "tests/test_interfaces.py",
+          "line": 1
+        }
+      ]
+    },
+    {
+      "id": "file:231",
+      "type": "file",
+      "path": "tests/test_lingbot_adapters.py",
+      "kind": "python-module",
+      "layer": "shared",
+      "blobSha256": "015d2e404f1ca8c0b51e0d89bbb96de96d58cec20f334a6ca10bc1840b2c452f",
+      "evidence": [
+        {
+          "path": "tests/test_lingbot_adapters.py",
+          "line": 1
+        }
+      ]
+    },
+    {
+      "id": "file:232",
+      "type": "file",
+      "path": "tests/test_lingbot_models.py",
+      "kind": "python-module",
+      "layer": "shared",
+      "blobSha256": "20f00bb20477a6b5c798245ad80657d909742b35e4a55bb33170c325d9898573",
+      "evidence": [
+        {
+          "path": "tests/test_lingbot_models.py",
+          "line": 1
+        }
+      ]
+    },
+    {
+      "id": "file:233",
+      "type": "file",
+      "path": "tests/test_ltx.py",
+      "kind": "python-module",
+      "layer": "shared",
+      "blobSha256": "72711be8c565fecabde3be27ec473c46bf3b1e0edec8f47c1764b844a47d4b03",
+      "evidence": [
+        {
+          "path": "tests/test_ltx.py",
+          "line": 1
+        }
+      ]
+    },
+    {
+      "id": "file:234",
+      "type": "file",
+      "path": "tests/test_ltx_runner.py",
+      "kind": "python-module",
+      "layer": "shared",
+      "blobSha256": "e999cb8aa902e1e1e81315dfa776bcf41eea84b73d49fa4a2145fd4b2581d3af",
+      "evidence": [
+        {
+          "path": "tests/test_ltx_runner.py",
+          "line": 1
+        }
+      ]
+    },
+    {
+      "id": "file:235",
+      "type": "file",
+      "path": "tests/test_media_input.py",
+      "kind": "python-module",
+      "layer": "shared",
+      "blobSha256": "0eed5dd055068c9938609d12f8a4d62836b6e36dd7b0bb073a0d34d2a6b53d73",
+      "evidence": [
+        {
+          "path": "tests/test_media_input.py",
+          "line": 1
+        }
+      ]
+    },
+    {
+      "id": "file:236",
+      "type": "file",
+      "path": "tests/test_misc.py",
+      "kind": "python-module",
+      "layer": "shared",
+      "blobSha256": "3c5e7993d4b4f57cd6f6611eb1c3fdc1efb5fd87974859115afa347508084e5a",
+      "evidence": [
+        {
+          "path": "tests/test_misc.py",
+          "line": 1
+        }
+      ]
+    },
+    {
+      "id": "file:237",
+      "type": "file",
+      "path": "tests/test_model_contribution_check.py",
+      "kind": "python-module",
+      "layer": "shared",
+      "blobSha256": "04e570844c8a47841a83737e64d9c24ee0529c1ac4fb15305dfc30a9104021a7",
+      "evidence": [
+        {
+          "path": "tests/test_model_contribution_check.py",
+          "line": 1
+        }
+      ]
+    },
+    {
+      "id": "file:238",
+      "type": "file",
+      "path": "tests/test_models.py",
+      "kind": "python-module",
+      "layer": "shared",
+      "blobSha256": "92c21194cd899ff13d385f19f0649fdaea68baca5aac4f1e655c75f972c6c3df",
+      "evidence": [
+        {
+          "path": "tests/test_models.py",
+          "line": 1
+        }
+      ]
+    },
+    {
+      "id": "file:239",
+      "type": "file",
+      "path": "tests/test_observation.py",
+      "kind": "python-module",
+      "layer": "shared",
+      "blobSha256": "05261ef1c2b35e626532cc6d581af2d8ec82212d9025f3d8ebf2f61d8115f26e",
+      "evidence": [
+        {
+          "path": "tests/test_observation.py",
+          "line": 1
+        }
+      ]
+    },
+    {
+      "id": "file:240",
+      "type": "file",
+      "path": "tests/test_reconstruct.py",
+      "kind": "python-module",
+      "layer": "shared",
+      "blobSha256": "972349a4cf59e7b8e75d956a7c2c89d1ad8b3c2cbf176c4d0b9c7517ecfa1e85",
+      "evidence": [
+        {
+          "path": "tests/test_reconstruct.py",
+          "line": 1
+        }
+      ]
+    },
+    {
+      "id": "file:241",
+      "type": "file",
+      "path": "tests/test_reconstruct_replay.py",
+      "kind": "python-module",
+      "layer": "shared",
+      "blobSha256": "12b0b6ef35e76fff24c0fef93316e5dd066d8d91c5bdaa3311277eda07149ba6",
+      "evidence": [
+        {
+          "path": "tests/test_reconstruct_replay.py",
+          "line": 1
+        }
+      ]
+    },
+    {
+      "id": "file:242",
+      "type": "file",
+      "path": "tests/test_seedance.py",
+      "kind": "python-module",
+      "layer": "shared",
+      "blobSha256": "8c5a80b638b895d0560533e8ecd93f911caf8ff8a7accb35825017e1cd77afda",
+      "evidence": [
+        {
+          "path": "tests/test_seedance.py",
+          "line": 1
+        }
+      ]
+    },
+    {
+      "id": "file:243",
+      "type": "file",
+      "path": "tests/test_service_expand.py",
+      "kind": "python-module",
+      "layer": "shared",
+      "blobSha256": "9da30cda86399bdba4aa5c1b6037b0d27520ea1c50fcbd6df8ab82497073fb52",
+      "evidence": [
+        {
+          "path": "tests/test_service_expand.py",
+          "line": 1
+        }
+      ]
+    },
+    {
+      "id": "file:244",
+      "type": "file",
+      "path": "tests/test_validate_pe_files.py",
+      "kind": "python-module",
+      "layer": "shared",
+      "blobSha256": "9745fbf81116c5ae1adb6af613b11572e3c2c710706eccf629ce6a825b2bb252",
+      "evidence": [
+        {
+          "path": "tests/test_validate_pe_files.py",
+          "line": 1
+        }
+      ]
+    }
+  ],
+  "edges": [
+    {
+      "id": "imports:file:145:file:174",
+      "type": "imports",
+      "from": "file:145",
+      "to": "file:174",
+      "evidence": [
+        {
+          "path": "scripts/promo/submit_h3_batch.py",
+          "line": 1,
+          "detail": "import omni_rewriter.adapters"
+        }
+      ]
+    },
+    {
+      "id": "imports:file:145:file:188",
+      "type": "imports",
+      "from": "file:145",
+      "to": "file:188",
+      "evidence": [
+        {
+          "path": "scripts/promo/submit_h3_batch.py",
+          "line": 1,
+          "detail": "import omni_rewriter.config"
+        }
+      ]
+    },
+    {
+      "id": "imports:file:145:file:192",
+      "type": "imports",
+      "from": "file:145",
+      "to": "file:192",
+      "evidence": [
+        {
+          "path": "scripts/promo/submit_h3_batch.py",
+          "line": 1,
+          "detail": "import omni_rewriter.models"
+        }
+      ]
+    },
+    {
+      "id": "imports:file:146:file:174",
+      "type": "imports",
+      "from": "file:146",
+      "to": "file:174",
+      "evidence": [
+        {
+          "path": "scripts/promo/submit_h3_chunk.py",
+          "line": 1,
+          "detail": "import omni_rewriter.adapters"
+        }
+      ]
+    },
+    {
+      "id": "imports:file:146:file:188",
+      "type": "imports",
+      "from": "file:146",
+      "to": "file:188",
+      "evidence": [
+        {
+          "path": "scripts/promo/submit_h3_chunk.py",
+          "line": 1,
+          "detail": "import omni_rewriter.config"
+        }
+      ]
+    },
+    {
+      "id": "imports:file:146:file:192",
+      "type": "imports",
+      "from": "file:146",
+      "to": "file:192",
+      "evidence": [
+        {
+          "path": "scripts/promo/submit_h3_chunk.py",
+          "line": 1,
+          "detail": "import omni_rewriter.models"
+        }
+      ]
+    },
+    {
+      "id": "imports:file:147:file:174",
+      "type": "imports",
+      "from": "file:147",
+      "to": "file:174",
+      "evidence": [
+        {
+          "path": "scripts/reconstruct_replay_demo.py",
+          "line": 1,
+          "detail": "import omni_rewriter.adapters"
+        }
+      ]
+    },
+    {
+      "id": "imports:file:147:file:188",
+      "type": "imports",
+      "from": "file:147",
+      "to": "file:188",
+      "evidence": [
+        {
+          "path": "scripts/reconstruct_replay_demo.py",
+          "line": 1,
+          "detail": "import omni_rewriter.config"
+        }
+      ]
+    },
+    {
+      "id": "imports:file:147:file:192",
+      "type": "imports",
+      "from": "file:147",
+      "to": "file:192",
+      "evidence": [
+        {
+          "path": "scripts/reconstruct_replay_demo.py",
+          "line": 1,
+          "detail": "import omni_rewriter.models"
+        }
+      ]
+    },
+    {
+      "id": "imports:file:147:file:207",
+      "type": "imports",
+      "from": "file:147",
+      "to": "file:207",
+      "evidence": [
+        {
+          "path": "scripts/reconstruct_replay_demo.py",
+          "line": 1,
+          "detail": "import omni_rewriter.reconstruct.evidence"
+        }
+      ]
+    },
+    {
+      "id": "imports:file:147:file:209",
+      "type": "imports",
+      "from": "file:147",
+      "to": "file:209",
+      "evidence": [
+        {
+          "path": "scripts/reconstruct_replay_demo.py",
+          "line": 1,
+          "detail": "import omni_rewriter.reconstruct.replay"
+        }
+      ]
+    },
+    {
+      "id": "imports:file:147:file:210",
+      "type": "imports",
+      "from": "file:147",
+      "to": "file:210",
+      "evidence": [
+        {
+          "path": "scripts/reconstruct_replay_demo.py",
+          "line": 1,
+          "detail": "import omni_rewriter.reconstruct.service"
+        }
+      ]
+    },
+    {
+      "id": "imports:file:171:file:199",
+      "type": "imports",
+      "from": "file:171",
+      "to": "file:199",
+      "evidence": [
+        {
+          "path": "scripts/smoke_reconstruct.py",
+          "line": 1,
+          "detail": "import omni_rewriter.models.observation"
+        }
+      ]
+    },
+    {
+      "id": "imports:file:171:file:212",
+      "type": "imports",
+      "from": "file:171",
+      "to": "file:212",
+      "evidence": [
+        {
+          "path": "scripts/smoke_reconstruct.py",
+          "line": 1,
+          "detail": "import omni_rewriter.service"
+        }
+      ]
+    },
+    {
+      "id": "imports:file:172:file:212",
+      "type": "imports",
+      "from": "file:172",
+      "to": "file:212",
+      "evidence": [
+        {
+          "path": "scripts/validate_pe_files.py",
+          "line": 1,
+          "detail": "import omni_rewriter.service"
+        }
+      ]
+    },
+    {
+      "id": "imports:file:173:file:174",
+      "type": "imports",
+      "from": "file:173",
+      "to": "file:174",
+      "evidence": [
+        {
+          "path": "src/omni_rewriter/__init__.py",
+          "line": 1,
+          "detail": "import omni_rewriter.adapters"
+        }
+      ]
+    },
+    {
+      "id": "imports:file:173:file:184",
+      "type": "imports",
+      "from": "file:173",
+      "to": "file:184",
+      "evidence": [
+        {
+          "path": "src/omni_rewriter/__init__.py",
+          "line": 1,
+          "detail": "import omni_rewriter.agent"
+        }
+      ]
+    },
+    {
+      "id": "imports:file:173:file:186",
+      "type": "imports",
+      "from": "file:173",
+      "to": "file:186",
+      "evidence": [
+        {
+          "path": "src/omni_rewriter/__init__.py",
+          "line": 1,
+          "detail": "import omni_rewriter.backends"
+        }
+      ]
+    },
+    {
+      "id": "imports:file:173:file:188",
+      "type": "imports",
+      "from": "file:173",
+      "to": "file:188",
+      "evidence": [
+        {
+          "path": "src/omni_rewriter/__init__.py",
+          "line": 1,
+          "detail": "import omni_rewriter.config"
+        }
+      ]
+    },
+    {
+      "id": "imports:file:173:file:189",
+      "type": "imports",
+      "from": "file:173",
+      "to": "file:189",
+      "evidence": [
+        {
+          "path": "src/omni_rewriter/__init__.py",
+          "line": 1,
+          "detail": "import omni_rewriter.errors"
+        }
+      ]
+    },
+    {
+      "id": "imports:file:173:file:190",
+      "type": "imports",
+      "from": "file:173",
+      "to": "file:190",
+      "evidence": [
+        {
+          "path": "src/omni_rewriter/__init__.py",
+          "line": 1,
+          "detail": "import omni_rewriter.evaluator"
+        }
+      ]
+    },
+    {
+      "id": "imports:file:173:file:191",
+      "type": "imports",
+      "from": "file:173",
+      "to": "file:191",
+      "evidence": [
+        {
+          "path": "src/omni_rewriter/__init__.py",
+          "line": 1,
+          "detail": "import omni_rewriter.media_input"
+        }
+      ]
+    },
+    {
+      "id": "imports:file:173:file:192",
+      "type": "imports",
+      "from": "file:173",
+      "to": "file:192",
+      "evidence": [
+        {
+          "path": "src/omni_rewriter/__init__.py",
+          "line": 1,
+          "detail": "import omni_rewriter.models"
+        }
+      ]
+    },
+    {
+      "id": "imports:file:173:file:211",
+      "type": "imports",
+      "from": "file:173",
+      "to": "file:211",
+      "evidence": [
+        {
+          "path": "src/omni_rewriter/__init__.py",
+          "line": 1,
+          "detail": "import omni_rewriter.render"
+        }
+      ]
+    },
+    {
+      "id": "imports:file:173:file:213",
+      "type": "imports",
+      "from": "file:173",
+      "to": "file:213",
+      "evidence": [
+        {
+          "path": "src/omni_rewriter/__init__.py",
+          "line": 1,
+          "detail": "import omni_rewriter.trace"
+        }
+      ]
+    },
+    {
+      "id": "imports:file:174:file:173",
+      "type": "imports",
+      "from": "file:174",
+      "to": "file:173",
+      "evidence": [
+        {
+          "path": "src/omni_rewriter/adapters/__init__.py",
+          "line": 1,
+          "detail": "import omni_rewriter"
+        }
+      ]
+    },
+    {
+      "id": "imports:file:175:file:189",
+      "type": "imports",
+      "from": "file:175",
+      "to": "file:189",
+      "evidence": [
+        {
+          "path": "src/omni_rewriter/adapters/base.py",
+          "line": 1,
+          "detail": "import omni_rewriter.errors"
+        }
+      ]
+    },
+    {
+      "id": "imports:file:175:file:192",
+      "type": "imports",
+      "from": "file:175",
+      "to": "file:192",
+      "evidence": [
+        {
+          "path": "src/omni_rewriter/adapters/base.py",
+          "line": 1,
+          "detail": "import omni_rewriter.models"
+        }
+      ]
+    },
+    {
+      "id": "imports:file:176:file:189",
+      "type": "imports",
+      "from": "file:176",
+      "to": "file:189",
+      "evidence": [
+        {
+          "path": "src/omni_rewriter/adapters/h3.py",
+          "line": 1,
+          "detail": "import omni_rewriter.errors"
+        }
+      ]
+    },
+    {
+      "id": "imports:file:176:file:192",
+      "type": "imports",
+      "from": "file:176",
+      "to": "file:192",
+      "evidence": [
+        {
+          "path": "src/omni_rewriter/adapters/h3.py",
+          "line": 1,
+          "detail": "import omni_rewriter.models"
+        }
+      ]
+    },
+    {
+      "id": "imports:file:176:file:194",
+      "type": "imports",
+      "from": "file:176",
+      "to": "file:194",
+      "evidence": [
+        {
+          "path": "src/omni_rewriter/adapters/h3.py",
+          "line": 1,
+          "detail": "import omni_rewriter.models.common"
+        }
+      ]
+    },
+    {
+      "id": "imports:file:177:file:175",
+      "type": "imports",
+      "from": "file:177",
+      "to": "file:175",
+      "evidence": [
+        {
+          "path": "src/omni_rewriter/adapters/hunyuan_image.py",
+          "line": 1,
+          "detail": "import omni_rewriter.adapters.base"
+        }
+      ]
+    },
+    {
+      "id": "imports:file:177:file:192",
+      "type": "imports",
+      "from": "file:177",
+      "to": "file:192",
+      "evidence": [
+        {
+          "path": "src/omni_rewriter/adapters/hunyuan_image.py",
+          "line": 1,
+          "detail": "import omni_rewriter.models"
+        }
+      ]
+    },
+    {
+      "id": "imports:file:177:file:194",
+      "type": "imports",
+      "from": "file:177",
+      "to": "file:194",
+      "evidence": [
+        {
+          "path": "src/omni_rewriter/adapters/hunyuan_image.py",
+          "line": 1,
+          "detail": "import omni_rewriter.models.common"
+        }
+      ]
+    },
+    {
+      "id": "imports:file:178:file:186",
+      "type": "imports",
+      "from": "file:178",
+      "to": "file:186",
+      "evidence": [
+        {
+          "path": "src/omni_rewriter/adapters/lingbot_rewriter.py",
+          "line": 1,
+          "detail": "import omni_rewriter.backends"
+        }
+      ]
+    },
+    {
+      "id": "imports:file:178:file:189",
+      "type": "imports",
+      "from": "file:178",
+      "to": "file:189",
+      "evidence": [
+        {
+          "path": "src/omni_rewriter/adapters/lingbot_rewriter.py",
+          "line": 1,
+          "detail": "import omni_rewriter.errors"
+        }
+      ]
+    },
+    {
+      "id": "imports:file:178:file:194",
+      "type": "imports",
+      "from": "file:178",
+      "to": "file:194",
+      "evidence": [
+        {
+          "path": "src/omni_rewriter/adapters/lingbot_rewriter.py",
+          "line": 1,
+          "detail": "import omni_rewriter.models.common"
+        }
+      ]
+    },
+    {
+      "id": "imports:file:178:file:196",
+      "type": "imports",
+      "from": "file:178",
+      "to": "file:196",
+      "evidence": [
+        {
+          "path": "src/omni_rewriter/adapters/lingbot_rewriter.py",
+          "line": 1,
+          "detail": "import omni_rewriter.models.lingbot"
+        }
+      ]
+    },
+    {
+      "id": "imports:file:179:file:189",
+      "type": "imports",
+      "from": "file:179",
+      "to": "file:189",
+      "evidence": [
+        {
+          "path": "src/omni_rewriter/adapters/lingbot_runner.py",
+          "line": 1,
+          "detail": "import omni_rewriter.errors"
+        }
+      ]
+    },
+    {
+      "id": "imports:file:179:file:194",
+      "type": "imports",
+      "from": "file:179",
+      "to": "file:194",
+      "evidence": [
+        {
+          "path": "src/omni_rewriter/adapters/lingbot_runner.py",
+          "line": 1,
+          "detail": "import omni_rewriter.models.common"
+        }
+      ]
+    },
+    {
+      "id": "imports:file:179:file:196",
+      "type": "imports",
+      "from": "file:179",
+      "to": "file:196",
+      "evidence": [
+        {
+          "path": "src/omni_rewriter/adapters/lingbot_runner.py",
+          "line": 1,
+          "detail": "import omni_rewriter.models.lingbot"
+        }
+      ]
+    },
+    {
+      "id": "imports:file:180:file:189",
+      "type": "imports",
+      "from": "file:180",
+      "to": "file:189",
+      "evidence": [
+        {
+          "path": "src/omni_rewriter/adapters/ltx_runner.py",
+          "line": 1,
+          "detail": "import omni_rewriter.errors"
+        }
+      ]
+    },
+    {
+      "id": "imports:file:180:file:194",
+      "type": "imports",
+      "from": "file:180",
+      "to": "file:194",
+      "evidence": [
+        {
+          "path": "src/omni_rewriter/adapters/ltx_runner.py",
+          "line": 1,
+          "detail": "import omni_rewriter.models.common"
+        }
+      ]
+    },
+    {
+      "id": "imports:file:180:file:197",
+      "type": "imports",
+      "from": "file:180",
+      "to": "file:197",
+      "evidence": [
+        {
+          "path": "src/omni_rewriter/adapters/ltx_runner.py",
+          "line": 1,
+          "detail": "import omni_rewriter.models.ltx"
+        }
+      ]
+    },
+    {
+      "id": "imports:file:180:file:201",
+      "type": "imports",
+      "from": "file:180",
+      "to": "file:201",
+      "evidence": [
+        {
+          "path": "src/omni_rewriter/adapters/ltx_runner.py",
+          "line": 1,
+          "detail": "import omni_rewriter.models.request"
+        }
+      ]
+    },
+    {
+      "id": "imports:file:181:file:189",
+      "type": "imports",
+      "from": "file:181",
+      "to": "file:189",
+      "evidence": [
+        {
+          "path": "src/omni_rewriter/adapters/minimax.py",
+          "line": 1,
+          "detail": "import omni_rewriter.errors"
+        }
+      ]
+    },
+    {
+      "id": "imports:file:181:file:192",
+      "type": "imports",
+      "from": "file:181",
+      "to": "file:192",
+      "evidence": [
+        {
+          "path": "src/omni_rewriter/adapters/minimax.py",
+          "line": 1,
+          "detail": "import omni_rewriter.models"
+        }
+      ]
+    },
+    {
+      "id": "imports:file:181:file:194",
+      "type": "imports",
+      "from": "file:181",
+      "to": "file:194",
+      "evidence": [
+        {
+          "path": "src/omni_rewriter/adapters/minimax.py",
+          "line": 1,
+          "detail": "import omni_rewriter.models.common"
+        }
+      ]
+    },
+    {
+      "id": "imports:file:182:file:175",
+      "type": "imports",
+      "from": "file:182",
+      "to": "file:175",
+      "evidence": [
+        {
+          "path": "src/omni_rewriter/adapters/omni_videos.py",
+          "line": 1,
+          "detail": "import omni_rewriter.adapters.base"
+        }
+      ]
+    },
+    {
+      "id": "imports:file:182:file:192",
+      "type": "imports",
+      "from": "file:182",
+      "to": "file:192",
+      "evidence": [
+        {
+          "path": "src/omni_rewriter/adapters/omni_videos.py",
+          "line": 1,
+          "detail": "import omni_rewriter.models"
+        }
+      ]
+    },
+    {
+      "id": "imports:file:182:file:194",
+      "type": "imports",
+      "from": "file:182",
+      "to": "file:194",
+      "evidence": [
+        {
+          "path": "src/omni_rewriter/adapters/omni_videos.py",
+          "line": 1,
+          "detail": "import omni_rewriter.models.common"
+        }
+      ]
+    },
+    {
+      "id": "imports:file:183:file:175",
+      "type": "imports",
+      "from": "file:183",
+      "to": "file:175",
+      "evidence": [
+        {
+          "path": "src/omni_rewriter/adapters/openai_images.py",
+          "line": 1,
+          "detail": "import omni_rewriter.adapters.base"
+        }
+      ]
+    },
+    {
+      "id": "imports:file:183:file:192",
+      "type": "imports",
+      "from": "file:183",
+      "to": "file:192",
+      "evidence": [
+        {
+          "path": "src/omni_rewriter/adapters/openai_images.py",
+          "line": 1,
+          "detail": "import omni_rewriter.models"
+        }
+      ]
+    },
+    {
+      "id": "imports:file:183:file:194",
+      "type": "imports",
+      "from": "file:183",
+      "to": "file:194",
+      "evidence": [
+        {
+          "path": "src/omni_rewriter/adapters/openai_images.py",
+          "line": 1,
+          "detail": "import omni_rewriter.models.common"
+        }
+      ]
+    },
+    {
+      "id": "imports:file:184:file:186",
+      "type": "imports",
+      "from": "file:184",
+      "to": "file:186",
+      "evidence": [
+        {
+          "path": "src/omni_rewriter/agent.py",
+          "line": 1,
+          "detail": "import omni_rewriter.backends"
+        }
+      ]
+    },
+    {
+      "id": "imports:file:184:file:189",
+      "type": "imports",
+      "from": "file:184",
+      "to": "file:189",
+      "evidence": [
+        {
+          "path": "src/omni_rewriter/agent.py",
+          "line": 1,
+          "detail": "import omni_rewriter.errors"
+        }
+      ]
+    },
+    {
+      "id": "imports:file:184:file:191",
+      "type": "imports",
+      "from": "file:184",
+      "to": "file:191",
+      "evidence": [
+        {
+          "path": "src/omni_rewriter/agent.py",
+          "line": 1,
+          "detail": "import omni_rewriter.media_input"
+        }
+      ]
+    },
+    {
+      "id": "imports:file:184:file:192",
+      "type": "imports",
+      "from": "file:184",
+      "to": "file:192",
+      "evidence": [
+        {
+          "path": "src/omni_rewriter/agent.py",
+          "line": 1,
+          "detail": "import omni_rewriter.models"
+        }
+      ]
+    },
+    {
+      "id": "imports:file:184:file:194",
+      "type": "imports",
+      "from": "file:184",
+      "to": "file:194",
+      "evidence": [
+        {
+          "path": "src/omni_rewriter/agent.py",
+          "line": 1,
+          "detail": "import omni_rewriter.models.common"
+        }
+      ]
+    },
+    {
+      "id": "imports:file:184:file:195",
+      "type": "imports",
+      "from": "file:184",
+      "to": "file:195",
+      "evidence": [
+        {
+          "path": "src/omni_rewriter/agent.py",
+          "line": 1,
+          "detail": "import omni_rewriter.models.image"
+        }
+      ]
+    },
+    {
+      "id": "imports:file:184:file:197",
+      "type": "imports",
+      "from": "file:184",
+      "to": "file:197",
+      "evidence": [
+        {
+          "path": "src/omni_rewriter/agent.py",
+          "line": 1,
+          "detail": "import omni_rewriter.models.ltx"
+        }
+      ]
+    },
+    {
+      "id": "imports:file:184:file:202",
+      "type": "imports",
+      "from": "file:184",
+      "to": "file:202",
+      "evidence": [
+        {
+          "path": "src/omni_rewriter/agent.py",
+          "line": 1,
+          "detail": "import omni_rewriter.models.seedance"
+        }
+      ]
+    },
+    {
+      "id": "imports:file:184:file:204",
+      "type": "imports",
+      "from": "file:184",
+      "to": "file:204",
+      "evidence": [
+        {
+          "path": "src/omni_rewriter/agent.py",
+          "line": 1,
+          "detail": "import omni_rewriter.prompts"
+        }
+      ]
+    },
+    {
+      "id": "imports:file:184:file:213",
+      "type": "imports",
+      "from": "file:184",
+      "to": "file:213",
+      "evidence": [
+        {
+          "path": "src/omni_rewriter/agent.py",
+          "line": 1,
+          "detail": "import omni_rewriter.trace"
+        }
+      ]
+    },
+    {
+      "id": "imports:file:185:file:184",
+      "type": "imports",
+      "from": "file:185",
+      "to": "file:184",
+      "evidence": [
+        {
+          "path": "src/omni_rewriter/api.py",
+          "line": 1,
+          "detail": "import omni_rewriter.agent"
+        }
+      ]
+    },
+    {
+      "id": "imports:file:185:file:188",
+      "type": "imports",
+      "from": "file:185",
+      "to": "file:188",
+      "evidence": [
+        {
+          "path": "src/omni_rewriter/api.py",
+          "line": 1,
+          "detail": "import omni_rewriter.config"
+        }
+      ]
+    },
+    {
+      "id": "imports:file:185:file:189",
+      "type": "imports",
+      "from": "file:185",
+      "to": "file:189",
+      "evidence": [
+        {
+          "path": "src/omni_rewriter/api.py",
+          "line": 1,
+          "detail": "import omni_rewriter.errors"
+        }
+      ]
+    },
+    {
+      "id": "imports:file:185:file:192",
+      "type": "imports",
+      "from": "file:185",
+      "to": "file:192",
+      "evidence": [
+        {
+          "path": "src/omni_rewriter/api.py",
+          "line": 1,
+          "detail": "import omni_rewriter.models"
+        }
+      ]
+    },
+    {
+      "id": "imports:file:185:file:199",
+      "type": "imports",
+      "from": "file:185",
+      "to": "file:199",
+      "evidence": [
+        {
+          "path": "src/omni_rewriter/api.py",
+          "line": 1,
+          "detail": "import omni_rewriter.models.observation"
+        }
+      ]
+    },
+    {
+      "id": "imports:file:185:file:210",
+      "type": "imports",
+      "from": "file:185",
+      "to": "file:210",
+      "evidence": [
+        {
+          "path": "src/omni_rewriter/api.py",
+          "line": 1,
+          "detail": "import omni_rewriter.reconstruct.service"
+        }
+      ]
+    },
+    {
+      "id": "imports:file:185:file:212",
+      "type": "imports",
+      "from": "file:185",
+      "to": "file:212",
+      "evidence": [
+        {
+          "path": "src/omni_rewriter/api.py",
+          "line": 1,
+          "detail": "import omni_rewriter.service"
+        }
+      ]
+    },
+    {
+      "id": "imports:file:186:file:189",
+      "type": "imports",
+      "from": "file:186",
+      "to": "file:189",
+      "evidence": [
+        {
+          "path": "src/omni_rewriter/backends.py",
+          "line": 1,
+          "detail": "import omni_rewriter.errors"
+        }
+      ]
+    },
+    {
+      "id": "imports:file:186:file:194",
+      "type": "imports",
+      "from": "file:186",
+      "to": "file:194",
+      "evidence": [
+        {
+          "path": "src/omni_rewriter/backends.py",
+          "line": 1,
+          "detail": "import omni_rewriter.models.common"
+        }
+      ]
+    },
+    {
+      "id": "imports:file:187:file:188",
+      "type": "imports",
+      "from": "file:187",
+      "to": "file:188",
+      "evidence": [
+        {
+          "path": "src/omni_rewriter/cli.py",
+          "line": 1,
+          "detail": "import omni_rewriter.config"
+        }
+      ]
+    },
+    {
+      "id": "imports:file:187:file:189",
+      "type": "imports",
+      "from": "file:187",
+      "to": "file:189",
+      "evidence": [
+        {
+          "path": "src/omni_rewriter/cli.py",
+          "line": 1,
+          "detail": "import omni_rewriter.errors"
+        }
+      ]
+    },
+    {
+      "id": "imports:file:187:file:190",
+      "type": "imports",
+      "from": "file:187",
+      "to": "file:190",
+      "evidence": [
+        {
+          "path": "src/omni_rewriter/cli.py",
+          "line": 1,
+          "detail": "import omni_rewriter.evaluator"
+        }
+      ]
+    },
+    {
+      "id": "imports:file:187:file:192",
+      "type": "imports",
+      "from": "file:187",
+      "to": "file:192",
+      "evidence": [
+        {
+          "path": "src/omni_rewriter/cli.py",
+          "line": 1,
+          "detail": "import omni_rewriter.models"
+        }
+      ]
+    },
+    {
+      "id": "imports:file:187:file:199",
+      "type": "imports",
+      "from": "file:187",
+      "to": "file:199",
+      "evidence": [
+        {
+          "path": "src/omni_rewriter/cli.py",
+          "line": 1,
+          "detail": "import omni_rewriter.models.observation"
+        }
+      ]
+    },
+    {
+      "id": "imports:file:187:file:207",
+      "type": "imports",
+      "from": "file:187",
+      "to": "file:207",
+      "evidence": [
+        {
+          "path": "src/omni_rewriter/cli.py",
+          "line": 1,
+          "detail": "import omni_rewriter.reconstruct.evidence"
+        }
+      ]
+    },
+    {
+      "id": "imports:file:187:file:210",
+      "type": "imports",
+      "from": "file:187",
+      "to": "file:210",
+      "evidence": [
+        {
+          "path": "src/omni_rewriter/cli.py",
+          "line": 1,
+          "detail": "import omni_rewriter.reconstruct.service"
+        }
+      ]
+    },
+    {
+      "id": "imports:file:187:file:212",
+      "type": "imports",
+      "from": "file:187",
+      "to": "file:212",
+      "evidence": [
+        {
+          "path": "src/omni_rewriter/cli.py",
+          "line": 1,
+          "detail": "import omni_rewriter.service"
+        }
+      ]
+    },
+    {
+      "id": "imports:file:188:file:176",
+      "type": "imports",
+      "from": "file:188",
+      "to": "file:176",
+      "evidence": [
+        {
+          "path": "src/omni_rewriter/config.py",
+          "line": 1,
+          "detail": "import omni_rewriter.adapters.h3"
+        }
+      ]
+    },
+    {
+      "id": "imports:file:188:file:177",
+      "type": "imports",
+      "from": "file:188",
+      "to": "file:177",
+      "evidence": [
+        {
+          "path": "src/omni_rewriter/config.py",
+          "line": 1,
+          "detail": "import omni_rewriter.adapters.hunyuan_image"
+        }
+      ]
+    },
+    {
+      "id": "imports:file:188:file:181",
+      "type": "imports",
+      "from": "file:188",
+      "to": "file:181",
+      "evidence": [
+        {
+          "path": "src/omni_rewriter/config.py",
+          "line": 1,
+          "detail": "import omni_rewriter.adapters.minimax"
+        }
+      ]
+    },
+    {
+      "id": "imports:file:188:file:182",
+      "type": "imports",
+      "from": "file:188",
+      "to": "file:182",
+      "evidence": [
+        {
+          "path": "src/omni_rewriter/config.py",
+          "line": 1,
+          "detail": "import omni_rewriter.adapters.omni_videos"
+        }
+      ]
+    },
+    {
+      "id": "imports:file:188:file:183",
+      "type": "imports",
+      "from": "file:188",
+      "to": "file:183",
+      "evidence": [
+        {
+          "path": "src/omni_rewriter/config.py",
+          "line": 1,
+          "detail": "import omni_rewriter.adapters.openai_images"
+        }
+      ]
+    },
+    {
+      "id": "imports:file:188:file:186",
+      "type": "imports",
+      "from": "file:188",
+      "to": "file:186",
+      "evidence": [
+        {
+          "path": "src/omni_rewriter/config.py",
+          "line": 1,
+          "detail": "import omni_rewriter.backends"
+        }
+      ]
+    },
+    {
+      "id": "imports:file:188:file:189",
+      "type": "imports",
+      "from": "file:188",
+      "to": "file:189",
+      "evidence": [
+        {
+          "path": "src/omni_rewriter/config.py",
+          "line": 1,
+          "detail": "import omni_rewriter.errors"
+        }
+      ]
+    },
+    {
+      "id": "imports:file:188:file:194",
+      "type": "imports",
+      "from": "file:188",
+      "to": "file:194",
+      "evidence": [
+        {
+          "path": "src/omni_rewriter/config.py",
+          "line": 1,
+          "detail": "import omni_rewriter.models.common"
+        }
+      ]
+    },
+    {
+      "id": "imports:file:190:file:192",
+      "type": "imports",
+      "from": "file:190",
+      "to": "file:192",
+      "evidence": [
+        {
+          "path": "src/omni_rewriter/evaluator.py",
+          "line": 1,
+          "detail": "import omni_rewriter.models"
+        }
+      ]
+    },
+    {
+      "id": "imports:file:190:file:203",
+      "type": "imports",
+      "from": "file:190",
+      "to": "file:203",
+      "evidence": [
+        {
+          "path": "src/omni_rewriter/evaluator.py",
+          "line": 1,
+          "detail": "import omni_rewriter.models.validation"
+        }
+      ]
+    },
+    {
+      "id": "imports:file:190:file:212",
+      "type": "imports",
+      "from": "file:190",
+      "to": "file:212",
+      "evidence": [
+        {
+          "path": "src/omni_rewriter/evaluator.py",
+          "line": 1,
+          "detail": "import omni_rewriter.service"
+        }
+      ]
+    },
+    {
+      "id": "imports:file:191:file:189",
+      "type": "imports",
+      "from": "file:191",
+      "to": "file:189",
+      "evidence": [
+        {
+          "path": "src/omni_rewriter/media_input.py",
+          "line": 1,
+          "detail": "import omni_rewriter.errors"
+        }
+      ]
+    },
+    {
+      "id": "imports:file:191:file:192",
+      "type": "imports",
+      "from": "file:191",
+      "to": "file:192",
+      "evidence": [
+        {
+          "path": "src/omni_rewriter/media_input.py",
+          "line": 1,
+          "detail": "import omni_rewriter.models"
+        }
+      ]
+    },
+    {
+      "id": "imports:file:191:file:194",
+      "type": "imports",
+      "from": "file:191",
+      "to": "file:194",
+      "evidence": [
+        {
+          "path": "src/omni_rewriter/media_input.py",
+          "line": 1,
+          "detail": "import omni_rewriter.models.common"
+        }
+      ]
+    },
+    {
+      "id": "imports:file:192:file:173",
+      "type": "imports",
+      "from": "file:192",
+      "to": "file:173",
+      "evidence": [
+        {
+          "path": "src/omni_rewriter/models/__init__.py",
+          "line": 1,
+          "detail": "import omni_rewriter"
+        }
+      ]
+    },
+    {
+      "id": "imports:file:193:file:194",
+      "type": "imports",
+      "from": "file:193",
+      "to": "file:194",
+      "evidence": [
+        {
+          "path": "src/omni_rewriter/models/base.py",
+          "line": 1,
+          "detail": "import omni_rewriter.models.common"
+        }
+      ]
+    },
+    {
+      "id": "imports:file:193:file:203",
+      "type": "imports",
+      "from": "file:193",
+      "to": "file:203",
+      "evidence": [
+        {
+          "path": "src/omni_rewriter/models/base.py",
+          "line": 1,
+          "detail": "import omni_rewriter.models.validation"
+        }
+      ]
+    },
+    {
+      "id": "imports:file:195:file:194",
+      "type": "imports",
+      "from": "file:195",
+      "to": "file:194",
+      "evidence": [
+        {
+          "path": "src/omni_rewriter/models/image.py",
+          "line": 1,
+          "detail": "import omni_rewriter.models.common"
+        }
+      ]
+    },
+    {
+      "id": "imports:file:196:file:194",
+      "type": "imports",
+      "from": "file:196",
+      "to": "file:194",
+      "evidence": [
+        {
+          "path": "src/omni_rewriter/models/lingbot.py",
+          "line": 1,
+          "detail": "import omni_rewriter.models.common"
+        }
+      ]
+    },
+    {
+      "id": "imports:file:197:file:194",
+      "type": "imports",
+      "from": "file:197",
+      "to": "file:194",
+      "evidence": [
+        {
+          "path": "src/omni_rewriter/models/ltx.py",
+          "line": 1,
+          "detail": "import omni_rewriter.models.common"
+        }
+      ]
+    },
+    {
+      "id": "imports:file:198:file:194",
+      "type": "imports",
+      "from": "file:198",
+      "to": "file:194",
+      "evidence": [
+        {
+          "path": "src/omni_rewriter/models/media.py",
+          "line": 1,
+          "detail": "import omni_rewriter.models.common"
+        }
+      ]
+    },
+    {
+      "id": "imports:file:199:file:194",
+      "type": "imports",
+      "from": "file:199",
+      "to": "file:194",
+      "evidence": [
+        {
+          "path": "src/omni_rewriter/models/observation.py",
+          "line": 1,
+          "detail": "import omni_rewriter.models.common"
+        }
+      ]
+    },
+    {
+      "id": "imports:file:200:file:194",
+      "type": "imports",
+      "from": "file:200",
+      "to": "file:194",
+      "evidence": [
+        {
+          "path": "src/omni_rewriter/models/ref2va.py",
+          "line": 1,
+          "detail": "import omni_rewriter.models.common"
+        }
+      ]
+    },
+    {
+      "id": "imports:file:200:file:203",
+      "type": "imports",
+      "from": "file:200",
+      "to": "file:203",
+      "evidence": [
+        {
+          "path": "src/omni_rewriter/models/ref2va.py",
+          "line": 1,
+          "detail": "import omni_rewriter.models.validation"
+        }
+      ]
+    },
+    {
+      "id": "imports:file:201:file:194",
+      "type": "imports",
+      "from": "file:201",
+      "to": "file:194",
+      "evidence": [
+        {
+          "path": "src/omni_rewriter/models/request.py",
+          "line": 1,
+          "detail": "import omni_rewriter.models.common"
+        }
+      ]
+    },
+    {
+      "id": "imports:file:201:file:198",
+      "type": "imports",
+      "from": "file:201",
+      "to": "file:198",
+      "evidence": [
+        {
+          "path": "src/omni_rewriter/models/request.py",
+          "line": 1,
+          "detail": "import omni_rewriter.models.media"
+        }
+      ]
+    },
+    {
+      "id": "imports:file:202:file:194",
+      "type": "imports",
+      "from": "file:202",
+      "to": "file:194",
+      "evidence": [
+        {
+          "path": "src/omni_rewriter/models/seedance.py",
+          "line": 1,
+          "detail": "import omni_rewriter.models.common"
+        }
+      ]
+    },
+    {
+      "id": "imports:file:204:file:192",
+      "type": "imports",
+      "from": "file:204",
+      "to": "file:192",
+      "evidence": [
+        {
+          "path": "src/omni_rewriter/prompts.py",
+          "line": 1,
+          "detail": "import omni_rewriter.models"
+        }
+      ]
+    },
+    {
+      "id": "imports:file:204:file:194",
+      "type": "imports",
+      "from": "file:204",
+      "to": "file:194",
+      "evidence": [
+        {
+          "path": "src/omni_rewriter/prompts.py",
+          "line": 1,
+          "detail": "import omni_rewriter.models.common"
+        }
+      ]
+    },
+    {
+      "id": "imports:file:204:file:195",
+      "type": "imports",
+      "from": "file:204",
+      "to": "file:195",
+      "evidence": [
+        {
+          "path": "src/omni_rewriter/prompts.py",
+          "line": 1,
+          "detail": "import omni_rewriter.models.image"
+        }
+      ]
+    },
+    {
+      "id": "imports:file:204:file:202",
+      "type": "imports",
+      "from": "file:204",
+      "to": "file:202",
+      "evidence": [
+        {
+          "path": "src/omni_rewriter/prompts.py",
+          "line": 1,
+          "detail": "import omni_rewriter.models.seedance"
+        }
+      ]
+    },
+    {
+      "id": "imports:file:206:file:173",
+      "type": "imports",
+      "from": "file:206",
+      "to": "file:173",
+      "evidence": [
+        {
+          "path": "src/omni_rewriter/reconstruct/__init__.py",
+          "line": 1,
+          "detail": "import omni_rewriter"
+        }
+      ]
+    },
+    {
+      "id": "imports:file:206:file:212",
+      "type": "imports",
+      "from": "file:206",
+      "to": "file:212",
+      "evidence": [
+        {
+          "path": "src/omni_rewriter/reconstruct/__init__.py",
+          "line": 1,
+          "detail": "import omni_rewriter.service"
+        }
+      ]
+    },
+    {
+      "id": "imports:file:207:file:189",
+      "type": "imports",
+      "from": "file:207",
+      "to": "file:189",
+      "evidence": [
+        {
+          "path": "src/omni_rewriter/reconstruct/evidence.py",
+          "line": 1,
+          "detail": "import omni_rewriter.errors"
+        }
+      ]
+    },
+    {
+      "id": "imports:file:207:file:194",
+      "type": "imports",
+      "from": "file:207",
+      "to": "file:194",
+      "evidence": [
+        {
+          "path": "src/omni_rewriter/reconstruct/evidence.py",
+          "line": 1,
+          "detail": "import omni_rewriter.models.common"
+        }
+      ]
+    },
+    {
+      "id": "imports:file:207:file:199",
+      "type": "imports",
+      "from": "file:207",
+      "to": "file:199",
+      "evidence": [
+        {
+          "path": "src/omni_rewriter/reconstruct/evidence.py",
+          "line": 1,
+          "detail": "import omni_rewriter.models.observation"
+        }
+      ]
+    },
+    {
+      "id": "imports:file:208:file:184",
+      "type": "imports",
+      "from": "file:208",
+      "to": "file:184",
+      "evidence": [
+        {
+          "path": "src/omni_rewriter/reconstruct/observe.py",
+          "line": 1,
+          "detail": "import omni_rewriter.agent"
+        }
+      ]
+    },
+    {
+      "id": "imports:file:208:file:186",
+      "type": "imports",
+      "from": "file:208",
+      "to": "file:186",
+      "evidence": [
+        {
+          "path": "src/omni_rewriter/reconstruct/observe.py",
+          "line": 1,
+          "detail": "import omni_rewriter.backends"
+        }
+      ]
+    },
+    {
+      "id": "imports:file:208:file:189",
+      "type": "imports",
+      "from": "file:208",
+      "to": "file:189",
+      "evidence": [
+        {
+          "path": "src/omni_rewriter/reconstruct/observe.py",
+          "line": 1,
+          "detail": "import omni_rewriter.errors"
+        }
+      ]
+    },
+    {
+      "id": "imports:file:208:file:199",
+      "type": "imports",
+      "from": "file:208",
+      "to": "file:199",
+      "evidence": [
+        {
+          "path": "src/omni_rewriter/reconstruct/observe.py",
+          "line": 1,
+          "detail": "import omni_rewriter.models.observation"
+        }
+      ]
+    },
+    {
+      "id": "imports:file:208:file:207",
+      "type": "imports",
+      "from": "file:208",
+      "to": "file:207",
+      "evidence": [
+        {
+          "path": "src/omni_rewriter/reconstruct/observe.py",
+          "line": 1,
+          "detail": "import omni_rewriter.reconstruct.evidence"
+        }
+      ]
+    },
+    {
+      "id": "imports:file:209:file:189",
+      "type": "imports",
+      "from": "file:209",
+      "to": "file:189",
+      "evidence": [
+        {
+          "path": "src/omni_rewriter/reconstruct/replay.py",
+          "line": 1,
+          "detail": "import omni_rewriter.errors"
+        }
+      ]
+    },
+    {
+      "id": "imports:file:209:file:192",
+      "type": "imports",
+      "from": "file:209",
+      "to": "file:192",
+      "evidence": [
+        {
+          "path": "src/omni_rewriter/reconstruct/replay.py",
+          "line": 1,
+          "detail": "import omni_rewriter.models"
+        }
+      ]
+    },
+    {
+      "id": "imports:file:209:file:203",
+      "type": "imports",
+      "from": "file:209",
+      "to": "file:203",
+      "evidence": [
+        {
+          "path": "src/omni_rewriter/reconstruct/replay.py",
+          "line": 1,
+          "detail": "import omni_rewriter.models.validation"
+        }
+      ]
+    },
+    {
+      "id": "imports:file:210:file:184",
+      "type": "imports",
+      "from": "file:210",
+      "to": "file:184",
+      "evidence": [
+        {
+          "path": "src/omni_rewriter/reconstruct/service.py",
+          "line": 1,
+          "detail": "import omni_rewriter.agent"
+        }
+      ]
+    },
+    {
+      "id": "imports:file:210:file:186",
+      "type": "imports",
+      "from": "file:210",
+      "to": "file:186",
+      "evidence": [
+        {
+          "path": "src/omni_rewriter/reconstruct/service.py",
+          "line": 1,
+          "detail": "import omni_rewriter.backends"
+        }
+      ]
+    },
+    {
+      "id": "imports:file:210:file:188",
+      "type": "imports",
+      "from": "file:210",
+      "to": "file:188",
+      "evidence": [
+        {
+          "path": "src/omni_rewriter/reconstruct/service.py",
+          "line": 1,
+          "detail": "import omni_rewriter.config"
+        }
+      ]
+    },
+    {
+      "id": "imports:file:210:file:189",
+      "type": "imports",
+      "from": "file:210",
+      "to": "file:189",
+      "evidence": [
+        {
+          "path": "src/omni_rewriter/reconstruct/service.py",
+          "line": 1,
+          "detail": "import omni_rewriter.errors"
+        }
+      ]
+    },
+    {
+      "id": "imports:file:210:file:192",
+      "type": "imports",
+      "from": "file:210",
+      "to": "file:192",
+      "evidence": [
+        {
+          "path": "src/omni_rewriter/reconstruct/service.py",
+          "line": 1,
+          "detail": "import omni_rewriter.models"
+        }
+      ]
+    },
+    {
+      "id": "imports:file:210:file:199",
+      "type": "imports",
+      "from": "file:210",
+      "to": "file:199",
+      "evidence": [
+        {
+          "path": "src/omni_rewriter/reconstruct/service.py",
+          "line": 1,
+          "detail": "import omni_rewriter.models.observation"
+        }
+      ]
+    },
+    {
+      "id": "imports:file:210:file:207",
+      "type": "imports",
+      "from": "file:210",
+      "to": "file:207",
+      "evidence": [
+        {
+          "path": "src/omni_rewriter/reconstruct/service.py",
+          "line": 1,
+          "detail": "import omni_rewriter.reconstruct.evidence"
+        }
+      ]
+    },
+    {
+      "id": "imports:file:210:file:208",
+      "type": "imports",
+      "from": "file:210",
+      "to": "file:208",
+      "evidence": [
+        {
+          "path": "src/omni_rewriter/reconstruct/service.py",
+          "line": 1,
+          "detail": "import omni_rewriter.reconstruct.observe"
+        }
+      ]
+    },
+    {
+      "id": "imports:file:210:file:212",
+      "type": "imports",
+      "from": "file:210",
+      "to": "file:212",
+      "evidence": [
+        {
+          "path": "src/omni_rewriter/reconstruct/service.py",
+          "line": 1,
+          "detail": "import omni_rewriter.service"
+        }
+      ]
+    },
+    {
+      "id": "imports:file:212:file:184",
+      "type": "imports",
+      "from": "file:212",
+      "to": "file:184",
+      "evidence": [
+        {
+          "path": "src/omni_rewriter/service.py",
+          "line": 1,
+          "detail": "import omni_rewriter.agent"
+        }
+      ]
+    },
+    {
+      "id": "imports:file:212:file:186",
+      "type": "imports",
+      "from": "file:212",
+      "to": "file:186",
+      "evidence": [
+        {
+          "path": "src/omni_rewriter/service.py",
+          "line": 1,
+          "detail": "import omni_rewriter.backends"
+        }
+      ]
+    },
+    {
+      "id": "imports:file:212:file:188",
+      "type": "imports",
+      "from": "file:212",
+      "to": "file:188",
+      "evidence": [
+        {
+          "path": "src/omni_rewriter/service.py",
+          "line": 1,
+          "detail": "import omni_rewriter.config"
+        }
+      ]
+    },
+    {
+      "id": "imports:file:212:file:191",
+      "type": "imports",
+      "from": "file:212",
+      "to": "file:191",
+      "evidence": [
+        {
+          "path": "src/omni_rewriter/service.py",
+          "line": 1,
+          "detail": "import omni_rewriter.media_input"
+        }
+      ]
+    },
+    {
+      "id": "imports:file:212:file:192",
+      "type": "imports",
+      "from": "file:212",
+      "to": "file:192",
+      "evidence": [
+        {
+          "path": "src/omni_rewriter/service.py",
+          "line": 1,
+          "detail": "import omni_rewriter.models"
+        }
+      ]
+    },
+    {
+      "id": "imports:file:212:file:194",
+      "type": "imports",
+      "from": "file:212",
+      "to": "file:194",
+      "evidence": [
+        {
+          "path": "src/omni_rewriter/service.py",
+          "line": 1,
+          "detail": "import omni_rewriter.models.common"
+        }
+      ]
+    },
+    {
+      "id": "imports:file:212:file:197",
+      "type": "imports",
+      "from": "file:212",
+      "to": "file:197",
+      "evidence": [
+        {
+          "path": "src/omni_rewriter/service.py",
+          "line": 1,
+          "detail": "import omni_rewriter.models.ltx"
+        }
+      ]
+    },
+    {
+      "id": "imports:file:212:file:202",
+      "type": "imports",
+      "from": "file:212",
+      "to": "file:202",
+      "evidence": [
+        {
+          "path": "src/omni_rewriter/service.py",
+          "line": 1,
+          "detail": "import omni_rewriter.models.seedance"
+        }
+      ]
+    },
+    {
+      "id": "imports:file:225:file:176",
+      "type": "imports",
+      "from": "file:225",
+      "to": "file:176",
+      "evidence": [
+        {
+          "path": "tests/test_adapters.py",
+          "line": 1,
+          "detail": "import omni_rewriter.adapters.h3"
+        }
+      ]
+    },
+    {
+      "id": "imports:file:225:file:181",
+      "type": "imports",
+      "from": "file:225",
+      "to": "file:181",
+      "evidence": [
+        {
+          "path": "tests/test_adapters.py",
+          "line": 1,
+          "detail": "import omni_rewriter.adapters.minimax"
+        }
+      ]
+    },
+    {
+      "id": "imports:file:225:file:189",
+      "type": "imports",
+      "from": "file:225",
+      "to": "file:189",
+      "evidence": [
+        {
+          "path": "tests/test_adapters.py",
+          "line": 1,
+          "detail": "import omni_rewriter.errors"
+        }
+      ]
+    },
+    {
+      "id": "imports:file:225:file:192",
+      "type": "imports",
+      "from": "file:225",
+      "to": "file:192",
+      "evidence": [
+        {
+          "path": "tests/test_adapters.py",
+          "line": 1,
+          "detail": "import omni_rewriter.models"
+        }
+      ]
+    },
+    {
+      "id": "imports:file:226:file:184",
+      "type": "imports",
+      "from": "file:226",
+      "to": "file:184",
+      "evidence": [
+        {
+          "path": "tests/test_agent.py",
+          "line": 1,
+          "detail": "import omni_rewriter.agent"
+        }
+      ]
+    },
+    {
+      "id": "imports:file:226:file:186",
+      "type": "imports",
+      "from": "file:226",
+      "to": "file:186",
+      "evidence": [
+        {
+          "path": "tests/test_agent.py",
+          "line": 1,
+          "detail": "import omni_rewriter.backends"
+        }
+      ]
+    },
+    {
+      "id": "imports:file:226:file:189",
+      "type": "imports",
+      "from": "file:226",
+      "to": "file:189",
+      "evidence": [
+        {
+          "path": "tests/test_agent.py",
+          "line": 1,
+          "detail": "import omni_rewriter.errors"
+        }
+      ]
+    },
+    {
+      "id": "imports:file:226:file:191",
+      "type": "imports",
+      "from": "file:226",
+      "to": "file:191",
+      "evidence": [
+        {
+          "path": "tests/test_agent.py",
+          "line": 1,
+          "detail": "import omni_rewriter.media_input"
+        }
+      ]
+    },
+    {
+      "id": "imports:file:226:file:192",
+      "type": "imports",
+      "from": "file:226",
+      "to": "file:192",
+      "evidence": [
+        {
+          "path": "tests/test_agent.py",
+          "line": 1,
+          "detail": "import omni_rewriter.models"
+        }
+      ]
+    },
+    {
+      "id": "imports:file:227:file:186",
+      "type": "imports",
+      "from": "file:227",
+      "to": "file:186",
+      "evidence": [
+        {
+          "path": "tests/test_backends.py",
+          "line": 1,
+          "detail": "import omni_rewriter.backends"
+        }
+      ]
+    },
+    {
+      "id": "imports:file:227:file:189",
+      "type": "imports",
+      "from": "file:227",
+      "to": "file:189",
+      "evidence": [
+        {
+          "path": "tests/test_backends.py",
+          "line": 1,
+          "detail": "import omni_rewriter.errors"
+        }
+      ]
+    },
+    {
+      "id": "imports:file:227:file:192",
+      "type": "imports",
+      "from": "file:227",
+      "to": "file:192",
+      "evidence": [
+        {
+          "path": "tests/test_backends.py",
+          "line": 1,
+          "detail": "import omni_rewriter.models"
+        }
+      ]
+    },
+    {
+      "id": "imports:file:228:file:174",
+      "type": "imports",
+      "from": "file:228",
+      "to": "file:174",
+      "evidence": [
+        {
+          "path": "tests/test_generation_adapters.py",
+          "line": 1,
+          "detail": "import omni_rewriter.adapters"
+        }
+      ]
+    },
+    {
+      "id": "imports:file:228:file:175",
+      "type": "imports",
+      "from": "file:228",
+      "to": "file:175",
+      "evidence": [
+        {
+          "path": "tests/test_generation_adapters.py",
+          "line": 1,
+          "detail": "import omni_rewriter.adapters.base"
+        }
+      ]
+    },
+    {
+      "id": "imports:file:228:file:188",
+      "type": "imports",
+      "from": "file:228",
+      "to": "file:188",
+      "evidence": [
+        {
+          "path": "tests/test_generation_adapters.py",
+          "line": 1,
+          "detail": "import omni_rewriter.config"
+        }
+      ]
+    },
+    {
+      "id": "imports:file:228:file:192",
+      "type": "imports",
+      "from": "file:228",
+      "to": "file:192",
+      "evidence": [
+        {
+          "path": "tests/test_generation_adapters.py",
+          "line": 1,
+          "detail": "import omni_rewriter.models"
+        }
+      ]
+    },
+    {
+      "id": "imports:file:229:file:192",
+      "type": "imports",
+      "from": "file:229",
+      "to": "file:192",
+      "evidence": [
+        {
+          "path": "tests/test_image_models.py",
+          "line": 1,
+          "detail": "import omni_rewriter.models"
+        }
+      ]
+    },
+    {
+      "id": "imports:file:229:file:212",
+      "type": "imports",
+      "from": "file:229",
+      "to": "file:212",
+      "evidence": [
+        {
+          "path": "tests/test_image_models.py",
+          "line": 1,
+          "detail": "import omni_rewriter.service"
+        }
+      ]
+    },
+    {
+      "id": "imports:file:230:file:184",
+      "type": "imports",
+      "from": "file:230",
+      "to": "file:184",
+      "evidence": [
+        {
+          "path": "tests/test_interfaces.py",
+          "line": 1,
+          "detail": "import omni_rewriter.agent"
+        }
+      ]
+    },
+    {
+      "id": "imports:file:230:file:185",
+      "type": "imports",
+      "from": "file:230",
+      "to": "file:185",
+      "evidence": [
+        {
+          "path": "tests/test_interfaces.py",
+          "line": 1,
+          "detail": "import omni_rewriter.api"
+        }
+      ]
+    },
+    {
+      "id": "imports:file:230:file:187",
+      "type": "imports",
+      "from": "file:230",
+      "to": "file:187",
+      "evidence": [
+        {
+          "path": "tests/test_interfaces.py",
+          "line": 1,
+          "detail": "import omni_rewriter.cli"
+        }
+      ]
+    },
+    {
+      "id": "imports:file:230:file:188",
+      "type": "imports",
+      "from": "file:230",
+      "to": "file:188",
+      "evidence": [
+        {
+          "path": "tests/test_interfaces.py",
+          "line": 1,
+          "detail": "import omni_rewriter.config"
+        }
+      ]
+    },
+    {
+      "id": "imports:file:230:file:189",
+      "type": "imports",
+      "from": "file:230",
+      "to": "file:189",
+      "evidence": [
+        {
+          "path": "tests/test_interfaces.py",
+          "line": 1,
+          "detail": "import omni_rewriter.errors"
+        }
+      ]
+    },
+    {
+      "id": "imports:file:230:file:190",
+      "type": "imports",
+      "from": "file:230",
+      "to": "file:190",
+      "evidence": [
+        {
+          "path": "tests/test_interfaces.py",
+          "line": 1,
+          "detail": "import omni_rewriter.evaluator"
+        }
+      ]
+    },
+    {
+      "id": "imports:file:230:file:192",
+      "type": "imports",
+      "from": "file:230",
+      "to": "file:192",
+      "evidence": [
+        {
+          "path": "tests/test_interfaces.py",
+          "line": 1,
+          "detail": "import omni_rewriter.models"
+        }
+      ]
+    },
+    {
+      "id": "imports:file:231:file:174",
+      "type": "imports",
+      "from": "file:231",
+      "to": "file:174",
+      "evidence": [
+        {
+          "path": "tests/test_lingbot_adapters.py",
+          "line": 1,
+          "detail": "import omni_rewriter.adapters"
+        }
+      ]
+    },
+    {
+      "id": "imports:file:231:file:186",
+      "type": "imports",
+      "from": "file:231",
+      "to": "file:186",
+      "evidence": [
+        {
+          "path": "tests/test_lingbot_adapters.py",
+          "line": 1,
+          "detail": "import omni_rewriter.backends"
+        }
+      ]
+    },
+    {
+      "id": "imports:file:231:file:189",
+      "type": "imports",
+      "from": "file:231",
+      "to": "file:189",
+      "evidence": [
+        {
+          "path": "tests/test_lingbot_adapters.py",
+          "line": 1,
+          "detail": "import omni_rewriter.errors"
+        }
+      ]
+    },
+    {
+      "id": "imports:file:231:file:192",
+      "type": "imports",
+      "from": "file:231",
+      "to": "file:192",
+      "evidence": [
+        {
+          "path": "tests/test_lingbot_adapters.py",
+          "line": 1,
+          "detail": "import omni_rewriter.models"
+        }
+      ]
+    },
+    {
+      "id": "imports:file:232:file:192",
+      "type": "imports",
+      "from": "file:232",
+      "to": "file:192",
+      "evidence": [
+        {
+          "path": "tests/test_lingbot_models.py",
+          "line": 1,
+          "detail": "import omni_rewriter.models"
+        }
+      ]
+    },
+    {
+      "id": "imports:file:233:file:184",
+      "type": "imports",
+      "from": "file:233",
+      "to": "file:184",
+      "evidence": [
+        {
+          "path": "tests/test_ltx.py",
+          "line": 1,
+          "detail": "import omni_rewriter.agent"
+        }
+      ]
+    },
+    {
+      "id": "imports:file:233:file:186",
+      "type": "imports",
+      "from": "file:233",
+      "to": "file:186",
+      "evidence": [
+        {
+          "path": "tests/test_ltx.py",
+          "line": 1,
+          "detail": "import omni_rewriter.backends"
+        }
+      ]
+    },
+    {
+      "id": "imports:file:233:file:192",
+      "type": "imports",
+      "from": "file:233",
+      "to": "file:192",
+      "evidence": [
+        {
+          "path": "tests/test_ltx.py",
+          "line": 1,
+          "detail": "import omni_rewriter.models"
+        }
+      ]
+    },
+    {
+      "id": "imports:file:233:file:197",
+      "type": "imports",
+      "from": "file:233",
+      "to": "file:197",
+      "evidence": [
+        {
+          "path": "tests/test_ltx.py",
+          "line": 1,
+          "detail": "import omni_rewriter.models.ltx"
+        }
+      ]
+    },
+    {
+      "id": "imports:file:233:file:212",
+      "type": "imports",
+      "from": "file:233",
+      "to": "file:212",
+      "evidence": [
+        {
+          "path": "tests/test_ltx.py",
+          "line": 1,
+          "detail": "import omni_rewriter.service"
+        }
+      ]
+    },
+    {
+      "id": "imports:file:234:file:174",
+      "type": "imports",
+      "from": "file:234",
+      "to": "file:174",
+      "evidence": [
+        {
+          "path": "tests/test_ltx_runner.py",
+          "line": 1,
+          "detail": "import omni_rewriter.adapters"
+        }
+      ]
+    },
+    {
+      "id": "imports:file:234:file:189",
+      "type": "imports",
+      "from": "file:234",
+      "to": "file:189",
+      "evidence": [
+        {
+          "path": "tests/test_ltx_runner.py",
+          "line": 1,
+          "detail": "import omni_rewriter.errors"
+        }
+      ]
+    },
+    {
+      "id": "imports:file:234:file:192",
+      "type": "imports",
+      "from": "file:234",
+      "to": "file:192",
+      "evidence": [
+        {
+          "path": "tests/test_ltx_runner.py",
+          "line": 1,
+          "detail": "import omni_rewriter.models"
+        }
+      ]
+    },
+    {
+      "id": "imports:file:235:file:189",
+      "type": "imports",
+      "from": "file:235",
+      "to": "file:189",
+      "evidence": [
+        {
+          "path": "tests/test_media_input.py",
+          "line": 1,
+          "detail": "import omni_rewriter.errors"
+        }
+      ]
+    },
+    {
+      "id": "imports:file:235:file:191",
+      "type": "imports",
+      "from": "file:235",
+      "to": "file:191",
+      "evidence": [
+        {
+          "path": "tests/test_media_input.py",
+          "line": 1,
+          "detail": "import omni_rewriter.media_input"
+        }
+      ]
+    },
+    {
+      "id": "imports:file:235:file:192",
+      "type": "imports",
+      "from": "file:235",
+      "to": "file:192",
+      "evidence": [
+        {
+          "path": "tests/test_media_input.py",
+          "line": 1,
+          "detail": "import omni_rewriter.models"
+        }
+      ]
+    },
+    {
+      "id": "imports:file:236:file:188",
+      "type": "imports",
+      "from": "file:236",
+      "to": "file:188",
+      "evidence": [
+        {
+          "path": "tests/test_misc.py",
+          "line": 1,
+          "detail": "import omni_rewriter.config"
+        }
+      ]
+    },
+    {
+      "id": "imports:file:236:file:189",
+      "type": "imports",
+      "from": "file:236",
+      "to": "file:189",
+      "evidence": [
+        {
+          "path": "tests/test_misc.py",
+          "line": 1,
+          "detail": "import omni_rewriter.errors"
+        }
+      ]
+    },
+    {
+      "id": "imports:file:236:file:212",
+      "type": "imports",
+      "from": "file:236",
+      "to": "file:212",
+      "evidence": [
+        {
+          "path": "tests/test_misc.py",
+          "line": 1,
+          "detail": "import omni_rewriter.service"
+        }
+      ]
+    },
+    {
+      "id": "imports:file:236:file:213",
+      "type": "imports",
+      "from": "file:236",
+      "to": "file:213",
+      "evidence": [
+        {
+          "path": "tests/test_misc.py",
+          "line": 1,
+          "detail": "import omni_rewriter.trace"
+        }
+      ]
+    },
+    {
+      "id": "imports:file:238:file:192",
+      "type": "imports",
+      "from": "file:238",
+      "to": "file:192",
+      "evidence": [
+        {
+          "path": "tests/test_models.py",
+          "line": 1,
+          "detail": "import omni_rewriter.models"
+        }
+      ]
+    },
+    {
+      "id": "imports:file:238:file:203",
+      "type": "imports",
+      "from": "file:238",
+      "to": "file:203",
+      "evidence": [
+        {
+          "path": "tests/test_models.py",
+          "line": 1,
+          "detail": "import omni_rewriter.models.validation"
+        }
+      ]
+    },
+    {
+      "id": "imports:file:238:file:211",
+      "type": "imports",
+      "from": "file:238",
+      "to": "file:211",
+      "evidence": [
+        {
+          "path": "tests/test_models.py",
+          "line": 1,
+          "detail": "import omni_rewriter.render"
+        }
+      ]
+    },
+    {
+      "id": "imports:file:239:file:199",
+      "type": "imports",
+      "from": "file:239",
+      "to": "file:199",
+      "evidence": [
+        {
+          "path": "tests/test_observation.py",
+          "line": 1,
+          "detail": "import omni_rewriter.models.observation"
+        }
+      ]
+    },
+    {
+      "id": "imports:file:240:file:184",
+      "type": "imports",
+      "from": "file:240",
+      "to": "file:184",
+      "evidence": [
+        {
+          "path": "tests/test_reconstruct.py",
+          "line": 1,
+          "detail": "import omni_rewriter.agent"
+        }
+      ]
+    },
+    {
+      "id": "imports:file:240:file:185",
+      "type": "imports",
+      "from": "file:240",
+      "to": "file:185",
+      "evidence": [
+        {
+          "path": "tests/test_reconstruct.py",
+          "line": 1,
+          "detail": "import omni_rewriter.api"
+        }
+      ]
+    },
+    {
+      "id": "imports:file:240:file:186",
+      "type": "imports",
+      "from": "file:240",
+      "to": "file:186",
+      "evidence": [
+        {
+          "path": "tests/test_reconstruct.py",
+          "line": 1,
+          "detail": "import omni_rewriter.backends"
+        }
+      ]
+    },
+    {
+      "id": "imports:file:240:file:187",
+      "type": "imports",
+      "from": "file:240",
+      "to": "file:187",
+      "evidence": [
+        {
+          "path": "tests/test_reconstruct.py",
+          "line": 1,
+          "detail": "import omni_rewriter.cli"
+        }
+      ]
+    },
+    {
+      "id": "imports:file:240:file:188",
+      "type": "imports",
+      "from": "file:240",
+      "to": "file:188",
+      "evidence": [
+        {
+          "path": "tests/test_reconstruct.py",
+          "line": 1,
+          "detail": "import omni_rewriter.config"
+        }
+      ]
+    },
+    {
+      "id": "imports:file:240:file:192",
+      "type": "imports",
+      "from": "file:240",
+      "to": "file:192",
+      "evidence": [
+        {
+          "path": "tests/test_reconstruct.py",
+          "line": 1,
+          "detail": "import omni_rewriter.models"
+        }
+      ]
+    },
+    {
+      "id": "imports:file:240:file:199",
+      "type": "imports",
+      "from": "file:240",
+      "to": "file:199",
+      "evidence": [
+        {
+          "path": "tests/test_reconstruct.py",
+          "line": 1,
+          "detail": "import omni_rewriter.models.observation"
+        }
+      ]
+    },
+    {
+      "id": "imports:file:240:file:207",
+      "type": "imports",
+      "from": "file:240",
+      "to": "file:207",
+      "evidence": [
+        {
+          "path": "tests/test_reconstruct.py",
+          "line": 1,
+          "detail": "import omni_rewriter.reconstruct.evidence"
+        }
+      ]
+    },
+    {
+      "id": "imports:file:240:file:208",
+      "type": "imports",
+      "from": "file:240",
+      "to": "file:208",
+      "evidence": [
+        {
+          "path": "tests/test_reconstruct.py",
+          "line": 1,
+          "detail": "import omni_rewriter.reconstruct.observe"
+        }
+      ]
+    },
+    {
+      "id": "imports:file:240:file:210",
+      "type": "imports",
+      "from": "file:240",
+      "to": "file:210",
+      "evidence": [
+        {
+          "path": "tests/test_reconstruct.py",
+          "line": 1,
+          "detail": "import omni_rewriter.reconstruct.service"
+        }
+      ]
+    },
+    {
+      "id": "imports:file:240:file:212",
+      "type": "imports",
+      "from": "file:240",
+      "to": "file:212",
+      "evidence": [
+        {
+          "path": "tests/test_reconstruct.py",
+          "line": 1,
+          "detail": "import omni_rewriter.service"
+        }
+      ]
+    },
+    {
+      "id": "imports:file:241:file:192",
+      "type": "imports",
+      "from": "file:241",
+      "to": "file:192",
+      "evidence": [
+        {
+          "path": "tests/test_reconstruct_replay.py",
+          "line": 1,
+          "detail": "import omni_rewriter.models"
+        }
+      ]
+    },
+    {
+      "id": "imports:file:241:file:209",
+      "type": "imports",
+      "from": "file:241",
+      "to": "file:209",
+      "evidence": [
+        {
+          "path": "tests/test_reconstruct_replay.py",
+          "line": 1,
+          "detail": "import omni_rewriter.reconstruct.replay"
+        }
+      ]
+    },
+    {
+      "id": "imports:file:242:file:184",
+      "type": "imports",
+      "from": "file:242",
+      "to": "file:184",
+      "evidence": [
+        {
+          "path": "tests/test_seedance.py",
+          "line": 1,
+          "detail": "import omni_rewriter.agent"
+        }
+      ]
+    },
+    {
+      "id": "imports:file:242:file:186",
+      "type": "imports",
+      "from": "file:242",
+      "to": "file:186",
+      "evidence": [
+        {
+          "path": "tests/test_seedance.py",
+          "line": 1,
+          "detail": "import omni_rewriter.backends"
+        }
+      ]
+    },
+    {
+      "id": "imports:file:242:file:192",
+      "type": "imports",
+      "from": "file:242",
+      "to": "file:192",
+      "evidence": [
+        {
+          "path": "tests/test_seedance.py",
+          "line": 1,
+          "detail": "import omni_rewriter.models"
+        }
+      ]
+    },
+    {
+      "id": "imports:file:242:file:202",
+      "type": "imports",
+      "from": "file:242",
+      "to": "file:202",
+      "evidence": [
+        {
+          "path": "tests/test_seedance.py",
+          "line": 1,
+          "detail": "import omni_rewriter.models.seedance"
+        }
+      ]
+    },
+    {
+      "id": "imports:file:242:file:212",
+      "type": "imports",
+      "from": "file:242",
+      "to": "file:212",
+      "evidence": [
+        {
+          "path": "tests/test_seedance.py",
+          "line": 1,
+          "detail": "import omni_rewriter.service"
+        }
+      ]
+    },
+    {
+      "id": "imports:file:243:file:185",
+      "type": "imports",
+      "from": "file:243",
+      "to": "file:185",
+      "evidence": [
+        {
+          "path": "tests/test_service_expand.py",
+          "line": 1,
+          "detail": "import omni_rewriter.api"
+        }
+      ]
+    },
+    {
+      "id": "imports:file:243:file:186",
+      "type": "imports",
+      "from": "file:243",
+      "to": "file:186",
+      "evidence": [
+        {
+          "path": "tests/test_service_expand.py",
+          "line": 1,
+          "detail": "import omni_rewriter.backends"
+        }
+      ]
+    },
+    {
+      "id": "imports:file:243:file:188",
+      "type": "imports",
+      "from": "file:243",
+      "to": "file:188",
+      "evidence": [
+        {
+          "path": "tests/test_service_expand.py",
+          "line": 1,
+          "detail": "import omni_rewriter.config"
+        }
+      ]
+    },
+    {
+      "id": "imports:file:243:file:192",
+      "type": "imports",
+      "from": "file:243",
+      "to": "file:192",
+      "evidence": [
+        {
+          "path": "tests/test_service_expand.py",
+          "line": 1,
+          "detail": "import omni_rewriter.models"
+        }
+      ]
+    },
+    {
+      "id": "imports:file:243:file:212",
+      "type": "imports",
+      "from": "file:243",
+      "to": "file:212",
+      "evidence": [
+        {
+          "path": "tests/test_service_expand.py",
+          "line": 1,
+          "detail": "import omni_rewriter.service"
+        }
+      ]
+    },
+    {
+      "id": "references:file:022:file:030",
+      "type": "references",
+      "from": "file:022",
+      "to": "file:030",
+      "evidence": [
+        {
+          "path": "README.md",
+          "line": 8
+        }
+      ]
+    },
+    {
+      "id": "references:file:022:file:082",
+      "type": "references",
+      "from": "file:022",
+      "to": "file:082",
+      "evidence": [
+        {
+          "path": "README.md",
+          "line": 25
+        }
+      ]
+    },
+    {
+      "id": "references:file:030:file:212",
+      "type": "references",
+      "from": "file:030",
+      "to": "file:212",
+      "evidence": [
+        {
+          "path": "docs/architecture.md",
+          "line": 20
+        }
+      ]
+    },
+    {
+      "id": "references:file:030:file:184",
+      "type": "references",
+      "from": "file:030",
+      "to": "file:184",
+      "evidence": [
+        {
+          "path": "docs/architecture.md",
+          "line": 47
+        }
+      ]
+    },
+    {
+      "id": "references:file:030:file:191",
+      "type": "references",
+      "from": "file:030",
+      "to": "file:191",
+      "evidence": [
+        {
+          "path": "docs/architecture.md",
+          "line": 48
+        }
+      ]
+    },
+    {
+      "id": "references:file:030:file:175",
+      "type": "references",
+      "from": "file:030",
+      "to": "file:175",
+      "evidence": [
+        {
+          "path": "docs/architecture.md",
+          "line": 55
+        }
+      ]
+    },
+    {
+      "id": "references:file:023:file:172",
+      "type": "references",
+      "from": "file:023",
+      "to": "file:172",
+      "evidence": [
+        {
+          "path": "action.yml",
+          "line": 54
+        }
+      ]
+    },
+    {
+      "id": "references:file:016:file:023",
+      "type": "references",
+      "from": "file:016",
+      "to": "file:023",
+      "evidence": [
+        {
+          "path": ".github/workflows/validate-pe.yml",
+          "line": 21
+        }
+      ]
+    }
+  ],
+  "layers": [
+    {
+      "id": "presentation-ui",
+      "title": "presentation/UI",
+      "nodeIds": [
+        "file:185",
+        "file:187"
+      ]
+    },
+    {
+      "id": "apps-script-server",
+      "title": "apps-script-server",
+      "nodeIds": [
+        "file:131",
+        "file:132",
+        "file:133",
+        "file:134",
+        "file:135",
+        "file:136",
+        "file:137",
+        "file:138",
+        "file:139",
+        "file:140",
+        "file:141",
+        "file:142",
+        "file:143",
+        "file:144",
+        "file:145",
+        "file:146",
+        "file:147",
+        "file:148",
+        "file:149",
+        "file:150",
+        "file:151",
+        "file:152",
+        "file:153",
+        "file:154",
+        "file:155",
+        "file:156",
+        "file:157",
+        "file:158",
+        "file:159",
+        "file:160",
+        "file:161",
+        "file:162",
+        "file:163",
+        "file:164",
+        "file:165",
+        "file:166",
+        "file:167",
+        "file:168",
+        "file:169",
+        "file:170",
+        "file:171",
+        "file:172"
+      ]
+    },
+    {
+      "id": "service-backend",
+      "title": "service-backend",
+      "nodeIds": [
+        "file:174",
+        "file:175",
+        "file:176",
+        "file:177",
+        "file:178",
+        "file:179",
+        "file:180",
+        "file:181",
+        "file:182",
+        "file:183",
+        "file:184",
+        "file:186",
+        "file:188",
+        "file:190",
+        "file:191",
+        "file:204",
+        "file:205",
+        "file:206",
+        "file:207",
+        "file:208",
+        "file:209",
+        "file:210",
+        "file:212"
+      ]
+    },
+    {
+      "id": "infrastructure",
+      "title": "infrastructure",
+      "nodeIds": [
+        "file:006",
+        "file:007",
+        "file:008",
+        "file:009",
+        "file:010",
+        "file:011",
+        "file:012",
+        "file:013",
+        "file:014",
+        "file:015",
+        "file:016",
+        "file:023",
+        "file:130"
+      ]
+    },
+    {
+      "id": "shared",
+      "title": "shared",
+      "nodeIds": [
+        "file:001",
+        "file:002",
+        "file:003",
+        "file:004",
+        "file:005",
+        "file:017",
+        "file:018",
+        "file:019",
+        "file:020",
+        "file:021",
+        "file:022",
+        "file:024",
+        "file:025",
+        "file:026",
+        "file:027",
+        "file:028",
+        "file:029",
+        "file:030",
+        "file:031",
+        "file:032",
+        "file:033",
+        "file:034",
+        "file:035",
+        "file:036",
+        "file:037",
+        "file:038",
+        "file:039",
+        "file:040",
+        "file:041",
+        "file:042",
+        "file:043",
+        "file:044",
+        "file:045",
+        "file:046",
+        "file:047",
+        "file:048",
+        "file:049",
+        "file:050",
+        "file:051",
+        "file:052",
+        "file:053",
+        "file:054",
+        "file:055",
+        "file:056",
+        "file:057",
+        "file:058",
+        "file:059",
+        "file:060",
+        "file:061",
+        "file:062",
+        "file:063",
+        "file:064",
+        "file:065",
+        "file:066",
+        "file:067",
+        "file:068",
+        "file:069",
+        "file:070",
+        "file:071",
+        "file:072",
+        "file:073",
+        "file:074",
+        "file:075",
+        "file:076",
+        "file:077",
+        "file:078",
+        "file:079",
+        "file:080",
+        "file:081",
+        "file:082",
+        "file:083",
+        "file:084",
+        "file:085",
+        "file:086",
+        "file:087",
+        "file:088",
+        "file:089",
+        "file:090",
+        "file:091",
+        "file:092",
+        "file:093",
+        "file:094",
+        "file:095",
+        "file:096",
+        "file:097",
+        "file:098",
+        "file:099",
+        "file:100",
+        "file:101",
+        "file:102",
+        "file:103",
+        "file:104",
+        "file:105",
+        "file:106",
+        "file:107",
+        "file:108",
+        "file:109",
+        "file:110",
+        "file:111",
+        "file:112",
+        "file:113",
+        "file:114",
+        "file:115",
+        "file:116",
+        "file:117",
+        "file:118",
+        "file:119",
+        "file:120",
+        "file:121",
+        "file:122",
+        "file:123",
+        "file:124",
+        "file:125",
+        "file:126",
+        "file:127",
+        "file:128",
+        "file:129",
+        "file:173",
+        "file:189",
+        "file:192",
+        "file:193",
+        "file:194",
+        "file:195",
+        "file:196",
+        "file:197",
+        "file:198",
+        "file:199",
+        "file:200",
+        "file:201",
+        "file:202",
+        "file:203",
+        "file:211",
+        "file:213",
+        "file:214",
+        "file:215",
+        "file:216",
+        "file:217",
+        "file:218",
+        "file:219",
+        "file:220",
+        "file:221",
+        "file:222",
+        "file:223",
+        "file:224",
+        "file:225",
+        "file:226",
+        "file:227",
+        "file:228",
+        "file:229",
+        "file:230",
+        "file:231",
+        "file:232",
+        "file:233",
+        "file:234",
+        "file:235",
+        "file:236",
+        "file:237",
+        "file:238",
+        "file:239",
+        "file:240",
+        "file:241",
+        "file:242",
+        "file:243",
+        "file:244"
+      ]
+    }
+  ],
+  "tours": [
+    {
+      "id": "engineering-onboarding",
+      "title": "Static engineering onboarding tour",
+      "steps": [
+        {
+          "nodeId": "file:022",
+          "title": "Read the declared product boundary",
+          "evidence": [
+            {
+              "path": "README.md",
+              "line": 48
+            }
+          ]
+        },
+        {
+          "nodeId": "file:030",
+          "title": "Read the architecture and trust boundaries",
+          "evidence": [
+            {
+              "path": "docs/architecture.md",
+              "line": 3
+            }
+          ]
+        },
+        {
+          "nodeId": "file:201",
+          "title": "Start with typed request routing",
+          "evidence": [
+            {
+              "path": "src/omni_rewriter/models/request.py",
+              "line": 34
+            }
+          ]
+        },
+        {
+          "nodeId": "file:184",
+          "title": "Follow Analyze, Draft, Validate, and Repair",
+          "evidence": [
+            {
+              "path": "src/omni_rewriter/agent.py",
+              "line": 102
+            }
+          ]
+        },
+        {
+          "nodeId": "file:212",
+          "title": "See production service composition",
+          "evidence": [
+            {
+              "path": "src/omni_rewriter/service.py",
+              "line": 29
+            }
+          ]
+        },
+        {
+          "nodeId": "file:191",
+          "title": "Inspect media resource and SSRF controls",
+          "evidence": [
+            {
+              "path": "src/omni_rewriter/media_input.py",
+              "line": 73
+            }
+          ]
+        },
+        {
+          "nodeId": "file:193",
+          "title": "Study H3 grammar validation",
+          "evidence": [
+            {
+              "path": "src/omni_rewriter/models/base.py",
+              "line": 24
+            }
+          ]
+        },
+        {
+          "nodeId": "file:202",
+          "title": "Compare optional video profile mechanics",
+          "evidence": [
+            {
+              "path": "src/omni_rewriter/models/seedance.py",
+              "line": 176
+            }
+          ]
+        },
+        {
+          "nodeId": "file:210",
+          "title": "Trace reconstruction back into expand",
+          "evidence": [
+            {
+              "path": "src/omni_rewriter/reconstruct/service.py",
+              "line": 52
+            }
+          ]
+        },
+        {
+          "nodeId": "file:175",
+          "title": "Inspect explicit generation-adapter boundary",
+          "evidence": [
+            {
+              "path": "src/omni_rewriter/adapters/base.py",
+              "line": 1
+            }
+          ]
+        },
+        {
+          "nodeId": "file:023",
+          "title": "Review validate-only distribution surface",
+          "evidence": [
+            {
+              "path": "action.yml",
+              "line": 25
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "entryPoints": [
+    {
+      "nodeId": "file:187",
+      "symbol": "main",
+      "evidence": "src/omni_rewriter/cli.py:236"
+    },
+    {
+      "nodeId": "file:185",
+      "symbol": "create_app",
+      "evidence": "src/omni_rewriter/api.py:29"
+    },
+    {
+      "nodeId": "file:023",
+      "symbol": "composite-action",
+      "evidence": "action.yml:25"
+    }
+  ],
+  "limitations": [
+    "Static source inspection only. No repository scripts, dependency installation, tests, servers, dashboards, model runtimes, or provider APIs were run.",
+    "Static edges show imports and checked-in references; they do not prove runtime reachability, compatibility, deployment, or model behavior."
+  ]
+}
