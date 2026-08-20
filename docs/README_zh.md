@@ -31,16 +31,24 @@
 
 ## 最新动态
 
-- **2026-08-14：** `omni-rewriter reconstruct` 把本地成片写成 H3 PE。推荐 Writer 为
-  [Qwen3.6-35B-A3B](https://huggingface.co/Qwen/Qwen3.6-35B-A3B)。这是 Omni-Rewriter Replay
-  （[HF gallery](https://huggingface.co/spaces/Wayne-King/omni-rewriter-replay)）。
-- **2026-08 — 只校验安装：** `pip install omni-rewriter` 后即可
-  `omni-rewriter validate`——不需要 GPU / Writer / generate。CI 可用
-  `WayneJin0918/Omni-Rewriter@v0.1.0`。
-- **2026-08 — Discussions + PE 校验 Action：** 已开启
-  [Discussions](https://github.com/WayneJin0918/Omni-Rewriter/discussions)；根目录
-  `action.yml` 可在任意仓库 CI 中校验 PE JSON（只校验，不 generate）。
-- **2026-08 — H3 工作流更新：** 更新 H3 视频 PE 工作流中的时间轴、运镜、对白和有界修复规则，参考 [MiniMax-H3 公开项目](https://github.com/MiniMax-AI/MiniMax-H3/tree/main)。
+<p><sub>窗口内滚动查看更早条目。与<a href="https://waynejin0918.github.io/Omni-Rewriter/">项目站</a>同一套精简 News。GitHub 可能会去掉 CSS；更早条目也可点开折叠。</sub></p>
+
+<div align="left" style="max-height:14em;overflow:auto;border-top:1px solid #d0d7de;border-bottom:1px solid #d0d7de;padding:0.15em 0.85em 0.35em;">
+
+- **2026-08-15：** LTX-2.5 视频 PE（`metadata.video_pe_profile=ltx`）——按公开 LTX-2 提示词指南渲染单段段落。可选官方 CLI runner；本地生成未验证。扩写 ≠ 生成。[LTX PE](dialects/ltx-pe_zh.md)
+- **2026-08-14：** `omni-rewriter reconstruct` 把本地成片写成 H3 PE。推荐 Writer 为 [Qwen3.6-35B-A3B](https://huggingface.co/Qwen/Qwen3.6-35B-A3B)。这是 Omni-Rewriter Replay（[HF gallery](https://huggingface.co/spaces/Wayne-King/omni-rewriter-replay)）。
+
+<details>
+<summary>更早动态</summary>
+
+- **2026-08 — 只校验安装：** `pip install omni-rewriter` 后即可 `omni-rewriter validate`——不需要 GPU / Writer / generate。CI 可用 `WayneJin0918/Omni-Rewriter@v0.1.0`。
+- **2026-08 — Discussions + PE 校验 Action：** 已开启 [Discussions](https://github.com/WayneJin0918/Omni-Rewriter/discussions)；`action.yml` 可在任意仓库 CI 中校验 PE JSON（只校验）。
+- **2026-08 — H3 工作流更新：** 更新 H3 视频 PE 的时间轴、运镜、对白和有界修复规则，参考 [MiniMax-H3 公开项目](https://github.com/MiniMax-AI/MiniMax-H3/tree/main)。
+- **2026-08-09：** 首个公开版 v0.1.0——H3 / Seedream / Qwen-Image PE。同周加入 Seedance 仅 PE profile。
+
+</details>
+
+</div>
 
 ## 项目简介
 
@@ -300,6 +308,7 @@ export OMNI_WRITER_H3_BASE_URL=http://127.0.0.1:30010
 
 omni-rewriter expand examples/requests/t2va_kite.json
 omni-rewriter expand examples/requests/t2va_kite.json --output h3
+omni-rewriter expand examples/requests/ltx_t2va_workshop.json --output ltx
 omni-rewriter validate output.json
 ```
 

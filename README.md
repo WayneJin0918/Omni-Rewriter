@@ -31,19 +31,24 @@
 
 ## News
 
-- **2026-08-14:** `omni-rewriter reconstruct` observes a local clip into H3 PE. Recommended
-  Writer is [Qwen3.6-35B-A3B](https://huggingface.co/Qwen/Qwen3.6-35B-A3B). This is Omni-Rewriter Replay
-  ([HF gallery](https://huggingface.co/spaces/Wayne-King/omni-rewriter-replay)).
-- **2026-08 — Validate-only install:** `pip install omni-rewriter` then
-  `omni-rewriter validate` — no GPU, no Writer, no generate. Reuse the same checker in CI via
-  `WayneJin0918/Omni-Rewriter@v0.1.0`.
-- **2026-08 — Discussions + PE validate Action:** GitHub
-  [Discussions](https://github.com/WayneJin0918/Omni-Rewriter/discussions) are open, and a
-  composite Action (`action.yml`) can lint PE JSON envelopes in any repo’s CI (validate only;
-  expand ≠ generate).
-- **2026-08 — H3 workflow refresh:** updated the H3 video PE workflow with validated timeline,
-  camera, dialogue, and bounded-repair rules, informed by the
-  [public MiniMax-H3 project](https://github.com/MiniMax-AI/MiniMax-H3/tree/main).
+<p><sub>Scroll the window for older updates. Same compact news as the <a href="https://waynejin0918.github.io/Omni-Rewriter/">project site</a>. GitHub may flatten CSS; older items also fold below.</sub></p>
+
+<div align="left" style="max-height:14em;overflow:auto;border-top:1px solid #d0d7de;border-bottom:1px solid #d0d7de;padding:0.15em 0.85em 0.35em;">
+
+- **2026-08-15:** LTX-2.5 video PE (`metadata.video_pe_profile=ltx`) — one flowing paragraph from the public LTX-2 prompting guide. Optional official-CLI runner; live generate unverified. Expand ≠ generate. [LTX PE](docs/dialects/ltx-pe.md)
+- **2026-08-14:** `omni-rewriter reconstruct` observes a local clip into H3 PE. Recommended Writer is [Qwen3.6-35B-A3B](https://huggingface.co/Qwen/Qwen3.6-35B-A3B). This is Omni-Rewriter Replay ([HF gallery](https://huggingface.co/spaces/Wayne-King/omni-rewriter-replay)).
+
+<details>
+<summary>Older news</summary>
+
+- **2026-08 — Validate-only install:** `pip install omni-rewriter` then `omni-rewriter validate` — no GPU, no Writer, no generate. Reuse the same checker in CI via `WayneJin0918/Omni-Rewriter@v0.1.0`.
+- **2026-08 — Discussions + PE validate Action:** GitHub [Discussions](https://github.com/WayneJin0918/Omni-Rewriter/discussions) are open, and a composite Action (`action.yml`) can lint PE JSON envelopes in any repo’s CI (validate only).
+- **2026-08 — H3 workflow refresh:** updated the H3 video PE workflow with validated timeline, camera, dialogue, and bounded-repair rules, informed by the [public MiniMax-H3 project](https://github.com/MiniMax-AI/MiniMax-H3/tree/main).
+- **2026-08-09:** First public release v0.1.0 — typed H3, Seedream, and Qwen-Image PE. Seedance PE-only profile added the same week.
+
+</details>
+
+</div>
 
 ## About
 
@@ -311,6 +316,7 @@ export OMNI_WRITER_H3_BASE_URL=http://127.0.0.1:30010
 
 omni-rewriter expand examples/requests/t2va_kite.json
 omni-rewriter expand examples/requests/t2va_kite.json --output h3
+omni-rewriter expand examples/requests/ltx_t2va_workshop.json --output ltx
 omni-rewriter validate output.json
 # optional generate (needs H3 up): scripts/promo/submit_h3_chunk.py … — see H3 adapters
 ```
@@ -340,6 +346,7 @@ export OMNI_WRITER_BACKEND_MODEL=gpt-5.6
 export OMNI_WRITER_BACKEND_API_KEY=sk-...
 
 omni-rewriter expand examples/requests/t2va_kite.json --output h3
+omni-rewriter expand examples/requests/ltx_t2va_workshop.json --output ltx
 ```
 
 Checked-in requests: [`examples/requests/`](examples/requests/). Scripts:

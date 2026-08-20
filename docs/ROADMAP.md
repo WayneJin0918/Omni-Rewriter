@@ -2,7 +2,7 @@
 
 Current Omni-Rewriter ships as a general **prompt-expansion framework**: transport-neutral
 requests, typed profile outputs, deterministic validation, dialect rendering, and bounded LLM
-repairs. H3 video, Seedream, and Qwen-Image image PE are its first profiles.
+repairs. H3, Seedance, and LTX-2.5 video PE, plus Seedream and Qwen-Image image PE, are its first profiles.
 
 The project helps the community bridge polished demos and the explicit prompt contracts required
 by public/open generators. It relies on public evidence rather than attempting to reproduce
@@ -24,6 +24,7 @@ contributions are welcome — see [CONTRIBUTING.md](CONTRIBUTING.md).
 - [x] Add mock contract tests for image/video submit, polling, base64/URL decoding, download
       limits, WAN mapping, Hunyuan extension fields, and LingBot subprocess/rewriter behavior.
 - [x] Publish H3 RAW vs PE demo surfaces under `docs/` (landing, showcase, homepage gallery).
+- [x] Ship LTX-2.5 video PE (public paragraph dialect + optional official CLI runner; live generate unverified).
 - [ ] Run live SGLang/vLLM-Omni WAN compatibility matrices across pinned runtime releases.
 - [ ] Strengthen image validators for quote-language consistency (Chinese `“”` vs English `""`).
 
