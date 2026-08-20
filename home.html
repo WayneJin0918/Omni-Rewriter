@@ -281,6 +281,46 @@
       .flow-track, .compare-strip { grid-template-columns: 1fr; }
       .hero { padding-top: 1.4rem; }
     }
+      .news-window {
+      margin-top: 1.15rem;
+      max-height: 13.5rem;
+      overflow-x: hidden;
+      overflow-y: scroll;
+      overscroll-behavior: contain;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-gutter: stable;
+      padding: 0.2rem 0.65rem 0.2rem 0.2rem;
+      border-block: 1px solid rgba(251,113,133,0.18);
+    }
+    .news-window::-webkit-scrollbar { width: 0.45rem; }
+    .news-window::-webkit-scrollbar-thumb {
+      background: rgba(251,113,133,0.45);
+      border-radius: 999px;
+    }
+    .news-window:focus-visible { outline: 2px solid var(--blush); outline-offset: 0.25rem; }
+    .news-item {
+      display:grid; grid-template-columns: 7.5rem 1fr; gap: 0.9rem;
+      padding: 1rem 0.25rem;
+      border-bottom: 1px solid rgba(251,113,133,0.16);
+    }
+    .news-item:last-child { border-bottom: 0; }
+    .news-date {
+      color: var(--blush); font-size: 0.7rem; font-weight: 700;
+      letter-spacing: 0.08em; text-transform: uppercase;
+    }
+    .news-copy { min-width: 0; }
+    .news-copy h3 {
+      margin: 0 0 0.28rem; font-family: Fraunces, Georgia, serif;
+      font-size: 1rem; letter-spacing: -0.01em;
+    }
+    .news-copy p { margin: 0; color: var(--muted); font-size: 0.86rem; }
+    .news-copy a { font-weight: 700; }
+    .news-status {
+      display:inline-flex; margin-top:0.5rem; padding:0.2rem 0.45rem;
+      border:1px solid rgba(251,113,133,0.28); border-radius:999px;
+      color:#fecdd3; font-size:0.62rem; font-weight:700;
+      letter-spacing:0.08em; text-transform:uppercase;
+    }
   </style>
 
 
@@ -292,6 +332,7 @@
       <nav class="nav-links">
         <a href="index.html">Promo</a>
         <a href="https://github.com/WayneJin0918/Omni-Rewriter">GitHub</a>
+        <a href="#news">News</a>
         <a href="#pipeline">Pipeline</a>
         <a href="#cases">Cases</a>
         <a href="#ship">In the repo</a>
@@ -319,6 +360,113 @@
         Omni-Rewriter expands transport-neutral intent into a typed H3 dialect, validates it, and repairs
         failures in a bounded loop. Pairs share seed, aspect, and duration so differences come from the prompt path.
       </p>
+    </section>
+
+    <section class="block" id="news">
+      <div class="section-kicker">Project news</div>
+      <h2>Updates, in a compact window</h2>
+      <p>
+        Technical milestones and community outreach, with compatibility claims kept to the exact
+        path tested. Scroll inside the news window for older entries.
+      </p>
+      <div class="news-window" tabindex="0" aria-label="Project news; scroll vertically for older updates">
+        <article class="news-item">
+          <time class="news-date" datetime="2026-08-15">Aug 15, 2026</time>
+          <div class="news-copy">
+            <h3>LTX-2.5 video PE</h3>
+            <p>
+              Public LTX-2 paragraph dialect via <code>metadata.video_pe_profile=ltx</code>.
+              Optional official-CLI runner; live generate unverified. Expand ≠ generate.
+              <a href="https://github.com/WayneJin0918/Omni-Rewriter/blob/main/docs/dialects/ltx-pe.md">LTX PE</a>.
+            </p>
+            <span class="news-status">Profile</span>
+          </div>
+        </article>
+        <article class="news-item">
+          <time class="news-date" datetime="2026-08">Aug 2026</time>
+          <div class="news-copy">
+            <h3>Validate-only install</h3>
+            <p>
+              <code>pip install omni-rewriter</code> then <code>omni-rewriter validate</code>
+              — no GPU, no Writer, no generate. Same checker in CI via
+              <code>WayneJin0918/Omni-Rewriter@v0.1.0</code>.
+            </p>
+            <span class="news-status">CI · package</span>
+          </div>
+        </article>
+        <article class="news-item">
+          <time class="news-date" datetime="2026-08-14">Aug 14, 2026</time>
+          <div class="news-copy">
+            <h3>Omni-Rewriter Replay</h3>
+            <p>
+              <code>omni-rewriter reconstruct</code> observes a local clip into H3 PE.
+              Recommended Writer is
+              <a href="https://huggingface.co/Qwen/Qwen3.6-35B-A3B">Qwen3.6-35B-A3B</a>.
+              This is Omni-Rewriter Replay.
+              <a href="https://huggingface.co/spaces/Wayne-King/omni-rewriter-replay">HF gallery</a>.
+            </p>
+            <span class="news-status">Replay · Writer</span>
+          </div>
+        </article>
+        <article class="news-item">
+          <time class="news-date" datetime="2026-08-11">Aug 11, 2026</time>
+          <div class="news-copy">
+            <h3>Discussions + PE validate Action</h3>
+            <p>
+              GitHub
+              <a href="https://github.com/WayneJin0918/Omni-Rewriter/discussions">Discussions</a>
+              are open, and a composite Action (<code>action.yml</code>) can lint PE JSON envelopes
+              in any repo’s CI. Validate only — expand ≠ generate.
+            </p>
+            <span class="news-status">CI · community</span>
+          </div>
+        </article>
+        <article class="news-item">
+          <time class="news-date" datetime="2026-08-10">Aug 10, 2026</time>
+          <div class="news-copy">
+            <h3>Local SGLang Writer + H3 quick start</h3>
+            <p>
+              The recommended local path now separates a Qwen3.6-35B-A3B Writer on port 8000 from optional
+              MiniMax-H3 FL2VA generation on port 30010. Expand remains separate from generate.
+            </p>
+            <span class="news-status">Docs</span>
+          </div>
+        </article>
+        <article class="news-item">
+          <time class="news-date" datetime="2026-08-10">Aug 10, 2026</time>
+          <div class="news-copy">
+            <h3>H3 workflow refresh</h3>
+            <p>
+              Updated the H3 video PE workflow with validated timeline, camera, dialogue, and
+              bounded-repair rules, informed by the public MiniMax-H3 project.
+            </p>
+            <span class="news-status">Profile</span>
+          </div>
+        </article>
+        <article class="news-item">
+          <time class="news-date" datetime="2026-08-09">Aug 9, 2026</time>
+          <div class="news-copy">
+            <h3>Omni-Rewriter v0.1.0</h3>
+            <p>
+              First public release: typed H3, Seedream, and Qwen-Image PE profiles; CLI and optional
+              FastAPI interfaces; deterministic validation and bounded repair.
+              <a href="https://github.com/WayneJin0918/Omni-Rewriter/releases/tag/v0.1.0">Read the release</a>.
+            </p>
+            <span class="news-status">Release</span>
+          </div>
+        </article>
+        <article class="news-item">
+          <time class="news-date" datetime="2026-08-09">Aug 9, 2026</time>
+          <div class="news-copy">
+            <h3>Seedance PE profile added</h3>
+            <p>
+              A sanitized, PE-only Seedance profile joined the model-extensible harness. No generation
+              adapter or private vendor behavior is claimed.
+            </p>
+            <span class="news-status">Profile</span>
+          </div>
+        </article>
+      </div>
     </section>
 
     <section class="block" id="pipeline">
@@ -952,6 +1100,7 @@ non_diegetic_music: None; the scene relies entirely on diegetic sound to build t
       <p>Everything on this page ships as typed profiles, fixtures, and optional adapters — expand stays separate from generate.</p>
       <div class="pillars">
         <div class="pillar"><h3>H3 PE profile</h3><p>Typed output, validators, repair rules, and dialect renderer for video timelines.</p></div>
+        <div class="pillar"><h3>LTX-2.5 PE</h3><p>One flowing paragraph from the public LTX-2 guide. Optional official CLI runner; live generate unverified.</p></div>
         <div class="pillar"><h3>Fixtures &amp; eval</h3><p>RAW vs expanded fixtures and gallery thumbs for reproducible demos (no private experiment dumps).</p></div>
         <div class="pillar"><h3>Optional adapters</h3><p>Generation stays opt-in. Cite public runtime evidence; never equate PE with private Context-IR.</p></div>
       </div>
